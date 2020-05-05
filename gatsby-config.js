@@ -6,15 +6,15 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: 'rt6o382n',
+        dataset: 'production',
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -31,4 +31,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
