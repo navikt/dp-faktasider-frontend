@@ -5,7 +5,6 @@
  */
 
 async function createPages(graphql, actions, reporter) {
-  const { createPage } = actions;
   const result = await graphql(`
     query Pages {
       pages: allSanityFaktaSide {
@@ -20,20 +19,25 @@ async function createPages(graphql, actions, reporter) {
       }
     }
   `);
+
   if (result.errors) throw result.errors;
-  const pageEdges = (result.data.pages || {}).edges || [];
+
+  const pageEdges = result.data.pages?.edges || [];
+
   pageEdges.forEach((edge) => {
     const id = edge.node.id;
     const slug = edge.node.slug.current;
     const path = `/${slug}/`;
+
     reporter.info(`Creating project page: ${path}`);
-    createPage({
+    actions.createPage({
       path,
       component: require.resolve('./src/templates/page.js'),
       context: { id },
     });
   });
 }
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createPages(graphql, actions, reporter);
 };
