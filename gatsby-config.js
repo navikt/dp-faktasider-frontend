@@ -15,6 +15,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-typescript',
     'nav-decorator',
+    'gatsby-plugin-less',
     {
       resolve: 'gatsby-source-sanity',
       options: {

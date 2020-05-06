@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 
 interface Props {
   node: {
@@ -11,7 +12,7 @@ function CustomComponent(props: Props) {
     case 'Test komponent':
       return <div>Uferdig komponent</div>;
     default:
-      return <div>Ukjent komponent: "{props.node.component}"</div>;
+      return <AlertStripeFeil>Ukjent komponent: "{props.node.component}"</AlertStripeFeil>;
   }
 }
 
