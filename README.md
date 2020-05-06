@@ -9,6 +9,14 @@ npm i
 npm start
 ```
 
+## Node-versjon
+
+Pga bruk av optional chaning (`.?`) i .js-filer må du kjøre på node 14.x eller nyere.
+
+```
+nvm use 14
+```
+
 ## Kontakt
 
 Spørsmål tilknyttet koden kan rettes mot:
