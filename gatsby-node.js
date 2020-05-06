@@ -32,7 +32,7 @@ async function createPages(graphql, actions, reporter) {
     reporter.info(`Creating project page: ${path}`);
     actions.createPage({
       path,
-      component: require.resolve('./src/templates/page.js'),
+      component: require.resolve('./src/templates/Page.tsx'),
       context: { id },
     });
   });
