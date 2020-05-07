@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
+import DagpengerKalkulator from '../HvorMyeKalkulator/DagpengerKalkulator';
 
 interface Props {
   node: {
@@ -9,8 +10,8 @@ interface Props {
 
 function CustomComponent(props: Props) {
   switch (props.node.component) {
-    case 'Test komponent':
-      return <div>Uferdig komponent</div>;
+    case 'DagpengeKalkulator - normal':
+      return <DagpengerKalkulator />;
     default:
       return <AlertStripeFeil>Ukjent komponent: "{props.node.component}"</AlertStripeFeil>;
   }
