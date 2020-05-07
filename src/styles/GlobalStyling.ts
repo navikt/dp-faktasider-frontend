@@ -40,6 +40,10 @@ export const GlobalStyling = createGlobalStyle`
             }
         }
     }
+    
+    .ReactCollapse--collapse {
+        transition: height 0.3s;
+    }
 `;
 
 /* Scoper denne stylingen så den ikke overskriver styling i Meny/Dekorator */
