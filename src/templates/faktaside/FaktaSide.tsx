@@ -3,6 +3,9 @@ import { graphql } from 'gatsby';
 import BlockContent from '../../components/BlockContent/BlockContent';
 import Layout from './Layout';
 import GraphQLErrorList from '../../components/GraphqlErrorList';
+import { Translations } from '../../types/translations';
+import parseRichText from '../../utils/parseRichText';
+import ErrorBoundary from '../../components/ErrorBoundary';
 
 export const query = graphql`
   query MyQuery($id: String) {
@@ -16,8 +19,8 @@ export const query = graphql`
 interface Props {
   data: {
     side: {
-      _rawTitle: any;
-      _rawBody: any;
+      _rawTitle: Translations;
+      _rawBody: Translations;
     };
   };
   errors: any;
@@ -26,11 +29,17 @@ interface Props {
 function FaktaSide(props: Props) {
   const side = props.data.side;
 
+  const richText = parseRichText(side._rawBody.nb);
+
+  console.log(richText);
+
   return (
-    <Layout header="Tittel" menuItems={[]}>
-      <GraphQLErrorList errors={props.errors} />
-      <BlockContent blocks={side?._rawBody} />
-    </Layout>
+    <ErrorBoundary>
+      <Layout header={side._rawTitle.nb} menuItems={[]}>
+        <GraphQLErrorList errors={props.errors} />
+        <BlockContent blocks={richText} />
+      </Layout>
+    </ErrorBoundary>
   );
 }
 

@@ -3,6 +3,8 @@ import SanityBlockContent from '@sanity/block-content-to-react';
 import CustomComponent from './CustomComponent';
 import { GtoNOK } from '../../utils/folketrygdensGrunnbeløp';
 import { ReactNode } from 'react';
+import ErrorBoundary from '../ErrorBoundary';
+import Bolk from './Bolk';
 
 interface Props {
   blocks: any;
@@ -19,11 +21,16 @@ const serializers: Serializers = {
     localeRichText: (props) => <BlockContent blocks={props.node.nb} />,
     customComponent: CustomComponent,
     GtoNOK: (props) => GtoNOK(props.node.GtoNOK),
+    bolk: Bolk,
   },
 };
 
 function BlockContent(props: Props) {
-  return <SanityBlockContent serializers={serializers} blocks={props.blocks} />;
+  return (
+    <ErrorBoundary>
+      <SanityBlockContent serializers={serializers} blocks={props.blocks} />
+    </ErrorBoundary>
+  );
 }
 
 export default BlockContent;
