@@ -14,6 +14,7 @@ export const LenkeKnapp = styled.button.attrs({ className: 'lenke' })`
 export const KnappLenke = styled.a.attrs({ className: 'knapp knapp--standard' })`
   text-transform: none;
   white-space: normal !important;
+  text-align: center;
 `;
 
 export const BulletPointListe = styled.ul`

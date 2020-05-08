@@ -28,6 +28,32 @@ const StyledMain = styled.main`
   @media (${theme.media.bigScreen}) {
     margin-left: ${theme.layoutMargin};
   }
+  ul {
+    padding-left: 2rem;
+    list-style: disc;
+    margin: 1.5rem 0;
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    ul {
+      list-style: circle;
+    }
+  }
+  ol {
+    list-style: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    li {
+      margin: 0.5rem 0;
+      line-height: 1.3;
+
+      padding-left: 1rem;
+    }
+  }
+  p {
+    margin: 0.5rem 0 1rem;
+  }
 `;
 
 const Style = styled.div`

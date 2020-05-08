@@ -1,10 +1,11 @@
 import * as React from 'react';
-import SanityBlockContent from '@sanity/block-content-to-react';
 import CustomComponent from './CustomComponent';
 import { GtoNOK } from '../../utils/folketrygdensGrunnbeløp';
 import { ReactNode } from 'react';
 import ErrorBoundary from '../ErrorBoundary';
 import BolkMarkup from './BolkMarkup';
+import LinkMarkup from './Link';
+import SanityBlockContent from '@sanity/block-content-to-react';
 
 interface Props {
   blocks: any;
@@ -14,6 +15,9 @@ type Serializers = {
   types: {
     [key: string]: ({ node: any }) => ReactNode;
   };
+  marks: {
+    [key: string]: any;
+  };
 };
 
 const serializers: Serializers = {
@@ -22,6 +26,9 @@ const serializers: Serializers = {
     customComponent: CustomComponent,
     GtoNOK: (props) => GtoNOK(props.node.GtoNOK),
     bolk: BolkMarkup,
+  },
+  marks: {
+    link: LinkMarkup,
   },
 };
 
