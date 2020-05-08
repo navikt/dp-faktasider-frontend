@@ -1,5 +1,5 @@
-export interface Translations {
-  nb: any;
-  nn: any;
-  en: any;
+export interface Translations<T = any> {
+  nb: T;
+  nn: T;
+  en: T;
 }

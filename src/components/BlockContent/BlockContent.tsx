@@ -4,7 +4,7 @@ import CustomComponent from './CustomComponent';
 import { GtoNOK } from '../../utils/folketrygdensGrunnbeløp';
 import { ReactNode } from 'react';
 import ErrorBoundary from '../ErrorBoundary';
-import Bolk from './Bolk';
+import BolkMarkup from './BolkMarkup';
 
 interface Props {
   blocks: any;
@@ -21,7 +21,7 @@ const serializers: Serializers = {
     localeRichText: (props) => <BlockContent blocks={props.node.nb} />,
     customComponent: CustomComponent,
     GtoNOK: (props) => GtoNOK(props.node.GtoNOK),
-    bolk: Bolk,
+    bolk: BolkMarkup,
   },
 };
 

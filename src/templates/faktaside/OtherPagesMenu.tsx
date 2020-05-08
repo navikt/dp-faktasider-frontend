@@ -11,7 +11,7 @@ const OtherPagesStyle = styled.div`
   margin-right: 1rem;
   > * {
     padding: 0.5rem 1rem;
-    border: 1px solid black;
+    border-bottom: 0.2rem solid #8888;
   }
 `;
 

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 export const query = graphql`
@@ -20,7 +19,7 @@ export const query = graphql`
 const IndexPage = (props) => {
   var titles = props.data.titles.edges.map((edge) => edge.node.title.nb);
   return (
-    <Layout>
+    <div>
       <SEO title="Home" />
       {titles.map((title) => (
         <h2 key={title}>{title}</h2>
@@ -29,7 +28,7 @@ const IndexPage = (props) => {
       <p>Welcome to your new Gatsby site.</p>
       <p>Now go build something great.</p>
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}></div>
-    </Layout>
+    </div>
   );
 };
 

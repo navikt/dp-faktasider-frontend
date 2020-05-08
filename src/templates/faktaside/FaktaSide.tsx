@@ -4,8 +4,10 @@ import BlockContent from '../../components/BlockContent/BlockContent';
 import Layout from './Layout';
 import GraphQLErrorList from '../../components/GraphqlErrorList';
 import { Translations } from '../../types/translations';
-import parseRichText from '../../utils/parseRichText';
+import parseRichText from '../../utils/richTextUtils/parseRichText';
 import ErrorBoundary from '../../components/ErrorBoundary';
+import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
+import { getBolkTitler } from '../../utils/richTextUtils/getBolkTitler';
 
 export const query = graphql`
   query MyQuery($id: String) {
@@ -19,8 +21,8 @@ export const query = graphql`
 interface Props {
   data: {
     side: {
-      _rawTitle: Translations;
-      _rawBody: Translations;
+      _rawTitle: Translations<string>;
+      _rawBody: Translations<SanityBlock[]>;
     };
   };
   errors: any;
@@ -29,15 +31,14 @@ interface Props {
 function FaktaSide(props: Props) {
   const side = props.data.side;
 
-  const richText = parseRichText(side._rawBody.nb);
-
-  console.log(richText);
+  const parsedRichText = parseRichText(side._rawBody.nb);
+  const bolkTitler = getBolkTitler(parsedRichText);
 
   return (
     <ErrorBoundary>
-      <Layout header={side._rawTitle.nb} menuItems={[]}>
+      <Layout header={side._rawTitle.nb} menuItems={bolkTitler}>
         <GraphQLErrorList errors={props.errors} />
-        <BlockContent blocks={richText} />
+        <BlockContent blocks={parsedRichText} />
       </Layout>
     </ErrorBoundary>
   );
