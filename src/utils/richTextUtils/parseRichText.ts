@@ -27,10 +27,15 @@ export type ParsedRichText = Block[];
 
 */
 
+export type GraaboksGroup = SanityBlock & {
+  _type: 'GraaboksGroup';
+};
+
 export function parseRichText(blocks: SanityBlock[]): ParsedRichText {
   let newBlocks: Block[] = [];
   let currentH2Group: H2Group | undefined;
   let currentH3Group: H3Group | undefined;
+  let currentGraaboksGroup: GraaboksGroup | undefined;
 
   blocks.forEach((block) => {
     if (['h2', 'h2-no-background'].includes(block.style)) {
@@ -59,6 +64,19 @@ export function parseRichText(blocks: SanityBlock[]): ParsedRichText {
       currentH2Group.children.push(block);
     } else {
       newBlocks.push(block);
+    }
+    if (block.marks.includes('graaboks')) {
+      if (!currentGraaboksGroup) {
+        currentGraaboksGroup = {
+          _type: 'GraaboksGroup',
+          children: [block],
+        };
+        newBlocks.push(currentGraaboksGroup);
+      } else {
+        currentGraaboksGroup.children.push(block);
+      }
+    } else {
+      currentGraaboksGroup = undefined;
     }
   });
 

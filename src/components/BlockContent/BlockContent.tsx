@@ -33,6 +33,7 @@ const serializers: Serializers = {
   },
   marks: {
     link: LinkMarkup,
+    graaboks: () => 'hei',
   },
 };
 
