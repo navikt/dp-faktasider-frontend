@@ -3,10 +3,11 @@ import CustomComponent from './CustomComponent';
 import { GtoNOK } from '../../utils/folketrygdensGrunnbeløp';
 import { ReactNode } from 'react';
 import ErrorBoundary from '../ErrorBoundary';
-import BolkMarkup from './BolkMarkup';
+import H2GroupMarkup from './H2GroupMarkup';
 import LinkMarkup from './Link';
 import SanityBlockContent from '@sanity/block-content-to-react';
-import AvsnittMarkup from './AvsnittMarkup';
+import H3GroupMarkup from './H3GroupMarkup';
+import Video from './VideoMarkup';
 
 interface Props {
   blocks: any;
@@ -26,8 +27,9 @@ const serializers: Serializers = {
     localeRichText: (props) => <BlockContent blocks={props.node.nb} />,
     customComponent: CustomComponent,
     GtoNOK: (props) => GtoNOK(props.node.GtoNOK),
-    bolk: BolkMarkup,
-    avsnitt: AvsnittMarkup,
+    H2Group: H2GroupMarkup,
+    H3Group: H3GroupMarkup,
+    video: Video,
   },
   marks: {
     link: LinkMarkup,

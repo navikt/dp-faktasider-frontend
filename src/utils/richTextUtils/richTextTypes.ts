@@ -9,22 +9,23 @@ export type SanityBlock = {
   text?: string;
 };
 
-export type Bolk = SanityBlock & {
+export type H2Group = SanityBlock & {
   tittel: string;
-  _type: 'bolk';
+  noBackground: boolean;
+  _type: 'H2Group';
 };
 
-export type Avsnitt = SanityBlock & {
+export type H3Group = SanityBlock & {
   tittel: string;
-  _type: 'avsnitt';
+  _type: 'H3Group';
 };
 
-export type Block = SanityBlock | Bolk;
+export type Block = SanityBlock | H2Group;
 
-export function isBolk(bolk: Block): bolk is Bolk {
-  return bolk._type === 'bolk';
+export function isH2Group(bolk: Block): bolk is H2Group {
+  return bolk._type === 'H2Group';
 }
 
-export function isAvsnitt(bolk: Block): bolk is Avsnitt {
-  return bolk._type === 'avsnitt';
+export function isH3Group(bolk: Block): bolk is H3Group {
+  return bolk._type === 'H3Group';
 }

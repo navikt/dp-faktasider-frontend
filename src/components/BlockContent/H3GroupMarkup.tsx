@@ -3,10 +3,10 @@ import BlockContent from './BlockContent';
 import styled from 'styled-components';
 import { Ingress } from 'nav-frontend-typografi';
 import { idFromString } from '../../utils/routingUtils';
-import { Avsnitt } from '../../utils/richTextUtils/richTextTypes';
+import { H3Group } from '../../utils/richTextUtils/richTextTypes';
 
 interface Props {
-  node: Avsnitt;
+  node: H3Group;
 }
 
 const StyledSection = styled.section`
@@ -18,7 +18,7 @@ const StyledIngress = styled(Ingress)`
   font-weight: 600 !important;
 `;
 
-function AvsnittMarkup(props: Props) {
+function H3GroupMarkup(props: Props) {
   const id = idFromString(props.node.tittel);
 
   return (
@@ -31,4 +31,4 @@ function AvsnittMarkup(props: Props) {
   );
 }
 
-export default AvsnittMarkup;
+export default H3GroupMarkup;
