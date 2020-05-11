@@ -31,6 +31,9 @@ export const ResultatTable = styled.table`
 export const InputWrapper = styled.div`
   display: flex;
   justify-content: center;
+  label {
+    font-weight: normal;
+  }
 `;
 
 export const GrunnlagInput = styled(Input)`

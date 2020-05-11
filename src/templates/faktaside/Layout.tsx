@@ -54,6 +54,9 @@ const StyledMain = styled.main`
   p {
     margin: 0.5rem 0 1rem;
   }
+  h4 {
+    text-align: center;
+  }
 `;
 
 const Style = styled.div`
