@@ -8,6 +8,7 @@ import LinkMarkup from './Link';
 import SanityBlockContent from '@sanity/block-content-to-react';
 import H3GroupMarkup from './H3GroupMarkup';
 import Video from './VideoMarkup';
+import GraaBoksMarkup from './GraaBoksGroup';
 
 interface Props {
   blocks: any;
@@ -29,11 +30,11 @@ const serializers: Serializers = {
     GtoNOK: (props) => GtoNOK(props.node.GtoNOK),
     H2Group: H2GroupMarkup,
     H3Group: H3GroupMarkup,
+    GraaboksGroup: GraaBoksMarkup,
     video: Video,
   },
   marks: {
     link: LinkMarkup,
-    graaboks: () => 'hei',
   },
 };
 
