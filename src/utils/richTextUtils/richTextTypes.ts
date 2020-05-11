@@ -10,6 +10,7 @@ export type SanityBlock = {
 export type H2Group = SanityBlock & {
   tittel: string;
   noBackground: boolean;
+  meny: boolean;
   _type: 'H2Group';
 };
 

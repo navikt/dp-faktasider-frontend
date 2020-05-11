@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 import 'nav-frontend-knapper-style/src/index.less';
 import { Element } from 'nav-frontend-typografi';
+import Lenke from 'nav-frontend-lenker';
 
 export const LenkeKnapp = styled.button.attrs({ className: 'lenke' })`
   border: none;
@@ -45,4 +46,11 @@ export const DecimalListe = styled.ol`
 export const H4 = styled(Element).attrs({ tag: 'h4' })`
   text-align: center;
   margin-bottom: 1rem !important;
+`;
+
+export const LenkeUtenUnderstrek = styled(Lenke)`
+  text-decoration: none !important;
+  &:hover {
+    text-decoration: underline !important;
+  }
 `;

@@ -8,6 +8,7 @@ import { theme } from '../../../styles/theme';
 import { pxFromTop } from '../../../utils/domUtils';
 import { idFromString } from '../../../utils/routingUtils';
 import useSmoothscrollOnClick from '../../../hooks/useSmoothscrollOnClick';
+import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
 
 const BigScreenLayout = styled.div`
   position: sticky;
@@ -29,7 +30,7 @@ const StyledOl = styled.ol`
   }
 `;
 
-const StyledLenke = styled(Lenke)<{ erValgt: boolean }>`
+const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
   ${(props) =>
     props.erValgt &&
     css`

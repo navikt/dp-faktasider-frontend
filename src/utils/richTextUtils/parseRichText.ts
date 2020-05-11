@@ -33,12 +33,13 @@ export function parseBlocksToRichText(blocks: SanityBlock[]): ParsedRichText {
   let currentH3Group: H3Group | undefined;
 
   blocks.forEach((block) => {
-    if (['h2', 'h2-no-background'].includes(block.style)) {
+    if (['h2', 'h2-no-background', 'h2-m-meny'].includes(block.style)) {
       currentH2Group = {
         _type: 'H2Group',
         children: [],
         tittel: block.children[0]?.text,
         noBackground: block.style === 'h2-no-background',
+        meny: block.style === 'h2-m-meny',
       };
       currentH3Group = undefined;
       newBlocks.push(currentH2Group);
