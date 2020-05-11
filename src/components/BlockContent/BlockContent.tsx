@@ -6,6 +6,7 @@ import ErrorBoundary from '../ErrorBoundary';
 import BolkMarkup from './BolkMarkup';
 import LinkMarkup from './Link';
 import SanityBlockContent from '@sanity/block-content-to-react';
+import AvsnittMarkup from './AvsnittMarkup';
 
 interface Props {
   blocks: any;
@@ -26,6 +27,7 @@ const serializers: Serializers = {
     customComponent: CustomComponent,
     GtoNOK: (props) => GtoNOK(props.node.GtoNOK),
     bolk: BolkMarkup,
+    avsnitt: AvsnittMarkup,
   },
   marks: {
     link: LinkMarkup,
