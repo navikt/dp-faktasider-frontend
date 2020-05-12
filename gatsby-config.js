@@ -16,6 +16,7 @@ module.exports = {
     'gatsby-plugin-typescript',
     'nav-decorator',
     'gatsby-plugin-less',
+    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-source-sanity',
       options: {
