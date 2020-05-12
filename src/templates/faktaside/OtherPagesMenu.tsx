@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
+import { getTranslation, useLocale } from '../../locales/utils';
+import useLocalize from '../../locales/useLocalize';
 
 const OtherPagesStyle = styled.div`
   background-color: white;
@@ -21,9 +23,7 @@ function OtherPagesMenu() {
       pages: allSanityFaktaSide {
         edges {
           node {
-            title {
-              nb
-            }
+            _rawTitle
             slug {
               current
             }
@@ -34,11 +34,13 @@ function OtherPagesMenu() {
   `);
 
   const pages = data?.pages.edges.map((edge) => edge.node);
+  const localizedPages = useLocalize(pages);
+  const lang = useLocale();
 
   return (
     <OtherPagesStyle>
-      {pages.map((page) => (
-        <Link to={page.slug.current}>{page.title.nb}</Link>
+      {localizedPages.map((page) => (
+        <Link to={`/${lang}/${page.slug.current}`}>{page._rawTitle}</Link>
       ))}
     </OtherPagesStyle>
   );

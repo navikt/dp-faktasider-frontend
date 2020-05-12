@@ -9,6 +9,8 @@ import SanityBlockContent from '@sanity/block-content-to-react';
 import H3GroupMarkup from './H3GroupMarkup';
 import Video from './VideoMarkup';
 import GraaBoksMarkup from './GraaBoksGroup';
+import useLocalize from '../../locales/useLocalize';
+import { Translations } from '../../types/translations';
 
 interface Props {
   blocks: any;
@@ -25,7 +27,7 @@ type Serializers = {
 
 const serializers: Serializers = {
   types: {
-    localeRichText: (props) => <BlockContent blocks={props.node.nb} />,
+    localeRichText: (props) => <BlockContent blocks={props.node} />,
     customComponent: CustomComponent,
     GtoNOK: (props) => GtoNOK(props.node.GtoNOK),
     H2Group: H2GroupMarkup,

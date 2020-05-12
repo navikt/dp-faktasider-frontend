@@ -8,9 +8,12 @@ import parseRichText from '../../utils/richTextUtils/parseRichText';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
 import { getBolkTitler } from '../../utils/richTextUtils/getBolkTitler';
+import { LocaleContext, LocaleProvider } from '../../locales/LocaleContext';
+import { SupportedLanguage } from '../../locales/utils';
+import localize from '../../locales/localize';
 
 export const query = graphql`
-  query MyQuery($id: String) {
+  query FaktaSide($id: String) {
     side: sanityFaktaSide(id: { eq: $id }) {
       _rawTitle
       _rawBody
@@ -26,21 +29,25 @@ interface Props {
     };
   };
   errors: any;
+  pageContext: {
+    lang: SupportedLanguage;
+  };
 }
 
 function FaktaSide(props: Props) {
-  const side = props.data.side;
-
-  const parsedRichText = parseRichText(side._rawBody.nb);
+  const side = localize(props.data.side, props.pageContext.lang);
+  const parsedRichText = parseRichText(side._rawBody);
   const bolkTitler = getBolkTitler(parsedRichText);
 
   return (
-    <ErrorBoundary>
-      <Layout header={side._rawTitle.nb} menuItems={bolkTitler}>
-        <GraphQLErrorList errors={props.errors} />
-        <BlockContent blocks={parsedRichText} />
-      </Layout>
-    </ErrorBoundary>
+    <LocaleProvider defaultLang={props.pageContext.lang}>
+      <ErrorBoundary>
+        <Layout header={side._rawTitle} menuItems={bolkTitler}>
+          <GraphQLErrorList errors={props.errors} />
+          <BlockContent blocks={parsedRichText} />
+        </Layout>
+      </ErrorBoundary>
+    </LocaleProvider>
   );
 }
 

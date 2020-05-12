@@ -3,6 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+const supportedLanguages = ['en', 'nn', 'nb'];
 
 async function createPages(graphql, actions, reporter) {
   const result = await graphql(`
@@ -14,6 +15,7 @@ async function createPages(graphql, actions, reporter) {
             slug {
               current
             }
+            _rawTitle
           }
         }
       }
@@ -27,13 +29,15 @@ async function createPages(graphql, actions, reporter) {
   pageEdges.forEach((edge) => {
     const id = edge.node.id;
     const slug = edge.node.slug.current;
-    const path = `/${slug}/`;
-
-    reporter.info(`Creating project page: ${path}`);
-    actions.createPage({
-      path,
-      component: require.resolve('./src/templates/faktaside/FaktaSide.tsx'),
-      context: { id },
+    const langs = Object.keys(edge.node._rawTitle).filter((key) => supportedLanguages.includes(key));
+    langs.forEach((lang) => {
+      const path = `/${lang}/${slug}/`;
+      reporter.info(`Lager faktaside: ${path}`);
+      actions.createPage({
+        path,
+        component: require.resolve('./src/templates/faktaside/FaktaSide.tsx'),
+        context: { id, lang },
+      });
     });
   });
 }
