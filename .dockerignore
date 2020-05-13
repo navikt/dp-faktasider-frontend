@@ -1,0 +1,7 @@
+**
+
+!*.json
+!gatsby*.js
+!nginx-server-rules.conf
+!plugins
+!src
