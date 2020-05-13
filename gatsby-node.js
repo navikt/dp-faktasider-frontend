@@ -32,7 +32,7 @@ async function createPages(graphql, actions, reporter) {
     const langs = Object.keys(edge.node._rawTitle).filter((key) => supportedLanguages.includes(key));
     langs.forEach((lang) => {
       const path = `/${lang}/${slug}/`;
-      reporter.info(`Lager faktaside: ${path}`);
+      reporter.info(`📄 Lager faktaside: ${path}`);
       actions.createPage({
         path,
         component: require.resolve('./src/templates/faktaside/FaktaSide.tsx'),
