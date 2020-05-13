@@ -24,3 +24,5 @@ spec:
     requests:
       cpu: 200m
       memory: 256Mi
+  ingresses:
+    - "https://www-q0.nav.no/arbeid/dagpenger/nye-faktasider"
