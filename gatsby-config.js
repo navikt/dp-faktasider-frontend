@@ -6,6 +6,7 @@ const secretSanityToken = process.env.SANITY_READ_TOKEN;
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
+  pathPrefix: `/arbeid/dagpenger/nye-faktasider`,
   siteMetadata: {
     title: `Dagpenger - www.nav.no`,
     description: `Dagpenger som arbeidsledig eller permittert`,
