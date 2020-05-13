@@ -9,7 +9,7 @@ ADD package.json package-lock.json ./
 RUN npm install
 
 ADD . ./
-RUN gatsby build
+RUN npm run build
 
 FROM gatsbyjs/gatsby
 COPY --from=build /app/public /pub/arbeid/dagpenger/nye-faktasider
