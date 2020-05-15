@@ -18,6 +18,7 @@ module.exports = {
     'nav-decorator',
     'gatsby-plugin-less',
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-meta-redirect',
     {
       resolve: 'gatsby-source-sanity',
       options: {

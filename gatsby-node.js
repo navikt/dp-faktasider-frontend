@@ -29,6 +29,11 @@ async function createPages(graphql, actions, reporter) {
   pageEdges.forEach((edge) => {
     const id = edge.node.id;
     const slug = edge.node.slug.current;
+
+    const path = `/${slug}/`;
+    reporter.info(`🛠 Lager redirect fra ${path} til /nb${path}`);
+    actions.createRedirect({ fromPath: `/${path}`, toPath: `/nb/${path}`, isPermanent: true });
+
     supportedLanguages.forEach((lang) => {
       const path = `/${lang}/${slug}/`;
       reporter.info(`📄 Lager faktaside: ${path}`);
