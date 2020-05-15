@@ -71,9 +71,9 @@ function Layout(props: Props) {
   return (
     <>
       <LanguageSelector />
+      <OtherPagesMenu />
       <Header heading={props.header} />
       <Style>
-        <OtherPagesMenu />
         <ContentStyle>
           <InnholdsMeny menuItems={props.menuItems} />
           <StyledMain>{props.children}</StyledMain>

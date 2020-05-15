@@ -6,12 +6,15 @@ import { ReactNode } from 'react';
 interface Props {
   to: string;
   children: ReactNode;
+  className: string;
+  activeStyle: { color: string };
 }
 
 function LocaleLink(props: Props) {
+  const { to, ...rest } = props;
   const locale = useLocale();
 
-  return <Link to={`/${locale}/${props.to}`}>{props.children}</Link>;
+  return <Link {...rest} to={`/${locale}/${props.to}`} />;
 }
 
 export default LocaleLink;

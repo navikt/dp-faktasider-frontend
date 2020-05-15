@@ -6,17 +6,19 @@ import localize from '../../locales/localize';
 import LocaleLink from '../../components/LocaleLink';
 import withErrorBoundary from '../../components/withErrorBoundary';
 
-const OtherPagesStyle = styled.div`
-  background-color: white;
+const Style = styled.nav`
   display: flex;
-  flex-direction: column;
-  position: sticky;
-  top: 0;
-  margin-right: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0.5rem;
   > * {
-    padding: 0.5rem 1rem;
-    border-bottom: 0.2rem solid #8888;
+    margin: 0.5rem;
   }
+`;
+
+const StyledLink = styled(LocaleLink)`
+  font-size: 1.2rem;
+  display: flex;
 `;
 
 function OtherPagesMenu() {
@@ -40,11 +42,13 @@ function OtherPagesMenu() {
   const localePages = localize(pages, lang);
 
   return (
-    <OtherPagesStyle>
+    <Style>
       {localePages.map((page) => (
-        <LocaleLink to={page.slug.current}>{page._rawTitle}</LocaleLink>
+        <StyledLink activeStyle={{ color: 'black' }} className="lenke" to={page.slug.current}>
+          {page._rawTitle}
+        </StyledLink>
       ))}
-    </OtherPagesStyle>
+    </Style>
   );
 }
 
