@@ -67,7 +67,7 @@ const Style = styled.div`
 
 function Layout(props: Props) {
   return (
-    <div>
+    <>
       <Header heading={props.header} />
       <Style>
         <OtherPagesMenu />
@@ -76,7 +76,7 @@ function Layout(props: Props) {
           <StyledMain>{props.children}</StyledMain>
         </ContentStyle>
       </Style>
-    </div>
+    </>
   );
 }
 

@@ -40,14 +40,12 @@ function FaktaSide(props: Props) {
   const bolkTitler = getBolkTitler(parsedRichText);
 
   return (
-    <LocaleProvider defaultLang={props.pageContext.lang}>
-      <ErrorBoundary>
-        <Layout header={side._rawTitle} menuItems={bolkTitler}>
-          <GraphQLErrorList errors={props.errors} />
-          <BlockContent blocks={parsedRichText} />
-        </Layout>
-      </ErrorBoundary>
-    </LocaleProvider>
+    <ErrorBoundary>
+      <Layout header={side._rawTitle} menuItems={bolkTitler}>
+        <GraphQLErrorList errors={props.errors} />
+        <BlockContent blocks={parsedRichText} />
+      </Layout>
+    </ErrorBoundary>
   );
 }
 
