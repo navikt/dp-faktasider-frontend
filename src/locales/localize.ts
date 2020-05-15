@@ -1,4 +1,4 @@
-import { SupportedLanguage } from './utils';
+import { SupportedLanguage } from './supportedLanguages';
 
 const defaultLang = 'nb';
 

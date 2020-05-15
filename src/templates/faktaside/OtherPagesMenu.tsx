@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
-import { getTranslation, useLocale } from '../../locales/utils';
-import useLocalize from '../../locales/useLocalize';
+import { useLocale } from '../../locales/useLocale';
+import localize from '../../locales/localize';
+import LocaleLink from '../../components/LocaleLink';
+import withErrorBoundary from '../../components/withErrorBoundary';
 
 const OtherPagesStyle = styled.div`
   background-color: white;
@@ -34,16 +36,16 @@ function OtherPagesMenu() {
   `);
 
   const pages = data?.pages.edges.map((edge) => edge.node);
-  const localizedPages = useLocalize(pages);
   const lang = useLocale();
+  const localePages = localize(pages, lang);
 
   return (
     <OtherPagesStyle>
-      {localizedPages.map((page) => (
-        <Link to={`/${lang}/${page.slug.current}`}>{page._rawTitle}</Link>
+      {localePages.map((page) => (
+        <LocaleLink to={page.slug.current}>{page._rawTitle}</LocaleLink>
       ))}
     </OtherPagesStyle>
   );
 }
 
-export default OtherPagesMenu;
+export default withErrorBoundary(OtherPagesMenu, 'Meny');

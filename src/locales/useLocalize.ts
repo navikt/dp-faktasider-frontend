@@ -1,6 +1,6 @@
 import { Translations } from '../types/translations';
 import localize from './localize';
-import { useLocale } from './utils';
+import { useLocale } from './useLocale';
 
 function useLocalize(translations: Translations) {
   const lang = useLocale();

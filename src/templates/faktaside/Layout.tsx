@@ -5,6 +5,8 @@ import { theme } from '../../styles/theme';
 import OtherPagesMenu from './OtherPagesMenu';
 import Header from '../felles/Header';
 import InnholdsMeny from './InnholdsMeny/InnholdsMeny';
+import LanguageSelector from '../../components/LanguageSelector/LanguageSelector';
+import { useFaktasideProps } from './FaktasideContext';
 
 interface Props {
   header: string;
@@ -68,6 +70,7 @@ const Style = styled.div`
 function Layout(props: Props) {
   return (
     <>
+      <LanguageSelector />
       <Header heading={props.header} />
       <Style>
         <OtherPagesMenu />
