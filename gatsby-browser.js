@@ -1,11 +1,3 @@
-import { AppStyling, GlobalStyling } from './src/styles/GlobalStyling';
-import React from 'react';
+import DefaultLayout from './wrapPageElement';
 
-export const wrapRootElement = ({ element }) => {
-  return (
-    <AppStyling className="typo-normal">
-      <GlobalStyling />
-      <>{element}</>
-    </AppStyling>
-  );
-};
+export const wrapPageElement = DefaultLayout;
