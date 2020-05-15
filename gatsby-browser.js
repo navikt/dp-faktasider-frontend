@@ -1,3 +1,3 @@
-import DefaultLayout from './wrapPageElement';
+import DefaultLayout from './src/utils/wrapPageElement';
 
 export const wrapPageElement = DefaultLayout;
