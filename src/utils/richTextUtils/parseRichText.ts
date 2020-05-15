@@ -100,7 +100,11 @@ function parseGraaboksToGraaboksGroup(blocks: SanityBlock[]): ParsedRichText {
   return newBlocks;
 }
 
-function parseRichText(blocks: SanityBlock[]): ParsedRichText {
+function parseRichText(blocks?: SanityBlock[]): ParsedRichText | undefined {
+  if (!blocks) {
+    return undefined;
+  }
+
   const withGraaboks = parseGraaboksToGraaboksGroup(blocks);
   return parseBlocksToRichText(withGraaboks);
 }

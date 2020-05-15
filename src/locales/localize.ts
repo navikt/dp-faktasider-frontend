@@ -8,7 +8,7 @@ function localize(value: any, language: SupportedLanguage) {
 
   if (Array.isArray(value)) {
     return value.map((v) => localize(v, language));
-  } else if (typeof value == 'object') {
+  } else if (value && typeof value == 'object') {
     if (/^locale[A-Z]/.test(value._type)) {
       const language = languages.find((lang) => value[lang]);
       return language ? value[language] : 'Translation not found.';
