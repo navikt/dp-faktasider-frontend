@@ -1,15 +1,11 @@
-import React, { ChangeEvent, useContext, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import styled from 'styled-components/macro';
 import { Select } from 'nav-frontend-skjema';
 import { theme } from '../../styles/theme';
 import { pxToRem } from '../../styles/utils';
 import { isProduction } from '../../utils/environment';
-import { useLocale } from '../../locales/useLocale';
-import { LocaleContext } from '../../locales/LocaleContext';
-import { useLocation } from 'react-use';
 import { useFaktasideProps } from '../../templates/faktaside/FaktasideContext';
 import { navigate } from 'gatsby';
-import { SupportedLanguage } from '../../locales/supportedLanguages';
 
 const Style = styled.div`
   display: flex;
@@ -35,7 +31,7 @@ const LanguageSelector = () => {
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newLanguage = event.target.value;
     if (lang !== newLanguage) {
-      navigate(faktaSideProps.location.pathname.replace(lang, newLanguage));
+      navigate(faktaSideProps.location.pathname.replace(`/${lang}/`, `/${newLanguage}/`));
     }
     setOpen(!open);
   };

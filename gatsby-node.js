@@ -29,8 +29,7 @@ async function createPages(graphql, actions, reporter) {
   pageEdges.forEach((edge) => {
     const id = edge.node.id;
     const slug = edge.node.slug.current;
-    const langs = Object.keys(edge.node._rawTitle).filter((key) => supportedLanguages.includes(key));
-    langs.forEach((lang) => {
+    supportedLanguages.forEach((lang) => {
       const path = `/${lang}/${slug}/`;
       reporter.info(`📄 Lager faktaside: ${path}`);
       actions.createPage({
