@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
-import Lenke from 'nav-frontend-lenker';
 import { guid } from 'nav-frontend-js-utils';
 import MobilmenyWrapper from './MobilmenyWrapper';
 import { theme } from '../../../styles/theme';
@@ -9,9 +8,12 @@ import { pxFromTop } from '../../../utils/domUtils';
 import { idFromString } from '../../../utils/routingUtils';
 import useSmoothscrollOnClick from '../../../hooks/useSmoothscrollOnClick';
 import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
+import { useDekoratorPopdownOffset } from './useDekoratorPopdownOffset';
 
-const BigScreenLayout = styled.div`
+const BigScreenLayout = styled.div<{ offsetTop: number }>`
   position: sticky;
+  transition: top 0.2s;
+  top: calc(${theme.layoutMargin} + ${(props) => props.offsetTop}px);
   top: ${theme.layoutMargin};
   background-color: white;
   border-radius: ${theme.borderRadius};
@@ -89,16 +91,17 @@ function Meny(props: Props) {
 
 function InnholdsMeny(props: Props) {
   const tittelId = useRef(guid());
+  const offsetTop = useDekoratorPopdownOffset();
 
   return (
     <StyledNav aria-labelledby={tittelId.current}>
       <h2 id={tittelId.current} className="sr-only">
         Innhold
       </h2>
-      <BigScreenLayout>
+      <BigScreenLayout offsetTop={offsetTop}>
         <Meny {...props} />
       </BigScreenLayout>
-      <MobilmenyWrapper>
+      <MobilmenyWrapper offsetTop={offsetTop}>
         <Meny {...props} />
       </MobilmenyWrapper>
     </StyledNav>

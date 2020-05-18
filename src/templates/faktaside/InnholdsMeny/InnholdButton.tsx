@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import { theme } from '../../../styles/theme';
 
 const removeButtonStyle = css`
@@ -12,7 +12,7 @@ const removeButtonStyle = css`
   outline: inherit;
 `;
 
-const HamburgerButtonStyle = styled.button`
+const IkonButtonStyle = styled.button`
   ${removeButtonStyle};
   border-radius: 50%;
   height: 2.2rem;
@@ -41,18 +41,25 @@ interface Props {
   label: string;
 }
 
-function HamburgerButton(props: React.HTMLAttributes<HTMLButtonElement> & Props) {
+function InnholdButton(props: React.HTMLAttributes<HTMLButtonElement> & Props) {
   const { isOpen, label, ...rest } = props;
 
   return (
-    <HamburgerButtonStyle aria-expanded={isOpen} {...rest}>
-      <HamburgerIcon isOpen={isOpen} />
+    <IkonButtonStyle aria-expanded={isOpen} {...rest}>
+      <InnholdIkon isOpen={isOpen} />
       <span className="sr-only">{props.label}</span>
-    </HamburgerButtonStyle>
+    </IkonButtonStyle>
   );
 }
 
-function HamburgerIcon(props: { isOpen?: boolean }) {
+const getLine = (i: number) => (
+  <>
+    <circle cx="1" cy={i} r=".12" />
+    <path d={`M 1.8 ${i} L 3.3 ${i}`} />
+  </>
+);
+
+function InnholdIkon(props: { isOpen?: boolean }) {
   if (props.isOpen) {
     return (
       <StyledSvg viewBox="0.5 0.5 3 3">
@@ -64,11 +71,11 @@ function HamburgerIcon(props: { isOpen?: boolean }) {
 
   return (
     <StyledSvg viewBox="0.5 0.5 3 3">
-      <path d="M 1 1 L 3 1" />
-      <path d="M 1 2 L 3 2" />
-      <path d="M 1 3 L 3 3" />
+      {getLine(1)}
+      {getLine(2)}
+      {getLine(3)}
     </StyledSvg>
   );
 }
 
-export default HamburgerButton;
+export default InnholdButton;

@@ -1,19 +1,21 @@
 import * as React from 'react';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
-import HamburgerButton from './HamburgerButton';
+import InnholdButton from './InnholdButton';
 import { useClickAway, useLocation } from 'react-use';
 import { theme } from '../../../styles/theme';
 
 interface Props {
   children: ReactNode;
+  offsetTop: number;
 }
 
-const SmallScreenLayout = styled.div<{ apen: boolean }>`
+const SmallScreenLayout = styled.div<{ apen: boolean; offsetTop: number }>`
   position: sticky;
   margin: 1rem;
-  top: 1rem;
-  z-index: 1000;
+  transition: top 0.2s;
+  top: calc(1rem + ${(props) => props.offsetTop}px);
+  z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -53,7 +55,7 @@ const MenyWrapper = styled.div<{ visMeny: boolean }>`
     `}
 `;
 
-const StyledHamburgerButton = styled(HamburgerButton)`
+const StyledInnholdButton = styled(InnholdButton)`
   background-color: white;
   position: absolute;
   box-shadow: 0 0 0 0.2rem #8886;
@@ -71,8 +73,8 @@ function MobilmenyWrapper(props: Props) {
 
   return (
     <StickyContainer>
-      <SmallScreenLayout apen={visMeny} ref={ref}>
-        <StyledHamburgerButton
+      <SmallScreenLayout apen={visMeny} ref={ref} offsetTop={props.offsetTop}>
+        <StyledInnholdButton
           label="Innholdsfortegnelse"
           onClick={() => setVisMeny((prevState) => !prevState)}
           isOpen={visMeny}
