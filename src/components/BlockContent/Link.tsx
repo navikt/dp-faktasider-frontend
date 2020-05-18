@@ -17,28 +17,15 @@ const Center = styled.div`
 `;
 
 function LinkMarkup(props: Props) {
-  const nyttVindu = props.mark.blank
-    ? {
-        target: '_blank',
-        rel: 'noopener',
-      }
-    : {};
-
   if (props.mark.knapp) {
     return (
       <Center>
-        <KnappLenke href={props.mark.href} {...nyttVindu}>
-          {props.children}
-        </KnappLenke>
+        <KnappLenke href={props.mark.href}>{props.children}</KnappLenke>
       </Center>
     );
   }
 
-  return (
-    <Lenke href={props.mark.href} {...nyttVindu}>
-      {props.children}
-    </Lenke>
-  );
+  return <Lenke href={props.mark.href}>{props.children}</Lenke>;
 }
 
 export default LinkMarkup;

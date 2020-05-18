@@ -8,14 +8,15 @@ const Style = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   min-height: 60vh;
 `;
 
 function IkkeOversatt(props: FaktaSideProps) {
   const side = props.data.side;
 
-  const no = { lang: 'no', tittel: side._rawTitle.no };
-  const en = { lang: 'en', tittel: side._rawTitle.en };
+  const no = { lang: 'no', tittel: side._rawTitle?.no };
+  const en = { lang: 'en', tittel: side._rawTitle?.en };
 
   const oversettelser = [no, en]
     .filter((it) => it.tittel)
