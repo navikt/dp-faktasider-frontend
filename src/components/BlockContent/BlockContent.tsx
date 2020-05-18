@@ -8,12 +8,11 @@ import LinkMarkup from './Link';
 import SanityBlockContent from '@sanity/block-content-to-react';
 import H3GroupMarkup from './H3GroupMarkup';
 import Video from './VideoMarkup';
-import GraaBoksMarkup from './GraaBoksGroup';
-import useLocalize from '../../locales/useLocalize';
-import { Translations } from '../../types/translations';
+import WrapWithCustomComponent from './WrapWithCustomComponent';
+import { ParsedRichText } from '../../utils/richTextUtils/parseRichText';
 
 interface Props {
-  blocks: any;
+  blocks?: ParsedRichText;
 }
 
 type Serializers = {
@@ -32,8 +31,8 @@ const serializers: Serializers = {
     GtoNOK: (props) => GtoNOK(props.node.GtoNOK),
     H2Group: H2GroupMarkup,
     H3Group: H3GroupMarkup,
-    GraaboksGroup: GraaBoksMarkup,
     video: Video,
+    wrapWithCustomComponent: WrapWithCustomComponent,
   },
   marks: {
     link: LinkMarkup,

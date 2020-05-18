@@ -1,4 +1,4 @@
-import { H3Group, Block, H2Group, SanityBlock, isGraaBoksGroup, GraaboksGroup } from './richTextTypes';
+import { H3Group, Block, H2Group, SanityBlock } from './richTextTypes';
 
 export type ParsedRichText = Block[];
 
@@ -66,47 +66,12 @@ export function parseBlocksToRichText(blocks: SanityBlock[]): ParsedRichText {
   return newBlocks;
 }
 
-function parseGraaboksToGraaboksGroup(blocks: SanityBlock[]): ParsedRichText {
-  let newBlocks: Block[] = [];
-  let currentGraaboksGroup: GraaboksGroup | undefined;
-
-  blocks.forEach((block) => {
-    if (block._type === 'graaBoks') {
-      if (block.startSlutt === 'Start') {
-        currentGraaboksGroup = {
-          _type: 'GraaboksGroup',
-          children: [],
-        };
-        newBlocks.push(currentGraaboksGroup);
-      } else {
-        currentGraaboksGroup = undefined;
-      }
-    } else if (currentGraaboksGroup) {
-      currentGraaboksGroup.children.push(block);
-    } else {
-      newBlocks.push(block);
-    }
-  });
-
-  newBlocks.map((block) => {
-    if (isGraaBoksGroup(block)) {
-      return {
-        ...block,
-        children: parseBlocksToRichText(block.children),
-      };
-    }
-  });
-
-  return newBlocks;
-}
-
 function parseRichText(blocks?: SanityBlock[]): ParsedRichText | undefined {
   if (!blocks) {
     return undefined;
   }
 
-  const withGraaboks = parseGraaboksToGraaboksGroup(blocks);
-  return parseBlocksToRichText(withGraaboks);
+  return parseBlocksToRichText(blocks);
 }
 
 export default parseRichText;

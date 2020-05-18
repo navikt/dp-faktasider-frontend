@@ -1,14 +1,8 @@
 import * as React from 'react';
-import BlockContent from './BlockContent';
 import styled from 'styled-components';
-import { H3Group } from '../../utils/richTextUtils/richTextTypes';
 import { theme } from '../../styles/theme';
 
-interface Props {
-  node: H3Group;
-}
-
-const Style = styled.div`
+const GraaBoks = styled.div`
   padding: 2vmin;
   background-color: ${theme.colors.navLysGra};
   border-radius: ${theme.borderRadius};
@@ -35,12 +29,4 @@ const Style = styled.div`
   }
 `;
 
-function GraaBoksMarkup(props: Props) {
-  return (
-    <Style>
-      <BlockContent blocks={props.node.children} />
-    </Style>
-  );
-}
-
-export default GraaBoksMarkup;
+export default GraaBoks;
