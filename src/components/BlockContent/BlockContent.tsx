@@ -8,8 +8,8 @@ import LinkMarkup from './Link';
 import SanityBlockContent from '@sanity/block-content-to-react';
 import H3GroupMarkup from './H3GroupMarkup';
 import Video from './VideoMarkup';
-import WrapWithCustomComponent from './WrapWithCustomComponent';
 import { ParsedRichText } from '../../utils/richTextUtils/parseRichText';
+import FremhevetTekst from './FremhevetTekst';
 
 interface Props {
   blocks?: ParsedRichText;
@@ -32,7 +32,7 @@ const serializers: Serializers = {
     H2Group: H2GroupMarkup,
     H3Group: H3GroupMarkup,
     video: Video,
-    wrapWithCustomComponent: WrapWithCustomComponent,
+    fremhevetTekst: FremhevetTekst,
   },
   marks: {
     link: LinkMarkup,

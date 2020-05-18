@@ -1,8 +1,17 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
+import BlockContent from './BlockContent';
+import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
+import parseRichText from '../../utils/richTextUtils/parseRichText';
 
-const GraaBoks = styled.div`
+interface Props {
+  node: {
+    innhold: SanityBlock[];
+  };
+}
+
+const Style = styled.div`
   padding: 2vmin;
   background-color: ${theme.colors.navLysGra};
   border-radius: ${theme.borderRadius};
@@ -29,4 +38,14 @@ const GraaBoks = styled.div`
   }
 `;
 
-export default GraaBoks;
+function FremhevetTekst(props: Props) {
+  const parsedText = parseRichText(props.node.innhold);
+
+  return (
+    <Style>
+      <BlockContent blocks={parsedText} />
+    </Style>
+  );
+}
+
+export default FremhevetTekst;

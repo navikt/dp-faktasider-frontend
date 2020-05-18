@@ -18,11 +18,11 @@ export const query = graphql`
   query FaktaSide($id: String) {
     side: sanityFaktaSide(id: { eq: $id }) {
       _rawTitle
-      _rawBody
-      _rawDescription
       slug {
         current
       }
+      _rawInnhold
+      _rawIngress
     }
   }
 `;
@@ -35,8 +35,8 @@ interface PageContext {
 export interface FaktaSideData {
   side: {
     _rawTitle: Translations<string>;
-    _rawBody: Translations<SanityBlock[]>;
-    _rawDescription: Translations<string>;
+    _rawInnhold: Translations<SanityBlock[]>;
+    _rawIngress: Translations<string>;
     slug: {
       current: string;
     };
@@ -56,17 +56,17 @@ function FaktaSide(props: FaktaSideProps) {
   }
 
   const side = localize(props.data.side, lang);
-  const parsedRichText = parseRichText(side._rawBody);
+  const parsedRichText = parseRichText(side._rawInnhold);
   const bolkTitler = getBolkTitler(parsedRichText);
 
   const tittel = side._rawTitle;
-  const description = side._rawDescription;
+  const description = side._rawIngress;
 
   return (
     <ErrorBoundary>
       <SEO title={tittel} description={description} lang={lang} />
       <FaktasideProvider faktasideProps={props}>
-        <Layout header={tittel} menuItems={bolkTitler}>
+        <Layout header={tittel} menuItems={bolkTitler} ingress={description}>
           <GraphQLErrorList errors={props.errors} />
           <BlockContent blocks={parsedRichText} />
         </Layout>

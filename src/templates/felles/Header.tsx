@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Sidetittel } from 'nav-frontend-typografi';
+import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
 import styled from 'styled-components/macro';
 import { theme } from '../../styles/theme';
 
 interface Props {
   heading: string;
+  ingress: string;
   small?: boolean;
 }
 
@@ -31,6 +32,7 @@ const Header = (props: Props) => {
     <Background>
       <MaxWidth>
         <StyledSidetittel>{props.heading}</StyledSidetittel>
+        <Normaltekst>{props.ingress}</Normaltekst>
       </MaxWidth>
     </Background>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import GraphQLErrorList from '../components/GraphqlErrorList';
 
 export const query = graphql`
@@ -8,7 +8,7 @@ export const query = graphql`
     sider: allSanityFaktaSide {
       edges {
         node {
-          _rawDescription
+          _rawIngress
           _rawTitle
           slug {
             current
@@ -47,7 +47,7 @@ const IndexPage = (props: any) => {
       {pages?.map((it: any) => (
         <StyledElement>
           <Link to={`/no/${it.slug.current}`}>{it._rawTitle?.no}</Link>
-          <p>{it._rawDescription?.no}</p>
+          <p>{it._rawIngress?.no}</p>
         </StyledElement>
       ))}
     </Layout>
