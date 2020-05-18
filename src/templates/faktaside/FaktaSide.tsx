@@ -12,12 +12,14 @@ import localize from '../../locales/localize';
 import { FaktasideProvider } from './FaktasideContext';
 import { SupportedLanguage } from '../../locales/supportedLanguages';
 import IkkeOversatt from './IkkeOversatt';
+import SEO from '../../components/SEO';
 
 export const query = graphql`
   query FaktaSide($id: String) {
     side: sanityFaktaSide(id: { eq: $id }) {
       _rawTitle
       _rawBody
+      _rawDescription
       slug {
         current
       }
@@ -34,6 +36,7 @@ export interface FaktaSideData {
   side: {
     _rawTitle: Translations<string>;
     _rawBody: Translations<SanityBlock[]>;
+    _rawDescription: Translations<string>;
     slug: {
       current: string;
     };
@@ -56,10 +59,14 @@ function FaktaSide(props: FaktaSideProps) {
   const parsedRichText = parseRichText(side._rawBody);
   const bolkTitler = getBolkTitler(parsedRichText);
 
+  const tittel = side._rawTitle;
+  const description = side._rawDescription;
+
   return (
     <ErrorBoundary>
+      <SEO title={tittel} description={description} lang={lang} />
       <FaktasideProvider faktasideProps={props}>
-        <Layout header={side._rawTitle} menuItems={bolkTitler}>
+        <Layout header={tittel} menuItems={bolkTitler}>
           <GraphQLErrorList errors={props.errors} />
           <BlockContent blocks={parsedRichText} />
         </Layout>
