@@ -24,7 +24,7 @@ async function createPages(graphql, actions, reporter) {
 
   if (result.errors) throw result.errors;
 
-  const pageEdges = result.data.pages?.edges || [];
+  const pageEdges = result.data.pages.edges || [];
 
   pageEdges.forEach((edge) => {
     const id = edge.node.id;
