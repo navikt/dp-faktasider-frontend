@@ -46,7 +46,7 @@ const LanguageSelector = () => {
         <option value="" disabled>
           Velg språk
         </option>
-        <option value="nb">Norsk</option>
+        <option value="no">Norsk</option>
         <option value="en">English</option>
       </StyledSelect>
     </Style>

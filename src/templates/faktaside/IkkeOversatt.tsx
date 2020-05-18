@@ -14,10 +14,10 @@ const Style = styled.div`
 function IkkeOversatt(props: FaktaSideProps) {
   const side = props.data.side;
 
-  const nb = { lang: 'nb', tittel: side._rawTitle.nb };
+  const no = { lang: 'no', tittel: side._rawTitle.no };
   const en = { lang: 'en', tittel: side._rawTitle.en };
 
-  const oversettelser = [nb, en]
+  const oversettelser = [no, en]
     .filter((it) => it.tittel)
     .map((it) => (
       <li>

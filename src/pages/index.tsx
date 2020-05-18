@@ -46,8 +46,8 @@ const IndexPage = (props: any) => {
     <Layout>
       {pages?.map((it: any) => (
         <StyledElement>
-          <Link to={`/nb/${it.slug.current}`}>{it._rawTitle?.nb}</Link>
-          <p>{it._rawDescription?.nb}</p>
+          <Link to={`/no/${it.slug.current}`}>{it._rawTitle?.no}</Link>
+          <p>{it._rawDescription?.no}</p>
         </StyledElement>
       ))}
     </Layout>

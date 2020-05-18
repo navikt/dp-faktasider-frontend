@@ -1,5 +1,4 @@
 export interface Translations<T = any> {
-  nb: T;
-  nn: T;
+  no: T;
   en: T;
 }

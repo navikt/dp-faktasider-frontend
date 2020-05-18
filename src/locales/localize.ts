@@ -1,6 +1,6 @@
 import { SupportedLanguage } from './supportedLanguages';
 
-const defaultLang = 'nb';
+export const defaultLang = 'no';
 
 // Kopiert fra https://www.sanity.io/docs/localization
 function localize(value: any, language: SupportedLanguage) {

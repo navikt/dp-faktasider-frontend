@@ -3,7 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
-const supportedLanguages = ['en', 'nn', 'nb'];
+const supportedLanguages = ['en', 'no'];
 
 async function createPages(graphql, actions, reporter) {
   const result = await graphql(`
@@ -31,8 +31,8 @@ async function createPages(graphql, actions, reporter) {
     const slug = edge.node.slug.current;
 
     const path = `/${slug}/`;
-    reporter.info(`🛠 Lager redirect fra ${path} til /nb${path}`);
-    actions.createRedirect({ fromPath: `/${path}`, toPath: `/nb/${path}`, isPermanent: true });
+    reporter.info(`🛠 Lager redirect fra ${path} til /no${path}`);
+    actions.createRedirect({ fromPath: `/${path}`, toPath: `/no/${path}`, isPermanent: true });
 
     supportedLanguages.forEach((lang) => {
       const path = `/${lang}/${slug}/`;
