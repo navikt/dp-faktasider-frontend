@@ -17,7 +17,7 @@ function WrapWithCustomComponent(props: Props) {
   const component = props.node.component;
 
   switch (component) {
-    case 'GråBoks':
+    case 'Grå boks':
       return (
         <GraaBoks>
           <BlockContent blocks={parsedText} />
