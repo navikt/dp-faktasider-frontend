@@ -34,9 +34,9 @@ interface PageContext {
 
 export interface FaktaSideData {
   side: {
-    _rawTitle: Translations<string>;
-    _rawInnhold: Translations<SanityBlock[]>;
-    _rawIngress: Translations<string>;
+    _rawTitle?: Translations<string>;
+    _rawInnhold?: Translations<SanityBlock[]>;
+    _rawIngress?: Translations<string>;
     slug: {
       current: string;
     };
@@ -49,9 +49,9 @@ export interface FaktaSideProps extends PageProps<FaktaSideData, PageContext> {
 
 function FaktaSide(props: FaktaSideProps) {
   const lang = props.pageContext.lang;
-  const ikkeOversatt = props.data.side._rawTitle[lang];
+  const erOversatt = props.data.side._rawTitle?.[lang];
 
-  if (!ikkeOversatt) {
+  if (!erOversatt) {
     return <IkkeOversatt {...props} />;
   }
 

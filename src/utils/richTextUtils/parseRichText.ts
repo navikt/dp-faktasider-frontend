@@ -27,7 +27,7 @@ export type ParsedRichText = Block[];
 
 */
 
-export function parseBlocksToRichText(blocks: SanityBlock[]): ParsedRichText {
+export function parseBlocksToRichText(blocks: SanityBlock[] = []): ParsedRichText {
   let newBlocks: Block[] = [];
   let currentH2Group: H2Group | undefined;
   let currentH3Group: H3Group | undefined;
