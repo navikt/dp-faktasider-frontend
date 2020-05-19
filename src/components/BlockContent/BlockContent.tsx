@@ -28,7 +28,7 @@ const serializers: Serializers = {
   types: {
     localeRichText: (props) => <BlockContent blocks={props.node} />,
     customComponent: CustomComponent,
-    GtoNOK: (props) => GtoNOK(props.node.GtoNOK),
+    GtilNOK: (props) => GtoNOK(props.node.G),
     H2Group: H2GroupMarkup,
     H3Group: H3GroupMarkup,
     video: Video,

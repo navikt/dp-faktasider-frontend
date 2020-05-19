@@ -11,18 +11,22 @@ import { getBolkTitler } from '../../utils/richTextUtils/getBolkTitler';
 import localize from '../../locales/localize';
 import { FaktasideProvider } from './FaktasideContext';
 import { SupportedLanguage } from '../../locales/supportedLanguages';
-import IkkeOversatt from './IkkeOversatt';
 import SEO from '../../components/SEO';
+import IkkeOversatt from './IkkeOversatt';
 
 export const query = graphql`
   query FaktaSide($id: String) {
     side: sanityFaktaSide(id: { eq: $id }) {
       _rawTitle
+      _rawInnhold
+      _rawIngress
       slug {
         current
       }
-      _rawInnhold
-      _rawIngress
+      publisert {
+        en
+        no
+      }
     }
   }
 `;
@@ -40,6 +44,10 @@ export interface FaktaSideData {
     slug: {
       current: string;
     };
+    publisert: {
+      en: boolean;
+      no: boolean;
+    };
   };
 }
 
@@ -49,9 +57,9 @@ export interface FaktaSideProps extends PageProps<FaktaSideData, PageContext> {
 
 function FaktaSide(props: FaktaSideProps) {
   const lang = props.pageContext.lang;
-  const erOversatt = props.data.side._rawTitle?.[lang];
+  const erPublisert = props.data.side.publisert[lang];
 
-  if (!erOversatt) {
+  if (!erPublisert) {
     return <IkkeOversatt {...props} />;
   }
 

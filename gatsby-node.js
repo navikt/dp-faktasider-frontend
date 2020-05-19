@@ -15,7 +15,6 @@ async function createPages(graphql, actions, reporter) {
             slug {
               current
             }
-            _rawTitle
           }
         }
       }

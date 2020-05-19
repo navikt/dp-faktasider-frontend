@@ -23,7 +23,6 @@ const StyledArticle = styled.article<{ background: boolean }>`
       border-radius: ${theme.borderRadius};
     `};
   margin-bottom: ${theme.layoutMargin};
-  ${theme.fadeInAnimation};
   max-width: 100vw;
 `;
 
