@@ -46,5 +46,8 @@ async function createPages(graphql, actions, reporter) {
 }
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
+  reporter.info(`🛠 Lager redirect fra /admin til https://dagpenger.sanity.studio/`);
+  actions.createRedirect({ fromPath: `/admin`, toPath: `https://dagpenger.sanity.studio/`, isPermanent: true });
+
   await createPages(graphql, actions, reporter);
 };

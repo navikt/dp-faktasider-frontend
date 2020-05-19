@@ -57,7 +57,7 @@ export interface FaktaSideProps extends PageProps<FaktaSideData, PageContext> {
 
 function FaktaSide(props: FaktaSideProps) {
   const lang = props.pageContext.lang;
-  const erPublisert = props.data.side.publisert[lang];
+  const erPublisert = props.data.side?.publisert[lang];
 
   if (!erPublisert) {
     return <IkkeOversatt {...props} />;
