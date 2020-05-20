@@ -1,0 +1,11 @@
+{
+  "heading": "Forstå regnestykket",
+  "label": "Ditt dagpengegrunnlag",
+  "forLavtGrunnlag": "Inntekt under {{G}} gir ikke rett til dagpenger.",
+  "lesMerOmMinsteinntekt": "Les mer om kravet til minsteinntekt her.",
+  "sendSøknadLikvel": "Vi anbefaler likevel at du sender søknad så kan NAV vurdere din rett til dagpenger.",
+  "mellom": "Mellom {{over}} og {{under}} G",
+  "tilsammen": "Til sammen",
+  "ukesats": "Dette gir en ukesats (før skatt) på",
+  "kunveiledende": "Disse tallene er kun veiledende."
+}

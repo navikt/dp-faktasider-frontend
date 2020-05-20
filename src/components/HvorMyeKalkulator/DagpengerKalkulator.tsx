@@ -8,8 +8,11 @@ import { GrunnlagInput, InputWrapper, ResultatTable, KalkulatorStyle, toKR } fro
 import { H4 } from '../../utils/common-styled-components';
 import { G, GtoNOK } from '../../utils/folketrygdensGrunnbeløp';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
+import { useTranslation } from 'react-i18next';
 
 function Resultat(props: { grunnlag?: number }) {
+  const { t } = useTranslation('kalkulator');
+
   if (!props.grunnlag) {
     return null;
   }
@@ -18,14 +21,12 @@ function Resultat(props: { grunnlag?: number }) {
     return (
       <>
         <Normaltekst>
-          Inntekt under 0.75 G ({GtoNOK(0.75)}) gir ikke rett til dagpenger.{' '}
+          {t('forLavtGrunnlag', { G: `0.75 G (${GtoNOK(0.75)} kroner)` })}{' '}
           <Lenke href="https://www.nav.no/no/person/arbeid/dagpenger-ved-arbeidsloshet-og-permittering/dagpenger-nar-du-er-arbeidsledig/krav-til-minsteinntekt">
-            Les mer om kravet til minsteinntekt her.
+            {t('lesMerOmMinsteinntekt')}
           </Lenke>
         </Normaltekst>
-        <AlertStripeInfo>
-          Vi anbefaler likevel at du sender søknad så kan NAV vurdere din rett til dagpenger.
-        </AlertStripeInfo>
+        <AlertStripeInfo>{t('sendSøknadLikvel')}</AlertStripeInfo>
       </>
     );
   }
@@ -51,7 +52,7 @@ function Resultat(props: { grunnlag?: number }) {
           </tr>
           <tr>
             <td>
-              <i>Mellom 3 og 6 G</i>
+              <i>{t('mellom', { over: 3, under: 6 })}</i>
             </td>
             <td>{toKR(mellom3og6G)} x 62.4 %</td>
             <td> {toKR(resultatMellom3og6G)}</td>
@@ -66,16 +67,16 @@ function Resultat(props: { grunnlag?: number }) {
             </tr>
           )}
           <tr>
-            <td colSpan={2}>Til sammen</td>
+            <td colSpan={2}>{t('tilsammen')}</td>
             <td>{toKR(totalt)}</td>
           </tr>
           <tr>
-            <td colSpan={2}>Dette gir en ukesats (før skatt) på</td>
+            <td colSpan={2}>{t('ukesats')}</td>
             <td> {toKR(totalt / 52)}</td>
           </tr>
         </tbody>
       </ResultatTable>
-      <AlertStripeInfo>Disse tallene er kun veiledende.</AlertStripeInfo>
+      <AlertStripeInfo>{t('kunveiledende')}</AlertStripeInfo>
     </>
   );
 }
@@ -84,6 +85,7 @@ function DagpengerKalkulator() {
   const [harLoggetBruk, setHarLoggetBruk] = useState(false);
   const [grunnlag, setGrunnlag] = useState<undefined | number>();
   const debouncedGrunnlag = useDebouncedValue(grunnlag, 300);
+  const { t } = useTranslation('kalkulator');
 
   useEffect(() => {
     if (!harLoggetBruk && grunnlag) {
@@ -95,10 +97,10 @@ function DagpengerKalkulator() {
   return (
     <KalkulatorStyle>
       <Collapse isOpened={true}>
-        <H4>Forstå regnestykket</H4>
+        <H4>{t('heading')}</H4>
         <InputWrapper>
           <GrunnlagInput
-            label="Ditt dagpengegrunnlag"
+            label={t('label')}
             type="number"
             value={grunnlag || ''}
             onChange={(e) => setGrunnlag(Math.max(0, +e.target.value) || undefined)}

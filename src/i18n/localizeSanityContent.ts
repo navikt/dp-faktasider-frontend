@@ -3,11 +3,11 @@ import { SupportedLanguage } from './supportedLanguages';
 export const defaultLang = 'no';
 
 // Kopiert fra https://www.sanity.io/docs/localization
-function localize(value: any, language: SupportedLanguage) {
+function localizeSanityContent(value: any, language: SupportedLanguage) {
   const languages = [language, defaultLang];
 
   if (Array.isArray(value)) {
-    return value.map((v) => localize(v, language));
+    return value.map((v) => localizeSanityContent(v, language));
   } else if (value && typeof value == 'object') {
     if (/^locale[A-Z]/.test(value._type)) {
       const language = languages.find((lang) => value[lang]);
@@ -15,7 +15,7 @@ function localize(value: any, language: SupportedLanguage) {
     }
 
     return Object.keys(value).reduce((result, key) => {
-      result[key] = localize(value[key], language);
+      result[key] = localizeSanityContent(value[key], language);
       return result;
     }, {});
   }
@@ -23,4 +23,4 @@ function localize(value: any, language: SupportedLanguage) {
   return value;
 }
 
-export default localize;
+export default localizeSanityContent;

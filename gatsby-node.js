@@ -1,8 +1,3 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
 const supportedLanguages = ['en', 'no'];
 
 async function createPages(graphql, actions, reporter) {

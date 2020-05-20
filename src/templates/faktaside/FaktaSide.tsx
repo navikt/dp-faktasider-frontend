@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GatsbyNode, graphql, PageProps } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import BlockContent from '../../components/BlockContent/BlockContent';
 import Layout from './Layout';
 import GraphQLErrorList from '../../components/GraphqlErrorList';
@@ -8,9 +8,9 @@ import parseRichText from '../../utils/richTextUtils/parseRichText';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
 import { getBolkTitler } from '../../utils/richTextUtils/getBolkTitler';
-import localize from '../../locales/localize';
+import localizeSanityContent from '../../i18n/localizeSanityContent';
 import { FaktasideProvider } from './FaktasideContext';
-import { SupportedLanguage } from '../../locales/supportedLanguages';
+import { SupportedLanguage } from '../../i18n/supportedLanguages';
 import SEO from '../../components/SEO';
 import IkkeOversatt from './IkkeOversatt';
 
@@ -63,7 +63,7 @@ function FaktaSide(props: FaktaSideProps) {
     return <IkkeOversatt {...props} />;
   }
 
-  const side = localize(props.data.side, lang);
+  const side = localizeSanityContent(props.data.side, lang);
   const parsedRichText = parseRichText(side._rawInnhold);
   const bolkTitler = getBolkTitler(parsedRichText);
 

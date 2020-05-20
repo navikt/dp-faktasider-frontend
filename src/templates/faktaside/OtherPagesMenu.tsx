@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
-import { useLocale } from '../../locales/useLocale';
-import localize from '../../locales/localize';
+import localizeSanityContent from '../../i18n/localizeSanityContent';
 import LocaleLink from '../../components/LocaleLink';
 import withErrorBoundary from '../../components/withErrorBoundary';
+import { useLocale } from '../../i18n/LocaleContext';
 
 const Style = styled.nav`
   display: flex;
@@ -39,7 +39,7 @@ function OtherPagesMenu() {
 
   const pages = data?.pages.edges.map((edge) => edge.node);
   const lang = useLocale();
-  const localePages = localize(pages, lang);
+  const localePages = localizeSanityContent(pages, lang);
 
   return (
     <Style>

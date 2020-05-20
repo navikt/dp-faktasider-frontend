@@ -3,7 +3,6 @@ import styled from 'styled-components/macro';
 import { Select } from 'nav-frontend-skjema';
 import { theme } from '../../styles/theme';
 import { pxToRem } from '../../styles/utils';
-import { isProduction } from '../../utils/environment';
 import { useFaktasideProps } from '../../templates/faktaside/FaktasideContext';
 import { navigate } from 'gatsby';
 
@@ -35,10 +34,6 @@ const LanguageSelector = () => {
     }
     setOpen(!open);
   };
-
-  if (isProduction()) {
-    return null;
-  }
 
   return (
     <Style>
