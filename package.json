@@ -46,7 +46,8 @@
     "react-helmet": "^6.0.0",
     "react-i18next": "^11.4.0",
     "react-use": "^14.2.0",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "snyk": "^1.323.1"
   },
   "devDependencies": {
     "@types/node": "^13.13.5",
@@ -66,7 +67,9 @@
     "serve": "gatsby serve --prefix-paths",
     "clean": "gatsby clean",
     "update-decorator": "node ./plugins/nav-decorator/index.js",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -75,5 +78,6 @@
   },
   "lint-staged": {
     "*.{js,jsx,json,md,ts,tsx}": "prettier --write"
-  }
+  },
+  "snyk": true
 }
