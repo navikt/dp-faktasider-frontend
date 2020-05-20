@@ -5,12 +5,6 @@ export const onRenderBody = ({ setHeadComponents, setPreBodyComponents, setPostB
   setHeadComponents([
     <head key="nav-styles" dangerouslySetInnerHTML={{ __html: decoratorFragments.NAV_STYLES }} />,
     <head key="nav-scripts" dangerouslySetInnerHTML={{ __html: decoratorFragments.NAV_SCRIPTS }} />,
-    <head
-      key="nav-resources"
-      dangerouslySetInnerHTML={{
-        __html: decoratorFragments.NAV_MENU_RESOURCES,
-      }}
-    />,
   ]);
   setPreBodyComponents([
     <head key="nav-heading" dangerouslySetInnerHTML={{ __html: decoratorFragments.NAV_HEADING }} />,

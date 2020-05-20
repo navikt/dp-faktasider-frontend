@@ -3,10 +3,7 @@ const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
 const requestDecorator = (callback) => {
-  const url =
-    process.env.NAIS_CLUSTER_NAME === 'dev-sbs'
-      ? 'https://www-q0.nav.no/person/nav-dekoratoren/'
-      : 'https://appres.nav.no/common-html/v4/navno?header-withmenu=true&styles=true&scripts=true&footer-withmenu=true';
+  const url = 'https://www.nav.no/dekoratoren/';
   return request(url, callback);
 };
 
@@ -20,9 +17,7 @@ const getDecorator = () =>
           NAV_STYLES: document.getElementById('styles').innerHTML,
           NAV_HEADING: document.getElementById('header-withmenu').innerHTML,
           NAV_FOOTER: document.getElementById('footer-withmenu').innerHTML,
-          NAV_MENU_RESOURCES: document.getElementById('megamenu-resources').innerHTML,
         };
-
         resolve(data);
       } else {
         reject(new Error(error));

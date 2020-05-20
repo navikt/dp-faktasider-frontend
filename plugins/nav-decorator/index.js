@@ -10,7 +10,6 @@ function createDocumentFragments(fragments) {
       NAV_STYLES: ${JSON.stringify(fragments.NAV_STYLES)},
       NAV_HEADING: ${JSON.stringify(fragments.NAV_HEADING)},
       NAV_FOOTER: ${JSON.stringify(fragments.NAV_FOOTER)},
-      NAV_MENU_RESOURCES: ${JSON.stringify(fragments.NAV_MENU_RESOURCES)}
     }; `;
     fsExtra.writeFileSync(fragmentsFile, fileString);
     console.log(`Decorator fragments written to ${fragmentsFile}\n`);
