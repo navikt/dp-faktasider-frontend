@@ -10,6 +10,7 @@ import H3GroupMarkup from './H3GroupMarkup';
 import Video from './VideoMarkup';
 import { ParsedRichText } from '../../utils/richTextUtils/parseRichText';
 import FremhevetTekst from './FremhevetTekst';
+import Utkast, { UtkastInline } from './Utkast';
 
 interface Props {
   blocks?: ParsedRichText;
@@ -33,9 +34,11 @@ const serializers: Serializers = {
     H3Group: H3GroupMarkup,
     video: Video,
     fremhevetTekst: FremhevetTekst,
+    utkast: Utkast,
   },
   marks: {
     link: LinkMarkup,
+    utkast: UtkastInline,
   },
 };
 
