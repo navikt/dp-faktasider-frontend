@@ -1,6 +1,6 @@
 # Dagpenger faktasider
 
-Gatsby-frontend for dagpengerelaterte faktasider. Innholdet hentes fra sanity https://github.com/navikt/dp-sanity-cms.
+Gatsby-frontend for dagpengerelaterte faktasider på www.nav.no/arbeid/dagpenger. Inhhold kan redigeres på https://dagpenger.sanity.studio/.
 
 ## Utvikle lokalt
 
@@ -8,6 +8,10 @@ Gatsby-frontend for dagpengerelaterte faktasider. Innholdet hentes fra sanity ht
 npm i
 npm start
 ```
+
+### Sanity Studio-repo
+
+Innholdet hentes fra sanity https://github.com/navikt/dp-sanity-cms.
 
 ### Live oppdatering av innhold fra Sanity
 
