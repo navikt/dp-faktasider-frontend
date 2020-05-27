@@ -3,7 +3,6 @@ import { graphql, PageProps } from 'gatsby';
 import BlockContent from '../../components/BlockContent/BlockContent';
 import Layout from './Layout';
 import GraphQLErrorList from '../../components/GraphqlErrorList';
-import { Translations } from '../../types/translations';
 import parseRichText from '../../utils/richTextUtils/parseRichText';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
@@ -13,6 +12,8 @@ import { FaktasideProvider } from './FaktasideContext';
 import { SupportedLanguage } from '../../i18n/supportedLanguages';
 import SEO from '../../components/SEO';
 import IkkeOversatt from './IkkeOversatt';
+import { SistOppdatert } from './SistOppdatert';
+import RelatertInformasjon from './RelatertInformasjon';
 
 export const query = graphql`
   query FaktaSide($id: String) {
@@ -20,12 +21,11 @@ export const query = graphql`
       _rawTitle
       _rawInnhold
       _rawIngress
+      _rawSistOppdatert
+      _rawRelatertInformasjon
+      _rawPublisert
       slug {
         current
-      }
-      publisert {
-        en
-        no
       }
     }
   }
@@ -38,15 +38,14 @@ interface PageContext {
 
 export interface FaktaSideData {
   side: {
-    _rawTitle?: Translations<string>;
-    _rawInnhold?: Translations<SanityBlock[]>;
-    _rawIngress?: Translations<string>;
+    _rawTitle?: string;
+    _rawInnhold?: SanityBlock[];
+    _rawIngress?: string;
+    _rawSistOppdatert?: string;
+    _rawRelatertInformasjon?: SanityBlock[];
+    _rawPublisert?: boolean;
     slug: {
       current: string;
-    };
-    publisert: {
-      en: boolean;
-      no: boolean;
     };
   };
 }
@@ -57,18 +56,18 @@ export interface FaktaSideProps extends PageProps<FaktaSideData, PageContext> {
 
 function FaktaSide(props: FaktaSideProps) {
   const lang = props.pageContext.lang;
-  const erPublisert = props.data.side?.publisert[lang];
+  const data = localizeSanityContent(props.data, lang) as FaktaSideData;
 
+  const erPublisert = props.data.side?._rawPublisert;
   if (!erPublisert) {
     return <IkkeOversatt {...props} />;
   }
 
-  const side = localizeSanityContent(props.data.side, lang);
-  const parsedRichText = parseRichText(side._rawInnhold);
+  const parsedRichText = parseRichText(data.side._rawInnhold);
   const bolkTitler = getBolkTitler(parsedRichText);
 
-  const tittel = side._rawTitle;
-  const description = side._rawIngress;
+  const tittel = data.side._rawTitle || '';
+  const description = data.side._rawIngress || '';
 
   return (
     <ErrorBoundary>
@@ -76,7 +75,9 @@ function FaktaSide(props: FaktaSideProps) {
       <FaktasideProvider faktasideProps={props}>
         <Layout header={tittel} menuItems={bolkTitler} ingress={description}>
           <GraphQLErrorList errors={props.errors} />
+          <SistOppdatert>{data.side._rawSistOppdatert}</SistOppdatert>
           <BlockContent blocks={parsedRichText} />
+          <RelatertInformasjon blocks={data.side._rawRelatertInformasjon} />
         </Layout>
       </FaktasideProvider>
     </ErrorBoundary>

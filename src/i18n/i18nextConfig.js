@@ -7,14 +7,16 @@ i18n.use(initReactI18next).init({
   resources: {
     no: {
       kalkulator: require('../locales/no/kalkulator.json'),
+      global: require('../locales/no/global.json'),
     },
     en: {
       kalkulator: require('../locales/en/kalkulator.json'),
+      global: require('../locales/en/global.json'),
     },
   },
-  ns: ['kalkulator'],
+  ns: ['kalkulator', 'global'],
+  defaultNS: 'global',
   returnObjects: true,
-  debug: process.env.NODE_ENV === 'development',
   interpolation: {
     escapeValue: false, // not needed for react!!
   },

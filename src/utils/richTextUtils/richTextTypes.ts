@@ -1,7 +1,7 @@
 // SanityBlock-typen er uhøytidelig hamret sammen basert på hvilke parametere jeg ser i consollen, det er ikke sikkert den stemmer helt
 export type SanityBlock = {
   _key?: string;
-  _type?: string;
+  _type: string;
   children?: SanityBlock[];
   style?: string;
   text?: string;
@@ -9,8 +9,8 @@ export type SanityBlock = {
 
 export type H2Group = SanityBlock & {
   tittel: string;
-  noBackground: boolean;
-  meny: boolean;
+  noBackground?: boolean;
+  meny?: boolean;
   children: SanityBlock[];
   _type: 'H2Group';
 };
