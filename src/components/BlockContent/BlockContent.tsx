@@ -11,6 +11,7 @@ import Video from './VideoMarkup';
 import { ParsedRichText } from '../../utils/richTextUtils/parseRichText';
 import FremhevetTekst from './FremhevetTekst';
 import Utkast, { UtkastInline } from './Utkast';
+import VisForBlokk from './VisFor/VisForBlokk';
 
 interface Props {
   blocks?: ParsedRichText;
@@ -35,6 +36,7 @@ const serializers: Serializers = {
     video: Video,
     fremhevetTekst: FremhevetTekst,
     utkast: Utkast,
+    visForBlokk: VisForBlokk,
   },
   marks: {
     link: LinkMarkup,
