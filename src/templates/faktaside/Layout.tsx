@@ -6,6 +6,7 @@ import OtherPagesMenu from './OtherPagesMenu';
 import Header from '../felles/Header';
 import InnholdsMeny from './InnholdsMeny/InnholdsMeny';
 import LanguageSelector from '../../components/LanguageSelector/LanguageSelector';
+import DevKnapper from '../../components/DevKnapper/DevKnapper';
 
 interface Props {
   header: string;
@@ -74,6 +75,7 @@ function Layout(props: Props) {
       <OtherPagesMenu />
       <Header heading={props.header} ingress={props.ingress} />
       <Style>
+        <DevKnapper />
         <ContentStyle>
           <InnholdsMeny menuItems={props.menuItems} />
           <StyledMain>{props.children}</StyledMain>

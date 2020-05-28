@@ -5,6 +5,7 @@ import { I18nextProvider } from 'react-i18next';
 import i18nextConfig from '../i18n/i18nextConfig';
 import { LocaleProvider } from '../i18n/LocaleContext';
 import { VisForContextProvider } from '../components/BlockContent/VisFor/VisForContext';
+import { DevContextProvider } from '../components/DevKnapper/DevContext';
 
 const wrapPageElement = ({ element, props }) => {
   const lang = props.path.includes('/en/') ? 'en' : 'no';
@@ -14,12 +15,14 @@ const wrapPageElement = ({ element, props }) => {
     <ErrorBoundary>
       <LocaleProvider lang={lang}>
         <VisForContextProvider>
-          <I18nextProvider i18n={i18nextConfig}>
-            <AppStyling {...props} className="typo-normal">
-              <GlobalStyling />
-              <>{element}</>
-            </AppStyling>
-          </I18nextProvider>
+          <DevContextProvider>
+            <I18nextProvider i18n={i18nextConfig}>
+              <AppStyling {...props} className="typo-normal">
+                <GlobalStyling />
+                <>{element}</>
+              </AppStyling>
+            </I18nextProvider>
+          </DevContextProvider>
         </VisForContextProvider>
       </LocaleProvider>
     </ErrorBoundary>

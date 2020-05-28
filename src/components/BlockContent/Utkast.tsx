@@ -5,6 +5,7 @@ import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
 import parseRichText from '../../utils/richTextUtils/parseRichText';
 import BlockContent from './BlockContent';
 import { ReactNode } from 'react';
+import { useDevContext } from '../DevKnapper/DevContext';
 
 interface Props {
   node: {
@@ -28,7 +29,8 @@ const Label = styled.div`
 `;
 
 function Utkast(props: Props) {
-  if (isProduction()) {
+  const devContext = useDevContext();
+  if (isProduction() || !devContext.value.visUtkast) {
     return null;
   }
 
@@ -43,7 +45,8 @@ function Utkast(props: Props) {
 }
 
 export function UtkastInline(props: { children: ReactNode }) {
-  if (isProduction()) {
+  const devContext = useDevContext();
+  if (isProduction() || !devContext.value.visUtkast) {
     return null;
   }
 
