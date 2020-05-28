@@ -3,11 +3,24 @@ import { ReactNode } from 'react';
 import { useVisFor } from './VisForContext';
 import { useMount } from 'react-use';
 import { UnmountClosed } from 'react-collapse';
+import { useDevContext } from '../../DevKnapper/DevContext';
+import styled, { css } from 'styled-components';
 
 interface Props {
   children: ReactNode;
   visFor: { [key: string]: boolean | string };
+  inline?: boolean;
 }
+
+const color = '#80f8';
+
+const Style = styled.div<{ outline: boolean }>`
+  ${(props) =>
+    props.outline &&
+    css`
+      box-shadow: 0 0 0 0.2rem ${color};
+    `}
+`;
 
 function VisFor(props: Props) {
   const visFor = Object.entries(props.visFor)
@@ -15,6 +28,9 @@ function VisFor(props: Props) {
     .map((it) => it[0]);
 
   const visForContext = useVisFor();
+  const devContext = useDevContext();
+  const visOutline = devContext.value.visFiltrering;
+  console.log(visOutline);
 
   useMount(() => {
     visFor.forEach((key) => visForContext.add(key));
@@ -22,8 +38,24 @@ function VisFor(props: Props) {
 
   const ingenFiltrering = visForContext.checked.length === 0;
   const valgtIFiltrering = visForContext.checked.some((it) => visFor.includes(it));
+  const vis = ingenFiltrering || valgtIFiltrering;
+  const title = 'Vises for ' + visFor.join(' & ');
 
-  return <UnmountClosed isOpened={ingenFiltrering || valgtIFiltrering}>{props.children}</UnmountClosed>;
+  if (props.inline) {
+    return vis ? (
+      <Style title={title} outline={visOutline} as="span">
+        {props.children}
+      </Style>
+    ) : null;
+  }
+
+  return (
+    <UnmountClosed isOpened={vis}>
+      <Style title={title} outline={visOutline}>
+        {props.children}
+      </Style>
+    </UnmountClosed>
+  );
 }
 
 export default VisFor;

@@ -70,6 +70,11 @@ function DevKnapper() {
       {open && (
         <Innhold>
           <Checkbox onClick={() => context.toggle('utkast')} label="Vis utkast" checked={context.value.visUtkast} />
+          <Checkbox
+            onClick={() => context.toggle('filtrering')}
+            label="Vis filtrering"
+            checked={context.value.visFiltrering}
+          />
         </Innhold>
       )}
     </Style>

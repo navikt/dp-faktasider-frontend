@@ -8,6 +8,10 @@ interface Props {
   };
 }
 
-const VisForAnnotation = (props: Props) => <VisFor visFor={props.mark.visFor}>{props.children}</VisFor>;
+const VisForAnnotation = (props: Props) => (
+  <VisFor inline={true} visFor={props.mark.visFor}>
+    {props.children}
+  </VisFor>
+);
 
 export default VisForAnnotation;
