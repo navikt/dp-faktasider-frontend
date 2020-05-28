@@ -10,8 +10,9 @@ import H3GroupMarkup from './H3GroupMarkup';
 import Video from './VideoMarkup';
 import { ParsedRichText } from '../../utils/richTextUtils/parseRichText';
 import FremhevetTekst from './FremhevetTekst';
-import Utkast, { UtkastInline } from './Utkast';
+import { UtkastInline } from './Utkast';
 import VisForBlokk from './VisFor/VisForBlokk';
+import VisForAnnotation from './VisFor/VisForAnnotation';
 
 interface Props {
   blocks?: ParsedRichText;
@@ -40,12 +41,13 @@ const serializers: Serializers = {
   marks: {
     link: LinkMarkup,
     utkast: UtkastInline,
+    visForAnnotation: VisForAnnotation,
   },
 };
 
 function BlockContent(props: Props) {
   return (
-    <ErrorBoundary>
+    <ErrorBoundary boundaryName="BlockContent-serializer">
       <SanityBlockContent serializers={serializers} blocks={props.blocks} />
     </ErrorBoundary>
   );

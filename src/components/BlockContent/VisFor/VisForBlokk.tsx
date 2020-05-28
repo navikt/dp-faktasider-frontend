@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { SanityBlock } from '../../../utils/richTextUtils/richTextTypes';
 import BlockContent from '../BlockContent';
-import { useMount } from 'react-use';
-import { useVisFor } from './VisForContext';
-import { UnmountClosed } from 'react-collapse';
+import VisFor from './VisFor';
 
 interface Props {
   node: {
@@ -12,24 +10,10 @@ interface Props {
   };
 }
 
-function VisForBlokk(props: Props) {
-  const visFor = Object.entries(props.node.visFor)
-    .filter((it) => it[1] === true)
-    .map((it) => it[0]);
-  const visForContext = useVisFor();
-
-  useMount(() => {
-    visFor.forEach((key) => visForContext.add(key));
-  });
-
-  const ingenFiltrering = visForContext.checked.length === 0;
-  const valgtIFiltrering = visForContext.checked.some((it) => visFor.includes(it));
-
-  return (
-    <UnmountClosed isOpened={ingenFiltrering || valgtIFiltrering}>
-      <BlockContent blocks={props.node.innhold} />
-    </UnmountClosed>
-  );
-}
+const VisForBlokk = (props: Props) => (
+  <VisFor visFor={props.node.visFor}>
+    <BlockContent blocks={props.node.innhold} />
+  </VisFor>
+);
 
 export default VisForBlokk;
