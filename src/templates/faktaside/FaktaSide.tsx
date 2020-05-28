@@ -14,6 +14,7 @@ import SEO from '../../components/SEO';
 import IkkeOversatt from './IkkeOversatt';
 import { SistOppdatert } from './SistOppdatert';
 import RelatertInformasjon from './RelatertInformasjon';
+import { Translations } from '../../types/translations';
 
 export const query = graphql`
   query FaktaSide($id: String) {
@@ -43,7 +44,7 @@ export interface FaktaSideData {
     _rawIngress?: string;
     _rawSistOppdatert?: string;
     _rawRelatertInformasjon?: SanityBlock[];
-    _rawPublisert?: boolean;
+    _rawPublisert?: Translations<boolean>;
     slug: {
       current: string;
     };
@@ -58,7 +59,7 @@ function FaktaSide(props: FaktaSideProps) {
   const lang = props.pageContext.lang;
   const data = localizeSanityContent(props.data, lang) as FaktaSideData;
 
-  const erPublisert = props.data.side?._rawPublisert;
+  const erPublisert = props.data.side._rawPublisert?.[lang];
   if (!erPublisert) {
     return <IkkeOversatt {...props} />;
   }
