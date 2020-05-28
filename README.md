@@ -28,6 +28,39 @@ Settings -> API -> Add new token (velg "Read" og skriv hvem du er så vi har ove
 
 > NB! Ikke commit token til git
 
+## Oversettelser
+
+### Innhold fra Sanity
+
+Det meste av innholdet som kommer fra sanity vil ha språkversjoner. Da starter typen til sanity-elementet med 'locale'. Feks:
+
+```js
+const content = {
+  mySting: {
+    _type: 'localeString',
+    en: 'English',
+    no: 'Norwegian',
+  },
+};
+```
+
+Det finnes en [utilityfunksjon](src/i18n/localizeSanityContent.ts) hentet fra Sanity-docs som leter gjennom et javascriptobjekt etter properties som starter med 'locale' for så å velge rikitg språk. Alt innhold fra sanity kjøres gjennom denne for å lette håndtering av språk.
+
+```js
+console.log(content.myString); // "{_type: 'localeString', en: 'English', no: 'Norwegian'}"
+
+const lang = 'no';
+const localizedContent = localizeSanityContent(content, lang);
+
+console.log(localizedContent.myString); // "Norwegian"
+```
+
+### Lokale oversettelser, i18next
+
+Det finnes også innhold som ikke ligger i sanity, f.eks [custom lagde react-komponenter](src/components/HvorMyeKalkulator/DagpengerKalkulator.tsx), og 404-siden. I disse komponentene [ligger tekst og oversettelser i koden](src/locales) ved hjelp av [i18next-biblioteket](src/i18n/i18nextConfig.js).
+
+Sanity oversettelser og i18next oversettelser er i utgangpunktet ikke knyttet sammen på noe vis og fungerer uavhengig hver for seg.
+
 ## Kontakt
 
 Spørsmål tilknyttet koden kan rettes mot:
