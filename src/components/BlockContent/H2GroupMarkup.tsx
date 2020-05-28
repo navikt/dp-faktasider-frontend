@@ -6,6 +6,7 @@ import { theme } from '../../styles/theme';
 import { Systemtittel } from 'nav-frontend-typografi';
 import { idFromString } from '../../utils/routingUtils';
 import H2GroupMenu from './H2GroupMenu';
+import Utkast from './Utkast';
 
 interface Props {
   node: H2Group;
@@ -33,10 +34,9 @@ const StyledSystemtittel = styled(Systemtittel)`
 
 function H2GroupMarkup(props: Props) {
   const id = idFromString(props.node.tittel);
-
   const titler = props.node.children.filter(isH3Group).map((h3Group) => h3Group.tittel);
 
-  return (
+  const content = (
     <StyledArticle background={!props.node.noBackground} aria-labeledby={id}>
       <StyledSystemtittel tag="h2" id={id} tabIndex={-1}>
         {props.node.tittel}
@@ -45,6 +45,12 @@ function H2GroupMarkup(props: Props) {
       <BlockContent blocks={props.node.children} />
     </StyledArticle>
   );
+
+  if (props.node.erUtkast) {
+    return <Utkast>{content}</Utkast>;
+  }
+
+  return content;
 }
 
 export default H2GroupMarkup;

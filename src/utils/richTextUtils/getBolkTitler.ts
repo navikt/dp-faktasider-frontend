@@ -1,5 +1,5 @@
 import { ParsedRichText } from './parseRichText';
-import { isH2Group, SanityBlock } from './richTextTypes';
+import { H2Group, isH2Group, SanityBlock } from './richTextTypes';
 import { useTranslation } from 'react-i18next';
 
 export function getBolkTitler(parsedRichText?: ParsedRichText, relatertInformasjon?: SanityBlock[]) {
@@ -9,8 +9,8 @@ export function getBolkTitler(parsedRichText?: ParsedRichText, relatertInformasj
 
   if (parsedRichText) {
     bolktitler = parsedRichText
-      .map((block) => (isH2Group(block) ? block.tittel : undefined))
-      .filter((it) => it) as string[];
+      .filter((block) => isH2Group(block) && !block.erUtkast)
+      .map((block) => (block as H2Group).tittel);
   }
 
   if (relatertInformasjon) {

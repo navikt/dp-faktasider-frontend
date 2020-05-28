@@ -35,7 +35,6 @@ const serializers: Serializers = {
     H3Group: H3GroupMarkup,
     video: Video,
     fremhevetTekst: FremhevetTekst,
-    utkast: Utkast,
     visForBlokk: VisForBlokk,
   },
   marks: {

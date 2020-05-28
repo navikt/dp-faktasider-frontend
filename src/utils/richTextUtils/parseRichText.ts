@@ -41,6 +41,7 @@ export function parseBlocksToRichText(blocks: SanityBlock[] = []): ParsedRichTex
         tittel: block.children?.[0].text || 'Mangler tittel',
         noBackground: style === 'h2-no-background',
         meny: style === 'h2-m-meny',
+        erUtkast: block.children?.some((child) => child.marks?.includes('utkast')),
       };
       currentH3Group = undefined;
       newBlocks.push(currentH2Group);

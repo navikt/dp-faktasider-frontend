@@ -1,16 +1,11 @@
 import * as React from 'react';
+import { ReactNode } from 'react';
 import styled from 'styled-components/macro';
 import { isProduction } from '../../utils/environment';
-import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
-import parseRichText from '../../utils/richTextUtils/parseRichText';
-import BlockContent from './BlockContent';
-import { ReactNode } from 'react';
 import { useDevContext } from '../DevKnapper/DevContext';
 
 interface Props {
-  node: {
-    innhold: SanityBlock[];
-  };
+  children: ReactNode;
 }
 
 const Style = styled.div`
@@ -34,12 +29,10 @@ function Utkast(props: Props) {
     return null;
   }
 
-  const parsedText = parseRichText(props.node.innhold);
-
   return (
     <Style title="Dette vises ikke i prod">
       <Label>Utkast</Label>
-      <BlockContent blocks={parsedText} />
+      {props.children}
     </Style>
   );
 }

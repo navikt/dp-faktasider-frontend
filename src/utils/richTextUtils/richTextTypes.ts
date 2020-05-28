@@ -5,6 +5,7 @@ export type SanityBlock = {
   children?: SanityBlock[];
   style?: string;
   text?: string;
+  marks?: string[];
 };
 
 export type H2Group = SanityBlock & {
@@ -13,6 +14,7 @@ export type H2Group = SanityBlock & {
   meny?: boolean;
   children: SanityBlock[];
   _type: 'H2Group';
+  erUtkast?: boolean;
 };
 
 export type H3Group = SanityBlock & {

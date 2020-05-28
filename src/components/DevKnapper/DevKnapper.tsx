@@ -17,7 +17,7 @@ const Style = styled.div<{ open: boolean }>`
       box-shadow: 0 0 0 0.2rem yellow;
       border-radius: 0.5rem;
     `};
-  z-index: 100;
+  z-index: 1500;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
