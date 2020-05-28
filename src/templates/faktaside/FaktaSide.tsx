@@ -64,7 +64,7 @@ function FaktaSide(props: FaktaSideProps) {
   }
 
   const parsedRichText = parseRichText(data.side._rawInnhold);
-  const bolkTitler = getBolkTitler(parsedRichText);
+  const bolkTitler = getBolkTitler(parsedRichText, data.side._rawRelatertInformasjon);
 
   const tittel = data.side._rawTitle || '';
   const description = data.side._rawIngress || '';

@@ -6,7 +6,6 @@ import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
 import useSmoothscrollOnClick from '../../../hooks/useSmoothscrollOnClick';
 import * as React from 'react';
 import { Undertittel } from 'nav-frontend-typografi';
-import { useTranslation } from 'react-i18next';
 
 interface Props {
   menuItems: string[];
@@ -62,9 +61,7 @@ function MenuItem(props: { item: string; current: boolean }) {
 
 function InnholdsListe(props: Props) {
   const currentlyViewedItem = useCurrentlyViewedMenuItem(props.menuItems);
-  const { t } = useTranslation('global');
 
-  const relatertInformasjon = t('relatertInformasjon');
   return (
     <>
       <StyledOl>
@@ -72,7 +69,6 @@ function InnholdsListe(props: Props) {
         {props.menuItems.map((item) => (
           <MenuItem key={item} item={item} current={currentlyViewedItem === item} />
         ))}
-        <MenuItem current={currentlyViewedItem == relatertInformasjon} item={relatertInformasjon} />
       </StyledOl>
     </>
   );
