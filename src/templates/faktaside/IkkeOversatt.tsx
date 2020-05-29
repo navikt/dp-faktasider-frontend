@@ -23,7 +23,7 @@ function IkkeOversatt(props: FaktaSideProps) {
   const { t } = useTranslation('global');
 
   const oversettelser = supportedLanguages.map((lang) => {
-    const publisert = side._rawPublisert?.[lang];
+    const publisert = side._rawVisSprakversjon?.[lang];
     if (!publisert) {
       return null;
     }

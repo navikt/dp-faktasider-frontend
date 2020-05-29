@@ -24,7 +24,7 @@ export const query = graphql`
       _rawIngress
       _rawSistOppdatert
       _rawRelatertInformasjon
-      _rawPublisert
+      _rawVisSprakversjon
       slug {
         current
       }
@@ -44,7 +44,7 @@ export interface FaktaSideData {
     _rawIngress?: Translations<string>;
     _rawSistOppdatert?: Translations<string>;
     _rawRelatertInformasjon?: Translations<SanityBlock[]>;
-    _rawPublisert?: Translations<boolean>;
+    _rawVisSprakversjon?: Translations<boolean>;
     slug: {
       current: string;
     };
@@ -58,7 +58,7 @@ export interface TranslatedFaktaSideData {
     _rawIngress?: string;
     _rawSistOppdatert?: string;
     _rawRelatertInformasjon?: SanityBlock[];
-    _rawPublisert?: Translations<boolean>;
+    _rawVisSprakversjon?: Translations<boolean>;
     slug: {
       current: string;
     };
@@ -71,7 +71,7 @@ export interface FaktaSideProps extends PageProps<FaktaSideData, PageContext> {
 
 function FaktaSide(props: FaktaSideProps) {
   const lang = props.pageContext.lang;
-  const erPublisert = props.data.side._rawPublisert?.[lang];
+  const erPublisert = props.data.side._rawVisSprakversjon?.[lang];
 
   if (!erPublisert) {
     return <IkkeOversatt {...props} />;
