@@ -36,7 +36,7 @@ const StyledMain = styled.main`
     list-style: disc;
     margin: 1.5rem 0;
     li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       line-height: 1.3;
     }
     ul {
