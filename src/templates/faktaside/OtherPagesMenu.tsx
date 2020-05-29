@@ -21,6 +21,13 @@ const StyledLink = styled(LocaleLink)`
   display: flex;
 `;
 
+interface Side {
+  _rawTitle?: string;
+  slug?: {
+    current: string;
+  };
+}
+
 function OtherPagesMenu() {
   const data = useStaticQuery(graphql`
     query OtherPages {
@@ -37,17 +44,24 @@ function OtherPagesMenu() {
     }
   `);
 
-  const pages = data?.pages.edges.map((edge) => edge.node);
   const lang = useLocale();
-  const localePages = localizeSanityContent(pages, lang);
+  const pages = localizeSanityContent(
+    data?.pages.edges.map((edge) => edge.node),
+    lang
+  ) as Side[];
 
   return (
     <Style>
-      {localePages.map((page) => (
-        <StyledLink activeStyle={{ color: 'black' }} className="lenke" to={page.slug.current}>
-          {page._rawTitle}
-        </StyledLink>
-      ))}
+      {pages.map((page) => {
+        if (!page.slug) {
+          return null;
+        }
+        return (
+          <StyledLink activeStyle={{ color: 'black' }} className="lenke" to={page.slug.current}>
+            {page._rawTitle}
+          </StyledLink>
+        );
+      })}
     </Style>
   );
 }

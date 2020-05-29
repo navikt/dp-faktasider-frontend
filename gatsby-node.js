@@ -22,7 +22,11 @@ async function createPages(graphql, actions, reporter) {
 
   pageEdges.forEach((edge) => {
     const id = edge.node.id;
-    const slug = edge.node.slug.current;
+    const slug = edge.node.slug?.current;
+
+    if (!slug) {
+      return;
+    }
 
     const path = `/${slug}/`;
     reporter.info(`🛠 Lager redirect fra ${path} til /no${path}`);

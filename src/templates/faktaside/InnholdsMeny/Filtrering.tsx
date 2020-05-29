@@ -6,8 +6,9 @@ import { Undertittel } from 'nav-frontend-typografi';
 import { isProduction } from '../../../utils/environment';
 
 const Style = styled.ul`
+  margin-top: 1rem;
   li {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
   }
 `;
 
