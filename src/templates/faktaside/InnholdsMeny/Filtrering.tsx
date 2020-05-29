@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useVisFor } from '../../../components/BlockContent/VisFor/VisForContext';
+import { useVisForContext } from '../../../components/BlockContent/VisFor/VisForContext';
 import styled from 'styled-components';
 import { Checkbox } from 'nav-frontend-skjema';
 import { Undertittel } from 'nav-frontend-typografi';
@@ -13,24 +13,31 @@ const Style = styled.ul`
 `;
 
 function Filtrering() {
-  const visForContext = useVisFor();
+  const visForContext = useVisForContext();
 
-  if (isProduction() || visForContext.valg.length === 0) {
+  if (isProduction() || visForContext.value.valg.length === 0) {
     return null;
   }
 
   return (
     <Style>
       <Undertittel>Filtrering</Undertittel>
-      {visForContext.valg.map((valg) => (
+      {visForContext.value.valg.map((valg) => (
         <li>
           <Checkbox
             label={valg}
-            onChange={() => visForContext.toggle(valg)}
-            checked={visForContext.checked.includes(valg)}
+            onChange={() => visForContext.dispatch({ type: 'toggle', key: valg })}
+            checked={visForContext.value.checked.includes(valg)}
           />
         </li>
       ))}
+      <li>
+        <Checkbox
+          label={'Ingen valg passer'}
+          onChange={() => visForContext.dispatch({ type: 'toggleIngenPasser' })}
+          checked={visForContext.value.ingenPasserMeg}
+        />
+      </li>
     </Style>
   );
 }

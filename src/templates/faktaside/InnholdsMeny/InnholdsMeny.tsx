@@ -7,6 +7,7 @@ import { theme } from '../../../styles/theme';
 import { useDekoratorPopdownOffset } from './useDekoratorPopdownOffset';
 import InnholdsListe from './InnholdsListe';
 import Filtrering from './Filtrering';
+import ErrorBoundary from '../../../components/ErrorBoundary';
 
 const BigScreenLayout = styled.div<{ offsetTop: number }>`
   position: sticky;
@@ -33,19 +34,21 @@ function InnholdsMeny(props: React.ComponentProps<typeof InnholdsListe>) {
   const offsetTop = useDekoratorPopdownOffset();
 
   return (
-    <StyledNav aria-labelledby={tittelId.current}>
-      <h2 id={tittelId.current} className="sr-only">
-        Innhold
-      </h2>
-      <BigScreenLayout offsetTop={offsetTop}>
-        <InnholdsListe {...props} />
-        <Filtrering />
-      </BigScreenLayout>
-      <MobilmenyWrapper offsetTop={offsetTop}>
-        <InnholdsListe {...props} />
-        <Filtrering />
-      </MobilmenyWrapper>
-    </StyledNav>
+    <ErrorBoundary boundaryName="Innholdsmeny">
+      <StyledNav aria-labelledby={tittelId.current}>
+        <h2 id={tittelId.current} className="sr-only">
+          Innhold
+        </h2>
+        <BigScreenLayout offsetTop={offsetTop}>
+          <InnholdsListe {...props} />
+          <Filtrering />
+        </BigScreenLayout>
+        <MobilmenyWrapper offsetTop={offsetTop}>
+          <InnholdsListe {...props} />
+          <Filtrering />
+        </MobilmenyWrapper>
+      </StyledNav>
+    </ErrorBoundary>
   );
 }
 

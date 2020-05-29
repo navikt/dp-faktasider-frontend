@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
-import { useVisFor } from './VisForContext';
+import { useVisForContext } from './VisForContext';
 import { useMount } from 'react-use';
 import { UnmountClosed } from 'react-collapse';
 import { useDevContext } from '../../DevKnapper/DevContext';
@@ -27,18 +27,18 @@ function VisFor(props: Props) {
     .filter((it) => it[1] === true)
     .map((it) => it[0]);
 
-  const visForContext = useVisFor();
+  const visForContext = useVisForContext();
   const devContext = useDevContext();
   const visOutline = devContext.value.visFiltrering;
   console.log(visOutline);
 
   useMount(() => {
-    visFor.forEach((key) => visForContext.add(key));
+    visFor.forEach((key) => visForContext.dispatch({ type: 'addKey', key: key }));
   });
 
-  const ingenFiltrering = visForContext.checked.length === 0;
-  const valgtIFiltrering = visForContext.checked.some((it) => visFor.includes(it));
-  const vis = ingenFiltrering || valgtIFiltrering;
+  const ingenFiltrering = visForContext.value.checked.length === 0;
+  const valgtIFiltrering = visForContext.value.checked.some((it) => visFor.includes(it));
+  const vis = (ingenFiltrering || valgtIFiltrering) && !visForContext.value.ingenPasserMeg;
   const title = 'Vises for ' + visFor.join(' & ');
 
   if (props.inline) {

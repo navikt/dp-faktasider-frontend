@@ -1,48 +1,71 @@
-import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import React, { createContext, ReactNode, useContext, useEffect, useReducer, useState } from 'react';
 import { useLocation, usePrevious, usePreviousDistinct } from 'react-use';
+import { isDevelopment } from '../../../utils/environment';
+import { act } from 'react-dom/test-utils';
 
-const initialValue = {
-  valg: [] as string[],
-  checked: [] as string[],
-  add: (key: string): void => undefined,
-  toggle: (key: string): void => undefined,
+type Actions =
+  | { type: 'addKey'; key: string }
+  | { type: 'toggle'; key: string }
+  | { type: 'clear' }
+  | { type: 'toggleIngenPasser' };
+
+const initial = {
+  value: {
+    valg: [] as string[],
+    checked: [] as string[],
+    ingenPasserMeg: false,
+  },
+  dispatch: (action: Actions): void => undefined,
 };
 
-export const VisForContext = createContext(initialValue);
+export const VisForContext = createContext(initial);
 
-export const useVisFor = () => useContext(VisForContext);
+export const useVisForContext = () => useContext(VisForContext);
+
+function reducer(state: typeof initial.value, action: Actions) {
+  switch (action.type) {
+    case 'addKey':
+      return {
+        ...state,
+        valg: [...state.valg, action.key],
+      };
+    case 'toggle':
+      if (!state.checked.includes(action.key)) {
+        return {
+          ...state,
+          ingenPasserMeg: false,
+          checked: [...state.checked, action.key],
+        };
+      } else {
+        return {
+          ...state,
+          checked: state.checked.filter((key) => key !== action.key),
+        };
+      }
+    case 'toggleIngenPasser':
+      return {
+        ...state,
+        checked: [],
+        ingenPasserMeg: !state.ingenPasserMeg,
+      };
+    case 'clear':
+      return initial.value;
+    default:
+      return state;
+  }
+}
 
 export const VisForContextProvider = (props: { children: ReactNode }) => {
-  const [valg, setValg] = useState(initialValue.valg);
-  const [checked, setChecked] = useState(initialValue.valg);
+  const [state, dispatch] = useReducer(reducer, initial.value);
   const location = useLocation();
-
-  const add = (key: string) => {
-    if (!checked.includes(key)) {
-      setValg((s) => [...s, key]);
-    }
-  };
-
-  const toggle = (key: string) => {
-    if (!checked.includes(key)) {
-      setChecked((s) => [...s, key]);
-    } else {
-      setChecked((s) => s.filter((it) => it !== key));
-    }
-  };
-
-  const clear = () => {
-    setChecked([]);
-    setValg([]);
-  };
 
   const path = location.pathname;
   const prevPath = usePrevious(path);
   useEffect(() => {
     if (prevPath && prevPath !== path) {
-      clear();
+      dispatch({ type: 'clear' });
     }
   }, [path]);
 
-  return <VisForContext.Provider value={{ valg, checked, add, toggle }}>{props.children}</VisForContext.Provider>;
+  return <VisForContext.Provider value={{ value: state, dispatch }}>{props.children}</VisForContext.Provider>;
 };
