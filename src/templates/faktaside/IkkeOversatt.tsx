@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { FaktaSideProps } from './FaktaSide';
+import { FaktaSideData, FaktaSideProps } from './FaktaSide';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { Innholdstittel } from 'nav-frontend-typografi';
+import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
+import { useTranslation } from 'react-i18next';
 
 const Style = styled.div`
   display: flex;
@@ -12,8 +13,13 @@ const Style = styled.div`
   min-height: 60vh;
 `;
 
+const StyledNormaltekst = styled(Normaltekst)`
+  margin: 1rem 0;
+`;
+
 function IkkeOversatt(props: FaktaSideProps) {
   const side = props.data.side;
+  const { t } = useTranslation('global');
 
   const no = { lang: 'no', tittel: side._rawTitle?.no };
   const en = { lang: 'en', tittel: side._rawTitle?.en };
@@ -23,14 +29,15 @@ function IkkeOversatt(props: FaktaSideProps) {
     .map((it) => (
       <li>
         <Link to={`/${it.lang}/${side.slug.current}`}>
-          {it.tittel} ({it.lang})
+          {it.tittel} - ({t(it.lang)})
         </Link>
       </li>
     ));
 
   return (
     <Style>
-      <Innholdstittel>Denne siden er ikke oversatt til {props.pageContext.lang}</Innholdstittel>
+      <Innholdstittel>{t('ikkeOversatt')}</Innholdstittel>
+      <StyledNormaltekst>{t('tilgjengeligPåAndreSpråk')}</StyledNormaltekst>
       <ul>{oversettelser}</ul>
     </Style>
   );

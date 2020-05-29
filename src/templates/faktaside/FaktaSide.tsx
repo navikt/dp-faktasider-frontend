@@ -39,6 +39,20 @@ interface PageContext {
 
 export interface FaktaSideData {
   side: {
+    _rawTitle?: Translations<string>;
+    _rawInnhold?: Translations<SanityBlock[]>;
+    _rawIngress?: Translations<string>;
+    _rawSistOppdatert?: Translations<string>;
+    _rawRelatertInformasjon?: Translations<SanityBlock[]>;
+    _rawPublisert?: Translations<boolean>;
+    slug: {
+      current: string;
+    };
+  };
+}
+
+export interface TranslatedFaktaSideData {
+  side: {
     _rawTitle?: string;
     _rawInnhold?: SanityBlock[];
     _rawIngress?: string;
@@ -57,12 +71,13 @@ export interface FaktaSideProps extends PageProps<FaktaSideData, PageContext> {
 
 function FaktaSide(props: FaktaSideProps) {
   const lang = props.pageContext.lang;
-  const data = localizeSanityContent(props.data, lang) as FaktaSideData;
-
   const erPublisert = props.data.side._rawPublisert?.[lang];
+
   if (!erPublisert) {
     return <IkkeOversatt {...props} />;
   }
+
+  const data = localizeSanityContent(props.data, lang) as TranslatedFaktaSideData;
 
   const parsedRichText = parseRichText(data.side._rawInnhold);
   const bolkTitler = getBolkTitler(parsedRichText, data.side._rawRelatertInformasjon);

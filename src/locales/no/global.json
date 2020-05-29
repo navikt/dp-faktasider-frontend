@@ -1,3 +1,7 @@
 {
-  "relatertInformasjon": "Relatert informasjon"
+  "relatertInformasjon": "Relatert informasjon",
+  "no": "Norsk",
+  "en": "Engelsk",
+  "ikkeOversatt": "Denne siden er ikke oversatt til norsk.",
+  "tilgjengeligPåAndreSpråk": "Den er tilgjengelig på andre språk:"
 }
