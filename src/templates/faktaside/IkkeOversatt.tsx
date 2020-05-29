@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { FaktaSideData, FaktaSideProps } from './FaktaSide';
+import { FaktaSideProps } from './FaktaSide';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
 import { useTranslation } from 'react-i18next';
+import { supportedLanguages } from '../../i18n/supportedLanguages';
 
 const Style = styled.div`
   display: flex;
@@ -21,18 +22,20 @@ function IkkeOversatt(props: FaktaSideProps) {
   const side = props.data.side;
   const { t } = useTranslation('global');
 
-  const no = { lang: 'no', tittel: side._rawTitle?.no };
-  const en = { lang: 'en', tittel: side._rawTitle?.en };
-
-  const oversettelser = [no, en]
-    .filter((it) => it.tittel)
-    .map((it) => (
+  const oversettelser = supportedLanguages.map((lang) => {
+    const publisert = side._rawPublisert?.[lang];
+    if (!publisert) {
+      return null;
+    }
+    const tittel = side._rawTitle?.[lang];
+    return (
       <li>
-        <Link to={`/${it.lang}/${side.slug.current}`}>
-          {it.tittel} - ({t(it.lang)})
+        <Link to={`/${lang}/${side.slug.current}`}>
+          {tittel} - ({t(lang)})
         </Link>
       </li>
-    ));
+    );
+  });
 
   return (
     <Style>
