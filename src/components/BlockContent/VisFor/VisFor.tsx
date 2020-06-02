@@ -8,7 +8,7 @@ import styled, { css } from 'styled-components';
 
 interface Props {
   children: ReactNode;
-  visFor: { [key: string]: boolean | string };
+  visFor?: { [key: string]: boolean | string };
   inline?: boolean;
 }
 
@@ -23,14 +23,15 @@ const Style = styled.div<{ outline: boolean }>`
 `;
 
 function VisFor(props: Props) {
-  const visFor = Object.entries(props.visFor)
-    .filter((it) => it[1] === true)
-    .map((it) => it[0]);
+  const visFor = props.visFor
+    ? Object.entries(props.visFor)
+        .filter((it) => it[1] === true)
+        .map((it) => it[0])
+    : [];
 
   const visForContext = useVisForContext();
   const devContext = useDevContext();
   const visOutline = devContext.value.visFiltrering;
-  console.log(visOutline);
 
   useMount(() => {
     visFor.forEach((key) => visForContext.dispatch({ type: 'addKey', key: key }));
