@@ -25,10 +25,14 @@ export const useVisForContext = () => useContext(VisForContext);
 function reducer(state: typeof initial.value, action: Actions) {
   switch (action.type) {
     case 'addKey':
-      return {
-        ...state,
-        valg: [...state.valg, action.key],
-      };
+      if (!state.valg.includes(action.key)) {
+        return {
+          ...state,
+          valg: [...state.valg, action.key],
+        };
+      } else {
+        return state;
+      }
     case 'toggle':
       if (!state.checked.includes(action.key)) {
         return {
