@@ -25,4 +25,4 @@ spec:
       cpu: 200m
       memory: 256Mi
   ingresses:
-    - "https://www-q0.nav.no/arbeid"
+    - "https://www-q1.nav.no/arbeid"
