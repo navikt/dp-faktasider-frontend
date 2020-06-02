@@ -1,7 +1,5 @@
-import React, { createContext, ReactNode, useContext, useEffect, useReducer, useState } from 'react';
-import { useLocation, usePrevious, usePreviousDistinct } from 'react-use';
-import { isDevelopment } from '../../../utils/environment';
-import { act } from 'react-dom/test-utils';
+import React, { createContext, ReactNode, useContext, useEffect, useReducer } from 'react';
+import { useLocation, usePrevious } from 'react-use';
 
 type Actions =
   | { type: 'addKey'; key: string }
