@@ -8,7 +8,6 @@ import ErrorBoundary from '../../components/ErrorBoundary';
 import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
 import { getBolkTitler } from '../../utils/richTextUtils/getBolkTitler';
 import localizeSanityContent from '../../i18n/localizeSanityContent';
-import { FaktasideProvider } from './FaktasideContext';
 import { SupportedLanguage } from '../../i18n/supportedLanguages';
 import SEO from '../../components/SEO';
 import IkkeOversatt from './IkkeOversatt';
@@ -88,14 +87,12 @@ function FaktaSide(props: FaktaSideProps) {
   return (
     <ErrorBoundary>
       <SEO title={tittel} description={description} lang={lang} />
-      <FaktasideProvider faktasideProps={props}>
-        <FaktaSideLayout header={tittel} menuItems={bolkTitler} ingress={description}>
-          <GraphQLErrorList errors={props.errors} />
-          <SistOppdatert>{data.side._rawSistOppdatert}</SistOppdatert>
-          <BlockContent blocks={parsedRichText} />
-          <RelatertInformasjon blocks={data.side._rawRelatertInformasjon} />
-        </FaktaSideLayout>
-      </FaktasideProvider>
+      <FaktaSideLayout header={tittel} menuItems={bolkTitler} ingress={description}>
+        <GraphQLErrorList errors={props.errors} />
+        <SistOppdatert>{data.side._rawSistOppdatert}</SistOppdatert>
+        <BlockContent blocks={parsedRichText} />
+        <RelatertInformasjon blocks={data.side._rawRelatertInformasjon} />
+      </FaktaSideLayout>
     </ErrorBoundary>
   );
 }

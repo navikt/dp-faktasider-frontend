@@ -3,8 +3,9 @@ import styled from 'styled-components/macro';
 import { Select } from 'nav-frontend-skjema';
 import { theme } from '../../styles/theme';
 import { pxToRem } from '../../styles/utils';
-import { useFaktasideProps } from '../../templates/faktaside/FaktasideContext';
 import { navigate } from 'gatsby';
+import { useLocale } from '../../i18n/LocaleContext';
+import { useLocation } from 'react-use';
 
 const Style = styled.div`
   display: flex;
@@ -23,14 +24,14 @@ const StyledSelect = styled(Select)`
 `;
 
 const LanguageSelector = () => {
-  const faktaSideProps = useFaktasideProps();
-  const lang = faktaSideProps.pageContext.lang;
+  const lang = useLocale();
+  const location = useLocation();
   const [open, setOpen] = useState(false);
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newLanguage = event.target.value;
     if (lang !== newLanguage) {
-      navigate(faktaSideProps.location.pathname.replace(`/${lang}/`, `/${newLanguage}/`));
+      navigate(location.pathname?.replace(`/${lang}/`, `/${newLanguage}/`) || '');
     }
     setOpen(!open);
   };

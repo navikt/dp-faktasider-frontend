@@ -6,7 +6,6 @@ import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
 import { useTranslation } from 'react-i18next';
 import { supportedLanguages } from '../../i18n/supportedLanguages';
 import FaktaSideLayout from './FaktaSideLayout';
-import { FaktasideProvider } from './FaktasideContext';
 import localizeSanityContent from '../../i18n/localizeSanityContent';
 
 const Style = styled.div`
@@ -48,19 +47,17 @@ function IkkeOversatt(props: FaktaSideProps) {
   const ingress = localizeSanityContent(props.data.side._rawIngress, props.pageContext.lang);
 
   return (
-    <FaktasideProvider faktasideProps={props}>
-      <FaktaSideLayout header={title} ingress={ingress}>
-        <Style>
-          <Innholdstittel>{t('ikkeOversatt')}</Innholdstittel>
-          {oversettelser.length && (
-            <>
-              <StyledNormaltekst>{t('tilgjengeligPåAndreSpråk')}</StyledNormaltekst>
-              <StyledUl>{oversettelser}</StyledUl>
-            </>
-          )}
-        </Style>
-      </FaktaSideLayout>
-    </FaktasideProvider>
+    <FaktaSideLayout header={title} ingress={ingress}>
+      <Style>
+        <Innholdstittel>{t('ikkeOversatt')}</Innholdstittel>
+        {oversettelser.length && (
+          <>
+            <StyledNormaltekst>{t('tilgjengeligPåAndreSpråk')}</StyledNormaltekst>
+            <StyledUl>{oversettelser}</StyledUl>
+          </>
+        )}
+      </Style>
+    </FaktaSideLayout>
   );
 }
 
