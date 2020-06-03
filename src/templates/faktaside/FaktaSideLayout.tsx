@@ -18,7 +18,7 @@ interface Props {
 const ContentStyle = styled.div`
   flex-grow: 1;
   position: relative;
-  min-height: 70vh;
+  min-height: 30vh;
   padding: 3.5rem 0;
   display: flex;
   align-items: stretch;

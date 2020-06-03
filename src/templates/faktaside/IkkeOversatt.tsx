@@ -5,17 +5,24 @@ import styled from 'styled-components';
 import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
 import { useTranslation } from 'react-i18next';
 import { supportedLanguages } from '../../i18n/supportedLanguages';
+import FaktaSideLayout from './FaktaSideLayout';
+import { FaktasideProvider } from './FaktasideContext';
+import localizeSanityContent from '../../i18n/localizeSanityContent';
 
 const Style = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  min-height: 60vh;
+  min-height: 30vh;
+`;
+
+const StyledUl = styled.ul`
+  list-style: none !important;
 `;
 
 const StyledNormaltekst = styled(Normaltekst)`
-  margin: 1rem 0;
+  margin: 2rem 0 0 !important;
 `;
 
 function IkkeOversatt(props: FaktaSideProps) {
@@ -37,12 +44,23 @@ function IkkeOversatt(props: FaktaSideProps) {
     );
   });
 
+  const title = localizeSanityContent(props.data.side._rawTitle, props.pageContext.lang);
+  const ingress = localizeSanityContent(props.data.side._rawIngress, props.pageContext.lang);
+
   return (
-    <Style>
-      <Innholdstittel>{t('ikkeOversatt')}</Innholdstittel>
-      <StyledNormaltekst>{t('tilgjengeligPåAndreSpråk')}</StyledNormaltekst>
-      <ul>{oversettelser}</ul>
-    </Style>
+    <FaktasideProvider faktasideProps={props}>
+      <FaktaSideLayout header={title} ingress={ingress}>
+        <Style>
+          <Innholdstittel>{t('ikkeOversatt')}</Innholdstittel>
+          {oversettelser.length && (
+            <>
+              <StyledNormaltekst>{t('tilgjengeligPåAndreSpråk')}</StyledNormaltekst>
+              <StyledUl>{oversettelser}</StyledUl>
+            </>
+          )}
+        </Style>
+      </FaktaSideLayout>
+    </FaktasideProvider>
   );
 }
 
