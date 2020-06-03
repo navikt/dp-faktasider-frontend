@@ -2,6 +2,9 @@ import React from 'react';
 import SEO from '../components/SEO';
 import styled from 'styled-components';
 import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
+import OtherPagesMenu from '../templates/faktaside/OtherPagesMenu';
+import { useTranslation } from 'react-i18next';
+import { useLocale } from '../i18n/LocaleContext';
 
 const Style = styled.div`
   display: flex;
@@ -11,12 +14,23 @@ const Style = styled.div`
   min-height: 60vh;
 `;
 
-const NotFoundPage = () => (
-  <Style>
-    <SEO title="404: Not found" description="" lang="no" />
-    <Innholdstittel>Denne siden finnes ikke</Innholdstittel>
-    <Normaltekst>Du har fulgt en url som ikke er i bruk.</Normaltekst>
-  </Style>
-);
+const StyledNormaltekst = styled(Normaltekst)`
+  margin: 2rem 0 0;
+`;
+
+const NotFoundPage = () => {
+  const { t } = useTranslation('global');
+  const lang = useLocale();
+
+  return (
+    <Style>
+      <SEO title="404: Not found" description="" lang={lang} />
+      <Innholdstittel>{t('404')}</Innholdstittel>
+      <Normaltekst>{t('404-sub')}</Normaltekst>
+      <StyledNormaltekst>{t('404-andre-sider')}</StyledNormaltekst>
+      <OtherPagesMenu />
+    </Style>
+  );
+};
 
 export default NotFoundPage;

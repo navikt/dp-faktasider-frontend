@@ -3,5 +3,8 @@
   "no": "Norwegian",
   "en": "English",
   "ikkeOversatt": "This page has not been translated yet",
-  "tilgjengeligPåAndreSpråk": "The page is available in other languages:"
+  "tilgjengeligPåAndreSpråk": "The page is available in other languages:",
+  "404": "This page does not exist",
+  "404-sub": "You have used an url that is not in use",
+  "404-andre-sider": "Pages you might be interested in:"
 }
