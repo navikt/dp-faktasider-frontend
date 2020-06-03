@@ -12,5 +12,5 @@ ADD . ./
 RUN npm run build
 
 FROM gatsbyjs/gatsby
-COPY --from=build /app/public /pub/arbeid/dagpenger/nye-faktasider
+COPY --from=build /app/public /pub/arbeid
 COPY nginx-server-rules.conf /etc/nginx/server.conf
