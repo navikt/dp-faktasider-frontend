@@ -44,9 +44,25 @@ async function createPages(graphql, actions, reporter) {
   });
 }
 
+// redirects fra gamle sider fra dp-veiviser-ui. Disse bør være trygge å fjerne etter noen måneder.
+const gamleSlugs = ['permittert', 'arbeidsledig', 'lærling', 'student'];
+function createRedirectsFraGamleSider(actions, reporter) {
+  gamleSlugs.forEach((slug) => {
+    const path = `/dagpenger/${slug}`;
+    reporter.info('📠 Redirect fra gammel side: ' + path);
+    actions.createPage({
+      path: path,
+      component: require.resolve('./src/templates/RedirectFraGammelSide.tsx'),
+      context: { slug },
+    });
+  });
+}
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   reporter.info(`🛠 Lager redirect fra /admin til https://dagpenger.sanity.studio/`);
   actions.createRedirect({ fromPath: `/admin`, toPath: `https://dagpenger.sanity.studio/`, isPermanent: true });
+
+  createRedirectsFraGamleSider(actions, reporter);
 
   await createPages(graphql, actions, reporter);
 };
