@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import BlockContent from '../../components/BlockContent/BlockContent';
-import Layout from './Layout';
+import FaktaSideLayout from './FaktaSideLayout';
 import GraphQLErrorList from '../../components/GraphqlErrorList';
 import parseRichText from '../../utils/richTextUtils/parseRichText';
 import ErrorBoundary from '../../components/ErrorBoundary';
@@ -89,12 +89,12 @@ function FaktaSide(props: FaktaSideProps) {
     <ErrorBoundary>
       <SEO title={tittel} description={description} lang={lang} />
       <FaktasideProvider faktasideProps={props}>
-        <Layout header={tittel} menuItems={bolkTitler} ingress={description}>
+        <FaktaSideLayout header={tittel} menuItems={bolkTitler} ingress={description}>
           <GraphQLErrorList errors={props.errors} />
           <SistOppdatert>{data.side._rawSistOppdatert}</SistOppdatert>
           <BlockContent blocks={parsedRichText} />
           <RelatertInformasjon blocks={data.side._rawRelatertInformasjon} />
-        </Layout>
+        </FaktaSideLayout>
       </FaktasideProvider>
     </ErrorBoundary>
   );

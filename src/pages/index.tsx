@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 import GraphQLErrorList from '../components/GraphqlErrorList';
 import localizeSanityContent from '../i18n/localizeSanityContent';
+import Header from '../templates/felles/Header';
 
 export const query = graphql`
   query AllFaktasider {
@@ -28,7 +29,7 @@ interface Side {
   };
 }
 
-const Layout = styled.div`
+const Style = styled.div`
   padding: 2rem;
   display: grid;
   grid-gap: 1rem;
@@ -61,19 +62,22 @@ const IndexPage = (props: any) => {
   }
 
   return (
-    <Layout>
-      {sider.map((side) => {
-        if (!side.slug || !side._rawTitle) {
-          return null;
-        }
-        return (
-          <StyledElement>
-            <StyledLink to={`/${lang}/${side.slug.current}`}>{side._rawTitle}</StyledLink>
-            <p>{side._rawIngress}</p>
-          </StyledElement>
-        );
-      })}
-    </Layout>
+    <>
+      <Header heading="Velg din situasjon" ingress="" />
+      <Style>
+        {sider.map((side) => {
+          if (!side.slug || !side._rawTitle) {
+            return null;
+          }
+          return (
+            <StyledElement>
+              <StyledLink to={`/${lang}/${side.slug.current}`}>{side._rawTitle}</StyledLink>
+              <p>{side._rawIngress}</p>
+            </StyledElement>
+          );
+        })}
+      </Style>
+    </>
   );
 };
 

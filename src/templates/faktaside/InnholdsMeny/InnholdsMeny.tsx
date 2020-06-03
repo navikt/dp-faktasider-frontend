@@ -33,6 +33,10 @@ function InnholdsMeny(props: React.ComponentProps<typeof InnholdsListe>) {
   const tittelId = useRef(guid());
   const offsetTop = useDekoratorPopdownOffset();
 
+  if (!props.menuItems.length) {
+    return null;
+  }
+
   return (
     <ErrorBoundary boundaryName="Innholdsmeny">
       <StyledNav aria-labelledby={tittelId.current}>

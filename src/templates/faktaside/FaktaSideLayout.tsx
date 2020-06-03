@@ -12,7 +12,7 @@ interface Props {
   header: string;
   ingress: string;
   children: ReactNode;
-  menuItems: string[];
+  menuItems?: string[];
 }
 
 const ContentStyle = styled.div`
@@ -68,7 +68,7 @@ const Style = styled.div`
   align-items: flex-start;
 `;
 
-function Layout(props: Props) {
+function FaktaSideLayout(props: Props) {
   return (
     <>
       <LanguageSelector />
@@ -77,7 +77,7 @@ function Layout(props: Props) {
       <Style>
         <DevKnapper />
         <ContentStyle>
-          <InnholdsMeny menuItems={props.menuItems} />
+          <InnholdsMeny menuItems={props.menuItems || []} />
           <StyledMain>{props.children}</StyledMain>
         </ContentStyle>
       </Style>
@@ -85,4 +85,4 @@ function Layout(props: Props) {
   );
 }
 
-export default Layout;
+export default FaktaSideLayout;
