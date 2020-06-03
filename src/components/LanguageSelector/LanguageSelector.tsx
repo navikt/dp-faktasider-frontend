@@ -6,6 +6,7 @@ import { pxToRem } from '../../styles/utils';
 import { navigate } from 'gatsby';
 import { useLocale } from '../../i18n/LocaleContext';
 import { useLocation } from 'react-use';
+import { isProduction } from '../../utils/environment';
 
 const Style = styled.div`
   display: flex;
@@ -27,6 +28,10 @@ const LanguageSelector = () => {
   const lang = useLocale();
   const location = useLocation();
   const [open, setOpen] = useState(false);
+
+  if (isProduction()) {
+    return null;
+  }
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newLanguage = event.target.value;

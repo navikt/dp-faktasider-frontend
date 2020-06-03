@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import localizeSanityContent from '../../i18n/localizeSanityContent';
-import LocaleLink from '../../components/LocaleLink';
 import withErrorBoundary from '../../components/withErrorBoundary';
 import { useLocale } from '../../i18n/LocaleContext';
+import { Translations } from '../../types/translations';
+import { supportedLanguages } from '../../i18n/supportedLanguages';
 
 const Style = styled.nav`
   display: flex;
@@ -16,13 +17,14 @@ const Style = styled.nav`
   }
 `;
 
-const StyledLink = styled(LocaleLink)`
+const StyledLink = styled(Link)`
   font-size: 1.2rem;
   display: flex;
 `;
 
 interface Side {
-  _rawTitle?: string;
+  _rawTitle?: Translations<string>;
+  _rawVisSprakversjon?: Translations<boolean>;
   slug?: {
     current: string;
   };
@@ -35,6 +37,7 @@ function OtherPagesMenu() {
         edges {
           node {
             _rawTitle
+            _rawVisSprakversjon
             slug {
               current
             }
@@ -45,10 +48,7 @@ function OtherPagesMenu() {
   `);
 
   const lang = useLocale();
-  const pages = localizeSanityContent(
-    data?.pages.edges.map((edge) => edge.node),
-    lang
-  ) as Side[];
+  const pages = data?.pages.edges.map((edge) => edge.node) as Side[];
 
   return (
     <Style>
@@ -56,9 +56,16 @@ function OtherPagesMenu() {
         if (!page.slug) {
           return null;
         }
+
+        const slug = page.slug.current;
+        const oversettelser = supportedLanguages.filter((lang) => page._rawVisSprakversjon?.[lang]);
+        const oversatt = oversettelser.includes(lang);
+        const path = oversatt ? `/${lang}/${slug}` : `/${oversettelser[0]}/${slug}`;
+        const tittel = localizeSanityContent(page._rawTitle, lang);
+
         return (
-          <StyledLink activeStyle={{ color: 'black' }} className="lenke" to={page.slug.current}>
-            {page._rawTitle}
+          <StyledLink activeStyle={{ color: 'black' }} className="lenke" to={path}>
+            {tittel} {!oversatt ? `(${oversettelser[0]})` : ''}
           </StyledLink>
         );
       })}
