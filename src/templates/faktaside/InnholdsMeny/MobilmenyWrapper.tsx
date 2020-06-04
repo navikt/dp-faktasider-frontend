@@ -10,11 +10,13 @@ interface Props {
   offsetTop: number;
 }
 
+const margin = '1rem';
+
 const SmallScreenLayout = styled.div<{ apen: boolean; offsetTop: number }>`
   position: sticky;
-  margin: 1rem;
+  margin: ${margin};
+  top: calc(${margin} + ${(props) => props.offsetTop}px);
   transition: top 0.2s;
-  top: calc(1rem + ${(props) => props.offsetTop}px);
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -45,7 +47,11 @@ const StickyContainer = styled.div`
   pointer-events: none;
 `;
 
-const MenyWrapper = styled.div<{ visMeny: boolean }>`
+const MenyWrapper = styled.div<{ visMeny: boolean; offsetTop: number }>`
+  transition: max-height 0.2s;
+  max-height: calc(100vh - ${margin} * 2 - ${(props) => props.offsetTop}px);
+  overflow-y: auto;
+
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
   ${(props) =>
@@ -79,7 +85,9 @@ function MobilmenyWrapper(props: Props) {
           onClick={() => setVisMeny((prevState) => !prevState)}
           isOpen={visMeny}
         />
-        <MenyWrapper visMeny={visMeny}>{props.children}</MenyWrapper>
+        <MenyWrapper visMeny={visMeny} offsetTop={props.offsetTop}>
+          {props.children}
+        </MenyWrapper>
       </SmallScreenLayout>
     </StickyContainer>
   );

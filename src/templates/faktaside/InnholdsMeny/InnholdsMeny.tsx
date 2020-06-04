@@ -9,13 +9,17 @@ import InnholdsListe from './InnholdsListe';
 import Filtrering from './Filtrering';
 import ErrorBoundary from '../../../components/ErrorBoundary';
 
+const margin = '1.5rem';
+
 const BigScreenLayout = styled.div<{ offsetTop: number }>`
   position: sticky;
-  transition: top 0.2s;
-  top: calc(${theme.layoutMargin} + ${(props) => props.offsetTop}px);
+  top: calc(${margin} + ${(props) => props.offsetTop}px);
+  max-height: calc(100vh - ${margin} * 2 - ${(props) => props.offsetTop}px);
+  overflow-y: auto;
+  padding: ${margin};
+  transition: top 0.2s, max-height 0.2s;
   background-color: white;
   border-radius: ${theme.borderRadius};
-  padding: 1.5rem;
   width: 15rem;
   @media (${theme.media.smallScreen}) {
     display: none;
