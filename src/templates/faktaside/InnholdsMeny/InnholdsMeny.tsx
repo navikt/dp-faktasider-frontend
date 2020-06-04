@@ -13,7 +13,6 @@ const BigScreenLayout = styled.div<{ offsetTop: number }>`
   position: sticky;
   transition: top 0.2s;
   top: calc(${theme.layoutMargin} + ${(props) => props.offsetTop}px);
-  top: ${theme.layoutMargin};
   background-color: white;
   border-radius: ${theme.borderRadius};
   padding: 1.5rem;
