@@ -8,7 +8,7 @@ Gatsby-frontend for dagpengerelaterte faktasider på www.nav.no/arbeid/dagpenger
 npm i
 npm start
 ```
- 
+
 ### Sanity Studio-repo
 
 Innholdet hentes fra sanity https://github.com/navikt/dp-sanity-cms.
