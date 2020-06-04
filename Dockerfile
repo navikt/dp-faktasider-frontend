@@ -13,4 +13,5 @@ RUN npm run build
 
 FROM gatsbyjs/gatsby
 COPY --from=build /app/public /pub/arbeid
+COPY --from=build /app/public/404/index.html /pub/404.html
 COPY nginx-server-rules.conf /etc/nginx/server.conf
