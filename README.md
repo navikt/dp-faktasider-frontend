@@ -3,7 +3,7 @@
 Gatsby-frontend for dagpengerelaterte faktasider på www.nav.no/arbeid/dagpenger. Inhhold kan redigeres på https://dagpenger.sanity.studio/.
 
 ## Utvikle lokalt
-
+ 
 ```
 npm i
 npm start
