@@ -12,8 +12,6 @@ interface Props {
 }
 
 const StyledOl = styled.ol`
-  max-height: 80vh;
-  overflow-y: auto;
   li {
     margin: 1rem 0;
   }
