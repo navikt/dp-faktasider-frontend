@@ -23,7 +23,7 @@ const Styling = createGlobalStyle<{ dekoratorOffset: number }>`
             content: "";
             display: block;
             height: var(--offset-top);
-            margin-top: -var(--offset-top);
+            margin-top: calc(var(--offset-top) * -1);
         }
         position: relative;
         &:focus {
