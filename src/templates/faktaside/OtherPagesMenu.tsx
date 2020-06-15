@@ -55,7 +55,7 @@ function OtherPagesMenu() {
   `);
 
   const lang = useLocale();
-  const sorteringsMal = data?.oppsett.faktasideSortering.map((edge) => edge.id);
+  const sorteringsMal = data?.oppsett.faktasideSortering.map((edge) => edge?.id);
   const pages = data?.pages.edges.map((edge) => edge.node) as Side[];
   const sortedPages = sorteringsMal.map((id) => pages.find((it) => it.id === id));
   const unsortedPages = pages.filter((page) => !sorteringsMal.some((id) => id === page.id));
