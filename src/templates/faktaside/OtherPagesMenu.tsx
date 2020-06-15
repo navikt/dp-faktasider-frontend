@@ -25,6 +25,7 @@ const StyledLink = styled(Link)`
 interface Side {
   _rawTitle?: Translations<string>;
   _rawVisSprakversjon?: Translations<boolean>;
+  id: string;
   slug?: {
     current: string;
   };
@@ -33,11 +34,17 @@ interface Side {
 function OtherPagesMenu() {
   const data = useStaticQuery(graphql`
     query OtherPages {
+      oppsett: sanityOppsett {
+        faktasideSortering {
+          id
+        }
+      }
       pages: allSanityFaktaSide {
         edges {
           node {
             _rawTitle
             _rawVisSprakversjon
+            id
             slug {
               current
             }
@@ -48,11 +55,14 @@ function OtherPagesMenu() {
   `);
 
   const lang = useLocale();
+  const sorteringsMal = data?.oppsett.faktasideSortering.map((edge) => edge.id);
   const pages = data?.pages.edges.map((edge) => edge.node) as Side[];
+  const sortedPages = sorteringsMal.map((id) => pages.find((it) => it.id === id));
+  const unsortedPages = pages.filter((page) => !sorteringsMal.some((id) => id === page.id));
 
   return (
     <Style>
-      {pages.map((page) => {
+      {[...sortedPages, ...unsortedPages].map((page) => {
         if (!page.slug) {
           return null;
         }
