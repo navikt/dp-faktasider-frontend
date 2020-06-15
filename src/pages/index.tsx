@@ -1,33 +1,12 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import GraphQLErrorList from '../components/GraphqlErrorList';
-import localizeSanityContent from '../i18n/localizeSanityContent';
 import Header from '../templates/felles/Header';
-
-export const query = graphql`
-  query AllFaktasider {
-    sider: allSanityFaktaSide {
-      edges {
-        node {
-          _rawIngress
-          _rawTitle
-          slug {
-            current
-          }
-        }
-      }
-    }
-  }
-`;
-
-interface Side {
-  _rawIngress?: string;
-  _rawTitle?: string;
-  slug?: {
-    current: string;
-  };
-}
+import useFaktasiderSumary from '../utils/useFaktasiderSumary';
+import localizeSanityContent from '../i18n/localizeSanityContent';
+import { useLocale } from '../i18n/LocaleContext';
+import { useTranslation } from 'react-i18next';
 
 const Style = styled.div`
   padding: 2rem;
@@ -46,33 +25,44 @@ const StyledElement = styled.div`
 const StyledLink = styled(Link)`
   display: flex;
   justify-content: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   font-size: 1.2rem;
 `;
 
-const IndexPage = (props: any) => {
-  const lang = 'no';
-  const sider = localizeSanityContent(
-    props.data.sider.edges.map((edge) => edge.node),
-    lang
-  ) as Side[];
+const KunTilgjengeligStyle = styled.p`
+  text-align: center;
+  opacity: 0.7;
+  margin: 1rem 0 !important;
+`;
 
-  if (props.errors) {
-    return <GraphQLErrorList errors={props.errors} />;
-  }
+const IndexPage = () => {
+  const oppsett = useStaticQuery(
+    graphql`
+      query Oppsett {
+        oppsett: sanityOppsett {
+          title: _rawTitle
+        }
+      }
+    `
+  );
+  const sider = useFaktasiderSumary();
+  const lang = useLocale();
+  const { t } = useTranslation('global');
 
   return (
     <>
-      <Header heading="Velg din situasjon" ingress="" />
+      <Header heading={localizeSanityContent(oppsett.oppsett.title, lang)} ingress="" />
       <Style>
         {sider.map((side) => {
-          if (!side.slug || !side._rawTitle) {
-            return null;
-          }
           return (
             <StyledElement>
-              <StyledLink to={`/${lang}/${side.slug.current}`}>{side._rawTitle}</StyledLink>
-              <p>{side._rawIngress}</p>
+              <StyledLink to={side.path}>{side.tittel}</StyledLink>
+              {!side.tilgjengeligPåValgtSpråk && (
+                <KunTilgjengeligStyle>
+                  ({t('kunTilgjengeligPå')} {t(side.språk)})
+                </KunTilgjengeligStyle>
+              )}
+              <p>{side.ingress}</p>
             </StyledElement>
           );
         })}
