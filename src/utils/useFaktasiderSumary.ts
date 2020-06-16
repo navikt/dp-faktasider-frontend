@@ -50,7 +50,7 @@ function useOtherPages() {
     const oversettelser = supportedLanguages.filter((lang) => page._rawVisSprakversjon?.[lang]);
     const tilgjengeligPåValgtSpråk = oversettelser.includes(lang);
     const språk = tilgjengeligPåValgtSpråk ? lang : oversettelser[0];
-    const path = `/${språk}/${slug}`;
+    const path = `/${språk}/${slug}/`;
     const tittel = localizeSanityContent(page._rawTitle, lang) as string;
     const ingress = localizeSanityContent(page._rawIngress, lang) as string;
 
