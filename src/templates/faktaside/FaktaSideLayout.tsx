@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ReactNode } from 'react';
 import styled from 'styled-components/macro';
 import { theme } from '../../styles/theme';
-import OtherPagesMenu from './OtherPagesMenu';
+import Navigasjonsmeny from './Navigasjonsmeny';
 import Header from '../felles/Header';
 import InnholdsMeny from './InnholdsMeny/InnholdsMeny';
 import LanguageSelector from '../../components/LanguageSelector/LanguageSelector';
@@ -72,7 +72,7 @@ function FaktaSideLayout(props: Props) {
   return (
     <>
       <LanguageSelector />
-      <OtherPagesMenu />
+      <Navigasjonsmeny />
       <Header heading={props.header} ingress={props.ingress} />
       <Style>
         <DevKnapper />

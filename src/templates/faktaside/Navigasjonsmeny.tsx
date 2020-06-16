@@ -19,7 +19,7 @@ const StyledLink = styled(Link)`
   display: flex;
 `;
 
-function OtherPagesMenu() {
+function Navigasjonsmeny() {
   const otherPages = useFaktasiderSumary();
 
   return (
@@ -35,4 +35,4 @@ function OtherPagesMenu() {
   );
 }
 
-export default withErrorBoundary(OtherPagesMenu, 'Meny');
+export default withErrorBoundary(Navigasjonsmeny, 'Meny');
