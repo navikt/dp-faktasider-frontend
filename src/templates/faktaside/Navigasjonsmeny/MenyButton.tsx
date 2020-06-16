@@ -41,7 +41,7 @@ interface Props {
   label: string;
 }
 
-function InnholdButton(props: React.HTMLAttributes<HTMLButtonElement> & Props) {
+function MenyButton(props: React.HTMLAttributes<HTMLButtonElement> & Props) {
   const { isOpen, label, ...rest } = props;
 
   return (
@@ -78,4 +78,4 @@ function InnholdIkon(props: { isOpen?: boolean }) {
   );
 }
 
-export default InnholdButton;
+export default MenyButton;

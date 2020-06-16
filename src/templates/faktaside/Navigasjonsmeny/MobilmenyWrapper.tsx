@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
-import InnholdButton from './InnholdButton';
+import MenyButton from './MenyButton';
 import { useClickAway, useLocation } from 'react-use';
 import { theme } from '../../../styles/theme';
 
@@ -62,7 +62,7 @@ const MenyWrapper = styled.div<{ visMeny: boolean; offsetTop: number }>`
     `}
 `;
 
-const StyledInnholdButton = styled(InnholdButton)`
+const StyledMenyButton = styled(MenyButton)`
   background-color: white;
   position: absolute;
   box-shadow: 0 0 0 0.2rem #8886;
@@ -81,7 +81,7 @@ function MobilmenyWrapper(props: Props) {
   return (
     <StickyContainer>
       <SmallScreenLayout apen={visMeny} ref={ref} offsetTop={props.offsetTop}>
-        <StyledInnholdButton
+        <StyledMenyButton
           label="Innholdsfortegnelse"
           onClick={() => setVisMeny((prevState) => !prevState)}
           isOpen={visMeny}
