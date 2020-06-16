@@ -35,5 +35,6 @@ export const MainContentStyle = styled.main`
   }
   h4 {
     text-align: center;
+    margin: 3rem 0 0.7rem;
   }
 `;
