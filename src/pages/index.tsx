@@ -7,18 +7,21 @@ import localizeSanityContent from '../i18n/localizeSanityContent';
 import { useLocale } from '../i18n/LocaleContext';
 import { useTranslation } from 'react-i18next';
 
-const Style = styled.div`
-  padding: 2rem;
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(2, minmax(15rem, 20rem));
-  justify-content: center;
-`;
-
 const StyledElement = styled.div`
   background-color: white;
-  padding: 1rem;
+  padding: 1.2rem 1.2rem 2rem;
   border-radius: 0.5rem;
+`;
+
+const Style = styled.div`
+  padding: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  ${StyledElement} {
+    flex-basis: 25rem;
+    margin: 0.5rem;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -52,19 +55,17 @@ const IndexPage = () => {
     <>
       <Header heading={localizeSanityContent(oppsett.oppsett.title, lang)} ingress="" />
       <Style>
-        {sider.map((side) => {
-          return (
-            <StyledElement>
-              <StyledLink to={side.path}>{side.tittel}</StyledLink>
-              {!side.tilgjengeligPåValgtSpråk && (
-                <KunTilgjengeligStyle>
-                  ({t('kunTilgjengeligPå')} {t(side.språk)})
-                </KunTilgjengeligStyle>
-              )}
-              <p>{side.ingress}</p>
-            </StyledElement>
-          );
-        })}
+        {sider.map((side) => (
+          <StyledElement>
+            <StyledLink to={side.path}>{side.tittel}</StyledLink>
+            {!side.tilgjengeligPåValgtSpråk && (
+              <KunTilgjengeligStyle>
+                ({t('kunTilgjengeligPå')} {t(side.språk)})
+              </KunTilgjengeligStyle>
+            )}
+            <p>{side.ingress}</p>
+          </StyledElement>
+        ))}
       </Style>
     </>
   );
