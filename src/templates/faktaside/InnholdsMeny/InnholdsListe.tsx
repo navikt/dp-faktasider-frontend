@@ -11,7 +11,7 @@ interface Props {
 }
 
 const StyledOl = styled.ol`
-  margin: 0 1.5rem 2rem;
+  margin: 0 2rem 2rem;
   li {
     margin: 0.5rem 0;
   }

@@ -21,9 +21,6 @@ const ContentStyle = styled.div`
   min-height: 30vh;
   display: flex;
   align-items: flex-start;
-  > *:first-child {
-    flex-basis: 15rem;
-  }
   > *:last-child {
     flex-grow: 1;
     margin: auto;

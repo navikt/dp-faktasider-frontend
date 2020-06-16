@@ -50,9 +50,10 @@ const StickyContainer = styled.div`
 const MenyWrapper = styled.div<{ visMeny: boolean; offsetTop: number }>`
   transition: max-height 0.2s;
   max-height: calc(100vh - ${margin} * 2 - ${(props) => props.offsetTop}px);
+  max-width: 25rem;
   overflow-y: auto;
 
-  padding: 1rem 1.5rem;
+  padding: 1rem 0;
   border-radius: 0.5rem;
   ${(props) =>
     !props.visMeny &&

@@ -1,55 +1,42 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 import withErrorBoundary from '../../../components/withErrorBoundary';
-import useFaktasiderSumary from '../../../utils/useFaktasiderSumary';
-import InnholdsMeny from '../InnholdsMeny/InnholdsMeny';
 import { useDekoratorPopdownOffset } from './useDekoratorPopdownOffset';
+import SideListe from './SideListe';
+import MobilmenyWrapper from '../InnholdsMeny/MobilmenyWrapper';
+import { theme } from '../../../styles/theme';
 
-interface Props {
-  menuItems?: string[];
-  faktasideId: string;
-}
-
-const Style = styled.nav<{ offsetTop: number }>`
+const DesktopLayout = styled.div<{ offsetTop: number }>`
+  @media (${theme.media.smallScreen}) {
+    display: none;
+  }
   position: sticky;
   top: calc(${(props) => props.offsetTop}px);
   max-height: calc(100vh - ${(props) => props.offsetTop}px);
   overflow-y: auto;
   transition: top 0.2s, max-height 0.2s;
   background-color: white;
+  max-width: 15rem;
 `;
 
-const LinkWrapper = styled.div`
-  border-bottom: #8888 solid 0.05rem;
-`;
-
-const StyledLink = styled(Link)`
-  display: block;
-  font-size: 1.2rem;
-  padding: 0.5rem;
-  text-decoration: none;
-  &:hover {
-    background-color: #ddd8;
+const MobileMenuHider = styled.div`
+  @media not all and (${theme.media.smallScreen}) {
+    display: none;
   }
 `;
 
-function Navigasjonsmeny(props: Props) {
-  const otherPages = useFaktasiderSumary();
+function Navigasjonsmeny(props: React.ComponentProps<typeof SideListe>) {
   const offsetTop = useDekoratorPopdownOffset();
+  const meny = <SideListe {...props} />;
 
   return (
-    <Style offsetTop={offsetTop}>
-      {otherPages.map((page) => (
-        <LinkWrapper>
-          <StyledLink activeStyle={{ color: 'black' }} className="lenke" to={page.path}>
-            {page.tittel} {!page.tilgjengeligPåValgtSpråk ? `(${page.språk})` : ''}
-          </StyledLink>
-          {page.id === props.faktasideId && <InnholdsMeny menuItems={props.menuItems || []} />}
-        </LinkWrapper>
-      ))}
-    </Style>
+    <>
+      <DesktopLayout offsetTop={offsetTop}>{meny}</DesktopLayout>
+      <MobileMenuHider>
+        <MobilmenyWrapper offsetTop={offsetTop}>{meny}</MobilmenyWrapper>
+      </MobileMenuHider>
+    </>
   );
 }
 
-export default withErrorBoundary(Navigasjonsmeny, 'Meny');
+export default withErrorBoundary(Navigasjonsmeny, 'Navigasjonsmeny');
