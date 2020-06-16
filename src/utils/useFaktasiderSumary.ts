@@ -60,6 +60,7 @@ function useOtherPages() {
       språk,
       tilgjengeligPåValgtSpråk,
       ingress,
+      id: page.id,
     };
   });
 }

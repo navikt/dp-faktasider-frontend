@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { theme } from './theme';
 import './index.less';
-import { useDekoratorPopdownOffset } from '../templates/faktaside/InnholdsMeny/useDekoratorPopdownOffset';
+import { useDekoratorPopdownOffset } from '../templates/faktaside/Navigasjonsmeny/useDekoratorPopdownOffset';
 
 const Styling = createGlobalStyle<{ dekoratorOffset: number }>`
     * {

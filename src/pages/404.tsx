@@ -2,9 +2,9 @@ import React from 'react';
 import SEO from '../components/SEO';
 import styled from 'styled-components';
 import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
-import OtherPagesMenu from '../templates/faktaside/OtherPagesMenu';
 import { useTranslation } from 'react-i18next';
 import { useLocale } from '../i18n/LocaleContext';
+import SideListe from '../templates/faktaside/Navigasjonsmeny/SideListe';
 
 const Style = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ const NotFoundPage = () => {
       <Innholdstittel>{t('404')}</Innholdstittel>
       <Normaltekst>{t('404-sub')}</Normaltekst>
       <StyledNormaltekst>{t('404-andre-sider')}</StyledNormaltekst>
-      <OtherPagesMenu />
+      <SideListe faktasideId="N/A" />
     </Style>
   );
 };
