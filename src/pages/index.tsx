@@ -14,12 +14,14 @@ const StyledElement = styled.div`
 `;
 
 const Style = styled.div`
-  padding: 2rem 0;
+  max-width: 50rem;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 2rem 0;
   ${StyledElement} {
-    flex-basis: 25rem;
+    flex: 15rem 1;
     margin: 0.5rem;
   }
 `;
