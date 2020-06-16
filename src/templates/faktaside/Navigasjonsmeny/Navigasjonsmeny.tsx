@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import { useDekoratorPopdownOffset } from './useDekoratorPopdownOffset';
 import SideListe from './SideListe';
-import MobilmenyWrapper from '../InnholdsMeny/MobilmenyWrapper';
+import MobilmenyWrapper from './MobilmenyWrapper';
 import { theme } from '../../../styles/theme';
 
 const DesktopNav = styled.nav<{ offsetTop: number }>`
