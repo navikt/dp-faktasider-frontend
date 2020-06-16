@@ -5,15 +5,15 @@ import styled, { css } from 'styled-components';
 import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
 import useSmoothscrollOnClick from '../../../hooks/useSmoothscrollOnClick';
 import * as React from 'react';
-import { Undertittel } from 'nav-frontend-typografi';
 
 interface Props {
   menuItems: string[];
 }
 
 const StyledOl = styled.ol`
+  margin: 0 1.5rem 2rem;
   li {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
   }
 `;
 
@@ -41,7 +41,7 @@ function useCurrentlyViewedMenuItem(items: string[]): string | undefined {
     return () => window.removeEventListener('scroll', updateCurrentlyViewedMenuItem);
   }, [updateCurrentlyViewedMenuItem]);
 
-  return current;
+  return current || items[0];
 }
 
 function MenuItem(props: { item: string; current: boolean }) {
@@ -61,14 +61,11 @@ function InnholdsListe(props: Props) {
   const currentlyViewedItem = useCurrentlyViewedMenuItem(props.menuItems);
 
   return (
-    <>
-      <StyledOl>
-        <Undertittel>Innhold</Undertittel>
-        {props.menuItems.map((item) => (
-          <MenuItem key={item} item={item} current={currentlyViewedItem === item} />
-        ))}
-      </StyledOl>
-    </>
+    <StyledOl>
+      {props.menuItems.map((item) => (
+        <MenuItem key={item} item={item} current={currentlyViewedItem === item} />
+      ))}
+    </StyledOl>
   );
 }
 

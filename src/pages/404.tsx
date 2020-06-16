@@ -2,7 +2,7 @@ import React from 'react';
 import SEO from '../components/SEO';
 import styled from 'styled-components';
 import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
-import NavigasjonsMeny from '../templates/faktaside/Navigasjonsmeny';
+import NavigasjonsMeny from '../templates/faktaside/Navigasjonsmeny/Navigasjonsmeny';
 import { useTranslation } from 'react-i18next';
 import { useLocale } from '../i18n/LocaleContext';
 
@@ -17,6 +17,8 @@ const Style = styled.div`
 const StyledNormaltekst = styled(Normaltekst)`
   margin: 2rem 0 0;
 `;
+
+/* TODO Ikke bruke navigasjonsmeny her */
 
 const NotFoundPage = () => {
   const { t } = useTranslation('global');

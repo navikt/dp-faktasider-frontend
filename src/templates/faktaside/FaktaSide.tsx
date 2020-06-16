@@ -87,7 +87,7 @@ function FaktaSide(props: FaktaSideProps) {
   return (
     <ErrorBoundary>
       <SEO title={tittel} description={description} lang={lang} />
-      <FaktaSideLayout header={tittel} menuItems={bolkTitler} ingress={description}>
+      <FaktaSideLayout header={tittel} menuItems={bolkTitler} ingress={description} faktasideId={props.pageContext.id}>
         <GraphQLErrorList errors={props.errors} />
         <SistOppdatert>{data.side._rawSistOppdatert}</SistOppdatert>
         <BlockContent blocks={parsedRichText} />
