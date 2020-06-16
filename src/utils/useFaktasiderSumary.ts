@@ -40,13 +40,13 @@ function useOtherPages() {
 
   const sorteringsMal = data?.oppsett.faktasideSortering.map((edge) => edge?.id);
   const pages = data?.pages.edges.map((edge) => edge.node) as Side[];
-  const sortedPages = sorteringsMal.map((id) => pages.find((it) => it.id === id));
-  const unsortedPages = pages.filter((page) => !sorteringsMal.some((id) => id === page.id));
+  const sortedPages: Side[] = sorteringsMal.map((id) => pages.find((page) => page.id === id));
+  const unsortedPages = pages.filter((page) => !sorteringsMal.includes(page.id));
 
   const lang = useLocale();
 
   return [...sortedPages, ...unsortedPages].map((page) => {
-    const slug = page.slug.current;
+    const slug = page.slug?.current;
     const oversettelser = supportedLanguages.filter((lang) => page._rawVisSprakversjon?.[lang]);
     const tilgjengeligPåValgtSpråk = oversettelser.includes(lang);
     const språk = tilgjengeligPåValgtSpråk ? lang : oversettelser[0];

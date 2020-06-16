@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
-import GraphQLErrorList from '../components/GraphqlErrorList';
 import Header from '../templates/felles/Header';
 import useFaktasiderSumary from '../utils/useFaktasiderSumary';
 import localizeSanityContent from '../i18n/localizeSanityContent';
