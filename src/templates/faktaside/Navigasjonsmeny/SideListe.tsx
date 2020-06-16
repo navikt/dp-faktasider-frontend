@@ -10,13 +10,12 @@ interface Props {
   faktasideId: string;
 }
 
-const LinkWrapper = styled.li`
-  border-bottom: #8888 solid 0.05rem;
-`;
+const LinkWrapper = styled.li``;
 
 const StyledLink = styled(Link)`
   display: block;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   padding: 0.5rem 1rem;
   text-decoration: none;
   &:hover {

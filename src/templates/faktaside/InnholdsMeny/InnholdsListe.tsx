@@ -11,13 +11,12 @@ interface Props {
 }
 
 const StyledOl = styled.ol`
-  margin: 0 2rem 2rem;
-  li {
-    margin: 0.5rem 0;
-  }
+  margin: 0 2rem 1rem;
 `;
 
 const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
+  display: block;
+  padding: 0.25rem 0;
   ${(props) =>
     props.erValgt &&
     css`
