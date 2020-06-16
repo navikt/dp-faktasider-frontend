@@ -6,7 +6,7 @@ import SideListe from './SideListe';
 import MobilmenyWrapper from '../InnholdsMeny/MobilmenyWrapper';
 import { theme } from '../../../styles/theme';
 
-const DesktopLayout = styled.div<{ offsetTop: number }>`
+const DesktopNav = styled.nav<{ offsetTop: number }>`
   @media (${theme.media.smallScreen}) {
     display: none;
   }
@@ -19,7 +19,7 @@ const DesktopLayout = styled.div<{ offsetTop: number }>`
   max-width: 15rem;
 `;
 
-const MobileMenuHider = styled.div`
+const MobileNav = styled.nav`
   @media not all and (${theme.media.smallScreen}) {
     display: none;
   }
@@ -31,10 +31,10 @@ function Navigasjonsmeny(props: React.ComponentProps<typeof SideListe>) {
 
   return (
     <>
-      <DesktopLayout offsetTop={offsetTop}>{meny}</DesktopLayout>
-      <MobileMenuHider>
+      <DesktopNav offsetTop={offsetTop}>{meny}</DesktopNav>
+      <MobileNav>
         <MobilmenyWrapper offsetTop={offsetTop}>{meny}</MobilmenyWrapper>
-      </MobileMenuHider>
+      </MobileNav>
     </>
   );
 }
