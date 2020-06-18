@@ -15,8 +15,7 @@ const DesktopNav = styled.nav<{ offsetTop: number }>`
   max-height: calc(100vh - ${(props) => props.offsetTop}px);
   overflow-y: auto;
   transition: top 0.2s, max-height 0.2s;
-  background-color: white;
-  max-width: 15rem;
+  max-width: 16rem;
 `;
 
 const MobileNav = styled.nav`

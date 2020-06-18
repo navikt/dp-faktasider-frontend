@@ -53,7 +53,6 @@ const MenyWrapper = styled.div<{ visMeny: boolean; offsetTop: number }>`
   max-width: 25rem;
   overflow-y: auto;
 
-  padding: 1rem 0;
   border-radius: 0.5rem;
   ${(props) =>
     !props.visMeny &&

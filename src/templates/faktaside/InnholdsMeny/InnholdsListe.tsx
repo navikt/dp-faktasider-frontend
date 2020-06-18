@@ -10,10 +10,6 @@ interface Props {
   menuItems: string[];
 }
 
-const StyledOl = styled.ol`
-  margin: 0 2rem 1rem;
-`;
-
 const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
   display: block;
   padding: 0.25rem 0;
@@ -60,11 +56,11 @@ function InnholdsListe(props: Props) {
   const currentlyViewedItem = useCurrentlyViewedMenuItem(props.menuItems);
 
   return (
-    <StyledOl>
+    <ol>
       {props.menuItems.map((item) => (
         <MenuItem key={item} item={item} current={currentlyViewedItem === item} />
       ))}
-    </StyledOl>
+    </ol>
   );
 }
 
