@@ -57,7 +57,6 @@ function groupParser(blocks: PreParsedSanityBlock[]): Block[] {
             ...block,
             title: getGroupTitle(block),
             _type: 'group',
-            groupType: style,
             children: [],
             erUtkast: block.children?.some((child) => child.marks?.includes('utkast')),
             visForConfig: block.markDefs?.find((markDef) => markDef._type === 'visForAnnotation')?.visFor,

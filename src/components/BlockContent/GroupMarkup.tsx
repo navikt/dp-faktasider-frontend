@@ -12,7 +12,7 @@ interface Props {
 }
 
 function getContent(group: Group) {
-  switch (group.groupType) {
+  switch (group.style) {
     case 'h2':
       return <H2GroupMarkup {...group} />;
     case 'h3':
@@ -20,7 +20,7 @@ function getContent(group: Group) {
     case 'h4':
       return <H4GroupMarkup {...group} />;
     default:
-      throw Error(`Ukjent gruppe: ${group.groupType}`);
+      throw Error(`Ukjent gruppe: ${group.style}`);
   }
 }
 

@@ -31,7 +31,6 @@ export type Group = PreParsedSanityBlock & {
   title: string;
   children: PreParsedSanityBlock[];
   _type: 'group';
-  groupType: GroupTypes;
   erUtkast?: boolean;
   visForConfig?: VisForConfig;
 };
@@ -43,9 +42,9 @@ export function isGroup(block: Block): block is Group {
 }
 
 export function isH2Group(block: Block): block is Group {
-  return isGroup(block) && block.groupType === 'h2';
+  return isGroup(block) && block.style === 'h2';
 }
 
 export function isH3Group(block: Block): block is Group {
-  return isGroup(block) && block.groupType === 'h3';
+  return isGroup(block) && block.style === 'h3';
 }
