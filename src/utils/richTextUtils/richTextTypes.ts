@@ -6,6 +6,12 @@ export type SanityBlock = {
   style?: string;
   text?: string;
   marks?: string[];
+  markDefs?: MarkDef[];
+};
+
+type MarkDef = {
+  _type: string;
+  visFor?: VisForConfig;
 };
 
 type PreparseConfig = {
@@ -19,12 +25,15 @@ export type PreParsedSanityBlock = SanityBlock & {
 
 export type GroupTypes = 'h2' | 'h3' | 'h4';
 
+type VisForConfig = { [key: string]: boolean | string };
+
 export type Group = PreParsedSanityBlock & {
   title: string;
   children: PreParsedSanityBlock[];
   _type: 'group';
   groupType: GroupTypes;
   erUtkast?: boolean;
+  visForConfig?: VisForConfig;
 };
 
 export type Block = SanityBlock | Group | PreParsedSanityBlock;
