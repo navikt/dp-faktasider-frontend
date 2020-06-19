@@ -1,16 +1,12 @@
 import * as React from 'react';
 import BlockContent from './BlockContent';
 import styled, { css } from 'styled-components';
-import { H2Group, isH3Group } from '../../utils/richTextUtils/richTextTypes';
+import { Group, isH3Group } from '../../utils/richTextUtils/richTextTypes';
 import { theme } from '../../styles/theme';
 import { Systemtittel } from 'nav-frontend-typografi';
 import { idFromString } from '../../utils/routingUtils';
 import H2GroupMenu from './H2GroupMenu';
-import Utkast from './Utkast';
-
-interface Props {
-  node: H2Group;
-}
+import withErrorBoundary from '../withErrorBoundary';
 
 const StyledArticle = styled.article<{ background: boolean }>`
   ${(props) =>
@@ -32,25 +28,21 @@ const StyledSystemtittel = styled(Systemtittel)`
   text-align: center;
 `;
 
-function H2GroupMarkup(props: Props) {
-  const id = idFromString(props.node.tittel);
-  const titler = props.node.children.filter(isH3Group).map((h3Group) => h3Group.tittel);
+function H2GroupMarkup(props: Group) {
+  const id = idFromString(props.title);
+  const underTitler = props.children.filter(isH3Group).map((h3Group) => h3Group.title);
 
   const content = (
-    <StyledArticle background={!props.node.noBackground} aria-labeledby={id}>
+    <StyledArticle background={!props.preparseConfig?.noBackground} aria-labelledby={id}>
       <StyledSystemtittel tag="h2" id={id} tabIndex={-1}>
-        {props.node.tittel}
+        {props.title}
       </StyledSystemtittel>
-      {props.node.meny && <H2GroupMenu menuItems={titler} />}
-      <BlockContent blocks={props.node.children} />
+      {props.preparseConfig?.meny && <H2GroupMenu menuItems={underTitler} />}
+      <BlockContent blocks={props.children} />
     </StyledArticle>
   );
-
-  if (props.node.erUtkast) {
-    return <Utkast>{content}</Utkast>;
-  }
 
   return content;
 }
 
-export default H2GroupMarkup;
+export default withErrorBoundary(H2GroupMarkup, 'H2GroupMarkup');

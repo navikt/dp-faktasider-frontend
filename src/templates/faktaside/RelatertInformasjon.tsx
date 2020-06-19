@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Block, H2Group } from '../../utils/richTextUtils/richTextTypes';
+import { Block, Group } from '../../utils/richTextUtils/richTextTypes';
 import H2GroupMarkup from '../../components/BlockContent/H2GroupMarkup';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
@@ -26,15 +26,21 @@ const Style = styled.div`
 function RelatertInformasjon(props: Props) {
   const { t } = useTranslation('global');
 
-  const h2Group: H2Group = {
-    tittel: t('relatertInformasjon'),
-    children: props.blocks || [],
-    _type: 'H2Group',
+  const blocks = props.blocks;
+  if (!blocks) {
+    return null;
+  }
+
+  const h2Group: Group = {
+    title: t('relatertInformasjon'),
+    children: blocks,
+    _type: 'group',
+    groupType: 'h2',
   };
 
   return (
     <Style>
-      <H2GroupMarkup node={h2Group} />
+      <H2GroupMarkup {...h2Group} />
     </Style>
   );
 }

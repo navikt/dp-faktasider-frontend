@@ -6,7 +6,7 @@ import GraphQLErrorList from '../../components/GraphqlErrorList';
 import parseRichText from '../../utils/richTextUtils/parseRichText';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
-import { getBolkTitler } from '../../utils/richTextUtils/getBolkTitler';
+import { useBolkTitler } from '../../utils/richTextUtils/useBolkTitler';
 import localizeSanityContent from '../../i18n/localizeSanityContent';
 import { SupportedLanguage } from '../../i18n/supportedLanguages';
 import SEO from '../../components/SEO';
@@ -70,16 +70,14 @@ export interface FaktaSideProps extends PageProps<FaktaSideData, PageContext> {
 
 function FaktaSide(props: FaktaSideProps) {
   const lang = props.pageContext.lang;
+  const data = localizeSanityContent(props.data, lang) as TranslatedFaktaSideData;
+  const parsedRichText = parseRichText(data.side._rawInnhold);
+  const bolkTitler = useBolkTitler(parsedRichText, data.side._rawRelatertInformasjon);
   const erPublisert = props.data.side._rawVisSprakversjon?.[lang];
 
   if (!erPublisert) {
     return <IkkeOversatt {...props} />;
   }
-
-  const data = localizeSanityContent(props.data, lang) as TranslatedFaktaSideData;
-
-  const parsedRichText = parseRichText(data.side._rawInnhold);
-  const bolkTitler = getBolkTitler(parsedRichText, data.side._rawRelatertInformasjon);
 
   const tittel = data.side._rawTitle || '';
   const description = data.side._rawIngress || '';

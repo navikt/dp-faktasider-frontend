@@ -32,7 +32,7 @@ function SideListe(props: Props) {
   return (
     <StyledOl>
       {otherPages.map((page) => (
-        <li>
+        <li key={page.id}>
           <StyledLink activeStyle={{ color: 'black' }} className="lenke" to={page.path}>
             {page.tittel} {!page.tilgjengeligPåValgtSpråk ? `(${page.språk})` : ''}
           </StyledLink>

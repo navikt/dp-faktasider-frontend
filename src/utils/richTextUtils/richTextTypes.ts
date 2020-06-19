@@ -8,27 +8,35 @@ export type SanityBlock = {
   marks?: string[];
 };
 
-export type H2Group = SanityBlock & {
-  tittel: string;
-  noBackground?: boolean;
+type PreparseConfig = {
   meny?: boolean;
-  children: SanityBlock[];
-  _type: 'H2Group';
+  noBackground?: boolean;
+};
+
+export type PreParsedSanityBlock = SanityBlock & {
+  preparseConfig?: PreparseConfig;
+};
+
+export type GroupTypes = 'h2' | 'h3' | 'h4';
+
+export type Group = PreParsedSanityBlock & {
+  title: string;
+  children: PreParsedSanityBlock[];
+  _type: 'group';
+  groupType: GroupTypes;
   erUtkast?: boolean;
 };
 
-export type H3Group = SanityBlock & {
-  tittel: string;
-  children: SanityBlock[];
-  _type: 'H3Group';
-};
+export type Block = SanityBlock | Group | PreParsedSanityBlock;
 
-export type Block = SanityBlock | H2Group | H3Group;
-
-export function isH2Group(bolk: Block): bolk is H2Group {
-  return bolk._type === 'H2Group';
+export function isGroup(block: Block): block is Group {
+  return block._type === 'group';
 }
 
-export function isH3Group(bolk: Block): bolk is H3Group {
-  return bolk._type === 'H3Group';
+export function isH2Group(block: Block): block is Group {
+  return isGroup(block) && block.groupType === 'h2';
+}
+
+export function isH3Group(block: Block): block is Group {
+  return isGroup(block) && block.groupType === 'h3';
 }

@@ -33,8 +33,4 @@ export const MainContentStyle = styled.main`
   p {
     margin: 0.5rem 0 1rem;
   }
-  h4 {
-    text-align: center;
-    margin: 3rem 0 0.7rem;
-  }
 `;
