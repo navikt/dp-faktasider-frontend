@@ -13,7 +13,7 @@ function parseRichText(blocks?: SanityBlock[]): ParsedRichText {
 }
 
 function preParser(blocks: SanityBlock[]): PreParsedSanityBlock[] {
-  const flattenedH2Versions: PreParsedSanityBlock[] = blocks.flatMap(
+  const flattenedH2Versions: PreParsedSanityBlock[] = blocks.map(
     (block): PreParsedSanityBlock => {
       switch (block.style) {
         case 'h2-no-background':
@@ -42,13 +42,14 @@ function preParser(blocks: SanityBlock[]): PreParsedSanityBlock[] {
 }
 
 function groupParser(blocks: PreParsedSanityBlock[]): Block[] {
-  return groupByStyles.reduce((acc, style) => {
+  return groupByStyles.reduce((acc, groupDivider) => {
+    const higherLevelGroupDividers = groupByStyles.slice(groupByStyles.indexOf(groupDivider) + 1);
     let parsedBlocks: Block[] = [];
     let currentGroup: Group | undefined = undefined;
 
     acc.forEach((block) => {
-      const startOfNewGroup = block.style === style;
-      const startOfHigherLevelGroup = block._type !== 'group' && groupByStyles.includes(block.style as GroupTypes);
+      const startOfNewGroup = block.style === groupDivider;
+      const startOfHigherLevelGroup = higherLevelGroupDividers.includes(block.style as GroupTypes);
       const endOfCurrentGroup = startOfHigherLevelGroup || startOfNewGroup;
 
       if (endOfCurrentGroup) {
