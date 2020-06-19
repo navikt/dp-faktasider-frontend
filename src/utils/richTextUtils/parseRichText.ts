@@ -60,6 +60,7 @@ function groupParser(blocks: PreParsedSanityBlock[]): Block[] {
             groupType: style,
             children: [],
             erUtkast: block.children?.some((child) => child.marks?.includes('utkast')),
+            visForConfig: block.markDefs?.find((markDef) => markDef._type === 'visForAnnotation')?.visFor,
           };
           parsedBlocks.push(currentGroup);
         } else {

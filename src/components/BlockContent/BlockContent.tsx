@@ -9,7 +9,6 @@ import Video from './VideoMarkup';
 import { ParsedRichText } from '../../utils/richTextUtils/parseRichText';
 import FremhevetTekst from './FremhevetTekst';
 import { UtkastInline } from './Utkast';
-import VisForBlokk from './VisFor/VisForBlokk';
 import VisForAnnotation from './VisFor/VisForAnnotation';
 import GroupMarkup from './GroupMarkup';
 
@@ -33,7 +32,6 @@ const serializers: Serializers = {
     GtilNOK: (props) => GtoNOK(props.node.G),
     video: Video,
     fremhevetTekst: FremhevetTekst,
-    visForBlokk: VisForBlokk,
   },
   marks: {
     link: LinkMarkup,

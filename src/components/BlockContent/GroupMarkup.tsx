@@ -4,6 +4,8 @@ import Utkast from './Utkast';
 import H2GroupMarkup from './H2GroupMarkup';
 import H3GroupMarkup from './H3GroupMarkup';
 import H4GroupMarkup from './H4GroupMarkup';
+import VisFor from './VisFor/VisFor';
+import { ConditionalWrapper } from '../ConditionalWrapper';
 
 interface Props {
   node: Group;
@@ -23,11 +25,16 @@ function getContent(group: Group) {
 }
 
 function GroupMarkup(props: Props) {
-  if (props.node?.erUtkast) {
-    return <Utkast>{getContent(props.node)}</Utkast>;
-  }
-
-  return getContent(props.node);
+  return (
+    <ConditionalWrapper
+      condition={!!props.node.visForConfig}
+      wrapper={(children) => <VisFor visFor={props.node.visForConfig}>{children}</VisFor>}
+    >
+      <ConditionalWrapper condition={!!props.node.erUtkast} wrapper={(children) => <Utkast>{children}</Utkast>}>
+        {getContent(props.node)}
+      </ConditionalWrapper>
+    </ConditionalWrapper>
+  );
 }
 
 export default GroupMarkup;
