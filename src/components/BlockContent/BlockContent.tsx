@@ -28,7 +28,7 @@ type Serializers = {
 
 const serializers: Serializers = {
   types: {
-    localeRichText: (props) => <BlockContent blocks={props.node} />,
+    localeRichText: (props) => <BlockContent blocks={props.node} />, // TODO trengs denne..?
     group: GroupMarkup,
     customComponent: CustomComponent,
     GtilNOK: (props) => GtoNOK(props.node.G),
