@@ -7,8 +7,8 @@ export function useDekoratorPopdownOffset() {
 
   useMount(() => {
     const getOffset = (id: string) => {
-      const menuRectDesk = document.getElementById(id)?.getBoundingClientRect();
-      return menuRectDesk ? menuRectDesk.height + menuRectDesk.top : 0;
+      const menuRect = document.getElementById(id)?.getBoundingClientRect();
+      return menuRect ? menuRect.height + menuRect.top : 0;
     };
 
     const handleScroll = () => {

@@ -1,79 +1,83 @@
-import { H3Group, Block, H2Group, SanityBlock } from './richTextTypes';
+import { Block, Group, GroupTypes, PreParsedSanityBlock, SanityBlock } from './richTextTypes';
 
 export type ParsedRichText = Block[];
+const groupByStyles: GroupTypes[] = ['h4', 'h3', 'h2']; // Rekkefølgen her er viktig. Den første gruppen vil aldri få andre grupper inni seg.
 
-/*
- Konseptuell forklaring av parser:
-
- Fra:
- Hei h2,
- på h3,
- deg,
- og h3,
- meg,
- Du h2,
- er,
- grei
-
- Til:
- Hei
-   på
-     deg
-   og
-     meg
- Du
-   er
-   grei
-
-*/
-
-export function parseBlocksToRichText(blocks: SanityBlock[] = []): ParsedRichText {
-  let newBlocks: Block[] = [];
-  let currentH2Group: H2Group | undefined;
-  let currentH3Group: H3Group | undefined;
-
-  blocks.forEach((block) => {
-    const style = block.style;
-    if (style && ['h2', 'h2-no-background', 'h2-m-meny'].includes(style)) {
-      currentH2Group = {
-        _type: 'H2Group',
-        children: [],
-        tittel: block.children?.[0].text || 'Mangler tittel',
-        noBackground: style === 'h2-no-background',
-        meny: style === 'h2-m-meny',
-        erUtkast: block.children?.some((child) => child.marks?.includes('utkast')),
-      };
-      currentH3Group = undefined;
-      newBlocks.push(currentH2Group);
-    } else if (style === 'h3') {
-      currentH3Group = {
-        _type: 'H3Group',
-        children: [],
-        tittel: block.children?.[0].text || 'Mangler tittel',
-      };
-      if (currentH2Group) {
-        currentH2Group.children.push(currentH3Group);
-      } else {
-        newBlocks.push(currentH3Group);
-      }
-    } else if (currentH3Group) {
-      currentH3Group.children.push(block);
-    } else if (currentH2Group) {
-      currentH2Group.children.push(block);
-    } else {
-      newBlocks.push(block);
-    }
-  });
-
-  return newBlocks;
-}
-
-function parseRichText(blocks?: SanityBlock[]): ParsedRichText | undefined {
+function parseRichText(blocks?: SanityBlock[]): ParsedRichText {
   if (!blocks) {
-    return undefined;
+    return [];
   }
 
-  return parseBlocksToRichText(blocks);
+  const preparsed = preParser(blocks);
+  return groupParser(preparsed);
+}
+
+function preParser(blocks: SanityBlock[]): PreParsedSanityBlock[] {
+  const flattenedH2Versions: PreParsedSanityBlock[] = blocks.map(
+    (block): PreParsedSanityBlock => {
+      switch (block.style) {
+        case 'h2-no-background':
+          return {
+            ...block,
+            style: 'h2',
+            preparseConfig: {
+              noBackground: true,
+            },
+          };
+        case 'h2-m-meny':
+          return {
+            ...block,
+            style: 'h2',
+            preparseConfig: {
+              meny: true,
+            },
+          };
+        default:
+          return block;
+      }
+    }
+  );
+
+  return flattenedH2Versions;
+}
+
+function groupParser(blocks: PreParsedSanityBlock[]): Block[] {
+  return groupByStyles.reduce((acc, groupDivider) => {
+    const higherLevelGroupDividers = groupByStyles.slice(groupByStyles.indexOf(groupDivider) + 1);
+    let parsedBlocks: Block[] = [];
+    let currentGroup: Group | undefined = undefined;
+
+    acc.forEach((block) => {
+      const startOfNewGroup = block.style === groupDivider;
+      const startOfHigherLevelGroup = higherLevelGroupDividers.includes(block.style as GroupTypes);
+      const endOfCurrentGroup = startOfHigherLevelGroup || startOfNewGroup;
+
+      if (endOfCurrentGroup) {
+        if (startOfNewGroup) {
+          currentGroup = {
+            ...block,
+            title: getGroupTitle(block),
+            _type: 'group',
+            children: [],
+            erUtkast: block.children?.some((child) => child.marks?.includes('utkast')),
+            visForConfig: block.markDefs?.find((markDef) => markDef._type === 'visForAnnotation')?.visFor,
+          };
+          parsedBlocks.push(currentGroup);
+        } else {
+          currentGroup = undefined;
+          parsedBlocks.push(block);
+        }
+      } else {
+        currentGroup ? currentGroup.children.push(block) : parsedBlocks.push(block);
+      }
+    });
+
+    return parsedBlocks;
+  }, blocks);
+}
+
+function getGroupTitle(block: PreParsedSanityBlock): string {
+  return block.children?.map((it) => it.text).join('') || 'Mangler tittel';
 }
 
 export default parseRichText;

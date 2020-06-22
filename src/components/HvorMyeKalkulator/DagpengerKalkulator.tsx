@@ -22,9 +22,6 @@ function Resultat(props: { grunnlag?: number }) {
       <>
         <Normaltekst>
           {t('forLavtGrunnlag', { G: `0.75 G (${GtoNOK(0.75)} kroner)` })}{' '}
-          <Lenke href="https://www.nav.no/no/person/arbeid/dagpenger-ved-arbeidsloshet-og-permittering/dagpenger-nar-du-er-arbeidsledig/krav-til-minsteinntekt">
-            {t('lesMerOmMinsteinntekt')}
-          </Lenke>
         </Normaltekst>
         <AlertStripeInfo>{t('sendSøknadLikvel')}</AlertStripeInfo>
       </>

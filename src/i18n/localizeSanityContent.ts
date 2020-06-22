@@ -1,10 +1,10 @@
 import { SupportedLanguage } from './supportedLanguages';
 
-export const defaultLang = 'no';
+export const fallbackLang = ['no', 'en'];
 
 // Kopiert fra https://www.sanity.io/docs/localization
 function localizeSanityContent(value: any, language: SupportedLanguage) {
-  const languages = [language, defaultLang];
+  const languages = [language, ...fallbackLang];
 
   if (Array.isArray(value)) {
     return value.map((v) => localizeSanityContent(v, language));

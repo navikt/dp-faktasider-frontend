@@ -1,81 +1,73 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
-import GraphQLErrorList from '../components/GraphqlErrorList';
-import localizeSanityContent from '../i18n/localizeSanityContent';
 import Header from '../templates/felles/Header';
-
-export const query = graphql`
-  query AllFaktasider {
-    sider: allSanityFaktaSide {
-      edges {
-        node {
-          _rawIngress
-          _rawTitle
-          slug {
-            current
-          }
-        }
-      }
-    }
-  }
-`;
-
-interface Side {
-  _rawIngress?: string;
-  _rawTitle?: string;
-  slug?: {
-    current: string;
-  };
-}
-
-const Style = styled.div`
-  padding: 2rem;
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(2, minmax(15rem, 20rem));
-  justify-content: center;
-`;
+import useFaktasiderSumary from '../utils/useFaktasiderSumary';
+import localizeSanityContent from '../i18n/localizeSanityContent';
+import { useLocale } from '../i18n/LocaleContext';
+import { useTranslation } from 'react-i18next';
 
 const StyledElement = styled.div`
   background-color: white;
-  padding: 1rem;
+  padding: 1.2rem 1.2rem 2rem;
   border-radius: 0.5rem;
+`;
+
+const Style = styled.div`
+  max-width: 50rem;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem 0;
+  ${StyledElement} {
+    flex: 15rem 1;
+    margin: 0.5rem;
+  }
 `;
 
 const StyledLink = styled(Link)`
   display: flex;
   justify-content: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   font-size: 1.2rem;
 `;
 
-const IndexPage = (props: any) => {
-  const lang = 'no';
-  const sider = localizeSanityContent(
-    props.data.sider.edges.map((edge) => edge.node),
-    lang
-  ) as Side[];
+const KunTilgjengeligStyle = styled.p`
+  text-align: center;
+  opacity: 0.7;
+  margin: 1rem 0 !important;
+`;
 
-  if (props.errors) {
-    return <GraphQLErrorList errors={props.errors} />;
-  }
+const IndexPage = () => {
+  const oppsett = useStaticQuery(
+    graphql`
+      query Oppsett {
+        oppsett: sanityOppsett {
+          title: _rawTitle
+        }
+      }
+    `
+  );
+  const sider = useFaktasiderSumary();
+  const lang = useLocale();
+  const { t } = useTranslation('global');
 
   return (
     <>
-      <Header heading="Velg din situasjon" ingress="" />
+      <Header heading={localizeSanityContent(oppsett.oppsett.title, lang)} ingress="" />
       <Style>
-        {sider.map((side) => {
-          if (!side.slug || !side._rawTitle) {
-            return null;
-          }
-          return (
-            <StyledElement>
-              <StyledLink to={`/${lang}/${side.slug.current}`}>{side._rawTitle}</StyledLink>
-              <p>{side._rawIngress}</p>
-            </StyledElement>
-          );
-        })}
+        {sider.map((side) => (
+          <StyledElement>
+            <StyledLink to={side.path}>{side.tittel}</StyledLink>
+            {!side.tilgjengeligPåValgtSpråk && (
+              <KunTilgjengeligStyle>
+                ({t('kunTilgjengeligPå')} {t(side.språk)})
+              </KunTilgjengeligStyle>
+            )}
+            <p>{side.ingress}</p>
+          </StyledElement>
+        ))}
       </Style>
     </>
   );

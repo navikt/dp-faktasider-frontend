@@ -1,7 +1,7 @@
 import * as React from 'react';
 import BlockContent from './BlockContent';
 import styled from 'styled-components';
-import { Ingress } from 'nav-frontend-typografi';
+import { Element } from 'nav-frontend-typografi';
 import { idFromString } from '../../utils/routingUtils';
 import { Group } from '../../utils/richTextUtils/richTextTypes';
 
@@ -9,22 +9,22 @@ const StyledSection = styled.section`
   margin: 3rem 0 2rem;
 `;
 
-const StyledIngress = styled(Ingress)`
-  margin-bottom: 1rem;
-  font-weight: 600 !important;
+const StyledElement = styled(Element)`
+  text-align: center;
+  margin: 3rem 0 0.7rem;
 `;
 
-function H3GroupMarkup(props: Group) {
+function H4GroupMarkup(props: Group) {
   const id = idFromString(props.title);
 
   return (
     <StyledSection aria-labelledby={id}>
-      <StyledIngress tag="h3" id={id} tabIndex={-1}>
+      <StyledElement tag="h4" id={id} tabIndex={-1}>
         {props.title}
-      </StyledIngress>
+      </StyledElement>
       <BlockContent blocks={props.children} />
     </StyledSection>
   );
 }
 
-export default H3GroupMarkup;
+export default H4GroupMarkup;

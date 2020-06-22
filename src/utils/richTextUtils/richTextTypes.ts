@@ -6,29 +6,45 @@ export type SanityBlock = {
   style?: string;
   text?: string;
   marks?: string[];
+  markDefs?: MarkDef[];
 };
 
-export type H2Group = SanityBlock & {
-  tittel: string;
-  noBackground?: boolean;
+type MarkDef = {
+  _type: string;
+  visFor?: VisForConfig;
+};
+
+type PreparseConfig = {
   meny?: boolean;
-  children: SanityBlock[];
-  _type: 'H2Group';
+  noBackground?: boolean;
+};
+
+export type PreParsedSanityBlock = SanityBlock & {
+  preparseConfig?: PreparseConfig;
+};
+
+export type GroupTypes = 'h2' | 'h3' | 'h4';
+
+type VisForConfig = { [key: string]: boolean | string };
+
+export type Group = PreParsedSanityBlock & {
+  title: string;
+  children: PreParsedSanityBlock[];
+  _type: 'group';
   erUtkast?: boolean;
+  visForConfig?: VisForConfig;
 };
 
-export type H3Group = SanityBlock & {
-  tittel: string;
-  children: SanityBlock[];
-  _type: 'H3Group';
-};
+export type Block = SanityBlock | Group | PreParsedSanityBlock;
 
-export type Block = SanityBlock | H2Group | H3Group;
-
-export function isH2Group(bolk: Block): bolk is H2Group {
-  return bolk._type === 'H2Group';
+export function isGroup(block: Block): block is Group {
+  return block._type === 'group';
 }
 
-export function isH3Group(bolk: Block): bolk is H3Group {
-  return bolk._type === 'H3Group';
+export function isH2Group(block: Block): block is Group {
+  return isGroup(block) && block.style === 'h2';
+}
+
+export function isH3Group(block: Block): block is Group {
+  return isGroup(block) && block.style === 'h3';
 }
