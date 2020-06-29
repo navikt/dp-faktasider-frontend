@@ -3,20 +3,22 @@ import InnholdsListe from './InnholdsListe';
 import Filtrering from './Filtrering';
 import ErrorBoundary from '../../../components/ErrorBoundary';
 import styled from 'styled-components';
+import { useInnholdsListe } from '../../../utils/richTextUtils/useInnholdsListe';
 
 const Style = styled.div`
   margin: 0.5rem 1rem 1rem 2.5rem;
 `;
 
-function InnholdsMeny(props: React.ComponentProps<typeof InnholdsListe>) {
-  if (!props.menuItems.length) {
+function InnholdsMeny() {
+  const innholdsListe = useInnholdsListe();
+  if (!innholdsListe.length) {
     return null;
   }
 
   return (
     <ErrorBoundary boundaryName="Innholdsmeny">
       <Style>
-        <InnholdsListe {...props} />
+        <InnholdsListe />
         <Filtrering />
       </Style>
     </ErrorBoundary>

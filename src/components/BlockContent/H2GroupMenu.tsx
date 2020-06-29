@@ -1,11 +1,11 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import useSmoothscrollOnClick from '../../hooks/useSmoothscrollOnClick';
-import { idFromString } from '../../utils/routingUtils';
 import { LenkeUtenUnderstrek } from '../../utils/common-styled-components';
+import { Group } from '../../utils/richTextUtils/richTextTypes';
 
 interface Props {
-  menuItems: string[];
+  underGrupper: Group[];
 }
 
 const StyledLi = styled.li`
@@ -24,10 +24,10 @@ function H2GroupMenu(props: Props) {
     <nav className="typo-normal">
       <SmoothScroll />
       <StyledUl>
-        {props.menuItems.map((menuItem) => (
-          <StyledLi key={menuItem}>
-            <LenkeUtenUnderstrek onClick={activateSmoothScroll} href={'#' + idFromString(menuItem)}>
-              {menuItem}
+        {props.underGrupper.map((underGruppe) => (
+          <StyledLi key={underGruppe.config?.id}>
+            <LenkeUtenUnderstrek onClick={activateSmoothScroll} href={'#' + underGruppe.config?.id}>
+              {underGruppe.title}
             </LenkeUtenUnderstrek>
           </StyledLi>
         ))}

@@ -35,6 +35,10 @@ function RelatertInformasjon(props: Props) {
     title: t('relatertInformasjon'),
     children: blocks,
     _type: 'group',
+    style: 'h2',
+    config: {
+      id: t('relatertInformasjon'),
+    },
   };
 
   return (

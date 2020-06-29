@@ -1,14 +1,11 @@
+import * as React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { pxFromTop } from '../../../utils/domUtils';
-import { idFromString } from '../../../utils/routingUtils';
 import styled, { css } from 'styled-components';
 import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
 import useSmoothscrollOnClick from '../../../hooks/useSmoothscrollOnClick';
-import * as React from 'react';
-
-interface Props {
-  menuItems: string[];
-}
+import { useInnholdsListe } from '../../../utils/richTextUtils/useInnholdsListe';
+import { Group } from '../../../utils/richTextUtils/richTextTypes';
 
 const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
   display: block;
@@ -20,12 +17,12 @@ const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
     `};
 `;
 
-function useCurrentlyViewedMenuItem(items: string[]): string | undefined {
-  const [current, setCurrent] = useState<string | undefined>();
+function useCurrentlyViewedGroup(items: Group[]): Group | undefined {
+  const [current, setCurrent] = useState<Group | undefined>();
 
   const updateCurrentlyViewedMenuItem = useCallback(() => {
     const current = items
-      .map((it) => ({ item: it, fromTop: pxFromTop(idFromString(it)) }))
+      .map((it) => ({ item: it, fromTop: pxFromTop(it.config?.id || 'N/A') }))
       .filter((it) => it.fromTop < window.innerHeight / 3)
       .pop()?.item;
     setCurrent(current);
@@ -39,26 +36,27 @@ function useCurrentlyViewedMenuItem(items: string[]): string | undefined {
   return current || items[0];
 }
 
-function MenuItem(props: { item: string; current: boolean }) {
+function MenuItem(props: { item: Group; current: boolean }) {
   const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
 
   return (
-    <li key={props.item} onClick={activateSmoothScroll}>
+    <li key={props.item.config?.id} onClick={activateSmoothScroll}>
       <SmoothScroll />
-      <StyledLenke erValgt={props.current} href={`#${idFromString(props.item)}`}>
-        {props.item}
+      <StyledLenke erValgt={props.current} href={`#${props.item.config?.id}`}>
+        {props.item.title}
       </StyledLenke>
     </li>
   );
 }
 
-function InnholdsListe(props: Props) {
-  const currentlyViewedItem = useCurrentlyViewedMenuItem(props.menuItems);
+function InnholdsListe() {
+  const innholdsListe = useInnholdsListe();
+  const currentlyViewedItem = useCurrentlyViewedGroup(innholdsListe);
 
   return (
     <ol>
-      {props.menuItems.map((item) => (
-        <MenuItem key={item} item={item} current={currentlyViewedItem === item} />
+      {innholdsListe.map((item) => (
+        <MenuItem key={item.config?.id} item={item} current={currentlyViewedItem === item} />
       ))}
     </ol>
   );

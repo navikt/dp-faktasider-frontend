@@ -2,7 +2,6 @@ import * as React from 'react';
 import BlockContent from './BlockContent';
 import styled from 'styled-components';
 import { Element } from 'nav-frontend-typografi';
-import { idFromString } from '../../utils/routingUtils';
 import { Group } from '../../utils/richTextUtils/richTextTypes';
 
 const StyledSection = styled.section`
@@ -15,7 +14,7 @@ const StyledElement = styled(Element)`
 `;
 
 function H4GroupMarkup(props: Group) {
-  const id = idFromString(props.title);
+  const id = props.config?.id;
 
   return (
     <StyledSection aria-labelledby={id}>

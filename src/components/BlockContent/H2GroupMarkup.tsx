@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 import { Group, isH3Group } from '../../utils/richTextUtils/richTextTypes';
 import { theme } from '../../styles/theme';
 import { Systemtittel } from 'nav-frontend-typografi';
-import { idFromString } from '../../utils/routingUtils';
 import H2GroupMenu from './H2GroupMenu';
 import withErrorBoundary from '../withErrorBoundary';
 
@@ -29,15 +28,15 @@ const StyledSystemtittel = styled(Systemtittel)`
 `;
 
 function H2GroupMarkup(props: Group) {
-  const id = idFromString(props.title);
-  const underTitler = props.children.filter(isH3Group).map((h3Group) => h3Group.title);
+  const id = props.config?.id;
+  const underGrupper = props.children.filter(isH3Group);
 
   const content = (
     <StyledArticle background={!props.config?.noBackground} aria-labelledby={id}>
       <StyledSystemtittel tag="h2" id={id} tabIndex={-1}>
         {props.title}
       </StyledSystemtittel>
-      {props.config?.meny && <H2GroupMenu menuItems={underTitler} />}
+      {props.config?.meny && <H2GroupMenu underGrupper={underGrupper} />}
       <BlockContent blocks={props.children} />
     </StyledArticle>
   );

@@ -18,9 +18,10 @@ export const groupParser: RichTextParser = (blocks) => {
 
       if (endOfCurrentGroup) {
         if (startOfNewGroup) {
-          const currentConfig = (block as ParsedSanityBlock)?.config || {};
+          const currentConfig = (block as ParsedSanityBlock)?.config;
           currentGroup = {
             ...block,
+            style: block.style as GroupTypes,
             title: getGroupTitle(block),
             _type: 'group',
             children: [],
@@ -44,6 +45,6 @@ export const groupParser: RichTextParser = (blocks) => {
   }, blocks);
 };
 
-function getGroupTitle(block: ParsedSanityBlock): string {
+export function getGroupTitle(block: ParsedSanityBlock): string {
   return block.children?.map((it) => it.text).join('') || 'Mangler tittel';
 }

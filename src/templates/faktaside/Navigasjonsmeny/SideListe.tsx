@@ -4,11 +4,7 @@ import styled from 'styled-components';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import useFaktasiderSumary from '../../../utils/useFaktasiderSumary';
 import InnholdsMeny from '../InnholdsMeny/InnholdsMeny';
-
-interface Props {
-  menuItems?: string[];
-  faktasideId: string;
-}
+import { useFaktasideContext } from '../FaktaSideContext';
 
 const StyledOl = styled.ol`
   background-color: white;
@@ -26,8 +22,9 @@ const StyledLink = styled(Link)`
   }
 `;
 
-function SideListe(props: Props) {
+function SideListe() {
   const otherPages = useFaktasiderSumary();
+  const faktasideContext = useFaktasideContext();
 
   return (
     <StyledOl>
@@ -36,7 +33,7 @@ function SideListe(props: Props) {
           <StyledLink activeStyle={{ color: 'black' }} className="lenke" to={page.path}>
             {page.tittel} {!page.tilgjengeligPåValgtSpråk ? `(${page.språk})` : ''}
           </StyledLink>
-          {page.id === props.faktasideId && <InnholdsMeny menuItems={props.menuItems || []} />}
+          {page.id === faktasideContext.id && <InnholdsMeny />}
         </li>
       ))}
     </StyledOl>

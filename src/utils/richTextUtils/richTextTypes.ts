@@ -19,6 +19,7 @@ type ConfigFromParser = {
   noBackground?: boolean;
   visFor?: VisForConfig;
   erUtkast?: boolean;
+  id?: string;
 };
 
 type VisForConfig = { [key: string]: boolean | string };
@@ -33,6 +34,7 @@ export type Group = ParsedSanityBlock & {
   title: string;
   children: Block[];
   _type: 'group';
+  style: GroupTypes;
 };
 
 export type Block = SanityBlock | Group | ParsedSanityBlock;
