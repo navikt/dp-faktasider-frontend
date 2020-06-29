@@ -3,7 +3,7 @@ import { graphql, PageProps } from 'gatsby';
 import BlockContent from '../../components/BlockContent/BlockContent';
 import FaktaSideLayout from './FaktaSideLayout';
 import GraphQLErrorList from '../../components/GraphqlErrorList';
-import parseRichText from '../../utils/richTextUtils/parseRichText';
+import parseRichText from '../../utils/richTextUtils/parser/parseRichText';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
 import { useBolkTitler } from '../../utils/richTextUtils/useBolkTitler';

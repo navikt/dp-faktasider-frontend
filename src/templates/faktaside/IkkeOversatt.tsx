@@ -47,7 +47,7 @@ function IkkeOversatt(props: FaktaSideProps) {
   const ingress = localizeSanityContent(props.data.side._rawIngress, props.pageContext.lang);
 
   return (
-    <FaktaSideLayout header={title} ingress={ingress}>
+    <FaktaSideLayout header={title} ingress={ingress} faktasideId="N/A">
       <Style>
         <Innholdstittel>{t('ikkeOversatt')}</Innholdstittel>
         {oversettelser.length && (

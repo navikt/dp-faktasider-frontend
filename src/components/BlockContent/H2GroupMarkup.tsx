@@ -33,11 +33,11 @@ function H2GroupMarkup(props: Group) {
   const underTitler = props.children.filter(isH3Group).map((h3Group) => h3Group.title);
 
   const content = (
-    <StyledArticle background={!props.preparseConfig?.noBackground} aria-labelledby={id}>
+    <StyledArticle background={!props.config?.noBackground} aria-labelledby={id}>
       <StyledSystemtittel tag="h2" id={id} tabIndex={-1}>
         {props.title}
       </StyledSystemtittel>
-      {props.preparseConfig?.meny && <H2GroupMenu menuItems={underTitler} />}
+      {props.config?.meny && <H2GroupMenu menuItems={underTitler} />}
       <BlockContent blocks={props.children} />
     </StyledArticle>
   );

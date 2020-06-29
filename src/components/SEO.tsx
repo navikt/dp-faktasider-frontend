@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { SupportedLanguage } from '../locales/supportedLanguages';
+import { SupportedLanguage } from '../i18n/supportedLanguages';
 
 interface Props {
   title: string;

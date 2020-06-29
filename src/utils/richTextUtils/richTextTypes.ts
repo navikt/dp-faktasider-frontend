@@ -14,28 +14,28 @@ type MarkDef = {
   visFor?: VisForConfig;
 };
 
-type PreparseConfig = {
+type ConfigFromParser = {
   meny?: boolean;
   noBackground?: boolean;
+  visFor?: VisForConfig;
+  erUtkast?: boolean;
 };
 
-export type PreParsedSanityBlock = SanityBlock & {
-  preparseConfig?: PreparseConfig;
+type VisForConfig = { [key: string]: boolean | string };
+
+export type ParsedSanityBlock = SanityBlock & {
+  config?: ConfigFromParser;
 };
 
 export type GroupTypes = 'h2' | 'h3' | 'h4';
 
-type VisForConfig = { [key: string]: boolean | string };
-
-export type Group = PreParsedSanityBlock & {
+export type Group = ParsedSanityBlock & {
   title: string;
-  children: PreParsedSanityBlock[];
+  children: Block[];
   _type: 'group';
-  erUtkast?: boolean;
-  visForConfig?: VisForConfig;
 };
 
-export type Block = SanityBlock | Group | PreParsedSanityBlock;
+export type Block = SanityBlock | Group | ParsedSanityBlock;
 
 export function isGroup(block: Block): block is Group {
   return block._type === 'group';

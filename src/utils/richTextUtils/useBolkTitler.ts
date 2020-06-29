@@ -1,4 +1,4 @@
-import { ParsedRichText } from './parseRichText';
+import { ParsedRichText } from './parser/parseRichText';
 import { Group, isH2Group, SanityBlock } from './richTextTypes';
 import { useTranslation } from 'react-i18next';
 
@@ -9,7 +9,7 @@ export function useBolkTitler(parsedRichText?: ParsedRichText, relatertInformasj
 
   if (parsedRichText) {
     bolktitler = parsedRichText
-      .filter((block) => isH2Group(block) && !block.erUtkast)
+      .filter((block) => isH2Group(block) && !block.config?.erUtkast)
       .map((block) => (block as Group).title);
   }
 

@@ -6,7 +6,7 @@ import ErrorBoundary from '../ErrorBoundary';
 import LinkMarkup from './Link';
 import SanityBlockContent from '@sanity/block-content-to-react';
 import Video from './VideoMarkup';
-import { ParsedRichText } from '../../utils/richTextUtils/parseRichText';
+import { ParsedRichText } from '../../utils/richTextUtils/parser/parseRichText';
 import FremhevetTekst from './FremhevetTekst';
 import { UtkastInline } from './Utkast';
 import VisForAnnotation from './VisFor/VisForAnnotation';
