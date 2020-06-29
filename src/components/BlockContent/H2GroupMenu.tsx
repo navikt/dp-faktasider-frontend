@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Lenke from 'nav-frontend-lenker';
 import styled from 'styled-components/macro';
 import useSmoothscrollOnClick from '../../hooks/useSmoothscrollOnClick';
 import { idFromString } from '../../utils/routingUtils';

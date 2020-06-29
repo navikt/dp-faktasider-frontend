@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { Collapse } from 'react-collapse';
 import { AlertStripeInfo } from 'nav-frontend-alertstriper';
-import Lenke from 'nav-frontend-lenker';
 import { GrunnlagInput, InputWrapper, ResultatTable, KalkulatorStyle, toKR } from './felles';
 import { H4 } from '../../utils/common-styled-components';
 import { G, GtoNOK } from '../../utils/folketrygdensGrunnbeløp';
@@ -20,9 +19,7 @@ function Resultat(props: { grunnlag?: number }) {
   if (props.grunnlag < 0.75 * G) {
     return (
       <>
-        <Normaltekst>
-          {t('forLavtGrunnlag', { G: `0.75 G (${GtoNOK(0.75)} kroner)` })}{' '}
-        </Normaltekst>
+        <Normaltekst>{t('forLavtGrunnlag', { G: `0.75 G (${GtoNOK(0.75)} kroner)` })} </Normaltekst>
         <AlertStripeInfo>{t('sendSøknadLikvel')}</AlertStripeInfo>
       </>
     );
