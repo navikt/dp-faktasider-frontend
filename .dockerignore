@@ -3,6 +3,7 @@
 !*.json
 !gatsby*.js
 !gatsby*.ts
+!gatsby-node-files
 !nginx-server-rules.conf
 !plugins
 !src
