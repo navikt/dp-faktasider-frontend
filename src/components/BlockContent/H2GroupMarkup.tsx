@@ -1,6 +1,6 @@
 import * as React from 'react';
 import BlockContent from './BlockContent';
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import { Group, isH3Group } from '../../utils/richTextUtils/richTextTypes';
 import { theme } from '../../styles/theme';
 import { Systemtittel } from 'nav-frontend-typografi';
@@ -20,24 +20,42 @@ const StyledArticle = styled.article<{ background: boolean }>`
     `};
   margin-bottom: ${theme.layoutMargin};
   max-width: 100vw;
+  position: relative;
 `;
 
 const StyledSystemtittel = styled(Systemtittel)`
-  margin-bottom: 2rem !important;
   text-align: center;
+  position: sticky !important;
+  top: 0;
+  z-index: 10;
+  &:target {
+    top: -2rem;
+  }
+`;
+
+const BackgroundColor = styled.div<{ noBackground?: boolean }>`
+  background-color: ${(props) => (props.noBackground ? theme.colors.bakgrunn : '#fffe')};
+  padding: 0.5rem;
+`;
+
+const ContentStyle = styled.div`
+  margin-top: 1.5rem;
 `;
 
 function H2GroupMarkup(props: Group) {
   const id = props.blockConfig?.id;
+  const noBackground = props.blockConfig?.noBackground;
   const underGrupper = props.children.filter(isH3Group);
 
   const content = (
-    <StyledArticle background={!props.blockConfig?.noBackground} aria-labelledby={id}>
+    <StyledArticle background={!noBackground} aria-labelledby={id}>
       <StyledSystemtittel tag="h2" id={id} tabIndex={-1}>
-        {props.title}
+        <BackgroundColor noBackground={noBackground}>{props.title}</BackgroundColor>
       </StyledSystemtittel>
       {props.blockConfig?.meny && <H2GroupMenu underGrupper={underGrupper} />}
-      <BlockContent blocks={props.children} />
+      <ContentStyle>
+        <BlockContent blocks={props.children} />
+      </ContentStyle>
     </StyledArticle>
   );
 
