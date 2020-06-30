@@ -13,9 +13,14 @@ interface Props {
 const margin = '1rem';
 
 const SmallScreenLayout = styled.div<{ apen: boolean; offsetTop: number }>`
-  position: sticky;
+  position: absolute;
+  top: 0;
+  right: 0;
+  @supports (position: sticky) {
+    position: sticky;
+    top: calc(${margin} + ${(props) => props.offsetTop}px);
+  }
   margin: ${margin};
-  top: calc(${margin} + ${(props) => props.offsetTop}px);
   transition: top 0.2s;
   z-index: 100;
   display: flex;
