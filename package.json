@@ -65,13 +65,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npm run update-decorator && gatsby build --prefix-paths",
-    "develop": "npm run update-decorator && gatsby develop",
+    "build": "npm run fetchDekorator && gatsby build --prefix-paths",
+    "develop": "npm run clean && npm run fetchDekorator && gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve --prefix-paths",
     "seHvordanDetBlirIProd": "npm run clean && npm run build && npm run serve",
     "clean": "gatsby clean",
-    "update-decorator": "node ./plugins/nav-decorator/index.js",
+    "fetchDekorator": "node ./plugins/nav-decorator/index.js",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 0",
     "typeCheck": "tsc",
     "docker": "echo '🚀 Hoster app på localhost/arbeid \n' && docker build -t dpfakta . && docker run --rm -p 80:80 dpfakta"

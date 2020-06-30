@@ -6,7 +6,6 @@ import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
 import { useTranslation } from 'react-i18next';
 import { supportedLanguages } from '../../i18n/supportedLanguages';
 import FaktaSideLayout from './FaktaSideLayout';
-import localizeSanityContent from '../../i18n/localizeSanityContent';
 
 const Style = styled.div`
   display: flex;
@@ -25,26 +24,26 @@ const StyledNormaltekst = styled(Normaltekst)`
 `;
 
 function IkkeOversatt(props: FaktaSideProps) {
-  const side = props.data.side;
+  const page = props.pageContext;
   const { t } = useTranslation('global');
 
   const oversettelser = supportedLanguages.map((lang) => {
-    const publisert = side._rawVisSprakversjon?.[lang];
+    const publisert = page.visSprakversjon?.[lang];
     if (!publisert) {
       return null;
     }
-    const tittel = side._rawTitle?.[lang];
+    const tittel = page.rawData.title?.[lang];
     return (
       <li>
-        <Link to={`/${lang}/${side.slug.current}`}>
+        <Link to={`/${lang}/${page.slug?.current}`}>
           {tittel} - ({t(lang)})
         </Link>
       </li>
     );
   });
 
-  const title = localizeSanityContent(props.data.side._rawTitle, props.pageContext.lang);
-  const ingress = localizeSanityContent(props.data.side._rawIngress, props.pageContext.lang);
+  const title = page.title || '';
+  const ingress = page.ingress || '';
 
   return (
     <FaktaSideLayout header={title} ingress={ingress}>
