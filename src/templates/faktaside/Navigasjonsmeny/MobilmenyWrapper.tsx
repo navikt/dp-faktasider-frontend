@@ -41,7 +41,6 @@ const StickyContainer = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
-  max-width: 100vw;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
@@ -65,6 +64,8 @@ const MenyWrapper = styled.div<{ visMeny: boolean; offsetTop: number }>`
 const StyledMenyButton = styled(MenyButton)`
   background-color: white;
   position: absolute;
+  right: 0;
+  top: 0;
   box-shadow: 0 0 0 0.2rem #8886;
 `;
 
