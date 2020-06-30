@@ -7,7 +7,7 @@ export function useDekoratorPopdownOffset() {
 
   useMount(() => {
     const handleScroll = () => {
-      const menuRect = document.querySelector(`[aria-label="Hovedmeny"]`)?.getBoundingClientRect();
+      const menuRect = document.getElementById('hovedmeny')?.getBoundingClientRect();
       const offset = menuRect ? menuRect.height + menuRect.top : 0;
       setOffsetTop(Math.max(offset, 0));
     };
