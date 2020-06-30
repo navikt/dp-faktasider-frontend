@@ -1,6 +1,9 @@
+import { GatsbyNode } from 'gatsby';
+
 const supportedLanguages = ['en', 'no'];
 
-async function createPages(graphql, actions, reporter) {
+const createFaktasider: GatsbyNode['createPages'] = async (props) => {
+  const { graphql, actions, reporter } = props;
   const result = await graphql(`
     query Pages {
       pages: allSanityFaktaSide {
@@ -18,6 +21,7 @@ async function createPages(graphql, actions, reporter) {
 
   if (result.errors) throw result.errors;
 
+  // @ts-ignore
   const pageEdges = result.data.pages.edges || [];
 
   pageEdges.forEach((edge) => {
@@ -42,27 +46,27 @@ async function createPages(graphql, actions, reporter) {
       });
     });
   });
-}
+};
 
 // redirects fra gamle sider fra dp-veiviser-ui. Disse bør være trygge å fjerne etter noen måneder.
 const gamleSlugs = ['permittert', 'arbeidsledig', 'lærling', 'student'];
-function createRedirectsFraGamleSider(actions, reporter) {
+const createRedirectsFraGamleSider: GatsbyNode['createPages'] = (props) => {
   gamleSlugs.forEach((slug) => {
     const path = `/dagpenger/${slug}`;
-    reporter.info('📠 Redirect fra gammel side: ' + path);
-    actions.createPage({
+    props.reporter.info('📠 Redirect fra gammel side: ' + path);
+    props.actions.createPage({
       path: path,
       component: require.resolve('./src/templates/RedirectFraGammelSide.tsx'),
       context: { slug },
     });
   });
-}
+};
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  reporter.info(`🛠 Lager redirect fra /admin til https://dagpenger.sanity.studio/`);
-  actions.createRedirect({ fromPath: `/admin`, toPath: `https://dagpenger.sanity.studio/`, isPermanent: true });
+export const createPages: GatsbyNode['createPages'] = async (props) => {
+  props.reporter.info(`🛠 Lager redirect fra /admin til https://dagpenger.sanity.studio/`);
+  props.actions.createRedirect({ fromPath: `/admin`, toPath: `https://dagpenger.sanity.studio/`, isPermanent: true });
 
-  createRedirectsFraGamleSider(actions, reporter);
+  createRedirectsFraGamleSider(props);
 
-  await createPages(graphql, actions, reporter);
+  await createFaktasider(props);
 };
