@@ -41,6 +41,7 @@ const StickyContainer = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
+  max-width: 100vw;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
