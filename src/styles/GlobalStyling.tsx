@@ -13,7 +13,7 @@ const Styling = createGlobalStyle<{ dekoratorOffset: number }>`
         font-family: 'Source Sans Pro', sans-serif;
     }
     body {
-        background-color: ${theme.colors.navLysGra};
+        background-color: ${theme.colors.bakgrunn};
     }
 
     // :target = valgt i url (url-fragment), sørger for at header ikke ligger klint oppi toppen ved bruk av interne url'er https://css-tricks.com/hash-tag-links-padding/
