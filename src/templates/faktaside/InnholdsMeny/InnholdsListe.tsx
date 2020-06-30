@@ -4,8 +4,8 @@ import { pxFromTop } from '../../../utils/domUtils';
 import styled, { css } from 'styled-components';
 import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
 import useSmoothscrollOnClick from '../../../hooks/useSmoothscrollOnClick';
-import { useInnholdsListe } from '../../../utils/richTextUtils/useInnholdsListe';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
+import { useInnholdsListe } from './useInnholdsListe';
 
 const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
   display: block;

@@ -3,7 +3,7 @@ import InnholdsListe from './InnholdsListe';
 import Filtrering from './Filtrering';
 import ErrorBoundary from '../../../components/ErrorBoundary';
 import styled from 'styled-components';
-import { useInnholdsListe } from '../../../utils/richTextUtils/useInnholdsListe';
+import { useInnholdsListe } from './useInnholdsListe';
 
 const Style = styled.div`
   margin: 0.5rem 1rem 1rem 2.5rem;

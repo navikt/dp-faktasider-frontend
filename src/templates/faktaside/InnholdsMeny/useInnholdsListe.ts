@@ -1,6 +1,6 @@
-import { Group, isH2Group } from './richTextTypes';
 import { useTranslation } from 'react-i18next';
-import { useFaktasideContext } from '../../templates/faktaside/FaktaSideContext';
+import { Group, isH2Group } from '../../../utils/richTextUtils/richTextTypes';
+import { useFaktasideContext } from '../FaktaSideContext';
 
 export function useInnholdsListe(): Group[] {
   const { parsedRichText, data } = useFaktasideContext();
