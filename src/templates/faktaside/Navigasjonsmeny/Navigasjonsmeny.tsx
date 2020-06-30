@@ -24,9 +24,9 @@ const MobileNav = styled.nav`
   }
 `;
 
-function Navigasjonsmeny(props: React.ComponentProps<typeof SideListe>) {
+function Navigasjonsmeny() {
   const offsetTop = useDekoratorPopdownOffset();
-  const meny = <SideListe {...props} />;
+  const meny = <SideListe />;
 
   return (
     <>

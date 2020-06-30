@@ -27,10 +27,13 @@ function getContent(group: Group) {
 function GroupMarkup(props: Props) {
   return (
     <ConditionalWrapper
-      condition={!!props.node.visForConfig}
-      wrapper={(children) => <VisFor visFor={props.node.visForConfig}>{children}</VisFor>}
+      condition={!!props.node.blockConfig?.visFor}
+      wrapper={(children) => <VisFor visFor={props.node.blockConfig?.visFor}>{children}</VisFor>}
     >
-      <ConditionalWrapper condition={!!props.node.erUtkast} wrapper={(children) => <Utkast>{children}</Utkast>}>
+      <ConditionalWrapper
+        condition={!!props.node.blockConfig?.erUtkast}
+        wrapper={(children) => <Utkast>{children}</Utkast>}
+      >
         {getContent(props.node)}
       </ConditionalWrapper>
     </ConditionalWrapper>

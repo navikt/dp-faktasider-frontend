@@ -71,12 +71,14 @@
     "seHvordanDetBlirIProd": "npm run clean && npm run build && npm run serve",
     "clean": "gatsby clean",
     "update-decorator": "node ./plugins/nav-decorator/index.js",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 0",
+    "typeCheck": "tsc",
     "docker": "echo '🚀 Hoster app på localhost/arbeid \n' && docker build -t dpfakta . && docker run --rm -p 80:80 dpfakta"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test && npm run typeCheck"
     }
   },
   "lint-staged": {

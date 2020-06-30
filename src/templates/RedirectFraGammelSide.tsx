@@ -2,7 +2,7 @@ import * as React from 'react';
 import { PageProps } from 'gatsby';
 import { parseQueryParams } from '../utils/useQueryParams';
 import { Helmet } from 'react-helmet';
-import { idFromString } from '../utils/routingUtils';
+import { idFromString } from '../utils/idFromString';
 
 type GammelURL = 'permittert' | 'arbeidsledig' | 'lærling' | 'student';
 
