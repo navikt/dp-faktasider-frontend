@@ -5,13 +5,13 @@ import { RichTextParser } from './parseRichText';
 // Therefore this parser converts all h2-XXX versions to plain 'h2', and stores the custom properties of the different versions in a config-object for later use.
 export const flattenH2Versions: RichTextParser = (blocks: Block[]) =>
   blocks.map((block) => {
-    const currentConfig = (block as ParsedSanityBlock)?.config;
+    const currentConfig = (block as ParsedSanityBlock)?.blockConfig;
     switch (block.style) {
       case 'h2-no-background':
         return {
           ...block,
           style: 'h2',
-          config: {
+          blockConfig: {
             ...currentConfig,
             noBackground: true,
           },
@@ -20,7 +20,7 @@ export const flattenH2Versions: RichTextParser = (blocks: Block[]) =>
         return {
           ...block,
           style: 'h2',
-          config: {
+          blockConfig: {
             ...currentConfig,
             meny: true,
           },

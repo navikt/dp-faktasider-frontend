@@ -14,7 +14,7 @@ const StyledIngress = styled(Ingress)`
 `;
 
 function H3GroupMarkup(props: Group) {
-  const id = props.config?.id;
+  const id = props.blockConfig?.id;
 
   return (
     <StyledSection aria-labelledby={id}>

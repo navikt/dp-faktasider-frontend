@@ -36,7 +36,7 @@ function RelatertInformasjon(props: Props) {
     children: blocks,
     _type: 'group',
     style: 'h2',
-    config: {
+    blockConfig: {
       id: t('relatertInformasjon'),
     },
   };

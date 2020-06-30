@@ -14,7 +14,7 @@ const StyledElement = styled(Element)`
 `;
 
 function H4GroupMarkup(props: Group) {
-  const id = props.config?.id;
+  const id = props.blockConfig?.id;
 
   return (
     <StyledSection aria-labelledby={id}>

@@ -18,10 +18,10 @@ export const makeUniqeGroupIDs: RichTextParser = (blocks: Block[]) => {
     return prevBlocks.map(
       (block): Block => {
         if (block.style === currentGroupLevel) {
-          const currentConfig = (block as ParsedSanityBlock)?.config;
+          const currentConfig = (block as ParsedSanityBlock)?.blockConfig;
           return {
             ...block,
-            config: {
+            blockConfig: {
               ...currentConfig,
               id: makeUniqeId(getGroupTitle(block)),
             },

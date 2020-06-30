@@ -28,15 +28,15 @@ const StyledSystemtittel = styled(Systemtittel)`
 `;
 
 function H2GroupMarkup(props: Group) {
-  const id = props.config?.id;
+  const id = props.blockConfig?.id;
   const underGrupper = props.children.filter(isH3Group);
 
   const content = (
-    <StyledArticle background={!props.config?.noBackground} aria-labelledby={id}>
+    <StyledArticle background={!props.blockConfig?.noBackground} aria-labelledby={id}>
       <StyledSystemtittel tag="h2" id={id} tabIndex={-1}>
         {props.title}
       </StyledSystemtittel>
-      {props.config?.meny && <H2GroupMenu underGrupper={underGrupper} />}
+      {props.blockConfig?.meny && <H2GroupMenu underGrupper={underGrupper} />}
       <BlockContent blocks={props.children} />
     </StyledArticle>
   );

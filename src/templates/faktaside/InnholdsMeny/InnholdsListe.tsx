@@ -22,7 +22,7 @@ function useCurrentlyViewedGroup(items: Group[]): Group | undefined {
 
   const updateCurrentlyViewedMenuItem = useCallback(() => {
     const current = items
-      .map((it) => ({ item: it, fromTop: pxFromTop(it.config?.id || 'N/A') }))
+      .map((it) => ({ item: it, fromTop: pxFromTop(it.blockConfig?.id || 'N/A') }))
       .filter((it) => it.fromTop < window.innerHeight / 3)
       .pop()?.item;
     setCurrent(current);
@@ -40,9 +40,9 @@ function MenuItem(props: { item: Group; current: boolean }) {
   const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
 
   return (
-    <li key={props.item.config?.id} onClick={activateSmoothScroll}>
+    <li key={props.item.blockConfig?.id} onClick={activateSmoothScroll}>
       <SmoothScroll />
-      <StyledLenke erValgt={props.current} href={`#${props.item.config?.id}`}>
+      <StyledLenke erValgt={props.current} href={`#${props.item.blockConfig?.id}`}>
         {props.item.title}
       </StyledLenke>
     </li>
@@ -56,7 +56,7 @@ function InnholdsListe() {
   return (
     <ol>
       {innholdsListe.map((item) => (
-        <MenuItem key={item.config?.id} item={item} current={currentlyViewedItem === item} />
+        <MenuItem key={item.blockConfig?.id} item={item} current={currentlyViewedItem === item} />
       ))}
     </ol>
   );

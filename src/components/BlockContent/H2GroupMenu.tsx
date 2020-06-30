@@ -25,8 +25,8 @@ function H2GroupMenu(props: Props) {
       <SmoothScroll />
       <StyledUl>
         {props.underGrupper.map((underGruppe) => (
-          <StyledLi key={underGruppe.config?.id}>
-            <LenkeUtenUnderstrek onClick={activateSmoothScroll} href={'#' + underGruppe.config?.id}>
+          <StyledLi key={underGruppe.blockConfig?.id}>
+            <LenkeUtenUnderstrek onClick={activateSmoothScroll} href={'#' + underGruppe.blockConfig?.id}>
               {underGruppe.title}
             </LenkeUtenUnderstrek>
           </StyledLi>

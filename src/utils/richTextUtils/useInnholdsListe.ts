@@ -10,7 +10,7 @@ export function useInnholdsListe(): Group[] {
     return [];
   }
 
-  let innhold = parsedRichText.filter((block) => isH2Group(block) && !block.config?.erUtkast) as Group[];
+  let innhold = parsedRichText.filter((block) => isH2Group(block) && !block.blockConfig?.erUtkast) as Group[];
 
   if (data?.side._rawRelatertInformasjon) {
     const relatertInnformasjon: Group = {
@@ -18,7 +18,7 @@ export function useInnholdsListe(): Group[] {
       _type: 'group',
       style: 'h2',
       children: [],
-      config: {
+      blockConfig: {
         id: t('relatertInformasjon'),
       },
     };

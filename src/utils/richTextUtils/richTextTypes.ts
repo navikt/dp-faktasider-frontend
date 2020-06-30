@@ -25,7 +25,7 @@ type ConfigFromParser = {
 type VisForConfig = { [key: string]: boolean | string };
 
 export type ParsedSanityBlock = SanityBlock & {
-  config?: ConfigFromParser;
+  blockConfig?: ConfigFromParser;
 };
 
 export type GroupTypes = 'h2' | 'h3' | 'h4';
