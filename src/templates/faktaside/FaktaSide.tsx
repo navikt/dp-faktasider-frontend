@@ -3,10 +3,9 @@ import { graphql, PageProps } from 'gatsby';
 import BlockContent from '../../components/BlockContent/BlockContent';
 import FaktaSideLayout from './FaktaSideLayout';
 import GraphQLErrorList from '../../components/GraphqlErrorList';
-import parseRichText from '../../utils/richTextUtils/parseRichText';
+import parseRichText from '../../utils/richTextUtils/parser/parseRichText';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
-import { useBolkTitler } from '../../utils/richTextUtils/useBolkTitler';
 import localizeSanityContent from '../../i18n/localizeSanityContent';
 import { SupportedLanguage } from '../../i18n/supportedLanguages';
 import SEO from '../../components/SEO';
@@ -14,6 +13,7 @@ import IkkeOversatt from './IkkeOversatt';
 import { SistOppdatert } from './SistOppdatert';
 import RelatertInformasjon from './RelatertInformasjon';
 import { Translations } from '../../types/translations';
+import { FaktasideProvider } from './FaktaSideContext';
 
 export const query = graphql`
   query FaktaSide($id: String) {
@@ -72,7 +72,6 @@ function FaktaSide(props: FaktaSideProps) {
   const lang = props.pageContext.lang;
   const data = localizeSanityContent(props.data, lang) as TranslatedFaktaSideData;
   const parsedRichText = parseRichText(data.side._rawInnhold);
-  const bolkTitler = useBolkTitler(parsedRichText, data.side._rawRelatertInformasjon);
   const erPublisert = props.data.side._rawVisSprakversjon?.[lang];
 
   if (!erPublisert) {
@@ -83,14 +82,16 @@ function FaktaSide(props: FaktaSideProps) {
   const description = data.side._rawIngress || '';
 
   return (
-    <ErrorBoundary>
-      <SEO title={tittel} description={description} lang={lang} />
-      <FaktaSideLayout header={tittel} menuItems={bolkTitler} ingress={description} faktasideId={props.pageContext.id}>
-        <GraphQLErrorList errors={props.errors} />
-        <SistOppdatert>{data.side._rawSistOppdatert}</SistOppdatert>
-        <BlockContent blocks={parsedRichText} />
-        <RelatertInformasjon blocks={data.side._rawRelatertInformasjon} />
-      </FaktaSideLayout>
+    <ErrorBoundary boundaryName="Faktaside">
+      <FaktasideProvider data={data} parsedRichText={parsedRichText} id={props.pageContext.id}>
+        <SEO title={tittel} description={description} lang={lang} />
+        <FaktaSideLayout header={tittel} ingress={description}>
+          <GraphQLErrorList errors={props.errors} />
+          <SistOppdatert>{data.side._rawSistOppdatert}</SistOppdatert>
+          <BlockContent blocks={parsedRichText} />
+          <RelatertInformasjon blocks={data.side._rawRelatertInformasjon} />
+        </FaktaSideLayout>
+      </FaktasideProvider>
     </ErrorBoundary>
   );
 }

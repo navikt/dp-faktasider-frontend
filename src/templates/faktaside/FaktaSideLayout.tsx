@@ -11,8 +11,6 @@ interface Props {
   header: string;
   ingress: string;
   children: ReactNode;
-  menuItems?: string[];
-  faktasideId: string;
 }
 
 const ContentStyle = styled.div`
@@ -41,7 +39,7 @@ function FaktaSideLayout(props: Props) {
       <Style>
         <DevKnapper />
         <ContentStyle>
-          <Navigasjonsmeny menuItems={props.menuItems} faktasideId={props.faktasideId} />
+          <Navigasjonsmeny />
           <MainContentStyle>{props.children}</MainContentStyle>
         </ContentStyle>
       </Style>

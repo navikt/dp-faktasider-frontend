@@ -2,7 +2,6 @@ import * as React from 'react';
 import BlockContent from './BlockContent';
 import styled from 'styled-components';
 import { Ingress } from 'nav-frontend-typografi';
-import { idFromString } from '../../utils/routingUtils';
 import { Group } from '../../utils/richTextUtils/richTextTypes';
 
 const StyledSection = styled.section`
@@ -15,7 +14,7 @@ const StyledIngress = styled(Ingress)`
 `;
 
 function H3GroupMarkup(props: Group) {
-  const id = idFromString(props.title);
+  const id = props.blockConfig?.id;
 
   return (
     <StyledSection aria-labelledby={id}>

@@ -34,7 +34,10 @@ const colors = {
 };
 
 export const theme = {
-  colors: colors,
+  colors: {
+    ...colors,
+    bakgrunn: colors.navLysGra,
+  },
   visuallyHidden: css`
     position: absolute !important;
     height: 1px;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 import BlockContent from './BlockContent';
 import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
-import parseRichText from '../../utils/richTextUtils/parseRichText';
+import parseRichText from '../../utils/richTextUtils/parser/parseRichText';
 
 interface Props {
   node: {

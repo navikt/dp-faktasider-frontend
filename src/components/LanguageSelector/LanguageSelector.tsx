@@ -11,7 +11,7 @@ import { isProduction } from '../../utils/environment';
 const Style = styled.div`
   display: flex;
   justify-content: center;
-  background-color: ${theme.colors.navLysGra};
+  background-color: ${theme.colors.bakgrunn};
   border-bottom: 0.1rem solid #bbb;
   padding: 1rem;
 `;

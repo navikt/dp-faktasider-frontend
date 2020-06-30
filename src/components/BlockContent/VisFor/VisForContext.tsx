@@ -67,7 +67,7 @@ export const VisForContextProvider = (props: { children: ReactNode }) => {
     if (prevPath && prevPath !== path) {
       dispatch({ type: 'clear' });
     }
-  }, [path]);
+  }, [path, prevPath]);
 
   return <VisForContext.Provider value={{ value: state, dispatch }}>{props.children}</VisForContext.Provider>;
 };

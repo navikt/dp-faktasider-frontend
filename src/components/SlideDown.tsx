@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ReactNode, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Collapse } from 'react-collapse';
-import NavFrontendChevron, { NedChevron, OppChevron } from 'nav-frontend-chevron';
+import { NedChevron, OppChevron } from 'nav-frontend-chevron';
 
 interface Props {
   title: string;
