@@ -23,7 +23,7 @@ const wrapPageElement = ({ element, props }) => {
               <AppStyling {...props} className="typo-normal">
                 <GlobalStyling />
                 <AlertStripeFeil>
-                  1. juli 12:00 - Det er en teknisk feil med siden, vi jobber med å løse dette så raskt som mulig.
+                  Vi opplever for tiden noen tekniske feil med siden, vi jobber med å løse dette så raskt som mulig.
                 </AlertStripeFeil>
                 <>{element}</>
               </AppStyling>
