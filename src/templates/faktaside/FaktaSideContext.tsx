@@ -4,6 +4,7 @@ import { FaktasideContext } from '../../../gatsby-node-files/createFaktasider';
 const inital: FaktasideContext = {
   lang: 'no',
   id: 'N/A',
+  slug: 'N/A',
   innhold: [],
   rawData: {},
 };

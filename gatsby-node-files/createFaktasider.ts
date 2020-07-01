@@ -39,6 +39,7 @@ export type FaktasideContext = Modify<
     lang: SupportedLanguage;
     innhold: ParsedRichText;
     rawData: Pick<RawFaktasideData, 'title'>;
+    slug: string;
   }
 >;
 
@@ -82,7 +83,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
     }
 
     const path = `/${slug}/`;
-    reporter.info(`🛠 Lager redirect fra ${path} til /no${path}`);
+    reporter.info(`🚧 Lager redirect fra ${path} til /no${path}`);
     actions.createRedirect({ fromPath: `/${path}`, toPath: `/no/${path}`, isPermanent: true });
 
     supportedLanguages.forEach((lang) => {
@@ -95,6 +96,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
         ...localizedPage,
         innhold: parsedInnhold,
         lang,
+        slug,
         rawData: {
           title: page.title,
         },
