@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import useSmoothscrollOnClick from '../../hooks/useSmoothscrollOnClick';
-import { LenkeUtenUnderstrek } from '../../utils/common-styled-components';
+import { LinkUtenUnderstrek } from '../../utils/common-styled-components';
 import { Group } from '../../utils/richTextUtils/richTextTypes';
 
 interface Props {
@@ -26,9 +26,9 @@ function H2GroupMenu(props: Props) {
       <StyledUl>
         {props.underGrupper.map((underGruppe) => (
           <StyledLi key={underGruppe.blockConfig?.id}>
-            <LenkeUtenUnderstrek onClick={activateSmoothScroll} href={'#' + underGruppe.blockConfig?.id}>
+            <LinkUtenUnderstrek onClick={activateSmoothScroll} to={'#' + underGruppe.blockConfig?.id}>
               {underGruppe.title}
-            </LenkeUtenUnderstrek>
+            </LinkUtenUnderstrek>
           </StyledLi>
         ))}
       </StyledUl>

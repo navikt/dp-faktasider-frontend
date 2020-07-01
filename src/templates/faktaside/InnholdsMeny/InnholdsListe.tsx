@@ -5,10 +5,9 @@ import styled, { css } from 'styled-components/macro';
 import useSmoothscrollOnClick from '../../../hooks/useSmoothscrollOnClick';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
 import { useInnholdsListe } from './useInnholdsListe';
-import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
-import { Link } from 'gatsby';
+import { LinkUtenUnderstrek } from '../../../utils/common-styled-components';
 
-const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
+const StyledLenke = styled(LinkUtenUnderstrek)<{ erValgt: boolean }>`
   display: block;
   padding: 0.25rem 0;
   ${(props) =>
@@ -46,7 +45,7 @@ function MenuItem(props: { item: Group; current: boolean }) {
   return (
     <li key={props.item.blockConfig?.id} onClick={activateSmoothScroll}>
       <SmoothScroll />
-      <StyledLenke as={Link} erValgt={props.current} to={`#${props.item.blockConfig?.id}`}>
+      <StyledLenke erValgt={props.current} to={`#${props.item.blockConfig?.id}`}>
         {props.item.title}
       </StyledLenke>
     </li>
