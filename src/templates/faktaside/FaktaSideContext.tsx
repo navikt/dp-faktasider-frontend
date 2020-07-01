@@ -1,19 +1,19 @@
-import React, { useContext } from 'react';
-import { createContext, ReactNode } from 'react';
-import { TranslatedFaktaSideData } from './FaktaSide';
-import { ParsedRichText } from '../../utils/richTextUtils/parser/parseRichText';
+import React, { createContext, ReactNode, useContext } from 'react';
+import { FaktasideContext } from '../../../gatsby-node-files/createFaktasider';
 
-interface FaktaSideContextI {
-  data?: TranslatedFaktaSideData;
-  parsedRichText?: ParsedRichText;
-  id?: string;
-}
+const inital: FaktasideContext = {
+  lang: 'no',
+  id: 'N/A',
+  slug: 'N/A',
+  innhold: [],
+  rawData: {},
+};
 
-export const FaktasideContext = createContext<FaktaSideContextI>({ data: undefined, parsedRichText: undefined });
+const Context = createContext<FaktasideContext>(inital);
 
-export const useFaktasideContext = () => useContext(FaktasideContext);
+export const useFaktasideContext = () => useContext(Context);
 
-export const FaktasideProvider = (props: { children: ReactNode } & FaktaSideContextI) => {
+export const FaktasideProvider = (props: { children: ReactNode } & FaktasideContext) => {
   const { children, ...rest } = props;
-  return <FaktasideContext.Provider value={rest}>{children}</FaktasideContext.Provider>;
+  return <Context.Provider value={rest}>{children}</Context.Provider>;
 };
