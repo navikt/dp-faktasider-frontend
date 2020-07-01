@@ -6,6 +6,7 @@ import i18nextConfig from '../i18n/i18nextConfig';
 import { LocaleProvider } from '../i18n/LocaleContext';
 import { VisForContextProvider } from '../components/BlockContent/VisFor/VisForContext';
 import { DevContextProvider } from '../components/DevKnapper/DevContext';
+import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 
 const wrapPageElement = ({ element, props }) => {
   const path = props.path || props.location.pathname || '';
@@ -20,6 +21,9 @@ const wrapPageElement = ({ element, props }) => {
             <I18nextProvider i18n={i18nextConfig}>
               <AppStyling {...props} className="typo-normal">
                 <GlobalStyling />
+                <AlertStripeFeil>
+                  1. juli 12:00 - Det er en teknisk feil med siden, vi jobber med å løse dette så raskt som mulig.
+                </AlertStripeFeil>
                 <>{element}</>
               </AppStyling>
             </I18nextProvider>
