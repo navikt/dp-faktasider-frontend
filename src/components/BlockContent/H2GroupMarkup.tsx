@@ -44,12 +44,13 @@ const ContentStyle = styled.div`
 
 function H2GroupMarkup(props: Group) {
   const id = props.blockConfig?.id;
+  const headerId = id + '-header';
   const noBackground = props.blockConfig?.noBackground;
   const underGrupper = props.children.filter(isH3Group);
 
   const content = (
-    <StyledArticle background={!noBackground} aria-labelledby={id}>
-      <StyledSystemtittel tag="h2" id={id} tabIndex={-1}>
+    <StyledArticle background={!noBackground} aria-labelledby={headerId} id={id} tabIndex={-1}>
+      <StyledSystemtittel tag="h2" id={headerId}>
         <BackgroundColor noBackground={noBackground}>{props.title}</BackgroundColor>
       </StyledSystemtittel>
       {props.blockConfig?.meny && <H2GroupMenu underGrupper={underGrupper} />}
