@@ -3,16 +3,16 @@ import { Group, isH2Group } from '../../../utils/richTextUtils/richTextTypes';
 import { useFaktasideContext } from '../FaktaSideContext';
 
 export function useInnholdsListe(): Group[] {
-  const { parsedRichText, data } = useFaktasideContext();
+  const { innhold, relatertInformasjon } = useFaktasideContext();
   const { t } = useTranslation('global');
 
-  if (!parsedRichText) {
+  if (!innhold) {
     return [];
   }
 
-  let innhold = parsedRichText.filter((block) => isH2Group(block) && !block.blockConfig?.erUtkast) as Group[];
+  let h2Groups = innhold.filter((block) => isH2Group(block) && !block.blockConfig?.erUtkast) as Group[];
 
-  if (data?.side._rawRelatertInformasjon) {
+  if (relatertInformasjon) {
     const relatertInnformasjon: Group = {
       title: t('relatertInformasjon'),
       _type: 'group',
@@ -22,8 +22,8 @@ export function useInnholdsListe(): Group[] {
         id: t('relatertInformasjon'),
       },
     };
-    innhold.push(relatertInnformasjon);
+    h2Groups.push(relatertInnformasjon);
   }
 
-  return innhold;
+  return h2Groups;
 }

@@ -12,8 +12,9 @@ interface Props {
   };
 }
 
-const Center = styled.div`
+const Center = styled.span`
   text-align: center;
+  display: block;
 `;
 
 function LinkMarkup(props: Props) {

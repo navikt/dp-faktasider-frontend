@@ -1,33 +1,5 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
+// Tar ibruk typescript i gatsby-config og andre gatsby-filer (https://gist.github.com/JohnAlbin/2fc05966624dffb20f4b06b4305280f9#file-gatsby-config-js)
 
-const secretSanityToken = process.env.SANITY_READ_TOKEN;
-const isProd = process.env.NODE_ENV === 'production';
+require('ts-node').register();
 
-module.exports = {
-  pathPrefix: `/arbeid`,
-  siteMetadata: {
-    title: `Dagpenger - www.nav.no`,
-    description: `Dagpenger som arbeidsledig eller permittert`,
-    author: `NAV`,
-  },
-  plugins: [
-    `gatsby-plugin-react-helmet`,
-    'gatsby-plugin-typescript',
-    'nav-decorator',
-    'gatsby-plugin-less',
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-meta-redirect',
-    {
-      resolve: 'gatsby-source-sanity',
-      options: {
-        projectId: 'rt6o382n',
-        dataset: 'production',
-        token: secretSanityToken,
-        watchMode: !isProd,
-        overlayDrafts: !isProd && secretSanityToken,
-      },
-    },
-  ],
-};
+module.exports = require('./gatsby-config.typed.ts');

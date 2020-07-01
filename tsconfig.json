@@ -10,7 +10,7 @@
     "noImplicitAny": false,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,

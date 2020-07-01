@@ -48,7 +48,7 @@ export const H4 = styled(Element).attrs({ tag: 'h4' })`
   margin-bottom: 1rem !important;
 `;
 
-export const LenkeUtenUnderstrek = styled(Lenke)`
+export const LenkeUtenUnderstrek = styled(Lenke).attrs({ className: 'lenke' })`
   text-decoration: none !important;
   &:hover {
     text-decoration: underline !important;

@@ -58,7 +58,7 @@ const IndexPage = () => {
       <Header heading={localizeSanityContent(oppsett.oppsett.title, lang)} ingress="" />
       <Style>
         {sider.map((side) => (
-          <StyledElement>
+          <StyledElement key={side.id}>
             <StyledLink to={side.path}>{side.tittel}</StyledLink>
             {!side.tilgjengeligPåValgtSpråk && (
               <KunTilgjengeligStyle>

@@ -7,18 +7,19 @@ import { LocaleProvider } from '../i18n/LocaleContext';
 import { VisForContextProvider } from '../components/BlockContent/VisFor/VisForContext';
 import { DevContextProvider } from '../components/DevKnapper/DevContext';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
+import { i18n } from 'i18next';
 
 const wrapPageElement = ({ element, props }) => {
   const path = props.path || props.location.pathname || '';
   const lang = path.includes('/en/') ? 'en' : 'no';
-  i18nextConfig.changeLanguage(lang);
+  (i18nextConfig as i18n).changeLanguage(lang);
 
   return (
     <ErrorBoundary>
       <LocaleProvider lang={lang}>
         <VisForContextProvider>
           <DevContextProvider>
-            <I18nextProvider i18n={i18nextConfig}>
+            <I18nextProvider i18n={i18nextConfig as i18n}>
               <AppStyling {...props} className="typo-normal">
                 <GlobalStyling />
                 <AlertStripeFeil>
