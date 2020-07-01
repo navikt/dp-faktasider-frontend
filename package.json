@@ -47,7 +47,8 @@
     "react-i18next": "^11.7.0",
     "react-use": "^15.2.5",
     "styled-components": "^5.1.1",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.5",
+    "snyk": "^1.357.0"
   },
   "devDependencies": {
     "@types/node": "^14.0.13",
@@ -73,7 +74,9 @@
     "update-decorator": "node ./plugins/nav-decorator/index.js",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 0",
     "typeCheck": "tsc",
-    "docker": "echo '🚀 Hoster app på localhost/arbeid \n' && docker build -t dpfakta . && docker run --rm -p 80:80 dpfakta"
+    "docker": "echo '🚀 Hoster app på localhost/arbeid \n' && docker build -t dpfakta . && docker run --rm -p 80:80 dpfakta",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "husky": {
     "hooks": {
@@ -84,5 +87,6 @@
   "lint-staged": {
     "*.{js,jsx,json,md,ts,tsx}": "prettier --write",
     "*.{js,jsx,ts,tsx}": "eslint"
-  }
+  },
+  "snyk": true
 }
