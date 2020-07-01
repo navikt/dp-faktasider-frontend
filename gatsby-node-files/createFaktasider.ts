@@ -76,7 +76,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
 
   pageEdges.forEach((edge) => {
     const page = edge.node as RawFaktasideData;
-    const slug = (page.slug || {}).current;
+    const slug = page.slug?.current;
 
     if (!slug) {
       return;
