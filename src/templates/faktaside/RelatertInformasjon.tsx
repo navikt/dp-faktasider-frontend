@@ -4,6 +4,7 @@ import H2GroupMarkup from '../../components/BlockContent/H2GroupMarkup';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
+import { idFromString } from '../../utils/idFromString';
 
 interface Props {
   blocks?: Block[];
@@ -37,7 +38,7 @@ function RelatertInformasjon(props: Props) {
     _type: 'group',
     style: 'h2',
     blockConfig: {
-      id: t('relatertInformasjon'),
+      id: idFromString(t('relatertInformasjon')),
     },
   };
 
