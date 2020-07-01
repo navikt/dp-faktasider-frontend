@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Group, isH2Group } from '../../../utils/richTextUtils/richTextTypes';
 import { useFaktasideContext } from '../FaktaSideContext';
+import { idFromString } from '../../../utils/idFromString';
 
 export function useInnholdsListe(): Group[] {
   const { innhold, relatertInformasjon } = useFaktasideContext();
@@ -19,7 +20,7 @@ export function useInnholdsListe(): Group[] {
       style: 'h2',
       children: [],
       blockConfig: {
-        id: t('relatertInformasjon'),
+        id: idFromString(t('relatertInformasjon')),
       },
     };
     h2Groups.push(relatertInnformasjon);
