@@ -8,6 +8,7 @@ import H2GroupMenu from './H2GroupMenu';
 import withErrorBoundary from '../../withErrorBoundary';
 import { useGroupMarkupAriaProps } from './useGroupMarkupAriaProps';
 import Anchor from '../../Anchor';
+import HashLink from '../../HashLink';
 
 const StyledArticle = styled.article<{ background: boolean }>`
   ${(props) =>
@@ -50,7 +51,10 @@ function H2GroupMarkup(props: Group) {
     <StyledArticle background={!noBackground} {...regionProps}>
       <Anchor id={id} focusOnParent={true} />
       <StyledSystemtittel tag="h2" {...headerProps}>
-        <BackgroundColor noBackground={noBackground}>{props.title}</BackgroundColor>
+        <BackgroundColor noBackground={noBackground}>
+          <HashLink id={id} ariaLabel={`Lenke til ${props.title}`} />
+          {props.title}
+        </BackgroundColor>
       </StyledSystemtittel>
       {props.blockConfig?.meny && <H2GroupMenu underGrupper={underGrupper} />}
       <ContentStyle>

@@ -5,6 +5,7 @@ import { Element } from 'nav-frontend-typografi';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
 import { useGroupMarkupAriaProps } from './useGroupMarkupAriaProps';
 import Anchor from '../../Anchor';
+import HashLink from '../../HashLink';
 
 const StyledSection = styled.section`
   margin: 3rem 0 2rem;
@@ -23,6 +24,7 @@ function H4GroupMarkup(props: Group) {
     <StyledSection {...regionProps}>
       <Anchor id={id} marginTop="4rem" focusOnParent={true} />
       <StyledElement tag="h4" {...headerProps}>
+        <HashLink id={id} ariaLabel={`Lenke til ${props.title}`} />
         {props.title}
       </StyledElement>
       <BlockContent blocks={props.children} />

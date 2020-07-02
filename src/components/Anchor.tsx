@@ -37,6 +37,7 @@ const AnchorStyle = styled.div<{ marginTop?: string }>`
 `;
 
 const FocusOutline = styled.div`
+  transition: 0.1s;
   &:focus-within {
     ${theme.focus};
     height: 100%;

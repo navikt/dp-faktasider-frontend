@@ -5,6 +5,7 @@ import { Ingress } from 'nav-frontend-typografi';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
 import { useGroupMarkupAriaProps } from './useGroupMarkupAriaProps';
 import Anchor from '../../Anchor';
+import HashLink from '../../HashLink';
 
 const StyledSection = styled.section`
   margin: 3rem 0 2rem;
@@ -23,6 +24,7 @@ function H3GroupMarkup(props: Group) {
     <StyledSection {...regionProps}>
       <Anchor id={id} marginTop="4rem" focusOnParent={true} />
       <StyledIngress tag="h3" {...headerProps}>
+        <HashLink id={id} ariaLabel={`Lenke til ${props.title}`} />
         {props.title}
       </StyledIngress>
       <BlockContent blocks={props.children} />
