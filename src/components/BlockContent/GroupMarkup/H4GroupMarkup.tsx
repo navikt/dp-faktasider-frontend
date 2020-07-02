@@ -1,35 +1,20 @@
 import * as React from 'react';
-import BlockContent from '../BlockContent';
 import styled from 'styled-components';
 import { Element } from 'nav-frontend-typografi';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
-import { useGroupMarkupAriaProps } from './useGroupMarkupAriaProps';
-import Anchor from '../../Anchor';
-import HashLink from '../../HashLink';
+import CommonGroupMarkup from './CommonGroupMarkup';
 
 const StyledSection = styled.section`
   margin: 3rem 0 2rem;
-  position: relative;
 `;
 
-const StyledElement = styled(Element)`
+const StyledElement = styled(Element).attrs({ as: 'h4' })`
   text-align: center;
   margin: 3rem 0 0.7rem;
 `;
 
 function H4GroupMarkup(props: Group) {
-  const { regionProps, headerProps, id } = useGroupMarkupAriaProps(props);
-
-  return (
-    <StyledSection {...regionProps}>
-      <Anchor id={id} marginTop="4rem" focusOnParent={true} />
-      <StyledElement tag="h4" {...headerProps}>
-        <HashLink id={id} ariaLabel={`Lenke til ${props.title}`} />
-        {props.title}
-      </StyledElement>
-      <BlockContent blocks={props.children} />
-    </StyledSection>
-  );
+  return <CommonGroupMarkup header={StyledElement} region={StyledSection} group={props} anchorMarginTop="4rem" />;
 }
 
 export default H4GroupMarkup;
