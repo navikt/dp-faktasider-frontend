@@ -4,6 +4,7 @@ import { theme } from '../../styles/theme';
 export const MainContentStyle = styled.main`
   flex: 0 1 40rem;
   max-width: 40rem;
+  padding: 1rem 0 4rem;
   @media (${theme.media.bigScreen}) {
     margin-left: ${theme.layoutMargin};
   }

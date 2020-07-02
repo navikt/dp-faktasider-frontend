@@ -20,13 +20,15 @@ const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
     `};
 `;
 
+const skjermBrøk = 1 / 4; // Brukes for å beregne hvilken gruppe bruker ser på for øyeblikket. Hvis den er 1/4 må en gruppe være i den øverste 1/4 av skjermen for å regnes som "currentGroup"
+
 function useCurrentlyViewedGroup(items: Group[]): Group | undefined {
   const [current, setCurrent] = useState<Group | undefined>();
 
   const updateCurrentlyViewedMenuItem = useCallback(() => {
     const current = items
       .map((it) => ({ item: it, fromTop: pxFromTop(it.blockConfig?.id || 'N/A') }))
-      .filter((it) => it.fromTop < window.innerHeight / 3)
+      .filter((it) => it.fromTop < window.innerHeight * skjermBrøk)
       .pop()?.item;
     setCurrent(current);
   }, [items]);
