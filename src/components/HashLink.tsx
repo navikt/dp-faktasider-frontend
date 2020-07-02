@@ -29,7 +29,6 @@ function HashLink(props: Props) {
 const StyledSVG = styled.svg`
   fill: currentColor;
   width: 1em;
-  transform: translateY(0.1em);
   opacity: 0.3;
   transition: 0.15s;
   ${StyledA}:hover & {
