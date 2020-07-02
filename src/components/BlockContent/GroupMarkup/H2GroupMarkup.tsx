@@ -48,7 +48,7 @@ function H2GroupMarkup(props: Group) {
 
   return (
     <StyledArticle background={!noBackground} {...regionProps}>
-      <Anchor id={id} />
+      <Anchor id={id} focusOnParent={true} />
       <StyledSystemtittel tag="h2" {...headerProps}>
         <BackgroundColor noBackground={noBackground}>{props.title}</BackgroundColor>
       </StyledSystemtittel>

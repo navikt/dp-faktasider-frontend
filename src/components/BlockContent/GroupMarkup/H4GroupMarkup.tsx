@@ -8,6 +8,7 @@ import Anchor from '../../Anchor';
 
 const StyledSection = styled.section`
   margin: 3rem 0 2rem;
+  position: relative;
 `;
 
 const StyledElement = styled(Element)`
@@ -20,7 +21,7 @@ function H4GroupMarkup(props: Group) {
 
   return (
     <StyledSection {...regionProps}>
-      <Anchor id={id} marginTop="4rem" />
+      <Anchor id={id} marginTop="4rem" focusOnParent={true} />
       <StyledElement tag="h4" {...headerProps}>
         {props.title}
       </StyledElement>
