@@ -9,6 +9,7 @@ import withErrorBoundary from '../../withErrorBoundary';
 import { useGroupMarkupAriaProps } from './useGroupMarkupAriaProps';
 import Anchor from '../../Anchor';
 import HashLink from '../../HashLink';
+import { useDekoratorPopdownOffset } from '../../../templates/faktaside/Navigasjonsmeny/useDekoratorPopdownOffset';
 
 const StyledArticle = styled.article<{ background: boolean }>`
   ${(props) =>
@@ -26,10 +27,10 @@ const StyledArticle = styled.article<{ background: boolean }>`
   position: relative;
 `;
 
-const StyledSystemtittel = styled(Systemtittel)`
+const StyledSystemtittel = styled(Systemtittel)<{ offset: number }>`
   text-align: center;
   position: sticky !important;
-  top: 0;
+  top: ${(props) => props.offset}px;
   z-index: 10;
 `;
 
@@ -46,11 +47,12 @@ function H2GroupMarkup(props: Group) {
   const { regionProps, headerProps, id } = useGroupMarkupAriaProps(props);
   const noBackground = props.blockConfig?.noBackground;
   const underGrupper = props.children.filter(isH3Group);
+  const dekoratorOffset = useDekoratorPopdownOffset();
 
   return (
     <StyledArticle background={!noBackground} {...regionProps}>
       <Anchor id={id} focusOnParent={true} />
-      <StyledSystemtittel tag="h2" {...headerProps}>
+      <StyledSystemtittel tag="h2" {...headerProps} offset={dekoratorOffset}>
         <BackgroundColor noBackground={noBackground}>
           <HashLink id={id} ariaLabel={`Lenke til ${props.title}`} />
           {props.title}
