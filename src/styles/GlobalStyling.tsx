@@ -8,7 +8,7 @@ const Styling = createGlobalStyle`
         box-sizing: border-box;
     }
     html {
-        font-size: 110%;
+        font-size: 115%;
         font-family: 'Source Sans Pro', sans-serif;
     }
     body {
