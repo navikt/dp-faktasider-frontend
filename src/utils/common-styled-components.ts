@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import 'nav-frontend-knapper-style/src/index.less';
 import { Element } from 'nav-frontend-typografi';
-import { Link } from 'gatsby';
+import Lenke from 'nav-frontend-lenker';
 
 export const LenkeKnapp = styled.button.attrs({ className: 'lenke' })`
   border: none;
@@ -48,7 +48,7 @@ export const H4 = styled(Element).attrs({ tag: 'h4' })`
   margin-bottom: 1rem !important;
 `;
 
-export const LinkUtenUnderstrek = styled(Link).attrs({ className: 'lenke' })`
+export const LenkeUtenUnderstrek = styled(Lenke).attrs({ className: 'lenke' })`
   text-decoration: none !important;
   &:hover {
     text-decoration: underline !important;
