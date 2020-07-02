@@ -3,13 +3,16 @@ import styled from 'styled-components/macro';
 import useSmoothscrollOnClick from '../../../hooks/useSmoothscrollOnClick';
 import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
+import { useRef } from 'react';
+import { guid } from 'nav-frontend-js-utils';
 
 interface Props {
   underGrupper: Group[];
+  title: string;
 }
 
 const StyledLi = styled.li`
-  margin: 0.4rem 0;
+  margin: 0.6rem 0 !important;
 `;
 
 const StyledUl = styled.ul`
@@ -19,9 +22,13 @@ const StyledUl = styled.ul`
 
 function H2GroupMenu(props: Props) {
   const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
+  const id = useRef(guid()).current;
 
   return (
-    <nav className="typo-normal">
+    <nav className="typo-normal" aria-labelledby={id}>
+      <h3 className="sr-only" id={id}>
+        Innhold {props.title}
+      </h3>
       <SmoothScroll />
       <StyledUl>
         {props.underGrupper.map((underGruppe) => (

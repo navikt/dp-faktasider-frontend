@@ -37,6 +37,7 @@ const StyledSystemtittel = styled(Systemtittel).attrs({
   position: sticky !important;
   top: ${(props) => props.dekoratorOffset}px;
   z-index: 10;
+  margin-bottom: 1.5rem;
 `;
 
 function H2GroupMarkup(props: Group) {
@@ -54,7 +55,7 @@ function H2GroupMarkup(props: Group) {
       region={StyledArticle}
       regionProps={regionProps}
       group={props}
-      beforeContent={props.blockConfig?.meny && <H2GroupMenu underGrupper={underGrupper} />}
+      beforeContent={props.blockConfig?.meny && <H2GroupMenu title={props.title} underGrupper={underGrupper} />}
     />
   );
 }
