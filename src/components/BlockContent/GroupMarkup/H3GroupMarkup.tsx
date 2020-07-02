@@ -1,8 +1,9 @@
 import * as React from 'react';
-import BlockContent from './BlockContent';
+import BlockContent from '../BlockContent';
 import styled from 'styled-components';
 import { Ingress } from 'nav-frontend-typografi';
-import { Group } from '../../utils/richTextUtils/richTextTypes';
+import { Group } from '../../../utils/richTextUtils/richTextTypes';
+import { useGroupMarkupAriaProps } from './useGroupMarkupAriaProps';
 
 const StyledSection = styled.section`
   margin: 3rem 0 2rem;
@@ -14,11 +15,11 @@ const StyledIngress = styled(Ingress)`
 `;
 
 function H3GroupMarkup(props: Group) {
-  const id = props.blockConfig?.id;
+  const { regionProps, headerProps } = useGroupMarkupAriaProps(props);
 
   return (
-    <StyledSection aria-labelledby={id}>
-      <StyledIngress tag="h3" id={id} tabIndex={-1}>
+    <StyledSection {...regionProps}>
+      <StyledIngress tag="h3" {...headerProps}>
         {props.title}
       </StyledIngress>
       <BlockContent blocks={props.children} />

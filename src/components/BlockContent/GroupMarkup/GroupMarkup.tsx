@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Group } from '../../utils/richTextUtils/richTextTypes';
-import Utkast from './Utkast';
+import { Group } from '../../../utils/richTextUtils/richTextTypes';
+import Utkast from '../Utkast';
 import H2GroupMarkup from './H2GroupMarkup';
 import H3GroupMarkup from './H3GroupMarkup';
 import H4GroupMarkup from './H4GroupMarkup';
-import VisFor from './VisFor/VisFor';
-import { ConditionalWrapper } from '../ConditionalWrapper';
+import VisFor from '../VisFor/VisFor';
+import { ConditionalWrapper } from '../../ConditionalWrapper';
 
 interface Props {
   node: Group;

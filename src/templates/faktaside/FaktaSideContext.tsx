@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useContext } from 'react';
-import { FaktasideContext } from '../../../gatsby-node-files/createFaktasider';
+import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
 
 const inital: FaktasideContext = {
   lang: 'no',

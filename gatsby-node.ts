@@ -1,6 +1,6 @@
 import { GatsbyNode } from 'gatsby';
-import { createFaktasider } from './gatsby-node-files/createFaktasider';
-import { createRedirectsFraGamleSider } from './gatsby-node-files/createRedirectsFraGamleSider';
+import { createFaktasider } from './gatsby-utils/createFaktasider';
+import { createRedirectsFraGamleSider } from './gatsby-utils/createRedirectsFraGamleSider';
 
 export const createPages: GatsbyNode['createPages'] = async (props) => {
   props.reporter.info(`🛠 Lager redirect fra /admin til https://dagpenger.sanity.studio/`);

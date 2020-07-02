@@ -2,9 +2,8 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { theme } from './theme';
 import './index.less';
-import { useDekoratorPopdownOffset } from '../templates/faktaside/Navigasjonsmeny/useDekoratorPopdownOffset';
 
-const Styling = createGlobalStyle<{ dekoratorOffset: number }>`
+const Styling = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
@@ -18,13 +17,6 @@ const Styling = createGlobalStyle<{ dekoratorOffset: number }>`
 
     // :target = valgt i url (url-fragment), sørger for at header ikke ligger klint oppi toppen ved bruk av interne url'er https://css-tricks.com/hash-tag-links-padding/
     :target, .internUrl {
-      --offset-top: calc(2rem + ${(props) => props.dekoratorOffset}px);
-        &::before {
-            content: "";
-            display: block;
-            height: var(--offset-top);
-            margin-top: calc(var(--offset-top) * -1);
-        }
         position: relative;
         &:focus {
         outline: none;
@@ -35,9 +27,10 @@ const Styling = createGlobalStyle<{ dekoratorOffset: number }>`
               bottom: 0;
               left: 0;
               width: 100%;
-              height: calc(100% - var(--offset-top));
+              height: 100%;
               ${theme.focus};
               border-radius: .2rem;
+              pointer-events: none;
             }
         }
     }
@@ -48,8 +41,7 @@ const Styling = createGlobalStyle<{ dekoratorOffset: number }>`
 `;
 
 export function GlobalStyling() {
-  const offset = useDekoratorPopdownOffset();
-  return <Styling dekoratorOffset={offset} />;
+  return <Styling />;
 }
 
 /* Scoper denne stylingen så den ikke overskriver styling i Meny/Dekorator */

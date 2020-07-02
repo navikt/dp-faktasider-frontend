@@ -10,7 +10,7 @@ import { ParsedRichText } from '../../utils/richTextUtils/parser/parseRichText';
 import FremhevetTekst from './FremhevetTekst';
 import { UtkastInline } from './Utkast';
 import VisForAnnotation from './VisFor/VisForAnnotation';
-import GroupMarkup from './GroupMarkup';
+import GroupMarkup from './GroupMarkup/GroupMarkup';
 
 interface Props {
   blocks: ParsedRichText;

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Block, Group } from '../../utils/richTextUtils/richTextTypes';
-import H2GroupMarkup from '../../components/BlockContent/H2GroupMarkup';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 import { idFromString } from '../../utils/idFromString';
+import H2GroupMarkup from '../../components/BlockContent/GroupMarkup/H2GroupMarkup';
 
 interface Props {
   blocks?: Block[];

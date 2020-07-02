@@ -9,7 +9,7 @@ import IkkeOversatt from './IkkeOversatt';
 import { SistOppdatert } from './SistOppdatert';
 import RelatertInformasjon from './RelatertInformasjon';
 import { FaktasideProvider } from './FaktaSideContext';
-import { FaktasideContext } from '../../../gatsby-node-files/createFaktasider';
+import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
 
 export interface FaktaSideProps extends PageProps<{}, FaktasideContext> {
   errors: any;
