@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { pxFromTop } from '../../../utils/domUtils';
 import styled, { css } from 'styled-components/macro';
-import useSmoothscrollOnClick from '../../../hooks/useSmoothscrollOnClick';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
 import { useInnholdsListe } from './useInnholdsListe';
 import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
@@ -40,11 +39,8 @@ function useCurrentlyViewedGroup(items: Group[]): Group | undefined {
 }
 
 function MenuItem(props: { item: Group; current: boolean }) {
-  const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
-
   return (
-    <li key={props.item.blockConfig?.id} onClick={activateSmoothScroll}>
-      <SmoothScroll />
+    <li key={props.item.blockConfig?.id}>
       <StyledLenke erValgt={props.current} href={`#${props.item.blockConfig?.id}`}>
         {props.item.title}
       </StyledLenke>
