@@ -14,26 +14,6 @@ const Styling = createGlobalStyle`
     body {
         background-color: ${theme.colors.bakgrunn};
     }
-
-    // :target = valgt i url (url-fragment), sørger for at header ikke ligger klint oppi toppen ved bruk av interne url'er https://css-tricks.com/hash-tag-links-padding/
-    :target, .internUrl {
-        position: relative;
-        &:focus {
-        outline: none;
-        box-shadow: none;
-            &::after {
-              content: '';
-              position: absolute;
-              bottom: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              ${theme.focus};
-              border-radius: .2rem;
-              pointer-events: none;
-            }
-        }
-    }
     
     .ReactCollapse--collapse {
         transition: height 0.3s;

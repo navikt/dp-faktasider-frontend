@@ -1,13 +1,12 @@
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
 
 export function useGroupMarkupAriaProps(group: Group) {
-  const id = group.blockConfig?.id;
+  const id = group.blockConfig?.id || 'N/A';
   const headerId = id + '-header';
 
   return {
+    id,
     regionProps: {
-      id: id,
-      tabIndex: -1,
       'aria-labelledby': headerId,
     },
     headerProps: {

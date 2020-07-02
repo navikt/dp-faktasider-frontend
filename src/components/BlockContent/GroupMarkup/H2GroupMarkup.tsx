@@ -7,6 +7,7 @@ import { Systemtittel } from 'nav-frontend-typografi';
 import H2GroupMenu from './H2GroupMenu';
 import withErrorBoundary from '../../withErrorBoundary';
 import { useGroupMarkupAriaProps } from './useGroupMarkupAriaProps';
+import Anchor from '../../Anchor';
 
 const StyledArticle = styled.article<{ background: boolean }>`
   ${(props) =>
@@ -41,12 +42,13 @@ const ContentStyle = styled.div`
 `;
 
 function H2GroupMarkup(props: Group) {
-  const { regionProps, headerProps } = useGroupMarkupAriaProps(props);
+  const { regionProps, headerProps, id } = useGroupMarkupAriaProps(props);
   const noBackground = props.blockConfig?.noBackground;
   const underGrupper = props.children.filter(isH3Group);
 
-  const content = (
+  return (
     <StyledArticle background={!noBackground} {...regionProps}>
+      <Anchor id={id} />
       <StyledSystemtittel tag="h2" {...headerProps}>
         <BackgroundColor noBackground={noBackground}>{props.title}</BackgroundColor>
       </StyledSystemtittel>
@@ -56,8 +58,6 @@ function H2GroupMarkup(props: Group) {
       </ContentStyle>
     </StyledArticle>
   );
-
-  return content;
 }
 
 export default withErrorBoundary(H2GroupMarkup, 'H2GroupMarkup');

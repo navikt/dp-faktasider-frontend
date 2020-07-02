@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Element } from 'nav-frontend-typografi';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
 import { useGroupMarkupAriaProps } from './useGroupMarkupAriaProps';
+import Anchor from '../../Anchor';
 
 const StyledSection = styled.section`
   margin: 3rem 0 2rem;
@@ -15,10 +16,11 @@ const StyledElement = styled(Element)`
 `;
 
 function H4GroupMarkup(props: Group) {
-  const { regionProps, headerProps } = useGroupMarkupAriaProps(props);
+  const { regionProps, headerProps, id } = useGroupMarkupAriaProps(props);
 
   return (
     <StyledSection {...regionProps}>
+      <Anchor id={id} marginTop="4rem" />
       <StyledElement tag="h4" {...headerProps}>
         {props.title}
       </StyledElement>
