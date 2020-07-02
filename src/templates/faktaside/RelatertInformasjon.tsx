@@ -12,9 +12,9 @@ interface Props {
 
 const Style = styled.div`
   text-align: center;
-  @media (${theme.media.bigScreen}) {
-    ul {
-      list-style: none;
+  ul {
+    list-style: none;
+    @media (${theme.media.bigScreen}) {
       column-count: 2;
       a {
         white-space: nowrap;
