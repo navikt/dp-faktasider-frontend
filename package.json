@@ -7,6 +7,7 @@
   "dependencies": {
     "@navikt/fnrvalidator": "^1.1.2",
     "@sanity/block-content-to-react": "^2.0.7",
+    "@types/jest": "^26.0.3",
     "babel-plugin-styled-components": "^1.10.7",
     "classnames": "^2.2.6",
     "gatsby": "^2.23.12",
@@ -47,8 +48,8 @@
     "react-i18next": "^11.7.0",
     "react-use": "^15.2.5",
     "styled-components": "^5.1.1",
-    "typescript": "^3.9.5",
-    "ts-node": "^8.10.2"
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
   },
   "devDependencies": {
     "@types/node": "^14.0.13",
@@ -57,11 +58,16 @@
     "@types/react-dom": "^16.9.8",
     "@types/styled-components": "^5.1.0",
     "@typescript-eslint/parser": "^3.3.0",
+    "babel-jest": "^26.1.0",
+    "babel-preset-gatsby": "^0.5.1",
     "eslint": "^7.2.0",
     "eslint-config-react-app": "^5.2.1",
     "husky": "^4.2.5",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.1.0",
     "lint-staged": "^10.2.11",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "react-test-renderer": "^16.13.1"
   },
   "license": "MIT",
   "scripts": {
@@ -72,7 +78,7 @@
     "seHvordanDetBlirIProd": "npm run clean && npm run build && npm run serve",
     "clean": "gatsby clean",
     "fetchDekorator": "node ./plugins/nav-decorator/index.js",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 0",
+    "test": "jest",
     "typeCheck": "tsc",
     "docker": "echo '🚀 Hoster app på localhost/arbeid \n' && docker build -t dpfakta . && docker run --rm -p 80:80 dpfakta"
   },
