@@ -23,7 +23,7 @@ function Filtrering() {
     <Style>
       <Undertittel>Filtrering</Undertittel>
       {visForContext.value.valg.map((valg) => (
-        <li>
+        <li key={valg}>
           <Checkbox
             label={valg}
             onChange={() => visForContext.dispatch({ type: 'toggle', key: valg })}
