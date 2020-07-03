@@ -51,7 +51,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
         edges {
           node {
             id
-            innhold: _rawInnhold
+            innhold: _rawInnhold(resolveReferences: { maxDepth: 10 })
             title: _rawTitle
             ingress: _rawIngress
             sistOppdatert: _rawSistOppdatert

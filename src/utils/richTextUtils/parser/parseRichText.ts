@@ -2,6 +2,7 @@ import { Block, SanityBlock } from '../richTextTypes';
 import { flattenH2Versions } from './flattenH2Versions';
 import { groupParser } from './groupParser';
 import { makeUniqeGroupIDs } from './makeUniqeGroupIDs';
+import { parseDelteTekster } from './parseDelteTekster';
 
 export type ParsedRichText = Block[];
 export type RichTextParser = (blocks: Block[]) => Block[];
@@ -11,7 +12,8 @@ function parseRichText(blocks?: SanityBlock[]): ParsedRichText {
     return [];
   }
 
-  const parsers: RichTextParser[] = [flattenH2Versions, makeUniqeGroupIDs, groupParser];
+  const parsers: RichTextParser[] = [parseDelteTekster, flattenH2Versions, makeUniqeGroupIDs, groupParser];
+
   return parsers.reduce((prevBlocks, parser) => parser(prevBlocks), blocks);
 }
 
