@@ -10,8 +10,8 @@ function localizeSanityContent(value: any, language: SupportedLanguage) {
     return value.map((v) => localizeSanityContent(v, language));
   } else if (value && typeof value == 'object') {
     if (/^locale[A-Z]/.test(value._type)) {
-      const language = languages.find((lang) => value[lang]);
-      return language ? value[language] : 'Translation not found.';
+      const bestMatch = languages.find((lang) => value[lang]);
+      return localizeSanityContent(bestMatch ? value[bestMatch] : 'Translation not found.', language);
     }
 
     return Object.keys(value).reduce((result, key) => {
