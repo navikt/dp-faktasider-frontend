@@ -14,11 +14,23 @@ interface Props {
 
 const color = '#80f8';
 
-const Style = styled.div<{ outline: boolean }>`
+const Style = styled.div<{ debug: boolean; debugInfo: string }>`
   ${(props) =>
-    props.outline &&
+    props.debug &&
     css`
       box-shadow: 0 0 0 0.2rem ${color};
+      position: relative;
+      &::before {
+        content: '${props.debugInfo}';
+        position: absolute;
+        right: 0;
+        transform: translateY(-100%);
+        background-color: ${color};
+        color: white;
+        font-size: .8rem;
+        padding: .1rem;
+        opacity: .8;
+      }
     `}
 `;
 
@@ -40,11 +52,11 @@ function VisFor(props: Props) {
   const ingenFiltrering = visForContext.value.checked.length === 0;
   const valgtIFiltrering = visForContext.value.checked.some((it) => visFor.includes(it));
   const vis = (ingenFiltrering || valgtIFiltrering) && !visForContext.value.ingenPasserMeg;
-  const title = 'Vises for ' + visFor.join(' & ');
+  const debugInfo = 'Vises for ' + visFor.join(' & ');
 
   if (props.inline) {
     return vis ? (
-      <Style title={title} outline={visOutline} as="span">
+      <Style debugInfo={debugInfo} debug={visOutline} as="span">
         {props.children}
       </Style>
     ) : null;
@@ -52,7 +64,7 @@ function VisFor(props: Props) {
 
   return (
     <UnmountClosed isOpened={vis}>
-      <Style title={title} outline={visOutline}>
+      <Style debugInfo={debugInfo} debug={visOutline}>
         {props.children}
       </Style>
     </UnmountClosed>
