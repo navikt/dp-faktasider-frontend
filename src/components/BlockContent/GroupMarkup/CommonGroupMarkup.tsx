@@ -27,7 +27,7 @@ const linkHideClassName = 'group-header-hash-link-hide';
 const HashLinkHide = createGlobalStyle`
   .${linkHideClassName} {
     > *:first-child {
-      transition: .3s;
+      transition: .2s;
       opacity: 0;
     }
     &:hover, &:focus-within, &:focus {
