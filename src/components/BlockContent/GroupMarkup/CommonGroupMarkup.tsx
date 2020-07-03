@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import BlockContent from '../BlockContent';
-import { StyledComponent } from 'styled-components';
+import { createGlobalStyle, StyledComponent } from 'styled-components/macro';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
 import { useGroupMarkupAriaProps } from './useGroupMarkupAriaProps';
 import Anchor from '../../Anchor';
@@ -23,6 +23,21 @@ interface Props {
   anchorMarginTop?: string;
 }
 
+const linkHideClassName = 'group-header-hash-link-hide';
+const HashLinkHide = createGlobalStyle`
+  .${linkHideClassName} {
+    > *:first-child {
+      transition: .3s;
+      opacity: 0;
+    }
+    &:hover, &:focus-within, &:focus {
+    > *:first-child {
+      opacity: 1;
+      }
+    }
+  }
+`;
+
 function CommonGroupMarkup(props: Props) {
   const group = props.group;
   const { regionProps, headerProps, id } = useGroupMarkupAriaProps(group);
@@ -32,8 +47,9 @@ function CommonGroupMarkup(props: Props) {
 
   return (
     <Region {...regionProps} style={{ position: 'relative' }} {...props.regionProps}>
+      <HashLinkHide />
       <Anchor id={id} marginTop={props.anchorMarginTop} focusOnParent={true} />
-      <Header {...headerProps} {...props.headerProps}>
+      <Header {...headerProps} {...props.headerProps} className={linkHideClassName}>
         <HashLink id={id} ariaLabel={`Lenke til ${group.title}`} />
         {group.title}
       </Header>
