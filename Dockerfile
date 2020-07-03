@@ -10,6 +10,7 @@ RUN npm install
 
 ADD . ./
 RUN npm run build
+RUN npm run test
 
 FROM gatsbyjs/gatsby
 COPY --from=build /app/public /pub/arbeid
