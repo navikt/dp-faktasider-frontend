@@ -1,12 +1,13 @@
 import React, { createContext, ReactNode, useContext, useReducer } from 'react';
 import { isDevelopment } from '../../utils/environment';
 
-type ActionNames = 'utkast' | 'filtrering';
+type ActionNames = 'utkast' | 'filtrering' | 'delteTekster';
 
 const initial = {
   value: {
     visUtkast: isDevelopment(),
-    visFiltrering: isDevelopment(),
+    highlightFiltrering: isDevelopment(),
+    debugDelteTekster: false,
   },
   toggle: (toggle: ActionNames): void => undefined,
 };
@@ -25,7 +26,12 @@ function reducer(state: typeof initial.value, action: ActionNames) {
     case 'filtrering':
       return {
         ...state,
-        visFiltrering: !state.visFiltrering,
+        highlightFiltrering: !state.highlightFiltrering,
+      };
+    case 'delteTekster':
+      return {
+        ...state,
+        debugDelteTekster: !state.debugDelteTekster,
       };
     default:
       return state;

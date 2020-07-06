@@ -72,8 +72,13 @@ function DevKnapper() {
           <Checkbox onClick={() => context.toggle('utkast')} label="Vis utkast" checked={context.value.visUtkast} />
           <Checkbox
             onClick={() => context.toggle('filtrering')}
-            label="Vis filtrering"
-            checked={context.value.visFiltrering}
+            label="Highlight filtrering"
+            checked={context.value.highlightFiltrering}
+          />
+          <Checkbox
+            onClick={() => context.toggle('delteTekster')}
+            label="Debug delte tekster"
+            checked={context.value.debugDelteTekster}
           />
         </Innhold>
       )}

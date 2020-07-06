@@ -43,7 +43,7 @@ function VisFor(props: Props) {
 
   const visForContext = useVisForContext();
   const devContext = useDevContext();
-  const visOutline = devContext.value.visFiltrering;
+  const visOutline = devContext.value.highlightFiltrering;
 
   useMount(() => {
     visFor.forEach((key) => visForContext.dispatch({ type: 'addKey', key: key }));
