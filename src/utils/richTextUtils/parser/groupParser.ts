@@ -1,4 +1,4 @@
-import { Block, Group, GroupTypes, ParsedSanityBlock } from '../richTextTypes';
+import { Block, BlockConfigFromParser, Group, GroupTypes, ParsedSanityBlock } from '../richTextTypes';
 import { RichTextParser } from './parseRichText';
 
 const groupByStyles: GroupTypes[] = ['h2', 'h3', 'h4'].reverse() as GroupTypes[]; // Rekkefølgen her er viktig. Den første gruppen vil aldri få andre grupper inni seg.
@@ -18,18 +18,13 @@ export const groupParser: RichTextParser = (blocks) => {
 
       if (endOfCurrentGroup) {
         if (startOfNewGroup) {
-          const currentConfig = (block as ParsedSanityBlock)?.blockConfig;
           currentGroup = {
             ...block,
             style: block.style as GroupTypes,
             title: getGroupTitle(block),
             _type: 'group',
             children: [],
-            blockConfig: {
-              ...currentConfig,
-              erUtkast: block.children?.some((child) => child.marks?.includes('utkast')),
-              visFor: block.markDefs?.find((markDef) => markDef._type === 'visForAnnotation')?.visFor,
-            },
+            blockConfig: createBlockConfig(block),
           };
           parsedBlocks.push(currentGroup);
         } else {
@@ -47,4 +42,16 @@ export const groupParser: RichTextParser = (blocks) => {
 
 export function getGroupTitle(block: ParsedSanityBlock): string {
   return block.children?.map((it) => it.text).join('') || 'Mangler tittel';
+}
+
+function createBlockConfig(block: ParsedSanityBlock): BlockConfigFromParser {
+  const currentConfig = block?.blockConfig;
+  return {
+    ...currentConfig,
+    erUtkast: block.children?.some((child) => child.marks?.includes('utkast')),
+    visFor: block.markDefs?.find((markDef) => markDef._type.includes('visForAnnotation'))?.visFor,
+    visPaaSider: block.markDefs
+      ?.find((markDef) => markDef._type === 'visForAnnotationDeltTekst')
+      ?.visPaaSider?.map((side) => side.id),
+  };
 }

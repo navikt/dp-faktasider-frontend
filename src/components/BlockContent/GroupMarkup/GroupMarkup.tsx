@@ -6,6 +6,7 @@ import H3GroupMarkup from './H3GroupMarkup';
 import H4GroupMarkup from './H4GroupMarkup';
 import VisFor from '../VisFor/VisFor';
 import { ConditionalWrapper } from '../../ConditionalWrapper';
+import VisPaaSide from '../VisFor/VisPaaSide';
 
 interface Props {
   node: Group;
@@ -25,16 +26,21 @@ function getContent(group: Group) {
 }
 
 function GroupMarkup(props: Props) {
+  const visPaaSider = props.node.blockConfig?.visPaaSider;
+  const visFor = props.node.blockConfig?.visFor;
+
   return (
     <ConditionalWrapper
-      condition={!!props.node.blockConfig?.visFor}
-      wrapper={(children) => <VisFor visFor={props.node.blockConfig?.visFor}>{children}</VisFor>}
+      condition={!!visPaaSider}
+      wrapper={(children) => <VisPaaSide visPaaSider={visPaaSider} children={children} />}
     >
-      <ConditionalWrapper
-        condition={!!props.node.blockConfig?.erUtkast}
-        wrapper={(children) => <Utkast>{children}</Utkast>}
-      >
-        {getContent(props.node)}
+      <ConditionalWrapper condition={!!visFor} wrapper={(children) => <VisFor visFor={visFor} children={children} />}>
+        <ConditionalWrapper
+          condition={!!props.node.blockConfig?.erUtkast}
+          wrapper={(children) => <Utkast children={children} />}
+        >
+          {getContent(props.node)}
+        </ConditionalWrapper>
       </ConditionalWrapper>
     </ConditionalWrapper>
   );
