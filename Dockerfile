@@ -9,6 +9,8 @@ ADD package.json package-lock.json ./
 RUN npm install
 
 ADD . ./
+RUN npm run typeCheck
+RUN npm run lint
 RUN npm run build
 RUN npm run test
 
