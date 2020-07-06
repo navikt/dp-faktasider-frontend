@@ -14,7 +14,7 @@ const StyledIngress = styled(Ingress).attrs({ as: 'h3' })`
 `;
 
 function H3GroupMarkup(props: Group) {
-  return <CommonGroupMarkup header={StyledIngress} region={StyledSection} group={props} anchorMarginTop="4rem" />;
+  return <CommonGroupMarkup header={StyledIngress} region={StyledSection} group={props} anchorMarginTop="5rem" />;
 }
 
 export default H3GroupMarkup;

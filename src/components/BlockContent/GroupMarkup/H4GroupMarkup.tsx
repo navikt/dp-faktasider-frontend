@@ -14,7 +14,7 @@ const StyledElement = styled(Element).attrs({ as: 'h4' })`
 `;
 
 function H4GroupMarkup(props: Group) {
-  return <CommonGroupMarkup header={StyledElement} region={StyledSection} group={props} anchorMarginTop="4rem" />;
+  return <CommonGroupMarkup header={StyledElement} region={StyledSection} group={props} anchorMarginTop="5rem" />;
 }
 
 export default H4GroupMarkup;
