@@ -1,32 +1,40 @@
 # Dagpenger faktasider
 
-Gatsby-frontend for dagpengerelaterte faktasider på www.nav.no/arbeid/dagpenger. Inhhold kan redigeres på https://dagpenger.sanity.studio/.
+Gatsby-frontend for dagpengerelaterte faktasider på www.nav.no/arbeid/. Inhhold kan redigeres på https://dagpenger.sanity.studio/.
 
 ## Utvikle lokalt
- 
+
 ```
 npm i
 npm start
 ```
 
-### Sanity Studio-repo
-
-Innholdet hentes fra sanity https://github.com/navikt/dp-sanity-cms.
-
-### Live oppdatering av innhold fra Sanity
+### Optional
 
 Opprett filen `.env.development` i root-folderet med innholdet:
 
 ```
 # SECRET - DO NOT COMMIT TO GIT
-SANITY_READ_TOKEN="MITT_HEMMELIGE_TOKEN"
+# SANITY_READ_TOKEN="MITT_HEMMELIGE_TOKEN"
+
+# DATASET="development"
 ```
 
-Token kan du opprette på https://manage.sanity.io/projects/rt6o382n
+#### Live oppdatering
 
-Settings -> API -> Add new token (velg "Read" og skriv hvem du er så vi har oversikt over tokens)
+Kommenter ut `SANITY_READ_TOKEN="MITT_HEMMELIGE_TOKEN"` og opprett token på https://manage.sanity.io/projects/rt6o382n:
+
+`Settings -> API -> Add new token (velg "Read" og skriv hvem du er så vi har oversikt over tokens)`
 
 > NB! Ikke commit token til git
+
+#### Development-datasett
+
+Kommenter ut `DATASET="development"` og du kan jobbe mot et test-datasett fra sanity (anbefales dersom du ønsker å lage custom innhold i sanity under utvikling).
+
+### Sanity Studio-repo
+
+Innholdet hentes fra sanity https://github.com/navikt/dp-sanity-cms.
 
 ## Oversettelser
 

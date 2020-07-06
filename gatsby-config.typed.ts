@@ -26,7 +26,7 @@ export const plugins = [
     resolve: 'gatsby-source-sanity',
     options: {
       projectId: 'rt6o382n',
-      dataset: 'production',
+      dataset: process.env.DATASET || 'production',
       token: secretSanityToken,
       watchMode: !isProd,
       overlayDrafts: !isProd && secretSanityToken,
