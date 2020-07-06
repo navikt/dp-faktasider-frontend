@@ -27,8 +27,12 @@ function HashLink(props: Props) {
 }
 
 const StyledSVG = styled.svg`
-  fill: currentColor;
-  width: 1em;
+  stroke: currentColor;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+  height: 0.7em;
   opacity: 0.4;
   transition: 0.15s;
   ${StyledA}:hover & {
@@ -39,7 +43,8 @@ const StyledSVG = styled.svg`
 function LinkIcon() {
   return (
     <StyledSVG viewBox="0 0 24 24">
-      <path d="M4 12c0-2 1-3 3-3h4V7H7a5 5 0 000 10h4v-2H7c-2 0-3-1-3-3zm4 1h8v-2H8v2zm9-6h-4v2h4a3 3 0 010 6h-4v2h4a5 5 0 000-10z" />
+      <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
     </StyledSVG>
   );
 }
