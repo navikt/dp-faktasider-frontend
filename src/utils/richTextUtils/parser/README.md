@@ -30,9 +30,3 @@ const blockConfig = {
 ```
 
 Rekkefølgen på parserene er viktig, da flere parsere er avhengig av arbeid fra foregående parsere.
-
-#### Parseren består av:
-
-- [flattenH2Versions](./flattenH2Versions.ts)
-- [makeUniqeGroupIDs](./makeUniqeGroupIDs.ts)
-- [groupParser](./groupParser.ts)

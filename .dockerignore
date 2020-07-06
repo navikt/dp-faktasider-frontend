@@ -7,3 +7,6 @@
 !nginx-server-rules.conf
 !plugins
 !src
+!jest*
+!__mocks__
+!.eslintrc.js
