@@ -11,6 +11,7 @@ import FremhevetTekst from './FremhevetTekst';
 import { UtkastInline } from './Utkast';
 import VisForAnnotation from './VisFor/VisForAnnotation';
 import GroupMarkup from './GroupMarkup/GroupMarkup';
+import VisForAnnotationDeltTekst from './VisFor/VisForAnnotationDeltTekst';
 
 interface Props {
   blocks: ParsedRichText;
@@ -37,6 +38,7 @@ const serializers: Serializers = {
     link: LinkMarkup,
     utkast: UtkastInline,
     visForAnnotation: VisForAnnotation,
+    visForAnnotationDeltTekst: VisForAnnotationDeltTekst,
   },
 };
 
