@@ -1,10 +1,12 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { theme } from '../styles/theme';
 
 const StyledA = styled.a`
   position: absolute;
-  left: -1.2em;
-  color: currentColor;
+  right: calc(-1rem - 0.6em);
+  transform: translateY(0.1em);
+  color: ${theme.colors.lenke};
 `;
 
 const Wrapper = styled.span`
@@ -32,11 +34,11 @@ const StyledSVG = styled.svg`
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 2.5;
-  height: 0.7em;
-  opacity: 0.4;
+  height: calc(0.5rem + 0.4em);
+  opacity: 0.6;
   transition: 0.15s;
   ${StyledA}:hover & {
-    opacity: 0.7;
+    opacity: 1;
   }
 `;
 

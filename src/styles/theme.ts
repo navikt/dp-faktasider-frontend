@@ -37,6 +37,7 @@ export const theme = {
   colors: {
     ...colors,
     bakgrunn: colors.navLysGra,
+    lenke: colors.navBla,
   },
   visuallyHidden: css`
     position: absolute !important;

@@ -50,8 +50,8 @@ function CommonGroupMarkup(props: Props) {
       <HashLinkHide />
       <Anchor id={id} marginTop={props.anchorMarginTop} focusOnParent={true} />
       <Header {...headerProps} {...props.headerProps} className={linkHideClassName}>
-        <HashLink id={id} ariaLabel={`Lenke til ${group.title}`} />
         {group.title}
+        <HashLink id={id} ariaLabel={`Lenke til ${group.title}`} />
       </Header>
       {props.beforeContent}
       <BlockContent blocks={group.children} />
