@@ -9,7 +9,7 @@ import { getPubliseringsTidspunkt } from './getPubliseringstidspunkt';
 
 export interface RawFaktasideData {
   id: string;
-  _updatedAt: string;
+  _updatedAt?: string;
   title?: Translations<string>;
   ingress?: Translations<string>;
   sistOppdatert?: Translations<string>;
