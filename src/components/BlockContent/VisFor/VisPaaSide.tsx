@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { useFaktasideContext } from '../../../templates/faktaside/FaktaSideContext';
+import useVisPaaSideDebug from './useVisPaaSideDebug';
 
 interface Props {
   children: ReactNode;
@@ -9,8 +10,14 @@ interface Props {
 
 function VisPaaSide(props: Props) {
   const faktasideContext = useFaktasideContext();
+  const visSpesifiktPåDenneSiden = !!props.visPaaSider?.includes(faktasideContext.id);
+  const ingenVisPåConfig = !!props.visPaaSider?.length;
+  const visPåDenneSiden = !ingenVisPåConfig || visSpesifiktPåDenneSiden;
+  const visPåDenneSidenDebug = useVisPaaSideDebug({ children: props.children, ikkeVisPåDenneSiden: !visPåDenneSiden });
 
-  const visPåDenneSiden = props.visPaaSider?.includes(faktasideContext.id);
+  if (visPåDenneSidenDebug.debug) {
+    return visPåDenneSidenDebug.component;
+  }
 
   if (!visPåDenneSiden) {
     return null;
