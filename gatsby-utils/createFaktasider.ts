@@ -5,9 +5,11 @@ import parseRichText, { ParsedRichText } from '../src/utils/richTextUtils/parser
 import { SanityBlock } from '../src/utils/richTextUtils/richTextTypes';
 import { Translations } from '../src/types/translations';
 import { Modify } from '../src/utils/typeUtils';
+import { getPubliseringsTidspunkt } from './getPubliseringstidspunkt';
 
 export interface RawFaktasideData {
   id: string;
+  _updatedAt: string;
   title?: Translations<string>;
   ingress?: Translations<string>;
   sistOppdatert?: Translations<string>;
@@ -38,6 +40,7 @@ export type FaktasideContext = Modify<
   {
     lang: SupportedLanguage;
     innhold: ParsedRichText;
+    publiseringsTidspunkt: Date;
     rawData: Pick<RawFaktasideData, 'title'>;
     slug: string;
   }
@@ -51,6 +54,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
         edges {
           node {
             id
+            _updatedAt
             innhold: _rawInnhold(resolveReferences: { maxDepth: 10 })
             title: _rawTitle
             ingress: _rawIngress
@@ -81,6 +85,8 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
     if (!slug) {
       return;
     }
+    const publiseringsTidspunkt = getPubliseringsTidspunkt(page);
+    console.log(publiseringsTidspunkt);
 
     const path = `/${slug}/`;
     reporter.info(`🚧 Lager redirect fra ${path} til /no${path}`);
@@ -97,6 +103,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
         innhold: parsedInnhold,
         lang,
         slug,
+        publiseringsTidspunkt,
         rawData: {
           title: page.title,
         },
