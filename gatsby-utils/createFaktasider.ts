@@ -9,7 +9,7 @@ import { getPubliseringsTidspunkt } from './getPubliseringstidspunkt';
 
 export interface RawFaktasideData {
   id: string;
-  _updatedAt?: string;
+  _updatedAt: string;
   title?: Translations<string>;
   ingress?: Translations<string>;
   sistOppdatert?: Translations<string>;
@@ -36,7 +36,7 @@ export type LocalizedFaktasideData = Modify<
 >;
 
 export type FaktasideContext = Modify<
-  LocalizedFaktasideData,
+  Omit<LocalizedFaktasideData, '_updatedAt'>,
   {
     lang: SupportedLanguage;
     innhold: ParsedRichText;
@@ -85,8 +85,6 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
     if (!slug) {
       return;
     }
-    const publiseringsTidspunkt = getPubliseringsTidspunkt(page);
-    console.log(publiseringsTidspunkt);
 
     const path = `/${slug}/`;
     reporter.info(`🚧 Lager redirect fra ${path} til /no${path}`);
@@ -96,6 +94,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
       const localizedPage = localizeSanityContent(page, lang) as LocalizedFaktasideData;
       const parsedInnhold = parseRichText(localizedPage.innhold);
       const path = `/${lang}/${slug}/`;
+      const publiseringsTidspunkt = getPubliseringsTidspunkt(page, lang);
       reporter.info(`📄 Lager faktaside: ${path}`);
 
       const context: FaktasideContext = {

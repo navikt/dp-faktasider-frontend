@@ -1,4 +1,5 @@
 import { RawFaktasideData } from '../../../gatsby-utils/createFaktasider';
+import { Modify } from '../typeUtils';
 
 // SanityBlock-typen er uhøytidelig hamret sammen basert på hvilke parametere jeg ser i consollen, det er ikke sikkert den stemmer helt
 export type SanityBlock = {
@@ -10,6 +11,21 @@ export type SanityBlock = {
   marks?: string[];
   markDefs?: MarkDef[];
 };
+
+export type RawDeltTekst = Modify<
+  SanityBlock,
+  {
+    _createdAt: string;
+    _updatedAt: string;
+    id: string;
+    innhold?: SanityBlock[];
+    _type: 'deltTekst';
+  }
+>;
+
+export function isRawDeltTekst(candidate: Block): candidate is RawDeltTekst {
+  return candidate._type === 'deltTekst';
+}
 
 type MarkDef = {
   _type: string;

@@ -10,7 +10,6 @@ interface Props {
   publiseringsTidspunkt: Date;
 }
 export function SistOppdatert(props: Props) {
-  console.log(props.publiseringsTidspunkt);
   const formattertTidspunkt = format(props.publiseringsTidspunkt, 'dd.MM.yyyy HH:mm');
 
   return <Style>{formattertTidspunkt}</Style>;
