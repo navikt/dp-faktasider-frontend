@@ -3,14 +3,15 @@ import { ReactNode } from 'react';
 import { useDevContext } from '../../DevKnapper/DevContext';
 import styled from 'styled-components';
 
+const color = '#80f8';
+
 interface Props {
+  visFor: string[];
   children: ReactNode;
-  ikkeVisPåDenneSiden: boolean;
+  as?: 'span';
 }
 
-const color = '#f008';
-
-const DebugStyle = styled.div<{ debugInfo: string }>`
+const Style = styled.div<{ debugInfo: string }>`
       box-shadow: 0 0 0 0.2rem ${color};
       position: relative;
       &::before {
@@ -26,17 +27,20 @@ const DebugStyle = styled.div<{ debugInfo: string }>`
       }
 `;
 
-function useVisPaaSideDebug(props: Props) {
+function VisForDebug(props: Props) {
   const devContext = useDevContext();
+  const debug = devContext.value.highlightFiltrering && props.visFor.length;
+  const debugInfo = 'Vises for ' + props.visFor.join(' & ');
 
-  return {
-    debug: devContext.value.debugDelteTekster,
-    component: props.ikkeVisPåDenneSiden ? (
-      <DebugStyle debugInfo={'Delt tekst som ikke vises på denne siden'}>{props.children}</DebugStyle>
-    ) : (
-      <>{props.children}</>
-    ),
-  };
+  if (!debug) {
+    return <>{props.children}</>;
+  }
+
+  return (
+    <Style as={props.as} debugInfo={debugInfo}>
+      {props.children}
+    </Style>
+  );
 }
 
-export default useVisPaaSideDebug;
+export default VisForDebug;

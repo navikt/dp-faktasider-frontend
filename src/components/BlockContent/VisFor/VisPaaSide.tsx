@@ -10,8 +10,10 @@ interface Props {
 
 function VisPaaSide(props: Props) {
   const faktasideContext = useFaktasideContext();
-  const visPåDenneSiden = props.visPaaSider?.includes(faktasideContext.id);
-  const visPåDenneSidenDebug = useVisPaaSideDebug(props);
+  const visSpesifiktPåDenneSiden = !!props.visPaaSider?.includes(faktasideContext.id);
+  const ingenVisPåConfig = !!props.visPaaSider?.length;
+  const visPåDenneSiden = !ingenVisPåConfig || visSpesifiktPåDenneSiden;
+  const visPåDenneSidenDebug = useVisPaaSideDebug({ children: props.children, ikkeVisPåDenneSiden: !visPåDenneSiden });
 
   if (visPåDenneSidenDebug.debug) {
     return visPåDenneSidenDebug.component;
