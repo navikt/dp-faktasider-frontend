@@ -11,6 +11,7 @@ RUN npm install
 ADD . ./
 RUN npm run typeCheck
 RUN npm run lint
+ENV TZ Europe/Oslo
 RUN npm run build
 RUN npm run test
 
