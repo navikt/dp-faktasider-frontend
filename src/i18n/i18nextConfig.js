@@ -21,7 +21,7 @@ i18n.use(initReactI18next).init({
   returnObjects: true,
   interpolation: {
     format: function (value, format, lng) {
-      const locale = lng === 'no' ? nb : enGB;
+      const locale = lng === 'en' ? enGB : nb;
       if (value instanceof Date) return datefnsFormat(value, format, { locale });
       return value;
     },
