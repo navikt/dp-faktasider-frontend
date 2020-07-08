@@ -5,12 +5,13 @@ import parseRichText, { ParsedRichText } from '../src/utils/richTextUtils/parser
 import { SanityBlock } from '../src/utils/richTextUtils/richTextTypes';
 import { Translations } from '../src/types/translations';
 import { Modify } from '../src/utils/typeUtils';
+import { getPubliseringsTidspunkt } from './getPubliseringstidspunkt';
 
 export interface RawFaktasideData {
   id: string;
+  _updatedAt: string;
   title?: Translations<string>;
   ingress?: Translations<string>;
-  sistOppdatert?: Translations<string>;
   innhold?: Translations<SanityBlock[]>;
   relatertInformasjon?: Translations<SanityBlock[]>;
   slug?: {
@@ -27,17 +28,17 @@ export type LocalizedFaktasideData = Modify<
   {
     title?: string;
     ingress?: string;
-    sistOppdatert?: string;
     innhold?: SanityBlock[];
     relatertInformasjon?: SanityBlock[];
   }
 >;
 
 export type FaktasideContext = Modify<
-  LocalizedFaktasideData,
+  Omit<LocalizedFaktasideData, '_updatedAt'>,
   {
     lang: SupportedLanguage;
     innhold: ParsedRichText;
+    publiseringsTidspunkt: string;
     rawData: Pick<RawFaktasideData, 'title'>;
     slug: string;
   }
@@ -51,10 +52,10 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
         edges {
           node {
             id
+            _updatedAt
             innhold: _rawInnhold(resolveReferences: { maxDepth: 10 })
             title: _rawTitle
             ingress: _rawIngress
-            sistOppdatert: _rawSistOppdatert
             relatertInformasjon: _rawRelatertInformasjon
             slug {
               current
@@ -90,6 +91,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
       const localizedPage = localizeSanityContent(page, lang) as LocalizedFaktasideData;
       const parsedInnhold = parseRichText(localizedPage.innhold);
       const path = `/${lang}/${slug}/`;
+      const publiseringsTidspunkt = getPubliseringsTidspunkt(page, lang);
       reporter.info(`📄 Lager faktaside: ${path}`);
 
       const context: FaktasideContext = {
@@ -97,6 +99,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
         innhold: parsedInnhold,
         lang,
         slug,
+        publiseringsTidspunkt,
         rawData: {
           title: page.title,
         },

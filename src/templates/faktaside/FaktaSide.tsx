@@ -34,7 +34,7 @@ function FaktaSide(props: FaktaSideProps) {
         <SEO title={tittel} description={description} lang={lang} />
         <FaktaSideLayout header={tittel} ingress={description}>
           <GraphQLErrorList errors={props.errors} />
-          <SistOppdatert>{page.sistOppdatert}</SistOppdatert>
+          <SistOppdatert publiseringsTidspunkt={page.publiseringsTidspunkt} />
           <BlockContent blocks={parsedInnhold} />
           <RelatertInformasjon blocks={page.relatertInformasjon} />
         </FaktaSideLayout>
