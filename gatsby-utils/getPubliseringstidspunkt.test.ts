@@ -1,8 +1,8 @@
 import { RawFaktasideData } from './createFaktasider';
 import { getPubliseringsTidspunkt } from './getPubliseringstidspunkt';
 
-const updatedAtLatest = '2020-12-12T16:59Z';
-const updatedAtOldest = '2020-01-01T12:00Z';
+const updatedAtLatest = '2020-12-12T16:59:00.000Z';
+const updatedAtOldest = '2020-01-01T12:00:00.000Z';
 const testData: RawFaktasideData = ({
   id: '-8f5fc5e2-5558-5a02-a3ff-4c0108ea8b8c',
   _updatedAt: updatedAtOldest,
@@ -22,5 +22,5 @@ const testData: RawFaktasideData = ({
 
 test('finner nyeste publiseringstidspunkt fra faktaside', () => {
   const tidspunkt = getPubliseringsTidspunkt(testData, 'no');
-  expect(tidspunkt).toEqual(new Date(updatedAtLatest));
+  expect(tidspunkt).toEqual(updatedAtLatest);
 });

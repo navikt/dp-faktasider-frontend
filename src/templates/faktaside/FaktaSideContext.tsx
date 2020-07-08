@@ -5,7 +5,7 @@ const inital: FaktasideContext = {
   lang: 'no',
   id: 'N/A',
   slug: 'N/A',
-  publiseringsTidspunkt: new Date(0),
+  publiseringsTidspunkt: '',
   innhold: [],
   rawData: {},
 };

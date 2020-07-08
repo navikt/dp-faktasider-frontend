@@ -12,7 +12,6 @@ export interface RawFaktasideData {
   _updatedAt: string;
   title?: Translations<string>;
   ingress?: Translations<string>;
-  sistOppdatert?: Translations<string>;
   innhold?: Translations<SanityBlock[]>;
   relatertInformasjon?: Translations<SanityBlock[]>;
   slug?: {
@@ -29,7 +28,6 @@ export type LocalizedFaktasideData = Modify<
   {
     title?: string;
     ingress?: string;
-    sistOppdatert?: string;
     innhold?: SanityBlock[];
     relatertInformasjon?: SanityBlock[];
   }
@@ -40,7 +38,7 @@ export type FaktasideContext = Modify<
   {
     lang: SupportedLanguage;
     innhold: ParsedRichText;
-    publiseringsTidspunkt: Date;
+    publiseringsTidspunkt: string;
     rawData: Pick<RawFaktasideData, 'title'>;
     slug: string;
   }
@@ -58,7 +56,6 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
             innhold: _rawInnhold(resolveReferences: { maxDepth: 10 })
             title: _rawTitle
             ingress: _rawIngress
-            sistOppdatert: _rawSistOppdatert
             relatertInformasjon: _rawRelatertInformasjon
             slug {
               current
