@@ -21,6 +21,6 @@ export const loggKalkulatorbruk = (type: string) => loggEvent('Brukt kalkulator'
 
 export const loggHashlenkeKlikk = () => loggEvent('Brukt hashlenke');
 
-export const loggMeny = (type: 'Gå til ny side' | 'Hopp til overskrift') => loggEvent('Meny', { type });
+export const loggMeny = (type: string) => loggEvent('Meny', { type });
 
 export const loggH2MenyKlikk = () => loggEvent('MH2eny', { type: 'Hopp til underoverskrift' });
