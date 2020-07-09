@@ -7,6 +7,7 @@ import { Group } from '../../../utils/richTextUtils/richTextTypes';
 import { useInnholdsListe } from './useInnholdsListe';
 import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
 import withErrorBoundary from '../../../components/withErrorBoundary';
+import { useFaktasideContext } from '../FaktaSideContext';
 
 const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
   display: block;
@@ -62,13 +63,14 @@ const StyledOl = styled.ol`
 function InnholdsMeny() {
   const innholdsListe = useInnholdsListe();
   const currentlyViewedItem = useCurrentlyViewedGroup(innholdsListe);
+  const faktasideContext = useFaktasideContext();
 
   if (!innholdsListe.length) {
     return null;
   }
 
   return (
-    <StyledOl>
+    <StyledOl aria-label={`Innhold ${faktasideContext.title}`}>
       {innholdsListe.map((item) => (
         <MenuItem key={item.blockConfig?.id} item={item} current={currentlyViewedItem === item} />
       ))}
