@@ -8,6 +8,7 @@ import { useInnholdsListe } from './useInnholdsListe';
 import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import { useFaktasideContext } from '../FaktaSideContext';
+import { loggMeny } from '../../../utils/logging';
 
 const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
   display: block;
@@ -49,7 +50,11 @@ function MenuItem(props: { item: Group; current: boolean }) {
   return (
     <li key={props.item.blockConfig?.id} onClick={activateSmoothScroll}>
       <SmoothScroll />
-      <StyledLenke erValgt={props.current} href={`#${props.item.blockConfig?.id}`}>
+      <StyledLenke
+        erValgt={props.current}
+        href={`#${props.item.blockConfig?.id}`}
+        onClick={() => loggMeny('Hopp til overskrift')}
+      >
         {props.item.title}
       </StyledLenke>
     </li>
@@ -60,7 +65,7 @@ const StyledOl = styled.ol`
   margin: 0.5rem 1rem 1rem 2.5rem;
 `;
 
-function InnholdsMeny() {
+function Innholdsfortegnelse() {
   const innholdsListe = useInnholdsListe();
   const currentlyViewedItem = useCurrentlyViewedGroup(innholdsListe);
   const faktasideContext = useFaktasideContext();
@@ -70,7 +75,7 @@ function InnholdsMeny() {
   }
 
   return (
-    <StyledOl aria-label={`Innhold ${faktasideContext.title}`}>
+    <StyledOl aria-label={`Innholdsfortegnelse ${faktasideContext.title}`}>
       {innholdsListe.map((item) => (
         <MenuItem key={item.blockConfig?.id} item={item} current={currentlyViewedItem === item} />
       ))}
@@ -78,4 +83,4 @@ function InnholdsMeny() {
   );
 }
 
-export default withErrorBoundary(InnholdsMeny);
+export default withErrorBoundary(Innholdsfortegnelse);

@@ -5,6 +5,7 @@ import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
 import { useRef } from 'react';
 import { guid } from 'nav-frontend-js-utils';
+import { loggH2MenyKlikk } from '../../../utils/logging';
 
 interface Props {
   underGrupper: Group[];
@@ -24,6 +25,11 @@ function H2GroupMenu(props: Props) {
   const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
   const id = useRef(guid()).current;
 
+  const handleOnClick = () => {
+    activateSmoothScroll();
+    loggH2MenyKlikk();
+  };
+
   return (
     <nav className="typo-normal" aria-labelledby={id}>
       <h3 className="sr-only" id={id}>
@@ -33,7 +39,7 @@ function H2GroupMenu(props: Props) {
       <StyledUl>
         {props.underGrupper.map((underGruppe) => (
           <StyledLi key={underGruppe.blockConfig?.id}>
-            <LenkeUtenUnderstrek onClick={activateSmoothScroll} href={'#' + underGruppe.blockConfig?.id}>
+            <LenkeUtenUnderstrek onClick={handleOnClick} href={'#' + underGruppe.blockConfig?.id}>
               {underGruppe.title}
             </LenkeUtenUnderstrek>
           </StyledLi>

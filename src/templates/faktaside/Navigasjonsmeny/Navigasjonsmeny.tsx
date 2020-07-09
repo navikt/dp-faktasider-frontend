@@ -32,7 +32,6 @@ interface Props {
 
 function Navigasjonsmeny(props: Props) {
   const offsetTop = useDekoratorPopdownOffset();
-  const meny = <SideListe />;
   const mobileTitleId = useRef(guid()).current;
   const desktopTitleId = useRef(guid()).current;
 
@@ -42,13 +41,15 @@ function Navigasjonsmeny(props: Props) {
         <h2 id={desktopTitleId} className="sr-only">
           Sideoversikt
         </h2>
-        {meny}
+        <SideListe />
       </DesktopNav>
       <MobileNav className={props.className} aria-labelledby={mobileTitleId}>
         <h2 id={mobileTitleId} className="sr-only">
           Sideoversikt
         </h2>
-        <MobilmenyWrapper offsetTop={offsetTop}>{meny}</MobilmenyWrapper>
+        <MobilmenyWrapper offsetTop={offsetTop}>
+          <SideListe />
+        </MobilmenyWrapper>
       </MobileNav>
     </>
   );

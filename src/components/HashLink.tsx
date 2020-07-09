@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { theme } from '../styles/theme';
-import { loggError, loggHashlenkeKlikk } from '../utils/logging';
+import { loggHashlenkeKlikk } from '../utils/logging';
 
 const StyledA = styled.a`
   position: absolute;

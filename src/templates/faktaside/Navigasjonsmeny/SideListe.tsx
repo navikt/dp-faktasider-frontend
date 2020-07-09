@@ -3,8 +3,9 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import useFaktasiderSumary from '../../../utils/useFaktasiderSumary';
-import InnholdsMeny from '../InnholdsMeny/InnholdsMeny';
+import Innholdsfortegnelse from '../InnholdsMeny/Innholdsfortegnelse';
 import { useFaktasideContext } from '../FaktaSideContext';
+import { loggMeny } from '../../../utils/logging';
 
 const StyledOl = styled.ol`
   background-color: white;
@@ -30,10 +31,15 @@ function SideListe() {
     <StyledOl>
       {otherPages.map((page) => (
         <li key={page.id}>
-          <StyledLink activeStyle={{ color: 'black' }} className="lenke" to={page.path}>
+          <StyledLink
+            activeStyle={{ color: 'black' }}
+            className="lenke"
+            to={page.path}
+            onClick={() => loggMeny('Gå til ny side')}
+          >
             {page.tittel} {!page.tilgjengeligPåValgtSpråk ? `(${page.språk})` : ''}
           </StyledLink>
-          {page.id === faktasideContext.id && <InnholdsMeny />}
+          {page.id === faktasideContext.id && <Innholdsfortegnelse />}
         </li>
       ))}
     </StyledOl>
