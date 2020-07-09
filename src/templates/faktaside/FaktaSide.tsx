@@ -11,6 +11,7 @@ import { FaktasideProvider } from './FaktaSideContext';
 import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
 import withErrorBoundary from '../../components/withErrorBoundary';
 import { useMount } from 'react-use';
+import { loggSidevisning } from '../../utils/logging';
 
 export interface FaktaSideProps extends PageProps<{}, FaktasideContext> {
   errors: any;
@@ -22,7 +23,7 @@ function FaktaSide(props: FaktaSideProps) {
   const erPublisert = page.visSprakversjon?.[lang];
   const tittel = page.title || '';
 
-  useMount(() => import('../../utils/logging').then((logging) => logging.loggSidevisning(tittel)));
+  useMount(() => loggSidevisning(tittel));
 
   if (!erPublisert) {
     return <IkkeOversatt {...props} />;
