@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { theme } from '../styles/theme';
+import { loggError, loggHashlenkeKlikk } from '../utils/logging';
 
 const StyledA = styled.a`
   position: absolute;
@@ -20,7 +21,7 @@ interface Props {
 function HashLink(props: Props) {
   return (
     <Wrapper aria-hidden={true}>
-      <StyledA href={`#${props.id}`}>
+      <StyledA href={`#${props.id}`} onClick={loggHashlenkeKlikk}>
         <LinkIcon />
       </StyledA>
     </Wrapper>

@@ -18,3 +18,5 @@ export const loggRedirect = (fraLenke: string) => loggEvent('Redirect fra gammel
 export const loggSidevisning = (side: string) => loggEvent('Side vist', { side });
 
 export const loggKalkulatorbruk = (type: string) => loggEvent('Brukt kalkulator', { type });
+
+export const loggHashlenkeKlikk = () => loggEvent('Brukt hashlenke');
