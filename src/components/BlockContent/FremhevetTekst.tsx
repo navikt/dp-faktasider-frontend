@@ -4,6 +4,7 @@ import { theme } from '../../styles/theme';
 import BlockContent from './BlockContent';
 import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
 import parseRichText from '../../utils/richTextUtils/parser/parseRichText';
+import withErrorBoundary from '../withErrorBoundary';
 
 interface Props {
   node: {
@@ -49,4 +50,4 @@ function FremhevetTekst(props: Props) {
   );
 }
 
-export default FremhevetTekst;
+export default withErrorBoundary(FremhevetTekst);

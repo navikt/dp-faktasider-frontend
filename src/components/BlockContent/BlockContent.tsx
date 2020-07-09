@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ReactNode } from 'react';
 import CustomComponent from './CustomComponent';
 import { GtoNOK } from '../../utils/folketrygdensGrunnbeløp';
-import ErrorBoundary from '../ErrorBoundary';
 import LinkMarkup from './Link';
 import SanityBlockContent from '@sanity/block-content-to-react';
 import Video from './VideoMarkup';
@@ -12,6 +11,7 @@ import { UtkastInline } from './Utkast';
 import VisForAnnotation from './VisFor/VisForAnnotation';
 import GroupMarkup from './GroupMarkup/GroupMarkup';
 import VisForAnnotationDeltTekst from './VisFor/VisForAnnotationDeltTekst';
+import withErrorBoundary from '../withErrorBoundary';
 
 interface Props {
   blocks: ParsedRichText;
@@ -43,11 +43,7 @@ const serializers: Serializers = {
 };
 
 function BlockContent(props: Props) {
-  return (
-    <ErrorBoundary boundaryName="BlockContent-serializer">
-      <SanityBlockContent serializers={serializers} blocks={props.blocks} />
-    </ErrorBoundary>
-  );
+  return <SanityBlockContent serializers={serializers} blocks={props.blocks} />;
 }
 
-export default BlockContent;
+export default withErrorBoundary(BlockContent);

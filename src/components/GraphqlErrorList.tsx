@@ -1,4 +1,5 @@
 import * as React from 'react';
+import withErrorBoundary from './withErrorBoundary';
 
 const GraphQLErrorList = ({ errors }) => {
   if (!errors) {
@@ -15,4 +16,4 @@ const GraphQLErrorList = ({ errors }) => {
   );
 };
 
-export default GraphQLErrorList;
+export default withErrorBoundary(GraphQLErrorList);

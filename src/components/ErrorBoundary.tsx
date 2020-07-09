@@ -3,9 +3,10 @@ import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { ErrorInfo } from 'react';
 import Tekstomrade from 'nav-frontend-tekstomrade';
 import SlideDown from './SlideDown';
+import styled from 'styled-components';
 
 interface Props {
-  boundaryName?: string;
+  info?: string;
 }
 
 interface State {
@@ -13,6 +14,14 @@ interface State {
   error?: Error;
   errorInfo?: ErrorInfo;
 }
+
+const StyledSlideDown = styled(SlideDown)`
+  padding-top: 0.5rem;
+`;
+
+const StyledTekstomrade = styled(Tekstomrade)`
+  padding-top: 0.5rem;
+`;
 
 class ErrorBoundary extends React.Component<Props, State> {
   constructor(props) {
@@ -33,16 +42,18 @@ class ErrorBoundary extends React.Component<Props, State> {
     if (this.state.hasError) {
       const stackTrace = this.state.errorInfo?.componentStack;
       const errormsg = this.state.error?.message;
-      const boundaryName = this.props.boundaryName;
+      const info = this.props.info;
+
       return (
         <div>
           <AlertStripeFeil>
-            Det skjedde en feil{boundaryName ? ` (i ${boundaryName})` : '.'}
+            Beklager, det skjedde en teknisk feil.
             {(stackTrace || errormsg) && (
-              <SlideDown title="Stack trace">
-                <Tekstomrade>{errormsg || ''}</Tekstomrade>
-                <Tekstomrade>{stackTrace || ''}</Tekstomrade>
-              </SlideDown>
+              <StyledSlideDown title="Info - feilsøking">
+                <StyledTekstomrade>{errormsg || ''}</StyledTekstomrade>
+                <StyledTekstomrade>{info || ''}</StyledTekstomrade>
+                <StyledTekstomrade>{stackTrace || ''}</StyledTekstomrade>
+              </StyledSlideDown>
             )}
           </AlertStripeFeil>
         </div>

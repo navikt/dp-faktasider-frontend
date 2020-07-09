@@ -40,4 +40,4 @@ function SideListe() {
   );
 }
 
-export default withErrorBoundary(SideListe, 'SideListe');
+export default withErrorBoundary(SideListe);

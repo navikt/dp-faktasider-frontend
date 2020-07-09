@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 import { idFromString } from '../../utils/idFromString';
 import H2GroupMarkup from '../../components/BlockContent/GroupMarkup/H2GroupMarkup';
+import withErrorBoundary from '../../components/withErrorBoundary';
 
 interface Props {
   blocks?: Block[];
@@ -49,4 +50,4 @@ function RelatertInformasjon(props: Props) {
   );
 }
 
-export default RelatertInformasjon;
+export default withErrorBoundary(RelatertInformasjon);

@@ -6,6 +6,7 @@ import Header from '../felles/Header';
 import LanguageSelector from '../../components/LanguageSelector/LanguageSelector';
 import DevKnapper from '../../components/DevKnapper/DevKnapper';
 import { MainContentStyle } from './MainContentStyle';
+import withErrorBoundary from '../../components/withErrorBoundary';
 
 interface Props {
   header: string;
@@ -47,4 +48,4 @@ function FaktaSideLayout(props: Props) {
   );
 }
 
-export default FaktaSideLayout;
+export default withErrorBoundary(FaktaSideLayout);

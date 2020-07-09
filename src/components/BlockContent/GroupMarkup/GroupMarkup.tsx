@@ -7,6 +7,7 @@ import H4GroupMarkup from './H4GroupMarkup';
 import VisFor from '../VisFor/VisFor';
 import { ConditionalWrapper } from '../../ConditionalWrapper';
 import VisPaaSide from '../VisFor/VisPaaSide';
+import withErrorBoundary from '../../withErrorBoundary';
 
 interface Props {
   node: Group;
@@ -46,4 +47,4 @@ function GroupMarkup(props: Props) {
   );
 }
 
-export default GroupMarkup;
+export default withErrorBoundary(GroupMarkup);

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import VisFor from './VisFor';
 import { VisForConfig } from '../../../utils/richTextUtils/richTextTypes';
+import withErrorBoundary from '../../withErrorBoundary';
 
 interface Props {
   children: string[];
@@ -21,4 +22,4 @@ const VisForAnnotation = (props: Props) => {
   return <>{props.children}</>;
 };
 
-export default VisForAnnotation;
+export default withErrorBoundary(VisForAnnotation);

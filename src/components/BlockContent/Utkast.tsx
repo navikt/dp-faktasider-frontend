@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import styled from 'styled-components/macro';
 import { isProduction } from '../../utils/environment';
 import { useDevContext } from '../DevKnapper/DevContext';
+import withErrorBoundary from '../withErrorBoundary';
 
 interface Props {
   children: ReactNode;
@@ -50,4 +51,4 @@ export function UtkastInline(props: { children: ReactNode }) {
   );
 }
 
-export default Utkast;
+export default withErrorBoundary(Utkast);

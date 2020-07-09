@@ -6,6 +6,7 @@ import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
 import { useTranslation } from 'react-i18next';
 import { supportedLanguages } from '../../i18n/supportedLanguages';
 import FaktaSideLayout from './FaktaSideLayout';
+import withErrorBoundary from '../../components/withErrorBoundary';
 
 const Style = styled.div`
   display: flex;
@@ -60,4 +61,4 @@ function IkkeOversatt(props: FaktaSideProps) {
   );
 }
 
-export default IkkeOversatt;
+export default withErrorBoundary(IkkeOversatt);

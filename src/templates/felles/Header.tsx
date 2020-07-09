@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
 import styled from 'styled-components/macro';
 import { theme } from '../../styles/theme';
+import withErrorBoundary from '../../components/withErrorBoundary';
 
 interface Props {
   heading: string;
@@ -38,4 +39,4 @@ const Header = (props: Props) => {
   );
 };
 
-export default Header;
+export default withErrorBoundary(Header);

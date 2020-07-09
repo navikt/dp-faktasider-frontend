@@ -1,9 +1,9 @@
 import * as React from 'react';
 import InnholdsListe from './InnholdsListe';
 import Filtrering from './Filtrering';
-import ErrorBoundary from '../../../components/ErrorBoundary';
 import styled from 'styled-components';
 import { useInnholdsListe } from './useInnholdsListe';
+import withErrorBoundary from '../../../components/withErrorBoundary';
 
 const Style = styled.div`
   margin: 0.5rem 1rem 1rem 2.5rem;
@@ -16,13 +16,11 @@ function InnholdsMeny() {
   }
 
   return (
-    <ErrorBoundary boundaryName="Innholdsmeny">
-      <Style>
-        <InnholdsListe />
-        <Filtrering />
-      </Style>
-    </ErrorBoundary>
+    <Style>
+      <InnholdsListe />
+      <Filtrering />
+    </Style>
   );
 }
 
-export default InnholdsMeny;
+export default withErrorBoundary(InnholdsMeny);
