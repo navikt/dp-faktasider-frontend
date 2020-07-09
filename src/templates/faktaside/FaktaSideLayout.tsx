@@ -7,6 +7,8 @@ import LanguageSelector from '../../components/LanguageSelector/LanguageSelector
 import DevKnapper from '../../components/DevKnapper/DevKnapper';
 import { MainContentStyle } from './MainContentStyle';
 import withErrorBoundary from '../../components/withErrorBoundary';
+import Filtrering from './InnholdsMeny/Filtrering';
+import { theme } from '../../styles/theme';
 
 interface Props {
   header: string;
@@ -18,11 +20,18 @@ const ContentStyle = styled.div`
   flex-grow: 1;
   position: relative;
   min-height: 30vh;
-  display: flex;
-  align-items: flex-start;
-  > *:last-child {
-    flex-grow: 1;
-    margin: auto;
+  @media (${theme.media.bigScreen}) {
+    display: flex;
+    align-items: flex-start;
+    .order-1 {
+      order: 1;
+    }
+    .order-2 {
+      order: 2;
+    }
+    .order-3 {
+      order: 3;
+    }
   }
 `;
 
@@ -40,8 +49,9 @@ function FaktaSideLayout(props: Props) {
       <Style>
         <DevKnapper />
         <ContentStyle>
-          <Navigasjonsmeny />
-          <MainContentStyle>{props.children}</MainContentStyle>
+          <Navigasjonsmeny className="order-1" />
+          <Filtrering className="order-3" />
+          <MainContentStyle className="order-2">{props.children}</MainContentStyle>
         </ContentStyle>
       </Style>
     </>

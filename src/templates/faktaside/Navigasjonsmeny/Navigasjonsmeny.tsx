@@ -24,14 +24,20 @@ const MobileNav = styled.nav`
   }
 `;
 
-function Navigasjonsmeny() {
+interface Props {
+  className?: string;
+}
+
+function Navigasjonsmeny(props: Props) {
   const offsetTop = useDekoratorPopdownOffset();
   const meny = <SideListe />;
 
   return (
     <>
-      <DesktopNav offsetTop={offsetTop}>{meny}</DesktopNav>
-      <MobileNav>
+      <DesktopNav offsetTop={offsetTop} className={props.className}>
+        {meny}
+      </DesktopNav>
+      <MobileNav className={props.className}>
         <MobilmenyWrapper offsetTop={offsetTop}>{meny}</MobilmenyWrapper>
       </MobileNav>
     </>
