@@ -10,6 +10,8 @@ import RelatertInformasjon from './RelatertInformasjon';
 import { FaktasideProvider } from './FaktaSideContext';
 import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
 import withErrorBoundary from '../../components/withErrorBoundary';
+import { useMount } from 'react-use';
+import { loggSidevisning } from '../../utils/logging';
 
 export interface FaktaSideProps extends PageProps<{}, FaktasideContext> {
   errors: any;
@@ -19,12 +21,14 @@ function FaktaSide(props: FaktaSideProps) {
   const page = props.pageContext;
   const lang = page.lang;
   const erPublisert = page.visSprakversjon?.[lang];
+  const tittel = page.title || '';
+
+  useMount(() => loggSidevisning(tittel));
 
   if (!erPublisert) {
     return <IkkeOversatt {...props} />;
   }
 
-  const tittel = page.title || '';
   const description = page.ingress || '';
 
   const parsedInnhold = page.innhold;
