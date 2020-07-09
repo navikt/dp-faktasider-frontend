@@ -1,13 +1,10 @@
 import React from 'react';
 import ErrorBoundary from './ErrorBoundary';
 
-export default function withErrorBoundary<T>(
-  Component: React.ComponentType<T>,
-  boundaryName?: string
-): React.ComponentType<T> {
-  return (props: T) => {
+export default function withErrorBoundary<Props>(Component: React.ComponentType<Props>) {
+  return (props: Props) => {
     return (
-      <ErrorBoundary boundaryName={boundaryName}>
+      <ErrorBoundary info={`Feil i ${Component.name}`}>
         <Component {...props} />
       </ErrorBoundary>
     );

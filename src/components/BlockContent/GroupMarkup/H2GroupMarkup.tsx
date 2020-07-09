@@ -4,7 +4,6 @@ import { Group, isH3Group } from '../../../utils/richTextUtils/richTextTypes';
 import { theme } from '../../../styles/theme';
 import { Systemtittel } from 'nav-frontend-typografi';
 import H2GroupMenu from './H2GroupMenu';
-import withErrorBoundary from '../../withErrorBoundary';
 import { useDekoratorPopdownOffset } from '../../../templates/faktaside/Navigasjonsmeny/useDekoratorPopdownOffset';
 import CommonGroupMarkup from './CommonGroupMarkup';
 
@@ -60,4 +59,4 @@ function H2GroupMarkup(props: Group) {
   );
 }
 
-export default withErrorBoundary(H2GroupMarkup, 'H2GroupMarkup');
+export default H2GroupMarkup;

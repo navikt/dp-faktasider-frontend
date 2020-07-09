@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { SupportedLanguage } from '../i18n/supportedLanguages';
+import withErrorBoundary from './withErrorBoundary';
 
 interface Props {
   title: string;
@@ -54,4 +55,4 @@ function SEO(props: Props) {
   );
 }
 
-export default SEO;
+export default withErrorBoundary(SEO);

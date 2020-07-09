@@ -5,6 +5,7 @@ import { isDevelopment } from '../../utils/environment';
 import { useClickAway } from 'react-use';
 import { useDevContext } from './DevContext';
 import { Checkbox } from 'nav-frontend-skjema';
+import withErrorBoundary from '../withErrorBoundary';
 
 const Style = styled.div<{ open: boolean }>`
   position: fixed;
@@ -86,4 +87,4 @@ function DevKnapper() {
   );
 }
 
-export default DevKnapper;
+export default withErrorBoundary(DevKnapper);

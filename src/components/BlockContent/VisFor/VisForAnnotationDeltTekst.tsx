@@ -3,6 +3,7 @@ import { RawFaktasideData } from '../../../../gatsby-utils/createFaktasider';
 import VisForAnnotation from './VisForAnnotation';
 import { VisForConfig } from '../../../utils/richTextUtils/richTextTypes';
 import VisPaaSide from './VisPaaSide';
+import withErrorBoundary from '../../withErrorBoundary';
 
 interface Props {
   children: string[];
@@ -22,4 +23,4 @@ const VisForAnnotationDeltTekst = (props: Props) => {
   );
 };
 
-export default VisForAnnotationDeltTekst;
+export default withErrorBoundary(VisForAnnotationDeltTekst);

@@ -7,6 +7,7 @@ import { navigate } from 'gatsby';
 import { useLocale } from '../../i18n/LocaleContext';
 import { useLocation } from 'react-use';
 import { isProduction } from '../../utils/environment';
+import withErrorBoundary from '../withErrorBoundary';
 
 const Style = styled.div`
   display: flex;
@@ -54,4 +55,4 @@ const LanguageSelector = () => {
   );
 };
 
-export default LanguageSelector;
+export default withErrorBoundary(LanguageSelector);

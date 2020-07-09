@@ -7,6 +7,7 @@ import { NedChevron, OppChevron } from 'nav-frontend-chevron';
 interface Props {
   title: string;
   children: ReactNode;
+  className?: string;
 }
 
 const Style = styled.div<{ open: boolean }>`
@@ -32,7 +33,7 @@ function SlideDown(props: Props) {
   const [open, setOpen] = useState(false);
 
   return (
-    <Style open={open}>
+    <Style open={open} className={props.className}>
       <StyledButton onClick={() => setOpen((o) => !o)}>
         {props.title} {open ? <OppChevron /> : <NedChevron />}
       </StyledButton>

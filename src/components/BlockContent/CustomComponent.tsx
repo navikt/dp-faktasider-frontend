@@ -2,6 +2,7 @@ import * as React from 'react';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import DagpengerKalkulator from '../HvorMyeKalkulator/DagpengerKalkulator';
 import DagpengerKalkulatorLRling from '../HvorMyeKalkulator/DagpengerKalkulatorLærling';
+import withErrorBoundary from '../withErrorBoundary';
 
 interface Props {
   node: {
@@ -20,4 +21,4 @@ function CustomComponent(props: Props) {
   }
 }
 
-export default CustomComponent;
+export default withErrorBoundary(CustomComponent);

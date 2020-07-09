@@ -38,4 +38,4 @@ function Navigasjonsmeny() {
   );
 }
 
-export default withErrorBoundary(Navigasjonsmeny, 'Navigasjonsmeny');
+export default withErrorBoundary(Navigasjonsmeny);
