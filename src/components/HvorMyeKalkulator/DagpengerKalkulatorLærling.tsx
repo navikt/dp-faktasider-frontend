@@ -6,6 +6,7 @@ import { GrunnlagInput, InputWrapper, KalkulatorStyle, ResultatTable, toKR } fro
 import { G } from '../../utils/folketrygdensGrunnbeløp';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { H4 } from '../../utils/common-styled-components';
+import { loggKalkulatorbruk } from '../../utils/logging';
 
 function Resultat(props: { grunnlag?: number }) {
   if (!props.grunnlag) {
@@ -69,7 +70,7 @@ function DagpengerKalkulatorLRling() {
 
   useEffect(() => {
     if (!harLoggetBruk && grunnlag) {
-      console.log('Sett opp logging til amplitude.');
+      loggKalkulatorbruk('Uinnlogget lærling');
       setHarLoggetBruk(true);
     }
   }, [grunnlag, harLoggetBruk]);

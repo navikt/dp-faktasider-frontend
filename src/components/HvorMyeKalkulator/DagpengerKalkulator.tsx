@@ -8,6 +8,7 @@ import { H4 } from '../../utils/common-styled-components';
 import { G, GtoNOK } from '../../utils/folketrygdensGrunnbeløp';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useTranslation } from 'react-i18next';
+import { loggKalkulatorbruk } from '../../utils/logging';
 
 function Resultat(props: { grunnlag?: number }) {
   const { t } = useTranslation('kalkulator');
@@ -83,8 +84,8 @@ function DagpengerKalkulator() {
 
   useEffect(() => {
     if (!harLoggetBruk && grunnlag) {
+      loggKalkulatorbruk('Uinnlogget vanlig');
       setHarLoggetBruk(true);
-      console.log('Sett opp logging til amplitude.');
     }
   }, [grunnlag, harLoggetBruk]);
 

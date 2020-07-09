@@ -16,3 +16,5 @@ export const loggError = (msg: string, ekstraData?: object) => loggEvent('Error'
 export const loggRedirect = (fraLenke: string) => loggEvent('Redirect fra gammel lenke', { fraLenke });
 
 export const loggSidevisning = (side: string) => loggEvent('Side vist', { side });
+
+export const loggKalkulatorbruk = (type: string) => loggEvent('Brukt kalkulator', { type });
