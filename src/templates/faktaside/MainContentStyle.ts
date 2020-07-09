@@ -3,10 +3,13 @@ import { theme } from '../../styles/theme';
 
 export const MainContentStyle = styled.main`
   flex: 0 1 40rem;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
   max-width: 40rem;
   padding: 1rem 0 4rem;
   @media (${theme.media.bigScreen}) {
-    margin-left: ${theme.layoutMargin};
+    padding: 0 ${theme.layoutMargin};
   }
   ul {
     padding-left: 2rem;

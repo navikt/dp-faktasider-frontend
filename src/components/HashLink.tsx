@@ -15,13 +15,12 @@ const Wrapper = styled.span`
 
 interface Props {
   id: string;
-  ariaLabel: string;
 }
 
 function HashLink(props: Props) {
   return (
-    <Wrapper>
-      <StyledA aria-label={props.ariaLabel} href={`#${props.id}`}>
+    <Wrapper aria-hidden={true}>
+      <StyledA href={`#${props.id}`}>
         <LinkIcon />
       </StyledA>
     </Wrapper>

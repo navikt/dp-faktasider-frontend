@@ -5,6 +5,8 @@ import { useDekoratorPopdownOffset } from './useDekoratorPopdownOffset';
 import SideListe from './SideListe';
 import MobilmenyWrapper from './MobilmenyWrapper';
 import { theme } from '../../../styles/theme';
+import { useRef } from 'react';
+import { guid } from 'nav-frontend-js-utils';
 
 const DesktopNav = styled.nav<{ offsetTop: number }>`
   @media (${theme.media.smallScreen}) {
@@ -24,14 +26,28 @@ const MobileNav = styled.nav`
   }
 `;
 
-function Navigasjonsmeny() {
+interface Props {
+  className?: string;
+}
+
+function Navigasjonsmeny(props: Props) {
   const offsetTop = useDekoratorPopdownOffset();
   const meny = <SideListe />;
+  const mobileTitleId = useRef(guid()).current;
+  const desktopTitleId = useRef(guid()).current;
 
   return (
     <>
-      <DesktopNav offsetTop={offsetTop}>{meny}</DesktopNav>
-      <MobileNav>
+      <DesktopNav offsetTop={offsetTop} className={props.className} aria-labelledby={desktopTitleId}>
+        <h2 id={desktopTitleId} className="sr-only">
+          Sideoversikt
+        </h2>
+        {meny}
+      </DesktopNav>
+      <MobileNav className={props.className} aria-labelledby={mobileTitleId}>
+        <h2 id={mobileTitleId} className="sr-only">
+          Sideoversikt
+        </h2>
         <MobilmenyWrapper offsetTop={offsetTop}>{meny}</MobilmenyWrapper>
       </MobileNav>
     </>
