@@ -19,9 +19,8 @@ const SmallScreenLayout = styled.div<{ apen: boolean; offsetTop: number }>`
   right: 0;
   @supports (position: sticky) {
     position: sticky;
-    top: calc(${margin} + ${(props) => props.offsetTop}px);
+    top: ${(props) => props.offsetTop}px;
   }
-  margin: ${margin};
   transition: top 0.2s;
   z-index: 100;
   display: flex;
@@ -68,6 +67,7 @@ const MenyWrapper = styled.div<{ visMeny: boolean; offsetTop: number }>`
 `;
 
 const StyledMenyButton = styled(MenyButton)`
+  margin: ${margin};
   background-color: white;
   position: absolute;
   right: 0;
@@ -92,11 +92,7 @@ function MobilmenyWrapper(props: Props) {
   return (
     <StickyContainer>
       <SmallScreenLayout apen={visMeny} ref={ref} offsetTop={props.offsetTop}>
-        <StyledMenyButton
-          label="Innholdsfortegnelse"
-          onClick={() => setVisMeny((prevState) => !prevState)}
-          isOpen={visMeny}
-        />
+        <StyledMenyButton label="Sideoversikt" onClick={() => setVisMeny((prevState) => !prevState)} isOpen={visMeny} />
         <MenyWrapper visMeny={visMeny} offsetTop={props.offsetTop}>
           {props.children}
         </MenyWrapper>

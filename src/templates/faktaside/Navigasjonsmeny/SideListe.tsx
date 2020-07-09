@@ -9,7 +9,7 @@ import { loggMeny } from '../../../utils/logging';
 
 const StyledOl = styled.ol`
   background-color: white;
-  padding: 1rem 0 2rem;
+  padding: 1.5rem 0 2.5rem;
 `;
 
 const StyledLink = styled(Link)`
