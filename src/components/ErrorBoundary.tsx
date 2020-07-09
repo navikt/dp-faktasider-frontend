@@ -4,7 +4,6 @@ import { ErrorInfo } from 'react';
 import Tekstomrade from 'nav-frontend-tekstomrade';
 import SlideDown from './SlideDown';
 import styled from 'styled-components';
-import { loggError } from '../utils/logging';
 
 interface Props {
   info?: string;
@@ -36,7 +35,7 @@ class ErrorBoundary extends React.Component<Props, State> {
 
   componentDidCatch(error, errorInfo) {
     this.setState({ hasError: true, error, errorInfo });
-    loggError(`Feil: ${this.props.info}`, { errorInfo });
+    import('../utils/logging').then((logging) => logging.loggError(`Feil: ${this.props.info}`, { errorInfo }));
   }
 
   render() {
