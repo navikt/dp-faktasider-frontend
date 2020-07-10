@@ -88,28 +88,31 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
     actions.createRedirect({ fromPath: `/${path}`, toPath: `/no/${path}`, isPermanent: true });
 
     supportedLanguages.forEach((lang) => {
-      const localizedPage = localizeSanityContent(page, lang) as LocalizedFaktasideData;
-      const parsedInnhold = parseRichText(localizedPage.innhold);
-      const path = `/${lang}/${slug}/`;
-      const publiseringsTidspunkt = getPubliseringsTidspunkt(page, lang);
-      reporter.info(`📄 Lager faktaside: ${path}`);
-
-      const context: FaktasideContext = {
-        ...localizedPage,
-        innhold: parsedInnhold,
-        lang,
-        slug,
-        publiseringsTidspunkt,
-        rawData: {
-          title: page.title,
-        },
-      };
+      const localePath = `/${lang}/${slug}/`;
+      reporter.info(`📄 Lager faktaside: ${localePath}`);
 
       actions.createPage({
-        path,
+        path: localePath,
         component: require.resolve('../src/templates/faktaside/FaktaSide.tsx'),
-        context: context,
+        context: createFaktasideContext(page, lang),
       });
     });
   });
 };
+
+export function createFaktasideContext(page: RawFaktasideData, lang: SupportedLanguage): FaktasideContext {
+  const localizedPage = localizeSanityContent(page, lang) as LocalizedFaktasideData;
+  const parsedInnhold = parseRichText(localizedPage.innhold);
+  const publiseringsTidspunkt = getPubliseringsTidspunkt(page, lang);
+
+  return {
+    ...localizedPage,
+    innhold: parsedInnhold,
+    lang,
+    slug: page.slug?.current || 'N/A',
+    publiseringsTidspunkt,
+    rawData: {
+      title: page.title,
+    },
+  };
+}
