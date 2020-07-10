@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 import { i18nextConfig, TranslationsProvider } from '../i18n/i18nextConfig';
 import { VisForContextProvider } from '../components/BlockContent/VisFor/VisForContext';
@@ -7,13 +7,13 @@ import { LocaleProvider } from '../i18n/LocaleContext';
 import { SupportedLanguage } from '../i18n/supportedLanguages';
 
 // https://testing-library.com/docs/react-testing-library/setup#custom-render
-const AllTheProviders = (lang: SupportedLanguage) => ({ children }) => {
+const AllTheProviders = (lang: SupportedLanguage): React.FunctionComponent<any> => (props: { children: ReactNode }) => {
   i18nextConfig.changeLanguage(lang);
   return (
     <LocaleProvider lang={lang}>
       <VisForContextProvider>
         <DevContextProvider>
-          <TranslationsProvider>{children}</TranslationsProvider>
+          <TranslationsProvider>{props.children}</TranslationsProvider>
         </DevContextProvider>
       </VisForContextProvider>
     </LocaleProvider>
@@ -24,9 +24,7 @@ const customRender = (
   ui: React.ReactElement,
   options?: Omit<RenderOptions, 'queries'>,
   lang: SupportedLanguage = 'no'
-) =>
-  // @ts-ignore
-  render(ui, { wrapper: AllTheProviders(lang), ...options });
+) => render(ui, { wrapper: AllTheProviders(lang), ...options });
 
 export * from '@testing-library/react';
 
