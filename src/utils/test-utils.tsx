@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { render, RenderOptions } from '@testing-library/react';
+import { act, render, RenderOptions } from '@testing-library/react';
 import { i18nextConfig, TranslationsProvider } from '../i18n/i18nextConfig';
 import { VisForContextProvider } from '../components/BlockContent/VisFor/VisForContext';
 import { DevContextProvider } from '../components/DevKnapper/DevContext';
@@ -8,7 +8,10 @@ import { SupportedLanguage } from '../i18n/supportedLanguages';
 
 // https://testing-library.com/docs/react-testing-library/setup#custom-render
 const AllTheProviders = (lang: SupportedLanguage): React.FunctionComponent<any> => (props: { children: ReactNode }) => {
-  i18nextConfig.changeLanguage(lang);
+  act(() => {
+    i18nextConfig.changeLanguage(lang);
+  });
+
   return (
     <LocaleProvider lang={lang}>
       <VisForContextProvider>
