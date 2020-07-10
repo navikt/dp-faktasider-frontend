@@ -50,4 +50,4 @@ function RelatertInformasjon(props: Props) {
   );
 }
 
-export default withErrorBoundary(RelatertInformasjon);
+export default withErrorBoundary(RelatertInformasjon, 'RelatertInformasjon');

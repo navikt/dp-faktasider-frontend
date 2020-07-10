@@ -87,4 +87,4 @@ function DevKnapper() {
   );
 }
 
-export default withErrorBoundary(DevKnapper);
+export default withErrorBoundary(DevKnapper, 'DevKnapper');

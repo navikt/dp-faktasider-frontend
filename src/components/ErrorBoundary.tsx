@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { loggError } from '../utils/logging';
 
 interface Props {
-  info?: string;
+  boundaryName?: string;
 }
 
 interface State {
@@ -36,14 +36,14 @@ class ErrorBoundary extends React.Component<Props, State> {
 
   componentDidCatch(error, errorInfo) {
     this.setState({ hasError: true, error, errorInfo });
-    loggError(`Feil: ${this.props.info}`, { errorInfo });
+    loggError(`Feil i ${this.props.boundaryName}`, { errorInfo, msg: error.message, name: error.name });
   }
 
   render() {
     if (this.state.hasError) {
       const stackTrace = this.state.errorInfo?.componentStack;
       const errormsg = this.state.error?.message;
-      const info = this.props.info;
+      const info = this.props.boundaryName;
 
       return (
         <div>

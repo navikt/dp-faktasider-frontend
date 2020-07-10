@@ -61,4 +61,4 @@ function IkkeOversatt(props: FaktaSideProps) {
   );
 }
 
-export default withErrorBoundary(IkkeOversatt);
+export default withErrorBoundary(IkkeOversatt, 'IkkeOversatt');

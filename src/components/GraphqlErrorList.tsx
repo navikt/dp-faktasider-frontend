@@ -16,4 +16,4 @@ const GraphQLErrorList = ({ errors }) => {
   );
 };
 
-export default withErrorBoundary(GraphQLErrorList);
+export default withErrorBoundary(GraphQLErrorList, 'GraphQLErrorList');

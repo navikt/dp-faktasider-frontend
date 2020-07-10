@@ -64,4 +64,4 @@ function Filtrering(props: Props) {
   );
 }
 
-export default withErrorBoundary(Filtrering);
+export default withErrorBoundary(Filtrering, 'Filtrering');

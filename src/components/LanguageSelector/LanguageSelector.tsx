@@ -55,4 +55,4 @@ const LanguageSelector = () => {
   );
 };
 
-export default withErrorBoundary(LanguageSelector);
+export default withErrorBoundary(LanguageSelector, 'LanguageSelector');

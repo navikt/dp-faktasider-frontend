@@ -32,4 +32,4 @@ function Video(props: Props) {
   );
 }
 
-export default withErrorBoundary(Video);
+export default withErrorBoundary(Video, 'Video');

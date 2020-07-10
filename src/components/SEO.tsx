@@ -55,4 +55,4 @@ function SEO(props: Props) {
   );
 }
 
-export default withErrorBoundary(SEO);
+export default withErrorBoundary(SEO, 'SEO');

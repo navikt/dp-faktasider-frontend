@@ -17,4 +17,4 @@ function SistOppdatert(props: Props) {
   return <Style>{t('sistOppdatert', { publiseringstidspunkt: new Date(props.publiseringsTidspunkt) })}</Style>;
 }
 
-export default withErrorBoundary(SistOppdatert);
+export default withErrorBoundary(SistOppdatert, 'SistOppdatert');

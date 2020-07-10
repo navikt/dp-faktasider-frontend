@@ -30,4 +30,4 @@ function LinkMarkup(props: Props) {
   return <Lenke href={props.mark.href}>{props.children}</Lenke>;
 }
 
-export default withErrorBoundary(LinkMarkup);
+export default withErrorBoundary(LinkMarkup, 'LinkMarkup');

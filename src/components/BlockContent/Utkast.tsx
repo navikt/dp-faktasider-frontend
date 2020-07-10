@@ -51,4 +51,4 @@ export function UtkastInline(props: { children: ReactNode }) {
   );
 }
 
-export default withErrorBoundary(Utkast);
+export default withErrorBoundary(Utkast, 'Utkast');

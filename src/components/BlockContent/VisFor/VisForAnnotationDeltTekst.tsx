@@ -23,4 +23,4 @@ const VisForAnnotationDeltTekst = (props: Props) => {
   );
 };
 
-export default withErrorBoundary(VisForAnnotationDeltTekst);
+export default withErrorBoundary(VisForAnnotationDeltTekst, 'VisForAnnotationDeltTekst');

@@ -58,4 +58,4 @@ function FaktaSideLayout(props: Props) {
   );
 }
 
-export default withErrorBoundary(FaktaSideLayout);
+export default withErrorBoundary(FaktaSideLayout, 'FaktaSideLayout');

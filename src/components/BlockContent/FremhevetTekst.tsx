@@ -50,4 +50,4 @@ function FremhevetTekst(props: Props) {
   );
 }
 
-export default withErrorBoundary(FremhevetTekst);
+export default withErrorBoundary(FremhevetTekst, 'FremhevetTekst');

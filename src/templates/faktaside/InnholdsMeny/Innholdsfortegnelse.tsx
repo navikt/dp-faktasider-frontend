@@ -83,4 +83,4 @@ function Innholdsfortegnelse() {
   );
 }
 
-export default withErrorBoundary(Innholdsfortegnelse);
+export default withErrorBoundary(Innholdsfortegnelse, 'Innholdsfortegnelse');

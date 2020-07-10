@@ -46,4 +46,4 @@ function BlockContent(props: Props) {
   return <SanityBlockContent serializers={serializers} blocks={props.blocks} />;
 }
 
-export default withErrorBoundary(BlockContent);
+export default withErrorBoundary(BlockContent, 'BlockContent');

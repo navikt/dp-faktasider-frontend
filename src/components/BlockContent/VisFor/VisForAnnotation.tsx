@@ -22,4 +22,4 @@ const VisForAnnotation = (props: Props) => {
   return <>{props.children}</>;
 };
 
-export default withErrorBoundary(VisForAnnotation);
+export default withErrorBoundary(VisForAnnotation, 'VisForAnnotation');

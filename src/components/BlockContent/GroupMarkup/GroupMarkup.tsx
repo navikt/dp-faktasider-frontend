@@ -47,4 +47,4 @@ function GroupMarkup(props: Props) {
   );
 }
 
-export default withErrorBoundary(GroupMarkup);
+export default withErrorBoundary(GroupMarkup, 'GroupMarkup');

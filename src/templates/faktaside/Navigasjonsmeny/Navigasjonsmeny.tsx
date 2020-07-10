@@ -55,4 +55,4 @@ function Navigasjonsmeny(props: Props) {
   );
 }
 
-export default withErrorBoundary(Navigasjonsmeny);
+export default withErrorBoundary(Navigasjonsmeny, 'Navigasjonsmeny');

@@ -39,4 +39,4 @@ const Header = (props: Props) => {
   );
 };
 
-export default withErrorBoundary(Header);
+export default withErrorBoundary(Header, 'Header');

@@ -45,4 +45,4 @@ function FaktaSide(props: FaktaSideProps) {
   );
 }
 
-export default withErrorBoundary(FaktaSide);
+export default withErrorBoundary(FaktaSide, 'FaktaSide');

@@ -21,4 +21,4 @@ function CustomComponent(props: Props) {
   }
 }
 
-export default withErrorBoundary(CustomComponent);
+export default withErrorBoundary(CustomComponent, 'CustomComponent');
