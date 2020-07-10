@@ -2,10 +2,11 @@ import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import Header from '../templates/felles/Header';
-import useFaktasiderSumary from '../utils/useFaktasiderSumary';
+import useFaktasiderSumary, { FaktasideSummary } from '../utils/faktasiderSummary/useFaktasiderSumary';
 import localizeSanityContent from '../i18n/localizeSanityContent';
 import { useLocale } from '../i18n/LocaleContext';
 import { useTranslation } from 'react-i18next';
+import { Translations } from '../types/translations';
 
 const StyledElement = styled.div`
   background-color: white;
@@ -40,7 +41,7 @@ const KunTilgjengeligStyle = styled.p`
 `;
 
 const IndexPage = () => {
-  const oppsett = useStaticQuery(
+  const projectData = useStaticQuery(
     graphql`
       query Oppsett {
         oppsett: sanityOppsett {
@@ -50,14 +51,28 @@ const IndexPage = () => {
     `
   );
   const sider = useFaktasiderSumary();
+
+  return <PureIndexPage projectData={projectData} sider={sider} />;
+};
+
+interface Props {
+  projectData: {
+    oppsett: {
+      title: Translations<string>;
+    };
+  };
+  sider: FaktasideSummary[];
+}
+
+export function PureIndexPage(props: Props) {
   const lang = useLocale();
   const { t } = useTranslation('global');
 
   return (
     <>
-      <Header heading={localizeSanityContent(oppsett.oppsett.title, lang)} ingress="" />
+      <Header heading={localizeSanityContent(props.projectData.oppsett.title, lang)} ingress="" />
       <Style>
-        {sider.map((side) => (
+        {props.sider.map((side) => (
           <StyledElement key={side.id}>
             <StyledLink to={side.path}>{side.tittel}</StyledLink>
             {!side.tilgjengeligPåValgtSpråk && (
@@ -71,6 +86,6 @@ const IndexPage = () => {
       </Style>
     </>
   );
-};
+}
 
 export default IndexPage;

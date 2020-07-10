@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import withErrorBoundary from '../../../components/withErrorBoundary';
-import useFaktasiderSumary from '../../../utils/useFaktasiderSumary';
+import useFaktasiderSumary from '../../../utils/faktasiderSummary/useFaktasiderSumary';
 import Innholdsfortegnelse from '../InnholdsMeny/Innholdsfortegnelse';
 import { useFaktasideContext } from '../FaktaSideContext';
 import { loggMeny } from '../../../utils/logging';

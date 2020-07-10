@@ -1,8 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { useLocale } from '../i18n/LocaleContext';
-import { Translations } from '../types/translations';
-import { supportedLanguages } from '../i18n/supportedLanguages';
-import localizeSanityContent from '../i18n/localizeSanityContent';
+import { useLocale } from '../../i18n/LocaleContext';
+import { Translations } from '../../types/translations';
+import { SupportedLanguage, supportedLanguages } from '../../i18n/supportedLanguages';
+import localizeSanityContent from '../../i18n/localizeSanityContent';
 
 interface Side {
   _rawTitle?: Translations<string>;
@@ -14,7 +14,16 @@ interface Side {
   };
 }
 
-function useOtherPages() {
+export interface FaktasideSummary {
+  path: string;
+  tittel: string;
+  språk: SupportedLanguage;
+  tilgjengeligPåValgtSpråk: boolean;
+  ingress: string;
+  id: string;
+}
+
+function useFaktasiderSumary(): FaktasideSummary[] {
   const data = useStaticQuery(graphql`
     query OtherPages {
       oppsett: sanityOppsett {
@@ -65,4 +74,4 @@ function useOtherPages() {
   });
 }
 
-export default useOtherPages;
+export default useFaktasiderSumary;
