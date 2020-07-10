@@ -447,7 +447,7 @@ exports[`Snapshottest Faktaside 1`] = `
     >
       <label
         class="skjemaelement__label"
-        for="40035216-5458-28090-16492-23164269895169"
+        for="Helt tilfeldig ID"
       >
         Velg språk
       </label>
@@ -457,7 +457,7 @@ exports[`Snapshottest Faktaside 1`] = `
         <select
           aria-invalid="false"
           class="skjemaelement__input"
-          id="40035216-5458-28090-16492-23164269895169"
+          id="Helt tilfeldig ID"
         >
           <option
             disabled=""
@@ -504,13 +504,13 @@ exports[`Snapshottest Faktaside 1`] = `
       class="c6"
     >
       <nav
-        aria-labelledby="364825593-27019-09790-12051-431611573156"
+        aria-labelledby="Helt tilfeldig ID"
         class="c7 order-1"
         style="top: 0px;"
       >
         <h2
           class="sr-only"
-          id="364825593-27019-09790-12051-431611573156"
+          id="Helt tilfeldig ID"
         >
           Sideoversikt
         </h2>
@@ -540,12 +540,12 @@ exports[`Snapshottest Faktaside 1`] = `
         </ol>
       </nav>
       <nav
-        aria-labelledby="682527158-29925-22217-4556-0909607938252"
+        aria-labelledby="Helt tilfeldig ID"
         class="c10 order-1"
       >
         <h2
           class="sr-only"
-          id="682527158-29925-22217-4556-0909607938252"
+          id="Helt tilfeldig ID"
         >
           Sideoversikt
         </h2>
