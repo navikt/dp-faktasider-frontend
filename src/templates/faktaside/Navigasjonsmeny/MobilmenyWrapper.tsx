@@ -11,8 +11,6 @@ interface Props {
   offsetTop: number;
 }
 
-const margin = '1rem';
-
 const SmallScreenLayout = styled.div<{ apen: boolean; offsetTop: number }>`
   position: absolute;
   top: 0;
@@ -32,6 +30,7 @@ const SmallScreenLayout = styled.div<{ apen: boolean; offsetTop: number }>`
   ${(props) =>
     props.apen &&
     css`
+      border: 1px #aaa8 solid;
       background-color: white;
     `};
   pointer-events: auto;
@@ -54,7 +53,7 @@ const StickyContainer = styled.div`
 
 const MenyWrapper = styled.div<{ visMeny: boolean; offsetTop: number }>`
   transition: max-height 0.2s;
-  max-height: calc(100vh - ${margin} * 2 - ${(props) => props.offsetTop}px);
+  max-height: calc(100vh - ${(props) => props.offsetTop}px);
   max-width: 25rem;
   overflow-y: auto;
 
@@ -67,7 +66,7 @@ const MenyWrapper = styled.div<{ visMeny: boolean; offsetTop: number }>`
 `;
 
 const StyledMenyButton = styled(MenyButton)`
-  margin: ${margin};
+  margin: 1rem;
   background-color: white;
   position: absolute;
   right: 0;
