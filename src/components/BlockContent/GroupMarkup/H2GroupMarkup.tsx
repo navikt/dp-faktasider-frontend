@@ -27,14 +27,16 @@ const StyledArticle = styled.article<RegionProps>`
 
 type TittelProps = { dekoratorOffset: number; noBackground?: boolean };
 
-const StyledSystemtittel = styled(Systemtittel).attrs({
+const StyledSystemtittel = styled(Systemtittel).attrs((props: TittelProps) => ({
   as: 'h2',
-})<TittelProps>`
+  style: {
+    top: `${props.dekoratorOffset}px`,
+  },
+}))<TittelProps>`
   background-color: ${(props) => (props.noBackground ? theme.colors.bakgrunn : '#fffe')};
   padding: 1rem;
   text-align: center;
   position: sticky !important;
-  top: ${(props) => props.dekoratorOffset}px;
   z-index: 10;
   margin-bottom: 1.5rem;
 `;

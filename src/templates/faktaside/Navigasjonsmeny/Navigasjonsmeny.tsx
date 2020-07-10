@@ -8,12 +8,13 @@ import { theme } from '../../../styles/theme';
 import { useRef } from 'react';
 import { guid } from 'nav-frontend-js-utils';
 
-const DesktopNav = styled.nav<{ offsetTop: number }>`
+type NavProps = { offsetTop: number };
+
+const DesktopNav = styled.nav.attrs((props: NavProps) => ({ style: { top: `${props.offsetTop}px` } }))<NavProps>`
   @media (${theme.media.smallScreen}) {
     display: none;
   }
   position: sticky;
-  top: calc(${(props) => props.offsetTop}px);
   max-height: calc(100vh - ${(props) => props.offsetTop}px);
   overflow-y: auto;
   transition: top 0.2s, max-height 0.2s;
