@@ -32,6 +32,11 @@ Kommenter ut `SANITY_READ_TOKEN="MITT_HEMMELIGE_TOKEN"` og opprett token på htt
 
 Kommenter ut `DATASET="development"` og du kan jobbe mot et test-datasett fra sanity (anbefales dersom du ønsker å lage custom innhold i sanity under utvikling).
 
+### Scripts
+
+- `npm run seHvordanDetBlirIProd` lager et bygg og hoster lokalt på [localhost:9000/arbeid]().
+- `npm run docker` bygger appen i en dockercontainer på samme måte som i pipeline, hoser appen på [localhost/arbeid]().
+
 ### Sanity Studio-repo
 
 Innholdet hentes fra sanity https://github.com/navikt/dp-sanity-cms.
