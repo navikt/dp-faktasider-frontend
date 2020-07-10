@@ -23,4 +23,4 @@ export const loggHashlenkeKlikk = () => loggEvent('Brukt hashlenke');
 
 export const loggMeny = (type: string) => loggEvent('Meny', { type });
 
-export const loggH2MenyKlikk = () => loggEvent('MH2eny', { type: 'Hopp til underoverskrift' });
+export const loggH2MenyKlikk = () => loggEvent('H2Meny', { type: 'Hopp til underoverskrift' });
