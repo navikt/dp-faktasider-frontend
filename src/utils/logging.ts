@@ -3,13 +3,20 @@ Vi må lazy-loade loggingConfig, da gatsby pre-rendrer html, og kresjer dermed a
 Prøver derfor å ikke initiere amplitude-sdk instansen før en logevent blir kalt.
 */
 
-const loggEvent = (event: string, ekstraData?: object) =>
+import { isProduction } from './environment';
+
+const loggEvent = (event: string, ekstraData?: object) => {
+  if (!isProduction()) {
+    return;
+  }
+
   import('../utils/loggingConfig').then((logging) =>
     logging.loggInstance.logEvent(event, {
       ...ekstraData,
       appName: 'dp-faktasider',
     })
   );
+};
 
 export const loggError = (msg: string, ekstraData?: object) => loggEvent('Error', { ...ekstraData, msg });
 
