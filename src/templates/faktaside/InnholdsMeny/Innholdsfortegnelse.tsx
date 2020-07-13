@@ -23,7 +23,7 @@ const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
     `};
 `;
 
-const skjermBrøk = 1 / 4; // Brukes for å beregne hvilken gruppe bruker ser på for øyeblikket. Hvis den er 1/4 må en gruppe være i den øverste 1/4 av skjermen for å regnes som "currentGroup"
+const skjermBrøk = 1 / 4; // Brukes for å beregne hvilken gruppe bruker ser på for øyeblikket. Hvis den er 1/4 må en gruppe være over den øverste 1/4 av for å regnes som "currentGroup"
 
 function useCurrentlyViewedGroup(items: Group[]): Group | undefined {
   const [current, setCurrent] = useState<Group | undefined>();
