@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '../../utils/test-utils';
+import { render } from '../../testUtils/customized-testing-library';
 import FaktaSide from './FaktaSide';
 import { createFaktasideContext } from '../../../gatsby-utils/createFaktasider';
 import { rawFaktasideDataMock } from '../../../__mocks__/rawFaktasideDataMock';

@@ -1,5 +1,5 @@
-import { Block, isRawDeltTekst } from '../richTextTypes';
-import { RichTextParser } from './parseRichText';
+import { Block, isRawDeltTekst } from '../../richTextTypes';
+import { RichTextParser } from '../parseRichText';
 
 /**
  * leter etter blokker med _type="deltTekst". Delte tekster er tekster som kan trekkes inn i flere faktasider i sanity.

@@ -1,7 +1,7 @@
 import React from 'react';
 import { PureIndexPage } from '../index';
 import { faktasiderSummaryMockData } from '../../utils/faktasiderSummary/faktasiderSummaryMockData';
-import { render } from '../../utils/test-utils';
+import { render } from '../../testUtils/customized-testing-library';
 
 const indexStaticQueryMockData = {
   oppsett: {
