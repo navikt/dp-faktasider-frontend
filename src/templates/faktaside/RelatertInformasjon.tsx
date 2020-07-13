@@ -29,7 +29,7 @@ function RelatertInformasjon(props: Props) {
   const { t } = useTranslation('global');
 
   const blocks = props.blocks;
-  if (!blocks) {
+  if (!blocks || !blocks.length) {
     return null;
   }
 

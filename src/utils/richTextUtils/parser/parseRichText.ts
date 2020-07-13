@@ -1,7 +1,7 @@
 import { Block, SanityBlock } from '../richTextTypes';
-import { flattenH2Versions } from './flattenH2Versions';
-import { groupParser } from './groupParser';
-import { makeUniqeGroupIDs } from './makeUniqeGroupIDs';
+import { flattenH2Versions } from './flattenH2Versions/flattenH2Versions';
+import { groupParser } from './groupParser/groupParser';
+import { makeUniqeGroupIDs } from './makeUniqeGroupIDs/makeUniqeGroupIDs';
 import { parseDelteTekster } from './parseDelteTekster';
 
 export type ParsedRichText = Block[];

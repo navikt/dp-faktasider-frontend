@@ -12,7 +12,7 @@ module.exports = {
   globals: {
     __PATH_PREFIX__: ``,
   },
-  testURL: `http://localhost`,
+  testURL: `http://test`,
   setupFiles: [`<rootDir>/jest.loader.js`],
   setupFilesAfterEnv: [`<rootDir>/jest.setup-test-env.js`],
 };

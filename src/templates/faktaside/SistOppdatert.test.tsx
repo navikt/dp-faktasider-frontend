@@ -9,13 +9,13 @@ describe('Sist oppdatert funker finfint med internasjonalisering', () => {
     const publiseringsTidspunkt = getPubliseringsTidspunkt(rawFaktasideDataMock, 'no');
     const result = render(<SistOppdatert publiseringsTidspunkt={publiseringsTidspunkt} />);
 
-    result.getByText('Denne siden ble sist oppdatert 10. juli 2020 12:54');
+    result.getByText(/10. juli 2020 12:54/);
   });
 
   test('På engelsk', () => {
     const publiseringsTidspunkt = getPubliseringsTidspunkt(rawFaktasideDataMock, 'en');
     const result = render(<SistOppdatert publiseringsTidspunkt={publiseringsTidspunkt} />, undefined, 'en');
 
-    result.getByText('Last updated on July 10th 2020 12:54');
+    result.getByText(/July 10th 2020 12:54/);
   });
 });

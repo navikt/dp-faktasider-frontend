@@ -634,8 +634,9 @@ exports[`Snapshottest Faktaside 1`] = `
           Denne siden ble sist oppdatert 10. juli 2020 12:54
         </div>
         <article
-          aria-labelledby="overskrift-header"
+          aria-labelledby="Helt tilfeldig ID"
           class="c19"
+          data-testid="overskrift"
           style="position: relative;"
         >
           <div
@@ -653,7 +654,7 @@ exports[`Snapshottest Faktaside 1`] = `
           </div>
           <h2
             class="c23 group-header-hash-link-hide"
-            id="overskrift-header"
+            id="Helt tilfeldig ID"
             style="top: 0px;"
           >
             Overskrift
@@ -697,8 +698,9 @@ exports[`Snapshottest Faktaside 1`] = `
           class="c28"
         >
           <article
-            aria-labelledby="relatert-informasjon-header"
+            aria-labelledby="Helt tilfeldig ID"
             class="c19"
+            data-testid="relatert-informasjon"
             style="position: relative;"
           >
             <div
@@ -716,7 +718,7 @@ exports[`Snapshottest Faktaside 1`] = `
             </div>
             <h2
               class="c23 group-header-hash-link-hide"
-              id="relatert-informasjon-header"
+              id="Helt tilfeldig ID"
               style="top: 0px;"
             >
               Relatert informasjon
