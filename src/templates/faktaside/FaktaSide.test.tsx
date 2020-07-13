@@ -8,6 +8,11 @@ jest.mock('../../utils/faktasiderSummary/useFaktasiderSumary', () => () => {
   return require('../../utils/faktasiderSummary/faktasiderSummaryMockData').faktasiderSummaryMockData;
 });
 
+beforeAll(() => {
+  const JSutils = require('nav-frontend-js-utils');
+  JSutils.guid = jest.fn(() => 'Helt tilfeldig ID');
+});
+
 /* Dette er en veldig grov test som fanger opp det meste av endringer på faktaside */
 test('Snapshottest Faktaside', () => {
   const context = createFaktasideContext(rawFaktasideDataMock, 'no');

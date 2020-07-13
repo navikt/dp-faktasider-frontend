@@ -1,5 +1,5 @@
-import { Block, BlockConfigFromParser, Group, GroupTypes, ParsedSanityBlock } from '../richTextTypes';
-import { RichTextParser } from './parseRichText';
+import { Block, BlockConfigFromParser, Group, GroupTypes, ParsedSanityBlock } from '../../richTextTypes';
+import { RichTextParser } from '../parseRichText';
 
 const groupByStyles: GroupTypes[] = ['h2', 'h3', 'h4'].reverse() as GroupTypes[]; // Rekkefølgen her er viktig. Den første gruppen vil aldri få andre grupper inni seg.
 

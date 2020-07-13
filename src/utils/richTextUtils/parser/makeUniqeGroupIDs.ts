@@ -1,6 +1,6 @@
 import { Block, GroupTypes, ParsedSanityBlock } from '../richTextTypes';
 import { RichTextParser } from './parseRichText';
-import { getGroupTitle } from './groupParser';
+import { getGroupTitle } from './groupParser/groupParser';
 import { idFromString } from '../../idFromString';
 
 // gruppe-id'er som bla brukes til hash-lenker må være unike. Id'ene genereres fra gruppetittelen, men det hender at det finnes duplikate gruppetitler på forskjellige nivåer.
