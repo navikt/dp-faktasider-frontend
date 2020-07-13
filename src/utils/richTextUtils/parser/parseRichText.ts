@@ -1,5 +1,5 @@
 import { Block, SanityBlock } from '../richTextTypes';
-import { flattenH2Versions } from './flattenH2Versions';
+import { flattenH2Versions } from './flattenH2Versions/flattenH2Versions';
 import { groupParser } from './groupParser/groupParser';
 import { makeUniqeGroupIDs } from './makeUniqeGroupIDs/makeUniqeGroupIDs';
 import { parseDelteTekster } from './parseDelteTekster';

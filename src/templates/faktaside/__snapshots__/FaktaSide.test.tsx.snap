@@ -636,6 +636,7 @@ exports[`Snapshottest Faktaside 1`] = `
         <article
           aria-labelledby="Helt tilfeldig ID"
           class="c19"
+          data-testid="overskrift"
           style="position: relative;"
         >
           <div
@@ -699,6 +700,7 @@ exports[`Snapshottest Faktaside 1`] = `
           <article
             aria-labelledby="Helt tilfeldig ID"
             class="c19"
+            data-testid="relatert-informasjon"
             style="position: relative;"
           >
             <div
