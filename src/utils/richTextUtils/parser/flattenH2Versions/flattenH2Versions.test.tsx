@@ -1,11 +1,18 @@
 import React from 'react';
-import { render, within } from '../../../test-utils';
+import { render, within } from '../../../../testUtils/customized-testing-library';
 import BlockContent from '../../../../components/BlockContent/BlockContent';
 import parseRichText from '../parseRichText';
-import { flattenH2VersionsMockData } from './flattenH2VersionsMockData';
+import { createSanityBlock } from '../../../../testUtils/createSanityBlock';
+
+const testData = [
+  createSanityBlock('Vanlig overskrift', 'h2'),
+  createSanityBlock('Overskrift uten bakgrunn', 'h2-no-background'),
+  createSanityBlock('Overskrift med meny', 'h2-m-meny'),
+  createSanityBlock('Menypunkt', 'h3'),
+];
 
 describe('flattenH2Versions', () => {
-  const parsedBlocks = parseRichText(flattenH2VersionsMockData);
+  const parsedBlocks = parseRichText(testData);
 
   test('alle h2-versjoner blir til grupper', () => {
     const result = render(<BlockContent blocks={parsedBlocks} />);

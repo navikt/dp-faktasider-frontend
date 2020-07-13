@@ -1,6 +1,6 @@
 import React from 'react';
 import { getPubliseringsTidspunkt } from '../../../gatsby-utils/getPubliseringstidspunkt';
-import { render } from '../../utils/test-utils';
+import { render } from '../../testUtils/customized-testing-library';
 import SistOppdatert from './SistOppdatert';
 import { rawFaktasideDataMock } from '../../../__mocks__/rawFaktasideDataMock';
 
