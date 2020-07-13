@@ -67,17 +67,26 @@ const StyledOl = styled.ol`
 
 function Innholdsfortegnelse() {
   const innholdsListe = useInnholdsListe();
-  const currentlyViewedItem = useCurrentlyViewedGroup(innholdsListe);
   const faktasideContext = useFaktasideContext();
 
   if (!innholdsListe.length) {
     return null;
   }
 
+  return <PureInnholdsfortegnelse title={faktasideContext.title || 'N/A'} innholdsListe={innholdsListe} />;
+}
+
+interface Props {
+  title: string;
+  innholdsListe: Group[];
+}
+
+export function PureInnholdsfortegnelse(props: Props) {
+  const currentlyViewedGroup = useCurrentlyViewedGroup(props.innholdsListe);
   return (
-    <StyledOl aria-label={`Innholdsfortegnelse ${faktasideContext.title}`}>
-      {innholdsListe.map((item) => (
-        <MenuItem key={item.blockConfig?.id} item={item} current={currentlyViewedItem === item} />
+    <StyledOl aria-label={`Innholdsfortegnelse ${props.title}`}>
+      {props.innholdsListe.map((item) => (
+        <MenuItem key={item.blockConfig?.id} item={item} current={currentlyViewedGroup === item} />
       ))}
     </StyledOl>
   );

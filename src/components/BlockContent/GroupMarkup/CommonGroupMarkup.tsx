@@ -47,7 +47,7 @@ function CommonGroupMarkup(props: Props) {
   const Header = props.header;
 
   return (
-    <Region aria-labelledby={headerId} style={{ position: 'relative' }} {...props.regionProps}>
+    <Region data-testid={id} aria-labelledby={headerId} style={{ position: 'relative' }} {...props.regionProps}>
       <HashLinkHide />
       <Anchor id={id} marginTop={props.anchorMarginTop} focusOnParent={true} />
       <Header id={headerId} {...props.headerProps} className={linkHideClassName}>
