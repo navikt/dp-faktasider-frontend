@@ -8,11 +8,18 @@ import withErrorBoundary from '../../../components/withErrorBoundary';
 import { theme } from '../../../styles/theme';
 import { useRef } from 'react';
 import { guid } from 'nav-frontend-js-utils';
+import { useDekoratorPopdownOffset } from '../Navigasjonsmeny/useDekoratorPopdownOffset';
 
-const StyledNav = styled.nav`
+type NavProps = { offsetTop: number };
+
+const StyledNav = styled.nav.attrs((props: NavProps) => ({ style: { top: `${props.offsetTop}px` } }))<NavProps>`
+  border-top: ${theme.border.banner};
   background-color: white;
   padding: 1.5rem 2rem 2rem;
   @media (${theme.media.bigScreen}) {
+    overflow-y: auto;
+    max-height: calc(100vh - ${(props) => props.offsetTop}px);
+    position: sticky;
     max-width: 14rem;
   }
   > * {
@@ -33,13 +40,14 @@ interface Props {
 function Filtrering(props: Props) {
   const visForContext = useVisForContext();
   const titleId = useRef(guid()).current;
+  const offsetTop = useDekoratorPopdownOffset();
 
   if (isProduction() || visForContext.value.valg.length === 0) {
     return null;
   }
 
   return (
-    <StyledNav className={props.className} aria-labelledby={titleId}>
+    <StyledNav className={props.className} aria-labelledby={titleId} offsetTop={offsetTop}>
       <Undertittel id={titleId}>Tilpass innhold</Undertittel>
       <Normaltekst>Tilpass innholdet på denne siden ved å velge det som passer din situasjon best:</Normaltekst>
       <Style>

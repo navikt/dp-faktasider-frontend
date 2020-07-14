@@ -4,8 +4,10 @@ import { useTranslation } from 'react-i18next';
 import withErrorBoundary from '../../components/withErrorBoundary';
 
 const Style = styled.div`
-  padding: 1rem;
+  margin-top: 1rem;
   text-align: center;
+  font-style: italic;
+  opacity: 0.6;
 `;
 
 interface Props {

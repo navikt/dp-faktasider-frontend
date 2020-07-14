@@ -14,6 +14,8 @@ const DesktopNav = styled.nav.attrs((props: NavProps) => ({ style: { top: `${pro
   @media (${theme.media.smallScreen}) {
     display: none;
   }
+  border-top: ${theme.border.banner};
+  background-color: white;
   position: sticky;
   max-height: calc(100vh - ${(props) => props.offsetTop}px);
   overflow-y: auto;

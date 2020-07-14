@@ -5,7 +5,6 @@ import FaktaSideLayout from './FaktaSideLayout';
 import GraphQLErrorList from '../../components/GraphqlErrorList';
 import SEO from '../../components/SEO';
 import IkkeOversatt from './IkkeOversatt';
-import SistOppdatert from './SistOppdatert';
 import RelatertInformasjon from './RelatertInformasjon';
 import { FaktasideProvider } from './FaktaSideContext';
 import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
@@ -35,9 +34,8 @@ function FaktaSide(props: FaktaSideProps) {
   return (
     <FaktasideProvider {...page}>
       <SEO title={tittel} description={description} lang={lang} />
-      <FaktaSideLayout header={tittel} ingress={description}>
+      <FaktaSideLayout header={tittel} ingress={description} publiseringsTidspunkt={page.publiseringsTidspunkt}>
         <GraphQLErrorList errors={props.errors} />
-        <SistOppdatert publiseringsTidspunkt={page.publiseringsTidspunkt} />
         <BlockContent blocks={parsedInnhold} />
         <RelatertInformasjon blocks={page.relatertInformasjon} />
       </FaktaSideLayout>
