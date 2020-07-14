@@ -3,20 +3,23 @@ import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
 import styled from 'styled-components/macro';
 import { theme } from '../../styles/theme';
 import withErrorBoundary from '../../components/withErrorBoundary';
+import SistOppdatert from '../faktaside/SistOppdatert';
 
 interface Props {
   heading: string;
   ingress: string;
   small?: boolean;
+  publiseringsTidspunkt?: string;
 }
 
 const Background = styled.div`
   background-color: ${theme.colors.navBlaLighten80};
-  border-bottom: 0.3rem solid ${theme.colors.navBlaLighten60};
-  border-top: 0.3rem solid ${theme.colors.navBlaLighten60};
+  border-bottom: ${theme.border.banner};
+  border-top: ${theme.border.banner};
   display: flex;
   justify-content: center;
   text-align: center;
+  margin-bottom: 3rem;
 `;
 
 const StyledSidetittel = styled(Sidetittel)`
@@ -34,6 +37,7 @@ const Header = (props: Props) => {
       <MaxWidth>
         <StyledSidetittel>{props.heading}</StyledSidetittel>
         <Normaltekst>{props.ingress}</Normaltekst>
+        {props.publiseringsTidspunkt && <SistOppdatert publiseringsTidspunkt={props.publiseringsTidspunkt} />}
       </MaxWidth>
     </Background>
   );

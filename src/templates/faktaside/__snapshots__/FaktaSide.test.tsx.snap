@@ -81,12 +81,11 @@ exports[`Snapshottest Faktaside 1`] = `
   margin-bottom: 1.5rem;
 }
 
-.c8 {
-  background-color: white;
+.c5 {
   padding: 1.5rem 0 2.5rem;
 }
 
-.c9 {
+.c6 {
   display: block;
   font-size: 1.1rem;
   font-weight: 600;
@@ -95,11 +94,11 @@ exports[`Snapshottest Faktaside 1`] = `
   text-decoration: none;
 }
 
-.c9:hover {
+.c6:hover {
   background-color: #ddd8;
 }
 
-.c13 {
+.c10 {
   background: none;
   color: inherit;
   border: none;
@@ -125,23 +124,23 @@ exports[`Snapshottest Faktaside 1`] = `
   align-items: center;
 }
 
-.c13:hover {
+.c10:hover {
   opacity: 0.7;
 }
 
-.c13:focus {
+.c10:focus {
   outline: none;
   box-shadow: 0 0 0 0.1875rem #254b6d;
 }
 
-.c15 {
+.c12 {
   width: 50%;
   stroke: black;
   stroke-width: 0.4;
   stroke-linecap: round;
 }
 
-.c12 {
+.c9 {
   position: absolute;
   top: 0;
   right: 0;
@@ -169,7 +168,7 @@ exports[`Snapshottest Faktaside 1`] = `
   pointer-events: auto;
 }
 
-.c11 {
+.c8 {
   position: absolute;
   top: 0;
   left: 0;
@@ -190,7 +189,7 @@ exports[`Snapshottest Faktaside 1`] = `
   pointer-events: none;
 }
 
-.c16 {
+.c13 {
   -webkit-transition: max-height 0.2s;
   transition: max-height 0.2s;
   max-height: calc(100vh - 0px);
@@ -200,7 +199,7 @@ exports[`Snapshottest Faktaside 1`] = `
   display: none;
 }
 
-.c14 {
+.c11 {
   margin: 1rem;
   background-color: white;
   position: absolute;
@@ -209,7 +208,9 @@ exports[`Snapshottest Faktaside 1`] = `
   box-shadow: 0 0 0 0.2rem #8886;
 }
 
-.c7 {
+.c4 {
+  border-top: 0.3rem solid #99C2E8;
+  background-color: white;
   position: -webkit-sticky;
   position: sticky;
   max-height: calc(100vh - 0px);
@@ -219,7 +220,14 @@ exports[`Snapshottest Faktaside 1`] = `
   max-width: 16rem;
 }
 
-.c2 {
+.c17 {
+  margin-top: 1rem;
+  text-align: center;
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.c14 {
   background-color: #CCE1F3;
   border-bottom: 0.3rem solid #99C2E8;
   border-top: 0.3rem solid #99C2E8;
@@ -232,13 +240,14 @@ exports[`Snapshottest Faktaside 1`] = `
   -ms-flex-pack: center;
   justify-content: center;
   text-align: center;
+  margin-bottom: 3rem;
 }
 
-.c4 {
+.c16 {
   font-size: 1.7rem;
 }
 
-.c3 {
+.c15 {
   padding: 2rem;
   max-width: 50rem;
 }
@@ -273,7 +282,7 @@ exports[`Snapshottest Faktaside 1`] = `
   clip: rect(1px,1px,1px,1px);
 }
 
-.c17 {
+.c18 {
   -webkit-flex: 0 1 40rem;
   -ms-flex: 0 1 40rem;
   flex: 0 1 40rem;
@@ -289,38 +298,38 @@ exports[`Snapshottest Faktaside 1`] = `
   padding: 1rem 0 4rem;
 }
 
-.c17 ul {
+.c18 ul {
   padding-left: 2rem;
   list-style: disc;
   margin: 1.5rem 0;
 }
 
-.c17 ul li {
+.c18 ul li {
   margin-bottom: 1rem;
   line-height: 1.3;
 }
 
-.c17 ul ul {
+.c18 ul ul {
   list-style: circle;
 }
 
-.c17 ol {
+.c18 ol {
   list-style: decimal;
   padding-left: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-.c17 ol li {
+.c18 ol li {
   margin: 0.5rem 0;
   line-height: 1.3;
   padding-left: 1rem;
 }
 
-.c17 p {
+.c18 p {
   margin: 0.5rem 0 1rem;
 }
 
-.c6 {
+.c3 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -329,7 +338,7 @@ exports[`Snapshottest Faktaside 1`] = `
   min-height: 30vh;
 }
 
-.c5 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -339,11 +348,6 @@ exports[`Snapshottest Faktaside 1`] = `
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
   align-items: flex-start;
-}
-
-.c18 {
-  padding: 1rem;
-  text-align: center;
 }
 
 .c28 {
@@ -361,7 +365,7 @@ exports[`Snapshottest Faktaside 1`] = `
 }
 
 @supports (position:-webkit-sticky) or (position:sticky) {
-  .c12 {
+  .c9 {
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
@@ -369,31 +373,31 @@ exports[`Snapshottest Faktaside 1`] = `
 }
 
 @media not all and (max-width:65rem) {
-  .c11 {
+  .c8 {
     display: none;
   }
 }
 
 @media (max-width:65rem) {
-  .c7 {
+  .c4 {
     display: none;
   }
 }
 
 @media not all and (max-width:65rem) {
-  .c10 {
+  .c7 {
     display: none;
   }
 }
 
 @media (min-width:65rem) {
-  .c17 {
+  .c18 {
     padding: 0 2rem;
   }
 }
 
 @media (min-width:65rem) {
-  .c6 {
+  .c3 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -404,19 +408,23 @@ exports[`Snapshottest Faktaside 1`] = `
     align-items: flex-start;
   }
 
-  .c6 .order-1 {
+  .c3 .order-1 {
     -webkit-order: 1;
     -ms-flex-order: 1;
     order: 1;
   }
 
-  .c6 .order-2 {
+  .c3 .order-2 {
     -webkit-order: 2;
     -ms-flex-order: 2;
     order: 2;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
   }
 
-  .c6 .order-3 {
+  .c3 .order-3 {
     -webkit-order: 3;
     -ms-flex-order: 3;
     order: 3;
@@ -485,27 +493,9 @@ exports[`Snapshottest Faktaside 1`] = `
     <div
       class="c3"
     >
-      <h1
-        class="typo-sidetittel c4"
-      >
-        Dette er litt testdata
-      </h1>
-      <p
-        class="typo-normal"
-      >
-        Denne brukes i test
-      </p>
-    </div>
-  </div>
-  <div
-    class="c5"
-  >
-    <div
-      class="c6"
-    >
       <nav
         aria-labelledby="Helt tilfeldig ID"
-        class="c7 order-1"
+        class="c4 order-1"
         style="top: 0px;"
       >
         <h2
@@ -515,11 +505,11 @@ exports[`Snapshottest Faktaside 1`] = `
           Sideoversikt
         </h2>
         <ol
-          class="c8"
+          class="c5"
         >
           <li>
             <a
-              class="c9 lenke"
+              class="c6 lenke"
               href="/no/arbeidsledig/"
             >
               Arbeidsledig
@@ -529,7 +519,7 @@ exports[`Snapshottest Faktaside 1`] = `
           </li>
           <li>
             <a
-              class="c9 lenke"
+              class="c6 lenke"
               href="/no/permittert/"
             >
               Permittert
@@ -541,7 +531,7 @@ exports[`Snapshottest Faktaside 1`] = `
       </nav>
       <nav
         aria-labelledby="Helt tilfeldig ID"
-        class="c10 order-1"
+        class="c7 order-1"
       >
         <h2
           class="sr-only"
@@ -550,17 +540,17 @@ exports[`Snapshottest Faktaside 1`] = `
           Sideoversikt
         </h2>
         <div
-          class="c11"
+          class="c8"
         >
           <div
-            class="c12"
+            class="c9"
           >
             <button
               aria-expanded="false"
-              class="c13 c14"
+              class="c10 c11"
             >
               <svg
-                class="c15"
+                class="c12"
                 viewBox="0.5 0.5 3 3"
               >
                 <circle
@@ -595,14 +585,14 @@ exports[`Snapshottest Faktaside 1`] = `
               </span>
             </button>
             <div
-              class="c16"
+              class="c13"
             >
               <ol
-                class="c8"
+                class="c5"
               >
                 <li>
                   <a
-                    class="c9 lenke"
+                    class="c6 lenke"
                     href="/no/arbeidsledig/"
                   >
                     Arbeidsledig
@@ -612,7 +602,7 @@ exports[`Snapshottest Faktaside 1`] = `
                 </li>
                 <li>
                   <a
-                    class="c9 lenke"
+                    class="c6 lenke"
                     href="/no/permittert/"
                   >
                     Permittert
@@ -625,82 +615,39 @@ exports[`Snapshottest Faktaside 1`] = `
           </div>
         </div>
       </nav>
-      <main
-        class="c17 order-2"
+      <div
+        class="order-2"
       >
         <div
-          class="c18"
-        >
-          Sist oppdatert 10. juli 2020 12:54
-        </div>
-        <article
-          aria-labelledby="Helt tilfeldig ID"
-          class="c19"
-          data-testid="overskrift"
-          style="position: relative;"
+          class="c14"
         >
           <div
-            class="c20"
+            class="c15"
           >
-            <div
-              class="c21"
+            <h1
+              class="typo-sidetittel c16"
             >
-              <div
-                class="c22"
-                id="overskrift"
-                tabindex="-1"
-              />
+              Dette er litt testdata
+            </h1>
+            <p
+              class="typo-normal"
+            >
+              Denne brukes i test
+            </p>
+            <div
+              class="c17"
+            >
+              Sist oppdatert 10. juli 2020 12:54
             </div>
           </div>
-          <h2
-            class="c23 group-header-hash-link-hide"
-            id="Helt tilfeldig ID"
-            style="top: 0px;"
-          >
-            Overskrift
-            <span
-              aria-hidden="true"
-              class="c24"
-            >
-              <a
-                class="c25 c26"
-                href="#overskrift"
-              >
-                <svg
-                  class="c27"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"
-                  />
-                  <path
-                    d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"
-                  />
-                </svg>
-              </a>
-            </span>
-          </h2>
-          <div>
-            <p>
-              Litt innhold
-            </p>
-            <ul>
-              <li>
-                Punkt 1
-              </li>
-              <li>
-                Punkt 2
-              </li>
-            </ul>
-          </div>
-        </article>
-        <div
-          class="c28"
+        </div>
+        <main
+          class="c18"
         >
           <article
             aria-labelledby="Helt tilfeldig ID"
             class="c19"
-            data-testid="relatert-informasjon"
+            data-testid="overskrift"
             style="position: relative;"
           >
             <div
@@ -711,7 +658,7 @@ exports[`Snapshottest Faktaside 1`] = `
               >
                 <div
                   class="c22"
-                  id="relatert-informasjon"
+                  id="overskrift"
                   tabindex="-1"
                 />
               </div>
@@ -721,14 +668,14 @@ exports[`Snapshottest Faktaside 1`] = `
               id="Helt tilfeldig ID"
               style="top: 0px;"
             >
-              Relatert informasjon
+              Overskrift
               <span
                 aria-hidden="true"
                 class="c24"
               >
                 <a
                   class="c25 c26"
-                  href="#relatert-informasjon"
+                  href="#overskrift"
                 >
                   <svg
                     class="c27"
@@ -744,12 +691,77 @@ exports[`Snapshottest Faktaside 1`] = `
                 </a>
               </span>
             </h2>
-            <p>
-              Relatert info
-            </p>
+            <div>
+              <p>
+                Litt innhold
+              </p>
+              <ul>
+                <li>
+                  Punkt 1
+                </li>
+                <li>
+                  Punkt 2
+                </li>
+              </ul>
+            </div>
           </article>
-        </div>
-      </main>
+          <div
+            class="c28"
+          >
+            <article
+              aria-labelledby="Helt tilfeldig ID"
+              class="c19"
+              data-testid="relatert-informasjon"
+              style="position: relative;"
+            >
+              <div
+                class="c20"
+              >
+                <div
+                  class="c21"
+                >
+                  <div
+                    class="c22"
+                    id="relatert-informasjon"
+                    tabindex="-1"
+                  />
+                </div>
+              </div>
+              <h2
+                class="c23 group-header-hash-link-hide"
+                id="Helt tilfeldig ID"
+                style="top: 0px;"
+              >
+                Relatert informasjon
+                <span
+                  aria-hidden="true"
+                  class="c24"
+                >
+                  <a
+                    class="c25 c26"
+                    href="#relatert-informasjon"
+                  >
+                    <svg
+                      class="c27"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"
+                      />
+                      <path
+                        d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"
+                      />
+                    </svg>
+                  </a>
+                </span>
+              </h2>
+              <p>
+                Relatert info
+              </p>
+            </article>
+          </div>
+        </main>
+      </div>
     </div>
   </div>
 </div>

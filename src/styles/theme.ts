@@ -60,4 +60,7 @@ export const theme = {
   fadeInAnimation: css`
     animation: ${fadeIn} 0.5s backwards;
   `,
+  border: {
+    banner: `0.3rem solid ${colors.navBlaLighten60}`,
+  },
 };

@@ -14,6 +14,7 @@ interface Props {
   header: string;
   ingress: string;
   children: ReactNode;
+  publiseringsTidspunkt?: string;
 }
 
 const ContentStyle = styled.div`
@@ -28,6 +29,7 @@ const ContentStyle = styled.div`
     }
     .order-2 {
       order: 2;
+      flex-grow: 1;
     }
     .order-3 {
       order: 3;
@@ -45,13 +47,19 @@ function FaktaSideLayout(props: Props) {
   return (
     <>
       <LanguageSelector />
-      <Header heading={props.header} ingress={props.ingress} />
       <Style>
         <DevKnapper />
         <ContentStyle>
           <Navigasjonsmeny className="order-1" />
           <Filtrering className="order-3" />
-          <MainContentStyle className="order-2">{props.children}</MainContentStyle>
+          <div className="order-2">
+            <Header
+              heading={props.header}
+              ingress={props.ingress}
+              publiseringsTidspunkt={props.publiseringsTidspunkt}
+            />
+            <MainContentStyle>{props.children}</MainContentStyle>
+          </div>
         </ContentStyle>
       </Style>
     </>
