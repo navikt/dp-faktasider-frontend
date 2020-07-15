@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Snapshottest Faktaside 1`] = `
-.c20 {
+.c21 {
   position: relative;
   position: absolute;
   top: 0;
@@ -11,21 +11,21 @@ exports[`Snapshottest Faktaside 1`] = `
   pointer-events: none;
 }
 
-.c22 {
+.c23 {
   position: absolute;
   top: -2.5rem;
 }
 
-.c22:focus {
+.c23:focus {
   box-shadow: none;
 }
 
-.c21 {
+.c22 {
   -webkit-transition: 0.1s;
   transition: 0.1s;
 }
 
-.c21:focus-within {
+.c22:focus-within {
   outline: none;
   box-shadow: 0 0 0 0.1875rem #254b6d;
   height: 100%;
@@ -33,7 +33,7 @@ exports[`Snapshottest Faktaside 1`] = `
   border-radius: 0.2rem;
 }
 
-.c26 {
+.c27 {
   position: absolute;
   right: calc(-1rem - 0.6em);
   -webkit-transform: translateY(0.1em);
@@ -42,11 +42,11 @@ exports[`Snapshottest Faktaside 1`] = `
   color: #0067C5;
 }
 
-.c24 {
+.c25 {
   position: relative;
 }
 
-.c27 {
+.c28 {
   stroke: currentColor;
   fill: none;
   stroke-linecap: round;
@@ -58,11 +58,11 @@ exports[`Snapshottest Faktaside 1`] = `
   transition: 0.15s;
 }
 
-.c25:hover .c27 {
+.c26:hover .c28 {
   opacity: 1;
 }
 
-.c19 {
+.c20 {
   background-color: white;
   padding: 1.5rem 3rem;
   border-radius: .2rem;
@@ -71,7 +71,7 @@ exports[`Snapshottest Faktaside 1`] = `
   position: relative;
 }
 
-.c23 {
+.c24 {
   background-color: #fffe;
   padding: 1rem;
   text-align: center;
@@ -81,11 +81,11 @@ exports[`Snapshottest Faktaside 1`] = `
   margin-bottom: 1.5rem;
 }
 
-.c5 {
-  padding: 1.5rem 0 2.5rem;
+.c6 {
+  margin-bottom: 3.5rem;
 }
 
-.c6 {
+.c7 {
   display: block;
   font-size: 1.1rem;
   font-weight: 600;
@@ -94,11 +94,11 @@ exports[`Snapshottest Faktaside 1`] = `
   text-decoration: none;
 }
 
-.c6:hover {
+.c7:hover {
   background-color: #ddd8;
 }
 
-.c10 {
+.c11 {
   background: none;
   color: inherit;
   border: none;
@@ -124,23 +124,23 @@ exports[`Snapshottest Faktaside 1`] = `
   align-items: center;
 }
 
-.c10:hover {
+.c11:hover {
   opacity: 0.7;
 }
 
-.c10:focus {
+.c11:focus {
   outline: none;
   box-shadow: 0 0 0 0.1875rem #254b6d;
 }
 
-.c12 {
+.c13 {
   width: 50%;
   stroke: black;
   stroke-width: 0.4;
   stroke-linecap: round;
 }
 
-.c9 {
+.c10 {
   position: absolute;
   top: 0;
   right: 0;
@@ -168,7 +168,7 @@ exports[`Snapshottest Faktaside 1`] = `
   pointer-events: auto;
 }
 
-.c8 {
+.c9 {
   position: absolute;
   top: 0;
   left: 0;
@@ -189,7 +189,7 @@ exports[`Snapshottest Faktaside 1`] = `
   pointer-events: none;
 }
 
-.c13 {
+.c14 {
   -webkit-transition: max-height 0.2s;
   transition: max-height 0.2s;
   max-height: calc(100vh - 0px);
@@ -199,7 +199,7 @@ exports[`Snapshottest Faktaside 1`] = `
   display: none;
 }
 
-.c11 {
+.c12 {
   margin: 1rem;
   background-color: white;
   position: absolute;
@@ -220,14 +220,22 @@ exports[`Snapshottest Faktaside 1`] = `
   max-width: 16rem;
 }
 
-.c17 {
+.c5 {
+  padding: 2rem;
+  opacity: 0.6;
+  text-transform: uppercase;
+  text-align: center;
+  pointer-events: none;
+}
+
+.c18 {
   margin-top: 1rem;
   text-align: center;
   font-style: italic;
   opacity: 0.6;
 }
 
-.c14 {
+.c15 {
   background-color: #CCE1F3;
   border-bottom: 0.3rem solid #99C2E8;
   border-top: 0.3rem solid #99C2E8;
@@ -243,11 +251,11 @@ exports[`Snapshottest Faktaside 1`] = `
   margin-bottom: 3rem;
 }
 
-.c16 {
+.c17 {
   font-size: 1.7rem;
 }
 
-.c15 {
+.c16 {
   padding: 2rem;
   max-width: 50rem;
 }
@@ -282,7 +290,7 @@ exports[`Snapshottest Faktaside 1`] = `
   clip: rect(1px,1px,1px,1px);
 }
 
-.c18 {
+.c19 {
   -webkit-flex: 0 1 40rem;
   -ms-flex: 0 1 40rem;
   flex: 0 1 40rem;
@@ -298,34 +306,34 @@ exports[`Snapshottest Faktaside 1`] = `
   padding: 1rem 0 4rem;
 }
 
-.c18 ul {
+.c19 ul {
   padding-left: 2rem;
   list-style: disc;
   margin: 1.5rem 0;
 }
 
-.c18 ul li {
+.c19 ul li {
   margin-bottom: 1rem;
   line-height: 1.3;
 }
 
-.c18 ul ul {
+.c19 ul ul {
   list-style: circle;
 }
 
-.c18 ol {
+.c19 ol {
   list-style: decimal;
   padding-left: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-.c18 ol li {
+.c19 ol li {
   margin: 0.5rem 0;
   line-height: 1.3;
   padding-left: 1rem;
 }
 
-.c18 p {
+.c19 p {
   margin: 0.5rem 0 1rem;
 }
 
@@ -350,22 +358,22 @@ exports[`Snapshottest Faktaside 1`] = `
   align-items: flex-start;
 }
 
-.c28 {
+.c29 {
   text-align: center;
 }
 
-.c28 ul {
+.c29 ul {
   list-style: none;
 }
 
 @media (max-width:65rem) {
-  .c19 {
+  .c20 {
     padding: 1.5rem 5vw;
   }
 }
 
 @supports (position:-webkit-sticky) or (position:sticky) {
-  .c9 {
+  .c10 {
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
@@ -373,7 +381,7 @@ exports[`Snapshottest Faktaside 1`] = `
 }
 
 @media not all and (max-width:65rem) {
-  .c8 {
+  .c9 {
     display: none;
   }
 }
@@ -385,13 +393,13 @@ exports[`Snapshottest Faktaside 1`] = `
 }
 
 @media not all and (max-width:65rem) {
-  .c7 {
+  .c8 {
     display: none;
   }
 }
 
 @media (min-width:65rem) {
-  .c18 {
+  .c19 {
     padding: 0 2rem;
   }
 }
@@ -432,12 +440,12 @@ exports[`Snapshottest Faktaside 1`] = `
 }
 
 @media (min-width:65rem) {
-  .c28 ul {
+  .c29 ul {
     -webkit-column-count: 2;
     column-count: 2;
   }
 
-  .c28 ul a {
+  .c29 ul a {
     white-space: nowrap;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
@@ -499,17 +507,21 @@ exports[`Snapshottest Faktaside 1`] = `
         style="top: 0px;"
       >
         <h2
-          class="sr-only"
+          class="typo-undertittel c5"
           id="Helt tilfeldig ID"
         >
-          Sideoversikt
+          <span
+            class="sr-only"
+          >
+            Sideoversikt
+          </span>
         </h2>
         <ol
-          class="c5"
+          class="c6"
         >
           <li>
             <a
-              class="c6 lenke"
+              class="c7 lenke"
               href="/no/arbeidsledig/"
             >
               Arbeidsledig
@@ -519,7 +531,7 @@ exports[`Snapshottest Faktaside 1`] = `
           </li>
           <li>
             <a
-              class="c6 lenke"
+              class="c7 lenke"
               href="/no/permittert/"
             >
               Permittert
@@ -531,26 +543,20 @@ exports[`Snapshottest Faktaside 1`] = `
       </nav>
       <nav
         aria-labelledby="Helt tilfeldig ID"
-        class="c7 order-1"
+        class="c8 order-1"
       >
-        <h2
-          class="sr-only"
-          id="Helt tilfeldig ID"
-        >
-          Sideoversikt
-        </h2>
         <div
-          class="c8"
+          class="c9"
         >
           <div
-            class="c9"
+            class="c10"
           >
             <button
               aria-expanded="false"
-              class="c10 c11"
+              class="c11 c12"
             >
               <svg
-                class="c12"
+                class="c13"
                 viewBox="0.5 0.5 3 3"
               >
                 <circle
@@ -585,14 +591,24 @@ exports[`Snapshottest Faktaside 1`] = `
               </span>
             </button>
             <div
-              class="c13"
+              class="c14"
             >
+              <h2
+                class="typo-undertittel c5"
+                id="Helt tilfeldig ID"
+              >
+                <span
+                  class="sr-only"
+                >
+                  Sideoversikt
+                </span>
+              </h2>
               <ol
-                class="c5"
+                class="c6"
               >
                 <li>
                   <a
-                    class="c6 lenke"
+                    class="c7 lenke"
                     href="/no/arbeidsledig/"
                   >
                     Arbeidsledig
@@ -602,7 +618,7 @@ exports[`Snapshottest Faktaside 1`] = `
                 </li>
                 <li>
                   <a
-                    class="c6 lenke"
+                    class="c7 lenke"
                     href="/no/permittert/"
                   >
                     Permittert
@@ -619,13 +635,13 @@ exports[`Snapshottest Faktaside 1`] = `
         class="order-2"
       >
         <div
-          class="c14"
+          class="c15"
         >
           <div
-            class="c15"
+            class="c16"
           >
             <h1
-              class="typo-sidetittel c16"
+              class="typo-sidetittel c17"
             >
               Dette er litt testdata
             </h1>
@@ -635,50 +651,50 @@ exports[`Snapshottest Faktaside 1`] = `
               Denne brukes i test
             </p>
             <div
-              class="c17"
+              class="c18"
             >
               Sist oppdatert 10. juli 2020 12:54
             </div>
           </div>
         </div>
         <main
-          class="c18"
+          class="c19"
         >
           <article
             aria-labelledby="Helt tilfeldig ID"
-            class="c19"
+            class="c20"
             data-testid="overskrift"
             style="position: relative;"
           >
             <div
-              class="c20"
+              class="c21"
             >
               <div
-                class="c21"
+                class="c22"
               >
                 <div
-                  class="c22"
+                  class="c23"
                   id="overskrift"
                   tabindex="-1"
                 />
               </div>
             </div>
             <h2
-              class="c23 group-header-hash-link-hide"
+              class="c24 group-header-hash-link-hide"
               id="Helt tilfeldig ID"
               style="top: 0px;"
             >
               Overskrift
               <span
                 aria-hidden="true"
-                class="c24"
+                class="c25"
               >
                 <a
-                  class="c25 c26"
+                  class="c26 c27"
                   href="#overskrift"
                 >
                   <svg
-                    class="c27"
+                    class="c28"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -706,43 +722,43 @@ exports[`Snapshottest Faktaside 1`] = `
             </div>
           </article>
           <div
-            class="c28"
+            class="c29"
           >
             <article
               aria-labelledby="Helt tilfeldig ID"
-              class="c19"
+              class="c20"
               data-testid="relatert-informasjon"
               style="position: relative;"
             >
               <div
-                class="c20"
+                class="c21"
               >
                 <div
-                  class="c21"
+                  class="c22"
                 >
                   <div
-                    class="c22"
+                    class="c23"
                     id="relatert-informasjon"
                     tabindex="-1"
                   />
                 </div>
               </div>
               <h2
-                class="c23 group-header-hash-link-hide"
+                class="c24 group-header-hash-link-hide"
                 id="Helt tilfeldig ID"
                 style="top: 0px;"
               >
                 Relatert informasjon
                 <span
                   aria-hidden="true"
-                  class="c24"
+                  class="c25"
                 >
                   <a
-                    class="c25 c26"
+                    class="c26 c27"
                     href="#relatert-informasjon"
                   >
                     <svg
-                      class="c27"
+                      class="c28"
                       viewBox="0 0 24 24"
                     >
                       <path

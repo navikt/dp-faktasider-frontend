@@ -4,6 +4,8 @@ import FaktaSide from './FaktaSide';
 import { createFaktasideContext } from '../../../gatsby-utils/createFaktasider';
 import { rawFaktasideDataMock } from '../../../__mocks__/rawFaktasideDataMock';
 
+jest.mock('../../utils/faktasiderSummary/useProjectData', () => () => ({ title: 'Testtittel' }));
+
 jest.mock('../../utils/faktasiderSummary/useFaktasiderSumary', () => () => {
   return require('../../utils/faktasiderSummary/faktasiderSummaryMockData').faktasiderSummaryMockData;
 });
