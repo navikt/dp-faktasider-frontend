@@ -1,14 +1,8 @@
 import React from 'react';
 import { render } from '../../testUtils/customized-testing-library';
-import FaktaSide from './FaktaSide';
 import { createFaktasideContext } from '../../../gatsby-utils/createFaktasider';
 import { rawFaktasideDataMock } from '../../../__mocks__/rawFaktasideDataMock';
-
-jest.mock('../../utils/faktasiderSummary/useProjectData', () => () => ({ title: 'Testtittel' }));
-
-jest.mock('../../utils/faktasiderSummary/useFaktasiderSumary', () => () => {
-  return require('../../utils/faktasiderSummary/faktasiderSummaryMockData').faktasiderSummaryMockData;
-});
+import TestFaktaside from '../../testUtils/TestFaktaside';
 
 beforeAll(() => {
   const JSutils = require('nav-frontend-js-utils');
@@ -18,10 +12,7 @@ beforeAll(() => {
 /* Dette er en veldig grov test som fanger opp det meste av endringer på faktaside */
 test('Snapshottest Faktaside', () => {
   const context = createFaktasideContext(rawFaktasideDataMock, 'no');
-  const { container } = render(
-    // @ts-ignore
-    <FaktaSide pageContext={context} />
-  );
+  const { container } = render(<TestFaktaside context={context} />);
 
   expect(container).toMatchSnapshot();
 });
