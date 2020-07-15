@@ -4,20 +4,12 @@ import BlockContent from '../../../../components/BlockContent/BlockContent';
 import React from 'react';
 import { PureInnholdsfortegnelse } from '../../../../templates/faktaside/InnholdsMeny/Innholdsfortegnelse';
 import { Group, isH2Group } from '../../richTextTypes';
-import { createSanityBlock } from '../../../../testUtils/createSanityBlock';
+import { makeUniqueIdTestData } from './makeUniqeGroupIDs.testdata';
 
-const duplikatOverskrift = 'Duplikat overskrift';
-
-const data = [
-  createSanityBlock('Unik overskrift', 'h2'),
-  createSanityBlock(duplikatOverskrift, 'h3'),
-  createSanityBlock('Innhold 1', 'normal'),
-  createSanityBlock(duplikatOverskrift, 'h2'),
-  createSanityBlock('Innhold 2', 'normal'),
-];
+const { innhold, duplikatOverskrift } = makeUniqueIdTestData;
 
 test('makeUniqueGroupIDs lager unike IDer slik at vi kan lage fungerende hash-lenker i appen', () => {
-  const parsedBlocks = parseRichText(data);
+  const parsedBlocks = parseRichText(innhold);
   const h2Groups: Group[] = parsedBlocks.filter(isH2Group);
 
   const result = render(

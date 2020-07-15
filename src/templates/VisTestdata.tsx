@@ -1,15 +1,21 @@
 import * as React from 'react';
+import { useReducer } from 'react';
 import { FaktasideContext } from '../../gatsby-utils/createFaktasider';
 import { visForTestData } from '../components/BlockContent/VisFor/visFor.testdata';
 import { faktaSideMockContext } from '../testUtils/faktaSideMockContext';
 import styled from 'styled-components';
 import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
-import { useState } from 'react';
 import { Knapp } from 'nav-frontend-knapper';
 import FaktaSide from './faktaside/FaktaSide';
+import parseRichText from '../utils/richTextUtils/parser/parseRichText';
+import { flattenH2TestData } from '../utils/richTextUtils/parser/flattenH2Versions/flattenH2Versions.testdata';
+import { makeUniqueIdTestData } from '../utils/richTextUtils/parser/makeUniqeGroupIDs/makeUniqeGroupIDs.testdata';
+import { parseDelteTeksterTestData } from '../utils/richTextUtils/parser/parseDelteTekster/parseDelteTekster.testdata';
+import Tekstomrade from 'nav-frontend-tekstomrade';
+import { groupParserTestData } from '../utils/richTextUtils/parser/groupParser/groupParser.testdata';
 
 type Testdata = {
-  data: FaktasideContext;
+  data: Partial<FaktasideContext>;
   name: string;
 };
 
@@ -17,8 +23,31 @@ const testData: Testdata[] = [
   {
     name: 'visFor',
     data: {
-      ...faktaSideMockContext,
       innhold: visForTestData.innhold,
+    },
+  },
+  {
+    name: 'flattenH2',
+    data: {
+      innhold: parseRichText(flattenH2TestData),
+    },
+  },
+  {
+    name: 'unique IDs',
+    data: {
+      innhold: parseRichText(makeUniqueIdTestData.innhold),
+    },
+  },
+  {
+    name: 'parse delte tekster',
+    data: {
+      innhold: parseRichText(parseDelteTeksterTestData.innhold),
+    },
+  },
+  {
+    name: 'groupParser',
+    data: {
+      innhold: parseRichText(groupParserTestData),
     },
   },
 ];
@@ -33,8 +62,34 @@ const Style = styled.div`
   border-bottom: 0.2rem #888 dashed;
 `;
 
+const StyledKnapp = styled(Knapp)`
+  margin: 0.5rem;
+`;
+
+const StyledTekstområde = styled(Tekstomrade)`
+  border: 0.2rem #888 solid;
+  background-color: #0002;
+  padding: 1rem;
+  font-family: monospace;
+`;
+
+function reducer(
+  state: FaktasideContext | undefined,
+  action: { type: 'setData'; data: Partial<FaktasideContext> }
+): FaktasideContext | undefined {
+  switch (action.type) {
+    case 'setData':
+      return {
+        ...faktaSideMockContext,
+        ...action.data,
+      };
+    default:
+      return state;
+  }
+}
+
 function VisTestdata() {
-  const [valgtData, setValgtData] = useState<undefined | FaktasideContext>();
+  const [valgtData, dispatch] = useReducer(reducer, undefined);
 
   return (
     <>
@@ -42,13 +97,18 @@ function VisTestdata() {
         <Sidetittel>Visualisering av testdata brukt i automatiske tester</Sidetittel>
         <Undertittel>Velg testdata:</Undertittel>
         {testData.map((data) => (
-          <Knapp key={data.name} onClick={() => setValgtData(data.data)}>
+          <StyledKnapp key={data.name} onClick={() => dispatch({ type: 'setData', data: data.data })}>
             {data.name}
-          </Knapp>
+          </StyledKnapp>
         ))}
       </Style>
       {/* @ts-ignore */}
       {valgtData && <FaktaSide pageContext={valgtData} />}
+      {valgtData && (
+        <StyledTekstområde>
+          {'Page context: \n\n' + JSON.stringify(valgtData, null, 4)?.replace(/ /g, '\u00a0')}
+        </StyledTekstområde>
+      )}
     </>
   );
 }
