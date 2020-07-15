@@ -6,6 +6,7 @@ import { useClickAway } from 'react-use';
 import { useDevContext } from './DevContext';
 import { Checkbox } from 'nav-frontend-skjema';
 import withErrorBoundary from '../withErrorBoundary';
+import { Link } from 'gatsby';
 
 const Style = styled.div<{ open: boolean }>`
   position: fixed;
@@ -34,6 +35,7 @@ const Button = styled.button`
   height: 3rem;
   width: 3rem;
   cursor: pointer;
+  opacity: 0.9;
 `;
 
 const Innhold = styled.div`
@@ -41,6 +43,10 @@ const Innhold = styled.div`
   > * {
     margin-bottom: 0.5rem;
   }
+`;
+
+const StyledLink = styled(Link)`
+  color: white;
 `;
 
 function reducer(state: boolean, action: 'toggle' | 'close') {
@@ -81,6 +87,7 @@ function DevKnapper() {
             label="Debug delte tekster"
             checked={context.value.debugDelteTekster}
           />
+          <StyledLink to="/testdata">Visualisering av test-data</StyledLink>
         </Innhold>
       )}
     </Style>
