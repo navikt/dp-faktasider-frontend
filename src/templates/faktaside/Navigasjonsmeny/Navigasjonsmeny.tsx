@@ -1,13 +1,12 @@
 import * as React from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import { useDekoratorPopdownOffset } from './useDekoratorPopdownOffset';
 import SideListe from './SideListe';
 import MobilmenyWrapper from './MobilmenyWrapper';
 import { theme } from '../../../styles/theme';
-import { useRef } from 'react';
 import { guid } from 'nav-frontend-js-utils';
-import { isDevelopment } from '../../../utils/environment';
 import useProjectData from '../../../utils/faktasiderSummary/useProjectData';
 import { Undertittel } from 'nav-frontend-typografi';
 
@@ -44,7 +43,7 @@ function Header(props: { id: string; title: string }) {
   return (
     <HeaderStyle id={props.id}>
       <span className="sr-only">Sideoversikt</span>
-      {isDevelopment() && props.title}
+      {props.title}
     </HeaderStyle>
   );
 }

@@ -515,6 +515,7 @@ exports[`Snapshottest Faktaside 1`] = `
           >
             Sideoversikt
           </span>
+          Testtittel
         </h2>
         <ol
           class="c6"
@@ -602,6 +603,7 @@ exports[`Snapshottest Faktaside 1`] = `
                 >
                   Sideoversikt
                 </span>
+                Testtittel
               </h2>
               <ol
                 class="c6"
