@@ -66,8 +66,8 @@ function Navigasjonsmeny(props: Props) {
         <SideListe />
       </DesktopNav>
       <MobileNav className={props.className} aria-labelledby={mobileTitleId}>
-        <Header title={projectData.title} id={mobileTitleId} />
         <MobilmenyWrapper offsetTop={offsetTop}>
+          <Header title={projectData.title} id={mobileTitleId} />
           <SideListe />
         </MobilmenyWrapper>
       </MobileNav>

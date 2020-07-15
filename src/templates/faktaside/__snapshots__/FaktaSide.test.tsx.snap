@@ -545,16 +545,6 @@ exports[`Snapshottest Faktaside 1`] = `
         aria-labelledby="Helt tilfeldig ID"
         class="c8 order-1"
       >
-        <h2
-          class="typo-undertittel c5"
-          id="Helt tilfeldig ID"
-        >
-          <span
-            class="sr-only"
-          >
-            Sideoversikt
-          </span>
-        </h2>
         <div
           class="c9"
         >
@@ -603,6 +593,16 @@ exports[`Snapshottest Faktaside 1`] = `
             <div
               class="c14"
             >
+              <h2
+                class="typo-undertittel c5"
+                id="Helt tilfeldig ID"
+              >
+                <span
+                  class="sr-only"
+                >
+                  Sideoversikt
+                </span>
+              </h2>
               <ol
                 class="c6"
               >
