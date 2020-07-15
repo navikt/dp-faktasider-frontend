@@ -28,6 +28,7 @@ export function isRawDeltTekst(candidate: Block): candidate is RawDeltTekst {
 }
 
 type MarkDef = {
+  _key: string;
   _type: string;
   visFor?: VisForConfig;
   visPaaSider?: RawFaktasideData[];
