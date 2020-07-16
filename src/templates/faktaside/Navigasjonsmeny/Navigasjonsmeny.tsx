@@ -18,10 +18,12 @@ const DesktopNav = styled.nav.attrs((props: NavProps) => ({ style: { top: `${pro
   }
   border-top: ${theme.border.banner};
   background-color: white;
-  position: sticky;
-  max-height: calc(100vh - ${(props) => props.offsetTop}px);
-  overflow-y: auto;
-  transition: top 0.2s, max-height 0.2s;
+  @supports (position: sticky) {
+    position: sticky;
+    max-height: calc(100vh - ${(props) => props.offsetTop}px);
+    overflow-y: auto;
+    transition: top 0.2s, max-height 0.2s;
+  }
   max-width: 16rem;
 `;
 
