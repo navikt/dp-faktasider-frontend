@@ -21,6 +21,10 @@ type Testdata = {
 
 const testData: Testdata[] = [
   {
+    name: 'Base',
+    data: {},
+  },
+  {
     name: 'visFor',
     data: {
       innhold: visForTestData.innhold,
