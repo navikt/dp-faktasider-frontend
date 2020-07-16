@@ -26,7 +26,7 @@ const StyledAside = styled.aside`
 `;
 
 const Content = styled.div<{ open: boolean }>`
-  margin: 0.5rem 0;
+  margin-bottom: 0.5rem;
   position: relative;
   overflow: hidden;
   ${(props) =>
