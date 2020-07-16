@@ -14,13 +14,10 @@ const StyledOl = styled.ol`
 `;
 
 const listeElementCommonStyling = css`
-  display: flex;
   font-size: 1.1rem;
   font-weight: 600;
   padding: 0.5rem 1.5rem;
   text-decoration: none;
-  justify-content: space-between;
-  align-items: center;
   &:hover {
     background-color: #ddd8;
   }
