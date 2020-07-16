@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useReducer } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import BlockContent from './BlockContent';
 import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
 import parseRichText from '../../utils/richTextUtils/parser/parseRichText';

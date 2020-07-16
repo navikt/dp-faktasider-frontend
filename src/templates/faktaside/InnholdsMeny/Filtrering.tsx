@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useVisForContext } from '../../../components/BlockContent/VisFor/VisForContext';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Checkbox } from 'nav-frontend-skjema';
 import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
 import { isProduction } from '../../../utils/environment';

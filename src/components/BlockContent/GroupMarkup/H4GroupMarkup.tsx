@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Element } from 'nav-frontend-typografi';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
 import CommonGroupMarkup from './CommonGroupMarkup';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useReducer } from 'react';
 import { Link } from 'gatsby';
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import useFaktasiderSumary, { FaktasideSummary } from '../../../utils/faktasiderSummary/useFaktasiderSumary';
 import Innholdsfortegnelse from '../InnholdsMeny/Innholdsfortegnelse';

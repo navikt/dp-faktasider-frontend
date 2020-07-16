@@ -3,7 +3,7 @@ import { useReducer } from 'react';
 import { FaktasideContext } from '../../gatsby-utils/createFaktasider';
 import { visForTestData } from '../components/BlockContent/VisFor/visFor.testdata';
 import { faktaSideMockContext } from '../testUtils/faktaSideMockContext';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Sidetittel, Undertittel, Normaltekst } from 'nav-frontend-typografi';
 import { Knapp } from 'nav-frontend-knapper';
 import FaktaSide from './faktaside/FaktaSide';
