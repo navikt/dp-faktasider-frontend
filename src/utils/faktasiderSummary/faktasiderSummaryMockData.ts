@@ -1,4 +1,21 @@
-import { FaktasideSummary } from './useFaktasiderSumary';
+import { createFaktasideSummary, FaktasideSummary, RawFaktasideSummary } from './createFaktasideSummaries';
+import { faktaSideMockContext } from '../../testUtils/faktaSideMockContext';
+
+export const rawFaktasideSummary: RawFaktasideSummary = {
+  id: faktaSideMockContext.id,
+  title: {
+    _type: 'localeString',
+    no: faktaSideMockContext.title,
+  },
+  ingress: {
+    _type: 'localeText',
+    no: faktaSideMockContext.ingress,
+  },
+  slug: {
+    current: faktaSideMockContext.slug,
+  },
+  visSprakversjon: faktaSideMockContext.visSprakversjon,
+};
 
 export const faktasiderSummaryMockData: FaktasideSummary[] = [
   {
@@ -17,4 +34,5 @@ export const faktasiderSummaryMockData: FaktasideSummary[] = [
     ingress: 'Er du permittert, kan du ha rett til økomisk støtte og hjelp til å komme i arbeid.',
     id: '-21aed679-d1fa-5238-ac15-c39b39ce3011',
   },
+  createFaktasideSummary(rawFaktasideSummary, 'no'),
 ];

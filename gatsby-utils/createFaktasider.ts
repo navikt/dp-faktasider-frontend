@@ -6,6 +6,7 @@ import { SanityBlock } from '../src/utils/richTextUtils/richTextTypes';
 import { Translations } from '../src/types/translations';
 import { Modify } from '../src/utils/typeUtils';
 import { getPubliseringsTidspunkt } from './getPubliseringstidspunkt';
+import createFaktasideSummaries, { FaktasideSummary } from '../src/utils/faktasiderSummary/createFaktasideSummaries';
 
 export interface RawFaktasideData {
   id: string;
@@ -21,6 +22,10 @@ export interface RawFaktasideData {
     en: boolean;
     no: boolean;
   };
+}
+
+export interface Oppsett {
+  faktasideSortering: { id: string }[];
 }
 
 export type LocalizedFaktasideData = Modify<
@@ -41,6 +46,7 @@ export type FaktasideContext = Modify<
     publiseringsTidspunkt: string;
     rawData: Pick<RawFaktasideData, 'title'>;
     slug: string;
+    projectNavigation: FaktasideSummary[];
   }
 >;
 
@@ -67,16 +73,26 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
           }
         }
       }
+      oppsett: sanityOppsett {
+        faktasideSortering {
+          id
+        }
+      }
     }
   `);
 
   if (result.errors) throw result.errors;
 
   // @ts-ignore
-  const pageEdges = result.data.pages.edges || [];
+  const pages = result.data.pages.edges.map((edge) => edge.node as RawFaktasideData) || [];
+  // @ts-ignore
+  const oppsett: Oppsett = result.data.oppsett;
+  const projectNavigation = {
+    no: createFaktasideSummaries(pages, oppsett, 'no'),
+    en: createFaktasideSummaries(pages, oppsett, 'en'),
+  };
 
-  pageEdges.forEach((edge) => {
-    const page = edge.node as RawFaktasideData;
+  pages.forEach((page) => {
     const slug = page.slug?.current;
 
     if (!slug) {
@@ -94,13 +110,17 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
       actions.createPage({
         path: localePath,
         component: require.resolve('../src/templates/faktaside/FaktaSide.tsx'),
-        context: createFaktasideContext(page, lang),
+        context: createFaktasideContext(page, lang, projectNavigation[lang]),
       });
     });
   });
 };
 
-export function createFaktasideContext(page: RawFaktasideData, lang: SupportedLanguage): FaktasideContext {
+export function createFaktasideContext(
+  page: RawFaktasideData,
+  lang: SupportedLanguage,
+  navigation: FaktasideSummary[]
+): FaktasideContext {
   const localizedPage = localizeSanityContent(page, lang) as LocalizedFaktasideData;
   const parsedInnhold = parseRichText(localizedPage.innhold);
   const publiseringsTidspunkt = getPubliseringsTidspunkt(page, lang);
@@ -114,5 +134,6 @@ export function createFaktasideContext(page: RawFaktasideData, lang: SupportedLa
     rawData: {
       title: page.title,
     },
+    projectNavigation: navigation,
   };
 }

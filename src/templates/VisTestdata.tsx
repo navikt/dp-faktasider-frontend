@@ -4,7 +4,7 @@ import { FaktasideContext } from '../../gatsby-utils/createFaktasider';
 import { visForTestData } from '../components/BlockContent/VisFor/visFor.testdata';
 import { faktaSideMockContext } from '../testUtils/faktaSideMockContext';
 import styled from 'styled-components';
-import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
+import { Sidetittel, Undertittel, Normaltekst } from 'nav-frontend-typografi';
 import { Knapp } from 'nav-frontend-knapper';
 import FaktaSide from './faktaside/FaktaSide';
 import parseRichText from '../utils/richTextUtils/parser/parseRichText';
@@ -13,6 +13,7 @@ import { makeUniqueIdTestData } from '../utils/richTextUtils/parser/makeUniqeGro
 import { parseDelteTeksterTestData } from '../utils/richTextUtils/parser/parseDelteTekster/parseDelteTekster.testdata';
 import Tekstomrade from 'nav-frontend-tekstomrade';
 import { groupParserTestData } from '../utils/richTextUtils/parser/groupParser/groupParser.testdata';
+import { faktasiderSummaryMockData } from '../utils/faktasiderSummary/faktasiderSummaryMockData';
 
 type Testdata = {
   data: Partial<FaktasideContext>;
@@ -81,6 +82,7 @@ function reducer(
     case 'setData':
       return {
         ...faktaSideMockContext,
+        projectNavigation: faktasiderSummaryMockData,
         ...action.data,
       };
     default:
@@ -96,6 +98,10 @@ function VisTestdata() {
       <Style>
         <Sidetittel>Visualisering av testdata brukt i automatiske tester</Sidetittel>
         <Undertittel>Velg testdata:</Undertittel>
+        <Normaltekst>
+          Ikke all testa blir mocket her, bla vil komponenter med staticQueries (bla Navigasjonsmeny) hente data fra
+          sanity og ikke fra lokal mock-data
+        </Normaltekst>
         {testData.map((data) => (
           <StyledKnapp key={data.name} onClick={() => dispatch({ type: 'setData', data: data.data })}>
             {data.name}

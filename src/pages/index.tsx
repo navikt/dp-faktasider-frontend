@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Header from '../templates/felles/Header';
-import useFaktasiderSumary, { FaktasideSummary } from '../utils/faktasiderSummary/useFaktasiderSumary';
+import createFaktasideSummaries, { FaktasideSummary } from '../utils/faktasiderSummary/createFaktasideSummaries';
 import localizeSanityContent from '../i18n/localizeSanityContent';
 import { useLocale } from '../i18n/LocaleContext';
 import { useTranslation } from 'react-i18next';
@@ -42,7 +42,7 @@ const KunTilgjengeligStyle = styled.p`
 
 const IndexPage = () => {
   const projectData = useProjectData();
-  const sider = useFaktasiderSumary();
+  const sider = createFaktasideSummaries();
 
   return <PureIndexPage title={projectData.title} sider={sider} />;
 };

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import withErrorBoundary from '../../../components/withErrorBoundary';
-import useFaktasiderSumary from '../../../utils/faktasiderSummary/useFaktasiderSumary';
 import Innholdsfortegnelse from '../InnholdsMeny/Innholdsfortegnelse';
 import { useFaktasideContext } from '../FaktaSideContext';
 import { loggMeny } from '../../../utils/logging';
@@ -23,12 +22,11 @@ const StyledLink = styled(Link)`
 `;
 
 function SideListe() {
-  const otherPages = useFaktasiderSumary();
   const faktasideContext = useFaktasideContext();
 
   return (
     <StyledOl>
-      {otherPages.map((page) => (
+      {faktasideContext.projectNavigation.map((page) => (
         <li key={page.id}>
           <StyledLink
             activeStyle={{ color: 'black' }}

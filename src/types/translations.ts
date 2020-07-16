@@ -1,5 +1,5 @@
 export interface Translations<T = any> {
-  _type: string;
+  _type?: string;
   no?: T;
   en?: T;
 }
