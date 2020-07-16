@@ -4,7 +4,7 @@ import { FaktasideContext } from '../../gatsby-utils/createFaktasider';
 import { visForTestData } from '../components/BlockContent/VisFor/visFor.testdata';
 import { faktaSideMockContext } from '../testUtils/faktaSideMockContext';
 import styled from 'styled-components';
-import { Sidetittel, Undertittel } from 'nav-frontend-typografi';
+import { Sidetittel, Undertittel, Normaltekst } from 'nav-frontend-typografi';
 import { Knapp } from 'nav-frontend-knapper';
 import FaktaSide from './faktaside/FaktaSide';
 import parseRichText from '../utils/richTextUtils/parser/parseRichText';
@@ -96,6 +96,10 @@ function VisTestdata() {
       <Style>
         <Sidetittel>Visualisering av testdata brukt i automatiske tester</Sidetittel>
         <Undertittel>Velg testdata:</Undertittel>
+        <Normaltekst>
+          Ikke all data her blir mocket, bla bruker Navigasjonsmenyen staticQuery som er litt vanskelig å mocke
+          run-time.
+        </Normaltekst>
         {testData.map((data) => (
           <StyledKnapp key={data.name} onClick={() => dispatch({ type: 'setData', data: data.data })}>
             {data.name}
