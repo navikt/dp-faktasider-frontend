@@ -74,6 +74,10 @@ Det finnes også innhold som ikke ligger i sanity, f.eks [custom lagde react-kom
 
 Sanity oversettelser og i18next oversettelser er i utgangpunktet ikke knyttet sammen på noe vis og fungerer uavhengig hver for seg.
 
+## Tester
+
+Mange av de automatiske testene har testdata du man kan få visualisert dersom du går til `localhost:8000/testdata`. Appen må kjøre i development-mode.
+
 ## Kontakt
 
 Spørsmål tilknyttet koden kan rettes mot:

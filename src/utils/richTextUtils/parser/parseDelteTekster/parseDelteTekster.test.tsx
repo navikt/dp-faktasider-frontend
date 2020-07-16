@@ -12,6 +12,7 @@ const {
   tekstEtterDeltOverskrift,
   tekstIDeltTekstFørBolk,
 } = parseDelteTeksterTestData.tekster;
+
 test('innhold fra delt-tekst blir integrert sømløst i resten av innholdet', () => {
   const parsedBlocks = parseRichText(innhold);
 
