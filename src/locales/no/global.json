@@ -8,5 +8,8 @@
   "404": "Denne siden finnes ikke",
   "404-sub": "Du har fulgt en url som ikke er i bruk",
   "404-andre-sider": "Sider du kanskje er interessert i:",
-  "sistOppdatert": "Sist oppdatert {{ publiseringstidspunkt, d. MMMM yyyy HH:mm }}"
+  "sistOppdatert": "Sist oppdatert {{ publiseringstidspunkt, d. MMMM yyyy HH:mm }}",
+  "visMer": "Vis mer",
+  "visMindre": "Vis mindre",
+  "tilleggsinformasjon": "Tilleggsinformasjon"
 }

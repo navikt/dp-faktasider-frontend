@@ -7,7 +7,8 @@ import parseRichText from '../../utils/richTextUtils/parser/parseRichText';
 import withErrorBoundary from '../withErrorBoundary';
 import ChevronButton from '../ChevronButton';
 import { guid } from 'nav-frontend-js-utils';
-import { Element } from 'nav-frontend-typografi';
+import { Element, Undertekst } from 'nav-frontend-typografi';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   node: {
@@ -43,20 +44,39 @@ const Content = styled.div<{ open: boolean }>`
     `}
 `;
 
+const Label = styled(Undertekst)`
+  opacity: 0.5;
+  font-size: 0.7rem;
+  margin: 0 !important;
+  text-transform: uppercase;
+`;
+
+const StyledElement = styled(Element)`
+  margin-top: 0;
+`;
+
 function Tilleggsinnformasjon(props: Props) {
   const parsedText = parseRichText(props.node.innhold);
   const [open, toggle] = useReducer((state) => !state, false);
   const id = useRef(guid()).current;
+  const { t } = useTranslation('global');
 
   return (
     <StyledAside aria-labelledby={id}>
-      <Element tag="h4" id={id}>
+      <Label>{t('tilleggsinformasjon')}</Label>
+      <StyledElement tag="h4" id={id}>
         {props.node.title}
-      </Element>
+      </StyledElement>
       <Content open={open}>
         <BlockContent blocks={parsedText} />
       </Content>
-      <ChevronButton aria-hidden={true} className="lenke" open={open} title="Vis mer" onClick={toggle} />
+      <ChevronButton
+        aria-hidden={true}
+        className="lenke"
+        open={open}
+        title={open ? t('visMindre') : t('visMer')}
+        onClick={toggle}
+      />
     </StyledAside>
   );
 }
