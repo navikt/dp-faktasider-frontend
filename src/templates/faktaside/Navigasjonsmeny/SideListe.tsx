@@ -17,13 +17,13 @@ const listeElementCommonStyling = css`
   font-size: 1.1rem;
   font-weight: 600;
   padding: 0.5rem 1.5rem;
-  text-decoration: none;
   &:hover {
     background-color: #ddd8;
   }
 `;
 
 const StyledLink = styled(Link)`
+  display: block;
   ${listeElementCommonStyling};
 `;
 
