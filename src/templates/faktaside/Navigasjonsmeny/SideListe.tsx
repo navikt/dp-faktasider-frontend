@@ -7,7 +7,6 @@ import useFaktasiderSumary, { FaktasideSummary } from '../../../utils/faktasider
 import Innholdsfortegnelse from '../InnholdsMeny/Innholdsfortegnelse';
 import { useFaktasideContext } from '../FaktaSideContext';
 import { loggMeny } from '../../../utils/logging';
-import NavFrontendChevron from 'nav-frontend-chevron';
 import { UnmountClosed } from 'react-collapse';
 
 const StyledOl = styled.ol`
@@ -22,20 +21,27 @@ const listeElementCommonStyling = css`
   text-decoration: none;
   justify-content: space-between;
   align-items: center;
+  &:hover {
+    background-color: #ddd8;
+  }
 `;
 
 const StyledLink = styled(Link)`
-  > *:last-child {
-    transition: 0.3s;
-    opacity: 0.6;
-  }
-  &:hover {
-    background-color: #ddd8;
-    > *:last-child {
-      margin-right: -0.5rem;
-    }
-  }
   ${listeElementCommonStyling};
+`;
+
+const ValgtSide = styled.div`
+  background-color: #ccc2;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.3rem;
+    height: 100%;
+    background-color: #8884;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -55,7 +61,7 @@ function SideListeElement(props: { page: FaktasideSummary }) {
 
   if (currentPage) {
     return (
-      <>
+      <ValgtSide>
         <StyledButton
           onClick={() => {
             toggle();
@@ -64,12 +70,11 @@ function SideListeElement(props: { page: FaktasideSummary }) {
           aria-expanded={open}
         >
           <span>{props.page.tittel}</span>
-          <NavFrontendChevron type={open ? 'opp' : 'ned'} />
         </StyledButton>
         <UnmountClosed isOpened={open}>
           <Innholdsfortegnelse />
         </UnmountClosed>
-      </>
+      </ValgtSide>
     );
   }
 
@@ -78,7 +83,6 @@ function SideListeElement(props: { page: FaktasideSummary }) {
       <span>
         {props.page.tittel} {!props.page.tilgjengeligPåValgtSpråk ? `(${props.page.språk})` : ''}
       </span>
-      <NavFrontendChevron type="høyre" />
     </StyledLink>
   );
 }

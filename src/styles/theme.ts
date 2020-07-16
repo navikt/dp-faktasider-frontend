@@ -29,7 +29,10 @@ const colors = {
   pinkErrorBg: '#F3E3E3',
   navBlaLighten80: '#CCE1F3',
   navBlaLighten60: '#99C2E8',
+  navDypBlaLighten80: '#CCDEE6',
+  navLysBlaLighten80: '#E0F5FB',
   navGronnLighten60: '#9BD0B0',
+  navLimeGronnLighten80: '#ECEFCC',
   fokusFarge: '#254b6d',
 };
 
