@@ -23,6 +23,7 @@ const StyledAside = styled.aside`
   border-top: ${asideBorder};
   border-bottom: ${asideBorder};
   padding: 1.5rem 0.5rem;
+  margin: 1.5rem 0;
 `;
 
 const Content = styled.div<{ open: boolean }>`
