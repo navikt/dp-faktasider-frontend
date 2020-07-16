@@ -17,7 +17,6 @@ const listeElementCommonStyling = css`
   font-size: 1.1rem;
   font-weight: 600;
   padding: 0.5rem 1.5rem;
-  align-items: center;
   &:hover {
     background-color: #ddd8;
   }
