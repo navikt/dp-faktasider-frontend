@@ -24,6 +24,7 @@ const listeElementCommonStyling = css`
 
 const StyledLink = styled(Link)`
   display: block;
+  text-decoration: none;
   ${listeElementCommonStyling};
 `;
 
