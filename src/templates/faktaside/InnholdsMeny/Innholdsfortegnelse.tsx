@@ -62,7 +62,8 @@ function MenuItem(props: { item: Group; current: boolean }) {
 }
 
 const StyledOl = styled.ol`
-  margin: 0.5rem 1rem 1rem 2.5rem;
+  padding: 0.5rem 1rem 1rem 2.5rem;
+  border-right: 0.3rem solid #8884;
 `;
 
 function Innholdsfortegnelse() {
