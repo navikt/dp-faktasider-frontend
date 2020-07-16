@@ -12,6 +12,7 @@ import VisForAnnotation from './VisFor/VisForAnnotation';
 import GroupMarkup from './GroupMarkup/GroupMarkup';
 import VisForAnnotationDeltTekst from './VisFor/VisForAnnotationDeltTekst';
 import withErrorBoundary from '../withErrorBoundary';
+import Tilleggsinnformasjon from './TillegsInformasjon';
 
 interface Props {
   blocks: ParsedRichText;
@@ -33,6 +34,7 @@ const serializers: Serializers = {
     GtilNOK: (props) => GtoNOK(props.node.G),
     video: Video,
     fremhevetTekst: FremhevetTekst,
+    tileggsInformasjon: Tilleggsinnformasjon,
   },
   marks: {
     link: LinkMarkup,
