@@ -18,7 +18,6 @@ const Style = styled.div`
     @media (${theme.media.bigScreen}) {
       column-count: 2;
       a {
-        white-space: nowrap;
         justify-content: center;
       }
     }
