@@ -1,28 +1,11 @@
 import { createDeltTekstBlock, createSanityBlock } from '../../../../testUtils/createSanityBlock';
 
-const bolkUtenforDeltTekst = 'Overskrift utenfor delt tekst';
-const tekstIDeltTekstFørBolk = 'Tekst fra delt tekst men før delt overskrift';
-const overskriftDeltTekst = 'Delt overskrift';
-const tekstEtterDeltOverskrift = 'Tekst etter delt overskrift';
-const litenOverskriftEtterDeltTekst = 'Liten overskrift etter delt tekst';
-
-const data = [
-  createSanityBlock(bolkUtenforDeltTekst, 'h2'),
+export const parseDelteTeksterTestData = [
+  createSanityBlock('Overskrift utenfor delt tekst', 'h2'),
   createDeltTekstBlock([
-    createSanityBlock(tekstIDeltTekstFørBolk, 'normal'),
-    createSanityBlock(overskriftDeltTekst, 'h2'),
-    createSanityBlock(tekstEtterDeltOverskrift, 'normal'),
+    createSanityBlock('Tekst fra delt tekst men før delt overskrift', 'normal'),
+    createSanityBlock('Delt overskrift', 'h2'),
+    createSanityBlock('Tekst etter delt overskrift', 'normal'),
   ]),
-  createSanityBlock(litenOverskriftEtterDeltTekst, 'h3'),
+  createSanityBlock('Liten overskrift etter delt tekst', 'h3'),
 ];
-
-export const parseDelteTeksterTestData = {
-  tekster: {
-    bolkUtenforDeltTekst,
-    tekstIDeltTekstFørBolk,
-    overskriftDeltTekst,
-    tekstEtterDeltOverskrift,
-    litenOverskriftEtterDeltTekst,
-  },
-  innhold: data,
-};

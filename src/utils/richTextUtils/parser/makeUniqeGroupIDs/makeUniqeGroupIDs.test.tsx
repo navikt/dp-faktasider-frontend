@@ -6,10 +6,8 @@ import { PureInnholdsfortegnelse } from '../../../../templates/faktaside/Innhold
 import { Group, isH2Group } from '../../richTextTypes';
 import { makeUniqueIdTestData } from './makeUniqeGroupIDs.testdata';
 
-const { innhold, duplikatOverskrift } = makeUniqueIdTestData;
-
 test('makeUniqueGroupIDs lager unike IDer slik at vi kan lage fungerende hash-lenker i appen', () => {
-  const parsedBlocks = parseRichText(innhold);
+  const parsedBlocks = parseRichText(makeUniqueIdTestData);
   const h2Groups: Group[] = parsedBlocks.filter(isH2Group);
 
   const result = render(
@@ -20,7 +18,7 @@ test('makeUniqueGroupIDs lager unike IDer slik at vi kan lage fungerende hash-le
   );
 
   const innholdsFortegnelse = result.getByLabelText(/Innholdsfortegnelse/i);
-  const hashLenke = within(innholdsFortegnelse).getByText(duplikatOverskrift) as HTMLAnchorElement;
+  const hashLenke = within(innholdsFortegnelse).getByText('Duplikat overskrift') as HTMLAnchorElement;
   const hashId = hashLenke.href.split('#')[1];
 
   const target = result.getAllByTestId(hashId);

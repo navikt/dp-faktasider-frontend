@@ -35,13 +35,13 @@ const testData: Testdata[] = [
   {
     name: 'unique IDs',
     data: {
-      innhold: parseRichText(makeUniqueIdTestData.innhold),
+      innhold: parseRichText(makeUniqueIdTestData),
     },
   },
   {
     name: 'parse delte tekster',
     data: {
-      innhold: parseRichText(parseDelteTeksterTestData.innhold),
+      innhold: parseRichText(parseDelteTeksterTestData),
     },
   },
   {
