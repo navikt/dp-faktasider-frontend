@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useReducer, useRef } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import BlockContent from './BlockContent';
 import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
@@ -9,6 +9,7 @@ import ChevronButton from '../ChevronButton';
 import { guid } from 'nav-frontend-js-utils';
 import { Element, Undertekst } from 'nav-frontend-typografi';
 import { useTranslation } from 'react-i18next';
+import { loggVisTilleggsinfo } from '../../utils/logging';
 
 interface Props {
   node: {
@@ -61,6 +62,10 @@ function Tilleggsinnformasjon(props: Props) {
   const [open, toggle] = useReducer((state) => !state, false);
   const id = useRef(guid()).current;
   const { t } = useTranslation('global');
+
+  useEffect(() => {
+    open && loggVisTilleggsinfo(props.node.title);
+  }, [open, props.node.title]);
 
   return (
     <StyledAside aria-labelledby={id}>
