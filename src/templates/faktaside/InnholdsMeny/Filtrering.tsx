@@ -59,13 +59,15 @@ function Filtrering(props: Props) {
             />
           </li>
         ))}
-        <li>
-          <Checkbox
-            label={'Ingen valg passer'}
-            onChange={() => visForContext.dispatch({ type: 'toggleIngenPasser' })}
-            checked={visForContext.value.ingenPasserMeg}
-          />
-        </li>
+        {!isProduction() && (
+          <li>
+            <Checkbox
+              label={'Ingen valg passer'}
+              onChange={() => visForContext.dispatch({ type: 'toggleIngenPasser' })}
+              checked={visForContext.value.ingenPasserMeg}
+            />
+          </li>
+        )}
       </Style>
     </StyledNav>
   );
