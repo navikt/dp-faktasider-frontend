@@ -12,6 +12,7 @@ const StyledButton = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+  text-decoration: none;
 `;
 
 function ChevronButton({ open, title, ...rest }: Props) {

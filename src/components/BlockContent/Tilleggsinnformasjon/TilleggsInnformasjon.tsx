@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { useEffect, useReducer } from 'react';
 import styled, { css } from 'styled-components/macro';
-import BlockContent from './BlockContent';
-import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
-import parseRichText from '../../utils/richTextUtils/parser/parseRichText';
-import withErrorBoundary from '../withErrorBoundary';
-import ChevronButton from '../ChevronButton';
+import BlockContent from '../BlockContent';
+import { SanityBlock } from '../../../utils/richTextUtils/richTextTypes';
+import parseRichText from '../../../utils/richTextUtils/parser/parseRichText';
+import withErrorBoundary from '../../withErrorBoundary';
 import { Element, Undertekst } from 'nav-frontend-typografi';
 import { useTranslation } from 'react-i18next';
-import { loggVisTilleggsinfo } from '../../utils/logging';
-import useUniqueId from '../../utils/useUniqueId';
+import useUniqueId from '../../../utils/useUniqueId';
+import { theme } from '../../../styles/theme';
+import VisMerPanel from './VisMerPanel';
+import { loggVisTilleggsinfo } from '../../../utils/logging';
+import { usePrevious } from 'react-use';
 
 interface Props {
   node: {
@@ -18,31 +20,18 @@ interface Props {
   };
 }
 
-const asideBorder = 'solid 1px #bbb8';
+const asideBorder = `solid .1rem ${theme.colors.navBlaLighten80}`;
 
-const StyledAside = styled.aside`
+const StyledAside = styled.aside<{ open: boolean }>`
   border-top: ${asideBorder};
   border-bottom: ${asideBorder};
   padding: 1.5rem 0.5rem;
   margin: 1.5rem 0;
-`;
-
-const Content = styled.div<{ open: boolean }>`
-  margin-bottom: 0.5rem;
-  position: relative;
-  overflow: hidden;
+  transition: 0.3s;
   ${(props) =>
-    !props.open &&
+    props.open &&
     css`
-      max-height: 3rem;
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 3rem;
-        background: linear-gradient(transparent, white);
-      }
+      background-color: #ddd6;
     `}
 `;
 
@@ -63,26 +52,20 @@ function Tilleggsinnformasjon(props: Props) {
   const id = useUniqueId('tilleggsinfo-' + props.node.title);
   const { t } = useTranslation('global');
 
+  const prevOpen = usePrevious(open);
   useEffect(() => {
-    open && loggVisTilleggsinfo(props.node.title);
-  }, [open, props.node.title]);
+    !prevOpen && open && loggVisTilleggsinfo(props.node.title);
+  }, [open, prevOpen, props.node.title]);
 
   return (
-    <StyledAside aria-labelledby={id}>
+    <StyledAside aria-labelledby={id} open={open}>
       <Label>{t('tilleggsinformasjon')}</Label>
       <StyledElement tag="h4" id={id}>
         {props.node.title}
       </StyledElement>
-      <Content open={open}>
+      <VisMerPanel toggle={toggle} open={open}>
         <BlockContent blocks={parsedText} />
-      </Content>
-      <ChevronButton
-        aria-hidden={true}
-        className="lenke"
-        open={open}
-        title={open ? t('visMindre') : t('visMer')}
-        onClick={toggle}
-      />
+      </VisMerPanel>
     </StyledAside>
   );
 }
