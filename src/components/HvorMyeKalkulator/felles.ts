@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Input } from 'nav-frontend-skjema';
 
 export const KalkulatorStyle = styled.div`

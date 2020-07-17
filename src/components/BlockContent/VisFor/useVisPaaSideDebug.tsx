@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { useDevContext } from '../../DevKnapper/DevContext';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 interface Props {
   children: ReactNode;

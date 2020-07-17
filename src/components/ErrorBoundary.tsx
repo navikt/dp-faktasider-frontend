@@ -3,7 +3,7 @@ import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { ErrorInfo } from 'react';
 import Tekstomrade from 'nav-frontend-tekstomrade';
 import SlideDown from './SlideDown';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { loggError } from '../utils/logging';
 
 interface Props {

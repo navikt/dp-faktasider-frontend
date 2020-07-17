@@ -1,14 +1,13 @@
 import * as React from 'react';
-import { useRef } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import { useDekoratorPopdownOffset } from './useDekoratorPopdownOffset';
 import SideListe from './SideListe';
 import MobilmenyWrapper from './MobilmenyWrapper';
 import { theme } from '../../../styles/theme';
-import { guid } from 'nav-frontend-js-utils';
 import useProjectData from '../../../utils/faktasiderSummary/useProjectData';
 import { Undertittel } from 'nav-frontend-typografi';
+import useUniqueId from '../../../utils/useUniqueId';
 
 type NavProps = { offsetTop: number };
 
@@ -56,8 +55,8 @@ interface Props {
 
 function Navigasjonsmeny(props: Props) {
   const offsetTop = useDekoratorPopdownOffset();
-  const mobileTitleId = useRef(guid()).current;
-  const desktopTitleId = useRef(guid()).current;
+  const mobileTitleId = useUniqueId('mobile-menu');
+  const desktopTitleId = useUniqueId('desktop-menu');
   const projectData = useProjectData();
 
   return (

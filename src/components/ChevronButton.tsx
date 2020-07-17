@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import NavFrontendChevron from 'nav-frontend-chevron';
 
 interface Props extends React.HTMLAttributes<HTMLButtonElement> {
@@ -12,6 +12,7 @@ const StyledButton = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
+  text-decoration: none;
 `;
 
 function ChevronButton({ open, title, ...rest }: Props) {

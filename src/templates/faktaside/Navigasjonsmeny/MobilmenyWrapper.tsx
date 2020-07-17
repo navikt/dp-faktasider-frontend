@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ReactNode, useEffect, useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import MenyButton from './MenyButton';
 import { useClickAway, useLocation } from 'react-use';
 import { theme } from '../../../styles/theme';

@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { useVisForContext } from '../../../components/BlockContent/VisFor/VisForContext';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Checkbox } from 'nav-frontend-skjema';
-import { Undertittel, Normaltekst } from 'nav-frontend-typografi';
+import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
 import { isProduction } from '../../../utils/environment';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import { theme } from '../../../styles/theme';
-import { useRef } from 'react';
-import { guid } from 'nav-frontend-js-utils';
 import { useDekoratorPopdownOffset } from '../Navigasjonsmeny/useDekoratorPopdownOffset';
+import useUniqueId from '../../../utils/useUniqueId';
 
 type NavProps = { offsetTop: number };
 
@@ -39,7 +38,7 @@ interface Props {
 
 function Filtrering(props: Props) {
   const visForContext = useVisForContext();
-  const titleId = useRef(guid()).current;
+  const titleId = useUniqueId('filtrering');
   const offsetTop = useDekoratorPopdownOffset();
 
   if (isProduction() || visForContext.value.valg.length === 0) {

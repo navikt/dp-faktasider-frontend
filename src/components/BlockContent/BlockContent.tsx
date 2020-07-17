@@ -12,7 +12,7 @@ import VisForAnnotation from './VisFor/VisForAnnotation';
 import GroupMarkup from './GroupMarkup/GroupMarkup';
 import VisForAnnotationDeltTekst from './VisFor/VisForAnnotationDeltTekst';
 import withErrorBoundary from '../withErrorBoundary';
-import Tilleggsinnformasjon from './TillegsInformasjon';
+import Tilleggsinnformasjon from './Tilleggsinnformasjon/TilleggsInnformasjon';
 
 interface Props {
   blocks: ParsedRichText;
