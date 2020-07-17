@@ -20,7 +20,8 @@ const Content = styled.div<{ open: boolean; fullHeight: number }>`
         width: 100%;
         height: 3rem;
         max-height: 3rem;
-        background: linear-gradient(transparent, white);
+        background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+        pointer-events: none;
       }
     `}
 `;
