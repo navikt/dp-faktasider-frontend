@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
-import { UtkastInline } from './Utkast';
+import { UtkastInline } from './utkast/Utkast';
 import SanityBlockContent from '@sanity/block-content-to-react';
+import allChildrenMarkedWith from '../../utils/richTextUtils/allChildrenMarkedWith';
 
 interface Props {
   node: SanityBlock;
@@ -10,14 +11,13 @@ interface Props {
 
 // kopiert fra https://github.com/sanity-io/block-content-to-react#customizing-the-default-serializer-for-block-type
 function ListItemRenderer(props: Props): ReactNode {
-  const childrenMedInnhold = props.node.children?.filter((child) => child.text?.length);
-  const kunEnTekst = childrenMedInnhold?.length === 1;
-  const erUtkast = childrenMedInnhold?.[0].marks?.includes('utkast');
-  const visHeleBulletpointSomUtkast = erUtkast && kunEnTekst;
-
   const serializedListItem = SanityBlockContent.defaultSerializers.listItem(props);
 
-  return visHeleBulletpointSomUtkast ? <UtkastInline>{serializedListItem}</UtkastInline> : serializedListItem;
+  if (allChildrenMarkedWith(props.node, 'utkast')) {
+    return <UtkastInline>{serializedListItem}</UtkastInline>;
+  }
+
+  return serializedListItem;
 }
 
 export default ListItemRenderer;

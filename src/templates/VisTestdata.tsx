@@ -13,6 +13,7 @@ import { makeUniqueIdTestData } from '../utils/richTextUtils/parser/makeUniqeGro
 import { parseDelteTeksterTestData } from '../utils/richTextUtils/parser/parseDelteTekster/parseDelteTekster.testdata';
 import Tekstomrade from 'nav-frontend-tekstomrade';
 import { groupParserTestData } from '../utils/richTextUtils/parser/groupParser/groupParser.testdata';
+import { utkastTestData } from '../components/BlockContent/utkast/Utkast.testdata';
 
 type Testdata = {
   data: Partial<FaktasideContext>;
@@ -52,6 +53,12 @@ const testData: Testdata[] = [
     name: 'groupParser',
     data: {
       innhold: parseRichText(groupParserTestData),
+    },
+  },
+  {
+    name: 'utkast',
+    data: {
+      innhold: parseRichText(utkastTestData),
     },
   },
 ];
