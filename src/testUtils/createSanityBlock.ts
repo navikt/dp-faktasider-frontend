@@ -1,7 +1,7 @@
 import { RawDeltTekst, SanityBlock } from '../utils/richTextUtils/richTextTypes';
 import { guid } from 'nav-frontend-js-utils';
 
-export function createSanityBlock(text: string, style: string): SanityBlock {
+export function createSanityBlock(text: string, style: string, marks?: string[]): SanityBlock {
   const key = createKey();
 
   return {
@@ -14,9 +14,17 @@ export function createSanityBlock(text: string, style: string): SanityBlock {
         _type: 'span',
         _key: key + '0',
         text: text,
-        marks: [],
+        marks: marks || [],
       },
     ],
+  };
+}
+
+export function crateSanityListeElement(tekst: string, marks?: string[]): SanityBlock {
+  return {
+    ...createSanityBlock(tekst, 'normal', marks),
+    level: 1,
+    listItem: 'bullet',
   };
 }
 

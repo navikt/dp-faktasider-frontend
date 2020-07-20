@@ -13,6 +13,7 @@ import GroupMarkup from './GroupMarkup/GroupMarkup';
 import VisForAnnotationDeltTekst from './VisFor/VisForAnnotationDeltTekst';
 import withErrorBoundary from '../withErrorBoundary';
 import Tilleggsinnformasjon from './Tilleggsinnformasjon/TilleggsInnformasjon';
+import ListItemRenderer from './ListItemRenderer';
 
 interface Props {
   blocks: ParsedRichText;
@@ -20,11 +21,12 @@ interface Props {
 
 type Serializers = {
   types: {
-    [key: string]: ({ node: any }) => ReactNode;
+    [key: string]: ({ node: Block }) => ReactNode;
   };
   marks: {
     [key: string]: any;
   };
+  listItem: ({ node: Block }) => ReactNode;
 };
 
 const serializers: Serializers = {
@@ -36,6 +38,7 @@ const serializers: Serializers = {
     fremhevetTekst: FremhevetTekst,
     tileggsInformasjon: Tilleggsinnformasjon,
   },
+  listItem: ListItemRenderer,
   marks: {
     link: LinkMarkup,
     utkast: UtkastInline,

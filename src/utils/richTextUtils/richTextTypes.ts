@@ -10,6 +10,8 @@ export type SanityBlock = {
   text?: string;
   marks?: string[];
   markDefs?: MarkDef[];
+  level?: number;
+  listItem?: 'bullet';
 };
 
 export type RawDeltTekst = Modify<
