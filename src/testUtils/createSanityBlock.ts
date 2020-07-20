@@ -28,6 +28,14 @@ export function crateSanityListeElement(tekst: string, marks?: string[]): Sanity
   };
 }
 
+export function crateSanityListeElementMedVisFor(tekst: string, visFor: { [key: string]: boolean }): SanityBlock {
+  return {
+    ...createSanityBlockMedVisFor(tekst, 'normal', visFor),
+    level: 1,
+    listItem: 'bullet',
+  };
+}
+
 export function createDeltTekstBlock(innhold: SanityBlock[]): RawDeltTekst {
   const id = createKey();
   return {
