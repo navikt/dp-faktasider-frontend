@@ -1,5 +1,10 @@
 import parseRichText from '../../../utils/richTextUtils/parser/parseRichText';
-import { createSanityBlock, createSanityBlockMedVisFor } from '../../../testUtils/createSanityBlock';
+import {
+  crateSanityListeElement,
+  crateSanityListeElementMedVisFor,
+  createSanityBlock,
+  createSanityBlockMedVisFor,
+} from '../../../testUtils/createSanityBlock';
 
 const bolkStudent = 'Bolk som bare vises for student';
 const bolkPermittert = 'Bolk som bare vises for permittert';
@@ -10,6 +15,8 @@ const innholdForAlle = 'Innhold som vises for alle';
 
 const data = [
   createSanityBlock(bolkForAlle, 'h2'),
+  crateSanityListeElement('Bulletpoint som vises for alle'),
+  crateSanityListeElementMedVisFor('Bulletpoint som vises for student', { student: true }),
   createSanityBlock(innholdForAlle, 'normal'),
   createSanityBlockMedVisFor(innholdStudent, 'normal', { student: true }),
   createSanityBlockMedVisFor(innholdPermittert, 'normal', { permittert: true }),

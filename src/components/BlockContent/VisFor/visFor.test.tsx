@@ -70,4 +70,18 @@ describe('visFor-logikk', () => {
     result.getByLabelText(bolkForAlle);
     result.getByText(innholdForAlle);
   });
+
+  test('bulletpoint med visFor på hele teksten skjules dersom det filtreres bort', () => {
+    const result = render(<TestFaktaside innhold={innhold} />);
+
+    const førsteBolk = result.getByLabelText(bolkForAlle);
+
+    expect(within(førsteBolk).getAllByRole('listitem')).toHaveLength(2);
+
+    const filtreringsvalg = result.getByLabelText(/Tilpass/i);
+    const ingenValgCheckbox = within(filtreringsvalg).getByLabelText(/ingen valg/i);
+    fireEvent.click(ingenValgCheckbox);
+
+    expect(within(førsteBolk).getAllByRole('listitem')).toHaveLength(1);
+  });
 });

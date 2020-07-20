@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import styled from 'styled-components/macro';
-import { isProduction } from '../../utils/environment';
-import { useDevContext } from '../DevKnapper/DevContext';
-import withErrorBoundary from '../withErrorBoundary';
+import { isProduction } from '../../../utils/environment';
+import { useDevContext } from '../../DevKnapper/DevContext';
+import withErrorBoundary from '../../withErrorBoundary';
 
 interface Props {
   children: ReactNode;

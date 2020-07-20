@@ -26,12 +26,12 @@ interface Props {
 const linkHideClassName = 'group-header-hash-link-hide';
 const HashLinkHide = createGlobalStyle`
   .${linkHideClassName} {
-    > *:first-child {
+    a {
       transition: .2s;
       opacity: 0;
     }
     &:hover, &:focus-within, &:focus {
-    > *:first-child {
+    a {
       opacity: 1;
       }
     }
