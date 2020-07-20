@@ -1,4 +1,4 @@
-import { RawDeltTekst, SanityBlock } from '../utils/richTextUtils/richTextTypes';
+import { DeprecatedDeltTekst, SanityBlock } from '../utils/richTextUtils/richTextTypes';
 import { guid } from 'nav-frontend-js-utils';
 
 export function createSanityBlock(text: string, style: string, marks?: string[]): SanityBlock {
@@ -36,7 +36,7 @@ export function crateSanityListeElementMedVisFor(tekst: string, visFor: { [key: 
   };
 }
 
-export function createDeltTekstBlock(innhold: SanityBlock[]): RawDeltTekst {
+export function createDeltTekstBlock(innhold: SanityBlock[]): DeprecatedDeltTekst {
   const id = createKey();
   return {
     id: id,

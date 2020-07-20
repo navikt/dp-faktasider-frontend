@@ -14,7 +14,7 @@ export type SanityBlock = {
   listItem?: 'bullet';
 };
 
-export type RawDeltTekst = Modify<
+export type DeprecatedDeltTekst = Modify<
   SanityBlock,
   {
     _createdAt: string;
@@ -25,8 +25,17 @@ export type RawDeltTekst = Modify<
   }
 >;
 
-export function isRawDeltTekst(candidate: Block): candidate is RawDeltTekst {
+export type RawDelttekstReference = {
+  _type: 'deltTekstReference';
+  deltTekst: DeprecatedDeltTekst;
+};
+
+export function isDeprecatedDeltTekst(candidate: Block): candidate is DeprecatedDeltTekst {
   return candidate._type === 'deltTekst';
+}
+
+export function isRawDeltTekstReference(candidate: Block): candidate is RawDelttekstReference {
+  return candidate._type === 'deltTekstReference';
 }
 
 type MarkDef = {
