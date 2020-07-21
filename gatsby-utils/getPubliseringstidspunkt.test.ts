@@ -25,6 +25,6 @@ const testData: RawFaktasideData = ({
 } as unknown) as RawFaktasideData;
 
 test('finner nyeste publiseringstidspunkt fra faktaside', () => {
-  const tidspunkt = getPubliseringsTidspunkt(testData, 'no');
+  const tidspunkt = getPubliseringsTidspunkt(testData);
   expect(tidspunkt).toEqual(updatedAtLatest);
 });
