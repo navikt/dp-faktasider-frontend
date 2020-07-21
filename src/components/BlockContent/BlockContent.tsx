@@ -14,6 +14,7 @@ import VisForAnnotationDeltTekst from './VisFor/VisForAnnotationDeltTekst';
 import withErrorBoundary from '../withErrorBoundary';
 import Tilleggsinnformasjon from './Tilleggsinnformasjon/TilleggsInnformasjon';
 import ListItemRenderer from './ListItemRenderer';
+import GtilNOKAnnotation from './GtilNOKAnnotation';
 
 interface Props {
   blocks: ParsedRichText;
@@ -42,6 +43,7 @@ const serializers: Serializers = {
   marks: {
     link: LinkMarkup,
     utkast: UtkastInline,
+    GtilNOK: GtilNOKAnnotation,
     visForAnnotation: VisForAnnotation,
     visForAnnotationDeltTekst: VisForAnnotationDeltTekst,
   },
