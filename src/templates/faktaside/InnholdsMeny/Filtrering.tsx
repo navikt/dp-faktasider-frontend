@@ -41,7 +41,7 @@ function Filtrering(props: Props) {
   const titleId = useUniqueId('filtrering');
   const offsetTop = useDekoratorPopdownOffset();
 
-  if (isProduction() || visForContext.value.valg.length === 0) {
+  if (visForContext.value.valg.length === 0) {
     return null;
   }
 
