@@ -36,7 +36,7 @@ const serializers: Serializers = {
     customComponent: CustomComponent,
     video: Video,
     fremhevetTekst: FremhevetTekst,
-    GtilNOK: (props) => GtoNOK(props.node.G),
+    GtilNOK: (props) => GtoNOK(props.node.G), // denne kan fjernes etterhvert, ikke lenger i bruk men ser ut til at cachen trenger litt tid på å tømme seg
     deltFremhevetTekst: FremhevetTekst,
     tileggsInformasjon: Tilleggsinnformasjon,
   },
