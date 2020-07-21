@@ -14,6 +14,7 @@ import withErrorBoundary from '../withErrorBoundary';
 import Tilleggsinnformasjon from './Tilleggsinnformasjon/TilleggsInnformasjon';
 import ListItemRenderer from './ListItemRenderer';
 import GtilNOKAnnotation from './GtilNOKAnnotation';
+import { GtoNOK } from '../../utils/folketrygdensGrunnbeløp';
 
 interface Props {
   blocks: ParsedRichText;
@@ -35,6 +36,7 @@ const serializers: Serializers = {
     customComponent: CustomComponent,
     video: Video,
     fremhevetTekst: FremhevetTekst,
+    GtilNOK: (props) => GtoNOK(props.node.G),
     tileggsInformasjon: Tilleggsinnformasjon,
   },
   listItem: ListItemRenderer,
