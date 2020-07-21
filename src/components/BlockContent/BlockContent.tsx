@@ -37,6 +37,7 @@ const serializers: Serializers = {
     video: Video,
     fremhevetTekst: FremhevetTekst,
     GtilNOK: (props) => GtoNOK(props.node.G),
+    deltFremhevetTekst: FremhevetTekst,
     tileggsInformasjon: Tilleggsinnformasjon,
   },
   listItem: ListItemRenderer,
