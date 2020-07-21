@@ -18,7 +18,8 @@ const loggEvent = (event: string, ekstraData?: object) => {
   );
 };
 
-export const loggError = (msg: string, ekstraData?: object) => loggEvent('Error', { ...ekstraData, msg });
+export const loggError = (msg: string, ekstraData?: object) =>
+  loggEvent('Error', { ...ekstraData, msg, url: window.location.pathname });
 
 export const loggRedirect = (fraLenke: string) => loggEvent('Redirect fra gammel lenke', { fraLenke });
 
