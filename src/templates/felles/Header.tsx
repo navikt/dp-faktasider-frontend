@@ -19,7 +19,7 @@ const Background = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 6vmin;
 `;
 
 const StyledSidetittel = styled(Sidetittel)`
@@ -27,7 +27,7 @@ const StyledSidetittel = styled(Sidetittel)`
 `;
 
 const MaxWidth = styled.div`
-  padding: 2rem;
+  padding: 1.5rem 1.5rem 2rem;
   max-width: 50rem;
 `;
 

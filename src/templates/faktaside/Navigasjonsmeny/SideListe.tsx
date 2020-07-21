@@ -8,6 +8,7 @@ import Innholdsfortegnelse from '../InnholdsMeny/Innholdsfortegnelse';
 import { useFaktasideContext } from '../FaktaSideContext';
 import { loggMeny } from '../../../utils/logging';
 import { UnmountClosed } from 'react-collapse';
+import { theme } from '../../../styles/theme';
 
 const StyledOl = styled.ol`
   margin-bottom: 3.5rem;
@@ -18,7 +19,7 @@ const listeElementCommonStyling = css`
   font-weight: 600;
   padding: 0.5rem 1.5rem;
   &:hover {
-    background-color: #ddd8;
+    background-color: ${theme.colors.navLysGra};
   }
 `;
 
@@ -29,7 +30,7 @@ const StyledLink = styled(Link)`
 `;
 
 const ValgtSide = styled.div`
-  background-color: #ccc2;
+  background-color: #f8f8f8;
   position: relative;
   &::after {
     content: '';
@@ -38,7 +39,7 @@ const ValgtSide = styled.div`
     left: 0;
     width: 0.3rem;
     height: 100%;
-    background-color: #8884;
+    background-color: ${theme.colors.navGra20};
   }
 `;
 

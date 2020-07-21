@@ -59,7 +59,7 @@ export const theme = {
     box-shadow: 0 0 0 ${pxToRem(3)} ${colors.fokusFarge};
   `,
   borderRadius: '.2rem',
-  layoutMargin: '2rem',
+  layoutMargin: '6vmin',
   fadeInAnimation: css`
     animation: ${fadeIn} 0.5s backwards;
   `,

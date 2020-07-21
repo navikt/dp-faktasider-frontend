@@ -7,9 +7,9 @@ export const MainContentStyle = styled.main`
   flex-direction: column;
   margin: auto;
   max-width: 40rem;
-  padding: 1rem 0 4rem;
-  @media (${theme.media.bigScreen}) {
-    padding: 0 ${theme.layoutMargin};
+  padding: 0 1rem;
+  @media (${theme.media.smallScreen}) {
+    padding: 0;
   }
   ul {
     padding-left: 2rem;
