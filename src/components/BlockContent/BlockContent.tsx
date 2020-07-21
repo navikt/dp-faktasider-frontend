@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import CustomComponent from './CustomComponent';
-import { GtoNOK } from '../../utils/folketrygdensGrunnbeløp';
 import LinkMarkup from './Link';
 import SanityBlockContent from '@sanity/block-content-to-react';
 import Video from './VideoMarkup';
@@ -34,7 +33,6 @@ const serializers: Serializers = {
   types: {
     group: GroupMarkup,
     customComponent: CustomComponent,
-    GtilNOK: (props) => GtoNOK(props.node.G),
     video: Video,
     fremhevetTekst: FremhevetTekst,
     tileggsInformasjon: Tilleggsinnformasjon,
