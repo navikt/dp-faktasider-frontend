@@ -33,3 +33,5 @@ export const loggMeny = (type: string) => loggEvent('Meny', { type });
 export const loggH2MenyKlikk = () => loggEvent('H2Meny', { type: 'Hopp til underoverskrift' });
 
 export const loggVisTilleggsinfo = (tittel: string) => loggEvent('Vis tilleggsinfo', { tittel });
+
+export const loggTilpassInnhold = (situasjon: string) => loggEvent('Tilpasset innhold', { situasjon });

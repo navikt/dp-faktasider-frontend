@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode, useContext, useEffect, useReducer } from 'react';
 import { useLocation, usePrevious } from 'react-use';
+import { loggTilpassInnhold } from '../../../utils/logging';
 
 type Actions =
   | { type: 'addKey'; key: string }
@@ -33,6 +34,7 @@ function reducer(state: typeof initial.value, action: Actions) {
       }
     case 'toggle':
       if (!state.checked.includes(action.key)) {
+        loggTilpassInnhold(action.key);
         return {
           ...state,
           ingenPasserMeg: false,
