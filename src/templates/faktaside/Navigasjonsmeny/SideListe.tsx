@@ -39,7 +39,7 @@ const ValgtSide = styled.div`
     left: 0;
     width: 0.3rem;
     height: 100%;
-    background-color: ${theme.colors.navGra20};
+    background-color: ${theme.colors.navLysGra};
   }
 `;
 

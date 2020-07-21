@@ -18,11 +18,12 @@ exports[`Snapshottest landingsside 1`] = `
 }
 
 .c2 {
-  font-size: 1.7rem;
+  font-size: calc(1rem + 2vmin);
+  margin-bottom: 0.4rem;
 }
 
 .c1 {
-  padding: 1.5rem 1.5rem 2rem;
+  padding: 1.5rem 0.5rem 2rem;
   max-width: 50rem;
 }
 

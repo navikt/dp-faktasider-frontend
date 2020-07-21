@@ -23,11 +23,12 @@ const Background = styled.div`
 `;
 
 const StyledSidetittel = styled(Sidetittel)`
-  font-size: 1.7rem;
+  font-size: calc(1rem + 2vmin);
+  margin-bottom: 0.4rem;
 `;
 
 const MaxWidth = styled.div`
-  padding: 1.5rem 1.5rem 2rem;
+  padding: 1.5rem 0.5rem 2rem;
   max-width: 50rem;
 `;
 

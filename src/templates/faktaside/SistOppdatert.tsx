@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import withErrorBoundary from '../../components/withErrorBoundary';
 
 const Style = styled.div`
-  margin-top: 0.6rem;
+  margin-top: 0.5rem;
   text-align: center;
   font-style: italic;
   opacity: 0.6;
