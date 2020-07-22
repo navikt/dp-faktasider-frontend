@@ -72,6 +72,7 @@ const StyledMenyButton = styled(MenyButton)`
   right: 0;
   top: 0;
   box-shadow: 0 0 0 0.2rem #8886;
+  z-index: 10;
 `;
 
 function MobilmenyWrapper(props: Props) {
