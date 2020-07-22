@@ -13,7 +13,7 @@ const GtilNOKAnnotation = (props: Props) => {
   const notNumber = isNaN(Number(G));
 
   useEffect(() => {
-    notNumber && loggError('Kunne ikke konvertere belløp til NOK', { grunnbellop: G });
+    notNumber && loggError(new Error('Kunne ikke konvertere belløp til NOK'), { grunnbellop: G });
   }, [notNumber, G]);
 
   if (notNumber) {
