@@ -11,15 +11,15 @@ jest.mock('../utils/faktasiderSummary/useFaktasiderSumary', () => () => {
 });
 
 type Props = {
-  context?: FaktasideContext;
+  partialContext?: Partial<FaktasideContext>;
   innhold?: Block[];
 };
 
 function TestFaktaside(props: Props) {
   const context: FaktasideContext = {
     ...faktaSideMockContext,
-    ...props.context,
-    innhold: props.innhold || props.context?.innhold || faktaSideMockContext.innhold,
+    ...props.partialContext,
+    innhold: props.innhold || props.partialContext?.innhold || faktaSideMockContext.innhold,
   };
 
   return (

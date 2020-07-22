@@ -51,7 +51,7 @@ export type BlockConfigFromParser = {
 };
 
 export type VisForConfig = { [key: string]: boolean | string };
-type VisPaaConfig = string[];
+export type VisPaaConfig = string[];
 
 export type ParsedSanityBlock = SanityBlock & {
   blockConfig?: BlockConfigFromParser;
