@@ -14,6 +14,7 @@ import { parseDelteTeksterTestData } from '../utils/richTextUtils/parser/parseDe
 import Tekstomrade from 'nav-frontend-tekstomrade';
 import { groupParserTestData } from '../utils/richTextUtils/parser/groupParser/groupParser.testdata';
 import { utkastTestData } from '../components/BlockContent/utkast/Utkast.testdata';
+import { visForAnnotationDeltTekstTestData } from '../components/BlockContent/VisFor/visForAnnotationDeltTekstTestData';
 
 type Testdata = {
   data: Partial<FaktasideContext>;
@@ -61,6 +62,13 @@ const testData: Testdata[] = [
       innhold: parseRichText(utkastTestData),
     },
   },
+  {
+    name: 'visForAnnotation delt tekst',
+    data: {
+      innhold: visForAnnotationDeltTekstTestData.data,
+      id: visForAnnotationDeltTekstTestData.secondPageId,
+    },
+  },
 ];
 
 const Style = styled.div`
@@ -75,6 +83,7 @@ const Style = styled.div`
 
 const StyledKnapp = styled(Knapp)`
   margin: 0.5rem;
+  text-transform: none;
 `;
 
 const StyledTekstområde = styled(Tekstomrade)`
