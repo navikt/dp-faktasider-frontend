@@ -32,4 +32,10 @@ export const plugins = [
       overlayDrafts: !isProd && secretSanityToken,
     },
   },
+  {
+    resolve: `gatsby-plugin-canonical-urls`,
+    options: {
+      siteUrl: `https://www.nav.no${pathPrefix}`,
+    },
+  },
 ];
