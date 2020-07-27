@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { ReactNode, useEffect, useReducer, useRef } from 'react';
+import { ReactNode } from 'react';
 import styled, { css } from 'styled-components/macro';
 import ChevronButton from '../../ChevronButton';
 import { useTranslation } from 'react-i18next';
+import { Collapse } from 'react-collapse';
 
-const Content = styled.div<{ open: boolean; fullHeight: number }>`
+const Content = styled.div<{ open: boolean }>`
   position: relative;
   transition: 0.3s;
   overflow: hidden;
-  max-height: ${(props) => props.fullHeight + 20}px;
   ${(props) =>
     !props.open &&
     css`
@@ -23,20 +23,12 @@ const Content = styled.div<{ open: boolean; fullHeight: number }>`
         background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
         pointer-events: none;
       }
-    `}
-`;
-
-const HeightMeasurer = styled.div`
-  padding-bottom: 0.5rem;
+    `};
 `;
 
 const StyledChevronButton = styled(ChevronButton)`
   margin-top: 1rem;
 `;
-
-function heightReducer(state: number, newHeight: number) {
-  return Math.max(newHeight, 50);
-}
 
 interface Props {
   children: ReactNode;
@@ -46,19 +38,12 @@ interface Props {
 
 function VisMerPanel(props: Props) {
   const { t } = useTranslation('global');
-  const [maxHeight, setNewMaxHeight] = useReducer(heightReducer, 10000);
-  const heightRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const contentRect = heightRef.current?.getBoundingClientRect();
-    contentRect && setNewMaxHeight(contentRect.height);
-  }, [props.open]);
 
   return (
     <>
-      <Content open={props.open} fullHeight={maxHeight}>
-        <HeightMeasurer ref={heightRef}>{props.children}</HeightMeasurer>
-      </Content>
+      <Collapse isOpened={true}>
+        <Content open={props.open}>{props.children}</Content>
+      </Collapse>
       <StyledChevronButton
         aria-hidden={true}
         className="lenke"
