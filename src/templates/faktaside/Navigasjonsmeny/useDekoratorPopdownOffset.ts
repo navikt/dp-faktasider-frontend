@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import throttle from 'lodash.throttle';
 import { useMount } from 'react-use';
 
 export function useDekoratorPopdownOffset() {
@@ -12,10 +11,8 @@ export function useDekoratorPopdownOffset() {
       setOffsetTop(Math.max(offset, 0));
     };
 
-    const throttledHandleScroll = throttle(handleScroll, 100);
-
-    window.addEventListener('scroll', throttledHandleScroll);
-    return () => window.removeEventListener('scroll', throttledHandleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   });
 
   return offsetTop;
