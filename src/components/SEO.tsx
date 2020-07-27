@@ -48,15 +48,15 @@ function SEO(props: Props) {
         },
         {
           property: `og:image`,
-          content: 'https://www.nav.no/dekoratoren/media/nav-logo-red.svg',
+          content: '/navlogo.png',
         },
         {
           property: `twitter:image`,
-          content: 'https://www.nav.no/dekoratoren/media/nav-logo-red.svg',
+          content: '/navlogo.png',
         },
         {
           property: `image`,
-          content: 'https://www.nav.no/dekoratoren/media/nav-logo-red.svg',
+          content: '/navlogo.png',
         },
       ]}
     />
