@@ -7,33 +7,31 @@ export const MainContentStyle = styled.main`
   flex-direction: column;
   margin: auto;
   max-width: 40rem;
+
   padding: 0 1rem;
   @media (${theme.media.smallScreen}) {
     padding: 0;
   }
-  ul {
-    padding-left: 2rem;
-    list-style: disc;
-    margin: 1.5rem 0;
+
+  ul,
+  ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
     li {
-      margin-bottom: 1rem;
-      line-height: 1.3;
+      margin: 0.7rem 0;
+      padding-left: 0.3rem;
     }
+  }
+  ul {
+    list-style: disc;
     ul {
       list-style: circle;
     }
   }
   ol {
     list-style: decimal;
-    padding-left: 1.5rem;
-    margin-bottom: 1.5rem;
-    li {
-      margin: 0.5rem 0;
-      line-height: 1.3;
-
-      padding-left: 1rem;
-    }
   }
+
   p {
     margin: 0.5rem 0 1rem;
   }

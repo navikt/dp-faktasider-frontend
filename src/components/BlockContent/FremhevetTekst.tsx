@@ -23,9 +23,9 @@ const Style = styled.div`
     margin: 0 !important;
   }
   li {
-    margin: 1rem;
+    margin: 1rem 0.6rem !important;
     position: relative;
-    padding-left: 1rem;
+    padding-left: 0.7rem !important;
     &::before {
       content: '';
       display: block;
