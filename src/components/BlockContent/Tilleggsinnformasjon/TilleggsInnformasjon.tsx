@@ -31,7 +31,7 @@ const StyledAside = styled.aside<{ open: boolean }>`
   ${(props) =>
     props.open &&
     css`
-      background-color: ${theme.colors.navLysGra};
+      background-color: #f0f0f0;
     `}
 `;
 
