@@ -26,7 +26,7 @@ const StyledNav = styled.nav.attrs((props: NavProps) => ({ style: { top: `${prop
   }
 `;
 
-const Style = styled.ul`
+const StyledUl = styled.ul`
   li {
     margin-top: 0.6rem;
   }
@@ -49,7 +49,7 @@ function Filtrering(props: Props) {
     <StyledNav className={props.className} aria-labelledby={titleId} offsetTop={offsetTop}>
       <Undertittel id={titleId}>Tilpass innhold</Undertittel>
       <Normaltekst>Tilpass innholdet på denne siden ved å velge det som passer din situasjon best:</Normaltekst>
-      <Style>
+      <StyledUl>
         {visForContext.value.valg.map((valg) => (
           <li key={valg}>
             <Checkbox
@@ -68,7 +68,7 @@ function Filtrering(props: Props) {
             />
           </li>
         )}
-      </Style>
+      </StyledUl>
     </StyledNav>
   );
 }
