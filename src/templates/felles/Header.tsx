@@ -19,7 +19,7 @@ const Background = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
-  margin-bottom: 6vmin;
+  margin-bottom: ${theme.layoutMargin};
 `;
 
 const StyledSidetittel = styled(Sidetittel)`
