@@ -47,15 +47,15 @@ function SEO(props: Props) {
           content: props.description,
         },
         {
-          name: `og:image`,
+          property: `og:image`,
           content: 'https://www.nav.no/dekoratoren/media/nav-logo-red.svg',
         },
         {
-          name: `twitter:image`,
+          property: `twitter:image`,
           content: 'https://www.nav.no/dekoratoren/media/nav-logo-red.svg',
         },
         {
-          name: `image`,
+          property: `image`,
           content: 'https://www.nav.no/dekoratoren/media/nav-logo-red.svg',
         },
       ]}
