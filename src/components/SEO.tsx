@@ -39,16 +39,24 @@ function SEO(props: Props) {
           content: `summary`,
         },
         {
-          name: `twitter:creator`,
-          content: 'NAV',
-        },
-        {
           name: `twitter:title`,
           content: props.title,
         },
         {
           name: `twitter:description`,
           content: props.description,
+        },
+        {
+          name: `og:image`,
+          content: 'https://www.nav.no/dekoratoren/media/nav-logo-red.svg',
+        },
+        {
+          name: `twitter:image`,
+          content: 'https://www.nav.no/dekoratoren/media/nav-logo-red.svg',
+        },
+        {
+          name: `image`,
+          content: 'https://www.nav.no/dekoratoren/media/nav-logo-red.svg',
         },
       ]}
     />
