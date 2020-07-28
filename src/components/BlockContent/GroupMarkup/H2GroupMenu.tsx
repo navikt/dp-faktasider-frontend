@@ -3,9 +3,8 @@ import styled from 'styled-components/macro';
 import useSmoothscrollOnClick from '../../../hooks/useSmoothscrollOnClick';
 import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
-import { useRef } from 'react';
-import { guid } from 'nav-frontend-js-utils';
 import { loggH2MenyKlikk } from '../../../utils/logging';
+import useUniqueId from '../../../utils/useUniqueId';
 
 interface Props {
   underGrupper: Group[];
@@ -23,7 +22,7 @@ const StyledUl = styled.ul`
 
 function H2GroupMenu(props: Props) {
   const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
-  const id = useRef(guid()).current;
+  const id = useUniqueId('meny-' + props.title);
 
   const handleOnClick = () => {
     activateSmoothScroll();

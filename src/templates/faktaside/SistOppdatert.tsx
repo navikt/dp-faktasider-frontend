@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import withErrorBoundary from '../../components/withErrorBoundary';
 
 const Style = styled.div`
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   text-align: center;
   font-style: italic;
   opacity: 0.6;

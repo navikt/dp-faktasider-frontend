@@ -3,7 +3,7 @@ import { useReducer } from 'react';
 import { FaktasideContext } from '../../gatsby-utils/createFaktasider';
 import { visForTestData } from '../components/BlockContent/VisFor/visFor.testdata';
 import { faktaSideMockContext } from '../testUtils/faktaSideMockContext';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Sidetittel, Undertittel, Normaltekst } from 'nav-frontend-typografi';
 import { Knapp } from 'nav-frontend-knapper';
 import FaktaSide from './faktaside/FaktaSide';
@@ -14,6 +14,8 @@ import { parseDelteTeksterTestData } from '../utils/richTextUtils/parser/parseDe
 import Tekstomrade from 'nav-frontend-tekstomrade';
 import { groupParserTestData } from '../utils/richTextUtils/parser/groupParser/groupParser.testdata';
 import { faktasiderSummaryMockData } from '../utils/faktasiderSummary/faktasiderSummaryMockData';
+import { utkastTestData } from '../components/BlockContent/utkast/Utkast.testdata';
+import { visForAnnotationDeltTekstTestData } from '../components/BlockContent/VisFor/visForAnnotationDeltTekstTestData';
 
 type Testdata = {
   data: Partial<FaktasideContext>;
@@ -21,6 +23,10 @@ type Testdata = {
 };
 
 const testData: Testdata[] = [
+  {
+    name: 'Base',
+    data: {},
+  },
   {
     name: 'visFor',
     data: {
@@ -51,6 +57,19 @@ const testData: Testdata[] = [
       innhold: parseRichText(groupParserTestData),
     },
   },
+  {
+    name: 'utkast',
+    data: {
+      innhold: parseRichText(utkastTestData),
+    },
+  },
+  {
+    name: 'visForAnnotation delt tekst',
+    data: {
+      innhold: visForAnnotationDeltTekstTestData.data,
+      id: visForAnnotationDeltTekstTestData.secondPageId,
+    },
+  },
 ];
 
 const Style = styled.div`
@@ -65,6 +84,7 @@ const Style = styled.div`
 
 const StyledKnapp = styled(Knapp)`
   margin: 0.5rem;
+  text-transform: none;
 `;
 
 const StyledTekstområde = styled(Tekstomrade)`

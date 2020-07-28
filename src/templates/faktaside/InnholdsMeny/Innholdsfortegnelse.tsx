@@ -47,14 +47,15 @@ function useCurrentlyViewedGroup(items: Group[]): Group | undefined {
 function MenuItem(props: { item: Group; current: boolean }) {
   const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
 
+  const handleClick = () => {
+    activateSmoothScroll();
+    loggMeny('Hopp til overskrift');
+  };
+
   return (
-    <li key={props.item.blockConfig?.id} onClick={activateSmoothScroll}>
+    <li key={props.item.blockConfig?.id}>
       <SmoothScroll />
-      <StyledLenke
-        erValgt={props.current}
-        href={`#${props.item.blockConfig?.id}`}
-        onClick={() => loggMeny('Hopp til overskrift')}
-      >
+      <StyledLenke erValgt={props.current} href={`#${props.item.blockConfig?.id}`} onClick={handleClick}>
         {props.item.title}
       </StyledLenke>
     </li>
@@ -62,7 +63,7 @@ function MenuItem(props: { item: Group; current: boolean }) {
 }
 
 const StyledOl = styled.ol`
-  margin: 0.5rem 1rem 1rem 2.5rem;
+  padding: 0.5rem 1rem 1rem 2.5rem;
 `;
 
 function Innholdsfortegnelse() {

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ReactNode, useRef } from 'react';
+import { ReactNode } from 'react';
 import BlockContent from '../BlockContent';
 import { createGlobalStyle, StyledComponent } from 'styled-components/macro';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
 import Anchor from '../../Anchor';
 import HashLink from '../../HashLink';
-import { guid } from 'nav-frontend-js-utils';
+import useUniqueId from '../../../utils/useUniqueId';
 
 interface Props {
   header: StyledComponent<any, any>;
@@ -26,12 +26,12 @@ interface Props {
 const linkHideClassName = 'group-header-hash-link-hide';
 const HashLinkHide = createGlobalStyle`
   .${linkHideClassName} {
-    > *:first-child {
+    a {
       transition: .2s;
       opacity: 0;
     }
     &:hover, &:focus-within, &:focus {
-    > *:first-child {
+    a {
       opacity: 1;
       }
     }
@@ -41,7 +41,7 @@ const HashLinkHide = createGlobalStyle`
 function CommonGroupMarkup(props: Props) {
   const group = props.group;
   const id = group.blockConfig?.id || 'N/A';
-  const headerId = useRef(guid()).current;
+  const headerId = useUniqueId('group-' + props.group.title);
 
   const Region = props.region;
   const Header = props.header;

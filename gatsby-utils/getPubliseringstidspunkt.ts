@@ -1,11 +1,16 @@
-import { RawFaktasideData } from './createFaktasider';
 import { max } from 'date-fns';
-import { isRawDeltTekst } from '../src/utils/richTextUtils/richTextTypes';
-import { SupportedLanguage } from '../src/i18n/supportedLanguages';
 
-export function getPubliseringsTidspunkt(page: RawFaktasideData, lang: SupportedLanguage): string {
-  const delteTekster = page.innhold?.[lang]?.filter(isRawDeltTekst) || [];
-  const oppdateringsTidspunkter: string[] = [...delteTekster.map((deltTekst) => deltTekst._updatedAt), page._updatedAt];
+export function getPubliseringsTidspunkt(page): string {
+  const allUpdatedAt = getAllUpdatedAt(page);
+  return max(allUpdatedAt.map((it) => new Date(it))).toISOString();
+}
 
-  return max(oppdateringsTidspunkter.map((it) => new Date(it))).toISOString();
+function getAllUpdatedAt(value) {
+  if (Array.isArray(value)) {
+    return value.flatMap((v) => getAllUpdatedAt(v));
+  } else if (value && typeof value === 'object') {
+    return Object.keys(value)
+      .flatMap((key) => (key === '_updatedAt' ? value[key] : getAllUpdatedAt(value[key])))
+      .filter((it) => it);
+  }
 }

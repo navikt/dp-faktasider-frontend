@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FaktaSideProps } from './FaktaSide';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
 import { useTranslation } from 'react-i18next';
 import { supportedLanguages } from '../../i18n/supportedLanguages';

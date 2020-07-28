@@ -1,12 +1,16 @@
 import { FaktasideContext } from '../../gatsby-utils/createFaktasider';
 import { createSanityBlock } from './createSanityBlock';
+import parseRichText from '../utils/richTextUtils/parser/parseRichText';
 
 const title = 'Testside';
 export const faktasideTestId = 'faktaside-test-id';
 
 export const faktaSideMockContext: FaktasideContext = {
   publiseringsTidspunkt: new Date().toISOString(),
-  innhold: [createSanityBlock('Dette er litt innhold', 'h2')],
+  innhold: parseRichText([
+    createSanityBlock('Dette er en overskrift', 'h2'),
+    createSanityBlock('Dette er litt innhold', 'normal'),
+  ]),
   title: title,
   lang: 'no',
   id: faktasideTestId,

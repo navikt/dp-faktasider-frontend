@@ -1,4 +1,4 @@
-import { Block, isRawDeltTekst } from '../../richTextTypes';
+import { Block, isDeltTekstReference } from '../../richTextTypes';
 import { RichTextParser } from '../parseRichText';
 
 /**
@@ -10,8 +10,8 @@ import { RichTextParser } from '../parseRichText';
 
 export const parseDelteTekster: RichTextParser = (blocks: Block[]) => {
   return blocks.flatMap((block) => {
-    if (isRawDeltTekst(block)) {
-      return block?.innhold || [];
+    if (isDeltTekstReference(block)) {
+      return block.deltTekst?.innhold || [];
     }
     return block;
   });

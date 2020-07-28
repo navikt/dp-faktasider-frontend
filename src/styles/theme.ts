@@ -29,7 +29,10 @@ const colors = {
   pinkErrorBg: '#F3E3E3',
   navBlaLighten80: '#CCE1F3',
   navBlaLighten60: '#99C2E8',
+  navDypBlaLighten80: '#CCDEE6',
+  navLysBlaLighten80: '#E0F5FB',
   navGronnLighten60: '#9BD0B0',
+  navLimeGronnLighten80: '#ECEFCC',
   fokusFarge: '#254b6d',
 };
 
@@ -56,7 +59,7 @@ export const theme = {
     box-shadow: 0 0 0 ${pxToRem(3)} ${colors.fokusFarge};
   `,
   borderRadius: '.2rem',
-  layoutMargin: '2rem',
+  layoutMargin: '4vmin',
   fadeInAnimation: css`
     animation: ${fadeIn} 0.5s backwards;
   `,

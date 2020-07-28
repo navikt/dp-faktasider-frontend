@@ -37,6 +37,7 @@ const StyledSystemtittel = styled(Systemtittel).attrs((props: TittelProps) => ({
   padding: 1rem;
   text-align: center;
   position: sticky !important;
+  transition: top 0.2s;
   z-index: 10;
   margin-bottom: 1.5rem;
 `;

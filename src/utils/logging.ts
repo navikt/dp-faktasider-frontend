@@ -18,7 +18,14 @@ const loggEvent = (event: string, ekstraData?: object) => {
   );
 };
 
-export const loggError = (msg: string, ekstraData?: object) => loggEvent('Error', { ...ekstraData, msg });
+export const loggError = (error: Error, ekstraData?: object) =>
+  loggEvent('Error', {
+    ...ekstraData,
+    siteUrl: window.location.pathname,
+    msg: error.message,
+    name: error.name,
+    stack: error.stack,
+  });
 
 export const loggRedirect = (fraLenke: string) => loggEvent('Redirect fra gammel lenke', { fraLenke });
 
@@ -31,3 +38,7 @@ export const loggHashlenkeKlikk = () => loggEvent('Brukt hashlenke');
 export const loggMeny = (type: string) => loggEvent('Meny', { type });
 
 export const loggH2MenyKlikk = () => loggEvent('H2Meny', { type: 'Hopp til underoverskrift' });
+
+export const loggVisTilleggsinfo = (tittel: string) => loggEvent('Vis tilleggsinfo', { tittel });
+
+export const loggTilpassInnhold = (situasjon: string) => loggEvent('Tilpasset innhold', { situasjon });

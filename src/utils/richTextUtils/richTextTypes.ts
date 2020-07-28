@@ -10,9 +10,16 @@ export type SanityBlock = {
   text?: string;
   marks?: string[];
   markDefs?: MarkDef[];
+  level?: number;
+  listItem?: 'bullet';
 };
 
-export type RawDeltTekst = Modify<
+export type DelttekstReference = {
+  _type: 'deltTekstReference';
+  deltTekst?: DeltTekst;
+};
+
+export type DeltTekst = Modify<
   SanityBlock,
   {
     _createdAt: string;
@@ -23,8 +30,8 @@ export type RawDeltTekst = Modify<
   }
 >;
 
-export function isRawDeltTekst(candidate: Block): candidate is RawDeltTekst {
-  return candidate._type === 'deltTekst';
+export function isDeltTekstReference(candidate: Block): candidate is DelttekstReference {
+  return candidate._type === 'deltTekstReference';
 }
 
 type MarkDef = {
@@ -44,7 +51,7 @@ export type BlockConfigFromParser = {
 };
 
 export type VisForConfig = { [key: string]: boolean | string };
-type VisPaaConfig = string[];
+export type VisPaaConfig = string[];
 
 export type ParsedSanityBlock = SanityBlock & {
   blockConfig?: BlockConfigFromParser;

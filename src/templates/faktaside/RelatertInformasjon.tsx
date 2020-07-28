@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Block, Group } from '../../utils/richTextUtils/richTextTypes';
 import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { theme } from '../../styles/theme';
 import { idFromString } from '../../utils/idFromString';
 import H2GroupMarkup from '../../components/BlockContent/GroupMarkup/H2GroupMarkup';
@@ -18,7 +18,6 @@ const Style = styled.div`
     @media (${theme.media.bigScreen}) {
       column-count: 2;
       a {
-        white-space: nowrap;
         justify-content: center;
       }
     }

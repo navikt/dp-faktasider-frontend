@@ -3,8 +3,10 @@ import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 import { ErrorInfo } from 'react';
 import Tekstomrade from 'nav-frontend-tekstomrade';
 import SlideDown from './SlideDown';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { loggError } from '../utils/logging';
+import { EtikettLiten, Normaltekst } from 'nav-frontend-typografi';
+import { isDevelopment } from '../utils/environment';
 
 interface Props {
   boundaryName?: string;
@@ -36,7 +38,7 @@ class ErrorBoundary extends React.Component<Props, State> {
 
   componentDidCatch(error, errorInfo) {
     this.setState({ hasError: true, error, errorInfo });
-    loggError(`Feil i ${this.props.boundaryName}`, { errorInfo, msg: error.message, name: error.name });
+    loggError(error, { errorInfo, boundaryName: this.props.boundaryName });
   }
 
   render() {
@@ -48,8 +50,11 @@ class ErrorBoundary extends React.Component<Props, State> {
       return (
         <div>
           <AlertStripeFeil>
-            Beklager, det skjedde en teknisk feil.
-            {(stackTrace || errormsg) && (
+            <Normaltekst>Beklager, det skjedde en teknisk feil.</Normaltekst>
+            <EtikettLiten>
+              Feilen blir automatisk rapportert og vi jobber med å løse den så raskt som mulig. Prøv igjen om litt.
+            </EtikettLiten>
+            {isDevelopment() && (stackTrace || errormsg) && (
               <StyledSlideDown title="Info - feilsøking">
                 <StyledTekstomrade>{errormsg || ''}</StyledTekstomrade>
                 <StyledTekstomrade>{info || ''}</StyledTekstomrade>

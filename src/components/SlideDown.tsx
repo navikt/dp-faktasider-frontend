@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ReactNode, useState } from 'react';
-import styled, { css } from 'styled-components';
+import { ReactNode, useReducer } from 'react';
+import styled, { css } from 'styled-components/macro';
 import { Collapse } from 'react-collapse';
-import { NedChevron, OppChevron } from 'nav-frontend-chevron';
+import ChevronButton from './ChevronButton';
 
 interface Props {
   title: string;
@@ -23,20 +23,12 @@ const Style = styled.div<{ open: boolean }>`
     `}
 `;
 
-const StyledButton = styled.div`
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-`;
-
 function SlideDown(props: Props) {
-  const [open, setOpen] = useState(false);
+  const [open, toggle] = useReducer((state) => !state, false);
 
   return (
     <Style open={open} className={props.className}>
-      <StyledButton onClick={() => setOpen((o) => !o)}>
-        {props.title} {open ? <OppChevron /> : <NedChevron />}
-      </StyledButton>
+      <ChevronButton title={props.title} open={open} onClick={toggle} />
       <Collapse isOpened={open}>{props.children}</Collapse>
     </Style>
   );

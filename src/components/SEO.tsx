@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { SupportedLanguage } from '../i18n/supportedLanguages';
 import withErrorBoundary from './withErrorBoundary';
+import { graphql, useStaticQuery } from 'gatsby';
 
 interface Props {
   title: string;
@@ -9,7 +10,30 @@ interface Props {
   lang: SupportedLanguage;
 }
 
+interface SEOData {
+  site: {
+    siteMetadata: {
+      imagePath: string;
+      siteUrl: string;
+    };
+  };
+}
+
 function SEO(props: Props) {
+  const data: SEOData = useStaticQuery(graphql`
+    query SEO {
+      site {
+        siteMetadata {
+          imagePath
+          siteUrl
+        }
+      }
+    }
+  `);
+  const metaData = data.site.siteMetadata;
+
+  const imageUrl = metaData.siteUrl + metaData.imagePath;
+
   return (
     <Helmet
       htmlAttributes={{
@@ -39,16 +63,24 @@ function SEO(props: Props) {
           content: `summary`,
         },
         {
-          name: `twitter:creator`,
-          content: 'NAV',
-        },
-        {
           name: `twitter:title`,
           content: props.title,
         },
         {
           name: `twitter:description`,
           content: props.description,
+        },
+        {
+          property: `og:image`,
+          content: imageUrl,
+        },
+        {
+          property: `twitter:image`,
+          content: imageUrl,
+        },
+        {
+          property: `image`,
+          content: imageUrl,
         },
       ]}
     />

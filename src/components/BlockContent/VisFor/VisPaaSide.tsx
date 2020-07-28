@@ -12,7 +12,7 @@ function VisPaaSide(props: Props) {
   const faktasideContext = useFaktasideContext();
   const visSpesifiktPåDenneSiden = !!props.visPaaSider?.includes(faktasideContext.id);
   const ingenVisPåConfig = !!props.visPaaSider?.length;
-  const visPåDenneSiden = !ingenVisPåConfig || visSpesifiktPåDenneSiden;
+  const visPåDenneSiden = !ingenVisPåConfig || visSpesifiktPåDenneSiden; // TODO bug..? ingenVisPåConfig || visSpesifiktPåDenneSiden
   const visPåDenneSidenDebug = useVisPaaSideDebug({ children: props.children, ikkeVisPåDenneSiden: !visPåDenneSiden });
 
   if (visPåDenneSidenDebug.debug) {

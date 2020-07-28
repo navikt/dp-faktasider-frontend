@@ -1,5 +1,6 @@
 import { Block, BlockConfigFromParser, Group, GroupTypes, ParsedSanityBlock } from '../../richTextTypes';
 import { RichTextParser } from '../parseRichText';
+import allChildrenMarkedWith, { getCommonVisForConfig } from '../../allChildrenMarkedWith';
 
 const groupByStyles: GroupTypes[] = ['h2', 'h3', 'h4'].reverse() as GroupTypes[]; // Rekkefølgen her er viktig. Den første gruppen vil aldri få andre grupper inni seg.
 
@@ -48,8 +49,8 @@ function createBlockConfig(block: ParsedSanityBlock): BlockConfigFromParser {
   const currentConfig = block?.blockConfig;
   return {
     ...currentConfig,
-    erUtkast: block.children?.some((child) => child.marks?.includes('utkast')),
-    visFor: block.markDefs?.find((markDef) => markDef._type.includes('visForAnnotation'))?.visFor,
+    erUtkast: allChildrenMarkedWith(block, 'utkast'),
+    visFor: getCommonVisForConfig(block)?.visFor,
     visPaaSider: block.markDefs
       ?.find((markDef) => markDef._type === 'visForAnnotationDeltTekst')
       ?.visPaaSider?.map((side) => side.id),

@@ -11,6 +11,8 @@ import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
 import withErrorBoundary from '../../components/withErrorBoundary';
 import { useMount } from 'react-use';
 import { loggSidevisning } from '../../utils/logging';
+import InnholdetErTilpasset from './InnholdsMeny/InnholdetErTilpasset';
+import { useRef } from 'react';
 
 export interface FaktaSideProps extends PageProps<{}, FaktasideContext> {
   errors: any;
@@ -21,6 +23,7 @@ function FaktaSide(props: FaktaSideProps) {
   const lang = page.lang;
   const erPublisert = page.visSprakversjon?.[lang];
   const tittel = page.title || '';
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useMount(() => loggSidevisning(tittel));
 
@@ -36,7 +39,10 @@ function FaktaSide(props: FaktaSideProps) {
       <SEO title={tittel} description={description} lang={lang} />
       <FaktaSideLayout header={tittel} ingress={description} publiseringsTidspunkt={page.publiseringsTidspunkt}>
         <GraphQLErrorList errors={props.errors} />
-        <BlockContent blocks={parsedInnhold} />
+        <InnholdetErTilpasset contentRef={contentRef} />
+        <div ref={contentRef}>
+          <BlockContent blocks={parsedInnhold} />
+        </div>
         <RelatertInformasjon blocks={page.relatertInformasjon} />
       </FaktaSideLayout>
     </FaktasideProvider>

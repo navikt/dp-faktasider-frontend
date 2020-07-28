@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Header from '../templates/felles/Header';
 import createFaktasideSummaries, { FaktasideSummary } from '../utils/faktasiderSummary/createFaktasideSummaries';
 import localizeSanityContent from '../i18n/localizeSanityContent';

@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { useVisForContext } from '../../../components/BlockContent/VisFor/VisForContext';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Checkbox } from 'nav-frontend-skjema';
-import { Undertittel, Normaltekst } from 'nav-frontend-typografi';
+import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
 import { isProduction } from '../../../utils/environment';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import { theme } from '../../../styles/theme';
-import { useRef } from 'react';
-import { guid } from 'nav-frontend-js-utils';
 import { useDekoratorPopdownOffset } from '../Navigasjonsmeny/useDekoratorPopdownOffset';
+import useUniqueId from '../../../utils/useUniqueId';
 
 type NavProps = { offsetTop: number };
 
@@ -27,7 +26,7 @@ const StyledNav = styled.nav.attrs((props: NavProps) => ({ style: { top: `${prop
   }
 `;
 
-const Style = styled.ul`
+const StyledUl = styled.ul`
   li {
     margin-top: 0.6rem;
   }
@@ -39,10 +38,10 @@ interface Props {
 
 function Filtrering(props: Props) {
   const visForContext = useVisForContext();
-  const titleId = useRef(guid()).current;
+  const titleId = useUniqueId('filtrering');
   const offsetTop = useDekoratorPopdownOffset();
 
-  if (isProduction() || visForContext.value.valg.length === 0) {
+  if (visForContext.value.valg.length === 0) {
     return null;
   }
 
@@ -50,7 +49,7 @@ function Filtrering(props: Props) {
     <StyledNav className={props.className} aria-labelledby={titleId} offsetTop={offsetTop}>
       <Undertittel id={titleId}>Tilpass innhold</Undertittel>
       <Normaltekst>Tilpass innholdet på denne siden ved å velge det som passer din situasjon best:</Normaltekst>
-      <Style>
+      <StyledUl>
         {visForContext.value.valg.map((valg) => (
           <li key={valg}>
             <Checkbox
@@ -60,14 +59,16 @@ function Filtrering(props: Props) {
             />
           </li>
         ))}
-        <li>
-          <Checkbox
-            label={'Ingen valg passer'}
-            onChange={() => visForContext.dispatch({ type: 'toggleIngenPasser' })}
-            checked={visForContext.value.ingenPasserMeg}
-          />
-        </li>
-      </Style>
+        {!isProduction() && (
+          <li>
+            <Checkbox
+              label={'Ingen valg passer'}
+              onChange={() => visForContext.dispatch({ type: 'toggleIngenPasser' })}
+              checked={visForContext.value.ingenPasserMeg}
+            />
+          </li>
+        )}
+      </StyledUl>
     </StyledNav>
   );
 }
