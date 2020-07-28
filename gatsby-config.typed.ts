@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import csp from './gatsby-utils/csp';
 
 dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -36,6 +37,17 @@ export const plugins = [
     resolve: `gatsby-plugin-canonical-urls`,
     options: {
       siteUrl: siteUrl,
+    },
+  },
+  {
+    resolve: `gatsby-plugin-csp`,
+    options: {
+      disableOnDev: false,
+      reportOnly: true,
+      mergeScriptHashes: true,
+      mergeStyleHashes: true,
+      mergeDefaultDirectives: false,
+      directives: csp,
     },
   },
 ];
