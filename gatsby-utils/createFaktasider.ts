@@ -92,12 +92,22 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
     en: createFaktasideSummaries(pages, oppsett, 'en'),
   };
 
+  reporter.info(`🚧 Lager redirect fra / til /no/`);
+  actions.createRedirect({ fromPath: `/`, toPath: `/no/`, isPermanent: true });
+  supportedLanguages.forEach((lang) => {
+    const slug = `/${lang}/`;
+    reporter.info(`🛬 Lager landingsside: ${slug}`);
+    actions.createPage({
+      path: slug,
+      component: require.resolve('../src/templates/index.tsx'),
+      context: { navigation: projectNavigation[lang] },
+    });
+  });
+
   pages.forEach((page) => {
     const slug = page.slug?.current;
 
-    if (!slug) {
-      return;
-    }
+    if (!slug) throw Error('No slug!');
 
     const path = `/${slug}/`;
     reporter.info(`🚧 Lager redirect fra ${path} til /no${path}`);

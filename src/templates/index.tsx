@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, PageProps } from 'gatsby';
 import styled from 'styled-components/macro';
-import Header from '../templates/felles/Header';
-import createFaktasideSummaries, { FaktasideSummary } from '../utils/faktasiderSummary/createFaktasideSummaries';
+import Header from './felles/Header';
+import { FaktasideSummary } from '../utils/faktasiderSummary/createFaktasideSummaries';
 import localizeSanityContent from '../i18n/localizeSanityContent';
 import { useLocale } from '../i18n/LocaleContext';
 import { useTranslation } from 'react-i18next';
@@ -40,11 +40,9 @@ const KunTilgjengeligStyle = styled.p`
   margin: 1rem 0 !important;
 `;
 
-const IndexPage = () => {
+const IndexPage = (props: PageProps<{}, { navigation: FaktasideSummary[] }>) => {
   const projectData = useProjectData();
-  const sider = createFaktasideSummaries();
-
-  return <PureIndexPage title={projectData.title} sider={sider} />;
+  return <PureIndexPage title={projectData.title} sider={props.pageContext.navigation} />;
 };
 
 interface Props {
@@ -55,7 +53,6 @@ interface Props {
 export function PureIndexPage(props: Props) {
   const lang = useLocale();
   const { t } = useTranslation('global');
-
   return (
     <>
       <Header heading={localizeSanityContent(props.title, lang)} ingress="" />

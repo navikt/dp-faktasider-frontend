@@ -8,6 +8,7 @@ import { useFaktasideContext } from '../FaktaSideContext';
 import { loggMeny } from '../../../utils/logging';
 import { UnmountClosed } from 'react-collapse';
 import { theme } from '../../../styles/theme';
+import { FaktasideSummary } from '../../../utils/faktasiderSummary/createFaktasideSummaries';
 
 const StyledOl = styled.ol`
   margin-bottom: 3.5rem;
