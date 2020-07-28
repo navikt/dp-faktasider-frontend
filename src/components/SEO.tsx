@@ -3,13 +3,11 @@ import { Helmet } from 'react-helmet';
 import { SupportedLanguage } from '../i18n/supportedLanguages';
 import withErrorBoundary from './withErrorBoundary';
 import { graphql, useStaticQuery } from 'gatsby';
-import { getUnixTime } from 'date-fns';
 
 interface Props {
   title: string;
   description: string;
   lang: SupportedLanguage;
-  publiseringsTidspunkt?: string;
 }
 
 interface SEOData {
@@ -83,10 +81,6 @@ function SEO(props: Props) {
         {
           property: `image`,
           content: imageUrl,
-        },
-        {
-          property: `og:updated_time`,
-          content: getUnixTime(new Date(props.publiseringsTidspunkt || '')),
         },
       ]}
     />
