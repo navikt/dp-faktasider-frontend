@@ -44,8 +44,8 @@ export const plugins = [
     options: {
       disableOnDev: true,
       reportOnly: false,
-      mergeScriptHashes: true,
-      mergeStyleHashes: true,
+      mergeScriptHashes: false,
+      mergeStyleHashes: false,
       mergeDefaultDirectives: false,
       directives: csp,
     },
