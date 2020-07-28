@@ -7,6 +7,7 @@ import { Translations } from '../src/types/translations';
 import { Modify } from '../src/utils/typeUtils';
 import { getPubliseringsTidspunkt } from './getPubliseringstidspunkt';
 import createFaktasideSummaries, { FaktasideSummary } from '../src/utils/faktasiderSummary/createFaktasideSummaries';
+import { isDevelopment } from '../src/utils/environment';
 
 export interface RawFaktasideData {
   id: string;
@@ -93,7 +94,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
   };
 
   reporter.info(`🚧 Lager redirect fra / til /no/`);
-  actions.createRedirect({ fromPath: `/`, toPath: `/no/`, isPermanent: true });
+  actions.createRedirect({ fromPath: `/`, toPath: `/no/`, isPermanent: true, redirectInBrowser: isDevelopment() });
   supportedLanguages.forEach((lang) => {
     const slug = `/${lang}/`;
     reporter.info(`🛬 Lager landingsside: ${slug}`);
