@@ -8,11 +8,11 @@ const secretSanityToken = process.env.SANITY_READ_TOKEN;
 const isProd = process.env.NODE_ENV === 'production';
 
 export const pathPrefix = `/arbeid`;
+const siteUrl = `https://www.nav.no${pathPrefix}`;
 
 export const siteMetadata = {
-  title: `Dagpenger - www.nav.no`,
-  description: `Dagpenger som arbeidsledig eller permittert`,
-  author: `NAV`,
+  siteUrl: siteUrl,
+  imagePath: '/images/navlogo.png',
 };
 
 export const plugins = [
@@ -35,7 +35,7 @@ export const plugins = [
   {
     resolve: `gatsby-plugin-canonical-urls`,
     options: {
-      siteUrl: `https://www.nav.no${pathPrefix}`,
+      siteUrl: siteUrl,
     },
   },
 ];

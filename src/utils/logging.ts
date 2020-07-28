@@ -21,7 +21,7 @@ const loggEvent = (event: string, ekstraData?: object) => {
 export const loggError = (error: Error, ekstraData?: object) =>
   loggEvent('Error', {
     ...ekstraData,
-    url: window.location.pathname,
+    siteUrl: window.location.pathname,
     msg: error.message,
     name: error.name,
     stack: error.stack,
