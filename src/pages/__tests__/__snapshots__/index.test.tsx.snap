@@ -131,6 +131,19 @@ exports[`Snapshottest landingsside 1`] = `
         Er du permittert, kan du ha rett til økomisk støtte og hjelp til å komme i arbeid.
       </p>
     </div>
+    <div
+      class="c4 c5"
+    >
+      <a
+        class="c6"
+        href="/no//test/"
+      >
+        Testside
+      </a>
+      <p>
+        Dette er testdata
+      </p>
+    </div>
   </div>
 </div>
 `;
