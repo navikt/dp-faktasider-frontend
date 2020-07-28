@@ -25,5 +25,4 @@ export default {
   'font-src': ['data:', '*.psplugin.com', '*.hotjar.com'].join(' '),
   'frame-src': ['video.qbrick.com/', 'vars.hotjar.com'].join(' '),
   'img-src': ['*.hotjar.com', 'www.google-analytics.com', '*.nav.no'].join(' '),
-  'report-uri': 'https://navdagpenger.report-uri.com/r/d/csp/enforce',
 };
