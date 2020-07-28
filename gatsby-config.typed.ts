@@ -42,7 +42,7 @@ export const plugins = [
   {
     resolve: `gatsby-plugin-csp`,
     options: {
-      disableOnDev: false,
+      disableOnDev: true,
       reportOnly: true,
       mergeScriptHashes: true,
       mergeStyleHashes: true,

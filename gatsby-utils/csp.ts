@@ -25,5 +25,9 @@ export default {
   'font-src': ['data:', '*.psplugin.com', '*.hotjar.com'].join(' '),
   'frame-src': ['video.qbrick.com/', 'vars.hotjar.com'].join(' '),
   'img-src': ['*.hotjar.com', 'www.google-analytics.com', '*.nav.no'].join(' '),
+<<<<<<< HEAD
   reportUri: 'https://navdagpenger.report-uri.com/r/d/csp/enforce',
+=======
+  'report-uri': 'https://navdagpenger.report-uri.com/r/d/csp/enforce',
+>>>>>>> df061d3... setter opp CSP - content security policy
 };
