@@ -23,13 +23,13 @@ function InnholdetErTilpasset(props: Props) {
   const [wordCountAfterFilter, setWordCountAfterFilter] = useState<number | undefined>();
 
   useEffect(() => {
-    setTimeout(() => {
-      if (!valgt.length) {
-        setFullWordCount(getWordCount(props.contentRef));
-      } else {
+    if (!valgt.length) {
+      setFullWordCount(getWordCount(props.contentRef));
+    } else {
+      setTimeout(() => {
         setWordCountAfterFilter(getWordCount(props.contentRef));
-      }
-    }, 500);
+      }, 500);
+    }
   }, [valgt, props.contentRef]);
 
   const removedWords = fullWordCount && wordCountAfterFilter ? fullWordCount - wordCountAfterFilter : undefined;
@@ -52,7 +52,7 @@ function InnholdetErTilpasset(props: Props) {
 }
 
 function getWordCount(ref: RefObject<HTMLDivElement>) {
-  return ref.current?.innerText.match(/\s+/g)?.length;
+  return ref.current?.innerText?.match(/\s+/g)?.length;
 }
 
 export default withErrorBoundary(InnholdetErTilpasset, 'InnholdetErTilpasset');
