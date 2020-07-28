@@ -23,7 +23,7 @@ const Background = styled.div`
 `;
 
 const StyledSidetittel = styled(Sidetittel)`
-  font-size: calc(1rem + 2vmin);
+  font-size: calc(1.5rem + 1vmin);
   margin-bottom: 0.4rem;
 `;
 
