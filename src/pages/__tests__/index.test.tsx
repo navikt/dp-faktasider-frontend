@@ -1,9 +1,10 @@
 import React from 'react';
-import { PureIndexPage } from '../../templates';
+import IndexPage from '../../templates';
 import { faktasiderSummaryMockData } from '../../utils/faktasiderSummary/faktasiderSummaryMockData';
 import { render } from '../../testUtils/customized-testing-library';
 
 test('Snapshottest landingsside', () => {
-  const { container } = render(<PureIndexPage title={'Arbeid'} sider={faktasiderSummaryMockData} />);
+  // @ts-ignore
+  const { container } = render(<IndexPage pageContext={{ title: 'Arbeid', summaries: faktasiderSummaryMockData }} />);
   expect(container).toMatchSnapshot();
 });

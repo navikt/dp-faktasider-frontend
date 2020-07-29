@@ -102,7 +102,7 @@ function reducer(
     case 'setData':
       return {
         ...faktaSideMockContext,
-        projectNavigation: faktasiderSummaryMockData,
+        project: { summaries: faktasiderSummaryMockData, title: 'Testdata' },
         ...action.data,
       };
     default:

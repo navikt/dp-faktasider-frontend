@@ -27,6 +27,7 @@ export interface RawFaktasideData {
 
 export interface Oppsett {
   faktasideSortering: { id: string }[];
+  title: Translations<string>;
 }
 
 export type LocalizedFaktasideData = Modify<
@@ -39,6 +40,11 @@ export type LocalizedFaktasideData = Modify<
   }
 >;
 
+export interface Project {
+  summaries: FaktasideSummary[];
+  title: string;
+}
+
 export type FaktasideContext = Modify<
   Omit<LocalizedFaktasideData, '_updatedAt'>,
   {
@@ -47,7 +53,7 @@ export type FaktasideContext = Modify<
     publiseringsTidspunkt: string;
     rawData: Pick<RawFaktasideData, 'title'>;
     slug: string;
-    projectNavigation: FaktasideSummary[];
+    project: Project;
   }
 >;
 
@@ -78,6 +84,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
         faktasideSortering {
           id
         }
+        title: _rawTitle
       }
     }
   `);
@@ -88,7 +95,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
   const pages = result.data.pages.edges.map((edge) => edge.node as RawFaktasideData) || [];
   // @ts-ignore
   const oppsett: Oppsett = result.data.oppsett;
-  const projectNavigation = {
+  const projectSummary = {
     no: createFaktasideSummaries(pages, oppsett, 'no'),
     en: createFaktasideSummaries(pages, oppsett, 'en'),
   };
@@ -98,10 +105,10 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
   supportedLanguages.forEach((lang) => {
     const slug = `/${lang}/`;
     reporter.info(`🛬 Lager landingsside: ${slug}`);
-    actions.createPage({
+    actions.createPage<Project>({
       path: slug,
       component: require.resolve('../src/templates/index.tsx'),
-      context: { navigation: projectNavigation[lang] },
+      context: { summaries: projectSummary[lang], title: localizeSanityContent(oppsett.title, lang) },
     });
   });
 
@@ -118,10 +125,16 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
       const localePath = `/${lang}/${slug}/`;
       reporter.info(`📄 Lager faktaside: ${localePath}`);
 
-      actions.createPage({
+      actions.createPage<FaktasideContext>({
         path: localePath,
         component: require.resolve('../src/templates/faktaside/FaktaSide.tsx'),
-        context: createFaktasideContext(page, lang, projectNavigation[lang]),
+        context: {
+          ...createFaktasideContext(page, lang),
+          project: {
+            summaries: projectSummary[lang],
+            title: localizeSanityContent(oppsett.title, lang),
+          },
+        },
       });
     });
   });
@@ -129,9 +142,8 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
 
 export function createFaktasideContext(
   page: RawFaktasideData,
-  lang: SupportedLanguage,
-  navigation: FaktasideSummary[]
-): FaktasideContext {
+  lang: SupportedLanguage
+): Omit<FaktasideContext, 'project'> {
   const localizedPage = localizeSanityContent(page, lang) as LocalizedFaktasideData;
   const parsedInnhold = parseRichText(localizedPage.innhold);
   const publiseringsTidspunkt = getPubliseringsTidspunkt(localizedPage);
@@ -145,6 +157,5 @@ export function createFaktasideContext(
     rawData: {
       title: page.title,
     },
-    projectNavigation: navigation,
   };
 }

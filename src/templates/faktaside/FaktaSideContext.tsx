@@ -8,7 +8,10 @@ const inital: FaktasideContext = {
   publiseringsTidspunkt: '',
   innhold: [],
   rawData: {},
-  projectNavigation: [],
+  project: {
+    summaries: [],
+    title: 'N/A',
+  },
 };
 
 const Context = createContext<FaktasideContext>(inital);

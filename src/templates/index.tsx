@@ -2,11 +2,10 @@ import React from 'react';
 import { Link, PageProps } from 'gatsby';
 import styled from 'styled-components/macro';
 import Header from './felles/Header';
-import { FaktasideSummary } from '../utils/faktasiderSummary/createFaktasideSummaries';
 import localizeSanityContent from '../i18n/localizeSanityContent';
 import { useLocale } from '../i18n/LocaleContext';
 import { useTranslation } from 'react-i18next';
-import useProjectData from '../utils/faktasiderSummary/useProjectData';
+import { Project } from '../../gatsby-utils/createFaktasider';
 
 const StyledElement = styled.div`
   background-color: white;
@@ -40,24 +39,14 @@ const KunTilgjengeligStyle = styled.p`
   margin: 1rem 0 !important;
 `;
 
-const IndexPage = (props: PageProps<{}, { navigation: FaktasideSummary[] }>) => {
-  const projectData = useProjectData();
-  return <PureIndexPage title={projectData.title} sider={props.pageContext.navigation} />;
-};
-
-interface Props {
-  title: string;
-  sider: FaktasideSummary[];
-}
-
-export function PureIndexPage(props: Props) {
+const IndexPage = (props: PageProps<{}, Project>) => {
   const lang = useLocale();
   const { t } = useTranslation('global');
   return (
     <>
-      <Header heading={localizeSanityContent(props.title, lang)} ingress="" />
+      <Header heading={localizeSanityContent(props.pageContext.title, lang)} ingress="" />
       <Style>
-        {props.sider.map((side) => (
+        {props.pageContext.summaries.map((side) => (
           <StyledElement key={side.id}>
             <StyledLink to={side.path}>{side.tittel}</StyledLink>
             {!side.tilgjengeligPåValgtSpråk && (
@@ -71,6 +60,6 @@ export function PureIndexPage(props: Props) {
       </Style>
     </>
   );
-}
+};
 
 export default IndexPage;

@@ -20,6 +20,7 @@ interface State {
 
 const StyledSlideDown = styled(SlideDown)`
   padding-top: 0.5rem;
+  word-break: break-word;
 `;
 
 const StyledTekstomrade = styled(Tekstomrade)`
@@ -48,21 +49,19 @@ class ErrorBoundary extends React.Component<Props, State> {
       const info = this.props.boundaryName;
 
       return (
-        <div>
-          <AlertStripeFeil>
-            <Normaltekst>Beklager, det skjedde en teknisk feil.</Normaltekst>
-            <EtikettLiten>
-              Feilen blir automatisk rapportert og vi jobber med å løse den så raskt som mulig. Prøv igjen om litt.
-            </EtikettLiten>
-            {isDevelopment() && (stackTrace || errormsg) && (
-              <StyledSlideDown title="Info - feilsøking">
-                <StyledTekstomrade>{errormsg || ''}</StyledTekstomrade>
-                <StyledTekstomrade>{info || ''}</StyledTekstomrade>
-                <StyledTekstomrade>{stackTrace || ''}</StyledTekstomrade>
-              </StyledSlideDown>
-            )}
-          </AlertStripeFeil>
-        </div>
+        <AlertStripeFeil>
+          <Normaltekst>Beklager, det skjedde en teknisk feil.</Normaltekst>
+          <EtikettLiten>
+            Feilen blir automatisk rapportert og vi jobber med å løse den så raskt som mulig. Prøv igjen om litt.
+          </EtikettLiten>
+          {isDevelopment() && (stackTrace || errormsg) && (
+            <StyledSlideDown title="Info - feilsøking">
+              <StyledTekstomrade>{errormsg || ''}</StyledTekstomrade>
+              <StyledTekstomrade>{info || ''}</StyledTekstomrade>
+              <StyledTekstomrade>{stackTrace || ''}</StyledTekstomrade>
+            </StyledSlideDown>
+          )}
+        </AlertStripeFeil>
       );
     }
 

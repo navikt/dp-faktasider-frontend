@@ -28,5 +28,8 @@ export const faktaSideMockContext: FaktasideContext = {
     no: true,
     en: false,
   },
-  projectNavigation: [],
+  project: {
+    summaries: [],
+    title: 'Test-title',
+  },
 };

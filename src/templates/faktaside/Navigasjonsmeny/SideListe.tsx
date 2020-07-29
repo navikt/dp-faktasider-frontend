@@ -91,7 +91,7 @@ function SideListe() {
 
   return (
     <StyledOl>
-      {faktasideContext.projectNavigation.map((side) => (
+      {faktasideContext.project.summaries.map((side) => (
         <li key={side.id}>
           <SideListeElement page={side} />
         </li>
