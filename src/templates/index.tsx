@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, PageProps } from 'gatsby';
 import styled from 'styled-components/macro';
-import Header from '../templates/felles/Header';
+import Header from './felles/Header';
 import useFaktasiderSumary, { FaktasideSummary } from '../utils/faktasiderSummary/useFaktasiderSumary';
 import localizeSanityContent from '../i18n/localizeSanityContent';
-import { useLocale } from '../i18n/LocaleContext';
 import { useTranslation } from 'react-i18next';
 import useProjectData from '../utils/faktasiderSummary/useProjectData';
+import { LandingssideProps } from '../../gatsby-utils/createLandingsside';
+import SEO from '../components/SEO';
+import { useLocale } from '../i18n/LocaleContext';
 
 const StyledElement = styled.div`
   background-color: white;
@@ -40,7 +42,7 @@ const KunTilgjengeligStyle = styled.p`
   margin: 1rem 0 !important;
 `;
 
-const IndexPage = () => {
+const IndexPage = (props: PageProps<{}, LandingssideProps>) => {
   const projectData = useProjectData();
   const sider = useFaktasiderSumary();
 
@@ -53,12 +55,17 @@ interface Props {
 }
 
 export function PureIndexPage(props: Props) {
-  const lang = useLocale();
   const { t } = useTranslation('global');
+  const lang = useLocale();
 
   return (
     <>
       <Header heading={localizeSanityContent(props.title, lang)} ingress="" />
+      <SEO
+        lang={lang}
+        description="Har du blitt arbeidsledig eller permittert kan NAV hjelpe deg" // TODO denne bør komme fra sanity med språkversjonering
+        title={props.title} // TODO denne bør ha språkversjonering i sanity
+      />
       <Style>
         {props.sider.map((side) => (
           <StyledElement key={side.id}>

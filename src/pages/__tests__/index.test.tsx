@@ -1,5 +1,5 @@
 import React from 'react';
-import { PureIndexPage } from '../index';
+import { PureIndexPage } from '../../templates';
 import { faktasiderSummaryMockData } from '../../utils/faktasiderSummary/faktasiderSummaryMockData';
 import { render } from '../../testUtils/customized-testing-library';
 
