@@ -20,6 +20,7 @@ interface State {
 
 const StyledSlideDown = styled(SlideDown)`
   padding-top: 0.5rem;
+  word-break: break-word;
 `;
 
 const StyledTekstomrade = styled(Tekstomrade)`
