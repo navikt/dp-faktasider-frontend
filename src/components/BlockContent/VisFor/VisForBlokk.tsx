@@ -11,7 +11,7 @@ interface Props {
 }
 
 const VisForBlokk = (props: Props) => (
-  <VisFor visFor={props.node.visFor}>
+  <VisFor visForConfig={props.node.visFor}>
     <BlockContent blocks={props.node.innhold} />
   </VisFor>
 );

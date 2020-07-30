@@ -35,13 +35,11 @@ function GroupMarkup(props: Props) {
       condition={!!visPaaSider}
       wrapper={(children) => <VisPaaSide visPaaSider={visPaaSider} children={children} />}
     >
-      <ConditionalWrapper condition={!!visFor} wrapper={(children) => <VisFor visFor={visFor} children={children} />}>
-        <ConditionalWrapper
-          condition={!!props.node.blockConfig?.erUtkast}
-          wrapper={(children) => <Utkast children={children} />}
-        >
-          {getContent(props.node)}
-        </ConditionalWrapper>
+      <ConditionalWrapper
+        condition={!!props.node.blockConfig?.erUtkast}
+        wrapper={(children) => <Utkast children={children} />}
+      >
+        <VisFor visForConfig={visFor}>{getContent(props.node)}</VisFor>
       </ConditionalWrapper>
     </ConditionalWrapper>
   );

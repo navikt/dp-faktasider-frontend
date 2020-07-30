@@ -21,16 +21,11 @@ function ListItemRenderer(props: Props): ReactNode {
 
   return (
     <ConditionalWrapper
-      condition={!!commonVisForConfig?.visFor}
-      wrapper={(children) => <VisFor children={children} visFor={commonVisForConfig?.visFor} />}
+      condition={!!commonVisForConfig?.visPaa}
+      wrapper={(children) => <VisPaaSide children={children} visPaaSider={commonVisForConfig?.visPaa} />}
     >
-      <ConditionalWrapper
-        condition={!!commonVisForConfig?.visPaa}
-        wrapper={(children) => <VisPaaSide children={children} visPaaSider={commonVisForConfig?.visPaa} />}
-      >
-        <ConditionalWrapper condition={heleErUtkast} wrapper={(children) => <UtkastInline children={children} />}>
-          {serializedListItem}
-        </ConditionalWrapper>
+      <ConditionalWrapper condition={heleErUtkast} wrapper={(children) => <UtkastInline children={children} />}>
+        <VisFor visForConfig={commonVisForConfig?.visFor}>{serializedListItem}</VisFor>
       </ConditionalWrapper>
     </ConditionalWrapper>
   );

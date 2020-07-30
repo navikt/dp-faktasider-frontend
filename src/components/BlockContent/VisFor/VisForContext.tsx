@@ -17,9 +17,11 @@ const initial = {
   dispatch: (action: Actions): void => undefined,
 };
 
+export type VisForContextI = typeof initial;
+
 export const VisForContext = createContext(initial);
 
-export const useVisForContext = () => useContext(VisForContext);
+export const useVisForContext = () => useContext<VisForContextI>(VisForContext);
 
 function reducer(state: typeof initial.value, action: Actions) {
   switch (action.type) {

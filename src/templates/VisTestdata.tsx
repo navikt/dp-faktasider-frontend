@@ -14,7 +14,6 @@ import Tekstomrade from 'nav-frontend-tekstomrade';
 import { groupParserTestData } from '../utils/richTextUtils/parser/groupParser/groupParser.testdata';
 import { utkastTestData } from '../components/BlockContent/utkast/Utkast.testdata';
 import { visForAnnotationDeltTekstTestData } from '../components/BlockContent/VisFor/visForAnnotationDeltTekstTestData';
-import TestProvider from '../testUtils/TestProvider';
 import TestFaktaside from '../testUtils/TestFaktaside';
 
 type Testdata = {

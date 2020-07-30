@@ -8,4 +8,5 @@ export const utkastTestData = [
   createSanityBlock('Frittstående tekst', 'normal'),
   createSanityBlock('Overskrift utkast', 'h2', ['utkast']),
   createSanityBlock('Påfølgende innhold', 'normal'),
+  createSanityBlock('Overskrift vanlig', 'h2'),
 ] as SanityBlock[];
