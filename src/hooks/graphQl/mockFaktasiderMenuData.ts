@@ -1,6 +1,15 @@
 import { MenuItemData } from './useFaktasiderMenuData';
+import { faktaSideMockContext } from '../../testUtils/faktaSideMockContext';
 
 export const mockFaktasiderMenuData: MenuItemData[] = [
+  {
+    path: faktaSideMockContext.slug,
+    tittel: faktaSideMockContext.title || 'test',
+    språk: faktaSideMockContext.lang,
+    tilgjengeligPåValgtSpråk: true,
+    ingress: faktaSideMockContext.ingress || 'ingress',
+    id: faktaSideMockContext.id,
+  },
   {
     path: '/no/arbeidsledig/',
     tittel: 'Arbeidsledig',

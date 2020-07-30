@@ -1,8 +1,9 @@
 import React from 'react';
 import parseRichText from '../../../utils/richTextUtils/parser/parseRichText';
 import BlockContent from '../BlockContent';
-import { render } from '../../../testUtils/customized-testing-library';
+import { render, within } from '../../../testUtils/customized-testing-library';
 import { utkastTestData } from './Utkast.testdata';
+import TestFaktaside from '../../../testUtils/TestFaktaside';
 
 describe('utkast', () => {
   const parsedInnhold = parseRichText(utkastTestData);
@@ -27,5 +28,14 @@ describe('utkast', () => {
     const result = render(<BlockContent blocks={parsedInnhold} />);
     expect(result.queryByText('Overskrift utkast')).toBeNull();
     expect(result.queryByText('Påfølgende innhold')).toBeNull();
+  });
+
+  test('Dersom en hel overskrift er merket med utkast skal ikke bolken vises i meny', () => {
+    const result = render(<TestFaktaside innhold={parsedInnhold} />);
+
+    const desktopInnholdsfortegnelse = result.getAllByLabelText(/innholdsfortegnelse/i)[0];
+
+    expect(within(desktopInnholdsfortegnelse).queryByText('Overskrift utkast')).toBeNull();
+    within(desktopInnholdsfortegnelse).getByText('Overskrift vanlig');
   });
 });

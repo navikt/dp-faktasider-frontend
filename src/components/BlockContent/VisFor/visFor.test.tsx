@@ -32,11 +32,17 @@ describe('visFor-logikk', () => {
 
     fireEvent.click(studentCheckbox);
 
-    expect(result.queryByText(innholdPermittert)).toBeNull();
-    expect(result.queryByText(bolkPermittert)).toBeNull();
+    const mainContent = result.getByRole('main');
+    expect(within(mainContent).queryByText(innholdPermittert)).toBeNull();
+    expect(within(mainContent).queryByText(bolkPermittert)).toBeNull();
 
-    result.getByText(innholdStudent);
-    result.getByLabelText(bolkStudent);
+    within(mainContent).getByText(innholdStudent);
+    within(mainContent).getByLabelText(bolkStudent);
+
+    const meny = result.getAllByLabelText(/innholdsfortegnelse/i)[0];
+    expect(within(meny).queryByText(bolkPermittert)).toBeNull();
+
+    within(meny).getByText(bolkStudent);
   });
 
   test('Hvis man fjerner filtrering vises alt innhold', async () => {

@@ -101,6 +101,19 @@ exports[`Snapshottest landingsside 1`] = `
     >
       <a
         class="c6"
+        href="/test"
+      >
+        Testside
+      </a>
+      <p>
+        Dette er testdata
+      </p>
+    </div>
+    <div
+      class="c4 c5"
+    >
+      <a
+        class="c6"
         href="/no/arbeidsledig/"
       >
         Arbeidsledig

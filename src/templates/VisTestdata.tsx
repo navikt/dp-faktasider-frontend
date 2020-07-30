@@ -4,9 +4,8 @@ import { FaktasideContext } from '../../gatsby-utils/createFaktasider';
 import { visForTestData } from '../components/BlockContent/VisFor/visFor.testdata';
 import { faktaSideMockContext } from '../testUtils/faktaSideMockContext';
 import styled from 'styled-components/macro';
-import { Sidetittel, Undertittel, Normaltekst } from 'nav-frontend-typografi';
+import { Normaltekst, Sidetittel, Undertittel } from 'nav-frontend-typografi';
 import { Knapp } from 'nav-frontend-knapper';
-import FaktaSide from './faktaside/FaktaSide';
 import parseRichText from '../utils/richTextUtils/parser/parseRichText';
 import { flattenH2TestData } from '../utils/richTextUtils/parser/flattenH2Versions/flattenH2Versions.testdata';
 import { makeUniqueIdTestData } from '../utils/richTextUtils/parser/makeUniqeGroupIDs/makeUniqeGroupIDs.testdata';
@@ -15,6 +14,7 @@ import Tekstomrade from 'nav-frontend-tekstomrade';
 import { groupParserTestData } from '../utils/richTextUtils/parser/groupParser/groupParser.testdata';
 import { utkastTestData } from '../components/BlockContent/utkast/Utkast.testdata';
 import { visForAnnotationDeltTekstTestData } from '../components/BlockContent/VisFor/visForAnnotationDeltTekstTestData';
+import TestFaktaside from '../testUtils/TestFaktaside';
 
 type Testdata = {
   data: Partial<FaktasideContext>;
@@ -117,8 +117,8 @@ function VisTestdata() {
         <Sidetittel>Visualisering av testdata brukt i automatiske tester</Sidetittel>
         <Undertittel>Velg testdata:</Undertittel>
         <Normaltekst>
-          Ikke all data her blir mocket, bla bruker Navigasjonsmenyen staticQuery som er litt vanskelig å mocke
-          run-time.
+          Ikke all data her blir mocket, komponenter som bruker staticQuery er litt vanskelig å mocke run-time, men
+          navigasjonsmenyen har blitt mocket med en test-provider.
         </Normaltekst>
         {testData.map((data) => (
           <StyledKnapp key={data.name} onClick={() => dispatch({ type: 'setData', data: data.data })}>
@@ -126,8 +126,7 @@ function VisTestdata() {
           </StyledKnapp>
         ))}
       </Style>
-      {/* @ts-ignore */}
-      {valgtData && <FaktaSide pageContext={valgtData} />}
+      {valgtData && <TestFaktaside partialContext={valgtData} />}
       {valgtData && (
         <StyledTekstområde>
           {'Page context: \n\n' + JSON.stringify(valgtData, null, 4)?.replace(/ /g, '\u00a0')}

@@ -13,7 +13,7 @@ interface Props {
 const VisForAnnotation = (props: Props) => {
   if (props.mark.visFor) {
     return (
-      <VisFor inline={true} visFor={props.mark.visFor}>
+      <VisFor inline={true} visForConfig={props.mark.visFor}>
         {props.children}
       </VisFor>
     );
