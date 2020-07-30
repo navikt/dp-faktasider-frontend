@@ -4,6 +4,6 @@ import { mockFaktasiderMenuData } from '../../hooks/graphQl/mockFaktasiderMenuDa
 import { render } from '../../testUtils/customized-testing-library';
 
 test('Snapshottest landingsside', () => {
-  const { container } = render(<PureIndexPage title={'Arbeid'} sider={mockFaktasiderMenuData} />);
+  const { container } = render(<PureIndexPage title={'Arbeid'} sider={mockFaktasiderMenuData} path={'test'} />);
   expect(container).toMatchSnapshot();
 });

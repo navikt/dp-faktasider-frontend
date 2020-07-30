@@ -34,12 +34,6 @@ export const plugins = [
     },
   },
   {
-    resolve: `gatsby-plugin-canonical-urls`,
-    options: {
-      siteUrl: siteUrl,
-    },
-  },
-  {
     resolve: `gatsby-plugin-csp`,
     options: {
       disableOnDev: true,

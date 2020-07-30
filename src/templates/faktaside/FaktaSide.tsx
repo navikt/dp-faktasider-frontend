@@ -36,7 +36,7 @@ function FaktaSide(props: FaktaSideProps) {
   const parsedInnhold = page.innhold;
   return (
     <FaktasideProvider {...page}>
-      <SEO title={tittel} description={description} lang={lang} />
+      <SEO title={tittel} description={description} lang={lang} path={props.location.pathname} />
       <FaktaSideLayout header={tittel} ingress={description} publiseringsTidspunkt={page.publiseringsTidspunkt}>
         <GraphQLErrorList errors={props.errors} />
         <InnholdetErTilpasset contentRef={contentRef} />

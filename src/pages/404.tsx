@@ -24,7 +24,7 @@ const NotFoundPage = () => {
 
   return (
     <Style>
-      <SEO title="404: Not found" description="" lang={lang} />
+      <SEO title="404: Not found" description="" lang={lang} path={'/404/'} />
       <Innholdstittel>{t('404')}</Innholdstittel>
       <Normaltekst>{t('404-sub')}</Normaltekst>
       <StyledNormaltekst>{t('404-andre-sider')}</StyledNormaltekst>

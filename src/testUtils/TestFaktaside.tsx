@@ -18,7 +18,7 @@ function TestFaktaside(props: Props) {
 
   return (
     /* @ts-ignore */
-    <FaktaSide pageContext={context} />
+    <FaktaSide pageContext={context} location={{ pathname: '/test/' }} />
   );
 }
 

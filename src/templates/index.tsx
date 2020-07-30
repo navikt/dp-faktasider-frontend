@@ -46,12 +46,13 @@ const IndexPage = (props: PageProps<{}, LandingssideProps>) => {
   const projectData = useProjectData();
   const sider = useFaktasiderMenuData();
 
-  return <PureIndexPage title={projectData.title} sider={sider} />;
+  return <PureIndexPage title={projectData.title} sider={sider} path={props.location.pathname} />;
 };
 
 interface Props {
   title: string;
   sider: MenuItemData[];
+  path: string;
 }
 
 export function PureIndexPage(props: Props) {
@@ -65,6 +66,7 @@ export function PureIndexPage(props: Props) {
         lang={lang}
         description="Har du blitt arbeidsledig eller permittert kan NAV hjelpe deg" // TODO denne bør komme fra sanity med språkversjonering
         title={props.title} // TODO denne bør ha språkversjonering i sanity
+        path={props.path}
       />
       <Style>
         {props.sider.map((side) => (

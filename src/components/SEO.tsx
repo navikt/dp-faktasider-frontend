@@ -8,6 +8,7 @@ interface Props {
   title: string;
   description: string;
   lang: SupportedLanguage;
+  path: string;
 }
 
 function SEO(props: Props) {
@@ -21,6 +22,12 @@ function SEO(props: Props) {
       }}
       title={props.title}
       titleTemplate={`%s | www.nav.no`}
+      link={[
+        {
+          rel: 'canonical',
+          href: `${metaData.siteUrl}${props.path}`,
+        },
+      ]}
       meta={[
         {
           name: `description`,
