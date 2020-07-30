@@ -24,5 +24,5 @@ export default {
   ].join(' '),
   'font-src': ['data:', '*.psplugin.com', '*.hotjar.com'].join(' '),
   'frame-src': ['video.qbrick.com/', 'vars.hotjar.com'].join(' '),
-  'img-src': ['*.hotjar.com', 'www.google-analytics.com', '*.nav.no'].join(' '),
+  'img-src': ['*.hotjar.com', 'www.google-analytics.com', '*.nav.no', 'data:'].join(' '),
 };
