@@ -2,10 +2,10 @@ import React from 'react';
 import { Link, PageProps } from 'gatsby';
 import styled from 'styled-components/macro';
 import Header from './felles/Header';
-import useFaktasiderSumary, { FaktasideSummary } from '../utils/faktasiderSummary/useFaktasiderSumary';
+import useFaktasiderMenuData, { MenuItemData } from '../hooks/graphQl/useFaktasiderMenuData';
 import localizeSanityContent from '../i18n/localizeSanityContent';
 import { useTranslation } from 'react-i18next';
-import useProjectData from '../utils/faktasiderSummary/useProjectData';
+import useProjectData from '../hooks/graphQl/useProjectData';
 import { LandingssideProps } from '../../gatsby-utils/createLandingsside';
 import SEO from '../components/SEO';
 import { useLocale } from '../i18n/LocaleContext';
@@ -44,14 +44,14 @@ const KunTilgjengeligStyle = styled.p`
 
 const IndexPage = (props: PageProps<{}, LandingssideProps>) => {
   const projectData = useProjectData();
-  const sider = useFaktasiderSumary();
+  const sider = useFaktasiderMenuData();
 
   return <PureIndexPage title={projectData.title} sider={sider} />;
 };
 
 interface Props {
   title: string;
-  sider: FaktasideSummary[];
+  sider: MenuItemData[];
 }
 
 export function PureIndexPage(props: Props) {

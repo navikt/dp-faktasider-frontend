@@ -14,7 +14,7 @@ interface Side {
   };
 }
 
-export interface FaktasideSummary {
+export interface MenuItemData {
   path: string;
   tittel: string;
   språk: SupportedLanguage;
@@ -23,9 +23,9 @@ export interface FaktasideSummary {
   id: string;
 }
 
-function useFaktasiderSumary(): FaktasideSummary[] {
+function useFaktasiderMenuData(): MenuItemData[] {
   const data = useStaticQuery(graphql`
-    query OtherPages {
+    query MenuData {
       oppsett: sanityOppsett {
         faktasideSortering {
           id
@@ -74,4 +74,4 @@ function useFaktasiderSumary(): FaktasideSummary[] {
   });
 }
 
-export default useFaktasiderSumary;
+export default useFaktasiderMenuData;

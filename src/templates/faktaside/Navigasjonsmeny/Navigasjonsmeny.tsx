@@ -5,7 +5,7 @@ import { useDekoratorPopdownOffset } from './useDekoratorPopdownOffset';
 import SideListe from './SideListe';
 import MobilmenyWrapper from './MobilmenyWrapper';
 import { theme } from '../../../styles/theme';
-import useProjectData from '../../../utils/faktasiderSummary/useProjectData';
+import useProjectData from '../../../hooks/graphQl/useProjectData';
 import { Undertittel } from 'nav-frontend-typografi';
 import useUniqueId from '../../../utils/useUniqueId';
 

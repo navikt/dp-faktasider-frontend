@@ -3,7 +3,7 @@ import { useReducer } from 'react';
 import { Link } from 'gatsby';
 import styled, { css } from 'styled-components/macro';
 import withErrorBoundary from '../../../components/withErrorBoundary';
-import useFaktasiderSumary, { FaktasideSummary } from '../../../utils/faktasiderSummary/useFaktasiderSumary';
+import useFaktasiderMenuData, { MenuItemData } from '../../../hooks/graphQl/useFaktasiderMenuData';
 import Innholdsfortegnelse from '../InnholdsMeny/Innholdsfortegnelse';
 import { useFaktasideContext } from '../FaktaSideContext';
 import { loggMeny } from '../../../utils/logging';
@@ -52,7 +52,7 @@ const StyledButton = styled.button`
   text-align: start;
 `;
 
-function SideListeElement(props: { page: FaktasideSummary }) {
+function SideListeElement(props: { page: MenuItemData }) {
   const faktasideContext = useFaktasideContext();
   const [open, toggle] = useReducer((state) => !state, true);
 
@@ -87,7 +87,7 @@ function SideListeElement(props: { page: FaktasideSummary }) {
 }
 
 function SideListe() {
-  const otherPages = useFaktasiderSumary();
+  const otherPages = useFaktasiderMenuData();
 
   return (
     <StyledOl>

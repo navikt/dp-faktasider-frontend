@@ -4,14 +4,6 @@ import FaktaSide from '../templates/faktaside/FaktaSide';
 import { Block } from '../utils/richTextUtils/richTextTypes';
 import { faktaSideMockContext } from './faktaSideMockContext';
 
-jest.mock('../components/SEO', () => () => null);
-
-jest.mock('../utils/faktasiderSummary/useProjectData', () => () => ({ title: 'Testtittel' }));
-
-jest.mock('../utils/faktasiderSummary/useFaktasiderSumary', () => () => {
-  return require('../utils/faktasiderSummary/faktasiderSummaryMockData').faktasiderSummaryMockData;
-});
-
 type Props = {
   partialContext?: Partial<FaktasideContext>;
   innhold?: Block[];

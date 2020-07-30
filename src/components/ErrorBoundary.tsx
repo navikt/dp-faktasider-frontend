@@ -6,7 +6,7 @@ import SlideDown from './SlideDown';
 import styled from 'styled-components/macro';
 import { loggError } from '../utils/logging';
 import { EtikettLiten, Normaltekst } from 'nav-frontend-typografi';
-import { isDevelopment } from '../utils/environment';
+import { isDevelopment, isTest } from '../utils/environment';
 
 interface Props {
   boundaryName?: string;
@@ -38,6 +38,9 @@ class ErrorBoundary extends React.Component<Props, State> {
   }
 
   componentDidCatch(error, errorInfo) {
+    if (isTest()) {
+      throw error;
+    }
     this.setState({ hasError: true, error, errorInfo });
     loggError(error, { errorInfo, boundaryName: this.props.boundaryName });
   }
