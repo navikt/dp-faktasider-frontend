@@ -8,6 +8,7 @@ import withErrorBoundary from '../../../components/withErrorBoundary';
 import { theme } from '../../../styles/theme';
 import { useDekoratorPopdownOffset } from '../Navigasjonsmeny/useDekoratorPopdownOffset';
 import useUniqueId from '../../../utils/useUniqueId';
+import { UnmountClosed } from 'react-collapse';
 
 type NavProps = { offsetTop: number };
 
@@ -40,8 +41,11 @@ function Filtrering(props: Props) {
   const visForContext = useVisForContext();
   const titleId = useUniqueId('filtrering');
   const offsetTop = useDekoratorPopdownOffset();
+  const valgt = visForContext.value.checked;
+  const ingenPasserMeg = visForContext.value.ingenPasserMeg;
+  const tilgjengeligeValg = visForContext.value.valg;
 
-  if (visForContext.value.valg.length === 0) {
+  if (tilgjengeligeValg.length === 0) {
     return null;
   }
 
@@ -50,12 +54,12 @@ function Filtrering(props: Props) {
       <Undertittel id={titleId}>Tilpass innhold</Undertittel>
       <Normaltekst>Tilpass innholdet på denne siden ved å velge det som passer din situasjon best:</Normaltekst>
       <StyledUl>
-        {visForContext.value.valg.map((valg) => (
+        {tilgjengeligeValg.map((valg) => (
           <li key={valg}>
             <Checkbox
               label={valg}
               onChange={() => visForContext.dispatch({ type: 'toggle', key: valg })}
-              checked={visForContext.value.checked.includes(valg)}
+              checked={valgt.includes(valg)}
             />
           </li>
         ))}
@@ -64,11 +68,17 @@ function Filtrering(props: Props) {
             <Checkbox
               label={'Ingen valg passer'}
               onChange={() => visForContext.dispatch({ type: 'toggleIngenPasser' })}
-              checked={visForContext.value.ingenPasserMeg}
+              checked={ingenPasserMeg}
             />
           </li>
         )}
       </StyledUl>
+      <UnmountClosed isOpened={valgt.length > 0}>
+        Innholdet er tilpasset til deg som er {valgt.map((it) => it.toLowerCase()).join(' & ')}.
+      </UnmountClosed>
+      <UnmountClosed isOpened={ingenPasserMeg}>
+        Innholdet er tilpasset til deg som ikke er {tilgjengeligeValg.map((it) => it.toLowerCase()).join(' eller ')}.
+      </UnmountClosed>
     </StyledNav>
   );
 }
