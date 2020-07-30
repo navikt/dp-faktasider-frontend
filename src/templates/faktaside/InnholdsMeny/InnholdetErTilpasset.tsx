@@ -23,13 +23,14 @@ function InnholdetErTilpasset(props: Props) {
   const [wordCountAfterFilter, setWordCountAfterFilter] = useState<number | undefined>();
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       if (!valgt.length) {
         setFullWordCount(getWordCount(props.contentRef));
       } else {
         setWordCountAfterFilter(getWordCount(props.contentRef));
       }
     }, 500);
+    return () => clearTimeout(timeout);
   }, [valgt, props.contentRef]);
 
   const removedWords = fullWordCount && wordCountAfterFilter ? fullWordCount - wordCountAfterFilter : undefined;

@@ -1,9 +1,9 @@
 import React from 'react';
-import { PureIndexPage } from '../index';
-import { faktasiderSummaryMockData } from '../../utils/faktasiderSummary/faktasiderSummaryMockData';
+import { PureIndexPage } from '../../templates';
+import { mockFaktasiderMenuData } from '../../hooks/graphQl/mockFaktasiderMenuData';
 import { render } from '../../testUtils/customized-testing-library';
 
 test('Snapshottest landingsside', () => {
-  const { container } = render(<PureIndexPage title={'Arbeid'} sider={faktasiderSummaryMockData} />);
+  const { container } = render(<PureIndexPage title={'Arbeid'} sider={mockFaktasiderMenuData} />);
   expect(container).toMatchSnapshot();
 });

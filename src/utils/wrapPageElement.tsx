@@ -7,8 +7,8 @@ import { VisForContextProvider } from '../components/BlockContent/VisFor/VisForC
 import { DevContextProvider } from '../components/DevKnapper/DevContext';
 
 const wrapPageElement = ({ element, props }) => {
-  const path = props.path || props.location.pathname || '';
-  const lang = path.includes('/en/') ? 'en' : 'no';
+  const langFromPath = props.location.pathname.includes('/en/') ? 'en' : 'no';
+  const lang = props.pageContext.lang || langFromPath;
   i18nextConfig.changeLanguage(lang);
 
   return (

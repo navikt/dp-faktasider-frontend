@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { SupportedLanguage } from '../i18n/supportedLanguages';
 import withErrorBoundary from './withErrorBoundary';
-import { graphql, useStaticQuery } from 'gatsby';
+import useMetadata from '../hooks/graphQl/useMetadata';
 
 interface Props {
   title: string;
@@ -10,28 +10,8 @@ interface Props {
   lang: SupportedLanguage;
 }
 
-interface SEOData {
-  site: {
-    siteMetadata: {
-      imagePath: string;
-      siteUrl: string;
-    };
-  };
-}
-
 function SEO(props: Props) {
-  const data: SEOData = useStaticQuery(graphql`
-    query SEO {
-      site {
-        siteMetadata {
-          imagePath
-          siteUrl
-        }
-      }
-    }
-  `);
-  const metaData = data.site.siteMetadata;
-
+  const metaData = useMetadata();
   const imageUrl = metaData.siteUrl + metaData.imagePath;
 
   return (

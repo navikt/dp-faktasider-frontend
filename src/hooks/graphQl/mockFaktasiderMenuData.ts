@@ -1,6 +1,6 @@
-import { FaktasideSummary } from './useFaktasiderSumary';
+import { MenuItemData } from './useFaktasiderMenuData';
 
-export const faktasiderSummaryMockData: FaktasideSummary[] = [
+export const mockFaktasiderMenuData: MenuItemData[] = [
   {
     path: '/no/arbeidsledig/',
     tittel: 'Arbeidsledig',
