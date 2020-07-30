@@ -3,6 +3,7 @@ import { FaktasideContext } from '../../gatsby-utils/createFaktasider';
 import FaktaSide from '../templates/faktaside/FaktaSide';
 import { Block } from '../utils/richTextUtils/richTextTypes';
 import { faktaSideMockContext } from './faktaSideMockContext';
+import TestProvider from './TestProvider';
 
 type Props = {
   partialContext?: Partial<FaktasideContext>;
@@ -17,8 +18,10 @@ function TestFaktaside(props: Props) {
   };
 
   return (
-    /* @ts-ignore */
-    <FaktaSide pageContext={context} location={{ pathname: '/test/' }} />
+    <TestProvider>
+      {/* @ts-ignore */}
+      <FaktaSide pageContext={context} location={{ pathname: '/test/' }} />
+    </TestProvider>
   );
 }
 

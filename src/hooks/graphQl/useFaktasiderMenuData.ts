@@ -3,6 +3,7 @@ import { useLocale } from '../../i18n/LocaleContext';
 import { Translations } from '../../types/translations';
 import { SupportedLanguage, supportedLanguages } from '../../i18n/supportedLanguages';
 import localizeSanityContent from '../../i18n/localizeSanityContent';
+import { useTestContext } from '../../testUtils/TestProvider';
 
 interface Side {
   title?: Translations<string>;
@@ -88,6 +89,11 @@ export function createMenuItemsData(data: GraphQlData, lang: SupportedLanguage):
 function useFaktasiderMenuData(): MenuItemData[] {
   const data: GraphQlData = useStaticQuery(faktaSideMenyDataQuery);
   const lang = useLocale();
+  const testContext = useTestContext();
+
+  if (testContext.isTest) {
+    return testContext.menuData;
+  }
 
   return createMenuItemsData(data, lang);
 }
