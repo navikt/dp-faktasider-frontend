@@ -11,7 +11,7 @@ export function useInnholdsListe(): Group[] {
     return [];
   }
 
-  let h2Groups = innhold.filter((block) => isH2Group(block) && !block.blockConfig?.erUtkast) as Group[];
+  let h2Groups = innhold.filter((block) => isH2Group(block)) as Group[];
 
   if (relatertInformasjon) {
     const relatertInnformasjon: Group = {

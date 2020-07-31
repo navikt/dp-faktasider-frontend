@@ -12,6 +12,7 @@ import { loggMeny } from '../../../utils/logging';
 import { useVisForContext } from '../../../components/BlockContent/VisFor/VisForContext';
 import { UnmountClosed } from 'react-collapse';
 import { visBasertPåFiltrering } from '../../../components/BlockContent/VisFor/VisFor';
+import Utkast from '../../../components/BlockContent/utkast/Utkast';
 
 const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
   display: block;
@@ -57,14 +58,16 @@ function MenuItem(props: { item: Group; current: boolean }) {
   };
 
   return (
-    <UnmountClosed isOpened={visBasertPåFiltrering(visForContext, props.item.blockConfig?.visFor).vis}>
-      <li key={props.item.blockConfig?.id}>
-        <SmoothScroll />
-        <StyledLenke erValgt={props.current} href={`#${props.item.blockConfig?.id}`} onClick={handleClick}>
-          {props.item.title}
-        </StyledLenke>
-      </li>
-    </UnmountClosed>
+    <Utkast erUtkast={!!props.item.blockConfig?.erUtkast}>
+      <UnmountClosed isOpened={visBasertPåFiltrering(visForContext, props.item.blockConfig?.visFor).vis}>
+        <li key={props.item.blockConfig?.id}>
+          <SmoothScroll />
+          <StyledLenke erValgt={props.current} href={`#${props.item.blockConfig?.id}`} onClick={handleClick}>
+            {props.item.title}
+          </StyledLenke>
+        </li>
+      </UnmountClosed>
+    </Utkast>
   );
 }
 
