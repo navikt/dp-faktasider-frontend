@@ -9,6 +9,9 @@ import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import { useFaktasideContext } from '../FaktaSideContext';
 import { loggMeny } from '../../../utils/logging';
+import { useVisForContext } from '../../../components/BlockContent/VisFor/VisForContext';
+import { UnmountClosed } from 'react-collapse';
+import { visBasertPåFiltrering } from '../../../components/BlockContent/VisFor/VisFor';
 
 const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
   display: block;
@@ -46,6 +49,7 @@ function useCurrentlyViewedGroup(items: Group[]): Group | undefined {
 
 function MenuItem(props: { item: Group; current: boolean }) {
   const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
+  const visForContext = useVisForContext();
 
   const handleClick = () => {
     activateSmoothScroll();
@@ -53,12 +57,14 @@ function MenuItem(props: { item: Group; current: boolean }) {
   };
 
   return (
-    <li key={props.item.blockConfig?.id}>
-      <SmoothScroll />
-      <StyledLenke erValgt={props.current} href={`#${props.item.blockConfig?.id}`} onClick={handleClick}>
-        {props.item.title}
-      </StyledLenke>
-    </li>
+    <UnmountClosed isOpened={visBasertPåFiltrering(visForContext, props.item.blockConfig?.visFor).vis}>
+      <li key={props.item.blockConfig?.id}>
+        <SmoothScroll />
+        <StyledLenke erValgt={props.current} href={`#${props.item.blockConfig?.id}`} onClick={handleClick}>
+          {props.item.title}
+        </StyledLenke>
+      </li>
+    </UnmountClosed>
   );
 }
 
