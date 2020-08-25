@@ -36,16 +36,9 @@ function Utkast(props: Props) {
   }
 
   if (visSomUtkast) {
-    if (props.inline) {
-      return (
-        <Style as="span" title="Dette vises ikke i prod">
-          {props.children}
-        </Style>
-      );
-    }
     return (
-      <Style title="Dette vises ikke i prod">
-        <Label>Utkast</Label>
+      <Style as={props.inline ? 'span' : undefined} title="Dette vises ikke i prod">
+        {!props.inline && <Label>Utkast</Label>}
         {props.children}
       </Style>
     );
