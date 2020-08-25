@@ -7,6 +7,8 @@ import withErrorBoundary from '../../withErrorBoundary';
 
 interface Props {
   children: ReactNode;
+  erUtkast?: boolean;
+  inline?: boolean;
 }
 
 const Style = styled.div`
@@ -26,29 +28,27 @@ const Label = styled.div`
 
 function Utkast(props: Props) {
   const devContext = useDevContext();
-  if (isProduction() || !devContext.value.visUtkast) {
-    return null;
+  const vis = props.erUtkast !== undefined && !props.erUtkast;
+  const visSomUtkast = !isProduction() && devContext.value.visUtkast;
+
+  if (vis) {
+    return <>{props.children}</>;
   }
 
-  return (
-    <Style title="Dette vises ikke i prod">
-      <Label>Utkast</Label>
-      {props.children}
-    </Style>
-  );
+  if (visSomUtkast) {
+    return (
+      <Style as={props.inline ? 'span' : undefined} title="Dette vises ikke i prod">
+        {!props.inline && <Label>Utkast</Label>}
+        {props.children}
+      </Style>
+    );
+  }
+
+  return null;
 }
 
-export function UtkastInline(props: { children: ReactNode }) {
-  const devContext = useDevContext();
-  if (isProduction() || !devContext.value.visUtkast) {
-    return null;
-  }
-
-  return (
-    <Style as="span" title="Dette vises ikke i prod">
-      {props.children}
-    </Style>
-  );
+export function UtkastInline(props: Props) {
+  return <Utkast {...props} inline={true} />;
 }
 
 export default withErrorBoundary(Utkast, 'Utkast');
