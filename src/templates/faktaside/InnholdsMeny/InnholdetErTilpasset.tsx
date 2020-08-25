@@ -7,6 +7,7 @@ import { theme } from '../../../styles/theme';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import { isProduction } from '../../../utils/environment';
 import { RefObject, useEffect, useState } from 'react';
+import { getFiltreringsvalgLabel } from './getFiltreringsLabel';
 
 const Margin = styled.div`
   padding-bottom: ${theme.layoutMargin};
@@ -45,7 +46,7 @@ function InnholdetErTilpasset(props: Props) {
       <Margin>
         <AlertStripeInfo>
           Vi har fjernet {removedWords} ord for å tilpasse siden til deg som er{' '}
-          {valgt.map((it) => it.toLowerCase()).join(' & ')}.
+          {valgt.map((it) => getFiltreringsvalgLabel(it).toLowerCase()).join(' & ')}.
         </AlertStripeInfo>
       </Margin>
     </UnmountClosed>
