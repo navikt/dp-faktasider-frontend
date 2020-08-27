@@ -5,6 +5,8 @@ import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
 import { useTranslation } from 'react-i18next';
 import { useLocale } from '../i18n/LocaleContext';
 import SideListe from '../templates/faktaside/Navigasjonsmeny/SideListe';
+import { useLocation, useMount } from 'react-use';
+import { loggNotFound } from '../utils/logging';
 
 const Style = styled.div`
   display: flex;
@@ -21,6 +23,11 @@ const StyledNormaltekst = styled(Normaltekst)`
 const NotFoundPage = () => {
   const { t } = useTranslation('global');
   const lang = useLocale();
+  const path = useLocation().pathname;
+
+  useMount(() => {
+    loggNotFound(path || 'N/A');
+  });
 
   return (
     <Style>

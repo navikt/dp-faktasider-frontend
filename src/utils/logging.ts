@@ -42,3 +42,5 @@ export const loggH2MenyKlikk = () => loggEvent('H2Meny', { type: 'Hopp til under
 export const loggVisTilleggsinfo = (tittel: string) => loggEvent('Vis tilleggsinfo', { tittel });
 
 export const loggTilpassInnhold = (situasjon: string) => loggEvent('Tilpasset innhold', { situasjon });
+
+export const loggNotFound = (path: string) => loggEvent('404 - not found', { path });
