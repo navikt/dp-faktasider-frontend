@@ -13,6 +13,7 @@ import { useMount } from 'react-use';
 import { loggSidevisning } from '../../utils/logging';
 import InnholdetErTilpasset from './InnholdsMeny/InnholdetErTilpasset';
 import { useRef } from 'react';
+import useLoggUtdatertHashlenke from './useLoggUtdatertHashlenke';
 
 export interface FaktaSideProps extends PageProps<{}, FaktasideContext> {
   errors: any;
@@ -26,6 +27,7 @@ function FaktaSide(props: FaktaSideProps) {
   const contentRef = useRef<HTMLDivElement>(null);
 
   useMount(() => loggSidevisning(tittel));
+  useLoggUtdatertHashlenke();
 
   if (!erPublisert) {
     return <IkkeOversatt {...props} />;

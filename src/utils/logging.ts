@@ -44,3 +44,5 @@ export const loggVisTilleggsinfo = (tittel: string) => loggEvent('Vis tilleggsin
 export const loggTilpassInnhold = (situasjon: string) => loggEvent('Tilpasset innhold', { situasjon });
 
 export const loggNotFound = (path: string) => loggEvent('404 - not found', { path });
+
+export const loggHashNotFound = (hash: string, path: string) => loggEvent('Hashlenke finnes ikke', { path });
