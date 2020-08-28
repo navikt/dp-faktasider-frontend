@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import styled, { css } from 'styled-components/macro';
 import BlockContent from '../BlockContent';
 import { SanityBlock } from '../../../utils/richTextUtils/richTextTypes';
@@ -51,14 +51,19 @@ function Tilleggsinnformasjon(props: Props) {
   const [open, toggle] = useReducer((state) => !state, false);
   const id = useUniqueId('tilleggsinfo-' + props.node.title);
   const { t } = useTranslation('global');
+  const ref = useRef<HTMLElement>(null);
 
   const prevOpen = usePrevious(open);
   useEffect(() => {
     !prevOpen && open && loggVisTilleggsinfo(props.node.title);
   }, [open, prevOpen, props.node.title]);
 
+  useEffect(() => {
+    !prevOpen && open && ref.current?.focus(); // For at panelet skal åpne seg nedover istedenfor å forsvinne opp og ut av synsfeltet.
+  });
+
   return (
-    <StyledAside aria-labelledby={id} open={open}>
+    <StyledAside aria-labelledby={id} open={open} ref={ref} tabIndex={-1}>
       <Label>{t('tilleggsinformasjon')}</Label>
       <StyledElement tag="h4" id={id}>
         {props.node.title}
