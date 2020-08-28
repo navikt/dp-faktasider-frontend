@@ -9,6 +9,8 @@ import useProjectData from '../hooks/graphQl/useProjectData';
 import { LandingssideProps } from '../../gatsby-utils/createLandingsside';
 import SEO from '../components/SEO';
 import { useLocale } from '../i18n/LocaleContext';
+import { useMount } from 'react-use';
+import { loggSidevisning } from '../utils/logging';
 
 const StyledElement = styled.div`
   background-color: white;
@@ -58,6 +60,8 @@ interface Props {
 export function PureIndexPage(props: Props) {
   const { t } = useTranslation('global');
   const lang = useLocale();
+
+  useMount(() => loggSidevisning('Forside - nav.no/arbeid'));
 
   return (
     <>
