@@ -36,7 +36,7 @@ const StyledAside = styled.aside<{ open: boolean }>`
 `;
 
 const Label = styled(Undertekst)`
-  opacity: 0.45;
+  opacity: 0.55;
   font-size: 0.7rem;
   margin: 0 !important;
   text-transform: uppercase;
