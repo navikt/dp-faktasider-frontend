@@ -34,7 +34,7 @@ Kommenter ut `DATASET="development"` og du kan jobbe mot et test-datasett fra sa
 
 ### Scripts
 
-- `npm run seHvordanDetBlirIProd` lager et bygg og hoster lokalt på [localhost:9000/arbeid](). Dette blir prodlikt mtp innhold og statiske filer.
+- `npm run seHvordanDetBlirIProd` lager et bygg og hoster lokalt på [localhost:9000/arbeid]() (Hvis du går til [localhost:9000]() får du bare `Cannot GET /`, husk å legge til `/arbeid`). Dette blir prodlikt mtp innhold og statiske filer.
 - `npm run docker` bygger appen i en dockercontainer på samme måte som i pipeline, hoser appen på [localhost/arbeid]().
 
 ### Sanity Studio-repo
