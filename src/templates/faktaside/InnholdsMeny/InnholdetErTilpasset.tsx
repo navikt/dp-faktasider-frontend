@@ -7,7 +7,7 @@ import { theme } from '../../../styles/theme';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import { isProduction } from '../../../utils/environment';
 import { RefObject, useEffect, useState } from 'react';
-import { getFiltreringsvalgLabel } from './getFiltreringsLabel';
+import { getFiltreringsvalgLabel } from '../Filtrering/getFiltreringsLabel';
 
 const Margin = styled.div`
   padding-bottom: ${theme.layoutMargin};

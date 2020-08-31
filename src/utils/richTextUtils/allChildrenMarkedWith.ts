@@ -10,10 +10,10 @@ interface CommonVisConfig {
   visPaa?: VisPaaConfig;
 }
 
+export const visForAnnotationTypes = ['visForAnnotationDeltTekst', 'visForAnnotation'];
+
 export function getCommonVisForConfig(block: Block): CommonVisConfig | undefined {
-  const visForAnnotation = block.markDefs?.find((markDef) =>
-    ['visForAnnotationDeltTekst', 'visForAnnotation'].includes(markDef._type)
-  );
+  const visForAnnotation = block.markDefs?.find((markDef) => visForAnnotationTypes.includes(markDef._type));
   const alleMerketMedVisFor = visForAnnotation && allChildrenMarkedWith(block, visForAnnotation._key);
 
   if (alleMerketMedVisFor) {
