@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { useVisForContext, VisForContextI } from './VisForContext';
-import { UnmountClosed } from 'react-collapse';
 import VisForDebug from './VisForDebug';
 import { VisForConfig } from '../../../utils/richTextUtils/richTextTypes';
 
@@ -34,17 +33,18 @@ export function visBasertPåFiltrering(visForContext: VisForContextI, visForConf
 
 function VisFor(props: Props) {
   const visForContext = useVisForContext();
-  const { visFor, vis } = visBasertPåFiltrering(visForContext, props.visForConfig);
 
-  if (props.inline) {
-    return vis ? <VisForDebug visFor={visFor} as="span" children={props.children} /> : null;
+  if (props.visForConfig === undefined) {
+    return <>{props.children}</>;
   }
 
-  return (
-    <UnmountClosed isOpened={vis}>
-      <VisForDebug visFor={visFor} children={props.children} />
-    </UnmountClosed>
-  );
+  const { visFor, vis } = visBasertPåFiltrering(visForContext, props.visForConfig);
+
+  if (vis) {
+    return <VisForDebug visFor={visFor} as={props.inline ? 'span' : undefined} children={props.children} />;
+  }
+
+  return null;
 }
 
 export default VisFor;
