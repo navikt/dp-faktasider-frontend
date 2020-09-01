@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { useVisForContext, VisForContextI } from './VisForContext';
-import { useMount } from 'react-use';
 import { UnmountClosed } from 'react-collapse';
 import VisForDebug from './VisForDebug';
 import { VisForConfig } from '../../../utils/richTextUtils/richTextTypes';
@@ -12,12 +11,16 @@ interface Props {
   inline?: boolean;
 }
 
-export function visBasertPåFiltrering(visForContext: VisForContextI, visForConfig?: VisForConfig) {
-  const visFor = visForConfig
+export function getVisForSituasjonerFromConfig(visForConfig: VisForConfig | undefined) {
+  return visForConfig
     ? Object.entries(visForConfig)
         .filter((it) => it[1] === true)
         .map((it) => it[0])
     : [];
+}
+
+export function visBasertPåFiltrering(visForContext: VisForContextI, visForConfig?: VisForConfig) {
+  const visFor = getVisForSituasjonerFromConfig(visForConfig);
 
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
   const ingenFiltreringForElement = !visForConfig;
@@ -32,10 +35,6 @@ export function visBasertPåFiltrering(visForContext: VisForContextI, visForConf
 function VisFor(props: Props) {
   const visForContext = useVisForContext();
   const { visFor, vis } = visBasertPåFiltrering(visForContext, props.visForConfig);
-
-  useMount(() => {
-    visFor.forEach((key) => visForContext.dispatch({ type: 'addKey', key: key }));
-  });
 
   if (props.inline) {
     return vis ? <VisForDebug visFor={visFor} as="span" children={props.children} /> : null;

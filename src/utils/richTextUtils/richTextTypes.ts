@@ -34,7 +34,7 @@ export function isDeltTekstReference(candidate: Block): candidate is DelttekstRe
   return candidate._type === 'deltTekstReference';
 }
 
-type MarkDef = {
+export type MarkDef = {
   _key: string;
   _type: string;
   visFor?: VisForConfig;

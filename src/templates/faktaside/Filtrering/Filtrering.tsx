@@ -10,6 +10,8 @@ import { useDekoratorPopdownOffset } from '../Navigasjonsmeny/useDekoratorPopdow
 import useUniqueId from '../../../utils/useUniqueId';
 import { UnmountClosed } from 'react-collapse';
 import { getFiltreringsvalgLabel } from './getFiltreringsLabel';
+import getAlleFiltreringsValgForInnhold from './getAlleFiltreringsValgForInnhold';
+import { useFaktasideContext } from '../FaktaSideContext';
 
 type NavProps = { offsetTop: number };
 
@@ -42,9 +44,10 @@ function Filtrering(props: Props) {
   const visForContext = useVisForContext();
   const titleId = useUniqueId('filtrering');
   const offsetTop = useDekoratorPopdownOffset();
+  const innhold = useFaktasideContext().innhold;
   const valgt = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
-  const tilgjengeligeValg = visForContext.value.valg;
+  const tilgjengeligeValg = getAlleFiltreringsValgForInnhold(innhold);
 
   if (tilgjengeligeValg.length === 0) {
     return null;

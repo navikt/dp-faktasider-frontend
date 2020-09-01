@@ -1,17 +1,13 @@
 import React, { createContext, ReactNode, useContext, useEffect, useReducer } from 'react';
 import { useLocation, usePrevious } from 'react-use';
 import { loggTilpassInnhold } from '../../../utils/logging';
+import { FiltreringsValg } from '../../../templates/faktaside/Filtrering/getAlleFiltreringsValgForInnhold';
 
-type Actions =
-  | { type: 'addKey'; key: string }
-  | { type: 'toggle'; key: string }
-  | { type: 'clear' }
-  | { type: 'toggleIngenPasser' };
+type Actions = { type: 'toggle'; key: string } | { type: 'clear' } | { type: 'toggleIngenPasser' };
 
 const initial = {
   value: {
-    valg: [] as string[],
-    checked: [] as string[],
+    checked: [] as FiltreringsValg,
     ingenPasserMeg: false,
   },
   dispatch: (action: Actions): void => undefined,
@@ -25,15 +21,6 @@ export const useVisForContext = () => useContext<VisForContextI>(VisForContext);
 
 function reducer(state: typeof initial.value, action: Actions) {
   switch (action.type) {
-    case 'addKey':
-      if (!state.valg.includes(action.key)) {
-        return {
-          ...state,
-          valg: [...state.valg, action.key],
-        };
-      } else {
-        return state;
-      }
     case 'toggle':
       if (!state.checked.includes(action.key)) {
         loggTilpassInnhold(action.key);
