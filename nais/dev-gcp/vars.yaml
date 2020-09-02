@@ -1,4 +1,7 @@
 app: dp-faktasider-frontend
 namespace: teamdagpenger
 team: teamdagpenger
-ingress: "https://dev.nav.no/arbeid"
+ingresses: |
+  ingresses:
+    - https://www-q1.nav.no/arbeid
+    - https://dev.nav.no/arbeid
