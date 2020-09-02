@@ -12,20 +12,20 @@ import { useLocale } from '../i18n/LocaleContext';
 import { useMount } from 'react-use';
 import { loggSidevisning } from '../utils/logging';
 
-const StyledElement = styled.div`
+const StyledListElement = styled.li`
   background-color: white;
   padding: 1.2rem 1.2rem 2rem;
   border-radius: 0.5rem;
 `;
 
-const Style = styled.div`
+const StyledUl = styled.ul`
   max-width: 50rem;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 2rem 0;
-  ${StyledElement} {
+  ${StyledListElement} {
     flex: 15rem 1;
     margin: 0.5rem;
   }
@@ -72,9 +72,9 @@ export function PureIndexPage(props: Props) {
         title={props.title} // TODO denne bør ha språkversjonering i sanity
         path={props.path}
       />
-      <Style>
+      <StyledUl>
         {props.sider.map((side) => (
-          <StyledElement key={side.id}>
+          <StyledListElement key={side.id}>
             <StyledLink to={side.path}>{side.tittel}</StyledLink>
             {!side.tilgjengeligPåValgtSpråk && (
               <KunTilgjengeligStyle>
@@ -82,9 +82,9 @@ export function PureIndexPage(props: Props) {
               </KunTilgjengeligStyle>
             )}
             <p>{side.ingress}</p>
-          </StyledElement>
+          </StyledListElement>
         ))}
-      </Style>
+      </StyledUl>
     </>
   );
 }
