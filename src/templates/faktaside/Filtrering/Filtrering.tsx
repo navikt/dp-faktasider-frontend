@@ -56,7 +56,7 @@ function Filtrering(props: Props) {
   return (
     <StyledNav className={props.className} aria-labelledby={titleId} offsetTop={offsetTop}>
       <Undertittel id={titleId}>Tilpass innhold</Undertittel>
-      <Normaltekst>Tilpass innholdet på denne siden ved å velge det som passer din situasjon best:</Normaltekst>
+      <Normaltekst>Velg det som passer din situasjon best:</Normaltekst>
       <StyledUl>
         {tilgjengeligeValg.map((valg) => (
           <li key={valg}>
@@ -78,13 +78,10 @@ function Filtrering(props: Props) {
         )}
       </StyledUl>
       <UnmountClosed isOpened={valgt.length > 0}>
-        Innholdet er tilpasset til deg som er {valgt.map((it) => getFiltreringsvalgLabel(it).toLowerCase()).join(' & ')}
-        .
+        Innholdet er tilpasset til deg som har valgt{' '}
+        {valgt.map((it) => getFiltreringsvalgLabel(it).toLowerCase()).join(' & ')}.
       </UnmountClosed>
-      <UnmountClosed isOpened={ingenPasserMeg}>
-        Innholdet er tilpasset til deg som ikke er{' '}
-        {tilgjengeligeValg.map((it) => getFiltreringsvalgLabel(it).toLowerCase()).join(' eller ')}.
-      </UnmountClosed>
+      <UnmountClosed isOpened={ingenPasserMeg}>Innholdet på siden er tilpasset.</UnmountClosed>
     </StyledNav>
   );
 }
