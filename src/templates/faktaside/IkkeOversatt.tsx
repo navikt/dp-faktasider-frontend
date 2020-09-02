@@ -7,6 +7,8 @@ import { useTranslation } from 'react-i18next';
 import { supportedLanguages } from '../../i18n/supportedLanguages';
 import FaktaSideLayout from './FaktaSideLayout';
 import withErrorBoundary from '../../components/withErrorBoundary';
+import { useMount } from 'react-use';
+import { loggIkkeOversatt } from '../../utils/logging';
 
 const Style = styled.div`
   display: flex;
@@ -27,6 +29,10 @@ const StyledNormaltekst = styled(Normaltekst)`
 function IkkeOversatt(props: FaktaSideProps) {
   const page = props.pageContext;
   const { t } = useTranslation('global');
+  const title = page.title || '';
+  const ingress = page.ingress || '';
+
+  useMount(() => loggIkkeOversatt(title));
 
   const oversettelser = supportedLanguages.map((lang) => {
     const publisert = page.visSprakversjon?.[lang];
@@ -42,9 +48,6 @@ function IkkeOversatt(props: FaktaSideProps) {
       </li>
     );
   });
-
-  const title = page.title || '';
-  const ingress = page.ingress || '';
 
   return (
     <FaktaSideLayout header={title} ingress={ingress}>
