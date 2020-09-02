@@ -4,4 +4,4 @@ team: teamdagpenger
 ingresses: |
   ingresses:
     - https://www.nav.no/arbeid
-    - https://arbeid.adeo.no/arbeid
+    - https://arbeid.prod-gcp.nais.io/arbeid
