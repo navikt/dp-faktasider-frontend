@@ -10,10 +10,10 @@ interface Props {
   className?: string;
 }
 
-const Style = styled.div<{ open: boolean }>`
+const Style = styled.div<{ isOpen: boolean }>`
   transition: 0.3s;
   ${(props) =>
-    props.open &&
+    props.isOpen &&
     css`
       padding-left: 0.5rem;
       border-left: solid 0.2rem #6668;
@@ -27,7 +27,7 @@ function SlideDown(props: Props) {
   const [open, toggle] = useReducer((state) => !state, false);
 
   return (
-    <Style open={open} className={props.className}>
+    <Style isOpen={open} className={props.className}>
       <ChevronButton title={props.title} open={open} onClick={toggle} />
       <Collapse isOpened={open}>{props.children}</Collapse>
     </Style>

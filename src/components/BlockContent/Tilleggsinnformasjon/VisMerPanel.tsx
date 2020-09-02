@@ -5,12 +5,12 @@ import ChevronButton from '../../ChevronButton';
 import { useTranslation } from 'react-i18next';
 import { Collapse } from 'react-collapse';
 
-const Content = styled.div<{ open: boolean }>`
+const Content = styled.div<{ isOpen: boolean }>`
   position: relative;
   transition: 0.3s;
   overflow: hidden;
   ${(props) =>
-    !props.open &&
+    !props.isOpen &&
     css`
       max-height: 3rem;
       &::after {
@@ -42,7 +42,7 @@ function VisMerPanel(props: Props) {
   return (
     <>
       <Collapse isOpened={true}>
-        <Content open={props.open}>{props.children}</Content>
+        <Content isOpen={props.open}>{props.children}</Content>
       </Collapse>
       <StyledChevronButton
         aria-hidden={true}

@@ -22,14 +22,14 @@ interface Props {
 
 const asideBorder = `solid .1rem ${theme.colors.navBlaLighten80}`;
 
-const StyledAside = styled.aside<{ open: boolean }>`
+const StyledAside = styled.aside<{ isOpen: boolean }>`
   border-top: ${asideBorder};
   border-bottom: ${asideBorder};
   padding: 1.5rem 0.5rem;
   margin: 1.5rem 0;
   transition: 0.3s;
   ${(props) =>
-    props.open &&
+    props.isOpen &&
     css`
       background-color: #f0f0f0;
     `}
@@ -63,7 +63,7 @@ function Tilleggsinnformasjon(props: Props) {
   });
 
   return (
-    <StyledAside aria-labelledby={id} open={open} ref={ref} tabIndex={-1}>
+    <StyledAside aria-labelledby={id} isOpen={open} ref={ref} tabIndex={-1}>
       <Label>{t('tilleggsinformasjon')}</Label>
       <StyledElement tag="h4" id={id}>
         {props.node.title}

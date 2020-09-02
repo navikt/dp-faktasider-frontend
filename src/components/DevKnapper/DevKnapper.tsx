@@ -8,12 +8,12 @@ import { Checkbox } from 'nav-frontend-skjema';
 import withErrorBoundary from '../withErrorBoundary';
 import { Link } from 'gatsby';
 
-const Style = styled.div<{ open: boolean }>`
+const Style = styled.div<{ isOpen: boolean }>`
   position: fixed;
   right: 1rem;
   top: 3rem;
   ${(props) =>
-    props.open &&
+    props.isOpen &&
     css`
       background-color: #555;
       box-shadow: 0 0 0 0.2rem yellow;
@@ -72,7 +72,7 @@ function DevKnapper() {
   }
 
   return (
-    <Style open={open} ref={ref}>
+    <Style isOpen={open} ref={ref}>
       <Button onClick={() => dispatch('toggle')}>dev</Button>
       {open && (
         <Innhold>

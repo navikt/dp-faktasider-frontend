@@ -1,6 +1,16 @@
 import { RawFaktasideData } from '../../../gatsby-utils/createFaktasider';
 import { Modify } from '../typeUtils';
 
+export type VisForConfig = { [key: string]: boolean | string };
+export type VisPaaConfig = string[];
+
+export type MarkDef = {
+  _key: string;
+  _type: string;
+  visFor?: VisForConfig;
+  visPaaSider?: RawFaktasideData[];
+};
+
 // SanityBlock-typen er uhøytidelig hamret sammen basert på hvilke parametere jeg ser i consollen, det er ikke sikkert den stemmer helt
 export type SanityBlock = {
   _key?: string;
@@ -14,11 +24,6 @@ export type SanityBlock = {
   listItem?: 'bullet';
 };
 
-export type DelttekstReference = {
-  _type: 'deltTekstReference';
-  deltTekst?: DeltTekst;
-};
-
 export type DeltTekst = Modify<
   SanityBlock,
   {
@@ -30,15 +35,9 @@ export type DeltTekst = Modify<
   }
 >;
 
-export function isDeltTekstReference(candidate: Block): candidate is DelttekstReference {
-  return candidate._type === 'deltTekstReference';
-}
-
-export type MarkDef = {
-  _key: string;
-  _type: string;
-  visFor?: VisForConfig;
-  visPaaSider?: RawFaktasideData[];
+export type DelttekstReference = {
+  _type: 'deltTekstReference';
+  deltTekst?: DeltTekst;
 };
 
 export type BlockConfigFromParser = {
@@ -50,14 +49,14 @@ export type BlockConfigFromParser = {
   id?: string;
 };
 
-export type VisForConfig = { [key: string]: boolean | string };
-export type VisPaaConfig = string[];
-
 export type ParsedSanityBlock = SanityBlock & {
   blockConfig?: BlockConfigFromParser;
 };
 
 export type GroupTypes = 'h2' | 'h3' | 'h4';
+
+// eslint-disable-next-line @typescript-eslint/no-use-before-define
+export type Block = SanityBlock | Group | ParsedSanityBlock;
 
 export type Group = ParsedSanityBlock & {
   title: string;
@@ -65,8 +64,6 @@ export type Group = ParsedSanityBlock & {
   _type: 'group';
   style: GroupTypes;
 };
-
-export type Block = SanityBlock | Group | ParsedSanityBlock;
 
 export function isGroup(block: Block): block is Group {
   return block._type === 'group';
@@ -78,4 +75,8 @@ export function isH2Group(block: Block): block is Group {
 
 export function isH3Group(block: Block): block is Group {
   return isGroup(block) && block.style === 'h3';
+}
+
+export function isDeltTekstReference(candidate: Block): candidate is DelttekstReference {
+  return candidate._type === 'deltTekstReference';
 }
