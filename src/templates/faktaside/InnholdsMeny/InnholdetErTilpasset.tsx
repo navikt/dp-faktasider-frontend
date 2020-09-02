@@ -5,9 +5,9 @@ import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 import styled from 'styled-components';
 import { theme } from '../../../styles/theme';
 import withErrorBoundary from '../../../components/withErrorBoundary';
-import { isProduction } from '../../../utils/environment';
 import { RefObject, useEffect, useState } from 'react';
 import { getFiltreringsvalgLabel } from '../Filtrering/getFiltreringsLabel';
+import Utkast from '../../../components/BlockContent/utkast/Utkast';
 
 const Margin = styled.div`
   padding-bottom: ${theme.layoutMargin};
@@ -36,19 +36,17 @@ function InnholdetErTilpasset(props: Props) {
 
   const removedWords = fullWordCount && wordCountAfterFilter ? fullWordCount - wordCountAfterFilter : undefined;
 
-  if (isProduction()) {
-    // TODO løsningen for å vise hvor mange ord som er fjernet bør nok skrives om. Nå trenger den bla en timeout for å vente på at collapse-animasjoner skal bli ferdige.
-    return null;
-  }
-
   return (
+    // TODO løsningen for å vise hvor mange ord som er fjernet bør nok skrives om. Nå trenger den bla en timeout for å vente på at collapse-animasjoner skal bli ferdige.
     <UnmountClosed isOpened={valgt.length > 0}>
-      <Margin>
-        <AlertStripeInfo>
-          Vi har fjernet {removedWords} ord for å tilpasse siden til deg som er{' '}
-          {valgt.map((it) => getFiltreringsvalgLabel(it).toLowerCase()).join(' & ')}.
-        </AlertStripeInfo>
-      </Margin>
+      <Utkast>
+        <Margin>
+          <AlertStripeInfo>
+            Vi har fjernet {removedWords} ord for å tilpasse siden til deg som er{' '}
+            {valgt.map((it) => getFiltreringsvalgLabel(it).toLowerCase()).join(' & ')}.
+          </AlertStripeInfo>
+        </Margin>
+      </Utkast>
     </UnmountClosed>
   );
 }
