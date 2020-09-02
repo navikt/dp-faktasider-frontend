@@ -46,8 +46,27 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-sbs
-          RESOURCE: nais/dev/nais.yaml
-          VARS: nais/vars.yaml
+          RESOURCE: nais/nais.yaml
+          VARS: nais/dev/vars.yaml
+          PRINT_PAYLOAD: true
+
+  deploy-dev-gcp:
+    name: Deploy to dev
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch NAIS yaml
+        uses: actions/download-artifact@v1
+        with:
+          name: nais-yaml
+          path: nais
+
+      - uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          RESOURCE: nais/nais.yaml
+          VARS: nais/dev-gcp/vars.yaml
           PRINT_PAYLOAD: true
 
   deploy-prod:
@@ -66,6 +85,6 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: prod-sbs
-          RESOURCE: nais/prod/nais.yaml
-          VARS: nais/vars.yaml
+          RESOURCE: nais/nais.yaml
+          VARS: nais/prod/vars.yaml
           PRINT_PAYLOAD: true
