@@ -14,7 +14,7 @@ import { UnmountClosed } from 'react-collapse';
 import { visBasertPåFiltrering } from '../../../components/BlockContent/VisFor/VisFor';
 import Utkast from '../../../components/BlockContent/utkast/Utkast';
 
-const StyledLenke = styled(LenkeUtenUnderstrek)<{ erValgt: boolean }>`
+const StyledLenke = styled(({ erValgt, ...rest }) => <LenkeUtenUnderstrek {...rest} />)`
   display: block;
   padding: 0.25rem 0;
   ${(props) =>
