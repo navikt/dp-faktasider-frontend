@@ -23,6 +23,7 @@ const StyledNav = styled.nav.attrs((props: NavProps) => ({ style: { top: `${prop
     overflow-y: auto;
     max-height: calc(100vh - ${(props) => props.offsetTop}px);
     position: sticky;
+    transition: top 0.2s;
     max-width: 14rem;
   }
   > * {
