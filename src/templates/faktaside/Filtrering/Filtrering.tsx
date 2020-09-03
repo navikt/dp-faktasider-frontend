@@ -78,8 +78,7 @@ function Filtrering(props: Props) {
         )}
       </StyledUl>
       <UnmountClosed isOpened={valgt.length > 0}>
-        Innholdet er tilpasset til deg som har valgt{' '}
-        {valgt.map((it) => getFiltreringsvalgLabel(it).toLowerCase()).join(' & ')}.
+        Siden er tilpasset ved å skjule tekst som ikke er relevant for situasjonen din.
       </UnmountClosed>
       <UnmountClosed isOpened={ingenPasserMeg}>Innholdet på siden er tilpasset.</UnmountClosed>
     </StyledNav>
