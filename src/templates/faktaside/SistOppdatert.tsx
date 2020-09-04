@@ -7,7 +7,7 @@ const Style = styled.div`
   margin-top: 0.5rem;
   text-align: center;
   font-style: italic;
-  opacity: 0.6;
+  opacity: 0.8;
 `;
 
 interface Props {

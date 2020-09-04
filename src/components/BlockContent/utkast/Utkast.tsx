@@ -23,7 +23,7 @@ const Label = styled.div`
   top: 50%;
   transform: translateY(-50%);
   white-space: nowrap;
-  opacity: 0.6;
+  opacity: 0.75;
 `;
 
 function Utkast(props: Props) {
