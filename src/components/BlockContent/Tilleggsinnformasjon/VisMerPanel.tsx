@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components/macro';
 import ChevronButton from '../../ChevronButton';
 import { useTranslation } from 'react-i18next';
 import { Collapse } from 'react-collapse';
+import useUniqueId from '../../../utils/useUniqueId';
 
 const Content = styled.div<{ isOpen: boolean }>`
   position: relative;
@@ -38,14 +39,18 @@ interface Props {
 
 function VisMerPanel(props: Props) {
   const { t } = useTranslation('global');
+  const id = useUniqueId('vis-mer-panel-innhold');
 
   return (
     <>
       <Collapse isOpened={true}>
-        <Content isOpen={props.open}>{props.children}</Content>
+        <Content isOpen={props.open} aria-hidden={!props.open} id={id}>
+          {props.children}
+        </Content>
       </Collapse>
       <StyledChevronButton
-        aria-hidden={true}
+        aria-expanded={props.open}
+        aria-controls={id}
         className="lenke"
         open={props.open}
         title={props.open ? t('visMindre') : t('visMer')}

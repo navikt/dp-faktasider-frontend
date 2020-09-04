@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useReducer, useRef } from 'react';
+import { useEffect, useReducer } from 'react';
 import styled, { css } from 'styled-components/macro';
 import BlockContent from '../BlockContent';
 import { SanityBlock } from '../../../utils/richTextUtils/richTextTypes';
@@ -51,7 +51,6 @@ function Tilleggsinnformasjon(props: Props) {
   const [open, toggle] = useReducer((state) => !state, false);
   const id = useUniqueId('tilleggsinfo-' + props.node.title);
   const { t } = useTranslation('global');
-  const ref = useRef<HTMLElement>(null);
 
   const prevOpen = usePrevious(open);
   useEffect(() => {
@@ -59,13 +58,13 @@ function Tilleggsinnformasjon(props: Props) {
   }, [open, prevOpen, props.node.title]);
 
   useEffect(() => {
-    !prevOpen && open && ref.current?.focus(); // For at panelet skal åpne seg nedover istedenfor å forsvinne opp og ut av synsfeltet.
+    !prevOpen && open && document.getElementById(id)?.focus(); // For accessibility/skjermleser og for at panelet skal åpne seg nedover istedenfor å forsvinne opp og ut av synsfeltet.
   });
 
   return (
-    <StyledAside aria-labelledby={id} isOpen={open} ref={ref} tabIndex={-1}>
+    <StyledAside aria-labelledby={id} isOpen={open}>
       <Label>{t('tilleggsinformasjon')}</Label>
-      <StyledElement tag="h4" id={id}>
+      <StyledElement tag="h4" id={id} tabIndex={-1}>
         {props.node.title}
       </StyledElement>
       <VisMerPanel toggle={toggle} open={open}>
