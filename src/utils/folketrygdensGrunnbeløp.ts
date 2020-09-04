@@ -1,6 +1,10 @@
-// Folketrygdens grunnbelløp
-export const G = 99858;
+import useProjectData from '../hooks/graphQl/useProjectData';
 
-export function GtoNOK(g: number) {
-  return Math.round(g * G).toLocaleString('nb-NO');
+export function useGrunnbellop() {
+  const G = useProjectData().folketrygdensGrunnbellop;
+
+  return {
+    GtoNOK: (g: number) => Math.round(g * G).toLocaleString('nb-NO'),
+    G: G,
+  };
 }

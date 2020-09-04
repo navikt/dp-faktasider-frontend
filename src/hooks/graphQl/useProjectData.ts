@@ -6,11 +6,13 @@ import localizeSanityContent from '../../i18n/localizeSanityContent';
 interface Data {
   oppsett: {
     title: Translations<string>;
+    folketrygdensGrunnbellop: number;
   };
 }
 
 export interface ProjectData {
   title: string;
+  folketrygdensGrunnbellop: number;
 }
 
 function useProjectData(): ProjectData {
@@ -19,6 +21,7 @@ function useProjectData(): ProjectData {
     query Oppsett {
       oppsett: sanityOppsett {
         title: _rawTitle
+        folketrygdensGrunnbellop
       }
     }
   `);
@@ -27,6 +30,7 @@ function useProjectData(): ProjectData {
 
   return {
     title: localizedData.oppsett.title,
+    folketrygdensGrunnbellop: data.oppsett.folketrygdensGrunnbellop,
   };
 }
 

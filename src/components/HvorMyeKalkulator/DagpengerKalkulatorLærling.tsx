@@ -3,12 +3,13 @@ import { useEffect, useState } from 'react';
 import { Collapse } from 'react-collapse';
 import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 import { GrunnlagInput, InputWrapper, KalkulatorStyle, ResultatTable, toKR } from './felles';
-import { G } from '../../utils/folketrygdensGrunnbeløp';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { H4 } from '../../utils/common-styled-components';
 import { loggKalkulatorbruk } from '../../utils/logging';
+import { useGrunnbellop } from '../../utils/folketrygdensGrunnbeløp';
 
 function Resultat(props: { grunnlag?: number }) {
+  const { G } = useGrunnbellop();
   if (!props.grunnlag) {
     return null;
   }

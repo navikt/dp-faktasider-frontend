@@ -5,13 +5,14 @@ import { Collapse } from 'react-collapse';
 import { AlertStripeInfo } from 'nav-frontend-alertstriper';
 import { GrunnlagInput, InputWrapper, ResultatTable, KalkulatorStyle, toKR } from './felles';
 import { H4 } from '../../utils/common-styled-components';
-import { G, GtoNOK } from '../../utils/folketrygdensGrunnbeløp';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import { useTranslation } from 'react-i18next';
 import { loggKalkulatorbruk } from '../../utils/logging';
+import { useGrunnbellop } from '../../utils/folketrygdensGrunnbeløp';
 
 function Resultat(props: { grunnlag?: number }) {
   const { t } = useTranslation('kalkulator');
+  const { G, GtoNOK } = useGrunnbellop();
 
   if (!props.grunnlag) {
     return null;

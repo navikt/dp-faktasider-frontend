@@ -1,8 +1,8 @@
 import * as React from 'react';
 import withErrorBoundary from '../withErrorBoundary';
 import { useEffect } from 'react';
-import { GtoNOK } from '../../utils/folketrygdensGrunnbeløp';
 import { loggError } from '../../utils/logging';
+import { useGrunnbellop } from '../../utils/folketrygdensGrunnbeløp';
 
 interface Props {
   children: string[];
@@ -11,6 +11,7 @@ interface Props {
 const GtilNOKAnnotation = (props: Props) => {
   const G = props.children.join('');
   const notNumber = isNaN(Number(G));
+  const { GtoNOK } = useGrunnbellop();
 
   useEffect(() => {
     notNumber && loggError(new Error('Kunne ikke konvertere belløp til NOK'), { grunnbellop: G });
