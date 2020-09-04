@@ -36,6 +36,7 @@ function reducer(state: typeof initial.value, action: Actions) {
         };
       }
     case 'toggleIngenPasser':
+      !state.ingenPasserMeg && loggTilpassInnhold('ingen passer');
       return {
         ...state,
         checked: [],
