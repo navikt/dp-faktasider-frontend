@@ -3,7 +3,6 @@ import { useVisForContext } from '../../../components/BlockContent/VisFor/VisFor
 import styled from 'styled-components/macro';
 import { Checkbox } from 'nav-frontend-skjema';
 import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
-import { isProduction } from '../../../utils/environment';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import { theme } from '../../../styles/theme';
 import { useDekoratorPopdownOffset } from '../Navigasjonsmeny/useDekoratorPopdownOffset';
@@ -45,7 +44,7 @@ function Filtrering(props: Props) {
   const visForContext = useVisForContext();
   const titleId = useUniqueId('filtrering');
   const offsetTop = useDekoratorPopdownOffset();
-  const innhold = useFaktasideContext().innhold;
+  const { innhold, visIngenValgPasser } = useFaktasideContext();
   const valgt = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
   const tilgjengeligeValg = getAlleFiltreringsValgForInnhold(innhold);
@@ -68,7 +67,7 @@ function Filtrering(props: Props) {
             />
           </li>
         ))}
-        {!isProduction() && (
+        {visIngenValgPasser && (
           <li>
             <Checkbox
               label={'Ingen valg passer'}

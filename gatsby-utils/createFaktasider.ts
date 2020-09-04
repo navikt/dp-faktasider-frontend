@@ -21,6 +21,7 @@ export interface RawFaktasideData {
     en: boolean;
     no: boolean;
   };
+  visIngenValgPasser?: boolean;
 }
 
 export type LocalizedFaktasideData = Modify<
@@ -64,6 +65,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
               en
               no
             }
+            visIngenValgPasser
           }
         }
       }

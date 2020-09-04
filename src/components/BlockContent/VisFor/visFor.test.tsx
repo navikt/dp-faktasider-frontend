@@ -61,7 +61,7 @@ describe('visFor-logikk', () => {
   });
 
   test('Hvis man filtrer på ingen valg passer vises hverken permittertinnhold eller studentinnhold, men vanlig innhold vises', async () => {
-    const result = render(<TestFaktaside innhold={innhold} />);
+    const result = render(<TestFaktaside innhold={innhold} partialContext={{ visIngenValgPasser: true }} />);
 
     const tilpassInnhold = result.getByLabelText(/Tilpass/);
     const ingenPasserCheckbox = within(tilpassInnhold).getByLabelText(/Ingen valg/i);
@@ -78,7 +78,7 @@ describe('visFor-logikk', () => {
   });
 
   test('bulletpoint med visFor på hele teksten skjules dersom det filtreres bort', () => {
-    const result = render(<TestFaktaside innhold={innhold} />);
+    const result = render(<TestFaktaside innhold={innhold} partialContext={{ visIngenValgPasser: true }} />);
 
     const førsteBolk = result.getByLabelText(bolkForAlle);
 
