@@ -28,6 +28,10 @@ function useProjectData(): ProjectData {
 
   const localizedData = localizeSanityContent(data, lang);
 
+  if (!data.oppsett.folketrygdensGrunnbellop) {
+    throw new Error('Kunne ikke hente grunnbelløp');
+  }
+
   return {
     title: localizedData.oppsett.title,
     folketrygdensGrunnbellop: data.oppsett.folketrygdensGrunnbellop,
