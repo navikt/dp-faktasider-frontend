@@ -17,7 +17,7 @@ const wrapPageElement = ({ element, props }) => {
         <VisForContextProvider>
           <DevContextProvider>
             <TranslationsProvider>
-              <AppStyling {...props} className="typo-normal">
+              <AppStyling {...props} className="typo-normal app">
                 <GlobalStyling />
                 <>{element}</>
               </AppStyling>
