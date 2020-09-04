@@ -87,6 +87,11 @@ function DevKnapper() {
             label="Debug delte tekster"
             checked={context.value.debugDelteTekster}
           />
+          <Checkbox
+            onClick={() => context.toggle('grunnbellop')}
+            label="Debug grunnbelløp"
+            checked={context.value.debugGronnbellop}
+          />
           <StyledLink to="/testdata">Visualisering av test-data</StyledLink>
         </Innhold>
       )}
