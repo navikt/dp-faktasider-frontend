@@ -1,7 +1,5 @@
-import useProjectData from '../hooks/graphQl/useProjectData';
-
 export function useGrunnbellop() {
-  const G = useProjectData().folketrygdensGrunnbellop;
+  const G = 99858;
 
   return {
     GtoNOK: (g: number) => Math.round(g * G).toLocaleString('nb-NO'),
