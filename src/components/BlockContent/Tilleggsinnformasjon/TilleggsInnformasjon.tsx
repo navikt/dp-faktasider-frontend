@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import styled, { css } from 'styled-components/macro';
 import BlockContent from '../BlockContent';
 import { SanityBlock } from '../../../utils/richTextUtils/richTextTypes';
 import parseRichText from '../../../utils/richTextUtils/parser/parseRichText';
 import withErrorBoundary from '../../withErrorBoundary';
-import { Element, Undertekst } from 'nav-frontend-typografi';
+import { Undertekst } from 'nav-frontend-typografi';
 import { useTranslation } from 'react-i18next';
 import useUniqueId from '../../../utils/useUniqueId';
 import { theme } from '../../../styles/theme';
@@ -42,7 +42,7 @@ const Label = styled(Undertekst)`
   text-transform: uppercase;
 `;
 
-const StyledElement = styled(Element)`
+const StyledElement = styled.h4.attrs({ className: 'typo-element' })`
   margin-top: 0;
 `;
 
@@ -51,6 +51,7 @@ function Tilleggsinnformasjon(props: Props) {
   const [open, toggle] = useReducer((state) => !state, false);
   const id = useUniqueId('tilleggsinfo-' + props.node.title);
   const { t } = useTranslation('global');
+  const ref = useRef<HTMLHeadingElement>(null);
 
   const prevOpen = usePrevious(open);
   useEffect(() => {
@@ -58,13 +59,13 @@ function Tilleggsinnformasjon(props: Props) {
   }, [open, prevOpen, props.node.title]);
 
   useEffect(() => {
-    !prevOpen && open && document.getElementById(id)?.focus(); // For accessibility/skjermleser og for at panelet skal åpne seg nedover istedenfor å forsvinne opp og ut av synsfeltet.
+    !prevOpen && open && ref.current?.focus(); // For accessibility/skjermleser og for at panelet skal åpne seg nedover istedenfor å forsvinne opp og ut av synsfeltet.
   });
 
   return (
     <StyledAside aria-labelledby={id} isOpen={open}>
       <Label>{t('tilleggsinformasjon')}</Label>
-      <StyledElement tag="h4" id={id} tabIndex={-1}>
+      <StyledElement id={id} tabIndex={-1} ref={ref}>
         {props.node.title}
       </StyledElement>
       <VisMerPanel toggle={toggle} open={open}>
