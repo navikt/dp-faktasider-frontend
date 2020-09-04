@@ -77,10 +77,9 @@ function Filtrering(props: Props) {
           </li>
         )}
       </StyledUl>
-      <UnmountClosed isOpened={valgt.length > 0}>
+      <UnmountClosed isOpened={valgt.length > 0 || ingenPasserMeg}>
         Siden er tilpasset ved å skjule tekst som ikke er relevant for situasjonen din.
       </UnmountClosed>
-      <UnmountClosed isOpened={ingenPasserMeg}>Innholdet på siden er tilpasset.</UnmountClosed>
     </StyledNav>
   );
 }
