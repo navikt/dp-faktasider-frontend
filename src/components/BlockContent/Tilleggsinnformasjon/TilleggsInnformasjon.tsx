@@ -42,8 +42,16 @@ const Label = styled(Undertekst)`
   text-transform: uppercase;
 `;
 
-const StyledElement = styled.h4.attrs({ className: 'typo-element' })`
+const StyledHeading = styled.h1.attrs({ className: 'typo-element' })`
   margin-top: 0;
+`;
+
+const StyledHeader = styled.header`
+  display: flex;
+  flex-direction: column;
+  ${StyledHeading} {
+    order: 2;
+  }
 `;
 
 function Tilleggsinnformasjon(props: Props) {
@@ -64,10 +72,12 @@ function Tilleggsinnformasjon(props: Props) {
 
   return (
     <StyledAside aria-labelledby={id} isOpen={open}>
-      <Label>{t('tilleggsinformasjon')}</Label>
-      <StyledElement id={id} tabIndex={-1} ref={ref}>
-        {props.node.title}
-      </StyledElement>
+      <StyledHeader>
+        <StyledHeading id={id} tabIndex={-1} ref={ref}>
+          {props.node.title}
+        </StyledHeading>
+        <Label>{t('tilleggsinformasjon')}</Label>
+      </StyledHeader>
       <VisMerPanel toggle={toggle} open={open}>
         <BlockContent blocks={parsedText} />
       </VisMerPanel>
