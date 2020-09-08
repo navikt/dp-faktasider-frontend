@@ -34,9 +34,8 @@ const MobileNav = styled.nav`
 
 const HeaderStyle = styled(Undertittel)`
   padding: 2rem;
-  opacity: 0.6;
-  text-transform: uppercase;
   text-align: center;
+  opacity: 0.8;
   pointer-events: none;
 `;
 

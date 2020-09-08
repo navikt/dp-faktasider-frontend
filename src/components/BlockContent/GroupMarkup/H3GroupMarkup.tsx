@@ -8,9 +8,8 @@ const StyledSection = styled.section`
   margin: 3rem 0 2rem;
 `;
 
-const StyledIngress = styled(Ingress).attrs({ as: 'h3' })`
+const StyledIngress = styled(Ingress).attrs({ as: 'h3', className: 'typo-ingress' })`
   margin-bottom: 1rem;
-  font-weight: 600 !important;
 `;
 
 function H3GroupMarkup(props: Group) {

@@ -17,7 +17,7 @@ type NavProps = { offsetTop: number };
 const StyledNav = styled.nav.attrs((props: NavProps) => ({ style: { top: `${props.offsetTop}px` } }))<NavProps>`
   border-top: ${theme.border.banner};
   background-color: white;
-  padding: 1.5rem 2rem 2rem;
+  padding: 1.5rem 2rem 1rem;
   @media (${theme.media.bigScreen}) {
     overflow-y: auto;
     max-height: calc(100vh - ${(props) => props.offsetTop}px);
@@ -34,6 +34,11 @@ const StyledUl = styled.ul`
   li {
     margin-top: 0.6rem;
   }
+`;
+
+const StyledUndertittel = styled(Undertittel)`
+  text-align: center;
+  opacity: 0.8;
 `;
 
 interface Props {
@@ -55,7 +60,7 @@ function Filtrering(props: Props) {
 
   return (
     <StyledNav className={props.className} aria-labelledby={titleId} offsetTop={offsetTop}>
-      <Undertittel id={titleId}>Tilpass innhold</Undertittel>
+      <StyledUndertittel id={titleId}>Tilpass innhold</StyledUndertittel>
       <Normaltekst>Velg det som passer din situasjon best:</Normaltekst>
       <StyledUl>
         {tilgjengeligeValg.map((valg) => (

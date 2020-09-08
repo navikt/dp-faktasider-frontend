@@ -16,7 +16,7 @@ import Utkast from '../../../components/BlockContent/utkast/Utkast';
 
 const StyledLenke = styled(({ erValgt, ...rest }) => <LenkeUtenUnderstrek {...rest} />)`
   display: block;
-  padding: 0.25rem 0;
+  padding: 0.35rem 0;
   ${(props) =>
     props.erValgt &&
     css`

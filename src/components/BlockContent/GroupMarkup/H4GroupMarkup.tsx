@@ -8,8 +8,7 @@ const StyledSection = styled.section`
   margin: 3rem 0 2rem;
 `;
 
-const StyledElement = styled(Element).attrs({ as: 'h4' })`
-  text-align: center;
+const StyledElement = styled(Element).attrs({ as: 'h4', className: 'typo-element' })`
   margin: 3rem 0 0.7rem;
 `;
 

@@ -32,6 +32,7 @@ const StyledSystemtittel = styled(Systemtittel).attrs((props: TittelProps) => ({
   style: {
     top: `${props.dekoratorOffset}px`,
   },
+  className: 'typo-systemtittel',
 }))<TittelProps>`
   background-color: ${(props) => (props.noBackground ? theme.colors.bakgrunn : '#fffe')};
   padding: 1rem;
