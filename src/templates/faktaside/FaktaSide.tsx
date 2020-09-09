@@ -14,6 +14,7 @@ import { loggSidevisning } from '../../utils/logging';
 import InnholdetErTilpasset from './InnholdsMeny/InnholdetErTilpasset';
 import { useRef } from 'react';
 import useLoggUtdatertHashlenke from './useLoggUtdatertHashlenke';
+import KortFortalt from './KortFortalt';
 
 export interface FaktaSideProps extends PageProps<{}, FaktasideContext> {
   errors: any;
@@ -43,9 +44,10 @@ function FaktaSide(props: FaktaSideProps) {
         <GraphQLErrorList errors={props.errors} />
         <InnholdetErTilpasset contentRef={contentRef} />
         <div ref={contentRef}>
+          <KortFortalt blocks={props.pageContext.kortFortalt} />
           <BlockContent blocks={parsedInnhold} />
+          <RelatertInformasjon blocks={page.relatertInformasjon} />
         </div>
-        <RelatertInformasjon blocks={page.relatertInformasjon} />
       </FaktaSideLayout>
     </FaktasideProvider>
   );

@@ -13,6 +13,7 @@ export interface RawFaktasideData {
   title?: Translations<string>;
   ingress?: Translations<string>;
   innhold?: Translations<SanityBlock[]>;
+  kortFortalt?: Translations<SanityBlock[]>;
   relatertInformasjon?: Translations<SanityBlock[]>;
   slug?: {
     current: string;
@@ -30,6 +31,7 @@ export type LocalizedFaktasideData = Modify<
     title?: string;
     ingress?: string;
     innhold?: SanityBlock[];
+    kortFortalt?: SanityBlock[];
     relatertInformasjon?: SanityBlock[];
   }
 >;
@@ -66,6 +68,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
               no
             }
             visIngenValgPasser
+            kortFortalt: _rawKortFortalt
           }
         }
       }
