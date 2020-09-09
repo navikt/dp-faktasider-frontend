@@ -108,11 +108,13 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
 export function createFaktasideContext(page: RawFaktasideData, lang: SupportedLanguage): FaktasideContext {
   const localizedPage = localizeSanityContent(page, lang) as LocalizedFaktasideData;
   const parsedInnhold = parseRichText(localizedPage.innhold);
+  const parsedKortFortalt = parseRichText(localizedPage.kortFortalt);
   const publiseringsTidspunkt = getPubliseringsTidspunkt(localizedPage);
 
   return {
     ...localizedPage,
     innhold: parsedInnhold,
+    kortFortalt: parsedKortFortalt,
     lang,
     slug: page.slug?.current || 'N/A',
     publiseringsTidspunkt,
