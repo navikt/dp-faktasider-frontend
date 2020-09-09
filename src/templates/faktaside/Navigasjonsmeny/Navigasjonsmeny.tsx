@@ -6,7 +6,7 @@ import SideListe from './SideListe';
 import MobilmenyWrapper from './MobilmenyWrapper';
 import { theme } from '../../../styles/theme';
 import useProjectData from '../../../hooks/graphQl/useProjectData';
-import { Undertittel } from 'nav-frontend-typografi';
+import { Systemtittel } from 'nav-frontend-typografi';
 import useUniqueId from '../../../utils/useUniqueId';
 
 type NavProps = { offsetTop: number };
@@ -32,9 +32,8 @@ const MobileNav = styled.nav`
   }
 `;
 
-const HeaderStyle = styled(Undertittel)`
-  padding: 2rem;
-  text-align: center;
+const HeaderStyle = styled(Systemtittel)`
+  padding: ${theme.layoutPadding};
   opacity: 0.8;
   pointer-events: none;
 `;

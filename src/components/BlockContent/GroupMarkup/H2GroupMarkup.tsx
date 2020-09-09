@@ -14,7 +14,7 @@ const StyledArticle = styled.article<RegionProps>`
     !props.noBackground &&
     css`
       background-color: white;
-      padding: 1.5rem 3rem;
+      padding: ${theme.layoutPadding} calc(${theme.layoutPadding} * 1.75);
       @media (${theme.media.smallScreen}) {
         padding: 1.5rem 5vw;
       }
