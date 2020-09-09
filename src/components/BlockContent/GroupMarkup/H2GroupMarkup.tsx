@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components/macro';
 import { Group, isH3Group } from '../../../utils/richTextUtils/richTextTypes';
 import { theme } from '../../../styles/theme';
-import { Systemtittel } from 'nav-frontend-typografi';
+import { Innholdstittel } from 'nav-frontend-typografi';
 import H2GroupMenu from './H2GroupMenu';
 import { useDekoratorPopdownOffset } from '../../../templates/faktaside/Navigasjonsmeny/useDekoratorPopdownOffset';
 import CommonGroupMarkup from './CommonGroupMarkup';
@@ -27,12 +27,12 @@ const StyledArticle = styled.article<RegionProps>`
 
 type TittelProps = { dekoratorOffset: number; noBackground?: boolean };
 
-const StyledSystemtittel = styled(Systemtittel).attrs((props: TittelProps) => ({
+const StyledTittel = styled(Innholdstittel).attrs((props: TittelProps) => ({
   as: 'h2',
   style: {
     top: `${props.dekoratorOffset}px`,
   },
-  className: 'typo-systemtittel',
+  className: 'typo-innholdstittel',
 }))<TittelProps>`
   background-color: ${(props) => (props.noBackground ? theme.colors.bakgrunn : '#fffe')};
   padding: 1rem;
@@ -53,7 +53,7 @@ function H2GroupMarkup(props: Group) {
 
   return (
     <CommonGroupMarkup
-      header={StyledSystemtittel}
+      header={StyledTittel}
       headerProps={headerProps}
       region={StyledArticle}
       regionProps={regionProps}
