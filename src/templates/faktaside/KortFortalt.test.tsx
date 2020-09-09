@@ -41,6 +41,6 @@ describe('kortFortalt', () => {
     );
 
     const meny = result.getAllByLabelText(/Innholdsfortegnelse/i)[0];
-    expect(within(meny).queryByLabelText(/Kort fortalt/)).toBeFalsy();
+    within(meny).getByText(/Kort fortalt/i);
   });
 });
