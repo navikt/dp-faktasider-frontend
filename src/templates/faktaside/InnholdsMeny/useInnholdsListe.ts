@@ -25,11 +25,11 @@ export function useInnholdsListe(): Group[] {
 
   let h2Groups = innhold.filter((block) => isH2Group(block)) as Group[];
 
-  if (kortFortalt) {
+  if (kortFortalt?.length) {
     h2Groups.unshift(getInnholdslisteItem(t('kortFortalt')));
   }
 
-  if (relatertInformasjon) {
+  if (relatertInformasjon?.length) {
     h2Groups.push(getInnholdslisteItem(t('relatertInformasjon')));
   }
 
