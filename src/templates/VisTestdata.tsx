@@ -15,6 +15,7 @@ import { groupParserTestData } from '../utils/richTextUtils/parser/groupParser/g
 import { utkastTestData } from '../components/BlockContent/utkast/Utkast.testdata';
 import { visForAnnotationDeltTekstTestData } from '../components/BlockContent/VisFor/visForAnnotationDeltTekstTestData';
 import TestFaktaside from '../testUtils/TestFaktaside';
+import { visPaaSideTestData } from '../components/BlockContent/VisFor/VisPaaSide.testdata';
 
 type Testdata = {
   data: Partial<FaktasideContext>;
@@ -67,6 +68,13 @@ const testData: Testdata[] = [
     data: {
       innhold: visForAnnotationDeltTekstTestData.data,
       id: visForAnnotationDeltTekstTestData.secondPageId,
+    },
+  },
+  {
+    name: 'visPaaSide delt tekst',
+    data: {
+      innhold: visPaaSideTestData.innhold,
+      id: visPaaSideTestData.id,
     },
   },
 ];

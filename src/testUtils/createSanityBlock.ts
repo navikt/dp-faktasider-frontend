@@ -1,5 +1,6 @@
 import { DelttekstReference, SanityBlock } from '../utils/richTextUtils/richTextTypes';
 import { guid } from 'nav-frontend-js-utils';
+import { RawFaktasideData } from '../../gatsby-utils/createFaktasider';
 
 export function createSanityBlock(text: string, style: string, marks?: string[]): SanityBlock {
   const key = createKey();
@@ -53,9 +54,14 @@ export function createDeltTekstBlock(innhold: SanityBlock[]): DelttekstReference
 export function createSanityBlockMedVisFor(
   text: string,
   style: string,
-  visFor: { [key: string]: boolean }
+  visFor?: { [key: string]: boolean }
 ): SanityBlock {
   const block = createSanityBlock(text, style);
+
+  if (!visFor) {
+    return block;
+  }
+
   const markKey = createKey();
 
   return {
@@ -74,6 +80,44 @@ export function createSanityBlockMedVisFor(
           ...visFor,
           _type: 'visFor',
         },
+      },
+    ],
+  };
+}
+
+export function createSanityBlockMedDeltTekstVisForAnnotation(
+  text: string,
+  style: string,
+  visPaaSideIder?: string[],
+  visFor?: { [key: string]: boolean }
+): SanityBlock {
+  const block = createSanityBlockMedVisFor(text, style, visFor || {});
+
+  if (!visPaaSideIder) {
+    return block;
+  }
+
+  const markKey = createKey();
+
+  return {
+    ...block,
+    children: [
+      {
+        ...block.children![0],
+        marks: [markKey],
+      },
+    ],
+    markDefs: [
+      ...(block.markDefs || []),
+      {
+        _key: markKey,
+        _type: 'visForAnnotationDeltTekst',
+        visPaaSider: visPaaSideIder?.map(
+          (id) =>
+            ({
+              id: id,
+            } as RawFaktasideData)
+        ),
       },
     ],
   };

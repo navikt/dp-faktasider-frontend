@@ -15,6 +15,7 @@ import { visBasertPåFiltrering } from '../../../components/BlockContent/VisFor/
 import Utkast from '../../../components/BlockContent/utkast/Utkast';
 import { menuHighlightStyle } from '../Navigasjonsmeny/SideListe';
 import { theme } from '../../../styles/theme';
+import { visBasertPaaVisPaaConfig } from '../../../components/BlockContent/VisFor/VisPaaSide';
 
 const StyledLenke = styled(({ erValgt, ...rest }) => <LenkeUtenUnderstrek {...rest} />)`
   display: block;
@@ -51,18 +52,24 @@ function useCurrentlyViewedGroup(items: Group[]): Group | undefined {
 function MenuItem(props: { item: Group; current: boolean }) {
   const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
   const visForContext = useVisForContext();
+  const faktasideContext = useFaktasideContext();
+  const blockConfig = props.item.blockConfig;
 
   const handleClick = () => {
     activateSmoothScroll();
     loggMeny('Hopp til overskrift');
   };
 
+  const vis =
+    visBasertPåFiltrering(visForContext, blockConfig?.visFor).vis &&
+    visBasertPaaVisPaaConfig(faktasideContext.id, blockConfig?.visPaaSider);
+
   return (
-    <Utkast erUtkast={!!props.item.blockConfig?.erUtkast}>
-      <UnmountClosed isOpened={visBasertPåFiltrering(visForContext, props.item.blockConfig?.visFor).vis}>
-        <li key={props.item.blockConfig?.id}>
+    <Utkast erUtkast={!!blockConfig?.erUtkast}>
+      <UnmountClosed isOpened={vis}>
+        <li key={blockConfig?.id}>
           <SmoothScroll />
-          <StyledLenke erValgt={props.current} href={`#${props.item.blockConfig?.id}`} onClick={handleClick}>
+          <StyledLenke erValgt={props.current} href={`#${blockConfig?.id}`} onClick={handleClick}>
             {props.item.title}
           </StyledLenke>
         </li>
