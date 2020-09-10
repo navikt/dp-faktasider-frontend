@@ -13,18 +13,18 @@ import { useVisForContext } from '../../../components/BlockContent/VisFor/VisFor
 import { UnmountClosed } from 'react-collapse';
 import { visBasertPåFiltrering } from '../../../components/BlockContent/VisFor/VisFor';
 import Utkast from '../../../components/BlockContent/utkast/Utkast';
+import { menuHighlightStyle } from '../Navigasjonsmeny/SideListe';
+import { theme } from '../../../styles/theme';
 
 const StyledLenke = styled(({ erValgt, ...rest }) => <LenkeUtenUnderstrek {...rest} />)`
   display: block;
-  padding: 0.35rem 0;
+  padding: 0.4rem ${theme.layoutPadding} 0.4rem calc(${theme.layoutPadding} * 1.75);
+  ${(props) => props.erValgt && menuHighlightStyle}
   ${(props) =>
     props.erValgt &&
     css`
-      color: black;
-      &:focus {
-        color: white;
-      }
-    `};
+      text-decoration: underline !important;
+    `}
 `;
 
 const skjermBrøk = 1 / 4; // Brukes for å beregne hvilken gruppe bruker ser på for øyeblikket. Hvis den er 1/4 må en gruppe være over den øverste 1/4 av for å regnes som "currentGroup"
@@ -72,7 +72,7 @@ function MenuItem(props: { item: Group; current: boolean }) {
 }
 
 const StyledOl = styled.ol`
-  padding: 0.5rem 1rem 1rem 2.5rem;
+  margin: 0.5rem 0 1rem;
 `;
 
 function Innholdsfortegnelse() {

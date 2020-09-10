@@ -8,12 +8,12 @@ const StyledSection = styled.section`
   margin: 3rem 0 2rem;
 `;
 
-const StyledElement = styled(Element).attrs({ as: 'h4', className: 'typo-element' })`
+const StyledTittel = styled(Element).attrs({ as: 'h4', className: 'typo-element' })`
   margin: 3rem 0 0.7rem;
 `;
 
 function H4GroupMarkup(props: Group) {
-  return <CommonGroupMarkup header={StyledElement} region={StyledSection} group={props} anchorMarginTop="6rem" />;
+  return <CommonGroupMarkup header={StyledTittel} region={StyledSection} group={props} anchorMarginTop="6rem" />;
 }
 
 export default H4GroupMarkup;

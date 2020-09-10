@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useVisForContext } from '../../../components/BlockContent/VisFor/VisForContext';
 import styled from 'styled-components/macro';
 import { Checkbox } from 'nav-frontend-skjema';
-import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
+import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import { theme } from '../../../styles/theme';
 import { useDekoratorPopdownOffset } from '../Navigasjonsmeny/useDekoratorPopdownOffset';
@@ -17,7 +17,7 @@ type NavProps = { offsetTop: number };
 const StyledNav = styled.nav.attrs((props: NavProps) => ({ style: { top: `${props.offsetTop}px` } }))<NavProps>`
   border-top: ${theme.border.banner};
   background-color: white;
-  padding: 1.5rem 2rem 1rem;
+  padding: ${theme.layoutPadding};
   @media (${theme.media.bigScreen}) {
     overflow-y: auto;
     max-height: calc(100vh - ${(props) => props.offsetTop}px);
@@ -36,9 +36,9 @@ const StyledUl = styled.ul`
   }
 `;
 
-const StyledUndertittel = styled(Undertittel)`
-  text-align: center;
+const StyledUndertittel = styled(Systemtittel)`
   opacity: 0.8;
+  margin-bottom: ${theme.layoutPadding};
 `;
 
 interface Props {

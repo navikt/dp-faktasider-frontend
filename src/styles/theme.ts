@@ -60,6 +60,7 @@ export const theme = {
   `,
   borderRadius: '.2rem',
   layoutMargin: '4vmin',
+  layoutPadding: '1.5rem',
   fadeInAnimation: css`
     animation: ${fadeIn} 0.5s backwards;
   `,

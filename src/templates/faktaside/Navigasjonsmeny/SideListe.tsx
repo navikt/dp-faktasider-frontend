@@ -17,7 +17,8 @@ const StyledOl = styled.ol`
 const listeElementCommonStyling = css`
   font-size: 1.1rem;
   font-weight: 600;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem ${theme.layoutPadding};
+  color: inherit;
   &:hover {
     background-color: ${theme.colors.navLysGra};
   }
@@ -29,7 +30,7 @@ const StyledLink = styled(Link)`
   ${listeElementCommonStyling};
 `;
 
-const ValgtSide = styled.div`
+export const menuHighlightStyle = css`
   background-color: #f8f8f8;
   position: relative;
   &::after {
@@ -39,17 +40,18 @@ const ValgtSide = styled.div`
     left: 0;
     width: 0.3rem;
     height: 100%;
-    background-color: ${theme.colors.navLysGra};
+    background-color: ${theme.colors.navBla};
   }
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<{ isOpen: boolean }>`
   ${listeElementCommonStyling};
   width: 100%;
   border: none;
   background-color: transparent;
   cursor: pointer;
   text-align: start;
+  ${(props) => !props.isOpen && menuHighlightStyle}
 `;
 
 function SideListeElement(props: { page: MenuItemData }) {
@@ -60,8 +62,9 @@ function SideListeElement(props: { page: MenuItemData }) {
 
   if (currentPage) {
     return (
-      <ValgtSide>
+      <>
         <StyledButton
+          isOpen={open}
           onClick={() => {
             toggle();
             loggMeny('Åpne/lukke innholdsfortegnelse');
@@ -73,7 +76,7 @@ function SideListeElement(props: { page: MenuItemData }) {
         <UnmountClosed isOpened={open}>
           <Innholdsfortegnelse />
         </UnmountClosed>
-      </ValgtSide>
+      </>
     );
   }
 

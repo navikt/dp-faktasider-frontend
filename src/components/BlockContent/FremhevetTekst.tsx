@@ -13,7 +13,7 @@ interface Props {
 }
 
 const Style = styled.div`
-  padding: 3vmin;
+  padding: ${theme.layoutPadding};
   margin: 2rem 0;
   background-color: ${theme.colors.navLysGra};
   border-radius: ${theme.borderRadius};
