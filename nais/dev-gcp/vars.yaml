@@ -3,4 +3,5 @@ namespace: teamdagpenger
 team: teamdagpenger
 ingresses: |
   ingresses:
-    - https://dp-faktasider-frontend.dev.nav.no
+    - https://arbeid.dev.nav.no/arbeid/no
+    - https://arbeid.dev.nav.no/arbeid/en
