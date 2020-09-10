@@ -20,7 +20,7 @@ Opprett filen `.env.development` i root-folderet med innholdet:
 # DATASET="development"
 ```
 
-#### Live oppdatering
+#### Live oppdatering / SANITY_READ_TOKEN
 
 Kommenter ut `SANITY_READ_TOKEN="MITT_HEMMELIGE_TOKEN"` og opprett token på https://manage.sanity.io/projects/rt6o382n:
 
@@ -30,7 +30,7 @@ Kommenter ut `SANITY_READ_TOKEN="MITT_HEMMELIGE_TOKEN"` og opprett token på htt
 
 #### Development-datasett
 
-Kommenter ut `DATASET="development"` og du kan jobbe mot et test-datasett fra sanity (anbefales dersom du ønsker å lage custom innhold i sanity under utvikling).
+Kommenter ut `DATASET="development"` og du kan jobbe mot et test-datasett fra sanity (anbefales dersom du ønsker å lage custom innhold i sanity under utvikling). Dette datasettet er privat og krever at du setter opp et `SANITY_READ_TOKEN`.
 
 ### Scripts
 
