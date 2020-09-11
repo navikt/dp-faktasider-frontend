@@ -5,7 +5,6 @@ import H2GroupMarkup from './H2GroupMarkup';
 import H3GroupMarkup from './H3GroupMarkup';
 import H4GroupMarkup from './H4GroupMarkup';
 import VisFor from '../VisFor/VisFor';
-import { ConditionalWrapper } from '../../ConditionalWrapper';
 import VisPaaSide from '../VisFor/VisPaaSide';
 import withErrorBoundary from '../../withErrorBoundary';
 
@@ -31,14 +30,11 @@ function GroupMarkup(props: Props) {
   const visFor = props.node.blockConfig?.visFor;
 
   return (
-    <ConditionalWrapper
-      condition={!!visPaaSider}
-      wrapper={(children) => <VisPaaSide visPaaSider={visPaaSider} children={children} />}
-    >
+    <VisPaaSide visPaaSider={visPaaSider}>
       <Utkast erUtkast={!!props.node.blockConfig?.erUtkast}>
         <VisFor visForConfig={visFor}>{getContent(props.node)}</VisFor>
       </Utkast>
-    </ConditionalWrapper>
+    </VisPaaSide>
   );
 }
 
