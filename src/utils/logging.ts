@@ -48,3 +48,5 @@ export const loggTilpassInnhold = (situasjon: string) => loggEvent('Tilpasset in
 export const loggNotFound = (path: string) => loggEvent('404 - not found', { path });
 
 export const loggHashNotFound = (hash: string, path: string) => loggEvent('Hashlenke finnes ikke', { path, hash });
+
+export const loggSøkITekst = () => loggEvent('Søk i tekst');
