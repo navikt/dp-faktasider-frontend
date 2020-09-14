@@ -12,6 +12,7 @@ import { theme } from '../../../styles/theme';
 import VisMerPanel from './VisMerPanel';
 import { loggVisTilleggsinfo } from '../../../utils/logging';
 import { usePrevious } from 'react-use';
+import useUserIsSearchingText from '../../../hooks/useUserIsSearchingText';
 
 interface Props {
   node: {
@@ -54,12 +55,27 @@ const StyledHeader = styled.header`
   }
 `;
 
+function reducer(state: boolean, action: 'setOpen' | 'toggle'): boolean {
+  switch (action) {
+    case 'setOpen':
+      return true;
+    case 'toggle':
+    default:
+      return !state;
+  }
+}
+
 function Tilleggsinnformasjon(props: Props) {
   const parsedText = parseRichText(props.node.innhold);
-  const [open, toggle] = useReducer((state) => !state, false);
+  const [open, dispatch] = useReducer(reducer, false);
   const id = useUniqueId('tilleggsinfo-' + props.node.title);
   const { t } = useTranslation('global');
   const ref = useRef<HTMLHeadingElement>(null);
+  const userIsSearchingText = useUserIsSearchingText();
+
+  useEffect(() => {
+    userIsSearchingText && dispatch('setOpen');
+  }, [userIsSearchingText]);
 
   const prevOpen = usePrevious(open);
   useEffect(() => {
@@ -78,7 +94,7 @@ function Tilleggsinnformasjon(props: Props) {
         </StyledHeading>
         <Label>{t('tilleggsinformasjon')}</Label>
       </StyledHeader>
-      <VisMerPanel toggle={toggle} open={open}>
+      <VisMerPanel toggle={() => dispatch('toggle')} open={open}>
         <BlockContent blocks={parsedText} />
       </VisMerPanel>
     </StyledAside>

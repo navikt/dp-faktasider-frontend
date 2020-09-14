@@ -32,6 +32,7 @@
     "jest": "^26.4.2",
     "jest-styled-components": "^7.0.3",
     "jsdom": "^16.4.0",
+    "keyboardjs": "^2.6.4",
     "less": "^3.12.2",
     "nav-frontend-alertstriper": "^3.0.23",
     "nav-frontend-alertstriper-style": "^2.0.17",

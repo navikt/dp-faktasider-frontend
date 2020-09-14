@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useRef } from 'react';
 import { PageProps } from 'gatsby';
 import BlockContent from '../../components/BlockContent/BlockContent';
 import FaktaSideLayout from './FaktaSideLayout';
@@ -12,7 +13,6 @@ import withErrorBoundary from '../../components/withErrorBoundary';
 import { useMount } from 'react-use';
 import { loggSidevisning } from '../../utils/logging';
 import InnholdetErTilpasset from './InnholdsMeny/InnholdetErTilpasset';
-import { useRef } from 'react';
 import useLoggUtdatertHashlenke from './useLoggUtdatertHashlenke';
 import KortFortalt from './KortFortalt';
 
