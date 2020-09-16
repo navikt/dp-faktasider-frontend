@@ -78,10 +78,17 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
   if (result.errors) throw result.errors;
 
   // @ts-ignore
-  const pageEdges = result.data.pages.edges || [];
+  const rawData: RawFaktasideData[] = result.data.pages.edges?.map((edge) => edge.node as RawFaktasideData) || [];
 
-  pageEdges.forEach((edge) => {
-    const page = edge.node as RawFaktasideData;
+  const pages = rawData.map((page) => createFaktasideContext(page, 'no'));
+  reporter.info(`📄 Lager veiviser: /no/demoapp`);
+  actions.createPage({
+    path: '/no/demoapp',
+    component: require.resolve('../src/templates/veiviser/Veiviser.tsx'),
+    context: { pages },
+  });
+
+  rawData.forEach((page) => {
     const slug = page.slug?.current;
 
     if (!slug) {
