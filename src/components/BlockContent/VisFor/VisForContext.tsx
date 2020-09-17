@@ -3,7 +3,11 @@ import { useLocation, usePrevious } from 'react-use';
 import { loggTilpassInnhold } from '../../../utils/logging';
 import { FiltreringsValg } from '../../../templates/faktaside/Filtrering/getAlleFiltreringsValgForInnhold';
 
-type Actions = { type: 'toggle'; key: string } | { type: 'clear' } | { type: 'toggleIngenPasser' };
+type Actions =
+  | { type: 'toggle'; key: string }
+  | { type: 'clear' }
+  | { type: 'toggleIngenPasser' }
+  | { type: 'setKey'; key: string };
 
 const initial = {
   value: {
@@ -44,6 +48,11 @@ function reducer(state: typeof initial.value, action: Actions) {
       };
     case 'clear':
       return initial.value;
+    case 'setKey':
+      return {
+        ...state,
+        checked: [...state.checked, action.key],
+      };
     default:
       return state;
   }
