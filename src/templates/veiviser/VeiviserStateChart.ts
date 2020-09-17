@@ -1,6 +1,7 @@
-import { assign, Machine } from 'xstate';
+import { assign, createMachine, MachineConfig } from 'xstate';
 import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
 import { Group } from '../../utils/richTextUtils/richTextTypes';
+import getAlleFiltreringsValgForInnhold from '../faktaside/Filtrering/getAlleFiltreringsValgForInnhold';
 
 export interface VeiviserContext {
   side?: FaktasideContext;
@@ -29,7 +30,7 @@ const initialContext = {
   group: undefined,
 };
 
-export const veiviserMachine = Machine<VeiviserContext, States, Events>({
+const machineConfig: MachineConfig<VeiviserContext, States, Events> = {
   id: 'veiviser',
   initial: 'velgSide',
   context: initialContext,
@@ -41,7 +42,7 @@ export const veiviserMachine = Machine<VeiviserContext, States, Events>({
   },
   states: {
     velgSide: {
-      entry: assign((ctx) => initialContext),
+      entry: [assign((ctx) => initialContext), 'clearFiltrering'],
       on: {
         VELGSIDE: {
           target: 'velgFiltrering',
@@ -52,13 +53,20 @@ export const veiviserMachine = Machine<VeiviserContext, States, Events>({
       },
     },
     velgFiltrering: {
-      entry: assign((ctx) => ({ ...initialContext, side: ctx.side })),
+      entry: [assign((ctx) => ({ ...initialContext, side: ctx.side })), 'clearFiltrering'],
       on: {
+        '': {
+          cond: 'ingenFiltreringsvalg',
+          target: 'velgOverskrift',
+        },
         VELGFILTRERING: {
           target: 'velgOverskrift',
-          actions: assign({
-            filtrering: (ctx, event) => event.filtrering,
-          }),
+          actions: [
+            assign({
+              filtrering: (ctx, event) => event.filtrering,
+            }),
+            'setFiltrering',
+          ],
         },
       },
     },
@@ -80,5 +88,11 @@ export const veiviserMachine = Machine<VeiviserContext, States, Events>({
         TILBAKETILVELGOVERSKRIFT: 'velgOverskrift',
       },
     },
+  },
+};
+
+export const veiviserMachine = createMachine(machineConfig, {
+  guards: {
+    ingenFiltreringsvalg: (ctx) => getAlleFiltreringsValgForInnhold(ctx.side!.innhold).length === 0,
   },
 });

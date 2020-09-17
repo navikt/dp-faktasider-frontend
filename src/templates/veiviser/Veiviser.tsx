@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useEffect } from 'react';
 import { PageProps } from 'gatsby';
 import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
 import styled from 'styled-components/macro';
@@ -15,9 +14,8 @@ import { typografiStyle } from '../faktaside/MainContentStyle';
 import VeiviserBrødsmuler from './VeiviserBrødsmuler';
 import DevKnapper from '../../components/DevKnapper/DevKnapper';
 import { useVisForContext } from '../../components/BlockContent/VisFor/VisForContext';
-import { usePrevious } from 'react-use';
 import { visBasertPaaVisPaaConfig } from '../../components/BlockContent/VisFor/VisPaaSide';
-import { useFlip } from 'react-easy-flip';
+import { isDevelopment } from '../../utils/environment';
 
 export interface VeiviserProps extends PageProps<{}, { pages: FaktasideContext[] }> {
   errors: any;
@@ -35,14 +33,19 @@ const Content = styled.div`
 `;
 
 function Veiviser(props: VeiviserProps) {
-  const [state, send] = useMachine(veiviserMachine);
-  const context = state.context;
   const visForContest = useVisForContext();
-  useFlip('flip-toplevel');
 
+  const [state, send] = useMachine(veiviserMachine, {
+    actions: {
+      setFiltrering: (ctx) => visForContest.dispatch({ type: 'setKey', key: ctx.filtrering! }),
+      clearFiltrering: () => visForContest.dispatch({ type: 'clear' }),
+    },
+  });
+
+  const context = state.context;
   const pages = props.pageContext.pages;
 
-  const pagesValg: VeiviserValg<FaktasideContext>[] = pages.map((page) => ({
+  const siderValg: VeiviserValg<FaktasideContext>[] = pages.map((page) => ({
     label: page.title || 'Mangler tittel',
     id: page.id,
     object: page,
@@ -56,13 +59,14 @@ function Veiviser(props: VeiviserProps) {
       }))
     : [];
 
-  const overskrifter: VeiviserValg<Group>[] = context.side
+  const overskriftsValg: VeiviserValg<Group>[] = context.side
     ? context.side.innhold
         .filter(isGroup)
         .filter((group: Group) => visBasertPåFiltrering(visForContest, group.blockConfig?.visFor).vis)
         .filter((group: Group) =>
           visBasertPaaVisPaaConfig(state.context.side?.id || '', group.blockConfig?.visPaaSider)
         )
+        .filter((group: Group) => isDevelopment() || !group.blockConfig?.erUtkast)
         .map((group) => ({
           label: group.title,
           id: group.blockConfig?.id || 'N/A',
@@ -70,33 +74,13 @@ function Veiviser(props: VeiviserProps) {
         }))
     : [];
 
-  const prevState = usePrevious(state);
-  useEffect(() => {
-    // TODO put sideeffekter inn i statemachine, bug her filtrering blir bare nullstilt når man går helt tilbake til velg side/toppnivå. Løses no
-    state.matches('velgSide') && !prevState?.matches('velgSide') && visForContest.dispatch({ type: 'clear' });
-  }, [state, prevState, visForContest]);
-
-  useEffect(() => {
-    // TODO put sideeffekter inn i statemachine
-    state.matches('velgFiltrering') && filtreringsValg.length === 0 && send({ type: 'VELGFILTRERING', filtrering: '' });
-  }, [filtreringsValg.length, send, state]);
-
-  useEffect(() => {
-    // TODO put sideeffekter inn i statemachine
-    if (state.matches('velgOverskrift') && !prevState?.matches('velgOverskrift')) {
-      visForContest.dispatch(
-        state.context.filtrering ? { type: 'setKey', key: state.context.filtrering } : { type: 'clear' }
-      );
-    }
-  }, [state, visForContest, prevState]);
-
   return (
     <Style>
       <UnderArbeid />
       <DevKnapper />
       <VeiviserBrødsmuler context={state.context} send={send} />
       {state.matches('velgSide') && (
-        <VelgDetSomPasserBest valg={pagesValg} setValg={(side) => send({ type: 'VELGSIDE', side })} />
+        <VelgDetSomPasserBest valg={siderValg} setValg={(side) => send({ type: 'VELGSIDE', side })} />
       )}
       {state.matches('velgFiltrering') && (
         <VelgDetSomPasserBest
@@ -105,7 +89,10 @@ function Veiviser(props: VeiviserProps) {
         />
       )}
       {state.matches('velgOverskrift') && (
-        <VelgDetSomPasserBest valg={overskrifter} setValg={(group) => send({ type: 'VELGOVERSKRIFT', group: group })} />
+        <VelgDetSomPasserBest
+          valg={overskriftsValg}
+          setValg={(group) => send({ type: 'VELGOVERSKRIFT', group: group })}
+        />
       )}
       {state.matches('visGruppe') && (
         <Content>
