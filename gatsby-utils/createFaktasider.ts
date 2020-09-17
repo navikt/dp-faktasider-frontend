@@ -78,7 +78,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
   if (result.errors) throw result.errors;
 
   // @ts-ignore
-  const rawData: RawFaktasideData[] = result.data.pages.edges?.map((edge) => edge.node as RawFaktasideData) || [];
+  const rawData: RawFaktasideData[] = result.data.pages.edges?.map((edge) => edge.node) || [];
 
   const pages = rawData.map((page) => createFaktasideContext(page, 'no'));
   reporter.info(`📄 Lager veiviser: /no/demoapp`);
