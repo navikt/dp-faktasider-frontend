@@ -2,8 +2,10 @@ const request = require('request');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
+const breadcrumbs = [{ title: 'arbeid', url: 'https://www.nav.no/arbeid/no' }];
+
 const requestDecorator = (callback) => {
-  const url = 'https://www.nav.no/dekoratoren/';
+  const url = `https://www.nav.no/dekoratoren/?breadcrumbs=${JSON.stringify(breadcrumbs)}`;
   return request(url, callback);
 };
 
