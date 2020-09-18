@@ -8,8 +8,8 @@ function useBreadcrumbs(title: string, path: string, lang: SupportedLanguage) {
 
   useMount(() => {
     setBreadcrumbs([
-      { title: 'arbeid', url: `${metaData.siteUrl}/${lang}` },
-      { title: title.toLowerCase(), url: `${metaData.siteUrl}${path}` },
+      { title: 'Arbeid', url: `${metaData.siteUrl}/${lang}` },
+      { title: title, url: `${metaData.siteUrl}${path}` },
     ]);
   });
 }
