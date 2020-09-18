@@ -15,6 +15,7 @@ import { loggSidevisning } from '../../utils/logging';
 import InnholdetErTilpasset from './InnholdsMeny/InnholdetErTilpasset';
 import useLoggUtdatertHashlenke from './useLoggUtdatertHashlenke';
 import KortFortalt from './KortFortalt';
+import useBreadcrumbs from './useBreadcrumbs';
 
 export interface FaktaSideProps extends PageProps<{}, FaktasideContext> {
   errors: any;
@@ -26,6 +27,8 @@ function FaktaSide(props: FaktaSideProps) {
   const erPublisert = page.visSprakversjon?.[lang];
   const tittel = page.title || '';
   const contentRef = useRef<HTMLDivElement>(null);
+  const path = props.location.pathname;
+  useBreadcrumbs(tittel, path, lang);
 
   useMount(() => loggSidevisning(tittel));
   useLoggUtdatertHashlenke();
@@ -39,7 +42,7 @@ function FaktaSide(props: FaktaSideProps) {
   const parsedInnhold = page.innhold;
   return (
     <FaktasideProvider {...page}>
-      <SEO title={tittel} description={description} lang={lang} path={props.location.pathname} />
+      <SEO title={tittel} description={description} lang={lang} path={path} />
       <FaktaSideLayout header={tittel} ingress={description} publiseringsTidspunkt={page.publiseringsTidspunkt}>
         <GraphQLErrorList errors={props.errors} />
         <InnholdetErTilpasset contentRef={contentRef} />
