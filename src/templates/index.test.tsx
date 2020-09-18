@@ -4,9 +4,15 @@ import { render, within } from '../testUtils/customized-testing-library';
 import { mockFaktasiderMenuData } from '../hooks/graphQl/mockFaktasiderMenuData';
 
 test('Index-side inneholder lenker til undersider med ingress', () => {
-  const result = render(<PureIndexPage title={'Arbeid'} sider={mockFaktasiderMenuData} path={'test'} />);
+  const result = render(
+    <PureIndexPage
+      projectData={{ title: 'Arbeid', eksterneLenker: [], folketrygdensGrunnbellop: 1 }}
+      sider={mockFaktasiderMenuData}
+      path={'test'}
+    />
+  );
 
-  const lenkeListe = result.getByRole('list');
+  const lenkeListe = result.getAllByRole('list')[1];
   const lenker = within(lenkeListe).getAllByRole('link');
 
   expect(lenker).toHaveLength(mockFaktasiderMenuData.length);
