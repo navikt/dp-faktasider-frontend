@@ -16,6 +16,7 @@ import DevKnapper from '../../components/DevKnapper/DevKnapper';
 import { useVisForContext } from '../../components/BlockContent/VisFor/VisForContext';
 import { visBasertPaaVisPaaConfig } from '../../components/BlockContent/VisFor/VisPaaSide';
 import { isDevelopment } from '../../utils/environment';
+import { getFiltreringsvalgLabel } from '../faktaside/Filtrering/getFiltreringsLabel';
 
 export interface VeiviserProps extends PageProps<{}, { pages: FaktasideContext[] }> {
   errors: any;
@@ -53,7 +54,7 @@ function Veiviser(props: VeiviserProps) {
 
   const filtreringsValg: VeiviserValg<string>[] = context.side
     ? getAlleFiltreringsValgForInnhold(context.side.innhold).map((valg) => ({
-        label: valg,
+        label: getFiltreringsvalgLabel(valg),
         id: valg,
         object: valg,
       }))

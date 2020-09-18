@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { VeiviserContext } from './VeiviserStateChart';
 import NavFrontendChevron from 'nav-frontend-chevron';
+import { getFiltreringsvalgLabel } from '../faktaside/Filtrering/getFiltreringsLabel';
 
 const Style = styled.div`
   margin-left: 5rem;
@@ -40,7 +41,12 @@ function VeiviserBrødsmuler(props: {
     <Style>
       <Brødsmule label={'App'} onClick={() => props.send('TILBAKETILVELGSIDE')} />
       {side && <Brødsmule label={side.title || 'N/A'} onClick={() => props.send('TILBAKETILVELGFILTRERING')} />}
-      {filtrering && <Brødsmule label={filtrering || 'N/A'} onClick={() => props.send('TILBAKETILVELGOVERSKRIFT')} />}
+      {filtrering && (
+        <Brødsmule
+          label={filtrering ? getFiltreringsvalgLabel(filtrering) : 'N/A'}
+          onClick={() => props.send('TILBAKETILVELGOVERSKRIFT')}
+        />
+      )}
       {group && <Brødsmule label={group.title || 'N/A'} onClick={() => null} />}
     </Style>
   );
