@@ -6,7 +6,7 @@ import { mockFaktasiderMenuData } from '../hooks/graphQl/mockFaktasiderMenuData'
 test('Index-side inneholder lenker til undersider med ingress', () => {
   const result = render(
     <PureIndexPage
-      projectData={{ title: 'Arbeid', eksterneLenker: [], folketrygdensGrunnbellop: 1 }}
+      projectData={{ title: 'Arbeid', eksterneLenker: [], folketrygdensGrunnbellop: 1, ingress: '' }}
       sider={mockFaktasiderMenuData}
       path={'test'}
     />

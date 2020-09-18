@@ -13,6 +13,7 @@ import { useMount } from 'react-use';
 import { loggSidevisning } from '../utils/logging';
 import Lenke from 'nav-frontend-lenker';
 import { Systemtittel } from 'nav-frontend-typografi';
+import { isDevelopment } from '../utils/environment';
 
 const Content = styled.div`
   max-width: 50rem;
@@ -77,22 +78,18 @@ interface Props {
 export function PureIndexPage(props: Props) {
   const { t } = useTranslation('global');
   const lang = useLocale();
+  const { ingress, title, eksterneLenker } = props.projectData;
 
   useMount(() => loggSidevisning('Forside - nav.no/arbeid'));
 
   return (
     <>
-      <Header heading={localizeSanityContent(props.projectData.title, lang)} ingress="" />
-      <SEO
-        lang={lang}
-        description="Har du blitt arbeidsledig eller permittert kan NAV hjelpe deg" // TODO denne bør komme fra sanity med språkversjonering
-        title={props.projectData.title} // TODO denne bør ha språkversjonering i sanity
-        path={props.path}
-      />
+      <Header heading={localizeSanityContent(title, lang)} ingress={isDevelopment() ? ingress : ''} />
+      <SEO lang={lang} description={ingress} title={title} path={props.path} />
       <Content>
         <StyledSystemtittel>Kom igang</StyledSystemtittel>
         <StyledUl>
-          {props.projectData.eksterneLenker.map((lenke) => (
+          {eksterneLenker.map((lenke) => (
             <StyledListElement key={lenke.title}>
               <EksternLenke href={lenke.url}>{lenke.title}</EksternLenke>
               <p>{lenke.description}</p>

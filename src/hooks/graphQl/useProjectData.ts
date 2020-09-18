@@ -12,6 +12,7 @@ export interface ProjectData {
   title: string;
   folketrygdensGrunnbellop: number;
   eksterneLenker: EktsernLenke[];
+  ingress: string;
 }
 
 function useProjectData(): ProjectData {
@@ -22,6 +23,7 @@ function useProjectData(): ProjectData {
         title: _rawTitle
         folketrygdensGrunnbellop
         eksterneLenker: _rawEksterneLenker
+        ingress: _rawIngress
       }
     }
   `);
@@ -36,6 +38,7 @@ function useProjectData(): ProjectData {
     title: localizedData.oppsett.title,
     folketrygdensGrunnbellop: data.oppsett.folketrygdensGrunnbellop,
     eksterneLenker: localizedData.oppsett.eksterneLenker,
+    ingress: localizedData.oppsett.ingress,
   };
 }
 
