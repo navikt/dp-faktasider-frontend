@@ -12,5 +12,7 @@
   "sistOppdatert": "Last updated on {{ publiseringstidspunkt, MMMM do yyyy HH:mm }}",
   "visMer": "Show more",
   "visMindre": "Show less",
-  "tilleggsinformasjon": "Additional information"
+  "tilleggsinformasjon": "Additional information",
+  "forsideInformasjonHeader": "Information about your situation",
+  "forsideKomIgangHeader": "Get started"
 }
