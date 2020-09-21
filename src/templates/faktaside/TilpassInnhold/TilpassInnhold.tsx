@@ -45,9 +45,9 @@ interface Props {
   className?: string;
 }
 
-function Filtrering(props: Props) {
+function TilpassInnhold(props: Props) {
   const visForContext = useVisForContext();
-  const titleId = useUniqueId('filtrering');
+  const titleId = useUniqueId('tilpassInnhold');
   const offsetTop = useDekoratorPopdownOffset();
   const { innhold, visIngenValgPasser } = useFaktasideContext();
   const valgt = visForContext.value.checked;
@@ -89,4 +89,4 @@ function Filtrering(props: Props) {
   );
 }
 
-export default withErrorBoundary(Filtrering, 'Filtrering');
+export default withErrorBoundary(TilpassInnhold, 'TilpassInnhold');

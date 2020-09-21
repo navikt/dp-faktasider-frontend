@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components/macro';
 import { VeiviserContext } from './VeiviserStateChart';
 import NavFrontendChevron from 'nav-frontend-chevron';
-import { getFiltreringsvalgLabel } from '../faktaside/Filtrering/getFiltreringsLabel';
+import { getFiltreringsvalgLabel } from '../faktaside/TilpassInnhold/getFiltreringsLabel';
 
 const Style = styled.div`
   margin-left: 5rem;

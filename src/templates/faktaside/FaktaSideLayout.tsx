@@ -7,7 +7,7 @@ import LanguageSelector from '../../components/LanguageSelector/LanguageSelector
 import DevKnapper from '../../components/DevKnapper/DevKnapper';
 import { MainContentStyle } from './MainContentStyle';
 import withErrorBoundary from '../../components/withErrorBoundary';
-import Filtrering from './Filtrering/Filtrering';
+import Filtrering from './TilpassInnhold/TilpassInnhold';
 import { theme } from '../../styles/theme';
 
 interface Props {

@@ -54,7 +54,8 @@ export function createDeltTekstBlock(innhold: SanityBlock[]): DelttekstReference
 export function createSanityBlockMedVisFor(
   text: string,
   style: string,
-  visFor?: { [key: string]: boolean }
+  visFor?: { [key: string]: boolean },
+  omvendtFiltrering_SkjulFor?: boolean
 ): SanityBlock {
   const block = createSanityBlock(text, style);
 
@@ -78,6 +79,7 @@ export function createSanityBlockMedVisFor(
         _type: 'visForAnnotation',
         visFor: {
           ...visFor,
+          skjulFor: omvendtFiltrering_SkjulFor,
           _type: 'visFor',
         },
       },

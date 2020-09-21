@@ -1,7 +1,7 @@
 import getPropertyRecursivlyFromDeepObject from '../../../utils/getPropertyRecursivlyFromDeepObject';
 import { Block, MarkDef, VisForConfig } from '../../../utils/richTextUtils/richTextTypes';
 import { visForAnnotationTypes } from '../../../utils/richTextUtils/allChildrenMarkedWith';
-import { getVisForSituasjonerFromConfig } from '../../../components/BlockContent/VisFor/VisFor';
+import { getSituasjonerFromVisForConfig } from '../../../components/BlockContent/VisFor/VisFor';
 
 export type FiltreringsValg = string[];
 
@@ -12,7 +12,7 @@ function getAlleFiltreringsValgForInnhold(innhold: Block[]): FiltreringsValg {
     (acc: VisForConfig, it) => ({ ...acc, ...it.visFor }),
     {}
   );
-  return getVisForSituasjonerFromConfig(samletVisForConfig);
+  return getSituasjonerFromVisForConfig(samletVisForConfig);
 }
 
 export default getAlleFiltreringsValgForInnhold;

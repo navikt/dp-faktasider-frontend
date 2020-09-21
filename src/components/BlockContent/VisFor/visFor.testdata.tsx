@@ -12,6 +12,7 @@ const bolkForAlle = 'Overskrift som vises for alle';
 const innholdStudent = 'Innhold som vises for student';
 const innholdPermittert = 'Innhold som vises for permittert';
 const innholdForAlle = 'Innhold som vises for alle';
+const bolkSkjulForPermittertOgKonkurs = 'Bolk som skjules for permittert';
 
 const data = [
   createSanityBlock(bolkForAlle, 'h2'),
@@ -24,6 +25,8 @@ const data = [
   createSanityBlock('Studentinnhold', 'normal'),
   createSanityBlockMedVisFor(bolkPermittert, 'h2', { permittert: true }),
   createSanityBlock('Permittertinnhold', 'normal'),
+  createSanityBlockMedVisFor(bolkSkjulForPermittertOgKonkurs, 'h2', { permittert: true, konkurs: true }, true),
+  createSanityBlockMedVisFor('Innhold som skjules for permittert', 'normal'),
 ];
 
 export const visForTestData = {
@@ -34,6 +37,7 @@ export const visForTestData = {
     bolkStudent,
     bolkPermittert,
     bolkForAlle,
+    bolkSkjulForPermittertOgKonkurs,
   },
   innhold: parseRichText(data),
 };
