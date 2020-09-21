@@ -6,31 +6,32 @@ import styled from 'styled-components/macro';
 const color = '#80f8';
 
 interface Props {
-  visFor: string[];
+  situasjoner: string[];
+  omvendtFiltrering: boolean;
   children: ReactNode;
   as?: 'span';
 }
 
 const Style = styled.div<{ debugInfo: string }>`
-      box-shadow: 0 0 0 0.2rem ${color};
-      position: relative;
-      &::before {
-        content: '${(props) => props.debugInfo}';
-        position: absolute;
-        right: 0;
-        transform: translateY(-100%);
-        background-color: ${color};
-        color: white;
-        font-size: .8rem;
-        padding: .1rem;
-        opacity: .8;
-      }
+  box-shadow: 0 0 0 0.2rem ${color};
+  position: relative;
+  &::before {
+    content: '${(props) => props.debugInfo}';
+    position: absolute;
+    right: 0;
+    transform: translateY(-100%);
+    background-color: ${color};
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.1rem;
+    opacity: 0.8;
+  }
 `;
 
 function VisForDebug(props: Props) {
   const devContext = useDevContext();
-  const debug = devContext.value.highlightFiltrering && props.visFor.length;
-  const debugInfo = 'Vises for ' + props.visFor.join(' & ');
+  const debug = devContext.value.highlightFiltrering && props.situasjoner.length;
+  const debugInfo = (props.omvendtFiltrering ? 'Skjules for ' : 'Vises for ') + props.situasjoner.join(' & ');
 
   if (!debug) {
     return <>{props.children}</>;

@@ -10,25 +10,37 @@ interface Props {
   inline?: boolean;
 }
 
-export function getVisForSituasjonerFromConfig(visForConfig: VisForConfig | undefined) {
+export function getSituasjonerFromVisForConfig(visForConfig: VisForConfig | undefined) {
   return visForConfig
     ? Object.entries(visForConfig)
         .filter((it) => it[1] === true)
         .map((it) => it[0])
+        .filter((key) => key !== 'skjulFor')
     : [];
 }
 
 export function visBasertPåFiltrering(visForContext: VisForContextI, visForConfig?: VisForConfig) {
-  const visFor = getVisForSituasjonerFromConfig(visForConfig);
-
+  const relevanteSituasjoner = getSituasjonerFromVisForConfig(visForConfig);
+  const omvendtFiltrering = !!visForConfig?.skjulFor;
+  const valgtFiltrering = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
   const ingenFiltreringForElement = !visForConfig;
-  const brukerHarIkkeValgtFilter = visForContext.value.checked.length === 0 && !ingenPasserMeg;
-  const valgtIFiltrering = visForContext.value.checked.some((it) => visFor.includes(it));
-  const filtreringPasserIkkeMeg = ingenPasserMeg && ingenFiltreringForElement;
-  const vis = ingenFiltreringForElement || brukerHarIkkeValgtFilter || valgtIFiltrering || filtreringPasserIkkeMeg;
 
-  return { visFor, vis };
+  const brukerHarIkkeValgtFilter = valgtFiltrering.length === 0 && !ingenPasserMeg;
+  const relevanteSituasjonerMatcherNoenFilteringsvalg = valgtFiltrering.some((valg) =>
+    relevanteSituasjoner.includes(valg)
+  );
+  const relevanteSituasjonerMatcherAlleFiltreringsvalg = valgtFiltrering.every((valg) =>
+    relevanteSituasjoner.includes(valg)
+  );
+  const skjul = omvendtFiltrering && !ingenPasserMeg && relevanteSituasjonerMatcherAlleFiltreringsvalg;
+
+  const vis =
+    ingenFiltreringForElement ||
+    brukerHarIkkeValgtFilter ||
+    (omvendtFiltrering ? !skjul : relevanteSituasjonerMatcherNoenFilteringsvalg);
+
+  return { vis, situasjoner: relevanteSituasjoner, omvendtFiltrering };
 }
 
 function VisFor(props: Props) {
@@ -38,10 +50,17 @@ function VisFor(props: Props) {
     return <>{props.children}</>;
   }
 
-  const { visFor, vis } = visBasertPåFiltrering(visForContext, props.visForConfig);
+  const { situasjoner, vis, omvendtFiltrering } = visBasertPåFiltrering(visForContext, props.visForConfig);
 
   if (vis) {
-    return <VisForDebug visFor={visFor} as={props.inline ? 'span' : undefined} children={props.children} />;
+    return (
+      <VisForDebug
+        situasjoner={situasjoner}
+        omvendtFiltrering={omvendtFiltrering}
+        as={props.inline ? 'span' : undefined}
+        children={props.children}
+      />
+    );
   }
 
   return null;

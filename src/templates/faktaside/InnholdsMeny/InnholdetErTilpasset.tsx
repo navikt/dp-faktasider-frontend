@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { theme } from '../../../styles/theme';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import { RefObject, useEffect, useState } from 'react';
-import { getFiltreringsvalgLabel } from '../Filtrering/getFiltreringsLabel';
+import { getFiltreringsvalgLabel } from '../TilpassInnhold/getFiltreringsLabel';
 import Utkast from '../../../components/BlockContent/utkast/Utkast';
 
 const Margin = styled.div`

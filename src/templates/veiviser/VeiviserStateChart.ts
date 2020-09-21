@@ -1,7 +1,7 @@
 import { assign, createMachine, MachineConfig } from 'xstate';
 import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
 import { Group } from '../../utils/richTextUtils/richTextTypes';
-import getAlleFiltreringsValgForInnhold from '../faktaside/Filtrering/getAlleFiltreringsValgForInnhold';
+import getAlleFiltreringsValgForInnhold from '../faktaside/TilpassInnhold/getAlleFiltreringsValgForInnhold';
 
 export interface VeiviserContext {
   side?: FaktasideContext;

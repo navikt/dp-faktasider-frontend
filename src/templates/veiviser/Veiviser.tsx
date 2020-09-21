@@ -6,7 +6,7 @@ import UnderArbeid from './UnderArbeid';
 import VelgDetSomPasserBest, { VeiviserValg } from './VelgDetSomPasserBest';
 import { veiviserMachine } from './VeiviserStateChart';
 import { useMachine } from '@xstate/react';
-import getAlleFiltreringsValgForInnhold from '../faktaside/Filtrering/getAlleFiltreringsValgForInnhold';
+import getAlleFiltreringsValgForInnhold from '../faktaside/TilpassInnhold/getAlleFiltreringsValgForInnhold';
 import { Group, isGroup } from '../../utils/richTextUtils/richTextTypes';
 import BlockContent from '../../components/BlockContent/BlockContent';
 import { visBasertPåFiltrering } from '../../components/BlockContent/VisFor/VisFor';
@@ -16,7 +16,7 @@ import DevKnapper from '../../components/DevKnapper/DevKnapper';
 import { useVisForContext } from '../../components/BlockContent/VisFor/VisForContext';
 import { visBasertPaaVisPaaConfig } from '../../components/BlockContent/VisFor/VisPaaSide';
 import { isDevelopment } from '../../utils/environment';
-import { getFiltreringsvalgLabel } from '../faktaside/Filtrering/getFiltreringsLabel';
+import { getFiltreringsvalgLabel } from '../faktaside/TilpassInnhold/getFiltreringsLabel';
 
 export interface VeiviserProps extends PageProps<{}, { pages: FaktasideContext[] }> {
   errors: any;
