@@ -76,10 +76,10 @@ interface Props {
   path: string;
 }
 
-function EksterneLenker(props: { eksterneLenker: EktsernLenke[] }) {
+function EksterneLenker(props: { eksterneLenker?: EktsernLenke[] }) {
   const { t } = useTranslation('global');
 
-  if (!props.eksterneLenker.length) {
+  if (!props.eksterneLenker?.length) {
     return null;
   }
 
@@ -87,7 +87,7 @@ function EksterneLenker(props: { eksterneLenker: EktsernLenke[] }) {
     <>
       <StyledSystemtittel>{t('forsideKomIgangHeader')}</StyledSystemtittel>
       <StyledUl>
-        {props.eksterneLenker.map((lenke) => (
+        {props.eksterneLenker?.map((lenke) => (
           <StyledListElement key={lenke.title}>
             <EksternLenke href={lenke.url}>{lenke.title}</EksternLenke>
             <p>{lenke.description}</p>

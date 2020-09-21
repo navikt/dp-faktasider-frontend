@@ -11,7 +11,7 @@ export interface EktsernLenke {
 export interface ProjectData {
   title: string;
   folketrygdensGrunnbellop: number;
-  eksterneLenker: EktsernLenke[];
+  eksterneLenker?: EktsernLenke[];
   ingress: string;
 }
 
