@@ -13,7 +13,6 @@ import { useMount } from 'react-use';
 import { loggSidevisning } from '../utils/logging';
 import Lenke from 'nav-frontend-lenker';
 import { Systemtittel } from 'nav-frontend-typografi';
-import { isDevelopment } from '../utils/environment';
 
 const Content = styled.div`
   max-width: 50rem;
@@ -135,7 +134,7 @@ export function PureIndexPage(props: Props) {
 
   return (
     <>
-      <Header heading={localizeSanityContent(title, lang)} ingress={isDevelopment() ? ingress : ''} />
+      <Header heading={localizeSanityContent(title, lang)} ingress={ingress} />
       <SEO lang={lang} description={ingress} title={title} path={props.path} />
       <Content>
         <InterneLenekr {...props} />
