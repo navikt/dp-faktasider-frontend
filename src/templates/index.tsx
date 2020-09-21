@@ -104,17 +104,22 @@ function InterneLenekr(props: Props) {
     <>
       <StyledSystemtittel>{t('forsideInformasjonHeader')}</StyledSystemtittel>
       <StyledUl>
-        {props.sider.map((side) => (
-          <StyledListElement key={side.id}>
-            <InternLenke to={side.path}>{side.tittel}</InternLenke>
-            {!side.tilgjengeligPåValgtSpråk && (
-              <KunTilgjengeligStyle>
-                ({t('kunTilgjengeligPå')} {t(side.språk)})
-              </KunTilgjengeligStyle>
-            )}
-            <p>{side.ingress}</p>
-          </StyledListElement>
-        ))}
+        {props.sider.map((side) => {
+          const langAttribute = !side.tilgjengeligPåValgtSpråk ? side.språk : undefined;
+          return (
+            <StyledListElement key={side.id}>
+              <InternLenke to={side.path} lang={langAttribute}>
+                {side.tittel}
+              </InternLenke>
+              {!side.tilgjengeligPåValgtSpråk && (
+                <KunTilgjengeligStyle>
+                  ({t('kunTilgjengeligPå')} {t(side.språk)})
+                </KunTilgjengeligStyle>
+              )}
+              <p lang={langAttribute}>{side.ingress}</p>
+            </StyledListElement>
+          );
+        })}
       </StyledUl>
     </>
   );
