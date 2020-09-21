@@ -47,6 +47,7 @@ const lenkeStyling = css`
   justify-content: center;
   margin-bottom: 1rem;
   font-size: 1.2rem;
+  text-decoration: none;
 `;
 
 const InternLenke = styled(Link)`
