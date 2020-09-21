@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { useLocale } from '../../i18n/LocaleContext';
 import localizeSanityContent from '../../i18n/localizeSanityContent';
 
-interface EktsernLenke {
+export interface EktsernLenke {
   title: string;
   description: string;
   url: string;

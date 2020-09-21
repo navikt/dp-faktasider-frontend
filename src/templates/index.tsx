@@ -5,7 +5,7 @@ import Header from './felles/Header';
 import useFaktasiderMenuData, { MenuItemData } from '../hooks/graphQl/useFaktasiderMenuData';
 import localizeSanityContent from '../i18n/localizeSanityContent';
 import { useTranslation } from 'react-i18next';
-import useProjectData, { ProjectData } from '../hooks/graphQl/useProjectData';
+import useProjectData, { EktsernLenke, ProjectData } from '../hooks/graphQl/useProjectData';
 import { LandingssideProps } from '../../gatsby-utils/createLandingsside';
 import SEO from '../components/SEO';
 import { useLocale } from '../i18n/LocaleContext';
@@ -38,7 +38,7 @@ const StyledUl = styled.ul`
 
 const StyledSystemtittel = styled(Systemtittel)`
   text-align: center;
-  margin: 3rem 0 1rem;
+  margin: 2rem 0 0.5rem;
 `;
 
 const lenkeStyling = css`
@@ -75,8 +75,52 @@ interface Props {
   path: string;
 }
 
-export function PureIndexPage(props: Props) {
+function EksterneLenker(props: { eksterneLenker: EktsernLenke[] }) {
   const { t } = useTranslation('global');
+
+  if (!props.eksterneLenker.length) {
+    return null;
+  }
+
+  return (
+    <>
+      <StyledSystemtittel>{t('forsideKomIgangHeader')}</StyledSystemtittel>
+      <StyledUl>
+        {props.eksterneLenker.map((lenke) => (
+          <StyledListElement key={lenke.title}>
+            <EksternLenke href={lenke.url}>{lenke.title}</EksternLenke>
+            <p>{lenke.description}</p>
+          </StyledListElement>
+        ))}
+      </StyledUl>
+    </>
+  );
+}
+
+function InterneLenekr(props: Props) {
+  const { t } = useTranslation('global');
+
+  return (
+    <>
+      <StyledSystemtittel>{t('forsideInformasjonHeader')}</StyledSystemtittel>
+      <StyledUl>
+        {props.sider.map((side) => (
+          <StyledListElement key={side.id}>
+            <InternLenke to={side.path}>{side.tittel}</InternLenke>
+            {!side.tilgjengeligPåValgtSpråk && (
+              <KunTilgjengeligStyle>
+                ({t('kunTilgjengeligPå')} {t(side.språk)})
+              </KunTilgjengeligStyle>
+            )}
+            <p>{side.ingress}</p>
+          </StyledListElement>
+        ))}
+      </StyledUl>
+    </>
+  );
+}
+
+export function PureIndexPage(props: Props) {
   const lang = useLocale();
   const { ingress, title, eksterneLenker } = props.projectData;
 
@@ -87,29 +131,8 @@ export function PureIndexPage(props: Props) {
       <Header heading={localizeSanityContent(title, lang)} ingress={isDevelopment() ? ingress : ''} />
       <SEO lang={lang} description={ingress} title={title} path={props.path} />
       <Content>
-        <StyledSystemtittel>Kom igang</StyledSystemtittel>
-        <StyledUl>
-          {eksterneLenker.map((lenke) => (
-            <StyledListElement key={lenke.title}>
-              <EksternLenke href={lenke.url}>{lenke.title}</EksternLenke>
-              <p>{lenke.description}</p>
-            </StyledListElement>
-          ))}
-        </StyledUl>
-        <StyledSystemtittel>Informasjonssider</StyledSystemtittel>
-        <StyledUl>
-          {props.sider.map((side) => (
-            <StyledListElement key={side.id}>
-              <InternLenke to={side.path}>{side.tittel}</InternLenke>
-              {!side.tilgjengeligPåValgtSpråk && (
-                <KunTilgjengeligStyle>
-                  ({t('kunTilgjengeligPå')} {t(side.språk)})
-                </KunTilgjengeligStyle>
-              )}
-              <p>{side.ingress}</p>
-            </StyledListElement>
-          ))}
-        </StyledUl>
+        <InterneLenekr {...props} />
+        <EksterneLenker eksterneLenker={eksterneLenker} />
       </Content>
     </>
   );
