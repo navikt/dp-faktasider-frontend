@@ -30,6 +30,7 @@ const StyledListElement = styled.li`
 const StyledUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   ${StyledListElement} {
     flex: 15rem 0 0;
     margin: 0.5rem;

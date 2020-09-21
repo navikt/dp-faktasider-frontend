@@ -12,7 +12,7 @@ test('Index-side inneholder lenker til undersider med ingress', () => {
     />
   );
 
-  const lenkeListe = result.getAllByRole('list')[1];
+  const lenkeListe = result.getAllByRole('list')[0];
   const lenker = within(lenkeListe).getAllByRole('link');
 
   expect(lenker).toHaveLength(mockFaktasiderMenuData.length);
