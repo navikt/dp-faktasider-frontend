@@ -1,5 +1,5 @@
 import parseRichText from '../../../utils/richTextUtils/parser/parseRichText';
-import getAlleFiltreringsValgForInnhold from './getAlleFiltreringsValgForInnhold';
+import getAlleTilpassInnholdValg from './getAlleTilpassInnholdValg';
 import { SanityBlock } from '../../../utils/richTextUtils/richTextTypes';
 import { createSanityBlock, createSanityBlockMedVisFor } from '../../../testUtils/createSanityBlock';
 
@@ -22,7 +22,7 @@ const getAlleFiltreringsValgForInnholdTestData: SanityBlock[] = [
 
 test('getAlleFiltreringsValgForInnhold lager en liste over alle tilgjengelige filtrerinsvalg for innhold', () => {
   const parsedText = parseRichText(getAlleFiltreringsValgForInnholdTestData);
-  const filtreringsValg = getAlleFiltreringsValgForInnhold(parsedText);
+  const filtreringsValg = getAlleTilpassInnholdValg(parsedText);
 
   expect(filtreringsValg).toHaveLength(2);
   expect(filtreringsValg).toContain('student');

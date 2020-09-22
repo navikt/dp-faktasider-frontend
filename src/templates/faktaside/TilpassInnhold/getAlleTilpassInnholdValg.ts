@@ -3,9 +3,9 @@ import { Block, MarkDef, VisForConfig } from '../../../utils/richTextUtils/richT
 import { visForAnnotationTypes } from '../../../utils/richTextUtils/allChildrenMarkedWith';
 import { getSituasjonerFromVisForConfig } from '../../../components/BlockContent/VisFor/VisFor';
 
-export type FiltreringsValg = string[];
+export type TilpassInnholdValg = string[];
 
-function getAlleFiltreringsValgForInnhold(innhold: Block[]): FiltreringsValg {
+function getAlleTilpassInnholdValg(innhold: Block[]): TilpassInnholdValg {
   const alleMarkDefs = getPropertyRecursivlyFromDeepObject<MarkDef>(innhold, 'markDefs');
   const alleVisForMarkDefs = alleMarkDefs.filter((markDef) => visForAnnotationTypes.includes(markDef._type));
   const samletVisForConfig: VisForConfig = alleVisForMarkDefs.reduce(
@@ -15,4 +15,4 @@ function getAlleFiltreringsValgForInnhold(innhold: Block[]): FiltreringsValg {
   return getSituasjonerFromVisForConfig(samletVisForConfig);
 }
 
-export default getAlleFiltreringsValgForInnhold;
+export default getAlleTilpassInnholdValg;

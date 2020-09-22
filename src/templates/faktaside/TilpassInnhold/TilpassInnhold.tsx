@@ -9,7 +9,7 @@ import { useDekoratorPopdownOffset } from '../Navigasjonsmeny/useDekoratorPopdow
 import useUniqueId from '../../../utils/useUniqueId';
 import { UnmountClosed } from 'react-collapse';
 import { getFiltreringsvalgLabel } from './getFiltreringsLabel';
-import getAlleFiltreringsValgForInnhold from './getAlleFiltreringsValgForInnhold';
+import getAlleTilpassInnholdValg from './getAlleTilpassInnholdValg';
 import { useFaktasideContext } from '../FaktaSideContext';
 
 type NavProps = { offsetTop: number };
@@ -52,7 +52,7 @@ function TilpassInnhold(props: Props) {
   const { innhold, visIngenValgPasser } = useFaktasideContext();
   const valgt = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
-  const tilgjengeligeValg = getAlleFiltreringsValgForInnhold(innhold);
+  const tilgjengeligeValg = getAlleTilpassInnholdValg(innhold);
 
   if (tilgjengeligeValg.length === 0) {
     return null;

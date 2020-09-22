@@ -1,7 +1,7 @@
 import { assign, createMachine, MachineConfig } from 'xstate';
 import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
 import { Group } from '../../utils/richTextUtils/richTextTypes';
-import getAlleFiltreringsValgForInnhold from '../faktaside/TilpassInnhold/getAlleFiltreringsValgForInnhold';
+import getAlleTilpassInnholdValg from '../faktaside/TilpassInnhold/getAlleTilpassInnholdValg';
 
 export interface VeiviserContext {
   side?: FaktasideContext;
@@ -93,6 +93,6 @@ const machineConfig: MachineConfig<VeiviserContext, States, Events> = {
 
 export const veiviserMachine = createMachine(machineConfig, {
   guards: {
-    ingenFiltreringsvalg: (ctx) => getAlleFiltreringsValgForInnhold(ctx.side!.innhold).length === 0,
+    ingenFiltreringsvalg: (ctx) => getAlleTilpassInnholdValg(ctx.side!.innhold).length === 0,
   },
 });

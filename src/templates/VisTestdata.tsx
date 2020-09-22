@@ -31,6 +31,7 @@ const testData: Testdata[] = [
     name: 'visFor',
     data: {
       innhold: visForTestData.innhold,
+      visIngenValgPasser: true,
     },
   },
   {
