@@ -103,7 +103,7 @@ describe('skjulFor-logikk', () => {
 
     toggleFilter(result, /Permittert/i);
 
-    expect(result.queryByLabelText(bolkSkjulForPermittertOgKonkurs)).toBeNull();
+    expect(result.queryByText(bolkSkjulForPermittertOgKonkurs)).toBeNull();
   });
 
   test('skjules ikke dersom situasjon som ikke er merket med at teksten skal skjules er valgt', () => {
@@ -137,6 +137,6 @@ describe('skjulFor-logikk', () => {
     toggleFilter(result, /Permittert/i);
     toggleFilter(result, /Konkurs/i);
 
-    expect(result.queryByLabelText(bolkSkjulForPermittertOgKonkurs)).toBeNull();
+    expect(result.queryByText(bolkSkjulForPermittertOgKonkurs)).toBeNull();
   });
 });
