@@ -3,12 +3,13 @@ import { useReducer } from 'react';
 import { Link } from 'gatsby';
 import styled, { css } from 'styled-components/macro';
 import withErrorBoundary from '../../../components/withErrorBoundary';
-import useFaktasiderMenuData, { MenuItemData } from '../../../hooks/graphQl/useFaktasiderMenuData';
+import useFaktasiderMenuData from '../../../hooks/graphQl/useFaktasiderMenuData';
 import Innholdsfortegnelse from '../InnholdsMeny/Innholdsfortegnelse';
 import { useFaktasideContext } from '../FaktaSideContext';
 import { loggMeny } from '../../../utils/logging';
 import { UnmountClosed } from 'react-collapse';
 import { theme } from '../../../styles/theme';
+import { ExternalMenuLinkData, InternalMenuLinkData, isInternal } from '../../../hooks/graphQl/menuDataUtils';
 
 const StyledOl = styled.ol`
   margin-bottom: 3.5rem;
@@ -24,10 +25,18 @@ const listeElementCommonStyling = css`
   }
 `;
 
-const StyledLink = styled(Link)`
+const lenkeStyle = css`
   display: block;
   text-decoration: none;
   ${listeElementCommonStyling};
+`;
+
+const StyledInternalLink = styled(Link)`
+  ${lenkeStyle};
+`;
+
+const StyledExternalLink = styled.a`
+  ${lenkeStyle};
 `;
 
 export const menuHighlightStyle = css`
@@ -54,7 +63,7 @@ const StyledButton = styled.button<{ isOpen: boolean }>`
   ${(props) => !props.isOpen && menuHighlightStyle}
 `;
 
-function SideListeElement(props: { page: MenuItemData }) {
+function InternSideLenke(props: { page: InternalMenuLinkData }) {
   const faktasideContext = useFaktasideContext();
   const [open, toggle] = useReducer((state) => !state, true);
 
@@ -62,7 +71,7 @@ function SideListeElement(props: { page: MenuItemData }) {
 
   if (currentPage) {
     return (
-      <>
+      <li>
         <StyledButton
           isOpen={open}
           onClick={() => {
@@ -76,29 +85,39 @@ function SideListeElement(props: { page: MenuItemData }) {
         <UnmountClosed isOpened={open}>
           <Innholdsfortegnelse />
         </UnmountClosed>
-      </>
+      </li>
     );
   }
 
   return (
-    <StyledLink className="lenke" to={props.page.path} onClick={() => loggMeny('Gå til ny side')}>
-      <span>
-        {props.page.tittel} {!props.page.tilgjengeligPåValgtSpråk ? `(${props.page.språk})` : ''}
-      </span>
-    </StyledLink>
+    <li>
+      <StyledInternalLink className="lenke" to={props.page.path} onClick={() => loggMeny('Gå til ny side')}>
+        <span>
+          {props.page.tittel} {!props.page.tilgjengeligPåValgtSpråk ? `(${props.page.språk})` : ''}
+        </span>
+      </StyledInternalLink>
+    </li>
+  );
+}
+
+function EksternLenke(props: { lenke: ExternalMenuLinkData }) {
+  return (
+    <li>
+      <StyledExternalLink className="lenke" href={props.lenke.url} onClick={() => loggMeny('Gå til ekstern side')}>
+        {props.lenke.title}
+      </StyledExternalLink>
+    </li>
   );
 }
 
 function SideListe() {
-  const otherPages = useFaktasiderMenuData();
+  const menuData = useFaktasiderMenuData();
 
   return (
     <StyledOl>
-      {otherPages.map((side) => (
-        <li key={side.id}>
-          <SideListeElement page={side} />
-        </li>
-      ))}
+      {menuData.map((link) =>
+        isInternal(link) ? <InternSideLenke page={link} key={link.id} /> : <EksternLenke lenke={link} key={link.url} />
+      )}
     </StyledOl>
   );
 }
