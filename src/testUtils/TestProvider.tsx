@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createContext, ReactNode, useContext } from 'react';
 import { isTest } from '../utils/environment';
 import { mockFaktasiderMenuData } from '../hooks/graphQl/mockFaktasiderMenuData';
-import { MenuItemData } from '../hooks/graphQl/useFaktasiderMenuData';
+import { ExternalMenuLinkData } from '../hooks/graphQl/menuDataUtils';
 
 const initial = {
   isTest: isTest(),
@@ -15,7 +15,7 @@ export const useTestContext = () => useContext(TestContext);
 
 interface Props {
   children: ReactNode;
-  menuData?: MenuItemData[];
+  menuData?: ExternalMenuLinkData[];
 }
 
 function TestProvider(props: Props) {

@@ -16,17 +16,4 @@ describe('404-side', () => {
 
     expect(lenker).toHaveLength(mockFaktasiderMenuData.length);
   });
-
-  test('lenkene er bygd opp riktig', () => {
-    const result = render(<NotFoundPage />);
-    const liste = result.getByRole('list');
-    const lenker = within(liste).getAllByRole('link') as HTMLLinkElement[];
-
-    const expectedHrefs = mockFaktasiderMenuData.map((it) => it.path);
-    const actualHrefs = lenker.map((it) => it.href);
-
-    expect(actualHrefs[0]).toContain(expectedHrefs[0]);
-    expect(actualHrefs[1]).toContain(expectedHrefs[1]);
-    expect(actualHrefs[2]).toContain(expectedHrefs[2]);
-  });
 });

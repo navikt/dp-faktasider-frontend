@@ -15,7 +15,7 @@ export const createLandingsside: GatsbyNode['createPages'] = async (props) => {
     reporter.info(`🛬 Lager landingsside: ${slug}`);
     actions.createPage<LandingssideProps>({
       path: slug,
-      component: require.resolve('../src/templates/index.tsx'),
+      component: require.resolve('../src/templates/landingsside/index.tsx'),
       context: { lang },
     });
   });

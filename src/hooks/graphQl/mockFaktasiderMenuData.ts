@@ -1,7 +1,7 @@
-import { MenuItemData } from './useFaktasiderMenuData';
 import { faktaSideMockContext } from '../../testUtils/faktaSideMockContext';
+import { MenuItem } from './menuDataUtils';
 
-export const mockFaktasiderMenuData: MenuItemData[] = [
+export const mockFaktasiderMenuData: MenuItem[] = [
   {
     path: faktaSideMockContext.slug,
     tittel: faktaSideMockContext.title || 'test',
@@ -9,6 +9,7 @@ export const mockFaktasiderMenuData: MenuItemData[] = [
     tilgjengeligPåValgtSpråk: true,
     ingress: faktaSideMockContext.ingress || 'ingress',
     id: faktaSideMockContext.id,
+    type: 'internal',
   },
   {
     path: '/no/arbeidsledig/',
@@ -17,13 +18,12 @@ export const mockFaktasiderMenuData: MenuItemData[] = [
     tilgjengeligPåValgtSpråk: true,
     ingress: 'Har du blitt arbeidsledig, kan du ha rett til økonomisk støtte og hjelp til å komme i arbeid.',
     id: '-89eddf21-6b78-5f89-8d1f-7f5f8ebfe735',
+    type: 'internal',
   },
   {
-    path: '/no/permittert/',
-    tittel: 'Permittert',
-    språk: 'no',
-    tilgjengeligPåValgtSpråk: false,
-    ingress: 'Er du permittert, kan du ha rett til økomisk støtte og hjelp til å komme i arbeid.',
-    id: '-21aed679-d1fa-5238-ac15-c39b39ce3011',
+    type: 'external',
+    url: 'https://www.nav.no/ekstern/side',
+    title: 'Ekstern lenke',
+    description: 'Hit kan du gå for å lese om spennende eksterne ting',
   },
 ];

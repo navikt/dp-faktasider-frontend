@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { useLocale } from '../../i18n/LocaleContext';
 import localizeSanityContent from '../../i18n/localizeSanityContent';
 
-export interface EktsernLenke {
+export interface EksternLenkeI {
   title: string;
   description: string;
   url: string;
@@ -11,7 +11,7 @@ export interface EktsernLenke {
 export interface ProjectData {
   title: string;
   folketrygdensGrunnbellop: number;
-  eksterneLenker?: EktsernLenke[];
+  komIgangLenker?: EksternLenkeI[];
   ingress: string;
 }
 
@@ -37,7 +37,7 @@ function useProjectData(): ProjectData {
   return {
     title: localizedData.oppsett.title,
     folketrygdensGrunnbellop: data.oppsett.folketrygdensGrunnbellop,
-    eksterneLenker: localizedData.oppsett.eksterneLenker,
+    komIgangLenker: localizedData.oppsett.eksterneLenker,
     ingress: localizedData.oppsett.ingress,
   };
 }
