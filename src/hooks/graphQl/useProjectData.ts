@@ -3,8 +3,8 @@ import { useLocale } from '../../i18n/LocaleContext';
 import localizeSanityContent from '../../i18n/localizeSanityContent';
 
 export interface EksternLenkeI {
-  title: string;
-  description: string;
+  tittel: string;
+  ingress: string;
   url: string;
 }
 
@@ -22,7 +22,7 @@ function useProjectData(): ProjectData {
       oppsett: sanityOppsett {
         title: _rawTitle
         folketrygdensGrunnbellop
-        eksterneLenker: _rawEksterneLenker
+        komIgangLenker: _rawKomIgangLenker
         ingress: _rawIngress
       }
     }
@@ -37,7 +37,7 @@ function useProjectData(): ProjectData {
   return {
     title: localizedData.oppsett.title,
     folketrygdensGrunnbellop: data.oppsett.folketrygdensGrunnbellop,
-    komIgangLenker: localizedData.oppsett.eksterneLenker,
+    komIgangLenker: localizedData.oppsett.komIgangLenker,
     ingress: localizedData.oppsett.ingress,
   };
 }

@@ -23,7 +23,7 @@ export const mockFaktasiderMenuData: MenuItem[] = [
   {
     type: 'external',
     url: 'https://www.nav.no/ekstern/side',
-    title: 'Ekstern lenke',
-    description: 'Hit kan du gå for å lese om spennende eksterne ting',
+    tittel: 'Ekstern lenke',
+    ingress: 'Hit kan du gå for å lese om spennende eksterne ting',
   },
 ];
