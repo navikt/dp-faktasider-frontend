@@ -7,7 +7,7 @@ import { ExternalMenuLinkData, InternalMenuLinkData, MenuItem } from './menuData
 
 interface Side {
   title?: string;
-  ingress?: string;
+  beskrivelse?: string;
   visSprakversjon?: {
     no: boolean;
     en: boolean;
@@ -27,7 +27,7 @@ interface SanityEksternLenke {
   _type: 'eksternLenke';
   url: string;
   tittel: string;
-  ingress: string;
+  beskrivelse: string;
 }
 
 function isSanityInternLenke(lenke: SanityInternLenke | SanityEksternLenke): lenke is SanityInternLenke {
@@ -57,7 +57,7 @@ export const faktaSideMenyDataQuery = graphql`
           _type
           url: _rawUrl
           tittel: _rawTittel
-          ingress: _rawIngress
+          beskrivelse: _rawBeskrivelse
         }
       }
     }
@@ -65,7 +65,7 @@ export const faktaSideMenyDataQuery = graphql`
       edges {
         node {
           title: _rawTitle
-          ingress: _rawIngress
+          beskrivelse: _rawBeskrivelse
           visSprakversjon: _rawVisSprakversjon
           id
           slug {
@@ -102,12 +102,12 @@ function createInternalLinkData(page: Side, lang: SupportedLanguage): InternalMe
   const språk = tilgjengeligPåValgtSpråk ? lang : oversettelser[0];
   const path = `/${språk}/${slug}/`;
   const tittel = page.title || 'Mangler tittel';
-  const ingress = page.ingress || '';
+  const beskrivelse = page.beskrivelse || '';
 
   return {
     path,
     tittel,
-    ingress,
+    beskrivelse,
     språk,
     tilgjengeligPåValgtSpråk,
     id: page.id,
@@ -119,7 +119,7 @@ function createExternalLinkData(lenke: SanityEksternLenke): ExternalMenuLinkData
   return {
     url: lenke.url,
     tittel: lenke.tittel,
-    ingress: lenke.ingress,
+    beskrivelse: lenke.beskrivelse,
     type: 'external',
   };
 }

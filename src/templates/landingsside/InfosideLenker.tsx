@@ -29,7 +29,7 @@ function InternLenke(props: { lenke: InternalMenuLinkData }) {
           ({t('kunTilgjengeligPå')} {t(props.lenke.språk)})
         </KunTilgjengeligStyle>
       )}
-      <p lang={langAttribute}>{props.lenke.ingress}</p>
+      <p lang={langAttribute}>{props.lenke.beskrivelse}</p>
     </StyledListElement>
   );
 }

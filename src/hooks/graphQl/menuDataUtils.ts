@@ -10,7 +10,7 @@ export interface InternalMenuLinkData {
   tittel: string;
   språk: SupportedLanguage;
   tilgjengeligPåValgtSpråk: boolean;
-  ingress: string;
+  beskrivelse: string;
   id: string;
   type: 'internal';
 }

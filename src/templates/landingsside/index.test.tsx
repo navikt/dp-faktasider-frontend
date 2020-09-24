@@ -4,10 +4,10 @@ import { render, within } from '../../testUtils/customized-testing-library';
 import { mockFaktasiderMenuData } from '../../hooks/graphQl/mockFaktasiderMenuData';
 import { InternalMenuLinkData } from '../../hooks/graphQl/menuDataUtils';
 
-test('Index-side inneholder lenker til undersider med ingress', () => {
+test('Index-side inneholder lenker til undersider med beskrivelse', () => {
   const result = render(
     <PureIndexPage
-      projectData={{ title: 'Arbeid', komIgangLenker: [], folketrygdensGrunnbellop: 1, ingress: '' }}
+      projectData={{ title: 'Arbeid', komIgangLenker: [], folketrygdensGrunnbellop: 1, beskrivelse: '' }}
       infosideLenker={mockFaktasiderMenuData}
       path={'test'}
     />
@@ -21,5 +21,5 @@ test('Index-side inneholder lenker til undersider med ingress', () => {
   const lenkeData2 = mockFaktasiderMenuData[1] as InternalMenuLinkData;
   const lenkeNummer2 = result.getByText(lenkeData2.tittel) as HTMLLinkElement;
   expect(lenkeNummer2.href).toContain(lenkeData2.path);
-  result.getByText(lenkeData2.ingress);
+  result.getByText(lenkeData2.beskrivelse);
 });

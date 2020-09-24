@@ -4,7 +4,7 @@ import localizeSanityContent from '../../i18n/localizeSanityContent';
 
 export interface EksternLenkeI {
   tittel: string;
-  ingress: string;
+  beskrivelse: string;
   url: string;
 }
 
@@ -12,7 +12,7 @@ export interface ProjectData {
   title: string;
   folketrygdensGrunnbellop: number;
   komIgangLenker?: EksternLenkeI[];
-  ingress: string;
+  beskrivelse: string;
 }
 
 function useProjectData(): ProjectData {
@@ -23,7 +23,7 @@ function useProjectData(): ProjectData {
         title: _rawTitle
         folketrygdensGrunnbellop
         komIgangLenker: _rawKomIgangLenker
-        ingress: _rawIngress
+        beskrivelse: _rawBeskrivelse
       }
     }
   `);
@@ -38,7 +38,7 @@ function useProjectData(): ProjectData {
     title: localizedData.oppsett.title,
     folketrygdensGrunnbellop: data.oppsett.folketrygdensGrunnbellop,
     komIgangLenker: localizedData.oppsett.komIgangLenker,
-    ingress: localizedData.oppsett.ingress,
+    beskrivelse: localizedData.oppsett.beskrivelse,
   };
 }
 

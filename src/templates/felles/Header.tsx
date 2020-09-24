@@ -7,7 +7,7 @@ import SistOppdatert from '../faktaside/SistOppdatert';
 
 interface Props {
   heading: string;
-  ingress: string;
+  beskrivelse: string;
   small?: boolean;
   publiseringsTidspunkt?: string;
 }
@@ -36,7 +36,7 @@ const Header = (props: Props) => {
     <Background>
       <MaxWidth>
         <StyledSidetittel>{props.heading}</StyledSidetittel>
-        <Normaltekst>{props.ingress}</Normaltekst>
+        <Normaltekst>{props.beskrivelse}</Normaltekst>
         {props.publiseringsTidspunkt && <SistOppdatert publiseringsTidspunkt={props.publiseringsTidspunkt} />}
       </MaxWidth>
     </Background>

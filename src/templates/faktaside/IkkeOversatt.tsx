@@ -30,7 +30,7 @@ function IkkeOversatt(props: FaktaSideProps) {
   const page = props.pageContext;
   const { t } = useTranslation('global');
   const title = page.title || '';
-  const ingress = page.ingress || '';
+  const beskrivelse = page.beskrivelse || '';
 
   useMount(() => loggIkkeOversatt(title));
 
@@ -50,7 +50,7 @@ function IkkeOversatt(props: FaktaSideProps) {
   });
 
   return (
-    <FaktaSideLayout header={title} ingress={ingress}>
+    <FaktaSideLayout header={title} beskrivelse={beskrivelse}>
       <Style>
         <Innholdstittel>{t('ikkeOversatt')}</Innholdstittel>
         {oversettelser.length && (

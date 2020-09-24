@@ -54,7 +54,7 @@ export function EksternLenke(props: { lenke: EksternLenkeI }) {
   return (
     <StyledListElement key={props.lenke.tittel}>
       <EksternLenkeStyle href={props.lenke.url}>{props.lenke.tittel}</EksternLenkeStyle>
-      <p>{props.lenke.ingress}</p>
+      <p>{props.lenke.beskrivelse}</p>
     </StyledListElement>
   );
 }

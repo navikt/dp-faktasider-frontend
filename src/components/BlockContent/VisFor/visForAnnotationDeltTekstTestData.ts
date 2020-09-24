@@ -225,7 +225,7 @@ const visForAnnotationDeltTekstRawTestData = [
                     _rev: 'UP5DN8kgH0KgNaQFvno5gD',
                     _createdAt: '2020-07-06T11:00:56Z',
                     _updatedAt: '2020-07-21T14:48:39Z',
-                    ingress: {
+                    beskrivelse: {
                       _type: 'localeText',
                       no: 'Dette er en testside',
                     },

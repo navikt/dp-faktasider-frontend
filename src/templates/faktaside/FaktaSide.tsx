@@ -37,13 +37,13 @@ function FaktaSide(props: FaktaSideProps) {
     return <IkkeOversatt {...props} />;
   }
 
-  const description = page.ingress || '';
+  const beskrivelse = page.beskrivelse || '';
 
   const parsedInnhold = page.innhold;
   return (
     <FaktasideProvider {...page}>
-      <SEO title={tittel} description={description} lang={lang} path={path} />
-      <FaktaSideLayout header={tittel} ingress={description} publiseringsTidspunkt={page.publiseringsTidspunkt}>
+      <SEO title={tittel} description={beskrivelse} lang={lang} path={path} />
+      <FaktaSideLayout header={tittel} beskrivelse={beskrivelse} publiseringsTidspunkt={page.publiseringsTidspunkt}>
         <GraphQLErrorList errors={props.errors} />
         <InnholdetErTilpasset contentRef={contentRef} />
         <div ref={contentRef}>

@@ -15,7 +15,7 @@ export const faktaSideMockContext: FaktasideContext = {
   id: 'id',
   slug: '/test',
   relatertInformasjon: [createSanityBlock('Relatert info', 'normal')],
-  ingress: 'Dette er testdata',
+  beskrivelse: 'Dette er testdata',
   rawData: {
     title: {
       _type: 'localeString',

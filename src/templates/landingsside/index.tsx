@@ -34,14 +34,14 @@ interface Props {
 
 export function PureIndexPage(props: Props) {
   const lang = useLocale();
-  const { ingress, title, komIgangLenker } = props.projectData;
+  const { beskrivelse, title, komIgangLenker } = props.projectData;
 
   useMount(() => loggSidevisning('Forside - nav.no/arbeid'));
 
   return (
     <>
-      <Header heading={localizeSanityContent(title, lang)} ingress={ingress} />
-      <SEO lang={lang} description={ingress} title={title} path={props.path} />
+      <Header heading={localizeSanityContent(title, lang)} beskrivelse={beskrivelse} />
+      <SEO lang={lang} description={beskrivelse} title={title} path={props.path} />
       <Content>
         <InfosideLenker lenker={props.infosideLenker} />
         <KomIgangLenker komIgangLenker={komIgangLenker} />

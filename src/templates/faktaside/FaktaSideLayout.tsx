@@ -12,7 +12,7 @@ import { theme } from '../../styles/theme';
 
 interface Props {
   header: string;
-  ingress: string;
+  beskrivelse: string;
   children: ReactNode;
   publiseringsTidspunkt?: string;
 }
@@ -55,7 +55,7 @@ function FaktaSideLayout(props: Props) {
           <div className="order-2">
             <Header
               heading={props.header}
-              ingress={props.ingress}
+              beskrivelse={props.beskrivelse}
               publiseringsTidspunkt={props.publiseringsTidspunkt}
             />
             <MainContentStyle>{props.children}</MainContentStyle>

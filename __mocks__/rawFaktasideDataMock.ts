@@ -135,7 +135,7 @@ export const rawFaktasideDataMock = {
     en: 'This is some test data',
     no: 'Dette er litt testdata',
   },
-  ingress: {
+  beskrivelse: {
     _type: 'localeText',
     en: 'This is used for testing',
     no: 'Denne brukes i test',
