@@ -8,16 +8,15 @@ import { loggMeny } from '../../../utils/logging';
 
 interface Props {
   children: ReactNode;
-  offsetTop: number;
 }
 
-const SmallScreenLayout = styled.div<{ apen: boolean; offsetTop: number }>`
+const SmallScreenLayout = styled.div<{ apen: boolean }>`
   position: absolute;
   top: 0;
   right: 0;
   @supports (position: sticky) {
     position: sticky;
-    top: ${(props) => props.offsetTop}px;
+    top: 0;
   }
   transition: top 0.2s;
   z-index: 100;
@@ -51,9 +50,9 @@ const StickyContainer = styled.div`
   pointer-events: none;
 `;
 
-const MenyWrapper = styled.div<{ visMeny: boolean; offsetTop: number }>`
+const MenyWrapper = styled.div<{ visMeny: boolean }>`
   transition: max-height 0.2s;
-  max-height: calc(100vh - ${(props) => props.offsetTop}px);
+  max-height: calc(100vh);
   max-width: 25rem;
   overflow-y: auto;
 
@@ -91,11 +90,9 @@ function MobilmenyWrapper(props: Props) {
 
   return (
     <StickyContainer>
-      <SmallScreenLayout apen={visMeny} ref={ref} offsetTop={props.offsetTop}>
+      <SmallScreenLayout apen={visMeny} ref={ref}>
         <StyledMenyButton label="Sideoversikt" onClick={() => setVisMeny((prevState) => !prevState)} isOpen={visMeny} />
-        <MenyWrapper visMeny={visMeny} offsetTop={props.offsetTop}>
-          {props.children}
-        </MenyWrapper>
+        <MenyWrapper visMeny={visMeny}>{props.children}</MenyWrapper>
       </SmallScreenLayout>
     </StickyContainer>
   );

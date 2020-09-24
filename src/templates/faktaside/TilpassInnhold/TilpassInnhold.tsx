@@ -5,23 +5,21 @@ import { Checkbox } from 'nav-frontend-skjema';
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import withErrorBoundary from '../../../components/withErrorBoundary';
 import { theme } from '../../../styles/theme';
-import { useDekoratorPopdownOffset } from '../Navigasjonsmeny/useDekoratorPopdownOffset';
 import useUniqueId from '../../../utils/useUniqueId';
 import { UnmountClosed } from 'react-collapse';
 import { getFiltreringsvalgLabel } from './getFiltreringsLabel';
 import getAlleTilpassInnholdValg from './getAlleTilpassInnholdValg';
 import { useFaktasideContext } from '../FaktaSideContext';
 
-type NavProps = { offsetTop: number };
-
-const StyledNav = styled.nav.attrs((props: NavProps) => ({ style: { top: `${props.offsetTop}px` } }))<NavProps>`
+const StyledNav = styled.nav`
   border-top: ${theme.border.banner};
   background-color: white;
   padding: ${theme.layoutPadding};
   @media (${theme.media.bigScreen}) {
     overflow-y: auto;
-    max-height: calc(100vh - ${(props) => props.offsetTop}px);
+    max-height: calc(100vh);
     position: sticky;
+    top: 0;
     transition: top 0.2s;
     max-width: 14rem;
   }
@@ -48,7 +46,6 @@ interface Props {
 function TilpassInnhold(props: Props) {
   const visForContext = useVisForContext();
   const titleId = useUniqueId('tilpassInnhold');
-  const offsetTop = useDekoratorPopdownOffset();
   const { innhold, visIngenValgPasser } = useFaktasideContext();
   const valgt = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
@@ -59,7 +56,7 @@ function TilpassInnhold(props: Props) {
   }
 
   return (
-    <StyledNav className={props.className} aria-labelledby={titleId} offsetTop={offsetTop}>
+    <StyledNav className={props.className} aria-labelledby={titleId}>
       <StyledUndertittel id={titleId}>Tilpass innhold</StyledUndertittel>
       <Normaltekst>Velg det som passer din situasjon best:</Normaltekst>
       <StyledUl>

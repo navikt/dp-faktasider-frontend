@@ -4,7 +4,6 @@ import { Group, isH3Group } from '../../../utils/richTextUtils/richTextTypes';
 import { theme } from '../../../styles/theme';
 import { Innholdstittel } from 'nav-frontend-typografi';
 import H2GroupMenu from './H2GroupMenu';
-import { useDekoratorPopdownOffset } from '../../../templates/faktaside/Navigasjonsmeny/useDekoratorPopdownOffset';
 import CommonGroupMarkup from './CommonGroupMarkup';
 
 type RegionProps = { noBackground?: boolean };
@@ -25,19 +24,17 @@ const StyledArticle = styled.article<RegionProps>`
   position: relative;
 `;
 
-type TittelProps = { dekoratorOffset: number; noBackground?: boolean };
+type TittelProps = { noBackground?: boolean };
 
-const StyledTittel = styled(Innholdstittel).attrs((props: TittelProps) => ({
+const StyledTittel = styled(Innholdstittel).attrs({
   as: 'h2',
-  style: {
-    top: `${props.dekoratorOffset}px`,
-  },
   className: 'typo-innholdstittel',
-}))<TittelProps>`
+})<TittelProps>`
   background-color: ${(props) => (props.noBackground ? theme.colors.bakgrunn : '#fffe')};
   padding: 1rem;
   text-align: center;
   position: sticky !important;
+  top: 0;
   transition: top 0.2s;
   z-index: 10;
   margin-bottom: 1.5rem;
@@ -46,9 +43,8 @@ const StyledTittel = styled(Innholdstittel).attrs((props: TittelProps) => ({
 function H2GroupMarkup(props: Group) {
   const noBackground = props.blockConfig?.noBackground;
   const underGrupper = props.children.filter(isH3Group);
-  const dekoratorOffset = useDekoratorPopdownOffset();
 
-  const headerProps: TittelProps = { noBackground, dekoratorOffset };
+  const headerProps: TittelProps = { noBackground };
   const regionProps: RegionProps = { noBackground };
 
   return (
