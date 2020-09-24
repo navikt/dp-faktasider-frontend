@@ -52,9 +52,9 @@ export function ForsideLenkePanel(props: { children: ReactNode; title: string })
 
 export function EksternLenke(props: { lenke: EksternLenkeI }) {
   return (
-    <StyledListElement key={props.lenke.title}>
-      <EksternLenkeStyle href={props.lenke.url}>{props.lenke.title}</EksternLenkeStyle>
-      <p>{props.lenke.description}</p>
+    <StyledListElement key={props.lenke.tittel}>
+      <EksternLenkeStyle href={props.lenke.url}>{props.lenke.tittel}</EksternLenkeStyle>
+      <p>{props.lenke.ingress}</p>
     </StyledListElement>
   );
 }

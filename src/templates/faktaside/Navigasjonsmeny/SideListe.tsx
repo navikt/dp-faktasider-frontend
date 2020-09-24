@@ -104,7 +104,7 @@ function EksternLenke(props: { lenke: ExternalMenuLinkData }) {
   return (
     <li>
       <StyledExternalLink className="lenke" href={props.lenke.url} onClick={() => loggMeny('Gå til ekstern side')}>
-        {props.lenke.title}
+        {props.lenke.tittel}
       </StyledExternalLink>
     </li>
   );

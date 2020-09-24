@@ -24,10 +24,10 @@ interface SanityInternLenke {
 }
 
 interface SanityEksternLenke {
-  _type: 'forsideLenke';
+  _type: 'eksternLenke';
   url: string;
-  title: string;
-  description: string;
+  tittel: string;
+  ingress: string;
 }
 
 function isSanityInternLenke(lenke: SanityInternLenke | SanityEksternLenke): lenke is SanityInternLenke {
@@ -36,7 +36,7 @@ function isSanityInternLenke(lenke: SanityInternLenke | SanityEksternLenke): len
 
 interface GraphQlData {
   oppsett: {
-    faktasideSortering: Array<SanityInternLenke | SanityEksternLenke>;
+    sideoversiktLenker: Array<SanityInternLenke | SanityEksternLenke>;
   };
   pages: {
     edges: Array<{
@@ -48,16 +48,16 @@ interface GraphQlData {
 export const faktaSideMenyDataQuery = graphql`
   query MenuData {
     oppsett: sanityOppsett {
-      faktasideSortering {
+      sideoversiktLenker {
         ... on SanityFaktaSide {
           id
           _type
         }
-        ... on SanityForsideLenke {
+        ... on SanityEksternLenke {
           _type
           url: _rawUrl
-          title: _rawTitle
-          description: _rawDescription
+          tittel: _rawTittel
+          ingress: _rawIngress
         }
       }
     }
@@ -81,7 +81,7 @@ export function createMenuItemsData(data, lang: SupportedLanguage): MenuItem[] {
   const localizedData = localizeSanityContent(data, lang) as GraphQlData;
   const pages = localizedData?.pages.edges.map((edge) => edge.node) as Side[];
 
-  const sortedMenuLinks = localizedData?.oppsett.faktasideSortering.map((lenke) => {
+  const sortedMenuLinks = localizedData?.oppsett.sideoversiktLenker.map((lenke) => {
     if (isSanityInternLenke(lenke)) {
       return createInternalLinkData(pages.find((page) => page.id === lenke.id) as Side, lang);
     }
@@ -118,8 +118,8 @@ function createInternalLinkData(page: Side, lang: SupportedLanguage): InternalMe
 function createExternalLinkData(lenke: SanityEksternLenke): ExternalMenuLinkData {
   return {
     url: lenke.url,
-    title: lenke.title,
-    description: lenke.description,
+    tittel: lenke.tittel,
+    ingress: lenke.ingress,
     type: 'external',
   };
 }
