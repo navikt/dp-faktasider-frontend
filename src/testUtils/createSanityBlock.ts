@@ -1,6 +1,10 @@
-import { DelttekstReference, SanityBlock } from '../utils/richTextUtils/richTextTypes';
+import { DelttekstReference, SanityBlock, Tillegsinformasjon } from '../utils/richTextUtils/richTextTypes';
 import { guid } from 'nav-frontend-js-utils';
 import { RawFaktasideData } from '../../gatsby-utils/createFaktasider';
+
+/*
+ * Funksjoner for å lage sanity-mock-data til bruk i tester
+ * */
 
 export function createSanityBlock(text: string, style: string, marks?: string[]): SanityBlock {
   const key = createKey();
@@ -127,4 +131,12 @@ export function createSanityBlockMedDeltTekstVisForAnnotation(
 
 function createKey() {
   return guid().substr(0, 8);
+}
+
+export function createTillegsInformasjon(tittel: string, innhold: SanityBlock[]): Tillegsinformasjon {
+  return {
+    _type: 'tileggsInformasjon',
+    title: tittel,
+    innhold: innhold,
+  };
 }

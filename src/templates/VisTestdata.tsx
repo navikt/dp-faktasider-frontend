@@ -16,6 +16,7 @@ import { utkastTestData } from '../components/BlockContent/utkast/Utkast.testdat
 import { visForAnnotationDeltTekstTestData } from '../components/BlockContent/VisFor/visForAnnotationDeltTekstTestData';
 import TestFaktaside from '../testUtils/TestFaktaside';
 import { visPaaSideTestData } from '../components/BlockContent/VisFor/VisPaaSide.testdata';
+import { tillegsinformasjonTestData } from '../components/BlockContent/Tilleggsinnformasjon/TilleggsInnformasjon.testdata';
 
 type Testdata = {
   data: Partial<FaktasideContext>;
@@ -76,6 +77,12 @@ const testData: Testdata[] = [
     data: {
       innhold: visPaaSideTestData.innhold,
       id: visPaaSideTestData.id,
+    },
+  },
+  {
+    name: 'tillegsinformasjon',
+    data: {
+      innhold: tillegsinformasjonTestData,
     },
   },
 ];

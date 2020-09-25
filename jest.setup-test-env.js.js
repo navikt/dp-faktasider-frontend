@@ -7,6 +7,7 @@ import { mockMetadata } from './src/hooks/graphQl/mockMetadata';
 jest.mock('react-collapse', () => {
   return {
     UnmountClosed: (props) => (props.isOpened ? props.children : null),
+    Collapse: (props) => (props.isOpened ? props.children : null),
   };
 });
 

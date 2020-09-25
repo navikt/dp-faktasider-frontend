@@ -1,12 +1,5 @@
-import { css, keyframes } from 'styled-components/macro';
+import { css } from 'styled-components/macro';
 import { pxToRem } from './utils';
-
-export const fadeIn = keyframes`
-    from {
-      opacity: 0;
-      transform: translateY(2rem) scale(.9);
-    }
-`;
 
 const colors = {
   navRod: '#C30000',
@@ -36,6 +29,32 @@ const colors = {
   fokusFarge: '#254b6d',
 };
 
+const focus = css`
+  outline: none;
+  box-shadow: 0 0 0 ${pxToRem(3)} ${colors.fokusFarge};
+`;
+
+const borderRadius = '.2rem';
+
+export const focusOnRelativeParent = css`
+  &:focus-within {
+    position: static;
+    box-shadow: none;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      pointer-events: none;
+      ${focus};
+      transition: 0.1s;
+      border-radius: ${borderRadius};
+    }
+  }
+`;
+
 export const theme = {
   colors: {
     ...colors,
@@ -54,16 +73,11 @@ export const theme = {
     smallScreen: 'max-width: 65rem',
     bigScreen: 'min-width: 65rem',
   },
-  focus: css`
-    outline: none;
-    box-shadow: 0 0 0 ${pxToRem(3)} ${colors.fokusFarge};
-  `,
-  borderRadius: '.2rem',
+  focus: focus,
+  focusOnRelativeParent: focusOnRelativeParent,
+  borderRadius: borderRadius,
   layoutMargin: '4vmin',
   layoutPadding: '1.5rem',
-  fadeInAnimation: css`
-    animation: ${fadeIn} 0.5s backwards;
-  `,
   border: {
     banner: `0.3rem solid ${colors.navBlaLighten60}`,
   },
