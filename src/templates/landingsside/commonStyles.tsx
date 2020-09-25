@@ -28,8 +28,8 @@ const StyledUl = styled.ul`
 `;
 
 export const lenkeStyling = css`
-  display: flex;
-  justify-content: center;
+  display: block;
+  text-align: center;
   margin-bottom: 1rem;
   font-size: 1.2rem;
   text-decoration: none;
