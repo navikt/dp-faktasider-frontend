@@ -32,7 +32,6 @@ export const MainContentStyle = styled.main`
   flex-direction: column;
   margin: auto;
   max-width: 40rem;
-
   padding: 0 1rem;
   @media (${theme.media.smallScreen}) {
     padding: 0;

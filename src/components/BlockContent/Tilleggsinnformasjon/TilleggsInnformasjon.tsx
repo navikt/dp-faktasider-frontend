@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useEffect, useReducer, useRef } from 'react';
 import styled, { css } from 'styled-components/macro';
 import BlockContent from '../BlockContent';
-import { SanityBlock } from '../../../utils/richTextUtils/richTextTypes';
+import { Tillegsinformasjon } from '../../../utils/richTextUtils/richTextTypes';
 import parseRichText from '../../../utils/richTextUtils/parser/parseRichText';
 import withErrorBoundary from '../../withErrorBoundary';
 import { Undertekst } from 'nav-frontend-typografi';
@@ -11,19 +11,20 @@ import useUniqueId from '../../../utils/useUniqueId';
 import { theme } from '../../../styles/theme';
 import VisMerPanel from './VisMerPanel';
 import { loggVisTilleggsinfo } from '../../../utils/logging';
-import { usePrevious } from 'react-use';
+import { useLocation, usePrevious } from 'react-use';
 import useUserIsSearchingText from '../../../hooks/useUserIsSearchingText';
+import HashLink from '../../HashLink';
+import Anchor from '../../Anchor';
+import { showLinkOnHover } from '../GroupMarkup/CommonGroupMarkup';
 
 interface Props {
-  node: {
-    innhold: SanityBlock[];
-    title: string;
-  };
+  node: Tillegsinformasjon;
 }
 
 const asideBorder = `solid .1rem ${theme.colors.navBlaLighten80}`;
 
 const StyledAside = styled.aside<{ isOpen: boolean }>`
+  position: relative;
   border-top: ${asideBorder};
   border-bottom: ${asideBorder};
   padding: 1.5rem 0.5rem;
@@ -45,6 +46,8 @@ const Label = styled(Undertekst)`
 
 const StyledHeading = styled.h1.attrs({ className: 'typo-element' })`
   margin-top: 0;
+  ${showLinkOnHover};
+  ${theme.focusOnRelativeParent};
 `;
 
 const StyledHeader = styled.header`
@@ -67,8 +70,10 @@ function reducer(state: boolean, action: 'setOpen' | 'toggle'): boolean {
 
 function Tilleggsinnformasjon(props: Props) {
   const parsedText = parseRichText(props.node.innhold);
-  const [open, dispatch] = useReducer(reducer, false);
-  const id = useUniqueId('tilleggsinfo-' + props.node.title);
+  const hashId = props.node.blockConfig?.id || 'N/A';
+  const isInUrl = !!useLocation().hash?.includes(hashId);
+  const [open, dispatch] = useReducer(reducer, isInUrl);
+  const headerId = useUniqueId('tilleggsinfo-' + props.node.title);
   const { t } = useTranslation('global');
   const ref = useRef<HTMLHeadingElement>(null);
   const userIsSearchingText = useUserIsSearchingText();
@@ -87,10 +92,12 @@ function Tilleggsinnformasjon(props: Props) {
   });
 
   return (
-    <StyledAside aria-labelledby={id} isOpen={open}>
+    <StyledAside aria-labelledby={headerId} isOpen={open}>
+      <Anchor id={hashId} spaceAbove="6rem" focusOnParent={true} />
       <StyledHeader>
-        <StyledHeading id={id} tabIndex={-1} ref={ref}>
+        <StyledHeading id={headerId} tabIndex={-1} ref={ref}>
           {props.node.title}
+          <HashLink id={hashId} />
         </StyledHeading>
         <Label>{t('tilleggsinformasjon')}</Label>
       </StyledHeader>

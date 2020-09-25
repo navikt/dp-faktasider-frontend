@@ -20,8 +20,8 @@ interface Props {
 
 function HashLink(props: Props) {
   return (
-    <Wrapper aria-hidden={true}>
-      <StyledA href={`#${props.id}`} onClick={loggHashlenkeKlikk}>
+    <Wrapper>
+      <StyledA aria-label=" Ankerlenke" href={`#${props.id}`} onClick={loggHashlenkeKlikk}>
         <LinkIcon />
       </StyledA>
     </Wrapper>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import BlockContent from '../BlockContent';
-import { createGlobalStyle, StyledComponent } from 'styled-components/macro';
+import { createGlobalStyle, css, StyledComponent } from 'styled-components/macro';
 import { Group } from '../../../utils/richTextUtils/richTextTypes';
 import Anchor from '../../Anchor';
 import HashLink from '../../HashLink';
@@ -23,18 +23,24 @@ interface Props {
   anchorMarginTop?: string;
 }
 
-const linkHideClassName = 'group-header-hash-link-hide';
-const HashLinkHide = createGlobalStyle`
-  .${linkHideClassName} {
-    a {
-      transition: .2s;
-      opacity: 0;
-    }
-    &:hover, &:focus-within, &:focus {
+export const showLinkOnHover = css`
+  a {
+    transition: 0.2s;
+    opacity: 0;
+  }
+  &:hover,
+  &:focus-within,
+  &:focus {
     a {
       opacity: 1;
-      }
     }
+  }
+`;
+
+const groupHeaderClassName = 'group-header-hash-link-on-hover';
+const HashLinkShowOnHover = createGlobalStyle`
+  .${groupHeaderClassName} {
+    ${showLinkOnHover};
   }
 `;
 
@@ -48,9 +54,9 @@ function CommonGroupMarkup(props: Props) {
 
   return (
     <Region data-testid={id} aria-labelledby={headerId} style={{ position: 'relative' }} {...props.regionProps}>
-      <HashLinkHide />
-      <Anchor id={id} marginTop={props.anchorMarginTop} focusOnParent={true} />
-      <Header id={headerId} {...props.headerProps} className={linkHideClassName}>
+      <HashLinkShowOnHover />
+      <Anchor id={id} spaceAbove={props.anchorMarginTop} focusOnParent={true} />
+      <Header id={headerId} {...props.headerProps} className={groupHeaderClassName}>
         {group.title}
         <HashLink id={id} />
       </Header>

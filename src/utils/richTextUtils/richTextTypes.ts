@@ -53,6 +53,12 @@ export type ParsedSanityBlock = SanityBlock & {
   blockConfig?: BlockConfigFromParser;
 };
 
+export type Tillegsinformasjon = ParsedSanityBlock & {
+  _type: 'tileggsInformasjon';
+  title: string;
+  innhold: SanityBlock[];
+};
+
 export type GroupTypes = 'h2' | 'h3' | 'h4';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -79,4 +85,8 @@ export function isH3Group(block: Block): block is Group {
 
 export function isDeltTekstReference(candidate: Block): candidate is DelttekstReference {
   return candidate._type === 'deltTekstReference';
+}
+
+export function isTillegsinformajon(candidate: Block): candidate is Tillegsinformasjon {
+  return candidate._type === 'tileggsInformasjon';
 }
