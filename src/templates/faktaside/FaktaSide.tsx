@@ -28,7 +28,7 @@ function FaktaSide(props: FaktaSideProps) {
   const tittel = page.title || '';
   const contentRef = useRef<HTMLDivElement>(null);
   const path = props.location.pathname;
-  useBreadcrumbs(tittel, path, lang);
+  useBreadcrumbs(tittel);
 
   useMount(() => loggSidevisning(tittel));
   useLoggUtdatertHashlenke();

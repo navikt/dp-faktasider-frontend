@@ -13,6 +13,7 @@ import { loggSidevisning } from '../../utils/logging';
 import InfosideLenker from './InfosideLenker';
 import { MenuItem } from '../../hooks/graphQl/menuDataUtils';
 import { KomIgangLenker } from './KomIgangLenker';
+import useBreadcrumbs from '../faktaside/useBreadcrumbs';
 
 const Content = styled.div`
   max-width: 50rem;
@@ -37,6 +38,7 @@ export function PureIndexPage(props: Props) {
   const { beskrivelse, title, komIgangLenker } = props.projectData;
 
   useMount(() => loggSidevisning('Forside - nav.no/arbeid'));
+  useBreadcrumbs();
 
   return (
     <>

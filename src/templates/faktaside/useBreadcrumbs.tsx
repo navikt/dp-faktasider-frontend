@@ -1,16 +1,30 @@
 import { useMount } from 'react-use';
-import useMetadata from '../../hooks/graphQl/useMetadata';
-import { SupportedLanguage } from '../../i18n/supportedLanguages';
-import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler/dist';
+import { onBreadcrumbClick, setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler/dist';
+import useProjectData from '../../hooks/graphQl/useProjectData';
+import { navigate } from 'gatsby';
+import { Breadcrumb } from '@navikt/nav-dekoratoren-moduler/dist/functions/breadcrumbs';
 
-function useBreadcrumbs(title: string, path: string, lang: SupportedLanguage) {
-  const metaData = useMetadata();
+function useBreadcrumbs(faktasideTittel?: string) {
+  const projectData = useProjectData();
+
+  onBreadcrumbClick((breadcrumb) => {
+    switch (breadcrumb.url) {
+      case 'forside':
+        navigate('/no/');
+        break;
+      case 'current':
+        break;
+    }
+  });
+
+  const breadcrumbs: Breadcrumb[] = [{ title: projectData.title, url: `forside`, handleInApp: true }];
+
+  if (faktasideTittel) {
+    breadcrumbs.push({ title: faktasideTittel, url: 'current', handleInApp: true });
+  }
 
   useMount(() => {
-    setBreadcrumbs([
-      { title: 'Arbeid', url: `${metaData.siteUrl}/${lang}` },
-      { title: title, url: `${metaData.siteUrl}${path}` },
-    ]);
+    setBreadcrumbs(breadcrumbs);
   });
 }
 
