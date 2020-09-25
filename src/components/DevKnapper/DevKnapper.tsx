@@ -10,8 +10,8 @@ import { Link } from 'gatsby';
 
 const Style = styled.div<{ isOpen: boolean }>`
   position: fixed;
-  right: 1rem;
-  top: 3rem;
+  right: 4rem;
+  top: 1rem;
   ${(props) =>
     props.isOpen &&
     css`
@@ -32,8 +32,8 @@ const Button = styled.button`
   background-color: #555;
   color: white;
   font-weight: bold;
-  height: 3rem;
-  width: 3rem;
+  height: 2.5rem;
+  width: 2.5rem;
   cursor: pointer;
   opacity: 0.9;
 `;
