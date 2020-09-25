@@ -11,7 +11,7 @@ import useUniqueId from '../../../utils/useUniqueId';
 import { theme } from '../../../styles/theme';
 import VisMerPanel from './VisMerPanel';
 import { loggVisTilleggsinfo } from '../../../utils/logging';
-import { useLocation, usePrevious } from 'react-use';
+import { usePrevious } from 'react-use';
 import useUserIsSearchingText from '../../../hooks/useUserIsSearchingText';
 import HashLink from '../../HashLink';
 import Anchor from '../../Anchor';
@@ -71,8 +71,7 @@ function reducer(state: boolean, action: 'setOpen' | 'toggle'): boolean {
 function Tilleggsinnformasjon(props: Props) {
   const parsedText = parseRichText(props.node.innhold);
   const hashId = props.node.blockConfig?.id || 'N/A';
-  const isInUrl = !!useLocation().hash?.includes(hashId);
-  const [open, dispatch] = useReducer(reducer, isInUrl);
+  const [open, dispatch] = useReducer(reducer, false);
   const headerId = useUniqueId('tilleggsinfo-' + props.node.title);
   const { t } = useTranslation('global');
   const ref = useRef<HTMLHeadingElement>(null);
