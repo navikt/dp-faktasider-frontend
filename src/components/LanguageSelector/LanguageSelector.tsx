@@ -6,7 +6,7 @@ import { pxToRem } from '../../styles/utils';
 import { navigate } from 'gatsby';
 import { useLocale } from '../../i18n/LocaleContext';
 import { useLocation } from 'react-use';
-import { isProduction } from '../../utils/environment';
+import { isDevelopment, isProduction } from '../../utils/environment';
 import withErrorBoundary from '../withErrorBoundary';
 
 const Style = styled.div`
@@ -30,7 +30,7 @@ const LanguageSelector = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
 
-  if (isProduction()) {
+  if (isProduction() || isDevelopment()) {
     return null;
   }
 
