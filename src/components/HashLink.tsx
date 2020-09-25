@@ -4,9 +4,9 @@ import { theme } from '../styles/theme';
 import { loggHashlenkeKlikk } from '../utils/logging';
 
 const StyledA = styled.a`
-  position: absolute;
-  right: calc(-1rem - 0.6em);
+  margin-left: 0.5rem;
   transform: translateY(0.1em);
+  display: inline-block;
   color: ${theme.colors.lenke};
 `;
 
