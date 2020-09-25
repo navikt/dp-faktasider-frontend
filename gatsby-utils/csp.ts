@@ -21,6 +21,7 @@ export default {
     '*.psplugin.com',
     '*.hotjar.com',
     '*.vc.hotjar.com',
+    'api.puzzel.com',
   ].join(' '),
   'font-src': ['data:', '*.psplugin.com', '*.hotjar.com'].join(' '),
   'frame-src': ['video.qbrick.com/', 'vars.hotjar.com'].join(' '),
