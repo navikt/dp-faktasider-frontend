@@ -5,7 +5,9 @@ const { JSDOM } = jsdom;
 const breadcrumbs = [{ title: 'Arbeid', url: 'https://www.nav.no/arbeid/no' }];
 
 const requestDecorator = (callback) => {
-  const url = `https://www.nav.no/dekoratoren/?breadcrumbs=${JSON.stringify(breadcrumbs)}&context=privatperson`;
+  const url = `https://www.nav.no/dekoratoren/?breadcrumbs=${JSON.stringify(
+    breadcrumbs
+  )}&context=privatperson&chatbot=true`;
   return request(url, callback);
 };
 
