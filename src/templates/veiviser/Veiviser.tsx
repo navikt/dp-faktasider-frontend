@@ -17,6 +17,7 @@ import { useVisForContext } from '../../components/BlockContent/VisFor/VisForCon
 import { visBasertPaaVisPaaConfig } from '../../components/BlockContent/VisFor/VisPaaSide';
 import { isDevelopment } from '../../utils/environment';
 import { getFiltreringsvalgLabel } from '../faktaside/TilpassInnhold/getFiltreringsLabel';
+import { createH2Group } from '../../utils/richTextUtils/createGroup';
 
 export interface VeiviserProps extends PageProps<{}, { pages: FaktasideContext[] }> {
   errors: any;
@@ -74,6 +75,22 @@ function Veiviser(props: VeiviserProps) {
           object: group,
         }))
     : [];
+
+  if (context.side?.kortFortalt) {
+    overskriftsValg.unshift({
+      label: 'Kort fortalt',
+      id: 'kort-fortalt',
+      object: createH2Group('Kort fortalt', context.side.kortFortalt),
+    });
+  }
+
+  if (context.side?.relatertInformasjon) {
+    overskriftsValg.push({
+      label: 'Relatert informasjon',
+      id: 'relatert-informasjon',
+      object: createH2Group('Relatert informasjon', context.side.relatertInformasjon),
+    });
+  }
 
   return (
     <Style>

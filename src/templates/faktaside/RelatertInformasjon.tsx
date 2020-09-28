@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Block, Group } from '../../utils/richTextUtils/richTextTypes';
+import { Block } from '../../utils/richTextUtils/richTextTypes';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components/macro';
 import { theme } from '../../styles/theme';
-import { idFromString } from '../../utils/idFromString';
 import H2GroupMarkup from '../../components/BlockContent/GroupMarkup/H2GroupMarkup';
 import withErrorBoundary from '../../components/withErrorBoundary';
+import { createH2Group } from '../../utils/richTextUtils/createGroup';
 
 interface Props {
   blocks?: Block[];
@@ -32,15 +32,7 @@ function RelatertInformasjon(props: Props) {
     return null;
   }
 
-  const h2Group: Group = {
-    title: t('relatertInformasjon'),
-    children: blocks,
-    _type: 'group',
-    style: 'h2',
-    blockConfig: {
-      id: idFromString(t('relatertInformasjon')),
-    },
-  };
+  const h2Group = createH2Group(t('relatertInformasjon'), blocks);
 
   return (
     <Style>

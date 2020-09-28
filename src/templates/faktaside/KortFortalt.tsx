@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Block, Group } from '../../utils/richTextUtils/richTextTypes';
+import { Block } from '../../utils/richTextUtils/richTextTypes';
 import { useTranslation } from 'react-i18next';
-import { idFromString } from '../../utils/idFromString';
 import H2GroupMarkup from '../../components/BlockContent/GroupMarkup/H2GroupMarkup';
 import withErrorBoundary from '../../components/withErrorBoundary';
+import { createH2Group } from '../../utils/richTextUtils/createGroup';
 
 interface Props {
   blocks?: Block[];
@@ -17,15 +17,7 @@ function KortFortalt(props: Props) {
     return null;
   }
 
-  const h2Group: Group = {
-    title: t('kortFortalt'),
-    children: blocks,
-    _type: 'group',
-    style: 'h2',
-    blockConfig: {
-      id: idFromString(t('kortFortalt')),
-    },
-  };
+  const h2Group = createH2Group(t('kortFortalt'), blocks);
 
   return <H2GroupMarkup {...h2Group} />;
 }
