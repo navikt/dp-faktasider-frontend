@@ -17,6 +17,7 @@ import { visForAnnotationDeltTekstTestData } from '../components/BlockContent/Vi
 import TestFaktaside from '../testUtils/TestFaktaside';
 import { visPaaSideTestData } from '../components/BlockContent/VisFor/VisPaaSide.testdata';
 import { tillegsinformasjonTestData } from '../components/BlockContent/Tilleggsinnformasjon/TilleggsInnformasjon.testdata';
+import { groupMarkupTestData } from '../components/BlockContent/GroupMarkup/GroupMarkup.testdata';
 
 type Testdata = {
   data: Partial<FaktasideContext>;
@@ -57,6 +58,12 @@ const testData: Testdata[] = [
     name: 'groupParser',
     data: {
       innhold: parseRichText(groupParserTestData),
+    },
+  },
+  {
+    name: 'group markup',
+    data: {
+      innhold: groupMarkupTestData,
     },
   },
   {
