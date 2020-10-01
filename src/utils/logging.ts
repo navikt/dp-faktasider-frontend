@@ -18,14 +18,19 @@ const loggEvent = (event: string, ekstraData?: object) => {
   );
 };
 
-export const loggError = (error: Error, ekstraData?: object) =>
-  loggEvent('Error', {
+export const loggError = (error: Error, ekstraData?: object) => {
+  const data = {
     ...ekstraData,
     siteUrl: window.location.pathname,
     msg: error.message,
     name: error.name,
     stack: error.stack,
-  });
+  };
+
+  console.error(data);
+
+  return loggEvent('Error', data);
+};
 
 export const loggRedirect = (fraLenke: string) => loggEvent('Redirect fra gammel lenke', { fraLenke });
 
