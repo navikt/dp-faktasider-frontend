@@ -21,8 +21,9 @@ const GtilNOKAnnotation = (props: Props) => {
   const devContext = useDevContext();
 
   useEffect(() => {
-    notNumber && loggError(new Error('Kunne ikke konvertere belløp til NOK'), { grunnbellop: JSON.stringify(G) });
-  }, [notNumber, G]);
+    notNumber &&
+      loggError(new Error('Kunne ikke konvertere belløp til NOK'), { grunnbellop: G, children: props.children });
+  }, [notNumber, G, props.children]);
 
   if (notNumber) {
     return <>{G} (G)</>;
