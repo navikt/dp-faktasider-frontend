@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ReactNode } from 'react';
+import { ReactNode, RefObject } from 'react';
 import styled from 'styled-components/macro';
 import Navigasjonsmeny from './Navigasjonsmeny/Navigasjonsmeny';
 import Header from '../felles/Header';
@@ -15,6 +15,7 @@ interface Props {
   beskrivelse: string;
   children: ReactNode;
   publiseringsTidspunkt?: string;
+  wordCountRef?: RefObject<HTMLElement>;
 }
 
 const ContentStyle = styled.div`
@@ -51,7 +52,7 @@ function FaktaSideLayout(props: Props) {
         <DevKnapper />
         <ContentStyle>
           <Navigasjonsmeny className="order-1" />
-          <Filtrering className="order-3" />
+          {props.wordCountRef && <Filtrering wordCountRef={props.wordCountRef} className="order-3" />}
           <div className="order-2">
             <Header
               heading={props.header}

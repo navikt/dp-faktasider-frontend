@@ -26,7 +26,7 @@ function FaktaSide(props: FaktaSideProps) {
   const lang = page.lang;
   const erPublisert = page.visSprakversjon?.[lang];
   const tittel = page.title || '';
-  const contentRef = useRef<HTMLDivElement>(null);
+  const wordCountRef = useRef<HTMLDivElement>(null);
   const path = props.location.pathname;
   useBreadcrumbs(tittel);
 
@@ -43,10 +43,15 @@ function FaktaSide(props: FaktaSideProps) {
   return (
     <FaktasideProvider {...page}>
       <SEO title={tittel} description={beskrivelse} lang={lang} path={path} />
-      <FaktaSideLayout header={tittel} beskrivelse={beskrivelse} publiseringsTidspunkt={page.publiseringsTidspunkt}>
+      <FaktaSideLayout
+        wordCountRef={wordCountRef}
+        header={tittel}
+        beskrivelse={beskrivelse}
+        publiseringsTidspunkt={page.publiseringsTidspunkt}
+      >
         <GraphQLErrorList errors={props.errors} />
-        <InnholdetErTilpasset contentRef={contentRef} />
-        <div ref={contentRef}>
+        <InnholdetErTilpasset />
+        <div ref={wordCountRef}>
           <KortFortalt blocks={props.pageContext.kortFortalt} />
           <BlockContent blocks={parsedInnhold} />
           <RelatertInformasjon blocks={page.relatertInformasjon} />

@@ -10,6 +10,8 @@ import { UnmountClosed } from 'react-collapse';
 import { getFiltreringsvalgLabel } from './getFiltreringsLabel';
 import getAlleTilpassInnholdValg from './getAlleTilpassInnholdValg';
 import { useFaktasideContext } from '../FaktaSideContext';
+import { useWordCount } from './useWordCount';
+import { RefObject } from 'react';
 
 const StyledNav = styled.nav`
   border-top: ${theme.border.banner};
@@ -41,6 +43,7 @@ const StyledUndertittel = styled(Systemtittel)`
 
 interface Props {
   className?: string;
+  wordCountRef: RefObject<HTMLElement>;
 }
 
 function TilpassInnhold(props: Props) {
@@ -50,6 +53,7 @@ function TilpassInnhold(props: Props) {
   const valgt = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
   const tilgjengeligeValg = getAlleTilpassInnholdValg(innhold);
+  const wordCount = useWordCount(props.wordCountRef);
 
   if (tilgjengeligeValg.length === 0) {
     return null;
@@ -80,7 +84,7 @@ function TilpassInnhold(props: Props) {
         )}
       </StyledUl>
       <UnmountClosed isOpened={valgt.length > 0 || ingenPasserMeg}>
-        Siden er tilpasset ved å skjule tekst som ikke er relevant for situasjonen din.
+        Vi viser nå {wordCount.current} av {wordCount.total} ord på denne siden
       </UnmountClosed>
     </StyledNav>
   );
