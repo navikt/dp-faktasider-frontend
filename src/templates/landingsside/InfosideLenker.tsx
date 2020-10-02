@@ -5,7 +5,7 @@ import { EksternLenke, ForsideLenkePanel, lenkeStyling, StyledListElement } from
 import { Link } from 'gatsby';
 import { InternalMenuLinkData, MenuItem } from '../../hooks/graphQl/menuDataUtils';
 
-const InfosideLenkeStyle = styled(Link)`
+const InfosideLenkeStyle = styled(Link).attrs({ className: 'lenke' })`
   ${lenkeStyling};
 `;
 

@@ -33,6 +33,9 @@ export const lenkeStyling = css`
   margin-bottom: 1rem;
   font-size: 1.2rem;
   text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const EksternLenkeStyle = styled(Lenke)`
