@@ -12,7 +12,6 @@ const Styling = createGlobalStyle`
     }
     html {
         font-size: 115%;
-        font-size: calc(107% + 0.25vmin);
         font-family: 'Source Sans Pro', sans-serif;
     }
     body {
