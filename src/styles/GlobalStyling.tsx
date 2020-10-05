@@ -13,7 +13,7 @@ const Styling = createGlobalStyle`
     html {
         font-size: 115%;
         @media (min-width: 760px) {
-          font-size: 120%;
+          font-size: 125%;
         }
         font-family: 'Source Sans Pro', sans-serif;
     }
