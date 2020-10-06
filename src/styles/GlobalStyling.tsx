@@ -12,7 +12,7 @@ const Styling = createGlobalStyle`
     }
     html {
         font-size: 115%;
-        @media (min-width: 760px) {
+        @media (min-width: 1200px) {
           font-size: 125%;
         }
         font-family: 'Source Sans Pro', sans-serif;
