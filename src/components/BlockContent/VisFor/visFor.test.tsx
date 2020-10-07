@@ -1,9 +1,9 @@
 import React from 'react';
 import BlockContent from '../BlockContent';
-import { fireEvent, render, within } from '../../../testUtils/customized-testing-library';
+import { render, within } from '../../../testUtils/customized-testing-library';
 import { visForTestData } from './visFor.testdata';
 import TestFaktaside from '../../../testUtils/TestFaktaside';
-import { RenderResult } from '@testing-library/react';
+import { toggleFilter } from '../../../testUtils/tilpassInnholdUtils';
 
 const { innhold } = visForTestData;
 const {
@@ -15,12 +15,6 @@ const {
   innholdForAlle,
   bolkSkjulForPermittertOgKonkurs,
 } = visForTestData.tekster;
-
-function toggleFilter(result: RenderResult, checkboxLabel: RegExp) {
-  const tilpassInnhold = result.getByLabelText(/Tilpass/);
-  const checkbox = within(tilpassInnhold).getByLabelText(checkboxLabel);
-  fireEvent.click(checkbox);
-}
 
 describe('visFor-logikk', () => {
   test('Hvis ingen filtrering er valgt vises all tekst', () => {
@@ -83,9 +77,7 @@ describe('visFor-logikk', () => {
 
     expect(within(førsteBolk).getAllByRole('listitem')).toHaveLength(2);
 
-    const filtreringsvalg = result.getByLabelText(/Tilpass/i);
-    const ingenValgCheckbox = within(filtreringsvalg).getByLabelText(/ingen valg/i);
-    fireEvent.click(ingenValgCheckbox);
+    toggleFilter(result, /ingen valg/i);
 
     expect(within(førsteBolk).getAllByRole('listitem')).toHaveLength(1);
   });

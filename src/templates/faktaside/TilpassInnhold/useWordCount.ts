@@ -4,8 +4,8 @@ import { useMount } from 'react-use';
 
 export function useWordCount(contentRef: RefObject<HTMLElement>) {
   const { checked, ingenPasserMeg } = useVisForContext().value;
-  const [totalWordCount, setTotalWordCount] = useState<number | undefined>();
-  const [currentWordCount, setWordCountAfterFilter] = useState<number | undefined>();
+  const [totalWordCount, setTotalWordCount] = useState<number | undefined>(0);
+  const [currentWordCount, setCurrentWordCount] = useState<number | undefined>(0);
 
   useMount(() => {
     setTotalWordCount(getWordCount(contentRef));
@@ -13,7 +13,7 @@ export function useWordCount(contentRef: RefObject<HTMLElement>) {
 
   useEffect(() => {
     if (checked.length || ingenPasserMeg) {
-      setWordCountAfterFilter(getWordCount(contentRef));
+      setCurrentWordCount(getWordCount(contentRef));
     }
   }, [checked, contentRef, ingenPasserMeg]);
 
