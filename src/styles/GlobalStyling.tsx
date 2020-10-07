@@ -26,8 +26,25 @@ const Styling = createGlobalStyle`
     }
 `;
 
+const ChatbotStyling = createGlobalStyle`
+   .decorator-wrapper {
+     .chatbot-container {
+     transition: .3s;
+        bottom: 1rem;
+     }
+     .chatbot-container__docked {
+        bottom: 0;
+     }
+   }
+`;
+
 export function GlobalStyling() {
-  return <Styling />;
+  return (
+    <>
+      <Styling />
+      <ChatbotStyling />
+    </>
+  );
 }
 
 /* Scoper denne stylingen så den ikke overskriver styling i Meny/Dekorator */
