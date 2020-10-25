@@ -29,7 +29,7 @@
     "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-plugin-typescript": "^2.4.18",
     "gatsby-source-sanity": "^6.0.4",
-    "i18next": "^19.7.0",
+    "i18next": "^19.8.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
     "jest-styled-components": "^7.0.3",
