@@ -2,7 +2,7 @@ const request = require('request');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
-const breadcrumbs = JSON.stringify([{ title: 'Arbeid', url: 'https://www.nav.no/arbeid/no/' }]);
+const breadcrumbs = JSON.stringify([{ title: 'Arbeidssøker eller permittert', url: 'https://www.nav.no/arbeid/no/' }]);
 
 const requestDecorator = (callback) => {
   const url = `https://www.nav.no/dekoratoren/?breadcrumbs=${breadcrumbs}&context=privatperson&chatbot=true`;
