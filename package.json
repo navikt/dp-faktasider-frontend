@@ -1,7 +1,7 @@
 {
   "name": "dp-faktasider-frontend",
   "private": true,
-  "description": "Frontend for dagpenge-relaterte faktasider på nav.no",
+  "description": "Frontend for produktområde arbeid sine faktasider på nav.no/arbeid",
   "version": "0.1.0",
   "author": "NAV",
   "dependencies": {
