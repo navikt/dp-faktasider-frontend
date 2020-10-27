@@ -15,9 +15,14 @@ import { MenuItem } from '../../hooks/graphQl/menuDataUtils';
 import { KomIgangLenker } from './KomIgangLenker';
 import useBreadcrumbs from '../faktaside/useBreadcrumbs';
 
+const Style = styled.div`
+  background-color: white;
+  padding-bottom: 6rem;
+`;
+
 const Content = styled.div`
   max-width: 50rem;
-  margin: 3rem auto 4rem;
+  margin: auto;
 `;
 
 const IndexPage = (props: PageProps<{}, LandingssideProps>) => {
@@ -41,14 +46,14 @@ export function PureIndexPage(props: Props) {
   useBreadcrumbs();
 
   return (
-    <>
+    <Style>
       <Header heading={localizeSanityContent(title, lang)} beskrivelse={beskrivelse} />
       <SEO lang={lang} description={beskrivelse} title={title} path={props.path} />
       <Content>
         <InfosideLenker lenker={props.infosideLenker} />
         <KomIgangLenker komIgangLenker={komIgangLenker} />
       </Content>
-    </>
+    </Style>
   );
 }
 

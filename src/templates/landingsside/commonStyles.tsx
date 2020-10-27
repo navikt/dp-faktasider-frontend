@@ -7,12 +7,11 @@ import { EksternLenkeI } from '../../hooks/graphQl/useProjectData';
 
 const StyledSystemtittel = styled(Systemtittel)`
   text-align: center;
-  margin: 2rem 0 0.5rem;
+  margin: 2rem 0 1rem;
 `;
 
 export const StyledListElement = styled.li`
-  background-color: white;
-  padding: 1.2rem 1.2rem 2rem;
+  padding: 1rem;
   border-radius: 0.5rem;
   min-height: 8rem;
 `;
@@ -23,14 +22,13 @@ const StyledUl = styled.ul`
   justify-content: center;
   ${StyledListElement} {
     flex: 15rem 0 0;
-    margin: 0.5rem;
+    margin: 0.25rem;
   }
 `;
 
 export const lenkeStyling = css`
   display: block;
-  text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
   font-size: 1.2rem;
   text-decoration: none;
   &:hover {
@@ -42,12 +40,14 @@ export const EksternLenkeStyle = styled(Lenke)`
   ${lenkeStyling};
 `;
 
-export function ForsideLenkePanel(props: { children: ReactNode; title: string }) {
+export function ForsideLenkePanel(props: { children: ReactNode; title: string; hideTitle?: boolean }) {
   const id = useUniqueId('lenkepanel');
 
   return (
     <section aria-labelledby={id}>
-      <StyledSystemtittel id={id}>{props.title}</StyledSystemtittel>
+      <StyledSystemtittel className={props.hideTitle ? 'sr-only' : ''} id={id}>
+        {props.title}
+      </StyledSystemtittel>
       <StyledUl>{props.children}</StyledUl>
     </section>
   );

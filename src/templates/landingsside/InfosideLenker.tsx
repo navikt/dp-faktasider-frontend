@@ -4,15 +4,15 @@ import styled from 'styled-components/macro';
 import { EksternLenke, ForsideLenkePanel, lenkeStyling, StyledListElement } from './commonStyles';
 import { Link } from 'gatsby';
 import { InternalMenuLinkData, MenuItem } from '../../hooks/graphQl/menuDataUtils';
+import Utkast from '../../components/BlockContent/utkast/Utkast';
 
 const InfosideLenkeStyle = styled(Link).attrs({ className: 'lenke' })`
   ${lenkeStyling};
 `;
 
 const KunTilgjengeligStyle = styled.p`
-  text-align: center;
   opacity: 0.7;
-  margin: 1rem 0 !important;
+  margin: 0.3rem 0 !important;
 `;
 
 function InternLenke(props: { lenke: InternalMenuLinkData }) {
@@ -25,9 +25,11 @@ function InternLenke(props: { lenke: InternalMenuLinkData }) {
         {props.lenke.tittel}
       </InfosideLenkeStyle>
       {!props.lenke.tilgjengeligPåValgtSpråk && (
-        <KunTilgjengeligStyle>
-          ({t('kunTilgjengeligPå')} {t(props.lenke.språk)})
-        </KunTilgjengeligStyle>
+        <Utkast>
+          <KunTilgjengeligStyle>
+            {t('kunTilgjengeligPå')} {t(props.lenke.språk)}
+          </KunTilgjengeligStyle>
+        </Utkast>
       )}
       <p lang={langAttribute}>{props.lenke.beskrivelse}</p>
     </StyledListElement>
@@ -38,7 +40,7 @@ function InfosideLenker(props: { lenker: MenuItem[] }) {
   const { t } = useTranslation('global');
 
   return (
-    <ForsideLenkePanel title={t('forsideInformasjonHeader')}>
+    <ForsideLenkePanel title={t('forsideInformasjonHeader')} hideTitle={true}>
       {props.lenker.map((lenke) =>
         lenke.type === 'internal' ? (
           <InternLenke lenke={lenke} key={lenke.id} />
