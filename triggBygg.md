@@ -7,3 +7,4 @@ Det var en gang det var en feil som ble rettet fordi et hamster løp i et hjul. 
 
 Endringen var bastant. Skatten måtte betales. Og filtreringen må fungere. De unge fortjener god informasjon <3 Meldekort og fiksing av informasjon.
 BURSDAG!! Hurra :D
+Søknad eller kalkulator?
