@@ -1,4 +1,4 @@
-import { DelttekstReference, SanityBlock, Tillegsinformasjon } from '../utils/richTextUtils/richTextTypes';
+import { DelttekstReference, SanityBlock, TidslinjeI, Tillegsinformasjon } from '../utils/richTextUtils/richTextTypes';
 import { guid } from 'nav-frontend-js-utils';
 import { RawFaktasideData } from '../../gatsby-utils/createFaktasider';
 
@@ -137,6 +137,13 @@ export function createTillegsInformasjon(tittel: string, innhold: SanityBlock[])
   return {
     _type: 'tileggsInformasjon',
     title: tittel,
+    innhold: innhold,
+  };
+}
+
+export function createTidslinje(innhold: SanityBlock[]): TidslinjeI {
+  return {
+    _type: 'tidslinje',
     innhold: innhold,
   };
 }

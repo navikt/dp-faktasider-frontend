@@ -14,6 +14,7 @@ import withErrorBoundary from '../withErrorBoundary';
 import Tilleggsinnformasjon from './Tilleggsinnformasjon/TilleggsInnformasjon';
 import ListItemRenderer from './ListItemRenderer';
 import GtilNOKAnnotation from './GtilNOKAnnotation';
+import Tidslinje from './Tidslinje/Tidslinje';
 
 interface Props {
   blocks: ParsedRichText;
@@ -37,6 +38,7 @@ const serializers: Serializers = {
     fremhevetTekst: FremhevetTekst,
     deltFremhevetTekst: FremhevetTekst,
     tileggsInformasjon: Tilleggsinnformasjon,
+    tidslinje: Tidslinje,
   },
   listItem: ListItemRenderer,
   marks: {
