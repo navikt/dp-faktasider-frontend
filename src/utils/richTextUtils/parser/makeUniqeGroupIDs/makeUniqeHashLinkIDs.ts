@@ -1,6 +1,6 @@
 import { Block, GroupTypes, isTillegsinformajon, ParsedSanityBlock } from '../../richTextTypes';
 import { RichTextParser } from '../parseRichText';
-import { getGroupTitle } from '../groupParser/groupParser';
+import { getTextFromChildren } from '../groupParser/groupParser';
 import { idFromString } from '../../../idFromString';
 
 let usedIds: string[] = [];
@@ -23,7 +23,7 @@ export const makeUniqeHashLinkIDs: RichTextParser = (blocks: Block[]) => {
             ...block,
             blockConfig: {
               ...currentConfig,
-              id: makeUniqeId(isTillegsinformajon(block) ? block.title : getGroupTitle(block)),
+              id: makeUniqeId(isTillegsinformajon(block) ? block.title : getTextFromChildren(block)),
             },
           };
         }

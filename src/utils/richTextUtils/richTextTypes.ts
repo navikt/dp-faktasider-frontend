@@ -59,6 +59,11 @@ export type Tillegsinformasjon = ParsedSanityBlock & {
   innhold: SanityBlock[];
 };
 
+export type TidslinjeI = ParsedSanityBlock & {
+  _type: 'tidslinje';
+  innhold: SanityBlock[];
+};
+
 export type GroupTypes = 'h2' | 'h3' | 'h4';
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define

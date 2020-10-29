@@ -22,7 +22,7 @@ export const groupParser: RichTextParser = (blocks) => {
           currentGroup = {
             ...block,
             style: block.style as GroupTypes,
-            title: getGroupTitle(block),
+            title: getTextFromChildren(block),
             _type: 'group',
             children: [],
             blockConfig: createBlockConfig(block),
@@ -41,7 +41,7 @@ export const groupParser: RichTextParser = (blocks) => {
   }, blocks);
 };
 
-export function getGroupTitle(block: ParsedSanityBlock): string {
+export function getTextFromChildren(block: ParsedSanityBlock): string {
   return block.children?.map((it) => it.text).join('') || 'Mangler tittel';
 }
 

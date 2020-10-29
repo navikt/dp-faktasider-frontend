@@ -18,6 +18,7 @@ import TestFaktaside from '../testUtils/TestFaktaside';
 import { visPaaSideTestData } from '../components/BlockContent/VisFor/VisPaaSide.testdata';
 import { tillegsinformasjonTestData } from '../components/BlockContent/Tilleggsinnformasjon/TilleggsInnformasjon.testdata';
 import { groupMarkupTestData } from '../components/BlockContent/GroupMarkup/GroupMarkup.testdata';
+import { tidslinjeTestData } from '../components/BlockContent/Tidslinje/Tidslinje.testdata';
 
 type Testdata = {
   data: Partial<FaktasideContext>;
@@ -90,6 +91,12 @@ const testData: Testdata[] = [
     name: 'tillegsinformasjon',
     data: {
       innhold: tillegsinformasjonTestData,
+    },
+  },
+  {
+    name: 'tidslinje',
+    data: {
+      innhold: tidslinjeTestData,
     },
   },
 ];
