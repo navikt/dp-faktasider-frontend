@@ -40,6 +40,9 @@ const StyledElement = styled(Element)`
   align-items: center;
   min-height: ${circleSize};
   margin: 0 0 1rem !important;
+  p {
+    margin: 0 !important;
+  }
 `;
 
 function Tidspunkt(props: TidslinjePunkt) {
@@ -47,7 +50,7 @@ function Tidspunkt(props: TidslinjePunkt) {
 
   return (
     <StyledLi aria-labelledby={id}>
-      <StyledElement id={id}>{props.tittel}</StyledElement>
+      <StyledElement id={id}>{props.tittel && <BlockContent blocks={[props.tittel]} />}</StyledElement>
       <BlockContent blocks={props.innhold} />
     </StyledLi>
   );

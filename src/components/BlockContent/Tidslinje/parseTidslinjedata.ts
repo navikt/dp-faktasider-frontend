@@ -1,8 +1,7 @@
 import { Block, TidslinjeI } from '../../../utils/richTextUtils/richTextTypes';
-import { getTextFromSanityBlock } from '../../../utils/richTextUtils/getTextFromSanityBlock';
 
 export interface TidslinjePunkt {
-  tittel: string;
+  tittel?: Block;
   innhold: Block[];
   id: string;
 }
@@ -14,7 +13,7 @@ export function parseTidslinjedata(tidslinjeData: TidslinjeI): TidslinjePunkt[] 
   tidslinjeData.innhold.forEach((block) => {
     if (block.style === 'tidslinjepunkt') {
       currentPunkt = {
-        tittel: getTextFromSanityBlock(block),
+        tittel: block,
         innhold: [],
         id: block._key || 'N/A',
       };
@@ -22,7 +21,7 @@ export function parseTidslinjedata(tidslinjeData: TidslinjeI): TidslinjePunkt[] 
     } else {
       if (!currentPunkt) {
         currentPunkt = {
-          tittel: '',
+          tittel: undefined,
           innhold: [],
           id: 'førstePunkt',
         };
