@@ -1,7 +1,8 @@
 import { EksternLenkeI } from '../../hooks/graphQl/useProjectData';
 import { useTranslation } from 'react-i18next';
 import React from 'react';
-import { EksternLenke, ForsideLenkePanel } from './commonStyles';
+import { ForsideLenkePanel } from './ForsideLenkePanel';
+import { EksternLenke } from './ForsideLenker';
 
 export function KomIgangLenker(props: { komIgangLenker?: EksternLenkeI[] }) {
   const { t } = useTranslation('global');

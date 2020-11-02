@@ -14,6 +14,7 @@ import InfosideLenker from './InfosideLenker';
 import { MenuItem } from '../../hooks/graphQl/menuDataUtils';
 import { KomIgangLenker } from './KomIgangLenker';
 import useBreadcrumbs from '../faktaside/useBreadcrumbs';
+import DevKnapper from '../../components/DevKnapper/DevKnapper';
 
 const Style = styled.div`
   background-color: white;
@@ -47,6 +48,7 @@ export function PureIndexPage(props: Props) {
 
   return (
     <Style>
+      <DevKnapper />
       <Header heading={localizeSanityContent(title, lang)} beskrivelse={beskrivelse} />
       <SEO lang={lang} description={beskrivelse} title={title} path={props.path} />
       <Content>
