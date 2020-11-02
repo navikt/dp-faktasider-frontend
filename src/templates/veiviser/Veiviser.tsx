@@ -18,6 +18,7 @@ import { visBasertPaaVisPaaConfig } from '../../components/BlockContent/VisFor/V
 import { isDevelopment } from '../../utils/environment';
 import { getFiltreringsvalgLabel } from '../faktaside/TilpassInnhold/getFiltreringsLabel';
 import { createH2Group } from '../../utils/richTextUtils/createGroup';
+import { Knapp } from 'nav-frontend-knapper';
 
 export interface VeiviserProps extends PageProps<{}, { pages: FaktasideContext[] }> {
   errors: any;
@@ -30,8 +31,16 @@ const Style = styled.div`
 `;
 
 const Content = styled.div`
-  max-width: 40rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin: auto;
+  padding: 1rem;
+  max-width: 60rem;
+  button {
+    position: sticky;
+    top: 4rem;
+  }
 `;
 
 function Veiviser(props: VeiviserProps) {
@@ -92,6 +101,10 @@ function Veiviser(props: VeiviserProps) {
     });
   }
 
+  const groupIndex = overskriftsValg.findIndex(
+    (valg) => valg.object?.blockConfig?.id === context.group?.blockConfig?.id
+  );
+
   return (
     <Style>
       <UnderArbeid />
@@ -114,7 +127,27 @@ function Veiviser(props: VeiviserProps) {
       )}
       {state.matches('visGruppe') && (
         <Content>
+          <Knapp
+            onClick={() =>
+              send({
+                type: 'VELGOVERSKRIFT',
+                group: overskriftsValg[groupIndex - 1]?.object || overskriftsValg[overskriftsValg.length - 1].object,
+              })
+            }
+          >
+            Forrige
+          </Knapp>
           <BlockContent blocks={state.context.group ? [state.context.group] : []} />
+          <Knapp
+            onClick={() =>
+              send({
+                type: 'VELGOVERSKRIFT',
+                group: overskriftsValg[groupIndex + 1]?.object || overskriftsValg[0].object,
+              })
+            }
+          >
+            Neste
+          </Knapp>
         </Content>
       )}
     </Style>
