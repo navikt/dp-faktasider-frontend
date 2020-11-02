@@ -9,12 +9,18 @@ const StyledSystemtittel = styled(Systemtittel)`
 `;
 
 const StyledUl = styled.ul`
+  padding: 0 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   li {
     flex: 15rem 0 0;
     margin: 0.25rem;
+  }
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-gap: 1rem;
   }
 `;
 

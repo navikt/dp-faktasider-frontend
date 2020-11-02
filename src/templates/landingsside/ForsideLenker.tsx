@@ -17,7 +17,6 @@ const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: 'lenke' })`
 export const lenkeStyling = css`
   padding: 0.5rem;
   border-radius: 0.5rem;
-  min-height: 8rem;
   display: block;
   text-decoration: none;
   color: inherit;
