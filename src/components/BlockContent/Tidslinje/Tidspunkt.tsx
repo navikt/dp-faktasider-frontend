@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
 import { theme } from '../../../styles/theme';
-import Element from 'nav-frontend-typografi/lib/element';
 import BlockContent from '../BlockContent';
 import { TidslinjePunkt } from './parseTidslinjedata';
 import { useRef } from 'react';
@@ -35,7 +34,7 @@ const StyledLi = styled.li`
   }
 `;
 
-const StyledElement = styled(Element)`
+const StyledElement = styled.div.attrs({ className: 'typo-element' })`
   display: flex;
   align-items: center;
   min-height: ${circleSize};
