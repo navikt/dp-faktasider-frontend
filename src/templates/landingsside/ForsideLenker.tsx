@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/macro';
 import { Link } from 'gatsby';
-import { Ingress } from 'nav-frontend-typografi';
+import { Normaltekst } from 'nav-frontend-typografi';
 import { InternalMenuLinkData } from '../../hooks/graphQl/menuDataUtils';
 import { useTranslation } from 'react-i18next';
 import Utkast from '../../components/BlockContent/utkast/Utkast';
@@ -8,8 +8,10 @@ import { EksternLenkeI } from '../../hooks/graphQl/useProjectData';
 import React, { useRef } from 'react';
 import { guid } from 'nav-frontend-js-utils';
 
-const ForsideLenkeHeader = styled(Ingress).attrs({ className: 'lenke' })`
+const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: 'lenke' })`
+  font-size: 1.2rem;
   text-decoration: none;
+  margin-bottom: 0.2rem;
 `;
 
 export const lenkeStyling = css`
