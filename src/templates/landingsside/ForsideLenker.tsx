@@ -5,7 +5,8 @@ import { InternalMenuLinkData } from '../../hooks/graphQl/menuDataUtils';
 import { useTranslation } from 'react-i18next';
 import Utkast from '../../components/BlockContent/utkast/Utkast';
 import { EksternLenkeI } from '../../hooks/graphQl/useProjectData';
-import React from 'react';
+import React, { useRef } from 'react';
+import { guid } from 'nav-frontend-js-utils';
 
 const ForsideLenkeHeader = styled(Ingress).attrs({ className: 'lenke' })`
   text-decoration: none;
@@ -41,11 +42,12 @@ const KunTilgjengeligStyle = styled.p`
 export function InternLenke(props: { lenke: InternalMenuLinkData }) {
   const { t } = useTranslation('global');
   const langAttribute = !props.lenke.tilgjengeligPåValgtSpråk ? props.lenke.språk : undefined;
+  const id = useRef(guid()).current;
 
   return (
     <li key={props.lenke.id}>
-      <InternLenkeStyle to={props.lenke.path} lang={langAttribute}>
-        <ForsideLenkeHeader>{props.lenke.tittel}</ForsideLenkeHeader>
+      <InternLenkeStyle aria-labelledby={id} to={props.lenke.path} lang={langAttribute}>
+        <ForsideLenkeHeader id={id}>{props.lenke.tittel}</ForsideLenkeHeader>
         {!props.lenke.tilgjengeligPåValgtSpråk && (
           <Utkast>
             <KunTilgjengeligStyle>
@@ -60,10 +62,12 @@ export function InternLenke(props: { lenke: InternalMenuLinkData }) {
 }
 
 export function EksternLenke(props: { lenke: EksternLenkeI }) {
+  const id = useRef(guid()).current;
+
   return (
     <li key={props.lenke.tittel}>
-      <EksternLenkeStyle href={props.lenke.url}>
-        <ForsideLenkeHeader>{props.lenke.tittel}</ForsideLenkeHeader>
+      <EksternLenkeStyle aria-labelledby={id} href={props.lenke.url}>
+        <ForsideLenkeHeader id={id}>{props.lenke.tittel}</ForsideLenkeHeader>
         <p>{props.lenke.beskrivelse}</p>
       </EksternLenkeStyle>
     </li>
