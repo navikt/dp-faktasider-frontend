@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { RawFaktasideData } from '../../../../gatsby-utils/createFaktasider';
-import VisForAnnotation from './VisForAnnotation';
-import { VisForConfig } from '../../../utils/richTextUtils/richTextTypes';
-import VisPaaSide from './VisPaaSide';
-import withErrorBoundary from '../../withErrorBoundary';
+import * as React from "react";
+import { RawFaktasideData } from "../../../../gatsby-utils/createFaktasider";
+import VisForAnnotation from "./VisForAnnotation";
+import { VisForConfig } from "../../../utils/richTextUtils/richTextTypes";
+import VisPaaSide from "./VisPaaSide";
+import withErrorBoundary from "../../withErrorBoundary";
 
 interface Props {
   children: string[];
@@ -23,4 +23,4 @@ const VisForAnnotationDeltTekst = (props: Props) => {
   );
 };
 
-export default withErrorBoundary(VisForAnnotationDeltTekst, 'VisForAnnotationDeltTekst');
+export default withErrorBoundary(VisForAnnotationDeltTekst, "VisForAnnotationDeltTekst");

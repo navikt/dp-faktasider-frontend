@@ -1,11 +1,11 @@
-import { GatsbyNode } from 'gatsby';
-import { SupportedLanguage, supportedLanguages } from '../src/i18n/supportedLanguages';
-import localizeSanityContent from '../src/i18n/localizeSanityContent';
-import parseRichText, { ParsedRichText } from '../src/utils/richTextUtils/parser/parseRichText';
-import { SanityBlock } from '../src/utils/richTextUtils/richTextTypes';
-import { Translations } from '../src/types/translations';
-import { Modify } from '../src/utils/typeUtils';
-import { getPubliseringsTidspunkt } from './getPubliseringstidspunkt';
+import { GatsbyNode } from "gatsby";
+import { SupportedLanguage, supportedLanguages } from "../src/i18n/supportedLanguages";
+import localizeSanityContent from "../src/i18n/localizeSanityContent";
+import parseRichText, { ParsedRichText } from "../src/utils/richTextUtils/parser/parseRichText";
+import { SanityBlock } from "../src/utils/richTextUtils/richTextTypes";
+import { Translations } from "../src/types/translations";
+import { Modify } from "../src/utils/typeUtils";
+import { getPubliseringsTidspunkt } from "./getPubliseringstidspunkt";
 
 export interface RawFaktasideData {
   id: string;
@@ -37,17 +37,17 @@ export type LocalizedFaktasideData = Modify<
 >;
 
 export type FaktasideContext = Modify<
-  Omit<LocalizedFaktasideData, '_updatedAt'>,
+  Omit<LocalizedFaktasideData, "_updatedAt">,
   {
     lang: SupportedLanguage;
     innhold: ParsedRichText;
     publiseringsTidspunkt: string;
-    rawData: Pick<RawFaktasideData, 'title'>;
+    rawData: Pick<RawFaktasideData, "title">;
     slug: string;
   }
 >;
 
-export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
+export const createFaktasider: GatsbyNode["createPages"] = async (props) => {
   const { graphql, actions, reporter } = props;
   const result = await graphql(`
     query Pages {
@@ -80,11 +80,11 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
   // @ts-ignore
   const rawData: RawFaktasideData[] = result.data.pages.edges?.map((edge) => edge.node) || [];
 
-  const pages = rawData.map((page) => createFaktasideContext(page, 'no'));
+  const pages = rawData.map((page) => createFaktasideContext(page, "no"));
   reporter.info(`📄 Lager veiviser: /no/demoapp`);
   actions.createPage({
-    path: '/no/demoapp',
-    component: require.resolve('../src/templates/veiviser/Veiviser.tsx'),
+    path: "/no/demoapp",
+    component: require.resolve("../src/templates/veiviser/Veiviser.tsx"),
     context: { pages },
   });
 
@@ -105,7 +105,7 @@ export const createFaktasider: GatsbyNode['createPages'] = async (props) => {
 
       actions.createPage({
         path: localePath,
-        component: require.resolve('../src/templates/faktaside/FaktaSide.tsx'),
+        component: require.resolve("../src/templates/faktaside/FaktaSide.tsx"),
         context: createFaktasideContext(page, lang),
       });
     });
@@ -123,7 +123,7 @@ export function createFaktasideContext(page: RawFaktasideData, lang: SupportedLa
     innhold: parsedInnhold,
     kortFortalt: parsedKortFortalt,
     lang,
-    slug: page.slug?.current || 'N/A',
+    slug: page.slug?.current || "N/A",
     publiseringsTidspunkt,
     rawData: {
       title: page.title,

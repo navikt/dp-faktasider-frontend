@@ -1,21 +1,21 @@
-import * as React from 'react';
-import { useRef } from 'react';
-import { PageProps } from 'gatsby';
-import BlockContent from '../../components/BlockContent/BlockContent';
-import FaktaSideLayout from './FaktaSideLayout';
-import GraphQLErrorList from '../../components/GraphqlErrorList';
-import SEO from '../../components/SEO';
-import IkkeOversatt from './IkkeOversatt';
-import RelatertInformasjon from './RelatertInformasjon';
-import { FaktasideProvider } from './FaktaSideContext';
-import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
-import withErrorBoundary from '../../components/withErrorBoundary';
-import { useMount } from 'react-use';
-import { loggSidevisning } from '../../utils/logging';
-import InnholdetErTilpasset from './InnholdsMeny/InnholdetErTilpasset';
-import useLoggUtdatertHashlenke from './useLoggUtdatertHashlenke';
-import KortFortalt from './KortFortalt';
-import useBreadcrumbs from './useBreadcrumbs';
+import * as React from "react";
+import { useRef } from "react";
+import { PageProps } from "gatsby";
+import BlockContent from "../../components/BlockContent/BlockContent";
+import FaktaSideLayout from "./FaktaSideLayout";
+import GraphQLErrorList from "../../components/GraphqlErrorList";
+import SEO from "../../components/SEO";
+import IkkeOversatt from "./IkkeOversatt";
+import RelatertInformasjon from "./RelatertInformasjon";
+import { FaktasideProvider } from "./FaktaSideContext";
+import { FaktasideContext } from "../../../gatsby-utils/createFaktasider";
+import withErrorBoundary from "../../components/withErrorBoundary";
+import { useMount } from "react-use";
+import { loggSidevisning } from "../../utils/logging";
+import InnholdetErTilpasset from "./InnholdsMeny/InnholdetErTilpasset";
+import useLoggUtdatertHashlenke from "./useLoggUtdatertHashlenke";
+import KortFortalt from "./KortFortalt";
+import useBreadcrumbs from "./useBreadcrumbs";
 
 export interface FaktaSideProps extends PageProps<{}, FaktasideContext> {
   errors: any;
@@ -25,7 +25,7 @@ function FaktaSide(props: FaktaSideProps) {
   const page = props.pageContext;
   const lang = page.lang;
   const erPublisert = page.visSprakversjon?.[lang];
-  const tittel = page.title || '';
+  const tittel = page.title || "";
   const wordCountRef = useRef<HTMLDivElement>(null);
   const path = props.location.pathname;
   useBreadcrumbs(tittel);
@@ -37,7 +37,7 @@ function FaktaSide(props: FaktaSideProps) {
     return <IkkeOversatt {...props} />;
   }
 
-  const beskrivelse = page.beskrivelse || '';
+  const beskrivelse = page.beskrivelse || "";
 
   const parsedInnhold = page.innhold;
   return (
@@ -61,4 +61,4 @@ function FaktaSide(props: FaktaSideProps) {
   );
 }
 
-export default withErrorBoundary(FaktaSide, 'FaktaSide');
+export default withErrorBoundary(FaktaSide, "FaktaSide");

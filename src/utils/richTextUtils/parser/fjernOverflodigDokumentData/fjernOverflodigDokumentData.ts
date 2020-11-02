@@ -1,4 +1,4 @@
-import { recursivlyReplacePropertyInDeepObject } from '../../../recursivlyReplacePropertyInDeepObject';
+import { recursivlyReplacePropertyInDeepObject } from "../../../recursivlyReplacePropertyInDeepObject";
 
 /*
  * visForAnnotationDeltTekst resolver hele faktasider, men vi trenger egentlig bare et enkelt felt: id.
@@ -6,7 +6,7 @@ import { recursivlyReplacePropertyInDeepObject } from '../../../recursivlyReplac
  * fjernOverflodigDokumentData skal derfor fjerne overflødig data og kun ta vare på dokument-id
  * */
 function fjernOverflodigDokumentData(data: any) {
-  return recursivlyReplacePropertyInDeepObject(data, 'visPaaSider', (value) => value.map((it) => ({ id: it.id })));
+  return recursivlyReplacePropertyInDeepObject(data, "visPaaSider", (value) => value.map((it) => ({ id: it.id })));
 }
 
 export default fjernOverflodigDokumentData;

@@ -1,9 +1,9 @@
-import { Block, SanityBlock } from '../richTextTypes';
-import { flattenH2Versions } from './flattenH2Versions/flattenH2Versions';
-import { groupParser } from './groupParser/groupParser';
-import { makeUniqeHashLinkIDs } from './makeUniqeGroupIDs/makeUniqeHashLinkIDs';
-import { parseDelteTekster } from './parseDelteTekster/parseDelteTekster';
-import fjernOverflodigDokumentData from './fjernOverflodigDokumentData/fjernOverflodigDokumentData';
+import { Block, SanityBlock } from "../richTextTypes";
+import { flattenH2Versions } from "./flattenH2Versions/flattenH2Versions";
+import { groupParser } from "./groupParser/groupParser";
+import { makeUniqeHashLinkIDs } from "./makeUniqeGroupIDs/makeUniqeHashLinkIDs";
+import { parseDelteTekster } from "./parseDelteTekster/parseDelteTekster";
+import fjernOverflodigDokumentData from "./fjernOverflodigDokumentData/fjernOverflodigDokumentData";
 
 export type ParsedRichText = Block[];
 export type RichTextParser = (blocks: Block[]) => Block[];

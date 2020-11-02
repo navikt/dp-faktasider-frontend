@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { ReactNode } from 'react';
-import BlockContent from '../BlockContent';
-import { createGlobalStyle, css, StyledComponent } from 'styled-components/macro';
-import { Group } from '../../../utils/richTextUtils/richTextTypes';
-import Anchor from '../../Anchor';
-import HashLink from '../../HashLink';
-import useUniqueId from '../../../utils/useUniqueId';
+import * as React from "react";
+import { ReactNode } from "react";
+import BlockContent from "../BlockContent";
+import { createGlobalStyle, css, StyledComponent } from "styled-components/macro";
+import { Group } from "../../../utils/richTextUtils/richTextTypes";
+import Anchor from "../../Anchor";
+import HashLink from "../../HashLink";
+import useUniqueId from "../../../utils/useUniqueId";
 
 interface Props {
   header: StyledComponent<any, any>;
@@ -37,7 +37,7 @@ export const showLinkOnHover = css`
   }
 `;
 
-const groupHeaderClassName = 'group-header-hash-link-on-hover';
+const groupHeaderClassName = "group-header-hash-link-on-hover";
 const HashLinkShowOnHover = createGlobalStyle`
   .${groupHeaderClassName} {
     ${showLinkOnHover};
@@ -46,14 +46,14 @@ const HashLinkShowOnHover = createGlobalStyle`
 
 function CommonGroupMarkup(props: Props) {
   const group = props.group;
-  const id = group.blockConfig?.id || 'N/A';
-  const headerId = useUniqueId('group-' + props.group.title);
+  const id = group.blockConfig?.id || "N/A";
+  const headerId = useUniqueId("group-" + props.group.title);
 
   const Region = props.region;
   const Header = props.header;
 
   return (
-    <Region data-testid={id} aria-labelledby={headerId} style={{ position: 'relative' }} {...props.regionProps}>
+    <Region data-testid={id} aria-labelledby={headerId} style={{ position: "relative" }} {...props.regionProps}>
       <HashLinkShowOnHover />
       <Anchor id={id} spaceAbove={props.anchorMarginTop} focusOnParent={true} />
       <Header id={headerId} {...props.headerProps} className={groupHeaderClassName}>

@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
-import styled from 'styled-components/macro';
-import { Systemtittel } from 'nav-frontend-typografi';
-import useUniqueId from '../../utils/useUniqueId';
+import React, { ReactNode } from "react";
+import styled from "styled-components/macro";
+import { Systemtittel } from "nav-frontend-typografi";
+import useUniqueId from "../../utils/useUniqueId";
 
 const StyledSystemtittel = styled(Systemtittel)`
   text-align: center;
@@ -25,11 +25,11 @@ const StyledUl = styled.ul`
 `;
 
 export function ForsideLenkePanel(props: { children: ReactNode; title: string; hideTitle?: boolean }) {
-  const id = useUniqueId('lenkepanel');
+  const id = useUniqueId("lenkepanel");
 
   return (
     <section aria-labelledby={id}>
-      <StyledSystemtittel className={props.hideTitle ? 'sr-only' : ''} id={id}>
+      <StyledSystemtittel className={props.hideTitle ? "sr-only" : ""} id={id}>
         {props.title}
       </StyledSystemtittel>
       <StyledUl>{props.children}</StyledUl>

@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
-import styled from 'styled-components/macro';
-import { theme } from '../../styles/theme';
-import withErrorBoundary from '../../components/withErrorBoundary';
-import SistOppdatert from '../faktaside/SistOppdatert';
+import * as React from "react";
+import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
+import styled from "styled-components/macro";
+import { theme } from "../../styles/theme";
+import withErrorBoundary from "../../components/withErrorBoundary";
+import SistOppdatert from "../faktaside/SistOppdatert";
 
 interface Props {
   heading: string;
@@ -43,4 +43,4 @@ const Header = (props: Props) => {
   );
 };
 
-export default withErrorBoundary(Header, 'Header');
+export default withErrorBoundary(Header, "Header");

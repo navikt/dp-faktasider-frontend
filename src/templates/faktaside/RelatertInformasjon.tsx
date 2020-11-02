@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { Block } from '../../utils/richTextUtils/richTextTypes';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components/macro';
-import { theme } from '../../styles/theme';
-import H2GroupMarkup from '../../components/BlockContent/GroupMarkup/H2GroupMarkup';
-import withErrorBoundary from '../../components/withErrorBoundary';
-import { createH2Group } from '../../utils/richTextUtils/createGroup';
+import * as React from "react";
+import { Block } from "../../utils/richTextUtils/richTextTypes";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components/macro";
+import { theme } from "../../styles/theme";
+import H2GroupMarkup from "../../components/BlockContent/GroupMarkup/H2GroupMarkup";
+import withErrorBoundary from "../../components/withErrorBoundary";
+import { createH2Group } from "../../utils/richTextUtils/createGroup";
 
 interface Props {
   blocks?: Block[];
@@ -25,14 +25,14 @@ const Style = styled.div`
 `;
 
 function RelatertInformasjon(props: Props) {
-  const { t } = useTranslation('global');
+  const { t } = useTranslation("global");
 
   const blocks = props.blocks;
   if (!blocks || !blocks.length) {
     return null;
   }
 
-  const h2Group = createH2Group(t('relatertInformasjon'), blocks);
+  const h2Group = createH2Group(t("relatertInformasjon"), blocks);
 
   return (
     <Style>
@@ -41,4 +41,4 @@ function RelatertInformasjon(props: Props) {
   );
 }
 
-export default withErrorBoundary(RelatertInformasjon, 'RelatertInformasjon');
+export default withErrorBoundary(RelatertInformasjon, "RelatertInformasjon");

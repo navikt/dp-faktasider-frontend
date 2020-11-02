@@ -1,13 +1,13 @@
-import React, { createContext, ReactNode, useContext, useEffect, useReducer } from 'react';
-import { useLocation, usePrevious } from 'react-use';
-import { loggTilpassInnhold } from '../../../utils/logging';
-import { TilpassInnholdValg } from '../../../templates/faktaside/TilpassInnhold/getAlleTilpassInnholdValg';
+import React, { createContext, ReactNode, useContext, useEffect, useReducer } from "react";
+import { useLocation, usePrevious } from "react-use";
+import { loggTilpassInnhold } from "../../../utils/logging";
+import { TilpassInnholdValg } from "../../../templates/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
 
 type Actions =
-  | { type: 'toggle'; key: string }
-  | { type: 'clear' }
-  | { type: 'toggleIngenPasser' }
-  | { type: 'setKey'; key: string };
+  | { type: "toggle"; key: string }
+  | { type: "clear" }
+  | { type: "toggleIngenPasser" }
+  | { type: "setKey"; key: string };
 
 const initial = {
   value: {
@@ -25,7 +25,7 @@ export const useVisForContext = () => useContext<VisForContextI>(VisForContext);
 
 function reducer(state: typeof initial.value, action: Actions) {
   switch (action.type) {
-    case 'toggle':
+    case "toggle":
       if (!state.checked.includes(action.key)) {
         loggTilpassInnhold(action.key);
         return {
@@ -39,16 +39,16 @@ function reducer(state: typeof initial.value, action: Actions) {
           checked: state.checked.filter((key) => key !== action.key),
         };
       }
-    case 'toggleIngenPasser':
-      !state.ingenPasserMeg && loggTilpassInnhold('Ingen situasjoner passer');
+    case "toggleIngenPasser":
+      !state.ingenPasserMeg && loggTilpassInnhold("Ingen situasjoner passer");
       return {
         ...state,
         checked: [],
         ingenPasserMeg: !state.ingenPasserMeg,
       };
-    case 'clear':
+    case "clear":
       return initial.value;
-    case 'setKey':
+    case "setKey":
       return {
         ...state,
         checked: [...state.checked, action.key],
@@ -66,7 +66,7 @@ export const VisForContextProvider = (props: { children: ReactNode }) => {
   const prevPath = usePrevious(path);
   useEffect(() => {
     if (prevPath && prevPath !== path) {
-      dispatch({ type: 'clear' });
+      dispatch({ type: "clear" });
     }
   }, [path, prevPath]);
 

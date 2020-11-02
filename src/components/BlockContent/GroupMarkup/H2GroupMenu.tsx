@@ -1,10 +1,10 @@
-import * as React from 'react';
-import styled from 'styled-components/macro';
-import useSmoothscrollOnClick from '../../../hooks/useSmoothscrollOnClick';
-import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
-import { Group } from '../../../utils/richTextUtils/richTextTypes';
-import { loggH2MenyKlikk } from '../../../utils/logging';
-import useUniqueId from '../../../utils/useUniqueId';
+import * as React from "react";
+import styled from "styled-components/macro";
+import useSmoothscrollOnClick from "../../../hooks/useSmoothscrollOnClick";
+import { LenkeUtenUnderstrek } from "../../../utils/common-styled-components";
+import { Group } from "../../../utils/richTextUtils/richTextTypes";
+import { loggH2MenyKlikk } from "../../../utils/logging";
+import useUniqueId from "../../../utils/useUniqueId";
 
 interface Props {
   underGrupper: Group[];
@@ -22,7 +22,7 @@ const StyledUl = styled.ul`
 
 function H2GroupMenu(props: Props) {
   const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
-  const id = useUniqueId('meny-' + props.title);
+  const id = useUniqueId("meny-" + props.title);
 
   const handleOnClick = () => {
     activateSmoothScroll();
@@ -38,7 +38,7 @@ function H2GroupMenu(props: Props) {
       <StyledUl>
         {props.underGrupper.map((underGruppe) => (
           <StyledLi key={underGruppe.blockConfig?.id}>
-            <LenkeUtenUnderstrek onClick={handleOnClick} href={'#' + underGruppe.blockConfig?.id}>
+            <LenkeUtenUnderstrek onClick={handleOnClick} href={"#" + underGruppe.blockConfig?.id}>
               {underGruppe.title}
             </LenkeUtenUnderstrek>
           </StyledLi>

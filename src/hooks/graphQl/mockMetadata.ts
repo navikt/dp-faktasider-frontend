@@ -1,6 +1,6 @@
-import { Metadata } from './useMetadata';
+import { Metadata } from "./useMetadata";
 
 export const mockMetadata: Metadata = {
-  imagePath: 'bildet/ligger/her',
-  siteUrl: 'https://www.nav.no/test',
+  imagePath: "bildet/ligger/her",
+  siteUrl: "https://www.nav.no/test",
 };

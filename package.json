@@ -99,8 +99,7 @@
     "docker": "echo '🚀 Hoster app på localhost/arbeid \n' && docker build -t dpfakta . && docker run --rm -p 80:80 dpfakta"
   },
   "prettier": {
-    "printWidth": 120,
-    "singleQuote": true
+    "printWidth": 120
   },
   "husky": {
     "hooks": {

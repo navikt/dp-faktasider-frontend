@@ -1,9 +1,9 @@
-import React from 'react';
-import BlockContent from '../BlockContent';
-import { render, within } from '../../../testUtils/customized-testing-library';
-import { visForTestData } from './visFor.testdata';
-import TestFaktaside from '../../../testUtils/TestFaktaside';
-import { toggleFilter } from '../../../testUtils/tilpassInnholdUtils';
+import React from "react";
+import BlockContent from "../BlockContent";
+import { render, within } from "../../../testUtils/customized-testing-library";
+import { visForTestData } from "./visFor.testdata";
+import TestFaktaside from "../../../testUtils/TestFaktaside";
+import { toggleFilter } from "../../../testUtils/tilpassInnholdUtils";
 
 const { innhold } = visForTestData;
 const {
@@ -16,8 +16,8 @@ const {
   bolkSkjulForPermittertOgKonkurs,
 } = visForTestData.tekster;
 
-describe('visFor-logikk', () => {
-  test('Hvis ingen filtrering er valgt vises all tekst', () => {
+describe("visFor-logikk", () => {
+  test("Hvis ingen filtrering er valgt vises all tekst", () => {
     const result = render(<BlockContent blocks={innhold} />);
 
     result.getByLabelText(bolkStudent);
@@ -26,12 +26,12 @@ describe('visFor-logikk', () => {
     result.getByText(innholdPermittert);
   });
 
-  test('Hvis man filtrer på student vises ikke permittertinnhold', async () => {
+  test("Hvis man filtrer på student vises ikke permittertinnhold", async () => {
     const result = render(<TestFaktaside innhold={innhold} />);
 
     toggleFilter(result, /Student/i);
 
-    const mainContent = result.getByRole('main');
+    const mainContent = result.getByRole("main");
     expect(within(mainContent).queryByText(innholdPermittert)).toBeNull();
     expect(within(mainContent).queryByText(bolkPermittert)).toBeNull();
 
@@ -44,7 +44,7 @@ describe('visFor-logikk', () => {
     within(meny).getByText(bolkStudent);
   });
 
-  test('Hvis man fjerner filtrering vises alt innhold', async () => {
+  test("Hvis man fjerner filtrering vises alt innhold", async () => {
     const result = render(<TestFaktaside innhold={innhold} />);
 
     toggleFilter(result, /Permittert/i);
@@ -56,7 +56,7 @@ describe('visFor-logikk', () => {
     result.getByText(innholdStudent);
   });
 
-  test('Hvis man filtrer på ingen valg passer vises hverken permittertinnhold eller studentinnhold, men vanlig innhold vises', async () => {
+  test("Hvis man filtrer på ingen valg passer vises hverken permittertinnhold eller studentinnhold, men vanlig innhold vises", async () => {
     const result = render(<TestFaktaside innhold={innhold} partialContext={{ visIngenValgPasser: true }} />);
 
     toggleFilter(result, /Ingen valg/i);
@@ -70,27 +70,27 @@ describe('visFor-logikk', () => {
     result.getByText(innholdForAlle);
   });
 
-  test('bulletpoint med visFor på hele teksten skjules dersom det filtreres bort', () => {
+  test("bulletpoint med visFor på hele teksten skjules dersom det filtreres bort", () => {
     const result = render(<TestFaktaside innhold={innhold} partialContext={{ visIngenValgPasser: true }} />);
 
     const førsteBolk = result.getByLabelText(bolkForAlle);
 
-    expect(within(førsteBolk).getAllByRole('listitem')).toHaveLength(2);
+    expect(within(førsteBolk).getAllByRole("listitem")).toHaveLength(2);
 
     toggleFilter(result, /ingen valg/i);
 
-    expect(within(førsteBolk).getAllByRole('listitem')).toHaveLength(1);
+    expect(within(førsteBolk).getAllByRole("listitem")).toHaveLength(1);
   });
 });
 
-describe('skjulFor-logikk', () => {
-  test('Vises dersom ingen filtrering er valgt', () => {
+describe("skjulFor-logikk", () => {
+  test("Vises dersom ingen filtrering er valgt", () => {
     const result = render(<BlockContent blocks={innhold} />);
 
     result.getByLabelText(bolkSkjulForPermittertOgKonkurs);
   });
 
-  test('Skjules dersom situasjon teksten skal skjules for er valgt', () => {
+  test("Skjules dersom situasjon teksten skal skjules for er valgt", () => {
     const result = render(<TestFaktaside innhold={innhold} />);
 
     toggleFilter(result, /Permittert/i);
@@ -98,7 +98,7 @@ describe('skjulFor-logikk', () => {
     expect(result.queryByText(bolkSkjulForPermittertOgKonkurs)).toBeNull();
   });
 
-  test('skjules ikke dersom situasjon som ikke er merket med at teksten skal skjules er valgt', () => {
+  test("skjules ikke dersom situasjon som ikke er merket med at teksten skal skjules er valgt", () => {
     const result = render(<TestFaktaside innhold={innhold} />);
 
     toggleFilter(result, /Student/i);
@@ -114,7 +114,7 @@ describe('skjulFor-logikk', () => {
     result.getByLabelText(bolkSkjulForPermittertOgKonkurs);
   });
 
-  test('skjules ikke dersom man har valgt to situasjoner, en den skal skjules for og en den ikke skal skjules for', () => {
+  test("skjules ikke dersom man har valgt to situasjoner, en den skal skjules for og en den ikke skal skjules for", () => {
     const result = render(<TestFaktaside innhold={innhold} partialContext={{ visIngenValgPasser: true }} />);
 
     toggleFilter(result, /Permittert/i);
@@ -123,7 +123,7 @@ describe('skjulFor-logikk', () => {
     result.getByLabelText(bolkSkjulForPermittertOgKonkurs);
   });
 
-  test('skjules dersom man har huket av to situasjoner der teksten skal skjules for begge', () => {
+  test("skjules dersom man har huket av to situasjoner der teksten skal skjules for begge", () => {
     const result = render(<TestFaktaside innhold={innhold} partialContext={{ visIngenValgPasser: true }} />);
 
     toggleFilter(result, /Permittert/i);

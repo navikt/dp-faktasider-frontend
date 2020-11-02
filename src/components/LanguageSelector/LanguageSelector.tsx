@@ -1,13 +1,13 @@
-import React, { ChangeEvent, useState } from 'react';
-import styled from 'styled-components/macro';
-import { Select } from 'nav-frontend-skjema';
-import { theme } from '../../styles/theme';
-import { pxToRem } from '../../styles/utils';
-import { navigate } from 'gatsby';
-import { useLocale } from '../../i18n/LocaleContext';
-import { useLocation } from 'react-use';
-import { isDevelopment, isProduction } from '../../utils/environment';
-import withErrorBoundary from '../withErrorBoundary';
+import React, { ChangeEvent, useState } from "react";
+import styled from "styled-components/macro";
+import { Select } from "nav-frontend-skjema";
+import { theme } from "../../styles/theme";
+import { pxToRem } from "../../styles/utils";
+import { navigate } from "gatsby";
+import { useLocale } from "../../i18n/LocaleContext";
+import { useLocation } from "react-use";
+import { isDevelopment, isProduction } from "../../utils/environment";
+import withErrorBoundary from "../withErrorBoundary";
 
 const Style = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ const LanguageSelector = () => {
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newLanguage = event.target.value;
     if (lang !== newLanguage) {
-      navigate(location.pathname?.replace(`/${lang}/`, `/${newLanguage}/`) || '');
+      navigate(location.pathname?.replace(`/${lang}/`, `/${newLanguage}/`) || "");
     }
     setOpen(!open);
   };
@@ -55,4 +55,4 @@ const LanguageSelector = () => {
   );
 };
 
-export default withErrorBoundary(LanguageSelector, 'LanguageSelector');
+export default withErrorBoundary(LanguageSelector, "LanguageSelector");

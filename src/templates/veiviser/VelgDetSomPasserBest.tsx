@@ -1,6 +1,6 @@
-import * as React from 'react';
-import styled from 'styled-components/macro';
-import Lenkepanel from 'nav-frontend-lenkepanel';
+import * as React from "react";
+import styled from "styled-components/macro";
+import Lenkepanel from "nav-frontend-lenkepanel";
 
 const Style = styled.div`
   display: grid;
@@ -31,7 +31,7 @@ function VelgDetSomPasserBest<Type>(props: Props<Type>) {
   return (
     <Style>
       {props.valg.map((valg) => (
-        <Lenkepanel border tittelProps={'element'} href={'#'} onClick={() => props.setValg(valg.object)}>
+        <Lenkepanel border tittelProps={"element"} href={"#"} onClick={() => props.setValg(valg.object)}>
           {valg.label}
         </Lenkepanel>
       ))}

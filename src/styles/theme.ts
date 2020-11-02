@@ -1,32 +1,32 @@
-import { css } from 'styled-components/macro';
-import { pxToRem } from './utils';
+import { css } from "styled-components/macro";
+import { pxToRem } from "./utils";
 
 const colors = {
-  navRod: '#C30000',
-  navOransje: '#FF9100',
-  navLimeGronn: '#A2AD00',
-  navGronn: '#06893A',
-  navLilla: '#634689',
-  navDypBla: '#005B82',
-  navBla: '#0067C5',
-  navLysBla: '#66CBEC',
-  navMorkGra: '#3E3832',
-  navGra80: '#59514B',
-  navGra60: '#78706A',
-  navGra40: '#B7B1A9',
-  navGra20: '#C6C2BF',
-  navLysGra: '#E9E7E7',
-  orangeFocus: '#FFBD66',
-  redError: '#BA3A26',
-  white: '#FFF',
-  pinkErrorBg: '#F3E3E3',
-  navBlaLighten80: '#CCE1F3',
-  navBlaLighten60: '#99C2E8',
-  navDypBlaLighten80: '#CCDEE6',
-  navLysBlaLighten80: '#E0F5FB',
-  navGronnLighten60: '#9BD0B0',
-  navLimeGronnLighten80: '#ECEFCC',
-  fokusFarge: '#254b6d',
+  navRod: "#C30000",
+  navOransje: "#FF9100",
+  navLimeGronn: "#A2AD00",
+  navGronn: "#06893A",
+  navLilla: "#634689",
+  navDypBla: "#005B82",
+  navBla: "#0067C5",
+  navLysBla: "#66CBEC",
+  navMorkGra: "#3E3832",
+  navGra80: "#59514B",
+  navGra60: "#78706A",
+  navGra40: "#B7B1A9",
+  navGra20: "#C6C2BF",
+  navLysGra: "#E9E7E7",
+  orangeFocus: "#FFBD66",
+  redError: "#BA3A26",
+  white: "#FFF",
+  pinkErrorBg: "#F3E3E3",
+  navBlaLighten80: "#CCE1F3",
+  navBlaLighten60: "#99C2E8",
+  navDypBlaLighten80: "#CCDEE6",
+  navLysBlaLighten80: "#E0F5FB",
+  navGronnLighten60: "#9BD0B0",
+  navLimeGronnLighten80: "#ECEFCC",
+  fokusFarge: "#254b6d",
 };
 
 const focus = css`
@@ -34,14 +34,14 @@ const focus = css`
   box-shadow: 0 0 0 ${pxToRem(3)} ${colors.fokusFarge};
 `;
 
-const borderRadius = '.2rem';
+const borderRadius = ".2rem";
 
 export const focusOnRelativeParent = css`
   &:focus-within {
     position: static;
     box-shadow: none;
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -70,14 +70,14 @@ export const theme = {
     clip: rect(1px, 1px, 1px, 1px);
   `,
   media: {
-    smallScreen: 'max-width: 65rem',
-    bigScreen: 'min-width: 65rem',
+    smallScreen: "max-width: 65rem",
+    bigScreen: "min-width: 65rem",
   },
   focus: focus,
   focusOnRelativeParent: focusOnRelativeParent,
   borderRadius: borderRadius,
-  layoutMargin: '4vmin',
-  layoutPadding: '1.5rem',
+  layoutMargin: "4vmin",
+  layoutPadding: "1.5rem",
   border: {
     banner: `0.3rem solid ${colors.navBlaLighten60}`,
   },

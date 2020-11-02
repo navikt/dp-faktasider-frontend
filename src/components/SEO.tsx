@@ -1,8 +1,8 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { SupportedLanguage } from '../i18n/supportedLanguages';
-import withErrorBoundary from './withErrorBoundary';
-import useMetadata from '../hooks/graphQl/useMetadata';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { SupportedLanguage } from "../i18n/supportedLanguages";
+import withErrorBoundary from "./withErrorBoundary";
+import useMetadata from "../hooks/graphQl/useMetadata";
 
 interface Props {
   title: string;
@@ -24,7 +24,7 @@ function SEO(props: Props) {
       titleTemplate={`%s | www.nav.no`}
       link={[
         {
-          rel: 'canonical',
+          rel: "canonical",
           href: `${metaData.siteUrl}${props.path}`,
         },
       ]}
@@ -74,4 +74,4 @@ function SEO(props: Props) {
   );
 }
 
-export default withErrorBoundary(SEO, 'SEO');
+export default withErrorBoundary(SEO, "SEO");

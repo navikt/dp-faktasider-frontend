@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { ReactNode } from 'react';
-import { useFaktasideContext } from '../../../templates/faktaside/FaktaSideContext';
-import useVisPaaSideDebug from './useVisPaaSideDebug';
-import { VisPaaConfig } from '../../../utils/richTextUtils/richTextTypes';
+import * as React from "react";
+import { ReactNode } from "react";
+import { useFaktasideContext } from "../../../templates/faktaside/FaktaSideContext";
+import useVisPaaSideDebug from "./useVisPaaSideDebug";
+import { VisPaaConfig } from "../../../utils/richTextUtils/richTextTypes";
 
 interface Props {
   children: ReactNode;

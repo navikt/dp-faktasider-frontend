@@ -1,19 +1,19 @@
 export const dataWithNestedTranslations = {
   first: {
-    _type: 'localeRichText',
+    _type: "localeRichText",
     no: [
       {
         second: {
-          _type: 'localeRichText',
+          _type: "localeRichText",
           no: [
             {
-              _type: 'block',
+              _type: "block",
               children: [
                 {
-                  text: 'Dette er en test',
+                  text: "Dette er en test",
                 },
               ],
-              style: 'h2',
+              style: "h2",
             },
           ],
         },

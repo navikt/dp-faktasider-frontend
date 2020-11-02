@@ -1,14 +1,14 @@
-import styled, { css } from 'styled-components/macro';
-import { Link } from 'gatsby';
-import { Normaltekst } from 'nav-frontend-typografi';
-import { InternalMenuLinkData } from '../../hooks/graphQl/menuDataUtils';
-import { useTranslation } from 'react-i18next';
-import Utkast from '../../components/BlockContent/utkast/Utkast';
-import { EksternLenkeI } from '../../hooks/graphQl/useProjectData';
-import React, { useRef } from 'react';
-import { guid } from 'nav-frontend-js-utils';
+import styled, { css } from "styled-components/macro";
+import { Link } from "gatsby";
+import { Normaltekst } from "nav-frontend-typografi";
+import { InternalMenuLinkData } from "../../hooks/graphQl/menuDataUtils";
+import { useTranslation } from "react-i18next";
+import Utkast from "../../components/BlockContent/utkast/Utkast";
+import { EksternLenkeI } from "../../hooks/graphQl/useProjectData";
+import React, { useRef } from "react";
+import { guid } from "nav-frontend-js-utils";
 
-const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: 'lenke' })`
+const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: "lenke" })`
   font-size: 1.2rem;
   text-decoration: none;
   margin-bottom: 0.2rem;
@@ -41,7 +41,7 @@ const KunTilgjengeligStyle = styled.p`
 `;
 
 export function InternLenke(props: { lenke: InternalMenuLinkData }) {
-  const { t } = useTranslation('global');
+  const { t } = useTranslation("global");
   const langAttribute = !props.lenke.tilgjengeligPåValgtSpråk ? props.lenke.språk : undefined;
   const id = useRef(guid()).current;
 
@@ -52,7 +52,7 @@ export function InternLenke(props: { lenke: InternalMenuLinkData }) {
         {!props.lenke.tilgjengeligPåValgtSpråk && (
           <Utkast>
             <KunTilgjengeligStyle>
-              {t('kunTilgjengeligPå')} {t(props.lenke.språk)}
+              {t("kunTilgjengeligPå")} {t(props.lenke.språk)}
             </KunTilgjengeligStyle>
           </Utkast>
         )}

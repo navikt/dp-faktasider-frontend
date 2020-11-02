@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { Link } from 'gatsby';
-import { ReactNode } from 'react';
-import { useLocale } from '../i18n/LocaleContext';
+import * as React from "react";
+import { Link } from "gatsby";
+import { ReactNode } from "react";
+import { useLocale } from "../i18n/LocaleContext";
 
 interface Props {
   to: string;

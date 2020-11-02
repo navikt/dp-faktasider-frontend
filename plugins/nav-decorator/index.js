@@ -1,6 +1,6 @@
-const getDecorator = require('./getDecorator');
-const path = require('path');
-const fsExtra = require('fs-extra');
+const getDecorator = require("./getDecorator");
+const path = require("path");
+const fsExtra = require("fs-extra");
 
 function createDocumentFragments(fragments) {
   const fragmentsFile = path.resolve(`${__dirname}/fetched/_fragments.ts`);

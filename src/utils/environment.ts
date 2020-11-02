@@ -1,13 +1,13 @@
 const environment = process.env.NODE_ENV;
 
 export function isProduction(): boolean {
-  return environment === 'production';
+  return environment === "production";
 }
 
 export function isTest(): boolean {
-  return environment === 'test';
+  return environment === "test";
 }
 
 export function isDevelopment(): boolean {
-  return environment === 'development';
+  return environment === "development";
 }

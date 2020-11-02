@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { AlertStripeFeil } from 'nav-frontend-alertstriper';
-import DagpengerKalkulator from '../HvorMyeKalkulator/DagpengerKalkulator';
-import DagpengerKalkulatorLRling from '../HvorMyeKalkulator/DagpengerKalkulatorLærling';
-import withErrorBoundary from '../withErrorBoundary';
+import * as React from "react";
+import { AlertStripeFeil } from "nav-frontend-alertstriper";
+import DagpengerKalkulator from "../HvorMyeKalkulator/DagpengerKalkulator";
+import DagpengerKalkulatorLRling from "../HvorMyeKalkulator/DagpengerKalkulatorLærling";
+import withErrorBoundary from "../withErrorBoundary";
 
 interface Props {
   node: {
@@ -12,13 +12,13 @@ interface Props {
 
 function CustomComponent(props: Props) {
   switch (props.node.komponent) {
-    case 'DagpengeKalkulator - normal':
+    case "DagpengeKalkulator - normal":
       return <DagpengerKalkulator />;
-    case 'DagpengeKalkulator - lærling':
+    case "DagpengeKalkulator - lærling":
       return <DagpengerKalkulatorLRling />;
     default:
       return <AlertStripeFeil>Ukjent komponent: "{props.node.komponent}"</AlertStripeFeil>;
   }
 }
 
-export default withErrorBoundary(CustomComponent, 'CustomComponent');
+export default withErrorBoundary(CustomComponent, "CustomComponent");

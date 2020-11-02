@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { useReducer } from 'react';
-import { Link } from 'gatsby';
-import styled, { css } from 'styled-components/macro';
-import withErrorBoundary from '../../../components/withErrorBoundary';
-import useFaktasiderMenuData from '../../../hooks/graphQl/useFaktasiderMenuData';
-import Innholdsfortegnelse from '../InnholdsMeny/Innholdsfortegnelse';
-import { useFaktasideContext } from '../FaktaSideContext';
-import { loggMeny } from '../../../utils/logging';
-import { UnmountClosed } from 'react-collapse';
-import { theme } from '../../../styles/theme';
-import { ExternalMenuLinkData, InternalMenuLinkData, isInternal } from '../../../hooks/graphQl/menuDataUtils';
+import * as React from "react";
+import { useReducer } from "react";
+import { Link } from "gatsby";
+import styled, { css } from "styled-components/macro";
+import withErrorBoundary from "../../../components/withErrorBoundary";
+import useFaktasiderMenuData from "../../../hooks/graphQl/useFaktasiderMenuData";
+import Innholdsfortegnelse from "../InnholdsMeny/Innholdsfortegnelse";
+import { useFaktasideContext } from "../FaktaSideContext";
+import { loggMeny } from "../../../utils/logging";
+import { UnmountClosed } from "react-collapse";
+import { theme } from "../../../styles/theme";
+import { ExternalMenuLinkData, InternalMenuLinkData, isInternal } from "../../../hooks/graphQl/menuDataUtils";
 
 const StyledOl = styled.ol`
   margin-bottom: 3.5rem;
@@ -43,7 +43,7 @@ export const menuHighlightStyle = css`
   background-color: #f8f8f8;
   position: relative;
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -76,7 +76,7 @@ function InternSideLenke(props: { page: InternalMenuLinkData }) {
           isOpen={open}
           onClick={() => {
             toggle();
-            loggMeny('Åpne/lukke innholdsfortegnelse');
+            loggMeny("Åpne/lukke innholdsfortegnelse");
           }}
           aria-expanded={open}
         >
@@ -91,9 +91,9 @@ function InternSideLenke(props: { page: InternalMenuLinkData }) {
 
   return (
     <li>
-      <StyledInternalLink className="lenke" to={props.page.path} onClick={() => loggMeny('Gå til ny side')}>
+      <StyledInternalLink className="lenke" to={props.page.path} onClick={() => loggMeny("Gå til ny side")}>
         <span>
-          {props.page.tittel} {!props.page.tilgjengeligPåValgtSpråk ? `(${props.page.språk})` : ''}
+          {props.page.tittel} {!props.page.tilgjengeligPåValgtSpråk ? `(${props.page.språk})` : ""}
         </span>
       </StyledInternalLink>
     </li>
@@ -103,7 +103,7 @@ function InternSideLenke(props: { page: InternalMenuLinkData }) {
 function EksternLenke(props: { lenke: ExternalMenuLinkData }) {
   return (
     <li>
-      <StyledExternalLink className="lenke" href={props.lenke.url} onClick={() => loggMeny('Gå til ekstern side')}>
+      <StyledExternalLink className="lenke" href={props.lenke.url} onClick={() => loggMeny("Gå til ekstern side")}>
         {props.lenke.tittel}
       </StyledExternalLink>
     </li>
@@ -122,4 +122,4 @@ function SideListe() {
   );
 }
 
-export default withErrorBoundary(SideListe, 'SideListe');
+export default withErrorBoundary(SideListe, "SideListe");

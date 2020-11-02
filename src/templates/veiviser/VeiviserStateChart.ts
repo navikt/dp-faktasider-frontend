@@ -1,7 +1,7 @@
-import { assign, createMachine, MachineConfig } from 'xstate';
-import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
-import { Group } from '../../utils/richTextUtils/richTextTypes';
-import getAlleTilpassInnholdValg from '../faktaside/TilpassInnhold/getAlleTilpassInnholdValg';
+import { assign, createMachine, MachineConfig } from "xstate";
+import { FaktasideContext } from "../../../gatsby-utils/createFaktasider";
+import { Group } from "../../utils/richTextUtils/richTextTypes";
+import getAlleTilpassInnholdValg from "../faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
 
 export interface VeiviserContext {
   side?: FaktasideContext;
@@ -19,10 +19,10 @@ interface States {
 }
 
 type Events =
-  | { type: 'CLEAR' | 'TILBAKETILVELGSIDE' | 'TILBAKETILVELGFILTRERING' | 'TILBAKETILVELGOVERSKRIFT' }
-  | { type: 'VELGSIDE'; side: FaktasideContext }
-  | { type: 'VELGFILTRERING'; filtrering: string }
-  | { type: 'VELGOVERSKRIFT'; group: Group };
+  | { type: "CLEAR" | "TILBAKETILVELGSIDE" | "TILBAKETILVELGFILTRERING" | "TILBAKETILVELGOVERSKRIFT" }
+  | { type: "VELGSIDE"; side: FaktasideContext }
+  | { type: "VELGFILTRERING"; filtrering: string }
+  | { type: "VELGOVERSKRIFT"; group: Group };
 
 const initialContext = {
   side: undefined,
@@ -31,21 +31,21 @@ const initialContext = {
 };
 
 const machineConfig: MachineConfig<VeiviserContext, States, Events> = {
-  id: 'veiviser',
-  initial: 'velgSide',
+  id: "veiviser",
+  initial: "velgSide",
   context: initialContext,
   on: {
     TILBAKETILVELGSIDE: {
-      target: 'velgSide',
+      target: "velgSide",
       actions: assign((ctx, event) => initialContext),
     },
   },
   states: {
     velgSide: {
-      entry: [assign((ctx) => initialContext), 'clearFiltrering'],
+      entry: [assign((ctx) => initialContext), "clearFiltrering"],
       on: {
         VELGSIDE: {
-          target: 'velgFiltrering',
+          target: "velgFiltrering",
           actions: assign({
             side: (ctx, event) => event.side,
           }),
@@ -53,19 +53,19 @@ const machineConfig: MachineConfig<VeiviserContext, States, Events> = {
       },
     },
     velgFiltrering: {
-      entry: [assign((ctx) => ({ ...initialContext, side: ctx.side })), 'clearFiltrering'],
+      entry: [assign((ctx) => ({ ...initialContext, side: ctx.side })), "clearFiltrering"],
       on: {
-        '': {
-          cond: 'ingenFiltreringsvalg',
-          target: 'velgOverskrift',
+        "": {
+          cond: "ingenFiltreringsvalg",
+          target: "velgOverskrift",
         },
         VELGFILTRERING: {
-          target: 'velgOverskrift',
+          target: "velgOverskrift",
           actions: [
             assign({
               filtrering: (ctx, event) => event.filtrering,
             }),
-            'setFiltrering',
+            "setFiltrering",
           ],
         },
       },
@@ -73,9 +73,9 @@ const machineConfig: MachineConfig<VeiviserContext, States, Events> = {
     velgOverskrift: {
       entry: assign((ctx) => ({ ...initialContext, side: ctx.side, filtrering: ctx.filtrering })),
       on: {
-        TILBAKETILVELGFILTRERING: 'velgFiltrering',
+        TILBAKETILVELGFILTRERING: "velgFiltrering",
         VELGOVERSKRIFT: {
-          target: 'visGruppe',
+          target: "visGruppe",
           actions: assign({
             group: (ctx, event) => event.group,
           }),
@@ -84,8 +84,8 @@ const machineConfig: MachineConfig<VeiviserContext, States, Events> = {
     },
     visGruppe: {
       on: {
-        TILBAKETILVELGFILTRERING: 'velgFiltrering',
-        TILBAKETILVELGOVERSKRIFT: 'velgOverskrift',
+        TILBAKETILVELGFILTRERING: "velgFiltrering",
+        TILBAKETILVELGOVERSKRIFT: "velgOverskrift",
         VELGOVERSKRIFT: {
           actions: assign({
             group: (ctx, event) => event.group,

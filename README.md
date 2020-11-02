@@ -50,9 +50,9 @@ Det meste av innholdet som kommer fra sanity vil ha språkversjoner. Da starter 
 ```js
 const content = {
   mySting: {
-    _type: 'localeString',
-    en: 'English',
-    no: 'Norwegian',
+    _type: "localeString",
+    en: "English",
+    no: "Norwegian",
   },
 };
 ```
@@ -62,7 +62,7 @@ Det finnes en [utilityfunksjon](src/i18n/localizeSanityContent.ts) hentet fra Sa
 ```js
 console.log(content.myString); // "{_type: 'localeString', en: 'English', no: 'Norwegian'}"
 
-const lang = 'no';
+const lang = "no";
 const localizedContent = localizeSanityContent(content, lang);
 
 console.log(localizedContent.myString); // "Norwegian"

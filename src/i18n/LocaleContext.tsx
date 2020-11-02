@@ -1,7 +1,7 @@
-import React, { createContext, ReactNode, useContext } from 'react';
-import { SupportedLanguage } from './supportedLanguages';
+import React, { createContext, ReactNode, useContext } from "react";
+import { SupportedLanguage } from "./supportedLanguages";
 
-export const LocaleContext = createContext<SupportedLanguage>('no');
+export const LocaleContext = createContext<SupportedLanguage>("no");
 
 export const LocaleProvider = (props: { children: ReactNode; lang: SupportedLanguage }) => {
   return <LocaleContext.Provider value={props.lang}>{props.children}</LocaleContext.Provider>;

@@ -1,11 +1,11 @@
-import React, { createContext, ReactNode, useContext } from 'react';
-import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
+import React, { createContext, ReactNode, useContext } from "react";
+import { FaktasideContext } from "../../../gatsby-utils/createFaktasider";
 
 const inital: FaktasideContext = {
-  lang: 'no',
-  id: 'N/A',
-  slug: 'N/A',
-  publiseringsTidspunkt: '',
+  lang: "no",
+  id: "N/A",
+  slug: "N/A",
+  publiseringsTidspunkt: "",
   innhold: [],
   rawData: {},
 };

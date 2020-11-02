@@ -1,5 +1,5 @@
-import styled from 'styled-components/macro';
-import { Input } from 'nav-frontend-skjema';
+import styled from "styled-components/macro";
+import { Input } from "nav-frontend-skjema";
 
 export const KalkulatorStyle = styled.div`
   margin: 3rem 0;
@@ -43,5 +43,5 @@ export const GrunnlagInput = styled(Input)`
 `;
 
 export function toKR(kr: number) {
-  return Math.round(kr).toLocaleString('nb-NO') + ' kr';
+  return Math.round(kr).toLocaleString("nb-NO") + " kr";
 }
