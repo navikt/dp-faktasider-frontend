@@ -86,6 +86,11 @@ const machineConfig: MachineConfig<VeiviserContext, States, Events> = {
       on: {
         TILBAKETILVELGFILTRERING: 'velgFiltrering',
         TILBAKETILVELGOVERSKRIFT: 'velgOverskrift',
+        VELGOVERSKRIFT: {
+          actions: assign({
+            group: (ctx, event) => event.group,
+          }),
+        },
       },
     },
   },

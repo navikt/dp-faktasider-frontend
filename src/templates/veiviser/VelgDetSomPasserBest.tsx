@@ -1,12 +1,12 @@
 import * as React from 'react';
 import styled from 'styled-components/macro';
-import { Knapp } from 'nav-frontend-knapper';
+import Lenkepanel from 'nav-frontend-lenkepanel';
 
 const Style = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 30rem;
-  margin: 2rem auto;
+  display: grid;
+  grid-gap: 0.5rem;
+  max-width: 40rem;
+  margin: 3rem auto;
   > *:not(:last-child) {
     margin-bottom: 0.5rem;
   }
@@ -14,10 +14,6 @@ const Style = styled.div`
     text-align: center;
     margin-bottom: 2rem !important;
   }
-`;
-
-const StyledKnapp = styled(Knapp)`
-  white-space: normal !important;
 `;
 
 export type VeiviserValg<Type> = {
@@ -34,11 +30,10 @@ interface Props<Type> {
 function VelgDetSomPasserBest<Type>(props: Props<Type>) {
   return (
     <Style>
-      <h2>Velg det som passer best:</h2>
       {props.valg.map((valg) => (
-        <StyledKnapp type={'flat'} onClick={() => props.setValg(valg.object)}>
+        <Lenkepanel border tittelProps={'element'} href={'#'} onClick={() => props.setValg(valg.object)}>
           {valg.label}
-        </StyledKnapp>
+        </Lenkepanel>
       ))}
     </Style>
   );
