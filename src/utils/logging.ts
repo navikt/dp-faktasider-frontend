@@ -36,7 +36,10 @@ export const loggError = (error: Error, ekstraData?: object) => {
 
 export const loggRedirect = (fraLenke: string) => loggEvent("Redirect fra gammel lenke", { fraLenke });
 
-export const loggSidevisning = (side: string) => loggEvent("Side vist", { side });
+export const loggSidevisning = (side: string) => {
+  loggEvent("Side vist", { side });
+  setTimeout(() => loggEvent("Ble mer enn 3 sekunder", { side }));
+};
 
 export const loggIkkeOversatt = (side: string) => loggEvent("Ikke oversatt", { side });
 
