@@ -38,7 +38,7 @@ export const loggRedirect = (fraLenke: string) => loggEvent("Redirect fra gammel
 
 export const loggSidevisning = (side: string) => {
   loggEvent("Side vist", { side });
-  setTimeout(() => loggEvent("Ble mer enn 3 sekunder", { side }));
+  setTimeout(() => loggEvent("Ble mer enn 3 sekunder", { side }), 3000);
 };
 
 export const loggIkkeOversatt = (side: string) => loggEvent("Ikke oversatt", { side });
