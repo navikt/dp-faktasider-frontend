@@ -55,6 +55,8 @@ export const focusOnRelativeParent = css`
   }
 `;
 
+export const mediaBreakpoint = 1080;
+
 export const theme = {
   colors: {
     ...colors,
@@ -70,8 +72,8 @@ export const theme = {
     clip: rect(1px, 1px, 1px, 1px);
   `,
   media: {
-    smallScreen: "max-width: 65rem",
-    bigScreen: "min-width: 65rem",
+    smallScreen: `max-width: ${mediaBreakpoint}px`,
+    bigScreen: `min-width: ${mediaBreakpoint}px`,
   },
   focus: focus,
   focusOnRelativeParent: focusOnRelativeParent,

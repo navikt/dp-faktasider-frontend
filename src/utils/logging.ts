@@ -4,6 +4,7 @@ Prøver derfor å ikke initiere amplitude-sdk instansen før en logevent blir ka
 */
 
 import { isProduction } from "./environment";
+import { mediaBreakpoint } from "../styles/theme";
 
 const loggEvent = (event: string, ekstraData?: object) => {
   if (!isProduction()) {
@@ -14,6 +15,7 @@ const loggEvent = (event: string, ekstraData?: object) => {
     logging.loggInstance.logEvent(event, {
       ...ekstraData,
       appName: "dp-faktasider",
+      smallScreen: window.innerWidth < mediaBreakpoint,
     })
   );
 };
