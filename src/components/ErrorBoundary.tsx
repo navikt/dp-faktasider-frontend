@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { AlertStripeFeil } from 'nav-frontend-alertstriper';
-import { ErrorInfo } from 'react';
-import Tekstomrade from 'nav-frontend-tekstomrade';
-import SlideDown from './SlideDown';
-import styled from 'styled-components/macro';
-import { loggError } from '../utils/logging';
-import { EtikettLiten, Normaltekst } from 'nav-frontend-typografi';
-import { isDevelopment, isTest } from '../utils/environment';
+import * as React from "react";
+import { AlertStripeFeil } from "nav-frontend-alertstriper";
+import { ErrorInfo } from "react";
+import Tekstomrade from "nav-frontend-tekstomrade";
+import SlideDown from "./SlideDown";
+import styled from "styled-components/macro";
+import { loggError } from "../utils/logging";
+import { EtikettLiten, Normaltekst } from "nav-frontend-typografi";
+import { isDevelopment, isTest } from "../utils/environment";
 
 interface Props {
   boundaryName?: string;
@@ -60,9 +60,9 @@ class ErrorBoundary extends React.Component<Props, State> {
             </EtikettLiten>
             {isDevelopment() && (stackTrace || errormsg) && (
               <StyledSlideDown title="Info - feilsøking">
-                <StyledTekstomrade>{errormsg || ''}</StyledTekstomrade>
-                <StyledTekstomrade>{info || ''}</StyledTekstomrade>
-                <StyledTekstomrade>{stackTrace || ''}</StyledTekstomrade>
+                <StyledTekstomrade>{errormsg || ""}</StyledTekstomrade>
+                <StyledTekstomrade>{info || ""}</StyledTekstomrade>
+                <StyledTekstomrade>{stackTrace || ""}</StyledTekstomrade>
               </StyledSlideDown>
             )}
           </AlertStripeFeil>

@@ -1,21 +1,21 @@
-import * as React from 'react';
-import { useCallback, useEffect, useState } from 'react';
-import { pxFromTop } from '../../../utils/domUtils';
-import styled, { css } from 'styled-components/macro';
-import useSmoothscrollOnClick from '../../../hooks/useSmoothscrollOnClick';
-import { Group } from '../../../utils/richTextUtils/richTextTypes';
-import { useInnholdsListe } from './useInnholdsListe';
-import { LenkeUtenUnderstrek } from '../../../utils/common-styled-components';
-import withErrorBoundary from '../../../components/withErrorBoundary';
-import { useFaktasideContext } from '../FaktaSideContext';
-import { loggMeny } from '../../../utils/logging';
-import { useVisForContext } from '../../../components/BlockContent/VisFor/VisForContext';
-import { UnmountClosed } from 'react-collapse';
-import { visBasertPåFiltrering } from '../../../components/BlockContent/VisFor/VisFor';
-import Utkast from '../../../components/BlockContent/utkast/Utkast';
-import { menuHighlightStyle } from '../Navigasjonsmeny/SideListe';
-import { theme } from '../../../styles/theme';
-import { visBasertPaaVisPaaConfig } from '../../../components/BlockContent/VisFor/VisPaaSide';
+import * as React from "react";
+import { useCallback, useEffect, useState } from "react";
+import { pxFromTop } from "../../../utils/domUtils";
+import styled, { css } from "styled-components/macro";
+import useSmoothscrollOnClick from "../../../hooks/useSmoothscrollOnClick";
+import { Group } from "../../../utils/richTextUtils/richTextTypes";
+import { useInnholdsListe } from "./useInnholdsListe";
+import { LenkeUtenUnderstrek } from "../../../utils/common-styled-components";
+import withErrorBoundary from "../../../components/withErrorBoundary";
+import { useFaktasideContext } from "../FaktaSideContext";
+import { loggMeny } from "../../../utils/logging";
+import { useVisForContext } from "../../../components/BlockContent/VisFor/VisForContext";
+import { UnmountClosed } from "react-collapse";
+import { visBasertPåFiltrering } from "../../../components/BlockContent/VisFor/VisFor";
+import Utkast from "../../../components/BlockContent/utkast/Utkast";
+import { menuHighlightStyle } from "../Navigasjonsmeny/SideListe";
+import { theme } from "../../../styles/theme";
+import { visBasertPaaVisPaaConfig } from "../../../components/BlockContent/VisFor/VisPaaSide";
 
 const StyledLenke = styled(({ erValgt, ...rest }) => <LenkeUtenUnderstrek {...rest} />)`
   display: block;
@@ -35,15 +35,15 @@ function useCurrentlyViewedGroup(items: Group[]): Group | undefined {
 
   const updateCurrentlyViewedMenuItem = useCallback(() => {
     const current = items
-      .map((it) => ({ item: it, fromTop: pxFromTop(it.blockConfig?.id || 'N/A') }))
+      .map((it) => ({ item: it, fromTop: pxFromTop(it.blockConfig?.id || "N/A") }))
       .filter((it) => it.fromTop < window.innerHeight * skjermBrøk)
       .pop()?.item;
     setCurrent(current);
   }, [items]);
 
   useEffect(() => {
-    window.addEventListener('scroll', updateCurrentlyViewedMenuItem, { passive: true });
-    return () => window.removeEventListener('scroll', updateCurrentlyViewedMenuItem);
+    window.addEventListener("scroll", updateCurrentlyViewedMenuItem, { passive: true });
+    return () => window.removeEventListener("scroll", updateCurrentlyViewedMenuItem);
   }, [updateCurrentlyViewedMenuItem]);
 
   return current || items[0];
@@ -57,7 +57,7 @@ function MenuItem(props: { item: Group; current: boolean }) {
 
   const handleClick = () => {
     activateSmoothScroll();
-    loggMeny('Hopp til overskrift');
+    loggMeny("Hopp til overskrift");
   };
 
   const vis =
@@ -90,7 +90,7 @@ function Innholdsfortegnelse() {
     return null;
   }
 
-  return <PureInnholdsfortegnelse title={faktasideContext.title || 'N/A'} innholdsListe={innholdsListe} />;
+  return <PureInnholdsfortegnelse title={faktasideContext.title || "N/A"} innholdsListe={innholdsListe} />;
 }
 
 interface Props {
@@ -109,4 +109,4 @@ export function PureInnholdsfortegnelse(props: Props) {
   );
 }
 
-export default withErrorBoundary(Innholdsfortegnelse, 'Innholdsfortegnelse');
+export default withErrorBoundary(Innholdsfortegnelse, "Innholdsfortegnelse");

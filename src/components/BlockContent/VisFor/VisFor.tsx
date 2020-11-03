@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { ReactNode } from 'react';
-import { useVisForContext, VisForContextI } from './VisForContext';
-import VisForDebug from './VisForDebug';
-import { VisForConfig } from '../../../utils/richTextUtils/richTextTypes';
+import * as React from "react";
+import { ReactNode } from "react";
+import { useVisForContext, VisForContextI } from "./VisForContext";
+import VisForDebug from "./VisForDebug";
+import { VisForConfig } from "../../../utils/richTextUtils/richTextTypes";
 
 interface Props {
   children: ReactNode;
@@ -15,7 +15,7 @@ export function getSituasjonerFromVisForConfig(visForConfig: VisForConfig | unde
     ? Object.entries(visForConfig)
         .filter((it) => it[1] === true)
         .map((it) => it[0])
-        .filter((key) => key !== 'skjulFor')
+        .filter((key) => key !== "skjulFor")
     : [];
 }
 
@@ -57,7 +57,7 @@ function VisFor(props: Props) {
       <VisForDebug
         situasjoner={situasjoner}
         omvendtFiltrering={omvendtFiltrering}
-        as={props.inline ? 'span' : undefined}
+        as={props.inline ? "span" : undefined}
         children={props.children}
       />
     );

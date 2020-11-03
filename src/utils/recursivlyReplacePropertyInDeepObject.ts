@@ -5,7 +5,7 @@ export function recursivlyReplacePropertyInDeepObject(
 ) {
   if (Array.isArray(obj)) {
     return obj.map((v) => recursivlyReplacePropertyInDeepObject(v, propertyToReplace, replaceFunction));
-  } else if (obj && typeof obj == 'object') {
+  } else if (obj && typeof obj == "object") {
     return Object.keys(obj).reduce((acc, key) => {
       return {
         ...acc,

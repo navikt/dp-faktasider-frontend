@@ -1,10 +1,10 @@
-import * as React from 'react';
-import withErrorBoundary from '../withErrorBoundary';
-import { useEffect } from 'react';
-import { loggError } from '../../utils/logging';
-import { useGrunnbellop } from '../../utils/folketrygdensGrunnbeløp';
-import { useDevContext } from '../DevKnapper/DevContext';
-import styled from 'styled-components';
+import * as React from "react";
+import withErrorBoundary from "../withErrorBoundary";
+import { useEffect } from "react";
+import { loggError } from "../../utils/logging";
+import { useGrunnbellop } from "../../utils/folketrygdensGrunnbeløp";
+import { useDevContext } from "../DevKnapper/DevContext";
+import styled from "styled-components";
 
 interface Props {
   children: string[];
@@ -15,14 +15,14 @@ const GtoNokDebug = styled.span`
 `;
 
 const GtilNOKAnnotation = (props: Props) => {
-  const G = props.children.join('');
+  const G = props.children.join("");
   const notNumber = isNaN(Number(G));
   const { GtoNOK } = useGrunnbellop();
   const devContext = useDevContext();
 
   useEffect(() => {
     notNumber &&
-      loggError(new Error('Kunne ikke konvertere belløp til NOK'), { grunnbellop: G, children: props.children });
+      loggError(new Error("Kunne ikke konvertere belløp til NOK"), { grunnbellop: G, children: props.children });
   }, [notNumber, G, props.children]);
 
   if (notNumber) {
@@ -42,4 +42,4 @@ const GtilNOKAnnotation = (props: Props) => {
   return <>{GtoNOK(g)}</>;
 };
 
-export default withErrorBoundary(GtilNOKAnnotation, 'GtilNOKAnnotation');
+export default withErrorBoundary(GtilNOKAnnotation, "GtilNOKAnnotation");

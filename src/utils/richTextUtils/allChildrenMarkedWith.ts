@@ -1,4 +1,4 @@
-import { Block, VisForConfig, VisPaaConfig } from './richTextTypes';
+import { Block, VisForConfig, VisPaaConfig } from "./richTextTypes";
 
 function allChildrenMarkedWith(block: Block, mark: string): boolean {
   const childrenMedInnhold = block.children?.filter((child) => child.text?.length); // fjerner children med tomme tekster, disse skal ikke regnes med
@@ -10,7 +10,7 @@ interface CommonVisConfig {
   visPaa?: VisPaaConfig;
 }
 
-export const visForAnnotationTypes = ['visForAnnotationDeltTekst', 'visForAnnotation'];
+export const visForAnnotationTypes = ["visForAnnotationDeltTekst", "visForAnnotation"];
 
 export function getCommonVisForConfig(block: Block): CommonVisConfig | undefined {
   const visForAnnotation = block.markDefs?.find((markDef) => visForAnnotationTypes.includes(markDef._type));

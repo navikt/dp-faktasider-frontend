@@ -1,9 +1,9 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import { useLocale } from '../../i18n/LocaleContext';
-import { SupportedLanguage, supportedLanguages } from '../../i18n/supportedLanguages';
-import localizeSanityContent from '../../i18n/localizeSanityContent';
-import { useTestContext } from '../../testUtils/TestProvider';
-import { ExternalMenuLinkData, InternalMenuLinkData, MenuItem } from './menuDataUtils';
+import { graphql, useStaticQuery } from "gatsby";
+import { useLocale } from "../../i18n/LocaleContext";
+import { SupportedLanguage, supportedLanguages } from "../../i18n/supportedLanguages";
+import localizeSanityContent from "../../i18n/localizeSanityContent";
+import { useTestContext } from "../../testUtils/TestProvider";
+import { ExternalMenuLinkData, InternalMenuLinkData, MenuItem } from "./menuDataUtils";
 
 interface Side {
   title?: string;
@@ -19,19 +19,19 @@ interface Side {
 }
 
 interface SanityInternLenke {
-  _type: 'faktaSide';
+  _type: "faktaSide";
   id: string;
 }
 
 interface SanityEksternLenke {
-  _type: 'eksternLenke';
+  _type: "eksternLenke";
   url: string;
   tittel: string;
   beskrivelse: string;
 }
 
 function isSanityInternLenke(lenke: SanityInternLenke | SanityEksternLenke): lenke is SanityInternLenke {
-  return lenke._type === 'faktaSide';
+  return lenke._type === "faktaSide";
 }
 
 interface GraphQlData {
@@ -89,7 +89,7 @@ export function createMenuItemsData(data, lang: SupportedLanguage): MenuItem[] {
   });
 
   const unsortedLinks: InternalMenuLinkData[] = pages
-    .filter((page) => !sortedMenuLinks.some((link) => link.type === 'internal' && link.id === page.id))
+    .filter((page) => !sortedMenuLinks.some((link) => link.type === "internal" && link.id === page.id))
     .map((page) => createInternalLinkData(page, lang));
 
   return [...sortedMenuLinks, ...unsortedLinks];
@@ -101,8 +101,8 @@ function createInternalLinkData(page: Side, lang: SupportedLanguage): InternalMe
   const tilgjengeligPåValgtSpråk = oversettelser.includes(lang);
   const språk = tilgjengeligPåValgtSpråk ? lang : oversettelser[0];
   const path = `/${språk}/${slug}/`;
-  const tittel = page.title || 'Mangler tittel';
-  const beskrivelse = page.beskrivelse || '';
+  const tittel = page.title || "Mangler tittel";
+  const beskrivelse = page.beskrivelse || "";
 
   return {
     path,
@@ -111,7 +111,7 @@ function createInternalLinkData(page: Side, lang: SupportedLanguage): InternalMe
     språk,
     tilgjengeligPåValgtSpråk,
     id: page.id,
-    type: 'internal',
+    type: "internal",
   };
 }
 
@@ -120,7 +120,7 @@ function createExternalLinkData(lenke: SanityEksternLenke): ExternalMenuLinkData
     url: lenke.url,
     tittel: lenke.tittel,
     beskrivelse: lenke.beskrivelse,
-    type: 'external',
+    type: "external",
   };
 }
 

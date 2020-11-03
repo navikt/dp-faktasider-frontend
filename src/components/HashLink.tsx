@@ -1,7 +1,7 @@
-import * as React from 'react';
-import styled from 'styled-components/macro';
-import { theme } from '../styles/theme';
-import { loggHashlenkeKlikk } from '../utils/logging';
+import * as React from "react";
+import styled from "styled-components/macro";
+import { theme } from "../styles/theme";
+import { loggHashlenkeKlikk } from "../utils/logging";
 
 const StyledA = styled.a`
   margin-left: 0.5rem;

@@ -1,10 +1,10 @@
-import * as React from 'react';
-import styled from 'styled-components/macro';
-import { theme } from '../../styles/theme';
-import BlockContent from './BlockContent';
-import { SanityBlock } from '../../utils/richTextUtils/richTextTypes';
-import parseRichText from '../../utils/richTextUtils/parser/parseRichText';
-import withErrorBoundary from '../withErrorBoundary';
+import * as React from "react";
+import styled from "styled-components/macro";
+import { theme } from "../../styles/theme";
+import BlockContent from "./BlockContent";
+import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
+import parseRichText from "../../utils/richTextUtils/parser/parseRichText";
+import withErrorBoundary from "../withErrorBoundary";
 
 interface Props {
   node: {
@@ -27,7 +27,7 @@ const Style = styled.div`
     position: relative;
     padding-left: 0.7rem !important;
     &::before {
-      content: '';
+      content: "";
       display: block;
       height: 0.5rem;
       width: 0.5rem;
@@ -50,4 +50,4 @@ function FremhevetTekst(props: Props) {
   );
 }
 
-export default withErrorBoundary(FremhevetTekst, 'FremhevetTekst');
+export default withErrorBoundary(FremhevetTekst, "FremhevetTekst");

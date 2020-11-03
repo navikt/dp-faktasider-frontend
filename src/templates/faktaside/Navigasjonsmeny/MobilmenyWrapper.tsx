@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { ReactNode, useEffect, useRef, useState } from 'react';
-import styled, { css } from 'styled-components/macro';
-import MenyButton from './MenyButton';
-import { useClickAway, useLocation } from 'react-use';
-import { theme } from '../../../styles/theme';
-import { loggMeny } from '../../../utils/logging';
+import * as React from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
+import styled, { css } from "styled-components/macro";
+import MenyButton from "./MenyButton";
+import { useClickAway, useLocation } from "react-use";
+import { theme } from "../../../styles/theme";
+import { loggMeny } from "../../../utils/logging";
 
 interface Props {
   children: ReactNode;
@@ -81,7 +81,7 @@ function MobilmenyWrapper(props: Props) {
   useClickAway(ref, () => setVisMeny(false));
 
   useEffect(() => {
-    visMeny && loggMeny('Åpne mobilmeny');
+    visMeny && loggMeny("Åpne mobilmeny");
   }, [visMeny]);
 
   useEffect(() => {

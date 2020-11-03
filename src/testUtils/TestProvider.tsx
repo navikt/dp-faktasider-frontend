@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { createContext, ReactNode, useContext } from 'react';
-import { isTest } from '../utils/environment';
-import { mockFaktasiderMenuData } from '../hooks/graphQl/mockFaktasiderMenuData';
-import { ExternalMenuLinkData } from '../hooks/graphQl/menuDataUtils';
+import * as React from "react";
+import { createContext, ReactNode, useContext } from "react";
+import { isTest } from "../utils/environment";
+import { mockFaktasiderMenuData } from "../hooks/graphQl/mockFaktasiderMenuData";
+import { ExternalMenuLinkData } from "../hooks/graphQl/menuDataUtils";
 
 const initial = {
   isTest: isTest(),

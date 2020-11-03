@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { PageProps } from 'gatsby';
-import { parseQueryParams } from '../utils/useQueryParams';
-import { Helmet } from 'react-helmet';
-import { idFromString } from '../utils/idFromString';
-import { useMount } from 'react-use';
-import { loggRedirect } from '../utils/logging';
+import * as React from "react";
+import { PageProps } from "gatsby";
+import { parseQueryParams } from "../utils/useQueryParams";
+import { Helmet } from "react-helmet";
+import { idFromString } from "../utils/idFromString";
+import { useMount } from "react-use";
+import { loggRedirect } from "../utils/logging";
 
-type GammelURL = 'permittert' | 'arbeidsledig' | 'lærling' | 'student';
+type GammelURL = "permittert" | "arbeidsledig" | "lærling" | "student";
 
 function RedirectFraGammelSide(props: PageProps<undefined, { slug: GammelURL }>) {
   const queryParams = parseQueryParams<{ lang?: string }>(props.location.search);
@@ -17,24 +17,24 @@ function RedirectFraGammelSide(props: PageProps<undefined, { slug: GammelURL }>)
 
   useMount(() => loggRedirect(pathname));
 
-  function buildNewPath(newSlug: string, lang = 'no') {
+  function buildNewPath(newSlug: string, lang = "no") {
     const nyPath = `${pathname.replace(`/dagpenger/${slug}`, `/${lang}/${newSlug}`)}`;
-    return nyPath + (hash ? `#${hash}` : '');
+    return nyPath + (hash ? `#${hash}` : "");
   }
 
   function getNewPath() {
     switch (slug) {
-      case 'permittert':
-        if (queryParams.lang === 'en') {
-          return buildNewPath('dagpenger-og-eos', 'en');
+      case "permittert":
+        if (queryParams.lang === "en") {
+          return buildNewPath("dagpenger-og-eos", "en");
         } else {
           return buildNewPath(slug);
         }
-      case 'arbeidsledig':
+      case "arbeidsledig":
         return buildNewPath(slug);
-      case 'lærling':
-        return buildNewPath('laerling');
-      case 'student':
+      case "lærling":
+        return buildNewPath("laerling");
+      case "student":
         return buildNewPath(slug);
       default:
         return buildNewPath(slug);

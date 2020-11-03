@@ -1,12 +1,12 @@
-import { GatsbyNode } from 'gatsby';
-import { SupportedLanguage, supportedLanguages } from '../src/i18n/supportedLanguages';
-import { isDevelopment } from '../src/utils/environment';
+import { GatsbyNode } from "gatsby";
+import { SupportedLanguage, supportedLanguages } from "../src/i18n/supportedLanguages";
+import { isDevelopment } from "../src/utils/environment";
 
 export interface LandingssideProps {
   lang: SupportedLanguage;
 }
 
-export const createLandingsside: GatsbyNode['createPages'] = async (props) => {
+export const createLandingsside: GatsbyNode["createPages"] = async (props) => {
   const { reporter, actions } = props;
   reporter.info(`🚧 Lager redirect fra / til /no/`);
   actions.createRedirect({ fromPath: `/`, toPath: `/no/`, isPermanent: true, redirectInBrowser: isDevelopment() });
@@ -15,7 +15,7 @@ export const createLandingsside: GatsbyNode['createPages'] = async (props) => {
     reporter.info(`🛬 Lager landingsside: ${slug}`);
     actions.createPage<LandingssideProps>({
       path: slug,
-      component: require.resolve('../src/templates/landingsside/index.tsx'),
+      component: require.resolve("../src/templates/landingsside/index.tsx"),
       context: { lang },
     });
   });

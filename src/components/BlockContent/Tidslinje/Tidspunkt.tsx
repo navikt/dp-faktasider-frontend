@@ -1,12 +1,12 @@
-import * as React from 'react';
-import styled from 'styled-components/macro';
-import { theme } from '../../../styles/theme';
-import BlockContent from '../BlockContent';
-import { TidslinjePunkt } from './parseTidslinjedata';
-import { useRef } from 'react';
-import { guid } from 'nav-frontend-js-utils';
+import * as React from "react";
+import styled from "styled-components/macro";
+import { theme } from "../../../styles/theme";
+import BlockContent from "../BlockContent";
+import { TidslinjePunkt } from "./parseTidslinjedata";
+import { useRef } from "react";
+import { guid } from "nav-frontend-js-utils";
 
-const circleSize = '1.3rem';
+const circleSize = "1.3rem";
 
 const borderstyle = `0.21rem ${theme.colors.navBlaLighten60} solid`;
 
@@ -16,7 +16,7 @@ const StyledLi = styled.li`
   overflow: auto;
   margin: 0 !important;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     height: ${circleSize};
     width: ${circleSize};
@@ -25,7 +25,7 @@ const StyledLi = styled.li`
     border-radius: 50%;
   }
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     height: calc(100% - ${circleSize});
     left: calc(${circleSize} / 2.2);
@@ -34,7 +34,7 @@ const StyledLi = styled.li`
   }
 `;
 
-const StyledElement = styled.div.attrs({ className: 'typo-element' })`
+const StyledElement = styled.div.attrs({ className: "typo-element" })`
   display: flex;
   align-items: center;
   min-height: ${circleSize};

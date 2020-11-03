@@ -1,6 +1,6 @@
-import { DelttekstReference, SanityBlock, TidslinjeI, Tillegsinformasjon } from '../utils/richTextUtils/richTextTypes';
-import { guid } from 'nav-frontend-js-utils';
-import { RawFaktasideData } from '../../gatsby-utils/createFaktasider';
+import { DelttekstReference, SanityBlock, TidslinjeI, Tillegsinformasjon } from "../utils/richTextUtils/richTextTypes";
+import { guid } from "nav-frontend-js-utils";
+import { RawFaktasideData } from "../../gatsby-utils/createFaktasider";
 
 /*
  * Funksjoner for å lage sanity-mock-data til bruk i tester
@@ -10,14 +10,14 @@ export function createSanityBlock(text: string, style: string, marks?: string[])
   const key = createKey();
 
   return {
-    _type: 'block',
+    _type: "block",
     _key: key,
     style: style,
     markDefs: [],
     children: [
       {
-        _type: 'span',
-        _key: key + '0',
+        _type: "span",
+        _key: key + "0",
         text: text,
         marks: marks || [],
       },
@@ -27,29 +27,29 @@ export function createSanityBlock(text: string, style: string, marks?: string[])
 
 export function crateSanityListeElement(tekst: string, marks?: string[]): SanityBlock {
   return {
-    ...createSanityBlock(tekst, 'normal', marks),
+    ...createSanityBlock(tekst, "normal", marks),
     level: 1,
-    listItem: 'bullet',
+    listItem: "bullet",
   };
 }
 
 export function crateSanityListeElementMedVisFor(tekst: string, visFor: { [key: string]: boolean }): SanityBlock {
   return {
-    ...createSanityBlockMedVisFor(tekst, 'normal', visFor),
+    ...createSanityBlockMedVisFor(tekst, "normal", visFor),
     level: 1,
-    listItem: 'bullet',
+    listItem: "bullet",
   };
 }
 
 export function createDeltTekstBlock(innhold: SanityBlock[]): DelttekstReference {
   const id = createKey();
   return {
-    _type: 'deltTekstReference',
+    _type: "deltTekstReference",
     deltTekst: {
       id: id,
-      _type: 'deltTekst',
-      _createdAt: '2020-07-03T09:21:09Z',
-      _updatedAt: '2020-07-13T09:00:55Z',
+      _type: "deltTekst",
+      _createdAt: "2020-07-03T09:21:09Z",
+      _updatedAt: "2020-07-13T09:00:55Z",
       innhold: innhold,
     },
   };
@@ -80,11 +80,11 @@ export function createSanityBlockMedVisFor(
     markDefs: [
       {
         _key: markKey,
-        _type: 'visForAnnotation',
+        _type: "visForAnnotation",
         visFor: {
           ...visFor,
           skjulFor: omvendtFiltrering_SkjulFor,
-          _type: 'visFor',
+          _type: "visFor",
         },
       },
     ],
@@ -117,7 +117,7 @@ export function createSanityBlockMedDeltTekstVisForAnnotation(
       ...(block.markDefs || []),
       {
         _key: markKey,
-        _type: 'visForAnnotationDeltTekst',
+        _type: "visForAnnotationDeltTekst",
         visPaaSider: visPaaSideIder?.map(
           (id) =>
             ({
@@ -135,7 +135,7 @@ function createKey() {
 
 export function createTillegsInformasjon(tittel: string, innhold: SanityBlock[]): Tillegsinformasjon {
   return {
-    _type: 'tileggsInformasjon',
+    _type: "tileggsInformasjon",
     title: tittel,
     innhold: innhold,
   };
@@ -143,7 +143,7 @@ export function createTillegsInformasjon(tittel: string, innhold: SanityBlock[])
 
 export function createTidslinje(innhold: SanityBlock[]): TidslinjeI {
   return {
-    _type: 'tidslinje',
+    _type: "tidslinje",
     innhold: innhold,
   };
 }

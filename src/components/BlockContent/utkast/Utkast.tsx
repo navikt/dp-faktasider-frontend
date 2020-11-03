@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { ReactNode } from 'react';
-import styled from 'styled-components/macro';
-import { isProduction } from '../../../utils/environment';
-import { useDevContext } from '../../DevKnapper/DevContext';
-import withErrorBoundary from '../../withErrorBoundary';
+import * as React from "react";
+import { ReactNode } from "react";
+import styled from "styled-components/macro";
+import { isProduction } from "../../../utils/environment";
+import { useDevContext } from "../../DevKnapper/DevContext";
+import withErrorBoundary from "../../withErrorBoundary";
 
 interface Props {
   children: ReactNode;
@@ -37,7 +37,7 @@ function Utkast(props: Props) {
 
   if (visSomUtkast) {
     return (
-      <Style as={props.inline ? 'span' : undefined} title="Dette vises ikke i prod">
+      <Style as={props.inline ? "span" : undefined} title="Dette vises ikke i prod">
         {!props.inline && <Label>Utkast</Label>}
         {props.children}
       </Style>
@@ -51,4 +51,4 @@ export function UtkastInline(props: Props) {
   return <Utkast {...props} inline={true} />;
 }
 
-export default withErrorBoundary(Utkast, 'Utkast');
+export default withErrorBoundary(Utkast, "Utkast");

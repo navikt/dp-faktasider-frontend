@@ -1,24 +1,24 @@
-import * as React from 'react';
-import { PageProps } from 'gatsby';
-import { FaktasideContext } from '../../../gatsby-utils/createFaktasider';
-import styled from 'styled-components/macro';
-import UnderArbeid from './UnderArbeid';
-import VelgDetSomPasserBest, { VeiviserValg } from './VelgDetSomPasserBest';
-import { veiviserMachine } from './VeiviserStateChart';
-import { useMachine } from '@xstate/react';
-import getAlleTilpassInnholdValg from '../faktaside/TilpassInnhold/getAlleTilpassInnholdValg';
-import { Group, isGroup } from '../../utils/richTextUtils/richTextTypes';
-import BlockContent from '../../components/BlockContent/BlockContent';
-import { visBasertPåFiltrering } from '../../components/BlockContent/VisFor/VisFor';
-import { typografiStyle } from '../faktaside/MainContentStyle';
-import VeiviserBrødsmuler from './VeiviserBrødsmuler';
-import DevKnapper from '../../components/DevKnapper/DevKnapper';
-import { useVisForContext } from '../../components/BlockContent/VisFor/VisForContext';
-import { visBasertPaaVisPaaConfig } from '../../components/BlockContent/VisFor/VisPaaSide';
-import { isDevelopment } from '../../utils/environment';
-import { getFiltreringsvalgLabel } from '../faktaside/TilpassInnhold/getFiltreringsLabel';
-import { createH2Group } from '../../utils/richTextUtils/createGroup';
-import { Knapp } from 'nav-frontend-knapper';
+import * as React from "react";
+import { PageProps } from "gatsby";
+import { FaktasideContext } from "../../../gatsby-utils/createFaktasider";
+import styled from "styled-components/macro";
+import UnderArbeid from "./UnderArbeid";
+import VelgDetSomPasserBest, { VeiviserValg } from "./VelgDetSomPasserBest";
+import { veiviserMachine } from "./VeiviserStateChart";
+import { useMachine } from "@xstate/react";
+import getAlleTilpassInnholdValg from "../faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
+import { Group, isGroup } from "../../utils/richTextUtils/richTextTypes";
+import BlockContent from "../../components/BlockContent/BlockContent";
+import { visBasertPåFiltrering } from "../../components/BlockContent/VisFor/VisFor";
+import { typografiStyle } from "../faktaside/MainContentStyle";
+import VeiviserBrødsmuler from "./VeiviserBrødsmuler";
+import DevKnapper from "../../components/DevKnapper/DevKnapper";
+import { useVisForContext } from "../../components/BlockContent/VisFor/VisForContext";
+import { visBasertPaaVisPaaConfig } from "../../components/BlockContent/VisFor/VisPaaSide";
+import { isDevelopment } from "../../utils/environment";
+import { getFiltreringsvalgLabel } from "../faktaside/TilpassInnhold/getFiltreringsLabel";
+import { createH2Group } from "../../utils/richTextUtils/createGroup";
+import { Knapp } from "nav-frontend-knapper";
 
 export interface VeiviserProps extends PageProps<{}, { pages: FaktasideContext[] }> {
   errors: any;
@@ -48,8 +48,8 @@ function Veiviser(props: VeiviserProps) {
 
   const [state, send] = useMachine(veiviserMachine, {
     actions: {
-      setFiltrering: (ctx) => visForContest.dispatch({ type: 'setKey', key: ctx.filtrering! }),
-      clearFiltrering: () => visForContest.dispatch({ type: 'clear' }),
+      setFiltrering: (ctx) => visForContest.dispatch({ type: "setKey", key: ctx.filtrering! }),
+      clearFiltrering: () => visForContest.dispatch({ type: "clear" }),
     },
   });
 
@@ -57,7 +57,7 @@ function Veiviser(props: VeiviserProps) {
   const pages = props.pageContext.pages;
 
   const siderValg: VeiviserValg<FaktasideContext>[] = pages.map((page) => ({
-    label: page.title || 'Mangler tittel',
+    label: page.title || "Mangler tittel",
     id: page.id,
     object: page,
   }));
@@ -75,29 +75,29 @@ function Veiviser(props: VeiviserProps) {
         .filter(isGroup)
         .filter((group: Group) => visBasertPåFiltrering(visForContest, group.blockConfig?.visFor).vis)
         .filter((group: Group) =>
-          visBasertPaaVisPaaConfig(state.context.side?.id || '', group.blockConfig?.visPaaSider)
+          visBasertPaaVisPaaConfig(state.context.side?.id || "", group.blockConfig?.visPaaSider)
         )
         .filter((group: Group) => isDevelopment() || !group.blockConfig?.erUtkast)
         .map((group) => ({
           label: group.title,
-          id: group.blockConfig?.id || 'N/A',
+          id: group.blockConfig?.id || "N/A",
           object: group,
         }))
     : [];
 
   if (context.side?.kortFortalt) {
     overskriftsValg.unshift({
-      label: 'Kort fortalt',
-      id: 'kort-fortalt',
-      object: createH2Group('Kort fortalt', context.side.kortFortalt),
+      label: "Kort fortalt",
+      id: "kort-fortalt",
+      object: createH2Group("Kort fortalt", context.side.kortFortalt),
     });
   }
 
   if (context.side?.relatertInformasjon) {
     overskriftsValg.push({
-      label: 'Relatert informasjon',
-      id: 'relatert-informasjon',
-      object: createH2Group('Relatert informasjon', context.side.relatertInformasjon),
+      label: "Relatert informasjon",
+      id: "relatert-informasjon",
+      object: createH2Group("Relatert informasjon", context.side.relatertInformasjon),
     });
   }
 
@@ -110,27 +110,27 @@ function Veiviser(props: VeiviserProps) {
       <UnderArbeid />
       <DevKnapper />
       <VeiviserBrødsmuler context={state.context} send={send} />
-      {state.matches('velgSide') && (
-        <VelgDetSomPasserBest valg={siderValg} setValg={(side) => send({ type: 'VELGSIDE', side })} />
+      {state.matches("velgSide") && (
+        <VelgDetSomPasserBest valg={siderValg} setValg={(side) => send({ type: "VELGSIDE", side })} />
       )}
-      {state.matches('velgFiltrering') && (
+      {state.matches("velgFiltrering") && (
         <VelgDetSomPasserBest
           valg={filtreringsValg}
-          setValg={(filtrering) => send({ type: 'VELGFILTRERING', filtrering: filtrering })}
+          setValg={(filtrering) => send({ type: "VELGFILTRERING", filtrering: filtrering })}
         />
       )}
-      {state.matches('velgOverskrift') && (
+      {state.matches("velgOverskrift") && (
         <VelgDetSomPasserBest
           valg={overskriftsValg}
-          setValg={(group) => send({ type: 'VELGOVERSKRIFT', group: group })}
+          setValg={(group) => send({ type: "VELGOVERSKRIFT", group: group })}
         />
       )}
-      {state.matches('visGruppe') && (
+      {state.matches("visGruppe") && (
         <Content>
           <Knapp
             onClick={() =>
               send({
-                type: 'VELGOVERSKRIFT',
+                type: "VELGOVERSKRIFT",
                 group: overskriftsValg[groupIndex - 1]?.object || overskriftsValg[overskriftsValg.length - 1].object,
               })
             }
@@ -141,7 +141,7 @@ function Veiviser(props: VeiviserProps) {
           <Knapp
             onClick={() =>
               send({
-                type: 'VELGOVERSKRIFT',
+                type: "VELGOVERSKRIFT",
                 group: overskriftsValg[groupIndex + 1]?.object || overskriftsValg[0].object,
               })
             }

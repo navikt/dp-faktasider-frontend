@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { Collapse } from 'react-collapse';
-import { AlertStripeInfo } from 'nav-frontend-alertstriper';
-import { GrunnlagInput, InputWrapper, KalkulatorStyle, ResultatTable, toKR } from './felles';
-import { useDebouncedValue } from '../../hooks/useDebouncedValue';
-import { H4 } from '../../utils/common-styled-components';
-import { loggKalkulatorbruk } from '../../utils/logging';
-import { useGrunnbellop } from '../../utils/folketrygdensGrunnbeløp';
+import * as React from "react";
+import { useEffect, useState } from "react";
+import { Collapse } from "react-collapse";
+import { AlertStripeInfo } from "nav-frontend-alertstriper";
+import { GrunnlagInput, InputWrapper, KalkulatorStyle, ResultatTable, toKR } from "./felles";
+import { useDebouncedValue } from "../../hooks/useDebouncedValue";
+import { H4 } from "../../utils/common-styled-components";
+import { loggKalkulatorbruk } from "../../utils/logging";
+import { useGrunnbellop } from "../../utils/folketrygdensGrunnbeløp";
 
 function Resultat(props: { grunnlag?: number }) {
   const { G } = useGrunnbellop();
@@ -71,7 +71,7 @@ function DagpengerKalkulatorLRling() {
 
   useEffect(() => {
     if (!harLoggetBruk && grunnlag) {
-      loggKalkulatorbruk('Uinnlogget lærling');
+      loggKalkulatorbruk("Uinnlogget lærling");
       setHarLoggetBruk(true);
     }
   }, [grunnlag, harLoggetBruk]);
@@ -84,7 +84,7 @@ function DagpengerKalkulatorLRling() {
           <GrunnlagInput
             label="Skriv ei årsinntekt:"
             type="number"
-            value={grunnlag || ''}
+            value={grunnlag || ""}
             onChange={(e) => setGrunnlag(Math.max(0, +e.target.value) || undefined)}
             placeholder="350 000"
           />

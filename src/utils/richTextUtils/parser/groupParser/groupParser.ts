@@ -1,9 +1,9 @@
-import { Block, BlockConfigFromParser, Group, GroupTypes, ParsedSanityBlock } from '../../richTextTypes';
-import { RichTextParser } from '../parseRichText';
-import allChildrenMarkedWith, { getCommonVisForConfig } from '../../allChildrenMarkedWith';
-import { getTextFromSanityBlock } from '../../getTextFromSanityBlock';
+import { Block, BlockConfigFromParser, Group, GroupTypes, ParsedSanityBlock } from "../../richTextTypes";
+import { RichTextParser } from "../parseRichText";
+import allChildrenMarkedWith, { getCommonVisForConfig } from "../../allChildrenMarkedWith";
+import { getTextFromSanityBlock } from "../../getTextFromSanityBlock";
 
-const groupByStyles: GroupTypes[] = ['h2', 'h3', 'h4'].reverse() as GroupTypes[]; // Rekkefølgen her er viktig. Den første gruppen vil aldri få andre grupper inni seg.
+const groupByStyles: GroupTypes[] = ["h2", "h3", "h4"].reverse() as GroupTypes[]; // Rekkefølgen her er viktig. Den første gruppen vil aldri få andre grupper inni seg.
 
 // Samler tekst i grupper adskilt av titler (h2, h3, h4 etc). h2 er toppnivå og kan ha flere h3 grupper inni seg. h3 kan ha h4-grupper inni seg.
 // Å samle bolkene slik gjør det lett å feks style en bolk med tekst og det legger til rette for å lage dokumenter med god semantikk/accessibility ved å legge bolker i <section> / <article> etc.
@@ -24,7 +24,7 @@ export const groupParser: RichTextParser = (blocks) => {
             ...block,
             style: block.style as GroupTypes,
             title: getTextFromSanityBlock(block),
-            _type: 'group',
+            _type: "group",
             children: [],
             blockConfig: createBlockConfig(block),
           };
@@ -46,10 +46,10 @@ function createBlockConfig(block: ParsedSanityBlock): BlockConfigFromParser {
   const currentConfig = block?.blockConfig;
   return {
     ...currentConfig,
-    erUtkast: allChildrenMarkedWith(block, 'utkast'),
+    erUtkast: allChildrenMarkedWith(block, "utkast"),
     visFor: getCommonVisForConfig(block)?.visFor,
     visPaaSider: block.markDefs
-      ?.find((markDef) => markDef._type === 'visForAnnotationDeltTekst')
+      ?.find((markDef) => markDef._type === "visForAnnotationDeltTekst")
       ?.visPaaSider?.map((side) => side.id),
   };
 }

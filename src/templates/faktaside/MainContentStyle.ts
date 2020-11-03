@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components/macro';
-import { theme } from '../../styles/theme';
+import styled, { css } from "styled-components/macro";
+import { theme } from "../../styles/theme";
 
 export const typografiStyle = css`
   ul,

@@ -1,6 +1,6 @@
-import * as React from 'react';
-import styled, { css } from 'styled-components/macro';
-import { theme } from '../../../styles/theme';
+import * as React from "react";
+import styled, { css } from "styled-components/macro";
+import { theme } from "../../../styles/theme";
 
 const removeButtonStyle = css`
   background: none;

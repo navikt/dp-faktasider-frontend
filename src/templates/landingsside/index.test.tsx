@@ -1,20 +1,20 @@
-import React from 'react';
-import { PureIndexPage } from './index';
-import { render, within } from '../../testUtils/customized-testing-library';
-import { mockFaktasiderMenuData } from '../../hooks/graphQl/mockFaktasiderMenuData';
-import { InternalMenuLinkData } from '../../hooks/graphQl/menuDataUtils';
+import React from "react";
+import { PureIndexPage } from "./index";
+import { render, within } from "../../testUtils/customized-testing-library";
+import { mockFaktasiderMenuData } from "../../hooks/graphQl/mockFaktasiderMenuData";
+import { InternalMenuLinkData } from "../../hooks/graphQl/menuDataUtils";
 
-test('Index-side inneholder lenker til undersider med beskrivelse', () => {
+test("Index-side inneholder lenker til undersider med beskrivelse", () => {
   const result = render(
     <PureIndexPage
-      projectData={{ title: 'Arbeid', komIgangLenker: [], folketrygdensGrunnbellop: 1, beskrivelse: '' }}
+      projectData={{ title: "Arbeid", komIgangLenker: [], folketrygdensGrunnbellop: 1, beskrivelse: "" }}
       infosideLenker={mockFaktasiderMenuData}
-      path={'test'}
+      path={"test"}
     />
   );
 
-  const lenkeListe = result.getAllByRole('list')[0];
-  const lenker = within(lenkeListe).getAllByRole('link');
+  const lenkeListe = result.getAllByRole("list")[0];
+  const lenker = within(lenkeListe).getAllByRole("link");
 
   expect(lenker).toHaveLength(mockFaktasiderMenuData.length);
 

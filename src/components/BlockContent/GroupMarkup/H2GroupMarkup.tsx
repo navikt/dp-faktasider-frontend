@@ -1,10 +1,10 @@
-import * as React from 'react';
-import styled, { css } from 'styled-components/macro';
-import { Group, isH3Group } from '../../../utils/richTextUtils/richTextTypes';
-import { theme } from '../../../styles/theme';
-import { Innholdstittel } from 'nav-frontend-typografi';
-import H2GroupMenu from './H2GroupMenu';
-import CommonGroupMarkup from './CommonGroupMarkup';
+import * as React from "react";
+import styled, { css } from "styled-components/macro";
+import { Group, isH3Group } from "../../../utils/richTextUtils/richTextTypes";
+import { theme } from "../../../styles/theme";
+import { Innholdstittel } from "nav-frontend-typografi";
+import H2GroupMenu from "./H2GroupMenu";
+import CommonGroupMarkup from "./CommonGroupMarkup";
 
 type RegionProps = { noBackground?: boolean };
 
@@ -27,10 +27,10 @@ const StyledArticle = styled.article<RegionProps>`
 type TittelProps = { noBackground?: boolean };
 
 const StyledTittel = styled(Innholdstittel).attrs({
-  as: 'h2',
-  className: 'typo-innholdstittel',
+  as: "h2",
+  className: "typo-innholdstittel",
 })<TittelProps>`
-  background-color: ${(props) => (props.noBackground ? theme.colors.bakgrunn : '#fffe')};
+  background-color: ${(props) => (props.noBackground ? theme.colors.bakgrunn : "#fffe")};
   padding: 1rem;
   text-align: center;
   position: sticky !important;

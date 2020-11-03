@@ -1,9 +1,9 @@
-import styled from 'styled-components/macro';
-import 'nav-frontend-knapper-style/src/index.less';
-import { Element } from 'nav-frontend-typografi';
-import Lenke from 'nav-frontend-lenker';
+import styled from "styled-components/macro";
+import "nav-frontend-knapper-style/src/index.less";
+import { Element } from "nav-frontend-typografi";
+import Lenke from "nav-frontend-lenker";
 
-export const LenkeKnapp = styled.button.attrs({ className: 'lenke' })`
+export const LenkeKnapp = styled.button.attrs({ className: "lenke" })`
   border: none;
   padding: 0;
   border-radius: 0.2rem;
@@ -12,7 +12,7 @@ export const LenkeKnapp = styled.button.attrs({ className: 'lenke' })`
   text-align: left;
 `;
 
-export const KnappLenke = styled.a.attrs({ className: 'knapp knapp--standard' })`
+export const KnappLenke = styled.a.attrs({ className: "knapp knapp--standard" })`
   text-transform: none;
   white-space: normal !important;
   text-align: center;
@@ -44,12 +44,12 @@ export const DecimalListe = styled.ol`
   }
 `;
 
-export const H4 = styled(Element).attrs({ tag: 'h4' })`
+export const H4 = styled(Element).attrs({ tag: "h4" })`
   text-align: center;
   margin-bottom: 1rem !important;
 `;
 
-export const LenkeUtenUnderstrek = styled(Lenke).attrs({ className: 'lenke' })`
+export const LenkeUtenUnderstrek = styled(Lenke).attrs({ className: "lenke" })`
   text-decoration: none !important;
   &:hover {
     text-decoration: underline !important;

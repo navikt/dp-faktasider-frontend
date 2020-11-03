@@ -1,7 +1,7 @@
-import React, { createContext, ReactNode, useContext, useReducer } from 'react';
-import { isDevelopment } from '../../utils/environment';
+import React, { createContext, ReactNode, useContext, useReducer } from "react";
+import { isDevelopment } from "../../utils/environment";
 
-type ActionNames = 'utkast' | 'filtrering' | 'delteTekster' | 'grunnbellop';
+type ActionNames = "utkast" | "filtrering" | "delteTekster" | "grunnbellop";
 
 const initial = {
   value: {
@@ -19,22 +19,22 @@ export const useDevContext = () => useContext(DevContext);
 
 function reducer(state: typeof initial.value, action: ActionNames) {
   switch (action) {
-    case 'utkast':
+    case "utkast":
       return {
         ...state,
         visUtkast: !state.visUtkast,
       };
-    case 'filtrering':
+    case "filtrering":
       return {
         ...state,
         highlightFiltrering: !state.highlightFiltrering,
       };
-    case 'delteTekster':
+    case "delteTekster":
       return {
         ...state,
         debugDelteTekster: !state.debugDelteTekster,
       };
-    case 'grunnbellop':
+    case "grunnbellop":
       return {
         ...state,
         debugGronnbellop: !state.debugGronnbellop,

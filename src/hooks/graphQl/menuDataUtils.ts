@@ -1,8 +1,8 @@
-import { EksternLenkeI } from './useProjectData';
-import { SupportedLanguage } from '../../i18n/supportedLanguages';
+import { EksternLenkeI } from "./useProjectData";
+import { SupportedLanguage } from "../../i18n/supportedLanguages";
 
 export interface ExternalMenuLinkData extends EksternLenkeI {
-  type: 'external';
+  type: "external";
 }
 
 export interface InternalMenuLinkData {
@@ -12,11 +12,11 @@ export interface InternalMenuLinkData {
   tilgjengeligPåValgtSpråk: boolean;
   beskrivelse: string;
   id: string;
-  type: 'internal';
+  type: "internal";
 }
 
 export type MenuItem = ExternalMenuLinkData | InternalMenuLinkData;
 
 export function isInternal(lenke: MenuItem): lenke is InternalMenuLinkData {
-  return lenke.type === 'internal';
+  return lenke.type === "internal";
 }

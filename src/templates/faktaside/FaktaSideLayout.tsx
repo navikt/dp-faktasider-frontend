@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { ReactNode, RefObject } from 'react';
-import styled from 'styled-components/macro';
-import Navigasjonsmeny from './Navigasjonsmeny/Navigasjonsmeny';
-import Header from '../felles/Header';
-import LanguageSelector from '../../components/LanguageSelector/LanguageSelector';
-import DevKnapper from '../../components/DevKnapper/DevKnapper';
-import { MainContentStyle } from './MainContentStyle';
-import withErrorBoundary from '../../components/withErrorBoundary';
-import Filtrering from './TilpassInnhold/TilpassInnhold';
-import { theme } from '../../styles/theme';
+import * as React from "react";
+import { ReactNode, RefObject } from "react";
+import styled from "styled-components/macro";
+import Navigasjonsmeny from "./Navigasjonsmeny/Navigasjonsmeny";
+import Header from "../felles/Header";
+import LanguageSelector from "../../components/LanguageSelector/LanguageSelector";
+import DevKnapper from "../../components/DevKnapper/DevKnapper";
+import { MainContentStyle } from "./MainContentStyle";
+import withErrorBoundary from "../../components/withErrorBoundary";
+import Filtrering from "./TilpassInnhold/TilpassInnhold";
+import { theme } from "../../styles/theme";
 
 interface Props {
   header: string;
@@ -67,4 +67,4 @@ function FaktaSideLayout(props: Props) {
   );
 }
 
-export default withErrorBoundary(FaktaSideLayout, 'FaktaSideLayout');
+export default withErrorBoundary(FaktaSideLayout, "FaktaSideLayout");

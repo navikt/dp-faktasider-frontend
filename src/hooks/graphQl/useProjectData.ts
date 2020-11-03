@@ -1,6 +1,6 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import { useLocale } from '../../i18n/LocaleContext';
-import localizeSanityContent from '../../i18n/localizeSanityContent';
+import { graphql, useStaticQuery } from "gatsby";
+import { useLocale } from "../../i18n/LocaleContext";
+import localizeSanityContent from "../../i18n/localizeSanityContent";
 
 export interface EksternLenkeI {
   tittel: string;
@@ -31,7 +31,7 @@ function useProjectData(): ProjectData {
   const localizedData = localizeSanityContent(data, lang);
 
   if (!data.oppsett.folketrygdensGrunnbellop) {
-    throw new Error('Kunne ikke hente grunnbelløp');
+    throw new Error("Kunne ikke hente grunnbelløp");
   }
 
   return {

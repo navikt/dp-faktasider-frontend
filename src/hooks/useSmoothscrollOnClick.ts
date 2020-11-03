@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { createGlobalStyle } from 'styled-components/macro';
+import { useState } from "react";
+import { createGlobalStyle } from "styled-components/macro";
 
 const SmoothScrollStyle = createGlobalStyle`
   html {

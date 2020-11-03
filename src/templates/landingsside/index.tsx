@@ -1,20 +1,20 @@
-import React from 'react';
-import { PageProps } from 'gatsby';
-import styled from 'styled-components/macro';
-import Header from '../felles/Header';
-import useFaktasiderMenuData from '../../hooks/graphQl/useFaktasiderMenuData';
-import localizeSanityContent from '../../i18n/localizeSanityContent';
-import useProjectData, { ProjectData } from '../../hooks/graphQl/useProjectData';
-import { LandingssideProps } from '../../../gatsby-utils/createLandingsside';
-import SEO from '../../components/SEO';
-import { useLocale } from '../../i18n/LocaleContext';
-import { useMount } from 'react-use';
-import { loggSidevisning } from '../../utils/logging';
-import InfosideLenker from './InfosideLenker';
-import { MenuItem } from '../../hooks/graphQl/menuDataUtils';
-import { KomIgangLenker } from './KomIgangLenker';
-import useBreadcrumbs from '../faktaside/useBreadcrumbs';
-import DevKnapper from '../../components/DevKnapper/DevKnapper';
+import React from "react";
+import { PageProps } from "gatsby";
+import styled from "styled-components/macro";
+import Header from "../felles/Header";
+import useFaktasiderMenuData from "../../hooks/graphQl/useFaktasiderMenuData";
+import localizeSanityContent from "../../i18n/localizeSanityContent";
+import useProjectData, { ProjectData } from "../../hooks/graphQl/useProjectData";
+import { LandingssideProps } from "../../../gatsby-utils/createLandingsside";
+import SEO from "../../components/SEO";
+import { useLocale } from "../../i18n/LocaleContext";
+import { useMount } from "react-use";
+import { loggSidevisning } from "../../utils/logging";
+import InfosideLenker from "./InfosideLenker";
+import { MenuItem } from "../../hooks/graphQl/menuDataUtils";
+import { KomIgangLenker } from "./KomIgangLenker";
+import useBreadcrumbs from "../faktaside/useBreadcrumbs";
+import DevKnapper from "../../components/DevKnapper/DevKnapper";
 
 const Style = styled.div`
   background-color: white;
@@ -43,7 +43,7 @@ export function PureIndexPage(props: Props) {
   const lang = useLocale();
   const { beskrivelse, title, komIgangLenker } = props.projectData;
 
-  useMount(() => loggSidevisning('Forside - nav.no/arbeid'));
+  useMount(() => loggSidevisning("Forside - nav.no/arbeid"));
   useBreadcrumbs();
 
   return (

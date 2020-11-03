@@ -1,17 +1,17 @@
-import * as React from 'react';
-import { useVisForContext } from '../../../components/BlockContent/VisFor/VisForContext';
-import styled from 'styled-components/macro';
-import { Checkbox } from 'nav-frontend-skjema';
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
-import withErrorBoundary from '../../../components/withErrorBoundary';
-import { theme } from '../../../styles/theme';
-import useUniqueId from '../../../utils/useUniqueId';
-import { UnmountClosed } from 'react-collapse';
-import { getFiltreringsvalgLabel } from './getFiltreringsLabel';
-import getAlleTilpassInnholdValg from './getAlleTilpassInnholdValg';
-import { useFaktasideContext } from '../FaktaSideContext';
-import { useWordCount } from './useWordCount';
-import { RefObject } from 'react';
+import * as React from "react";
+import { useVisForContext } from "../../../components/BlockContent/VisFor/VisForContext";
+import styled from "styled-components/macro";
+import { Checkbox } from "nav-frontend-skjema";
+import { Normaltekst, Systemtittel } from "nav-frontend-typografi";
+import withErrorBoundary from "../../../components/withErrorBoundary";
+import { theme } from "../../../styles/theme";
+import useUniqueId from "../../../utils/useUniqueId";
+import { UnmountClosed } from "react-collapse";
+import { getFiltreringsvalgLabel } from "./getFiltreringsLabel";
+import getAlleTilpassInnholdValg from "./getAlleTilpassInnholdValg";
+import { useFaktasideContext } from "../FaktaSideContext";
+import { useWordCount } from "./useWordCount";
+import { RefObject } from "react";
 
 const StyledNav = styled.nav`
   border-top: ${theme.border.banner};
@@ -49,7 +49,7 @@ interface Props {
 
 function TilpassInnhold(props: Props) {
   const visForContext = useVisForContext();
-  const titleId = useUniqueId('tilpassInnhold');
+  const titleId = useUniqueId("tilpassInnhold");
   const { innhold, visIngenValgPasser } = useFaktasideContext();
   const valgt = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
@@ -69,7 +69,7 @@ function TilpassInnhold(props: Props) {
           <li key={valg}>
             <Checkbox
               label={getFiltreringsvalgLabel(valg)}
-              onChange={() => visForContext.dispatch({ type: 'toggle', key: valg })}
+              onChange={() => visForContext.dispatch({ type: "toggle", key: valg })}
               checked={valgt.includes(valg)}
             />
           </li>
@@ -77,8 +77,8 @@ function TilpassInnhold(props: Props) {
         {visIngenValgPasser && (
           <li>
             <Checkbox
-              label={'Ingen valg passer'}
-              onChange={() => visForContext.dispatch({ type: 'toggleIngenPasser' })}
+              label={"Ingen valg passer"}
+              onChange={() => visForContext.dispatch({ type: "toggleIngenPasser" })}
               checked={ingenPasserMeg}
             />
           </li>
@@ -91,4 +91,4 @@ function TilpassInnhold(props: Props) {
   );
 }
 
-export default withErrorBoundary(TilpassInnhold, 'TilpassInnhold');
+export default withErrorBoundary(TilpassInnhold, "TilpassInnhold");

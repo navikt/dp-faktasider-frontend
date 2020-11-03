@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { ReactNode } from 'react';
-import styled, { css } from 'styled-components/macro';
-import ChevronButton from '../../ChevronButton';
-import { useTranslation } from 'react-i18next';
-import { Collapse } from 'react-collapse';
-import useUniqueId from '../../../utils/useUniqueId';
+import * as React from "react";
+import { ReactNode } from "react";
+import styled, { css } from "styled-components/macro";
+import ChevronButton from "../../ChevronButton";
+import { useTranslation } from "react-i18next";
+import { Collapse } from "react-collapse";
+import useUniqueId from "../../../utils/useUniqueId";
 
 const Content = styled.div<{ isOpen: boolean }>`
   position: relative;
@@ -15,7 +15,7 @@ const Content = styled.div<{ isOpen: boolean }>`
     css`
       max-height: 3rem;
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -38,8 +38,8 @@ interface Props {
 }
 
 function VisMerPanel(props: Props) {
-  const { t } = useTranslation('global');
-  const id = useUniqueId('vis-mer-panel-innhold');
+  const { t } = useTranslation("global");
+  const id = useUniqueId("vis-mer-panel-innhold");
 
   return (
     <>
@@ -53,7 +53,7 @@ function VisMerPanel(props: Props) {
         aria-controls={id}
         className="lenke"
         open={props.open}
-        title={props.open ? t('visMindre') : t('visMer')}
+        title={props.open ? t("visMindre") : t("visMer")}
         onClick={props.toggle}
       />
     </>

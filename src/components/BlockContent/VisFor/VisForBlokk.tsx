@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { SanityBlock } from '../../../utils/richTextUtils/richTextTypes';
-import BlockContent from '../BlockContent';
-import VisFor from './VisFor';
+import * as React from "react";
+import { SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
+import BlockContent from "../BlockContent";
+import VisFor from "./VisFor";
 
 interface Props {
   node: {

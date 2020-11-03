@@ -1,12 +1,12 @@
-import * as React from 'react';
-import styled from 'styled-components/macro';
-import withErrorBoundary from '../../../components/withErrorBoundary';
-import SideListe from './SideListe';
-import MobilmenyWrapper from './MobilmenyWrapper';
-import { theme } from '../../../styles/theme';
-import useProjectData from '../../../hooks/graphQl/useProjectData';
-import { Systemtittel } from 'nav-frontend-typografi';
-import useUniqueId from '../../../utils/useUniqueId';
+import * as React from "react";
+import styled from "styled-components/macro";
+import withErrorBoundary from "../../../components/withErrorBoundary";
+import SideListe from "./SideListe";
+import MobilmenyWrapper from "./MobilmenyWrapper";
+import { theme } from "../../../styles/theme";
+import useProjectData from "../../../hooks/graphQl/useProjectData";
+import { Systemtittel } from "nav-frontend-typografi";
+import useUniqueId from "../../../utils/useUniqueId";
 
 const DesktopNav = styled.nav`
   @media (${theme.media.smallScreen}) {
@@ -50,8 +50,8 @@ interface Props {
 }
 
 function Navigasjonsmeny(props: Props) {
-  const mobileTitleId = useUniqueId('mobile-menu');
-  const desktopTitleId = useUniqueId('desktop-menu');
+  const mobileTitleId = useUniqueId("mobile-menu");
+  const desktopTitleId = useUniqueId("desktop-menu");
   const projectData = useProjectData();
 
   return (
@@ -70,4 +70,4 @@ function Navigasjonsmeny(props: Props) {
   );
 }
 
-export default withErrorBoundary(Navigasjonsmeny, 'Navigasjonsmeny');
+export default withErrorBoundary(Navigasjonsmeny, "Navigasjonsmeny");

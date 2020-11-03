@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { KnappLenke } from '../../utils/common-styled-components';
-import Lenke from 'nav-frontend-lenker';
-import styled from 'styled-components/macro';
-import withErrorBoundary from '../withErrorBoundary';
+import * as React from "react";
+import { KnappLenke } from "../../utils/common-styled-components";
+import Lenke from "nav-frontend-lenker";
+import styled from "styled-components/macro";
+import withErrorBoundary from "../withErrorBoundary";
 
 interface Props {
   children: string[];
@@ -30,4 +30,4 @@ function LinkMarkup(props: Props) {
   return <Lenke href={props.mark.href}>{props.children}</Lenke>;
 }
 
-export default withErrorBoundary(LinkMarkup, 'LinkMarkup');
+export default withErrorBoundary(LinkMarkup, "LinkMarkup");

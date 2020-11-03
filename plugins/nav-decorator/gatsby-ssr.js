@@ -1,5 +1,5 @@
-import React from 'react';
-import { decoratorFragments } from './fetched/_fragments';
+import React from "react";
+import { decoratorFragments } from "./fetched/_fragments";
 
 export const onRenderBody = ({ setHeadComponents, setPreBodyComponents, setPostBodyComponents }) => {
   setHeadComponents([

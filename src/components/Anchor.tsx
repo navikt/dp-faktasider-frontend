@@ -1,6 +1,6 @@
-import * as React from 'react';
-import styled from 'styled-components/macro';
-import { focusOnRelativeParent } from '../styles/theme';
+import * as React from "react";
+import styled from "styled-components/macro";
+import { focusOnRelativeParent } from "../styles/theme";
 
 interface Props {
   id: string;
@@ -21,7 +21,7 @@ const Container = styled.div<{ focusOnParent?: boolean }>`
 
 const AnchorStyle = styled.div<{ spaceAbove?: string }>`
   position: absolute;
-  top: -${(props) => props.spaceAbove || '2.5rem'};
+  top: -${(props) => props.spaceAbove || "2.5rem"};
   &:focus {
     box-shadow: none;
   }

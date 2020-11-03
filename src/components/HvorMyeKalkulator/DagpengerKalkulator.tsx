@@ -1,17 +1,17 @@
-import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { Normaltekst } from 'nav-frontend-typografi';
-import { Collapse } from 'react-collapse';
-import { AlertStripeInfo } from 'nav-frontend-alertstriper';
-import { GrunnlagInput, InputWrapper, ResultatTable, KalkulatorStyle, toKR } from './felles';
-import { H4 } from '../../utils/common-styled-components';
-import { useDebouncedValue } from '../../hooks/useDebouncedValue';
-import { useTranslation } from 'react-i18next';
-import { loggKalkulatorbruk } from '../../utils/logging';
-import { useGrunnbellop } from '../../utils/folketrygdensGrunnbeløp';
+import * as React from "react";
+import { useEffect, useState } from "react";
+import { Normaltekst } from "nav-frontend-typografi";
+import { Collapse } from "react-collapse";
+import { AlertStripeInfo } from "nav-frontend-alertstriper";
+import { GrunnlagInput, InputWrapper, ResultatTable, KalkulatorStyle, toKR } from "./felles";
+import { H4 } from "../../utils/common-styled-components";
+import { useDebouncedValue } from "../../hooks/useDebouncedValue";
+import { useTranslation } from "react-i18next";
+import { loggKalkulatorbruk } from "../../utils/logging";
+import { useGrunnbellop } from "../../utils/folketrygdensGrunnbeløp";
 
 function Resultat(props: { grunnlag?: number }) {
-  const { t } = useTranslation('kalkulator');
+  const { t } = useTranslation("kalkulator");
   const { G, GtoNOK } = useGrunnbellop();
 
   if (!props.grunnlag) {
@@ -21,8 +21,8 @@ function Resultat(props: { grunnlag?: number }) {
   if (props.grunnlag < 0.75 * G) {
     return (
       <>
-        <Normaltekst>{t('forLavtGrunnlag', { G: `0.75 G (${GtoNOK(0.75)} kroner)` })} </Normaltekst>
-        <AlertStripeInfo>{t('sendSøknadLikvel')}</AlertStripeInfo>
+        <Normaltekst>{t("forLavtGrunnlag", { G: `0.75 G (${GtoNOK(0.75)} kroner)` })} </Normaltekst>
+        <AlertStripeInfo>{t("sendSøknadLikvel")}</AlertStripeInfo>
       </>
     );
   }
@@ -48,7 +48,7 @@ function Resultat(props: { grunnlag?: number }) {
           </tr>
           <tr>
             <td>
-              <i>{t('mellom', { over: 3, under: 6 })}</i>
+              <i>{t("mellom", { over: 3, under: 6 })}</i>
             </td>
             <td>{toKR(mellom3og6G)} x 62.4 %</td>
             <td> {toKR(resultatMellom3og6G)}</td>
@@ -63,16 +63,16 @@ function Resultat(props: { grunnlag?: number }) {
             </tr>
           )}
           <tr>
-            <td colSpan={2}>{t('tilsammen')}</td>
+            <td colSpan={2}>{t("tilsammen")}</td>
             <td>{toKR(totalt)}</td>
           </tr>
           <tr>
-            <td colSpan={2}>{t('ukesats')}</td>
+            <td colSpan={2}>{t("ukesats")}</td>
             <td> {toKR(totalt / 52)}</td>
           </tr>
         </tbody>
       </ResultatTable>
-      <AlertStripeInfo>{t('kunveiledende')}</AlertStripeInfo>
+      <AlertStripeInfo>{t("kunveiledende")}</AlertStripeInfo>
     </>
   );
 }
@@ -81,11 +81,11 @@ function DagpengerKalkulator() {
   const [harLoggetBruk, setHarLoggetBruk] = useState(false);
   const [grunnlag, setGrunnlag] = useState<undefined | number>();
   const debouncedGrunnlag = useDebouncedValue(grunnlag, 300);
-  const { t } = useTranslation('kalkulator');
+  const { t } = useTranslation("kalkulator");
 
   useEffect(() => {
     if (!harLoggetBruk && grunnlag) {
-      loggKalkulatorbruk('Uinnlogget vanlig');
+      loggKalkulatorbruk("Uinnlogget vanlig");
       setHarLoggetBruk(true);
     }
   }, [grunnlag, harLoggetBruk]);
@@ -93,12 +93,12 @@ function DagpengerKalkulator() {
   return (
     <KalkulatorStyle>
       <Collapse isOpened={true}>
-        <H4>{t('heading')}</H4>
+        <H4>{t("heading")}</H4>
         <InputWrapper>
           <GrunnlagInput
-            label={t('label')}
+            label={t("label")}
             type="number"
-            value={grunnlag || ''}
+            value={grunnlag || ""}
             onChange={(e) => setGrunnlag(Math.max(0, +e.target.value) || undefined)}
             placeholder="350 000"
           />

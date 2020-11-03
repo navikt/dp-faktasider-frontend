@@ -1,21 +1,21 @@
-import * as React from 'react';
-import { useEffect, useReducer, useRef } from 'react';
-import styled, { css } from 'styled-components/macro';
-import BlockContent from '../BlockContent';
-import { Tillegsinformasjon } from '../../../utils/richTextUtils/richTextTypes';
-import parseRichText from '../../../utils/richTextUtils/parser/parseRichText';
-import withErrorBoundary from '../../withErrorBoundary';
-import { Undertekst } from 'nav-frontend-typografi';
-import { useTranslation } from 'react-i18next';
-import useUniqueId from '../../../utils/useUniqueId';
-import { theme } from '../../../styles/theme';
-import VisMerPanel from './VisMerPanel';
-import { loggVisTilleggsinfo } from '../../../utils/logging';
-import { usePrevious } from 'react-use';
-import useUserIsSearchingText from '../../../hooks/useUserIsSearchingText';
-import HashLink from '../../HashLink';
-import Anchor from '../../Anchor';
-import { showLinkOnHover } from '../GroupMarkup/CommonGroupMarkup';
+import * as React from "react";
+import { useEffect, useReducer, useRef } from "react";
+import styled, { css } from "styled-components/macro";
+import BlockContent from "../BlockContent";
+import { Tillegsinformasjon } from "../../../utils/richTextUtils/richTextTypes";
+import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
+import withErrorBoundary from "../../withErrorBoundary";
+import { Undertekst } from "nav-frontend-typografi";
+import { useTranslation } from "react-i18next";
+import useUniqueId from "../../../utils/useUniqueId";
+import { theme } from "../../../styles/theme";
+import VisMerPanel from "./VisMerPanel";
+import { loggVisTilleggsinfo } from "../../../utils/logging";
+import { usePrevious } from "react-use";
+import useUserIsSearchingText from "../../../hooks/useUserIsSearchingText";
+import HashLink from "../../HashLink";
+import Anchor from "../../Anchor";
+import { showLinkOnHover } from "../GroupMarkup/CommonGroupMarkup";
 
 interface Props {
   node: Tillegsinformasjon;
@@ -44,7 +44,7 @@ const Label = styled(Undertekst)`
   text-transform: uppercase;
 `;
 
-const StyledHeading = styled.h1.attrs({ className: 'typo-element' })`
+const StyledHeading = styled.h1.attrs({ className: "typo-element" })`
   margin-top: 0;
   ${showLinkOnHover};
   ${theme.focusOnRelativeParent};
@@ -58,11 +58,11 @@ const StyledHeader = styled.header`
   }
 `;
 
-function reducer(state: boolean, action: 'setOpen' | 'toggle'): boolean {
+function reducer(state: boolean, action: "setOpen" | "toggle"): boolean {
   switch (action) {
-    case 'setOpen':
+    case "setOpen":
       return true;
-    case 'toggle':
+    case "toggle":
     default:
       return !state;
   }
@@ -70,15 +70,15 @@ function reducer(state: boolean, action: 'setOpen' | 'toggle'): boolean {
 
 function Tilleggsinnformasjon(props: Props) {
   const parsedText = parseRichText(props.node.innhold);
-  const hashId = props.node.blockConfig?.id || 'N/A';
+  const hashId = props.node.blockConfig?.id || "N/A";
   const [open, dispatch] = useReducer(reducer, false);
-  const headerId = useUniqueId('tilleggsinfo-' + props.node.title);
-  const { t } = useTranslation('global');
+  const headerId = useUniqueId("tilleggsinfo-" + props.node.title);
+  const { t } = useTranslation("global");
   const ref = useRef<HTMLHeadingElement>(null);
   const userIsSearchingText = useUserIsSearchingText();
 
   useEffect(() => {
-    userIsSearchingText && dispatch('setOpen');
+    userIsSearchingText && dispatch("setOpen");
   }, [userIsSearchingText]);
 
   const prevOpen = usePrevious(open);
@@ -98,13 +98,13 @@ function Tilleggsinnformasjon(props: Props) {
           {props.node.title}
           <HashLink id={hashId} />
         </StyledHeading>
-        <Label>{t('tilleggsinformasjon')}</Label>
+        <Label>{t("tilleggsinformasjon")}</Label>
       </StyledHeader>
-      <VisMerPanel toggle={() => dispatch('toggle')} open={open}>
+      <VisMerPanel toggle={() => dispatch("toggle")} open={open}>
         <BlockContent blocks={parsedText} />
       </VisMerPanel>
     </StyledAside>
   );
 }
 
-export default withErrorBoundary(Tilleggsinnformasjon, 'Tilleggsinnformasjon');
+export default withErrorBoundary(Tilleggsinnformasjon, "Tilleggsinnformasjon");

@@ -1,6 +1,6 @@
-import * as React from 'react';
-import styled from 'styled-components/macro';
-import withErrorBoundary from '../withErrorBoundary';
+import * as React from "react";
+import styled from "styled-components/macro";
+import withErrorBoundary from "../withErrorBoundary";
 
 interface Props {
   node: {
@@ -32,4 +32,4 @@ function Video(props: Props) {
   );
 }
 
-export default withErrorBoundary(Video, 'Video');
+export default withErrorBoundary(Video, "Video");

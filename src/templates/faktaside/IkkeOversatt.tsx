@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { FaktaSideProps } from './FaktaSide';
-import { Link } from 'gatsby';
-import styled from 'styled-components/macro';
-import { Innholdstittel, Normaltekst } from 'nav-frontend-typografi';
-import { useTranslation } from 'react-i18next';
-import { supportedLanguages } from '../../i18n/supportedLanguages';
-import FaktaSideLayout from './FaktaSideLayout';
-import withErrorBoundary from '../../components/withErrorBoundary';
-import { useMount } from 'react-use';
-import { loggIkkeOversatt } from '../../utils/logging';
+import * as React from "react";
+import { FaktaSideProps } from "./FaktaSide";
+import { Link } from "gatsby";
+import styled from "styled-components/macro";
+import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
+import { useTranslation } from "react-i18next";
+import { supportedLanguages } from "../../i18n/supportedLanguages";
+import FaktaSideLayout from "./FaktaSideLayout";
+import withErrorBoundary from "../../components/withErrorBoundary";
+import { useMount } from "react-use";
+import { loggIkkeOversatt } from "../../utils/logging";
 
 const Style = styled.div`
   display: flex;
@@ -28,9 +28,9 @@ const StyledNormaltekst = styled(Normaltekst)`
 
 function IkkeOversatt(props: FaktaSideProps) {
   const page = props.pageContext;
-  const { t } = useTranslation('global');
-  const title = page.title || '';
-  const beskrivelse = page.beskrivelse || '';
+  const { t } = useTranslation("global");
+  const title = page.title || "";
+  const beskrivelse = page.beskrivelse || "";
 
   useMount(() => loggIkkeOversatt(title));
 
@@ -52,10 +52,10 @@ function IkkeOversatt(props: FaktaSideProps) {
   return (
     <FaktaSideLayout header={title} beskrivelse={beskrivelse}>
       <Style>
-        <Innholdstittel>{t('ikkeOversatt')}</Innholdstittel>
+        <Innholdstittel>{t("ikkeOversatt")}</Innholdstittel>
         {oversettelser.length && (
           <>
-            <StyledNormaltekst>{t('tilgjengeligPåAndreSpråk')}</StyledNormaltekst>
+            <StyledNormaltekst>{t("tilgjengeligPåAndreSpråk")}</StyledNormaltekst>
             <StyledUl>{oversettelser}</StyledUl>
           </>
         )}
@@ -64,4 +64,4 @@ function IkkeOversatt(props: FaktaSideProps) {
   );
 }
 
-export default withErrorBoundary(IkkeOversatt, 'IkkeOversatt');
+export default withErrorBoundary(IkkeOversatt, "IkkeOversatt");

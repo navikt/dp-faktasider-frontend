@@ -1,4 +1,4 @@
-import { Block, TidslinjeI } from '../../../utils/richTextUtils/richTextTypes';
+import { Block, TidslinjeI } from "../../../utils/richTextUtils/richTextTypes";
 
 export interface TidslinjePunkt {
   tittel?: Block;
@@ -11,11 +11,11 @@ export function parseTidslinjedata(tidslinjeData: TidslinjeI): TidslinjePunkt[] 
   let currentPunkt: TidslinjePunkt | undefined = undefined;
 
   tidslinjeData.innhold.forEach((block) => {
-    if (block.style === 'tidslinjepunkt') {
+    if (block.style === "tidslinjepunkt") {
       currentPunkt = {
         tittel: block,
         innhold: [],
-        id: block._key || 'N/A',
+        id: block._key || "N/A",
       };
       punkter.push(currentPunkt);
     } else {
@@ -23,7 +23,7 @@ export function parseTidslinjedata(tidslinjeData: TidslinjeI): TidslinjePunkt[] 
         currentPunkt = {
           tittel: undefined,
           innhold: [],
-          id: 'førstePunkt',
+          id: "førstePunkt",
         };
         punkter.push(currentPunkt);
       }

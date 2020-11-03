@@ -1,5 +1,5 @@
-import { RawFaktasideData } from '../../../gatsby-utils/createFaktasider';
-import { Modify } from '../typeUtils';
+import { RawFaktasideData } from "../../../gatsby-utils/createFaktasider";
+import { Modify } from "../typeUtils";
 
 export type VisForConfig = { [key: string]: boolean | string | undefined };
 export type VisPaaConfig = string[];
@@ -21,7 +21,7 @@ export type SanityBlock = {
   marks?: string[];
   markDefs?: MarkDef[];
   level?: number;
-  listItem?: 'bullet';
+  listItem?: "bullet";
 };
 
 export type DeltTekst = Modify<
@@ -31,12 +31,12 @@ export type DeltTekst = Modify<
     _updatedAt: string;
     id: string;
     innhold?: SanityBlock[];
-    _type: 'deltTekst';
+    _type: "deltTekst";
   }
 >;
 
 export type DelttekstReference = {
-  _type: 'deltTekstReference';
+  _type: "deltTekstReference";
   deltTekst?: DeltTekst;
 };
 
@@ -54,17 +54,17 @@ export type ParsedSanityBlock = SanityBlock & {
 };
 
 export type Tillegsinformasjon = ParsedSanityBlock & {
-  _type: 'tileggsInformasjon';
+  _type: "tileggsInformasjon";
   title: string;
   innhold: SanityBlock[];
 };
 
 export type TidslinjeI = ParsedSanityBlock & {
-  _type: 'tidslinje';
+  _type: "tidslinje";
   innhold: SanityBlock[];
 };
 
-export type GroupTypes = 'h2' | 'h3' | 'h4';
+export type GroupTypes = "h2" | "h3" | "h4";
 
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 export type Block = SanityBlock | Group | ParsedSanityBlock;
@@ -72,26 +72,26 @@ export type Block = SanityBlock | Group | ParsedSanityBlock;
 export type Group = ParsedSanityBlock & {
   title: string;
   children: Block[];
-  _type: 'group';
+  _type: "group";
   style: GroupTypes;
 };
 
 export function isGroup(block: Block): block is Group {
-  return block._type === 'group';
+  return block._type === "group";
 }
 
 export function isH2Group(block: Block): block is Group {
-  return isGroup(block) && block.style === 'h2';
+  return isGroup(block) && block.style === "h2";
 }
 
 export function isH3Group(block: Block): block is Group {
-  return isGroup(block) && block.style === 'h3';
+  return isGroup(block) && block.style === "h3";
 }
 
 export function isDeltTekstReference(candidate: Block): candidate is DelttekstReference {
-  return candidate._type === 'deltTekstReference';
+  return candidate._type === "deltTekstReference";
 }
 
 export function isTillegsinformajon(candidate: Block): candidate is Tillegsinformasjon {
-  return candidate._type === 'tileggsInformasjon';
+  return candidate._type === "tileggsInformasjon";
 }

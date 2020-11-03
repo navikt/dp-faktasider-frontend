@@ -1,8 +1,8 @@
-import * as React from 'react';
-import styled from 'styled-components/macro';
-import { VeiviserContext } from './VeiviserStateChart';
-import NavFrontendChevron from 'nav-frontend-chevron';
-import { getFiltreringsvalgLabel } from '../faktaside/TilpassInnhold/getFiltreringsLabel';
+import * as React from "react";
+import styled from "styled-components/macro";
+import { VeiviserContext } from "./VeiviserStateChart";
+import NavFrontendChevron from "nav-frontend-chevron";
+import { getFiltreringsvalgLabel } from "../faktaside/TilpassInnhold/getFiltreringsLabel";
 
 const Style = styled.div`
   margin-left: 5rem;
@@ -34,20 +34,20 @@ function Brødsmule(props: { label: string; onClick: () => void }) {
 
 function VeiviserBrødsmuler(props: {
   context: VeiviserContext;
-  send: (state: 'TILBAKETILVELGSIDE' | 'TILBAKETILVELGFILTRERING' | 'TILBAKETILVELGOVERSKRIFT') => void;
+  send: (state: "TILBAKETILVELGSIDE" | "TILBAKETILVELGFILTRERING" | "TILBAKETILVELGOVERSKRIFT") => void;
 }) {
   const { side, filtrering, group } = props.context;
   return (
     <Style>
-      <Brødsmule label={'App'} onClick={() => props.send('TILBAKETILVELGSIDE')} />
-      {side && <Brødsmule label={side.title || 'N/A'} onClick={() => props.send('TILBAKETILVELGFILTRERING')} />}
+      <Brødsmule label={"App"} onClick={() => props.send("TILBAKETILVELGSIDE")} />
+      {side && <Brødsmule label={side.title || "N/A"} onClick={() => props.send("TILBAKETILVELGFILTRERING")} />}
       {filtrering && (
         <Brødsmule
-          label={filtrering ? getFiltreringsvalgLabel(filtrering) : 'N/A'}
-          onClick={() => props.send('TILBAKETILVELGOVERSKRIFT')}
+          label={filtrering ? getFiltreringsvalgLabel(filtrering) : "N/A"}
+          onClick={() => props.send("TILBAKETILVELGOVERSKRIFT")}
         />
       )}
-      {group && <Brødsmule label={group.title || 'N/A'} onClick={() => null} />}
+      {group && <Brødsmule label={group.title || "N/A"} onClick={() => null} />}
     </Style>
   );
 }
