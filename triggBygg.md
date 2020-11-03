@@ -7,4 +7,4 @@ Det var en gang det var en feil som ble rettet fordi et hamster løp i et hjul. 
 
 Endringen var bastant. Skatten måtte betales. Og filtreringen må fungere. De unge fortjener god informasjon <3 Meldekort og fiksing av informasjon.
 BURSDAG!! Hurra :D
-Søknad eller kalkulator? Tidslinja dukket opp fra intet <3 Og gode tilbakemeldinger er gull verdt. Og det er spennende å se hvordan dette blir. Det ble visst ikke så bra, kanskje bedre nå? Er kjapt kjapt? Lærlinger lærer.
+Søknad eller kalkulator? Tidslinja dukket opp fra intet <3 Og gode tilbakemeldinger er gull verdt. Og det er spennende å se hvordan dette blir. Det ble visst ikke så bra, kanskje bedre nå? Er kjapt kjapt? Lærlinger lærer. Klagere klager.
