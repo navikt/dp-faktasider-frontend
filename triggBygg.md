@@ -9,4 +9,4 @@ Endringen var bastant. Skatten måtte betales. Og filtreringen må fungere. De u
 BURSDAG!! Hurra :D
 Søknad eller kalkulator? Tidslinja dukket opp fra intet <3 Og gode tilbakemeldinger er gull verdt. Og det er spennende å se hvordan dette blir. Det ble visst ikke så bra, kanskje bedre nå? Er kjapt kjapt? Lærlinger lærer. Klagere klager. Og utvidelser forlenges. Alle mann på dekk. Dekk. Kjedelig å kjøre for fort..
 
-Det enkle er ofte det beste, men hvem vet ikke jag, hvem vet ikke du?
+Det enkle er ofte det beste, men hvem vet ikke jag, hvem vet ikke du? Penger før meldekort
