@@ -11,8 +11,8 @@ const Styling = createGlobalStyle`
         word-break: break-word;
     }
     html {
-        font-size: 115%;
-        @media (min-width: 1200px) {
+        font-size: 112.5%;
+        @media (min-width: 1400px) {
           font-size: 125%;
         }
         font-family: 'Source Sans Pro', sans-serif;
