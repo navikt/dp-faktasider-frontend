@@ -11,6 +11,7 @@ export interface InternalMenuLinkData {
   språk: SupportedLanguage;
   tilgjengeligPåValgtSpråk: boolean;
   beskrivelse: string;
+  nokkelordBeskrivelse: string;
   id: string;
   type: "internal";
 }

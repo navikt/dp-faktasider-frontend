@@ -8,6 +8,7 @@ import { ExternalMenuLinkData, InternalMenuLinkData, MenuItem } from "./menuData
 interface Side {
   title?: string;
   beskrivelse?: string;
+  nokkelordBeskrivelse?: string;
   visSprakversjon?: {
     no: boolean;
     en: boolean;
@@ -66,6 +67,7 @@ export const faktaSideMenyDataQuery = graphql`
         node {
           title: _rawTitle
           beskrivelse: _rawBeskrivelse
+          nokkelordBeskrivelse: _rawNokkelordBeskrivelse
           visSprakversjon: _rawVisSprakversjon
           id
           slug {
@@ -103,11 +105,13 @@ function createInternalLinkData(page: Side, lang: SupportedLanguage): InternalMe
   const path = `/${språk}/${slug}/`;
   const tittel = page.title || "Mangler tittel";
   const beskrivelse = page.beskrivelse || "";
+  const nokkelordBeskrivelse = page.nokkelordBeskrivelse || "";
 
   return {
     path,
     tittel,
     beskrivelse,
+    nokkelordBeskrivelse,
     språk,
     tilgjengeligPåValgtSpråk,
     id: page.id,

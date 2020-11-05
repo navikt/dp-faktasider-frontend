@@ -56,7 +56,7 @@ export function InternLenke(props: { lenke: InternalMenuLinkData }) {
             </KunTilgjengeligStyle>
           </Utkast>
         )}
-        <p lang={langAttribute}>{props.lenke.beskrivelse}</p>
+        <p lang={langAttribute}>{props.lenke.nokkelordBeskrivelse || props.lenke.beskrivelse}</p>
       </InternLenkeStyle>
     </li>
   );
