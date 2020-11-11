@@ -4,6 +4,7 @@ import styled from "styled-components/macro";
 import { theme } from "../../styles/theme";
 import { Element } from "nav-frontend-typografi";
 import { Translations } from "../../types/translations";
+import withErrorBoundary from "../../components/withErrorBoundary";
 
 export interface Notifikasjon {
   title?: Translations<string>;
@@ -44,4 +45,4 @@ function Notifikasjoner(props: Props) {
   );
 }
 
-export default Notifikasjoner;
+export default withErrorBoundary(Notifikasjoner, "Notifikasjoner");
