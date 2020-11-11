@@ -3,12 +3,13 @@ import { AlertStripeInfo } from "nav-frontend-alertstriper";
 import styled from "styled-components/macro";
 import { theme } from "../../styles/theme";
 import { Element } from "nav-frontend-typografi";
-import { Translations } from "../../types/translations";
 import withErrorBoundary from "../../components/withErrorBoundary";
+import BlockContent from "../../components/BlockContent/BlockContent";
+import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 
 export interface Notifikasjon {
-  title?: Translations<string>;
-  innhold?: Translations<string>;
+  title?: string;
+  innhold?: SanityBlock[];
   visPaaForside?: boolean;
   visPaaSider?: { id: string }[];
 }
@@ -38,7 +39,11 @@ function Notifikasjoner(props: Props) {
       {props.notifikasjoner.map((notifikasjon) => (
         <AlertStripeInfo>
           <Element tag="h3">{notifikasjon.title}</Element>
-          <Content>{notifikasjon.innhold}</Content>
+          {notifikasjon.innhold && (
+            <Content>
+              <BlockContent blocks={notifikasjon.innhold} />
+            </Content>
+          )}
         </AlertStripeInfo>
       ))}
     </Style>
