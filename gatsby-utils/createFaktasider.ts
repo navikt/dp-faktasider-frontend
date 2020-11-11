@@ -86,7 +86,7 @@ export const createFaktasider: GatsbyNode["createPages"] = async (props) => {
   // @ts-ignore
   const rawData: RawFaktasideData[] = result.data.pages.edges?.map((edge) => edge.node) || [];
   // @ts-ignore
-  const notifikasjoner: Notifikasjon[] = fjernOverflodigDokumentData(result.data.oppsett.notifikasjoner);
+  const notifikasjoner: Notifikasjon[] | undefined = fjernOverflodigDokumentData(result.data.oppsett.notifikasjoner);
 
   const pages = rawData.map((page) => createFaktasideContext(page, "no", notifikasjoner));
   reporter.info(`📄 Lager veiviser: /no/demoapp`);
@@ -123,13 +123,13 @@ export const createFaktasider: GatsbyNode["createPages"] = async (props) => {
 export function createFaktasideContext(
   page: RawFaktasideData,
   lang: SupportedLanguage,
-  alleNotifikasjoner: Notifikasjon[]
+  alleNotifikasjoner?: Notifikasjon[]
 ): FaktasideContext {
   const localizedPage = localizeSanityContent(page, lang) as LocalizedFaktasideData;
   const parsedInnhold = parseRichText(localizedPage.innhold);
   const parsedKortFortalt = parseRichText(localizedPage.kortFortalt);
   const publiseringsTidspunkt = getPubliseringsTidspunkt(localizedPage);
-  const relevanteNotifikasjoner = alleNotifikasjoner.filter((notifikasjon) =>
+  const relevanteNotifikasjoner = alleNotifikasjoner?.filter((notifikasjon) =>
     notifikasjon.visPaaSider?.some((side) => side.id === page.id)
   );
   const localizedNotifikasjoner = localizeSanityContent(relevanteNotifikasjoner, lang) as Notifikasjon[];
