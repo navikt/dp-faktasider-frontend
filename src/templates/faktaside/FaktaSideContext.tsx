@@ -8,6 +8,7 @@ const inital: FaktasideContext = {
   publiseringsTidspunkt: "",
   innhold: [],
   rawData: {},
+  notifikasjoner: [],
 };
 
 const Context = createContext<FaktasideContext>(inital);

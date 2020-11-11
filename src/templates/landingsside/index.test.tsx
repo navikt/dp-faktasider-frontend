@@ -7,7 +7,13 @@ import { InternalMenuLinkData } from "../../hooks/graphQl/menuDataUtils";
 test("Index-side inneholder lenker til undersider med beskrivelse", () => {
   const result = render(
     <PureIndexPage
-      projectData={{ title: "Arbeid", komIgangLenker: [], folketrygdensGrunnbellop: 1, beskrivelse: "" }}
+      projectData={{
+        title: "Arbeid",
+        komIgangLenker: [],
+        folketrygdensGrunnbellop: 1,
+        beskrivelse: "",
+        forsideNotifikasjoner: [],
+      }}
       infosideLenker={mockFaktasiderMenuData}
       path={"test"}
     />

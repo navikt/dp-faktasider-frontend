@@ -15,6 +15,7 @@ import { MenuItem } from "../../hooks/graphQl/menuDataUtils";
 import { KomIgangLenker } from "./KomIgangLenker";
 import useBreadcrumbs from "../faktaside/useBreadcrumbs";
 import DevKnapper from "../../components/DevKnapper/DevKnapper";
+import Notifikasjoner from "../faktaside/Notifikasjoner";
 
 const Style = styled.div`
   background-color: white;
@@ -52,6 +53,7 @@ export function PureIndexPage(props: Props) {
       <Header heading={localizeSanityContent(title, lang)} beskrivelse={beskrivelse} />
       <SEO lang={lang} description={beskrivelse} title={title} path={props.path} />
       <Content>
+        <Notifikasjoner notifikasjoner={props.projectData.forsideNotifikasjoner} />
         <InfosideLenker lenker={props.infosideLenker} />
         <KomIgangLenker komIgangLenker={komIgangLenker} />
       </Content>

@@ -27,4 +27,5 @@ export const faktaSideMockContext: FaktasideContext = {
     no: true,
     en: false,
   },
+  notifikasjoner: [],
 };

@@ -6,6 +6,8 @@ import { SanityBlock } from "../src/utils/richTextUtils/richTextTypes";
 import { Translations } from "../src/types/translations";
 import { Modify } from "../src/utils/typeUtils";
 import { getPubliseringsTidspunkt } from "./getPubliseringstidspunkt";
+import fjernOverflodigDokumentData from "../src/utils/richTextUtils/parser/fjernOverflodigDokumentData/fjernOverflodigDokumentData";
+import { Notifikasjon } from "../src/templates/faktaside/Notifikasjoner";
 
 export interface RawFaktasideData {
   id: string;
@@ -44,6 +46,7 @@ export type FaktasideContext = Modify<
     publiseringsTidspunkt: string;
     rawData: Pick<RawFaktasideData, "title">;
     slug: string;
+    notifikasjoner?: Notifikasjon[];
   }
 >;
 
@@ -72,6 +75,9 @@ export const createFaktasider: GatsbyNode["createPages"] = async (props) => {
           }
         }
       }
+      oppsett: sanityOppsett {
+        notifikasjoner: _rawNotifikasjoner(resolveReferences: { maxDepth: 3 })
+      }
     }
   `);
 
@@ -79,8 +85,10 @@ export const createFaktasider: GatsbyNode["createPages"] = async (props) => {
 
   // @ts-ignore
   const rawData: RawFaktasideData[] = result.data.pages.edges?.map((edge) => edge.node) || [];
+  // @ts-ignore
+  const notifikasjoner: Notifikasjon[] = fjernOverflodigDokumentData(result.data.oppsett.notifikasjoner);
 
-  const pages = rawData.map((page) => createFaktasideContext(page, "no"));
+  const pages = rawData.map((page) => createFaktasideContext(page, "no", notifikasjoner));
   reporter.info(`📄 Lager veiviser: /no/demoapp`);
   actions.createPage({
     path: "/no/demoapp",
@@ -106,17 +114,25 @@ export const createFaktasider: GatsbyNode["createPages"] = async (props) => {
       actions.createPage({
         path: localePath,
         component: require.resolve("../src/templates/faktaside/FaktaSide.tsx"),
-        context: createFaktasideContext(page, lang),
+        context: createFaktasideContext(page, lang, notifikasjoner),
       });
     });
   });
 };
 
-export function createFaktasideContext(page: RawFaktasideData, lang: SupportedLanguage): FaktasideContext {
+export function createFaktasideContext(
+  page: RawFaktasideData,
+  lang: SupportedLanguage,
+  alleNotifikasjoner: Notifikasjon[]
+): FaktasideContext {
   const localizedPage = localizeSanityContent(page, lang) as LocalizedFaktasideData;
   const parsedInnhold = parseRichText(localizedPage.innhold);
   const parsedKortFortalt = parseRichText(localizedPage.kortFortalt);
   const publiseringsTidspunkt = getPubliseringsTidspunkt(localizedPage);
+  const relevanteNotifikasjoner = alleNotifikasjoner.filter((notifikasjon) =>
+    notifikasjon.visPaaSider?.some((side) => side.id === page.id)
+  );
+  const localizedNotifikasjoner = localizeSanityContent(relevanteNotifikasjoner, lang) as Notifikasjon[];
 
   return {
     ...localizedPage,
@@ -128,5 +144,6 @@ export function createFaktasideContext(page: RawFaktasideData, lang: SupportedLa
     rawData: {
       title: page.title,
     },
+    notifikasjoner: localizedNotifikasjoner,
   };
 }

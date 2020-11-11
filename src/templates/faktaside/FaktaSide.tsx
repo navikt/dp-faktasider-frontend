@@ -16,6 +16,7 @@ import InnholdetErTilpasset from "./InnholdsMeny/InnholdetErTilpasset";
 import useLoggUtdatertHashlenke from "./useLoggUtdatertHashlenke";
 import KortFortalt from "./KortFortalt";
 import useBreadcrumbs from "./useBreadcrumbs";
+import Notifikasjoner from "./Notifikasjoner";
 
 export interface FaktaSideProps extends PageProps<{}, FaktasideContext> {
   errors: any;
@@ -51,6 +52,7 @@ function FaktaSide(props: FaktaSideProps) {
       >
         <GraphQLErrorList errors={props.errors} />
         <InnholdetErTilpasset />
+        <Notifikasjoner notifikasjoner={props.pageContext.notifikasjoner} />
         <div ref={wordCountRef}>
           <KortFortalt blocks={props.pageContext.kortFortalt} />
           <BlockContent blocks={parsedInnhold} />
