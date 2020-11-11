@@ -7,6 +7,7 @@ const labelMap = {
   StreikLockout: "Streik eller lockout",
   MottarVentelonn: "Mottar ventelønn",
   SelvAnsvarligForAtJegMistetJobben: "Selv ansvarlig for at jeg mistet jobben",
+  Nydimmitert: "Verneplikt",
 };
 
 export function getFiltreringsvalgLabel(valg: string) {
