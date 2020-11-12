@@ -10,3 +10,5 @@ BURSDAG!! Hurra :D
 Søknad eller kalkulator? Tidslinja dukket opp fra intet <3 Og gode tilbakemeldinger er gull verdt. Og det er spennende å se hvordan dette blir. Det ble visst ikke så bra, kanskje bedre nå? Er kjapt kjapt? Lærlinger lærer. Klagere klager. Og utvidelser forlenges. Alle mann på dekk. Dekk. Kjedelig å kjøre for fort..
 
 Det enkle er ofte det beste, men hvem vet ikke jag, hvem vet ikke du? Penger før meldekort, hvis ikke du falt av. Men det beste er ferie i leiligheten, eller nærmeste bestemt juleferie! Det blir vel først neste år, når vi tenker oss om.
+
+En R gikk ned i et hull, og da var det vankselig å finne fram.
