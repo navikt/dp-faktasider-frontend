@@ -6,6 +6,7 @@ import { Element } from "nav-frontend-typografi";
 import withErrorBoundary from "../../components/withErrorBoundary";
 import BlockContent from "../../components/BlockContent/BlockContent";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
+import { typografiStyle } from "./MainContentStyle";
 
 export interface Notifikasjon {
   title?: string;
@@ -23,10 +24,17 @@ const Style = styled.div`
   > *:not(:last-child) {
     margin-bottom: 0.5rem;
   }
+  .alertstripe__tekst {
+    max-width: unset;
+  }
 `;
 
 const Content = styled.div`
   margin-top: 0.5rem;
+  ${typografiStyle};
+  > div *:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 function Notifikasjoner(props: Props) {
