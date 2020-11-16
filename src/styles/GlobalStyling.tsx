@@ -24,6 +24,10 @@ const Styling = createGlobalStyle`
     .ReactCollapse--collapse {
         transition: height 0.3s;
     }
+    
+    .decorator-wrapper .sticky-container {
+      position: static !important;
+    }
 `;
 
 const ChatbotStyling = createGlobalStyle`
