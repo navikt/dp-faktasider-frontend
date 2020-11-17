@@ -5,7 +5,6 @@ import { UtkastInline } from "./utkast/Utkast";
 import SanityBlockContent from "@sanity/block-content-to-react";
 import allChildrenMarkedWith, { getCommonVisForConfig } from "../../utils/richTextUtils/allChildrenMarkedWith";
 import VisFor from "./VisFor/VisFor";
-import { ConditionalWrapper } from "../ConditionalWrapper";
 import VisPaaSide from "./VisFor/VisPaaSide";
 
 interface Props {
@@ -20,14 +19,11 @@ function ListItemRenderer(props: Props): ReactNode {
   const commonVisForConfig = getCommonVisForConfig(props.node);
 
   return (
-    <ConditionalWrapper
-      condition={!!commonVisForConfig?.visPaa}
-      wrapper={(children) => <VisPaaSide children={children} visPaaSider={commonVisForConfig?.visPaa} />}
-    >
-      <ConditionalWrapper condition={heleErUtkast} wrapper={(children) => <UtkastInline children={children} />}>
+    <VisPaaSide visPaaSider={commonVisForConfig?.visPaa}>
+      <UtkastInline erUtkast={heleErUtkast}>
         <VisFor visForConfig={commonVisForConfig?.visFor}>{serializedListItem}</VisFor>
-      </ConditionalWrapper>
-    </ConditionalWrapper>
+      </UtkastInline>
+    </VisPaaSide>
   );
 }
 
