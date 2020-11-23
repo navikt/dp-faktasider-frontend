@@ -15,7 +15,7 @@ interface Props {
 const Style = styled.div`
   padding: ${theme.layoutPadding};
   margin: 2rem 0;
-  background-color: ${theme.colors.navLysGra};
+  border: 0.2rem solid ${theme.colors.navBlaLighten60};
   border-radius: ${theme.borderRadius};
   ul {
     list-style: none !important;
