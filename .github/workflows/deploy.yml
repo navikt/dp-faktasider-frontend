@@ -29,7 +29,7 @@ jobs:
         env:
           DOCKER_BUILDKIT: 1
         run: |
-          docker build . -t ${{ env.IMAGE_CACHE_BUILDER }} --build-arg BUILDKIT_INLINE_CACHE=1 --target build --cache-from=${{ env.IMAGE_CACHE_BUILDER }}
+          docker build . -t ${{ env.IMAGE_CACHE_BUILDER }} --build-arg GIT_SHA=${{  github.sha }} --build-arg BUILDKIT_INLINE_CACHE=1 --target build --cache-from=${{ env.IMAGE_CACHE_BUILDER }}
           docker push ${{ env.IMAGE_CACHE_BUILDER }}
 
       - name: Build Gatsby app and docker image
@@ -65,7 +65,7 @@ jobs:
           PRINT_PAYLOAD: true
 
   deploy-dev-gcp:
-    name: Deploy to dev
+    name: Deploy to dev gcp
     needs: [ build ]
     runs-on: ubuntu-latest
     steps:
