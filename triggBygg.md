@@ -11,4 +11,4 @@ Søknad eller kalkulator? Tidslinja dukket opp fra intet <3 Og gode tilbakemeldi
 
 Det enkle er ofte det beste, men hvem vet ikke jag, hvem vet ikke du? Penger før meldekort, hvis ikke du falt av. Men det beste er ferie i leiligheten, eller nærmeste bestemt juleferie! Det blir vel først neste år, når vi tenker oss om.
 
-En R gikk ned i et hull, og da var det vankselig å finne fram. R gikk ut av hullet igjen, og lette rundt i skogen. Men R hadde glemt noe i hullet, og måtte gå tilbake. Men først løp R en runde rundt seg selv. Og glemte at en side var slettet. Men det gikk fint, for folk ville hjelpe. En dag fikk R et brev, som hun svarte på. En lærling fikk brevet, og svarte så pent hun klarte.
+En R gikk ned i et hull, og da var det vankselig å finne fram. R gikk ut av hullet igjen, og lette rundt i skogen. Men R hadde glemt noe i hullet, og måtte gå tilbake. Men først løp R en runde rundt seg selv. Og glemte at en side var slettet. Men det gikk fint, for folk ville hjelpe. En dag fikk R et brev, som hun svarte på. En lærling fikk brevet, og svarte så pent hun klarte. Hun syntes det var skummeølt, for hun ville ikke ha så mange skrivefeil i svaret.
