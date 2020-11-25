@@ -5,10 +5,9 @@ on:
     branches:
       - master
       - dev
-
 env:
   IMAGE: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend:${{ github.sha }}
-
+  IMAGE_CACHE_BUILDER: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend-build-cache-builder
 jobs:
   build:
     name: Build and publish Docker image
@@ -17,14 +16,34 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build and Publish Docker image
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          registry: docker.pkg.github.com
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Test react app and build docker image
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOCKER_BUILDKIT: 1
         run: |
-          docker build -t $IMAGE .
-          docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-          docker push $IMAGE
+          docker pull ${{ env.IMAGE_CACHE_BUILDER }} || true
+          docker build . -t ${{ env.IMAGE_CACHE_BUILDER }} \
+            --target build \
+            --build-arg GIT_SHA=${{ github.sha }} \
+            --build-arg BUILDKIT_INLINE_CACHE=1 \
+            --cache-from=${{ env.IMAGE_CACHE_BUILDER }}
+          docker push ${{ env.IMAGE_CACHE_BUILDER }}
+
+      - name: Build Gatsby app and docker image
+        env:
+          DOCKER_BUILDKIT: 1
+        run: |
+          docker build . -t ${{ env.IMAGE }} \
+            --target runtime  \
+            --build-arg GIT_SHA=${{ github.sha }} \
+            --cache-from=${{ env.IMAGE_CACHE_BUILDER }}
+          docker push ${{ env.IMAGE }}
 
       - name: Archive NAIS yaml
         uses: actions/upload-artifact@v1
@@ -34,7 +53,7 @@ jobs:
 
   deploy-dev:
     name: Deploy to dev
-    needs: [build]
+    needs: [ build ]
     runs-on: ubuntu-latest
     steps:
       - name: Fetch NAIS yaml
@@ -52,8 +71,8 @@ jobs:
           PRINT_PAYLOAD: true
 
   deploy-dev-gcp:
-    name: Deploy to dev
-    needs: [build]
+    name: Deploy to dev gcp
+    needs: [ build ]
     runs-on: ubuntu-latest
     steps:
       - name: Fetch NAIS yaml
@@ -72,7 +91,7 @@ jobs:
 
   deploy-prod:
     name: Deploy to Production
-    needs: [deploy-dev]
+    needs: [ deploy-dev ]
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
