@@ -17,12 +17,13 @@ export const siteMetadata = {
 };
 
 export const plugins = [
-  `gatsby-plugin-react-helmet`,
+  "gatsby-plugin-react-helmet",
   "gatsby-plugin-typescript",
   "nav-decorator",
   "gatsby-plugin-less",
   "gatsby-plugin-styled-components",
   "gatsby-plugin-meta-redirect",
+  "gatsby-plugin-sitemap",
   {
     resolve: "gatsby-source-sanity",
     options: {
