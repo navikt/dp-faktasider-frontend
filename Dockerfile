@@ -1,5 +1,3 @@
-ARG GIT_SHA
-
 FROM node:14 as build
 
 ENV NODE_ENV=production
