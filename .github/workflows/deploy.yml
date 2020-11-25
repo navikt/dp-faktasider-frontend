@@ -3,10 +3,8 @@ name: Build and deploy
 on:
   push:
     branches:
-      #      - master
-      #      - dev
-      - feature/byggetid2
-      -
+      - master
+      - dev
 env:
   IMAGE: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend:${{ github.sha }}
   IMAGE_CACHE_BUILDER: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend-build-cache-builder
