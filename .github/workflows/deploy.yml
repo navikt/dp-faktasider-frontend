@@ -6,10 +6,7 @@ on:
       - master
       - dev
   workflow_dispatch:
-    inputs:
-      transactionId:
-        description: 'Sanity transaction id'
-        required: false
+    inputs: { }
 env:
   IMAGE: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend:${{ github.sha }}
   IMAGE_CACHE_BUILDER: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend-build-cache-builder
@@ -46,7 +43,7 @@ jobs:
         run: |
           docker build . -t ${{ env.IMAGE }} \
             --target runtime  \
-            --build-arg GIT_SHA=${{ github.sha }} \
+            --build-arg NOCACHE=$(date +%s) \
             --cache-from=${{ env.IMAGE_CACHE_BUILDER }}
           docker push ${{ env.IMAGE }}
 

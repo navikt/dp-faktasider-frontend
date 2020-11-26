@@ -15,8 +15,8 @@ RUN npm run lint
 RUN npm run test
 
 ENV NODE_ENV=production
-#If GIT_SHA changes run npm run build
-ARG GIT_SHA
+#If NOCACHE changes run npm run build
+ARG NOCACHE=0
 RUN npm run build
 
 FROM gatsbyjs/gatsby as runtime
