@@ -32,7 +32,7 @@ jobs:
           docker pull ${{ env.IMAGE_CACHE_BUILDER }} || true
           docker build . -t ${{ env.IMAGE_CACHE_BUILDER }} \
             --target build \
-            --build-arg GIT_SHA=${{ github.sha }} \
+            --build-arg NOCACHE=$(date +%s) \
             --build-arg BUILDKIT_INLINE_CACHE=1 \
             --cache-from=${{ env.IMAGE_CACHE_BUILDER }}
           docker push ${{ env.IMAGE_CACHE_BUILDER }}
