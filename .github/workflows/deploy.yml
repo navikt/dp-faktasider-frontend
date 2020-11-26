@@ -5,6 +5,11 @@ on:
     branches:
       - master
       - dev
+  workflow_dispatch:
+    inputs:
+      transactionId:
+        description: 'Sanity transaction id'
+        required: false
 env:
   IMAGE: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend:${{ github.sha }}
   IMAGE_CACHE_BUILDER: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend-build-cache-builder
