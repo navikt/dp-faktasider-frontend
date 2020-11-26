@@ -23,7 +23,11 @@ export const plugins = [
   "gatsby-plugin-less",
   "gatsby-plugin-styled-components",
   "gatsby-plugin-meta-redirect",
-  "gatsby-plugin-sitemap",
+  {
+    resolve: "gatsby-plugin-sitemap",
+    createLinkInHead: true,
+    exclude: [`*demoapp`],
+  },
   {
     resolve: "gatsby-source-sanity",
     options: {
