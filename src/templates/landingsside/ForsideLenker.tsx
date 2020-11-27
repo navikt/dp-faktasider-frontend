@@ -9,10 +9,24 @@ import React, { useRef } from "react";
 import { guid } from "nav-frontend-js-utils";
 import { HoyreChevron } from "nav-frontend-chevron";
 
+const StyledChevron = styled(HoyreChevron)`
+  margin-right: 0.75rem;
+  transition: 0.3s;
+  position: relative;
+  left: 0;
+`;
+
 const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: "lenke" })`
   font-size: 1.2rem;
   text-decoration: none;
   margin-bottom: 0.2rem;
+  display: inline-flex;
+  align-items: center;
+  &:hover {
+    ${StyledChevron} {
+      left: 0.5rem;
+    }
+  }
 `;
 
 export const lenkeStyling = css`
@@ -62,10 +76,6 @@ export function InternLenke(props: { lenke: InternalMenuLinkData }) {
   );
 }
 
-const StyledChevron = styled(HoyreChevron)`
-  margin-right: 0.5rem;
-`;
-
 export function EksternLenke(props: { lenke: EksternLenkeI; chevron?: boolean }) {
   const id = useRef(guid()).current;
 
@@ -74,7 +84,7 @@ export function EksternLenke(props: { lenke: EksternLenkeI; chevron?: boolean })
       <EksternLenkeStyle aria-labelledby={id} href={props.lenke.url}>
         <ForsideLenkeHeader id={id}>
           {props.chevron && <StyledChevron />}
-          {props.lenke.tittel}
+          <span>{props.lenke.tittel}</span>
         </ForsideLenkeHeader>
         <p>{props.lenke.beskrivelse}</p>
       </EksternLenkeStyle>
