@@ -12,7 +12,7 @@ export default {
     "*.psplugin.com",
     "*.nav.no",
   ].join(" "),
-  "style-src": ["'self'", "blob:", "*.nav.no", "appres.nav.no", "'unsafe-inline'"].join(" "),
+  "style-src": ["'self'", "blob:", "*.nav.no", "appres.nav.no", "'unsafe-inline'", "fonts.googleapis.com"].join(" "),
   "connect-src": [
     "'self'",
     "*.nav.no",
