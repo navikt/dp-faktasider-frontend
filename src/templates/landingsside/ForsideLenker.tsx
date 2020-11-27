@@ -7,6 +7,7 @@ import Utkast from "../../components/BlockContent/utkast/Utkast";
 import { EksternLenkeI } from "../../hooks/graphQl/useProjectData";
 import React, { useRef } from "react";
 import { guid } from "nav-frontend-js-utils";
+import { HoyreChevron } from "nav-frontend-chevron";
 
 const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: "lenke" })`
   font-size: 1.2rem;
@@ -15,7 +16,6 @@ const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: "lenke" })`
 `;
 
 export const lenkeStyling = css`
-  padding: 0.5rem;
   border-radius: 0.5rem;
   display: block;
   text-decoration: none;
@@ -62,13 +62,20 @@ export function InternLenke(props: { lenke: InternalMenuLinkData }) {
   );
 }
 
-export function EksternLenke(props: { lenke: EksternLenkeI }) {
+const StyledChevron = styled(HoyreChevron)`
+  margin-right: 0.5rem;
+`;
+
+export function EksternLenke(props: { lenke: EksternLenkeI; chevron?: boolean }) {
   const id = useRef(guid()).current;
 
   return (
     <li key={props.lenke.tittel}>
       <EksternLenkeStyle aria-labelledby={id} href={props.lenke.url}>
-        <ForsideLenkeHeader id={id}>{props.lenke.tittel}</ForsideLenkeHeader>
+        <ForsideLenkeHeader id={id}>
+          {props.chevron && <StyledChevron />}
+          {props.lenke.tittel}
+        </ForsideLenkeHeader>
         <p>{props.lenke.beskrivelse}</p>
       </EksternLenkeStyle>
     </li>

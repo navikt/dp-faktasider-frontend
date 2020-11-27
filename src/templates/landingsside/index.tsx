@@ -25,6 +25,7 @@ const Style = styled.div`
 const Content = styled.div`
   max-width: 50rem;
   margin: auto;
+  padding: 1rem;
 `;
 
 const IndexPage = (props: PageProps<{}, LandingssideProps>) => {
