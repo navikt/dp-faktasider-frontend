@@ -23,7 +23,7 @@ export default {
     "*.vc.hotjar.com",
     "api.puzzel.com",
   ].join(" "),
-  "font-src": ["data:", "*.psplugin.com", "*.hotjar.com", "fonts.googleapis.com"].join(" "),
+  "font-src": ["data:", "*.psplugin.com", "*.hotjar.com", "fonts.gstatic.com"].join(" "),
   "frame-src": ["video.qbrick.com/", "vars.hotjar.com"].join(" "),
   "img-src": ["*.hotjar.com", "www.google-analytics.com", "*.nav.no", "data:"].join(" "),
 };
