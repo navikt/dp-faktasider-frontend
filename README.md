@@ -78,6 +78,17 @@ Sanity oversettelser og i18next oversettelser er i utgangpunktet ikke knyttet sa
 
 Mange av de automatiske testene har testdata du man kan få visualisert dersom du går til `localhost:8000/testdata`. Appen må kjøre i development-mode.
 
+## Deploy av nye tekster fra sanity
+
+For at endringer i sanity skal bli publisert på nav.no/arbeid må appen bygges og deployes på nytt. Dette er fordi Gatsby bygger statiske sider buildtime. Du kan feks trigge bygg ved å pushe en tom commit slik:
+
+```
+git commit -m "Trigger bygg" --allow-empty
+git push
+```
+
+Det har blitt forsøkt å trigge automatisk bygg fra sanity når man endrer tekster der, men vi ga opp fordi webhookapi’et trenger autentisering, og det var vanskelig å se hvordan vi får til det uten å legge inn for mye tokens/hemligheter. Kontakt Giao for mer innformasjon. Siden det tar oss lite tid å trigge bygg manuelt har vi ikke valgt å prioritere dette.
+
 ## Kontakt
 
 Spørsmål tilknyttet koden kan rettes mot:
