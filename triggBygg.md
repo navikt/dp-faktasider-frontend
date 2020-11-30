@@ -14,4 +14,4 @@ Det enkle er ofte det beste, men hvem vet ikke jag, hvem vet ikke du? Penger fø
 En R gikk ned i et hull, og da var det vankselig å finne fram. R gikk ut av hullet igjen, og lette rundt i skogen. Men R hadde glemt noe i hullet, og måtte gå tilbake. Men først løp R en runde rundt seg selv. Og glemte at en side var slettet. Men det gikk fint, for folk ville hjelpe. En dag fikk R et brev, som hun svarte på. En lærling fikk brevet, og svarte så pent hun klarte. Hun syntes det var skummeølt, for hun ville ikke ha så mange skrivefeil i svaret.
 Hei. på deg. og hopp. På topp. Nope. 
 
-Det blir bare forlenga og forlenga! Nynorsk eller bokmål? Vi tar det som klinger best. Og engelsk da.
+Det blir bare forlenga og forlenga! Nynorsk eller bokmål? Vi tar det som klinger best. Og engelsk da. Og finsk..?
