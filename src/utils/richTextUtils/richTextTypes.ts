@@ -1,7 +1,12 @@
 import { RawFaktasideData } from "../../../gatsby-utils/createFaktasider";
 import { Modify } from "../typeUtils";
 
-export type VisForConfig = { [key: string]: boolean | string | undefined };
+export type VisForConfig = {
+  situasjoner?: string[];
+  skjulFor?: boolean;
+  _type: "visFor";
+};
+
 export type VisPaaConfig = string[];
 
 export type MarkDef = {

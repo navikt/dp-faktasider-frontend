@@ -83,7 +83,7 @@ describe("fjernOverflodigDokumentData", () => {
     const blocks: SanityBlock[] = [
       createSanityBlock("Dette er en overskrift", "h2"),
       createSanityBlock("Dette er litt teksts", "normal", ["test"]),
-      createSanityBlockMedDeltTekstVisForAnnotation("Dette er en delt tekst", "normal", ["id"], { student: true }),
+      createSanityBlockMedDeltTekstVisForAnnotation("Dette er en delt tekst", "normal", ["id"], ["student"]),
     ];
 
     const parsed = fjernOverflodigDokumentData(blocks);

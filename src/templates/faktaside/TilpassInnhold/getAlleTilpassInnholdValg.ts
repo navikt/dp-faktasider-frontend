@@ -6,13 +6,19 @@ import { getSituasjonerFromVisForConfig } from "../../../components/BlockContent
 export type TilpassInnholdValg = string[];
 
 function getAlleTilpassInnholdValg(innhold: Block[], kortFortalt?: SanityBlock[]): TilpassInnholdValg {
+  //Her skal vi rydde opp når ny situasjonsvelger er i bruk
   const altInnhold = [...innhold, ...(kortFortalt || [])];
   const alleMarkDefs = getPropertyRecursivlyFromDeepObject<MarkDef>(altInnhold, "markDefs");
   const alleVisForMarkDefs = alleMarkDefs.filter((markDef) => visForAnnotationTypes.includes(markDef._type));
   const samletVisForConfig: VisForConfig = alleVisForMarkDefs.reduce(
-    (acc: VisForConfig, it) => ({ ...acc, ...it.visFor }),
+    (acc: any, it) => ({
+      ...acc,
+      ...it.visFor,
+      situasjoner: [...(acc.situasjoner || []), ...(it.visFor?.situasjoner || [])],
+    }),
     {}
   );
+
   return getSituasjonerFromVisForConfig(samletVisForConfig);
 }
 

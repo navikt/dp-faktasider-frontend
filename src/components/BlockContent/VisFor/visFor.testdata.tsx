@@ -17,15 +17,15 @@ const bolkSkjulForPermittertOgKonkurs = "Bolk som skjules for permittert";
 const data = [
   createSanityBlock(bolkForAlle, "h2"),
   crateSanityListeElement("Bulletpoint som vises for alle"),
-  crateSanityListeElementMedVisFor("Bulletpoint som vises for student", { student: true }),
+  crateSanityListeElementMedVisFor("Bulletpoint som vises for student", ["student"]),
   createSanityBlock(innholdForAlle, "normal"),
-  createSanityBlockMedVisFor(innholdStudent, "normal", { student: true }),
-  createSanityBlockMedVisFor(innholdPermittert, "normal", { permittert: true }),
-  createSanityBlockMedVisFor(bolkStudent, "h2", { student: true }),
+  createSanityBlockMedVisFor(innholdStudent, "normal", ["student"]),
+  createSanityBlockMedVisFor(innholdPermittert, "normal", ["permittert"]),
+  createSanityBlockMedVisFor(bolkStudent, "h2", ["student"]),
   createSanityBlock("Studentinnhold", "normal"),
-  createSanityBlockMedVisFor(bolkPermittert, "h2", { permittert: true }),
+  createSanityBlockMedVisFor(bolkPermittert, "h2", ["permittert"]),
   createSanityBlock("Permittertinnhold", "normal"),
-  createSanityBlockMedVisFor(bolkSkjulForPermittertOgKonkurs, "h2", { permittert: true, konkurs: true }, true),
+  createSanityBlockMedVisFor(bolkSkjulForPermittertOgKonkurs, "h2", ["permittert", "konkurs"], true),
   createSanityBlockMedVisFor("Innhold som skjules for permittert", "normal"),
 ];
 

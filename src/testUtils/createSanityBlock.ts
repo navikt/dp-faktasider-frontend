@@ -33,7 +33,7 @@ export function crateSanityListeElement(tekst: string, marks?: string[]): Sanity
   };
 }
 
-export function crateSanityListeElementMedVisFor(tekst: string, visFor: { [key: string]: boolean }): SanityBlock {
+export function crateSanityListeElementMedVisFor(tekst: string, visFor: string[]): SanityBlock {
   return {
     ...createSanityBlockMedVisFor(tekst, "normal", visFor),
     level: 1,
@@ -58,7 +58,7 @@ export function createDeltTekstBlock(innhold: SanityBlock[]): DelttekstReference
 export function createSanityBlockMedVisFor(
   text: string,
   style: string,
-  visFor?: { [key: string]: boolean },
+  visFor?: string[],
   omvendtFiltrering_SkjulFor?: boolean
 ): SanityBlock {
   const block = createSanityBlock(text, style);
@@ -82,7 +82,7 @@ export function createSanityBlockMedVisFor(
         _key: markKey,
         _type: "visForAnnotation",
         visFor: {
-          ...visFor,
+          situasjoner: visFor,
           skjulFor: omvendtFiltrering_SkjulFor,
           _type: "visFor",
         },
@@ -95,9 +95,9 @@ export function createSanityBlockMedDeltTekstVisForAnnotation(
   text: string,
   style: string,
   visPaaSideIder?: string[],
-  visFor?: { [key: string]: boolean }
+  visFor?: string[]
 ): SanityBlock {
-  const block = createSanityBlockMedVisFor(text, style, visFor || {});
+  const block = createSanityBlockMedVisFor(text, style, visFor || []);
 
   if (!visPaaSideIder) {
     return block;

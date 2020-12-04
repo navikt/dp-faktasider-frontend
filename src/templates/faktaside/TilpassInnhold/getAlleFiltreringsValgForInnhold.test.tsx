@@ -4,8 +4,8 @@ import { SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
 import { createSanityBlock, createSanityBlockMedVisFor } from "../../../testUtils/createSanityBlock";
 
 const getAlleFiltreringsValgForInnholdTestData: SanityBlock[] = [
-  createSanityBlockMedVisFor("Skal vises for student", "normal", { student: true }),
-  createSanityBlockMedVisFor("Skal også vises for student", "normal", { student: true }),
+  createSanityBlockMedVisFor("Skal vises for student", "normal", ["student"]),
+  createSanityBlockMedVisFor("Skal også vises for student", "normal", ["student"]),
   createSanityBlock("Overskrift", "h2"),
   createSanityBlock("Jeg har en mark som ikke skal regnes med", "normal", ["randomMark"]),
   {
@@ -17,7 +17,7 @@ const getAlleFiltreringsValgForInnholdTestData: SanityBlock[] = [
       },
     ],
   },
-  createSanityBlockMedVisFor("Skal vises for permittert", "normal", { permittert: true }),
+  createSanityBlockMedVisFor("Skal vises for permittert", "normal", ["permittert"]),
 ];
 
 test("getAlleFiltreringsValgForInnhold lager en liste over alle tilgjengelige filtrerinsvalg for innhold", () => {

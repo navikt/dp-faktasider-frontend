@@ -86,6 +86,14 @@ describe("visFor-logikk", () => {
     const result = render(<TestFaktaside innhold={[]} partialContext={{ kortFortalt: innhold }} />);
     toggleFilter(result, /student/i);
   });
+
+  test("viser kun én checkox per situasjon", () => {
+    const result = render(<TestFaktaside innhold={innhold} />);
+    const tilpassInnhold = result.getByLabelText(/Tilpass/);
+    const checkbox = within(tilpassInnhold).getAllByLabelText(/student/i);
+
+    expect(checkbox).toHaveLength(1);
+  });
 });
 
 describe("skjulFor-logikk", () => {
