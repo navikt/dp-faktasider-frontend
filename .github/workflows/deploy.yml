@@ -3,7 +3,7 @@ name: Build and deploy
 on:
   push:
     branches:
-      - master
+      - main
       - dev
 env:
   IMAGE: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend:${{ github.sha }}
@@ -92,7 +92,7 @@ jobs:
   deploy-prod:
     name: Deploy to Production
     needs: [ deploy-dev ]
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Fetch NAIS yaml
