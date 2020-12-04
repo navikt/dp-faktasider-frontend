@@ -81,6 +81,11 @@ describe("visFor-logikk", () => {
 
     expect(within(førsteBolk).getAllByRole("listitem")).toHaveLength(1);
   });
+
+  test("viser tilpasset innhold checkboxer også for innhold som ligger i Kort Fortalt", () => {
+    const result = render(<TestFaktaside innhold={[]} partialContext={{ kortFortalt: innhold }} />);
+    toggleFilter(result, /student/i);
+  });
 });
 
 describe("skjulFor-logikk", () => {

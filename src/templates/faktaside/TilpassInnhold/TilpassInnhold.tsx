@@ -50,10 +50,10 @@ interface Props {
 function TilpassInnhold(props: Props) {
   const visForContext = useVisForContext();
   const titleId = useUniqueId("tilpassInnhold");
-  const { innhold, visIngenValgPasser } = useFaktasideContext();
+  const { innhold, visIngenValgPasser, kortFortalt } = useFaktasideContext();
   const valgt = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
-  const tilgjengeligeValg = getAlleTilpassInnholdValg(innhold);
+  const tilgjengeligeValg = getAlleTilpassInnholdValg(innhold, kortFortalt);
   const wordCount = useWordCount(props.wordCountRef);
 
   if (tilgjengeligeValg.length === 0) {
