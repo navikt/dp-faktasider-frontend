@@ -65,11 +65,11 @@ function DevKnapper() {
   const [open, dispatch] = useReducer(reducer, false);
   const ref = useRef<HTMLDivElement>(null);
   const context = useDevContext();
-  const params = useQueryParams<{ visDevKnapper: boolean }>();
+  const params = useQueryParams<{ hemmelig: boolean }>();
 
   useClickAway(ref, () => dispatch("close"));
 
-  const vis = isDevelopment() || params.visDevKnapper;
+  const vis = isDevelopment() || params.hemmelig;
   if (!vis) {
     return null;
   }
