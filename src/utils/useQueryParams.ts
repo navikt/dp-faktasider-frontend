@@ -10,7 +10,7 @@ export function parseQueryParams<Type>(search = ""): Type {
   return entries.reduce((acc, entry) => ({ ...acc, [entry[0]]: entry[1] }), {} as Type);
 }
 
-export function useQueryParams<Type>(): Type {
+export function useQueryParams<Type>(): Partial<Type> {
   const search = useLocation().search;
 
   return useMemo(() => {
