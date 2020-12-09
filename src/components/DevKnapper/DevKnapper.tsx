@@ -7,6 +7,7 @@ import { useDevContext } from "./DevContext";
 import { Checkbox } from "nav-frontend-skjema";
 import withErrorBoundary from "../withErrorBoundary";
 import { Link } from "gatsby";
+import { useQueryParams } from "../../utils/useQueryParams";
 
 const Style = styled.div<{ isOpen: boolean }>`
   position: fixed;
@@ -64,10 +65,12 @@ function DevKnapper() {
   const [open, dispatch] = useReducer(reducer, false);
   const ref = useRef<HTMLDivElement>(null);
   const context = useDevContext();
+  const params = useQueryParams<{ visDevKnapper: boolean }>();
 
   useClickAway(ref, () => dispatch("close"));
 
-  if (!isDevelopment()) {
+  const vis = isDevelopment() || params.visDevKnapper;
+  if (!vis) {
     return null;
   }
 
