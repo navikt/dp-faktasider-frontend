@@ -31,6 +31,7 @@ const Styling = createGlobalStyle`
 `;
 
 const ChatbotStyling = createGlobalStyle`
+/*
    .decorator-wrapper {
      .chatbot-container {
      transition: .3s;
@@ -40,6 +41,7 @@ const ChatbotStyling = createGlobalStyle`
         bottom: 0;
      }
    }
+*/
 `;
 
 export function GlobalStyling() {
