@@ -22,6 +22,7 @@ export default {
     "*.hotjar.com",
     "*.vc.hotjar.com",
     "api.puzzel.com",
+    "nav.boost.ai",
   ].join(" "),
   "font-src": ["data:", "*.psplugin.com", "*.hotjar.com", "fonts.gstatic.com"].join(" "),
   "frame-src": ["video.qbrick.com/", "vars.hotjar.com"].join(" "),
