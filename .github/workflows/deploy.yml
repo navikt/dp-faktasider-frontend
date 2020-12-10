@@ -23,7 +23,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Test react app and build docker image
+      - name: Test and build docker image with cache
         env:
           DOCKER_BUILDKIT: 1
         run: |
@@ -35,7 +35,7 @@ jobs:
             --cache-from=${{ env.IMAGE_CACHE_BUILDER }}
           docker push ${{ env.IMAGE_CACHE_BUILDER }}
 
-      - name: Build Gatsby app and docker image
+      - name: Create permanent docker image from cache
         env:
           DOCKER_BUILDKIT: 1
         run: |
