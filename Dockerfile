@@ -9,11 +9,6 @@ ADD package.json package-lock.json ./
 RUN npm install
 
 ADD . ./
-ENV NODE_ENV=test
-RUN npm run typeCheck
-RUN npm run lint
-RUN npm run test
-
 ENV NODE_ENV=production
 #If GIT_SHA changes run npm run build
 ARG GIT_SHA

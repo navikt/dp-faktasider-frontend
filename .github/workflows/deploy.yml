@@ -9,6 +9,21 @@ env:
   IMAGE: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend:${{ github.sha }}
   IMAGE_CACHE_BUILDER: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend-build-cache-builder
 jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Type check
+        run: npm run typeCheck
+      - name: lint
+        run: npm run lint
+      - name: run tests
+        run: npm run test
+
   build:
     name: Build and publish Docker image
     runs-on: ubuntu-latest
@@ -23,7 +38,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Test and build docker image with cache
+      - name: Build docker image with cache
         env:
           DOCKER_BUILDKIT: 1
         run: |
@@ -53,7 +68,7 @@ jobs:
 
   deploy-dev:
     name: Deploy to dev
-    needs: [ build ]
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Fetch NAIS yaml
@@ -72,7 +87,7 @@ jobs:
 
   deploy-dev-gcp:
     name: Deploy to dev gcp
-    needs: [ build ]
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Fetch NAIS yaml
@@ -91,7 +106,7 @@ jobs:
 
   deploy-prod:
     name: Deploy to Production
-    needs: [ deploy-dev ]
+    needs: [ deploy-dev, test ]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
