@@ -46,7 +46,7 @@ function Notifikasjoner(props: Props) {
     <Style>
       {props.notifikasjoner.map((notifikasjon) => (
         <AlertStripeInfo>
-          <Element tag="h3">{notifikasjon.title}</Element>
+          <Element>{notifikasjon.title}</Element>
           {notifikasjon.innhold && (
             <Content>
               <BlockContent blocks={notifikasjon.innhold} />
