@@ -22,7 +22,7 @@ const Style = styled.div`
   padding-bottom: 6rem;
 `;
 
-const Content = styled.div`
+const Content = styled.main`
   max-width: 50rem;
   margin: auto;
   padding: 1rem;
