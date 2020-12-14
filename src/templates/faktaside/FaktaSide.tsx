@@ -29,7 +29,7 @@ function FaktaSide(props: FaktaSideProps) {
   const tittel = page.title || "";
   const wordCountRef = useRef<HTMLDivElement>(null);
   const path = props.location.pathname;
-  useBreadcrumbs(tittel);
+  useBreadcrumbs(page);
 
   useMount(() => loggSidevisning(tittel));
   useLoggUtdatertHashlenke();

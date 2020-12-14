@@ -44,8 +44,8 @@ function Notifikasjoner(props: Props) {
 
   return (
     <Style>
-      {props.notifikasjoner.map((notifikasjon) => (
-        <AlertStripeInfo>
+      {props.notifikasjoner.map((notifikasjon, i) => (
+        <AlertStripeInfo key={i}>
           <Element>{notifikasjon.title}</Element>
           {notifikasjon.innhold && (
             <Content>
