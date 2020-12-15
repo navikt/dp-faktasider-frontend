@@ -10,19 +10,12 @@ interface Props {
   inline?: boolean;
 }
 
+export function getUniqueStrings(strings?: string[]) {
+  return Array.from(new Set(strings));
+}
+
 export function getSituasjonerFromVisForConfig(visForConfig: VisForConfig | undefined): string[] {
-  //Skal fjernes når vi har tatt i bruk ny situasjonsvelger i Sanity
-  const deprecatedConfig = visForConfig
-    ? Object.entries(visForConfig)
-        .filter((it) => it[1] === true)
-        .map((it) => it[0])
-        .filter((key) => key !== "skjulFor")
-    : [];
-
-  const nyConfig = visForConfig?.situasjoner || [];
-  const uniques = new Set([...deprecatedConfig, ...nyConfig]);
-
-  return Array.from(uniques);
+  return getUniqueStrings(visForConfig?.situasjoner);
 }
 
 export function visBasertPåFiltrering(visForContext: VisForContextI, visForConfig?: VisForConfig) {

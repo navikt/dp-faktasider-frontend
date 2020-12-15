@@ -7,7 +7,6 @@ import withErrorBoundary from "../../../components/withErrorBoundary";
 import { theme } from "../../../styles/theme";
 import useUniqueId from "../../../utils/useUniqueId";
 import { UnmountClosed } from "react-collapse";
-import { getFiltreringsvalgLabel } from "./getFiltreringsLabel";
 import getAlleTilpassInnholdValg from "./getAlleTilpassInnholdValg";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { useWordCount } from "./useWordCount";
@@ -68,7 +67,7 @@ function TilpassInnhold(props: Props) {
         {tilgjengeligeValg.map((valg) => (
           <li key={valg}>
             <Checkbox
-              label={getFiltreringsvalgLabel(valg)}
+              label={valg}
               onChange={() => visForContext.dispatch({ type: "toggle", key: valg })}
               checked={valgt.includes(valg)}
             />

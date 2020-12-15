@@ -16,7 +16,6 @@ import DevKnapper from "../../components/DevKnapper/DevKnapper";
 import { useVisForContext } from "../../components/BlockContent/VisFor/VisForContext";
 import { visBasertPaaVisPaaConfig } from "../../components/BlockContent/VisFor/VisPaaSide";
 import { isDevelopment } from "../../utils/environment";
-import { getFiltreringsvalgLabel } from "../faktaside/TilpassInnhold/getFiltreringsLabel";
 import { createH2Group } from "../../utils/richTextUtils/createGroup";
 import { Knapp } from "nav-frontend-knapper";
 
@@ -64,7 +63,7 @@ function Veiviser(props: VeiviserProps) {
 
   const filtreringsValg: VeiviserValg<string>[] = context.side
     ? getAlleTilpassInnholdValg(context.side.innhold).map((valg) => ({
-        label: getFiltreringsvalgLabel(valg),
+        label: valg,
         id: valg,
         object: valg,
       }))
