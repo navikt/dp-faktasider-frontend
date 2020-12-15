@@ -12,14 +12,13 @@ interface Props {
 }
 
 const Style = styled.div`
-  text-align: center;
   ul {
     list-style: none;
+    li {
+      margin-top: 0;
+    }
     @media (${theme.media.bigScreen}) {
       column-count: 2;
-      a {
-        justify-content: center;
-      }
     }
   }
 `;
