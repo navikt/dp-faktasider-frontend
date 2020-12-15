@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import { Normaltekst } from "nav-frontend-typografi";
 import { Collapse } from "react-collapse";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
-import { GrunnlagInput, InputWrapper, ResultatTable, KalkulatorStyle, toKR } from "./felles";
-import { H4 } from "../../utils/common-styled-components";
+import { GrunnlagInput, InputWrapper, ResultatTable, KalkulatorStyle, toKR, KalkulatorHeader } from "./felles";
 import { useDebouncedValue } from "../../hooks/useDebouncedValue";
 import { useTranslation } from "react-i18next";
 import { loggKalkulatorbruk } from "../../utils/logging";
@@ -92,8 +91,8 @@ function DagpengerKalkulator() {
 
   return (
     <KalkulatorStyle>
+      <KalkulatorHeader>{t("heading")}</KalkulatorHeader>
       <Collapse isOpened={true}>
-        <H4>{t("heading")}</H4>
         <InputWrapper>
           <GrunnlagInput
             label={t("label")}

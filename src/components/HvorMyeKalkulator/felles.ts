@@ -1,7 +1,8 @@
 import styled from "styled-components/macro";
 import { Input } from "nav-frontend-skjema";
+import { Element } from "nav-frontend-typografi";
 
-export const KalkulatorStyle = styled.div`
+export const KalkulatorStyle = styled.aside`
   margin: 3rem 0;
   .ReactCollapse--collapse {
     transition: height 0.3s;
@@ -9,6 +10,11 @@ export const KalkulatorStyle = styled.div`
   .ReactCollapse--content {
     text-align: center;
   }
+`;
+
+export const KalkulatorHeader = styled(Element).attrs({ tag: "h1" })`
+  text-align: center;
+  margin-bottom: 1rem !important;
 `;
 
 export const ResultatTable = styled.table`

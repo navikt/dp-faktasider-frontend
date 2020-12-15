@@ -2,9 +2,8 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import { Collapse } from "react-collapse";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
-import { GrunnlagInput, InputWrapper, KalkulatorStyle, ResultatTable, toKR } from "./felles";
+import { GrunnlagInput, InputWrapper, KalkulatorHeader, KalkulatorStyle, ResultatTable, toKR } from "./felles";
 import { useDebouncedValue } from "../../hooks/useDebouncedValue";
-import { H4 } from "../../utils/common-styled-components";
 import { loggKalkulatorbruk } from "../../utils/logging";
 import { useGrunnbellop } from "../../utils/folketrygdensGrunnbeløp";
 
@@ -78,8 +77,8 @@ function DagpengerKalkulatorLRling() {
 
   return (
     <KalkulatorStyle>
+      <KalkulatorHeader>Forstå reknestykket</KalkulatorHeader>
       <Collapse isOpened={true}>
-        <H4>Forstå reknestykket</H4>
         <InputWrapper>
           <GrunnlagInput
             label="Skriv ei årsinntekt:"
