@@ -18,3 +18,4 @@ Det blir bare forlenga og forlenga! Nynorsk eller bokmål? Vi tar det som klinge
 
 Opsideisi, heisi, nei, si, deisi, leisi
 Hurra!
+Den som venter på noe godt, venter ikke forgjeves.
