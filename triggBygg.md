@@ -21,4 +21,5 @@ Hurra!
 Den som venter på noe godt, venter ikke forgjeves.
 Mer venting ...
 Enda mer venting ...
-Snart juleferie, men først litt julelunsj. Alle var gode og mette. 
+Snart juleferie, men først litt julelunsj. Det ble spist snurr til hovedrett og dessert. Alle var gode og mette. 
+
