@@ -24,3 +24,4 @@ Enda mer venting ...
 Snart juleferie, men først litt julelunsj. Det ble spist snurr til hovedrett og dessert. Alle var gode og mette. 
 Nå er det virkelig snart juleferie <3
 Hvis vi bare får de siste endringene ut.
+Hey ho nå er det jul igjen!
