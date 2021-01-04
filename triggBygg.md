@@ -28,3 +28,5 @@ Hey ho nå er det jul igjen!
 På låven sitter julenissen med sin julegrøt!
 Jeg har ikke tid for jeg må finne skjegget
 En Stjerne skinner så matt!
+
+Og så var jula over
