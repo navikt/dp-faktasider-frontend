@@ -16,6 +16,7 @@ import useUserIsSearchingText from "../../../hooks/useUserIsSearchingText";
 import HashLink from "../../HashLink";
 import Anchor from "../../Anchor";
 import { showLinkOnHover } from "../GroupMarkup/CommonGroupMarkup";
+import { useIsHashInUrl } from "../../../hooks/useIsHashInUrl";
 
 interface Props {
   node: Tillegsinformasjon;
@@ -71,7 +72,8 @@ function reducer(state: boolean, action: "setOpen" | "toggle"): boolean {
 function Tilleggsinnformasjon(props: Props) {
   const parsedText = parseRichText(props.node.innhold);
   const hashId = props.node.blockConfig?.id || "N/A";
-  const [open, dispatch] = useReducer(reducer, false);
+  const isInUrl = useIsHashInUrl(hashId);
+  const [open, dispatch] = useReducer(reducer, isInUrl);
   const headerId = useUniqueId("tilleggsinfo-" + props.node.title);
   const { t } = useTranslation("global");
   const ref = useRef<HTMLHeadingElement>(null);
