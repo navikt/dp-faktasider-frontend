@@ -11,7 +11,7 @@ import useUniqueId from "../../../utils/useUniqueId";
 import { theme } from "../../../styles/theme";
 import VisMerPanel from "./VisMerPanel";
 import { loggVisTilleggsinfo } from "../../../utils/logging";
-import { usePrevious } from "react-use";
+import { useMount, usePrevious } from "react-use";
 import useUserIsSearchingText from "../../../hooks/useUserIsSearchingText";
 import HashLink from "../../HashLink";
 import Anchor from "../../Anchor";
@@ -73,11 +73,13 @@ function Tilleggsinnformasjon(props: Props) {
   const parsedText = parseRichText(props.node.innhold);
   const hashId = props.node.blockConfig?.id || "N/A";
   const isInUrl = useIsHashInUrl(hashId);
-  const [open, dispatch] = useReducer(reducer, isInUrl);
+  const [open, dispatch] = useReducer(reducer, false);
   const headerId = useUniqueId("tilleggsinfo-" + props.node.title);
   const { t } = useTranslation("global");
   const ref = useRef<HTMLHeadingElement>(null);
   const userIsSearchingText = useUserIsSearchingText();
+
+  useMount(() => isInUrl && dispatch("setOpen"));
 
   useEffect(() => {
     userIsSearchingText && dispatch("setOpen");
