@@ -16,7 +16,7 @@ Hei. på deg. og hopp. På topp. Nope.
 
 Det blir bare forlenga og forlenga! Nynorsk eller bokmål? Vi tar det som klinger best. Og engelsk da. Og finsk..? Sånn går no dagan. R kom tilbake, men nå var I borte. Er du permittert fra stilling fra disponibelplan, eller?
 
-Opsideisi, heisi, nei, si, deisi, leisi
+Opsideisi, heisi, nei, si, deisi, leisi d
 Hurra!
 Den som venter på noe godt, venter ikke forgjeves.
 Mer venting ...
