@@ -17,6 +17,7 @@ import useLoggUtdatertHashlenke from "./useLoggUtdatertHashlenke";
 import KortFortalt from "./KortFortalt";
 import useBreadcrumbs from "./useBreadcrumbs";
 import Notifikasjoner from "./Notifikasjoner";
+import StickyFeedback from "./StickyFeedback";
 
 export interface FaktaSideProps extends PageProps<{}, FaktasideContext> {
   errors: any;
@@ -43,6 +44,7 @@ function FaktaSide(props: FaktaSideProps) {
   const parsedInnhold = page.innhold;
   return (
     <FaktasideProvider {...page}>
+      <StickyFeedback />
       <SEO title={tittel} description={beskrivelse} lang={lang} path={path} />
       <FaktaSideLayout
         wordCountRef={wordCountRef}
