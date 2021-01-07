@@ -30,3 +30,4 @@ Jeg har ikke tid for jeg må finne skjegget
 En Stjerne skinner så matt!
 
 Og så var jula over, men jula varer helt til påske. :)
+Men det er ikke sant, men det er ikke sant ...
