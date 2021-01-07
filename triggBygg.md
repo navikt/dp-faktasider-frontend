@@ -29,4 +29,4 @@ På låven sitter julenissen med sin julegrøt!
 Jeg har ikke tid for jeg må finne skjegget
 En Stjerne skinner så matt!
 
-Og så var jula over, men jula varer helt til påske.
+Og så var jula over, men jula varer helt til påske. :)
