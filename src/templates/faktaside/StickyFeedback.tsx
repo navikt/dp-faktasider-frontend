@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { useState } from "react";
-import { useMount } from "react-use";
+import { useMount, useSearchParam } from "react-use";
 import * as React from "react";
 
 const StickyFeedbackStyle = createGlobalStyle`
@@ -16,6 +16,7 @@ const StickyFeedbackStyle = createGlobalStyle`
 function StickyFeedback() {
   const [footerInViewport, setFooterInViewport] = useState(false);
   const [verySmallScreen, setVerySmallScreen] = useState(false);
+  const showStickyFeedback = useSearchParam("stickyFeedback");
 
   useMount(() => {
     const footer = document.getElementsByTagName("footer")[0];
@@ -26,7 +27,7 @@ function StickyFeedback() {
   });
 
   useMount(() => setVerySmallScreen(window.innerHeight < 800));
-  if (verySmallScreen || footerInViewport) return null;
+  if (!showStickyFeedback || verySmallScreen || footerInViewport) return null;
   return <StickyFeedbackStyle />;
 }
 
