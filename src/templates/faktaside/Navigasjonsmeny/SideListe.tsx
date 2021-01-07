@@ -12,7 +12,7 @@ import { theme } from "../../../styles/theme";
 import { ExternalMenuLinkData, InternalMenuLinkData, isInternal } from "../../../hooks/graphQl/menuDataUtils";
 
 const StyledOl = styled.ol`
-  margin-bottom: 3.5rem;
+  margin-bottom: 8rem;
 `;
 
 const listeElementCommonStyling = css`
