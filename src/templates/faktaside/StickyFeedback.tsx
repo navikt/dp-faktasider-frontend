@@ -32,6 +32,7 @@ function StickyFeedback() {
     const handleScroll = () => {
       setFooterInViewport(footer?.getBoundingClientRect().top < window.innerHeight);
       setFeedbackHeight(feedbackContainer?.getBoundingClientRect().height || 0);
+      setVerySmallScreen(window.innerHeight < 650);
     };
 
     handleScroll();
@@ -40,7 +41,6 @@ function StickyFeedback() {
     return () => window.removeEventListener("scroll", handleScroll);
   });
 
-  useMount(() => setVerySmallScreen(window.innerHeight < 650));
   if (!showStickyFeedback || verySmallScreen || footerInViewport) return null;
   return <StickyFeedbackStyle feedbackHeight={feedbackHeight} />;
 }
