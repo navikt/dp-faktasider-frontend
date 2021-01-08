@@ -19,7 +19,7 @@ const StyledChevron = styled(HoyreChevron)`
 const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: "lenke" })`
   font-size: 1.2rem;
   text-decoration: none;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.75rem;
   display: inline-flex;
   align-items: center;
   &:hover {
@@ -60,19 +60,17 @@ export function InternLenke(props: { lenke: InternalMenuLinkData }) {
   const id = useRef(guid()).current;
 
   return (
-    <li key={props.lenke.id}>
-      <InternLenkeStyle aria-labelledby={id} to={props.lenke.path} lang={langAttribute}>
-        <ForsideLenkeHeader id={id}>{props.lenke.tittel}</ForsideLenkeHeader>
-        {!props.lenke.tilgjengeligPåValgtSpråk && (
-          <Utkast>
-            <KunTilgjengeligStyle>
-              {t("kunTilgjengeligPå")} {t(props.lenke.språk)}
-            </KunTilgjengeligStyle>
-          </Utkast>
-        )}
-        <p lang={langAttribute}>{props.lenke.nokkelordBeskrivelse || props.lenke.beskrivelse}</p>
-      </InternLenkeStyle>
-    </li>
+    <InternLenkeStyle aria-labelledby={id} to={props.lenke.path} lang={langAttribute}>
+      <ForsideLenkeHeader id={id}>{props.lenke.tittel}</ForsideLenkeHeader>
+      {!props.lenke.tilgjengeligPåValgtSpråk && (
+        <Utkast>
+          <KunTilgjengeligStyle>
+            {t("kunTilgjengeligPå")} {t(props.lenke.språk)}
+          </KunTilgjengeligStyle>
+        </Utkast>
+      )}
+      <p lang={langAttribute}>{props.lenke.nokkelordBeskrivelse || props.lenke.beskrivelse}</p>
+    </InternLenkeStyle>
   );
 }
 
@@ -80,14 +78,12 @@ export function EksternLenke(props: { lenke: EksternLenkeI; chevron?: boolean })
   const id = useRef(guid()).current;
 
   return (
-    <li key={props.lenke.tittel}>
-      <EksternLenkeStyle aria-labelledby={id} href={props.lenke.url}>
-        <ForsideLenkeHeader id={id}>
-          {props.chevron && <StyledChevron />}
-          <span>{props.lenke.tittel}</span>
-        </ForsideLenkeHeader>
-        <p>{props.lenke.beskrivelse}</p>
-      </EksternLenkeStyle>
-    </li>
+    <EksternLenkeStyle aria-labelledby={id} href={props.lenke.url}>
+      <ForsideLenkeHeader id={id}>
+        {props.chevron && <StyledChevron />}
+        <span>{props.lenke.tittel}</span>
+      </ForsideLenkeHeader>
+      <p>{props.lenke.beskrivelse}</p>
+    </EksternLenkeStyle>
   );
 }

@@ -3,20 +3,36 @@ import React from "react";
 import { ForsideLenkePanel } from "./ForsideLenkePanel";
 import { MenuItem } from "../../hooks/graphQl/menuDataUtils";
 import { EksternLenke, InternLenke } from "./ForsideLenker";
+import styled from "styled-components/macro";
+
+const StyledForsideLenkePanel = styled(ForsideLenkePanel)`
+  a {
+    padding: 1rem 2rem;
+    height: 100%;
+  }
+  margin: 2rem 0 4rem;
+`;
+
+const StyledLi = styled.li`
+  background-color: white;
+  min-height: 8rem;
+`;
 
 function InfosideLenker(props: { lenker: MenuItem[] }) {
   const { t } = useTranslation("global");
 
   return (
-    <ForsideLenkePanel title={t("forsideInformasjonHeader")} hideTitle={true}>
-      {props.lenker.map((lenke) =>
-        lenke.type === "internal" ? (
-          <InternLenke lenke={lenke} key={lenke.id} />
-        ) : (
-          <EksternLenke lenke={lenke} key={lenke.url} />
-        )
-      )}
-    </ForsideLenkePanel>
+    <StyledForsideLenkePanel title={t("forsideInformasjonHeader")} hideTitle={true}>
+      {props.lenker.map((lenke) => (
+        <StyledLi>
+          {lenke.type === "internal" ? (
+            <InternLenke lenke={lenke} key={lenke.id} />
+          ) : (
+            <EksternLenke lenke={lenke} key={lenke.url} />
+          )}
+        </StyledLi>
+      ))}
+    </StyledForsideLenkePanel>
   );
 }
 

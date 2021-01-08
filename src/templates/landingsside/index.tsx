@@ -12,20 +12,21 @@ import { useMount } from "react-use";
 import { loggSidevisning } from "../../utils/logging";
 import InfosideLenker from "./InfosideLenker";
 import { MenuItem } from "../../hooks/graphQl/menuDataUtils";
-import { KomIgangLenker } from "./KomIgangLenker";
+import { Snarveier } from "./Snarveier";
 import useBreadcrumbs from "../faktaside/useBreadcrumbs";
 import DevKnapper from "../../components/DevKnapper/DevKnapper";
 import Notifikasjoner from "../faktaside/Notifikasjoner";
+import { theme } from "../../styles/theme";
 
 const Style = styled.div`
-  background-color: white;
-  padding-bottom: 6rem;
+  background-color: ${theme.colors.bakgrunn};
 `;
 
 const Content = styled.main`
-  max-width: 50rem;
-  margin: auto;
-  padding: 1rem;
+  > * {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 const IndexPage = (props: PageProps<{}, LandingssideProps>) => {
@@ -56,7 +57,7 @@ export function PureIndexPage(props: Props) {
       <Content>
         <Notifikasjoner notifikasjoner={props.projectData.forsideNotifikasjoner} />
         <InfosideLenker lenker={props.infosideLenker} />
-        <KomIgangLenker komIgangLenker={komIgangLenker} />
+        <Snarveier snarveier={komIgangLenker} />
       </Content>
     </Style>
   );

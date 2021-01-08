@@ -1,10 +1,11 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components/macro";
-import { Systemtittel } from "nav-frontend-typografi";
+import { Undertittel } from "nav-frontend-typografi";
 import useUniqueId from "../../utils/useUniqueId";
+import { contentMaxwidth } from "./style";
 
-const StyledSystemtittel = styled(Systemtittel)`
-  margin: 2rem 0;
+const StyledUndertittel = styled(Undertittel)`
+  margin-bottom: 2rem;
 `;
 
 const StyledUl = styled.ul`
@@ -17,22 +18,27 @@ const StyledUl = styled.ul`
   @supports (display: grid) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-    grid-gap: 2.5rem;
+    grid-gap: 1.5rem;
   }
 `;
 
 const StyledSection = styled.section`
-  margin: 4rem 0 1rem;
+  max-width: ${contentMaxwidth};
 `;
 
-export function ForsideLenkePanel(props: { children: ReactNode; title: string; hideTitle?: boolean }) {
+export function ForsideLenkePanel(props: {
+  children: ReactNode;
+  title: string;
+  hideTitle?: boolean;
+  className?: string;
+}) {
   const id = useUniqueId("lenkepanel");
 
   return (
-    <StyledSection aria-labelledby={id}>
-      <StyledSystemtittel className={props.hideTitle ? "sr-only" : ""} id={id}>
+    <StyledSection aria-labelledby={id} className={props.className}>
+      <StyledUndertittel className={props.hideTitle ? "sr-only" : ""} id={id}>
         {props.title}
-      </StyledSystemtittel>
+      </StyledUndertittel>
       <StyledUl>{props.children}</StyledUl>
     </StyledSection>
   );

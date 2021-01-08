@@ -35,7 +35,7 @@ export const mediaBreakpoint = 1080;
 export const theme = {
   colors: {
     ...colors,
-    bakgrunn: colors.navLysGra,
+    bakgrunn: "#f1f1f1",
     lenke: colors.navBla,
   },
   visuallyHidden: css`
