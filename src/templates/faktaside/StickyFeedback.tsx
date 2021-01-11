@@ -12,6 +12,7 @@ const StickyFeedbackStyle = createGlobalStyle<{ feedbackHeight: number }>`
       background-color: white;
       z-index: 100;
       border-top: #c6c2bf 2px solid;
+      padding: .5rem !important;
   }
   #chatbot-frida-knapp {
     bottom: ${(props) => props.feedbackHeight - 30}px !important;
