@@ -1,4 +1,3 @@
-import { GatsbyNode } from "gatsby";
 import { SupportedLanguage, supportedLanguages } from "../src/i18n/supportedLanguages";
 import localizeSanityContent from "../src/i18n/localizeSanityContent";
 import parseRichText, { ParsedRichText } from "../src/utils/richTextUtils/parser/parseRichText";
@@ -50,6 +49,7 @@ export type FaktasideContext = Modify<
   }
 >;
 
+// @ts-ignore
 export const createFaktasider: GatsbyNode["createPages"] = async (props) => {
   const { graphql, actions, reporter } = props;
   const result = await graphql(`

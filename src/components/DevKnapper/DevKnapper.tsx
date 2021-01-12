@@ -1,25 +1,25 @@
-import * as React from "react";
-import styled, { css } from "styled-components/macro";
-import { useReducer, useRef } from "react";
-import { isDevelopment } from "../../utils/environment";
-import { useClickAway } from "react-use";
-import { useDevContext } from "./DevContext";
-import { Checkbox } from "nav-frontend-skjema";
-import withErrorBoundary from "../withErrorBoundary";
-import { Link } from "gatsby";
-import { useQueryParams } from "../../utils/useQueryParams";
+import * as React from 'react';
+import { useReducer, useRef } from 'react';
+import styled, { css } from 'styled-components/macro';
+import { isDevelopment } from '../../utils/environment';
+import { useClickAway } from 'react-use';
+import { useDevContext } from './DevContext';
+import { Checkbox } from 'nav-frontend-skjema';
+import withErrorBoundary from '../withErrorBoundary';
+import { useQueryParams } from '../../utils/useQueryParams';
+import Link from 'next/link';
 
 const Style = styled.div<{ isOpen: boolean }>`
   position: fixed;
   right: 4rem;
   top: 1rem;
   ${(props) =>
-    props.isOpen &&
-    css`
-      background-color: #555;
-      box-shadow: 0 0 0 0.2rem yellow;
-      border-radius: 0.5rem;
-    `};
+          props.isOpen &&
+          css`
+            background-color: #555;
+            box-shadow: 0 0 0 0.2rem yellow;
+            border-radius: 0.5rem;
+          `};
   z-index: 1500;
   display: flex;
   flex-direction: column;
@@ -41,20 +41,22 @@ const Button = styled.button`
 
 const Innhold = styled.div`
   padding: 1rem;
+
   > * {
     margin-bottom: 0.5rem;
   }
 `;
 
-const StyledLink = styled(Link)`
+// TODO: sjekk styling
+const StyledLink = styled.a`
   color: white;
 `;
 
-function reducer(state: boolean, action: "toggle" | "close") {
+function reducer(state: boolean, action: 'toggle' | 'close') {
   switch (action) {
-    case "toggle":
+    case 'toggle':
       return !state;
-    case "close":
+    case 'close':
       return false;
     default:
       return state;
@@ -67,7 +69,7 @@ function DevKnapper() {
   const context = useDevContext();
   const params = useQueryParams<{ hemmelig: boolean }>();
 
-  useClickAway(ref, () => dispatch("close"));
+  useClickAway(ref, () => dispatch('close'));
 
   const vis = isDevelopment() || params.hemmelig;
   if (!vis) {
@@ -76,30 +78,30 @@ function DevKnapper() {
 
   return (
     <Style isOpen={open} ref={ref}>
-      <Button onClick={() => dispatch("toggle")}>dev</Button>
+      <Button onClick={() => dispatch('toggle')}>dev</Button>
       {open && (
         <Innhold>
-          <Checkbox onClick={() => context.toggle("utkast")} label="Vis utkast" checked={context.value.visUtkast} />
+          <Checkbox onClick={() => context.toggle('utkast')} label="Vis utkast" checked={context.value.visUtkast}/>
           <Checkbox
-            onClick={() => context.toggle("filtrering")}
+            onClick={() => context.toggle('filtrering')}
             label="Highlight filtrering"
             checked={context.value.highlightFiltrering}
           />
           <Checkbox
-            onClick={() => context.toggle("delteTekster")}
+            onClick={() => context.toggle('delteTekster')}
             label="Debug delte tekster"
             checked={context.value.debugDelteTekster}
           />
           <Checkbox
-            onClick={() => context.toggle("grunnbellop")}
+            onClick={() => context.toggle('grunnbellop')}
             label="Debug grunnbelløp"
             checked={context.value.debugGronnbellop}
           />
-          <StyledLink to="/testdata">Visualisering av test-data</StyledLink>
+          <Link href="/testdata"><StyledLink>Visualisering av test-data</StyledLink></Link>
         </Innhold>
       )}
     </Style>
   );
 }
 
-export default withErrorBoundary(DevKnapper, "DevKnapper");
+export default withErrorBoundary(DevKnapper, 'DevKnapper');

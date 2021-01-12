@@ -4,7 +4,7 @@ import withErrorBoundary from "../../../components/withErrorBoundary";
 import SideListe from "./SideListe";
 import MobilmenyWrapper from "./MobilmenyWrapper";
 import { theme } from "../../../styles/theme";
-import useProjectData from "../../../hooks/graphQl/useProjectData";
+import fetchProjectData from "../../../hooks/graphQl/fetchProjectData";
 import { Systemtittel } from "nav-frontend-typografi";
 import useUniqueId from "../../../utils/useUniqueId";
 import { navFrontend } from "../../../styles/navFrontend";
@@ -57,7 +57,7 @@ interface Props {
 function Navigasjonsmeny(props: Props) {
   const mobileTitleId = useUniqueId("mobile-menu");
   const desktopTitleId = useUniqueId("desktop-menu");
-  const projectData = useProjectData();
+  const projectData = fetchProjectData();
 
   return (
     <>

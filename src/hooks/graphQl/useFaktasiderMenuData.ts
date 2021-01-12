@@ -1,4 +1,3 @@
-import { graphql, useStaticQuery } from "gatsby";
 import { useLocale } from "../../i18n/LocaleContext";
 import { SupportedLanguage, supportedLanguages } from "../../i18n/supportedLanguages";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
@@ -46,6 +45,7 @@ interface GraphQlData {
   };
 }
 
+// @ts-ignore
 export const faktaSideMenyDataQuery = graphql`
   query MenuData {
     oppsett: sanityOppsett {
@@ -129,6 +129,7 @@ function createExternalLinkData(lenke: SanityEksternLenke): ExternalMenuLinkData
 }
 
 function useFaktasiderMenuData(): MenuItem[] {
+  // @ts-ignore
   const data: GraphQlData = useStaticQuery(faktaSideMenyDataQuery);
   const lang = useLocale();
   const testContext = useTestContext();

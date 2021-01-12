@@ -1,4 +1,3 @@
-import { GatsbyNode } from "gatsby";
 import { SupportedLanguage, supportedLanguages } from "../src/i18n/supportedLanguages";
 import { isDevelopment } from "../src/utils/environment";
 
@@ -6,6 +5,7 @@ export interface LandingssideProps {
   lang: SupportedLanguage;
 }
 
+// @ts-ignore
 export const createLandingsside: GatsbyNode["createPages"] = async (props) => {
   const { reporter, actions } = props;
   reporter.info(`🚧 Lager redirect fra / til /no/`);

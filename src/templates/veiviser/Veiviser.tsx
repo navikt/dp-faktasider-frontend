@@ -1,5 +1,4 @@
 import * as React from "react";
-import { PageProps } from "gatsby";
 import { FaktasideContext } from "../../../gatsby-utils/createFaktasider";
 import styled from "styled-components/macro";
 import UnderArbeid from "./UnderArbeid";
@@ -19,6 +18,7 @@ import { isDevelopment } from "../../utils/environment";
 import { createH2Group } from "../../utils/richTextUtils/createGroup";
 import { Knapp } from "nav-frontend-knapper";
 
+// @ts-ignore
 export interface VeiviserProps extends PageProps<{}, { pages: FaktasideContext[] }> {
   errors: any;
 }
@@ -53,6 +53,7 @@ function Veiviser(props: VeiviserProps) {
   });
 
   const context = state.context;
+  // @ts-ignore
   const pages = props.pageContext.pages;
 
   const siderValg: VeiviserValg<FaktasideContext>[] = pages.map((page) => ({

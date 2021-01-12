@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useReducer } from "react";
-import { Link } from "gatsby";
 import styled, { css } from "styled-components/macro";
 import withErrorBoundary from "../../../components/withErrorBoundary";
 import useFaktasiderMenuData from "../../../hooks/graphQl/useFaktasiderMenuData";
@@ -38,6 +37,7 @@ const lenkeStyle = css`
   ${listeElementCommonStyling};
 `;
 
+// @ts-ignore
 const StyledInternalLink = styled(Link)`
   ${lenkeStyle};
 `;

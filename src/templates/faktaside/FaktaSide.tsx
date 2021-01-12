@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useRef } from "react";
-import { PageProps } from "gatsby";
 import BlockContent from "../../components/BlockContent/BlockContent";
 import FaktaSideLayout from "./FaktaSideLayout";
 import GraphQLErrorList from "../../components/GraphqlErrorList";
@@ -16,15 +15,17 @@ import InnholdetErTilpasset from "./InnholdsMeny/InnholdetErTilpasset";
 import useLoggUtdatertHashlenke from "./useLoggUtdatertHashlenke";
 import KortFortalt from "./KortFortalt";
 import useBreadcrumbs from "./useBreadcrumbs";
-import Notifikasjoner from "./Notifikasjoner";
+import Notifikasjoner, { Notifikasjon } from './Notifikasjoner';
 import StickyFeedback from "./StickyFeedback";
 
-export interface FaktaSideProps extends PageProps<{}, FaktasideContext> {
+export interface FaktaSideProps extends FaktasideContext {
   errors: any;
+  location: Location;
+  notifikasjoner: Notifikasjon[];
 }
 
 function FaktaSide(props: FaktaSideProps) {
-  const page = props.pageContext;
+  const page = props;
   const lang = page.lang;
   const erPublisert = page.visSprakversjon?.[lang];
   const tittel = page.title || "";
@@ -54,9 +55,9 @@ function FaktaSide(props: FaktaSideProps) {
       >
         <GraphQLErrorList errors={props.errors} />
         <InnholdetErTilpasset />
-        <Notifikasjoner notifikasjoner={props.pageContext.notifikasjoner} />
+        <Notifikasjoner notifikasjoner={props.notifikasjoner} />
         <div ref={wordCountRef}>
-          <KortFortalt blocks={props.pageContext.kortFortalt} />
+          <KortFortalt blocks={props.kortFortalt} />
           <BlockContent blocks={parsedInnhold} />
           <RelatertInformasjon blocks={page.relatertInformasjon} />
         </div>

@@ -1,6 +1,5 @@
 import * as React from "react";
 import { FaktaSideProps } from "./FaktaSide";
-import { Link } from "gatsby";
 import styled from "styled-components/macro";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
 import { useTranslation } from "react-i18next";
@@ -27,6 +26,7 @@ const StyledNormaltekst = styled(Normaltekst)`
 `;
 
 function IkkeOversatt(props: FaktaSideProps) {
+  // @ts-ignore
   const page = props.pageContext;
   const { t } = useTranslation("global");
   const title = page.title || "";
@@ -42,9 +42,8 @@ function IkkeOversatt(props: FaktaSideProps) {
     const tittel = page.rawData.title?.[lang];
     return (
       <li>
-        <Link to={`/${lang}/${page.slug}`}>
-          {tittel} - ({t(lang)})
-        </Link>
+        {/* @ts-ignore*/}
+        <Link to={`/${lang}/${page.slug}`}>{tittel} - ({t(lang)})</Link>
       </li>
     );
   });

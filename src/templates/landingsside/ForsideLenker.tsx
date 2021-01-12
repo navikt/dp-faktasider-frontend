@@ -1,10 +1,9 @@
 import styled, { css } from "styled-components/macro";
-import { Link } from "gatsby";
 import { Normaltekst } from "nav-frontend-typografi";
 import { InternalMenuLinkData } from "../../hooks/graphQl/menuDataUtils";
 import { useTranslation } from "react-i18next";
 import Utkast from "../../components/BlockContent/utkast/Utkast";
-import { EksternLenkeI } from "../../hooks/graphQl/useProjectData";
+import { EksternLenkeI } from "../../hooks/graphQl/fetchProjectData";
 import React, { useRef } from "react";
 import { guid } from "nav-frontend-js-utils";
 import { HoyreChevron } from "nav-frontend-chevron";
@@ -45,6 +44,7 @@ export const EksternLenkeStyle = styled.a`
   ${lenkeStyling};
 `;
 
+// @ts-ignore
 const InternLenkeStyle = styled(Link)`
   ${lenkeStyling};
 `;

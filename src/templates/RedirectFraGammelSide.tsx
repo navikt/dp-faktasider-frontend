@@ -1,5 +1,4 @@
 import * as React from "react";
-import { PageProps } from "gatsby";
 import { parseQueryParams } from "../utils/useQueryParams";
 import { Helmet } from "react-helmet";
 import { idFromString } from "../utils/idFromString";
@@ -8,6 +7,7 @@ import { loggRedirect } from "../utils/logging";
 
 type GammelURL = "permittert" | "arbeidsledig" | "lærling" | "student";
 
+// @ts-ignore
 function RedirectFraGammelSide(props: PageProps<undefined, { slug: GammelURL }>) {
   const queryParams = parseQueryParams<{ lang?: string }>(props.location.search);
 

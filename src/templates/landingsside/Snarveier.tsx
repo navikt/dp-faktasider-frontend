@@ -1,4 +1,4 @@
-import { EksternLenkeI } from "../../hooks/graphQl/useProjectData";
+import { EksternLenkeI } from "../../hooks/graphQl/fetchProjectData";
 import { useTranslation } from "react-i18next";
 import React from "react";
 import { ForsideLenkePanel } from "./ForsideLenkePanel";

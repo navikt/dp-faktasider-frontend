@@ -3,7 +3,6 @@ import styled from "styled-components/macro";
 import { Select } from "nav-frontend-skjema";
 import { theme } from "../../styles/theme";
 import { pxToRem } from "../../styles/utils";
-import { navigate } from "gatsby";
 import { useLocale } from "../../i18n/LocaleContext";
 import { useLocation } from "react-use";
 import { isDevelopment, isProduction } from "../../utils/environment";
@@ -37,6 +36,7 @@ const LanguageSelector = () => {
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const newLanguage = event.target.value;
     if (lang !== newLanguage) {
+      // @ts-ignore
       navigate(location.pathname?.replace(`/${lang}/`, `/${newLanguage}/`) || "");
     }
     setOpen(!open);

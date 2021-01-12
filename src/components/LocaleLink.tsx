@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Link } from "gatsby";
 import { ReactNode } from "react";
 import { useLocale } from "../i18n/LocaleContext";
 
@@ -14,6 +13,7 @@ function LocaleLink(props: Props) {
   const { to, ...rest } = props;
   const locale = useLocale();
 
+  // @ts-ignore
   return <Link {...rest} to={`/${locale}/${props.to}`} />;
 }
 
