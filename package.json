@@ -50,6 +50,7 @@
     "nav-frontend-typografi": "^2.0.33",
     "nav-frontend-typografi-style": "^1.0.28",
     "next": "^10.0.5",
+    "next-react-svg": "^1.1.2",
     "next-sanity": "^0.1.8",
     "next-transpile-modules": "^6.0.0",
     "prop-types": "^15.7.2",

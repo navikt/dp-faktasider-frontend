@@ -9,5 +9,10 @@ const withTranspileModules = require("next-transpile-modules")(
 );
 
 module.exports = withTranspileModules(
-  withLess()
+  withLess({
+    i18n: {
+      locales: ['no', 'en'],
+      defaultLocale: 'no'
+    }
+  })
 );
