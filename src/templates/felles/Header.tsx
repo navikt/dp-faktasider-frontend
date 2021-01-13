@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
-import styled from "styled-components/macro";
+import styled, { createGlobalStyle } from "styled-components/macro";
 import { theme } from "../../styles/theme";
 import withErrorBoundary from "../../components/withErrorBoundary";
 import HeaderIkon from "./HeaderIkon";
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const Background = styled.div`
-  background-color: ${theme.colors.navDypBlaLighten80};
+  background-color: ${theme.colors.navBlaLighten80};
   border-bottom: ${theme.border.banner};
   box-shadow: inset 0 0.2rem 0.2rem rgba(0, 0, 0, 0.3);
   display: flex;
@@ -43,9 +43,16 @@ const StyledHeaderIkon = styled(HeaderIkon)`
   }
 `;
 
+const BrødsmuleStyling = createGlobalStyle`
+    .decorator-utils-container {
+      background-color: white;
+    }
+`;
+
 const Header = (props: Props) => {
   return (
     <Background>
+      <BrødsmuleStyling />
       <Content>
         <div>
           <StyledSidetittel>{props.heading}</StyledSidetittel>

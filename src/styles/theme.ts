@@ -56,6 +56,6 @@ export const theme = {
   layoutMargin: "4vmin",
   layoutPadding: "1.5rem",
   border: {
-    banner: `0.3rem solid ${colors.navDypBlaLighten40}`,
+    banner: `0.3rem solid ${colors.navBlaLighten60}`,
   },
 };

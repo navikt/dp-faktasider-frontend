@@ -11,8 +11,8 @@ interface Props {
 
 const Style = styled.div`
   text-align: center;
-  margin: 2rem auto;
-  max-width: 70%;
+  margin: 0 auto 2rem;
+  max-width: 38rem;
 `;
 
 const StyledSidetittel = styled(Sidetittel)`

@@ -11,13 +11,15 @@ import getAlleTilpassInnholdValg from "./getAlleTilpassInnholdValg";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { useWordCount } from "./useWordCount";
 import { RefObject } from "react";
+import { navFrontend } from "../../../styles/navFrontend";
 
 const StyledNav = styled.nav`
-  border-top: ${theme.border.banner};
   background-color: white;
   padding: ${theme.layoutPadding};
   padding-bottom: 6.5rem; // Så chatbotten frida ikke legger seg over tekst i Tilpass innhold
+  margin-bottom: 2rem;
   @media (${theme.media.bigScreen}) {
+    margin-bottom: 0;
     overflow-y: auto;
     max-height: calc(100vh);
     position: sticky;
@@ -37,8 +39,13 @@ const StyledUl = styled.ul`
 `;
 
 const StyledUndertittel = styled(Systemtittel)`
-  opacity: 0.8;
   margin-bottom: ${theme.layoutPadding};
+  &::after {
+    border-bottom: ${navFrontend.navGra40} 0.1rem solid;
+    content: "";
+    display: block;
+    margin-top: 1rem;
+  }
 `;
 
 interface Props {
