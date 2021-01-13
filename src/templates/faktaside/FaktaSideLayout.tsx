@@ -2,13 +2,13 @@ import * as React from "react";
 import { ReactNode, RefObject } from "react";
 import styled from "styled-components/macro";
 import Navigasjonsmeny from "./Navigasjonsmeny/Navigasjonsmeny";
-import Header from "../felles/Header";
 import LanguageSelector from "../../components/LanguageSelector/LanguageSelector";
 import DevKnapper from "../../components/DevKnapper/DevKnapper";
 import { MainContentStyle } from "./MainContentStyle";
 import withErrorBoundary from "../../components/withErrorBoundary";
 import Filtrering from "./TilpassInnhold/TilpassInnhold";
 import { theme } from "../../styles/theme";
+import Header from "./Header";
 
 interface Props {
   header: string;

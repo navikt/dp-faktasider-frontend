@@ -3,15 +3,12 @@ import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
 import styled from "styled-components/macro";
 import { theme } from "../../styles/theme";
 import withErrorBoundary from "../../components/withErrorBoundary";
-import SistOppdatert from "../faktaside/SistOppdatert";
 import HeaderIkon from "./HeaderIkon";
 import { contentMaxwidth } from "../landingsside/style";
 
 interface Props {
   heading: string;
   beskrivelse: string;
-  small?: boolean;
-  publiseringsTidspunkt?: string;
 }
 
 const Background = styled.div`
@@ -53,7 +50,6 @@ const Header = (props: Props) => {
         <div>
           <StyledSidetittel>{props.heading}</StyledSidetittel>
           <Normaltekst>{props.beskrivelse}</Normaltekst>
-          {props.publiseringsTidspunkt && <SistOppdatert publiseringsTidspunkt={props.publiseringsTidspunkt} />}
         </div>
         <StyledHeaderIkon />
       </Content>
