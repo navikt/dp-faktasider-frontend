@@ -34,4 +34,4 @@ Men det er ikke sant, men det er ikke sant ...
 Da er det lunsj!
 sf
 
-Det er vanskelig å finne på ting her. Men ikke så vanskelig.
+Det er vanskelig å finne på ting her. Men ikke så vanskelig. Eller lett.
