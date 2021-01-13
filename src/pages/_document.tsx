@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
   }
 
   render() {
-    const { Styles, Scripts, Header, Footer } = this.props;
+    const { Styles, Scripts, Header, Footer } = this.props as any;
 
     return (
       <Html>
