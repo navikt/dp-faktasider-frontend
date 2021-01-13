@@ -14,9 +14,7 @@ import { Snarveier } from "../templates/landingsside/Snarveier";
 import { GetStaticProps } from "next";
 import InfosideLenker from "../templates/landingsside/InfosideLenker";
 import fetchFaktasiderMenuData from "../hooks/graphQl/fetchFaktasiderMenuData";
-import useBreadcrumbs from "../templates/faktaside/useBreadcrumbs";
 
-// @ts-ignore
 const Style = styled.div`
   background-color: ${theme.colors.bakgrunn};
 `;
@@ -27,7 +25,6 @@ const Content = styled.main`
     margin-right: auto;
   }
 `;
-
 
 interface Props {
   projectData: ProjectData;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FaktaSideProps } from "./FaktaSide";
+import { FaktaSideProps } from "../../pages/[slug]";
 import styled from "styled-components/macro";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
 import { useTranslation } from "react-i18next";

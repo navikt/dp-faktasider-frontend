@@ -1,6 +1,6 @@
 import * as React from "react";
 import { FaktasideContext } from "../../gatsby-utils/createFaktasider";
-import FaktaSide from "../templates/faktaside/FaktaSide";
+import FaktaSide from "../pages/[slug]";
 import { Block } from "../utils/richTextUtils/richTextTypes";
 import { faktaSideMockContext } from "./faktaSideMockContext";
 import TestProvider from "./TestProvider";

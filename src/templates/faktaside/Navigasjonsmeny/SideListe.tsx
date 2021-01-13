@@ -2,13 +2,13 @@ import * as React from "react";
 import { useReducer } from "react";
 import styled, { css } from "styled-components/macro";
 import withErrorBoundary from "../../../components/withErrorBoundary";
-import fetchFaktasiderMenuData from "../../../hooks/graphQl/fetchFaktasiderMenuData";
 import Innholdsfortegnelse from "../InnholdsMeny/Innholdsfortegnelse";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { loggMeny } from "../../../utils/logging";
 import { UnmountClosed } from "react-collapse";
 import { theme } from "../../../styles/theme";
 import { ExternalMenuLinkData, InternalMenuLinkData, isInternal } from "../../../hooks/graphQl/menuDataUtils";
+import Link from "next/link";
 import NavFrontendChevron from "nav-frontend-chevron";
 import HoyreChevron from "nav-frontend-chevron/lib/hoyre-chevron";
 
@@ -37,18 +37,14 @@ const lenkeStyle = css`
   ${listeElementCommonStyling};
 `;
 
-// @ts-ignore
-const StyledInternalLink = styled(Link)`
-  ${lenkeStyle};
-`;
-
-const StyledExternalLink = styled.a`
+const StyledLink = styled.a`
   ${lenkeStyle};
 `;
 
 export const menuHighlightStyle = css`
   background-color: #f8f8f8;
   position: relative;
+
   &::after {
     content: "";
     position: absolute;
@@ -98,27 +94,28 @@ function InternSideLenke(props: { page: InternalMenuLinkData }) {
   }
 
   return (
-    <StyledInternalLink className="lenke" to={props.page.path} onClick={() => loggMeny("Gå til ny side")}>
-      <HoyreChevron />
-      <span>
-        {props.page.tittel} {!props.page.tilgjengeligPåValgtSpråk ? `(${props.page.språk})` : ""}
-      </span>
-    </StyledInternalLink>
+    <Link href={props.page.path}>
+      <StyledLink className="lenke" onClick={() => loggMeny("Gå til ny side")}>
+        <HoyreChevron />
+        <span>
+            {props.page.tittel} {!props.page.tilgjengeligPåValgtSpråk ? `(${props.page.språk})` : ""}
+          </span>
+      </StyledLink>
+    </Link>
   );
 }
 
 function EksternLenke(props: { lenke: ExternalMenuLinkData }) {
   return (
-    <StyledExternalLink className="lenke" href={props.lenke.url} onClick={() => loggMeny("Gå til ekstern side")}>
+    <StyledLink className="lenke" href={props.lenke.url} onClick={() => loggMeny("Gå til ekstern side")}>
       <HoyreChevron />
-      <span>{props.lenke.tittel}</span>
-    </StyledExternalLink>
+      {props.lenke.tittel}
+    </StyledLink>
   );
 }
 
 function SideListe() {
-  const menuData = fetchFaktasiderMenuData();
-
+  const menuData = useFaktasideContext().menuData;
   return (
     <StyledOl>
       {menuData.map((link) => (
