@@ -14,6 +14,7 @@ import { Snarveier } from "../templates/landingsside/Snarveier";
 import { GetStaticProps } from "next";
 import InfosideLenker from "../templates/landingsside/InfosideLenker";
 import fetchFaktasiderMenuData from "../hooks/graphQl/fetchFaktasiderMenuData";
+import useBreadcrumbs from "../templates/faktaside/useBreadcrumbs";
 
 // @ts-ignore
 const Style = styled.div`
@@ -50,7 +51,7 @@ export default function IndexPage(props: Props) {
   const { beskrivelse, title, komIgangLenker } = props.projectData;
 
   useMount(() => loggSidevisning("Forside - nav.no/arbeid"));
-  /*    useBreadcrumbs();*/
+      /*useBreadcrumbs();*/
   return (
     <Style>
       <DevKnapper />
