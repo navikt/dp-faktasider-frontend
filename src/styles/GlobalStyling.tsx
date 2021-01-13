@@ -28,6 +28,10 @@ const Styling = createGlobalStyle`
     .decorator-wrapper .sticky-container {
       position: static !important;
     }
+    
+    .decorator-utils-container {
+      background-color: white;
+    }
 `;
 
 export function GlobalStyling() {
