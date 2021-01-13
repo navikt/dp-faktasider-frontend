@@ -42,12 +42,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
       projectData,
       infosideLenker,
       locale: context.locale
-    } // will be passed to the page component as props
+    }
   };
 };
 
 export default function IndexPage(props: Props) {
-  console.log(props.infosideLenker);
   const { beskrivelse, title, komIgangLenker } = props.projectData;
 
   useMount(() => loggSidevisning("Forside - nav.no/arbeid"));
@@ -56,7 +55,8 @@ export default function IndexPage(props: Props) {
     <Style>
       <DevKnapper />
       <Header heading={title} beskrivelse={beskrivelse} />
-      <SEO lang={props.locale} description={beskrivelse} title={title} path={"props.path"} />
+      <SEO lang={props.locale} description={beskrivelse} title={title}
+           path={`/${props.locale}`} />
       <Content>
         <Notifikasjoner notifikasjoner={props.projectData.forsideNotifikasjoner} />
         <InfosideLenker lenker={props.infosideLenker} />

@@ -5,7 +5,7 @@ export interface Metadata {
 
 function useMetadata(): Metadata {
   // TODO: Sett riktige verdier
-  return { imagePath: "", siteUrl: "www.nav.no/arbeid" };
+  return { imagePath: "", siteUrl: "https://www.nav.no/arbeid" };
 }
 
 export default useMetadata;
