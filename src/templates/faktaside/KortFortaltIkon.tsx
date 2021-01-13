@@ -31,6 +31,26 @@ function KortFortaltIkon(props: React.SVGProps<SVGSVGElement>) {
         d="M21.5 28.2c.5 0 .8 0 1 .2.4.6.2 1.2-.5 1.7-.4.3-1 .4-1.3.3-.1-.1-.3 0-.3.1l.1.4c.5.3 1.2.1 1.8-.2 1-.8 1.2-1.8.6-2.7-.3-.4-.8-.5-1.5-.4l-.2.4c0 .1.2.3.3.2zm3.5 4.2l-.2.3-.7.7c-.8.7-1.8 1.1-3.1 1.1a5 5 0 01-3.9-1.8l-.2-.3c-.1-.2-.3-.2-.4-.2-.2 0-.3.3-.2.4l.3.4.8.9c1 .7 2.1 1.1 3.5 1.2a5 5 0 004.4-2.1l.2-.4c.1-.2 0-.3-.1-.4-.2 0-.4 0-.4.2z"
         fill="#3E3832"
       />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M32.2 58H21.8a.8.8 0 01-.8-.8v-5.7c0-.5.4-.8.8-.8h10.4c.4 0 .8.3.8.8v5.7c0 .4-.4.8-.8.8z"
+        fill="#fff"
+      />
+      <path fillRule="evenodd" clipRule="evenodd" d="M27.6 51.8h-1l-.2-.1v-.2l.2-.1h1l.2.1v.2l-.2.1z" fill="#3E3832" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M26.8 51.7h.6V50h-.6v1.7z" fill="#78706A" />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M27.1 56.7a2.3 2.3 0 110-4.7 2.3 2.3 0 010 4.7zm-3.4-1.3l.4-1.2h.5l-.5 1.2h-.4zm5.8 0l.5-1.2h.3l-.5 1.2h-.3zm1 0l.4-1.2h.2l-.5 1.2h-.1z"
+        fill="#C30000"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M29.1 54.2h-.4l-.3.7-.2-.7h-.8v.2l-.4-.2c-.2 0-.4.1-.5.4v-.3h-.1l-.3-.1h-.2l-.1.4v-.4h-.4l-.2.4h.1v.7h.4v-.7h.3l.1.3v.4h.4l.1-.2c.1.2.3.3.5.3h.1l.1-.4v.3h.4l.2-.3h-.1v-.7l.4 1h.5l.4-1v-.1zm-1.8.7h-.2a.2.2 0 110-.3c.2 0 .2 0 .2.2v.1z"
+        fill="#fff"
+      />
     </svg>
   );
 }
