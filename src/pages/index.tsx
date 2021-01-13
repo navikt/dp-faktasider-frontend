@@ -9,13 +9,14 @@ import SEO from "../components/SEO";
 import { useMount } from "react-use";
 import { loggSidevisning } from "../utils/logging";
 import { SupportedLanguage } from "../i18n/supportedLanguages";
+import Notifikasjoner from "../templates/faktaside/Notifikasjoner";
+import { Snarveier } from "../templates/landingsside/Snarveier";
 
 // @ts-ignore
 const Style = styled.div`
   background-color: ${theme.colors.bakgrunn};
 `;
 
-// @ts-ignore
 const Content = styled.main`
   > * {
     margin-left: auto;
@@ -31,7 +32,6 @@ interface Props {
 }
 
 export async function getStaticProps(context): Promise<{ props: Props }> {
-  console.log(context);
   const projectData = await fetchProjectData(context.locale);
   return {
     props: {
@@ -43,7 +43,6 @@ export async function getStaticProps(context): Promise<{ props: Props }> {
 }
 
 export default function IndexPage(props: Props) {
-  console.log(props);
   const { beskrivelse, title, komIgangLenker } = props.projectData;
 
     useMount(() => loggSidevisning("Forside - nav.no/arbeid"));
@@ -52,12 +51,12 @@ export default function IndexPage(props: Props) {
     <Style>
       <DevKnapper />
       <Header heading={title} beskrivelse={beskrivelse} />
-      <SEO lang={props.locale} description={beskrivelse} title={title} path={"props.path"} />{/*
+      <SEO lang={props.locale} description={beskrivelse} title={title} path={"props.path"} />
         <Content>
-          <Notifikasjoner notifikasjoner={props.projectData.forsideNotifikasjoner} />
-          <InfosideLenker lenker={props.infosideLenker} />
+          <Notifikasjoner notifikasjoner={props.projectData.forsideNotifikasjoner} />{/*
+          <InfosideLenker lenker={props.infosideLenker} />*/}
           <Snarveier snarveier={komIgangLenker} />
-        </Content>*!/*/}
+        </Content>
     </Style>
   );
 }
