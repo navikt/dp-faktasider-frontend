@@ -11,6 +11,9 @@ import { loggSidevisning } from "../utils/logging";
 import { SupportedLanguage } from "../i18n/supportedLanguages";
 import Notifikasjoner from "../templates/faktaside/Notifikasjoner";
 import { Snarveier } from "../templates/landingsside/Snarveier";
+import { GetStaticProps } from "next";
+import InfosideLenker from "../templates/landingsside/InfosideLenker";
+import fetchFaktasiderMenuData from "../hooks/graphQl/fetchFaktasiderMenuData";
 
 // @ts-ignore
 const Style = styled.div`
@@ -31,32 +34,34 @@ interface Props {
   locale: SupportedLanguage;
 }
 
-export async function getStaticProps(context): Promise<{ props: Props }> {
-  const projectData = await fetchProjectData(context.locale);
+export const getStaticProps: GetStaticProps = async (context) => {
+  const projectData = await fetchProjectData(context.locale as SupportedLanguage || "no");
+  const infosideLenker = await fetchFaktasiderMenuData(context.locale as SupportedLanguage || "no");
   return {
     props: {
-      // @ts-ignore
-      projectData, infosideLenker: null,
+      projectData,
+      infosideLenker,
       locale: context.locale
     } // will be passed to the page component as props
   };
-}
+};
 
 export default function IndexPage(props: Props) {
+  console.log(props.infosideLenker);
   const { beskrivelse, title, komIgangLenker } = props.projectData;
 
-    useMount(() => loggSidevisning("Forside - nav.no/arbeid"));
+  useMount(() => loggSidevisning("Forside - nav.no/arbeid"));
   /*    useBreadcrumbs();*/
   return (
     <Style>
       <DevKnapper />
       <Header heading={title} beskrivelse={beskrivelse} />
       <SEO lang={props.locale} description={beskrivelse} title={title} path={"props.path"} />
-        <Content>
-          <Notifikasjoner notifikasjoner={props.projectData.forsideNotifikasjoner} />{/*
-          <InfosideLenker lenker={props.infosideLenker} />*/}
-          <Snarveier snarveier={komIgangLenker} />
-        </Content>
+      <Content>
+        <Notifikasjoner notifikasjoner={props.projectData.forsideNotifikasjoner} />
+        <InfosideLenker lenker={props.infosideLenker} />
+        <Snarveier snarveier={komIgangLenker} />
+      </Content>
     </Style>
   );
 }

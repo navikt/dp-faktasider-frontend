@@ -3,6 +3,8 @@ import { SupportedLanguage, supportedLanguages } from "../../i18n/supportedLangu
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import { useTestContext } from "../../testUtils/TestProvider";
 import { ExternalMenuLinkData, InternalMenuLinkData, MenuItem } from "./menuDataUtils";
+import { groq } from "next-sanity";
+import { sanityClient } from "../../../sanity/sanity-config";
 
 interface Side {
   title?: string;
@@ -19,7 +21,8 @@ interface Side {
 }
 
 interface SanityInternLenke {
-  _type: "faktaSide";
+  _type: "reference";
+  referenceType: "faktaSide";
   id: string;
 }
 
@@ -30,60 +33,48 @@ interface SanityEksternLenke {
   beskrivelse: string;
 }
 
-function isSanityInternLenke(lenke: SanityInternLenke | SanityEksternLenke): lenke is SanityInternLenke {
-  return lenke._type === "faktaSide";
+type Lenke = SanityInternLenke | SanityEksternLenke;
+
+function isSanityInternLenke(lenke: Lenke): lenke is SanityInternLenke {
+  return lenke._type === "reference" && lenke.referenceType === "faktaSide";
 }
 
-interface GraphQlData {
-  oppsett: {
-    sideoversiktLenker: Array<SanityInternLenke | SanityEksternLenke>;
-  };
-  pages: {
-    edges: Array<{
-      node: Side;
-    }>;
-  };
+interface SanityData {
+  lenker: {
+    sideoversiktLenker: Lenke[];
+  },
+  pages: Side[];
 }
 
-// @ts-ignore
-export const faktaSideMenyDataQuery = graphql`
-  query MenuData {
-    oppsett: sanityOppsett {
-      sideoversiktLenker {
-        ... on SanityFaktaSide {
-          id
-          _type
-        }
-        ... on SanityEksternLenke {
-          _type
-          url: _rawUrl
-          tittel: _rawTittel
-          beskrivelse: _rawBeskrivelse
-        }
-      }
-    }
-    pages: allSanityFaktaSide {
-      edges {
-        node {
-          title: _rawTitle
-          beskrivelse: _rawBeskrivelse
-          nokkelordBeskrivelse: _rawNokkelordBeskrivelse
-          visSprakversjon: _rawVisSprakversjon
-          id
-          slug {
-            current
-          }
-        }
-      }
+
+const lenkeQuery = groq`
+*[_id == "oppsett"][0] {
+  sideoversiktLenker[] {
+   ...,
+    defined(_ref) => {
+      "id": @-> _id,
+      "referenceType": @-> _type
     }
   }
+}
 `;
 
-export function createMenuItemsData(data, lang: SupportedLanguage): MenuItem[] {
-  const localizedData = localizeSanityContent(data, lang) as GraphQlData;
-  const pages = localizedData?.pages.edges.map((edge) => edge.node) as Side[];
+const pagesQuery = groq`
+*[_type == "faktaSide"] {
+  title,
+  beskrivelse,
+  nokkelordBeskrivelse,
+  visSprakversjon,
+  "id": _id,
+  slug
+}
+`;
 
-  const sortedMenuLinks = localizedData?.oppsett.sideoversiktLenker.map((lenke) => {
+
+export function createMenuItemsData(data: SanityData, lang: SupportedLanguage): MenuItem[] {
+  const {pages, lenker } = localizeSanityContent(data, lang) as SanityData;
+
+  const sortedMenuLinks = lenker.sideoversiktLenker.map((lenke) => {
     if (isSanityInternLenke(lenke)) {
       return createInternalLinkData(pages.find((page) => page.id === lenke.id) as Side, lang);
     }
@@ -115,7 +106,7 @@ function createInternalLinkData(page: Side, lang: SupportedLanguage): InternalMe
     språk,
     tilgjengeligPåValgtSpråk,
     id: page.id,
-    type: "internal",
+    type: "internal"
   };
 }
 
@@ -124,21 +115,15 @@ function createExternalLinkData(lenke: SanityEksternLenke): ExternalMenuLinkData
     url: lenke.url,
     tittel: lenke.tittel,
     beskrivelse: lenke.beskrivelse,
-    type: "external",
+    type: "external"
   };
 }
 
-function useFaktasiderMenuData(): MenuItem[] {
-  // @ts-ignore
-  const data: GraphQlData = useStaticQuery(faktaSideMenyDataQuery);
-  const lang = useLocale();
-  const testContext = useTestContext();
+async function fetchFaktasiderMenuData(lang: SupportedLanguage): Promise<MenuItem[]> {
+  const lenker: Lenke[] = await sanityClient.fetch(lenkeQuery);
+  const pages: Side[] = await sanityClient.fetch(pagesQuery);
 
-  if (testContext.isTest) {
-    return testContext.menuData;
-  }
-
-  return createMenuItemsData(data, lang);
+  return createMenuItemsData({ lenker, pages }, lang);
 }
 
-export default useFaktasiderMenuData;
+export default fetchFaktasiderMenuData;

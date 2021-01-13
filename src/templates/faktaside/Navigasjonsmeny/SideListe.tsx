@@ -2,7 +2,7 @@ import * as React from "react";
 import { useReducer } from "react";
 import styled, { css } from "styled-components/macro";
 import withErrorBoundary from "../../../components/withErrorBoundary";
-import useFaktasiderMenuData from "../../../hooks/graphQl/useFaktasiderMenuData";
+import fetchFaktasiderMenuData from "../../../hooks/graphQl/fetchFaktasiderMenuData";
 import Innholdsfortegnelse from "../InnholdsMeny/Innholdsfortegnelse";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { loggMeny } from "../../../utils/logging";
@@ -117,7 +117,7 @@ function EksternLenke(props: { lenke: ExternalMenuLinkData }) {
 }
 
 function SideListe() {
-  const menuData = useFaktasiderMenuData();
+  const menuData = fetchFaktasiderMenuData();
 
   return (
     <StyledOl>
