@@ -23,8 +23,8 @@ function InfosideLenker(props: { lenker: MenuItem[] }) {
 
   return (
     <StyledForsideLenkePanel title={t("forsideInformasjonHeader")} hideTitle={true}>
-      {props.lenker.map((lenke) => (
-        <StyledLi>
+      {props.lenker.map((lenke, index) => (
+        <StyledLi key={index}>
           {lenke.type === "internal" ? (
             <InternLenke lenke={lenke} key={lenke.id} />
           ) : (

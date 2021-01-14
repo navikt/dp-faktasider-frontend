@@ -118,8 +118,8 @@ function SideListe() {
   const menuData = useFaktasideContext().menuData;
   return (
     <StyledOl>
-      {menuData.map((link) => (
-        <li>
+      {menuData.map((link, index) => (
+        <li key={index}>
           {isInternal(link) ? (
             <InternSideLenke page={link} key={link.id} />
           ) : (
