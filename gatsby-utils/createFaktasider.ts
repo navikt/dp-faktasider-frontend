@@ -49,7 +49,7 @@ export const createFaktasider: GatsbyNode["createPages"] = async (props) => {
   reporter.info(`📄 Lager veiviser: /no/demoapp`);
   actions.createPage({
     path: "/no/demoapp",
-    component: require.resolve("../src/templates/veiviser/Veiviser.tsx"),
+    component: require.resolve("../src/templates/veiviser/demoapp.tsx"),
     context: { pages },
   });
 

@@ -20,19 +20,18 @@ import BlockContent from "../components/BlockContent/BlockContent";
 import RelatertInformasjon from "../templates/faktaside/RelatertInformasjon";
 import fetchFaktasiderMenuData from "../hooks/graphQl/fetchFaktasiderMenuData";
 import { FaktaSideProps } from "../templates/faktaside/types";
-import fetchNotifikasjoner from "../hooks/graphQl/fetchNotifikasjoner";
 
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const lang = context.locale as SupportedLanguage;
-  const faktaside = await fetchFaktaside(lang, context.params.slug);
+  const faktaside = await fetchFaktaside(lang, context.params!.slug as string);
   const menuData = await fetchFaktasiderMenuData(lang);
 
   return {
     props: {
       ...JSON.parse(JSON.stringify(faktaside)),
       path: "random",
-      menuData,
+      menuData
     }
   };
 };

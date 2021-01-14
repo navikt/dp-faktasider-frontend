@@ -56,7 +56,7 @@ export default async function fetchFaktaside(lang: SupportedLanguage, slug: stri
   `;
 
   const faktaside = await sanityClient.fetch(query);
-  const notifikasjoner = await fetchNotifikasjoner(lang, faktaside.id)
+  const notifikasjoner = await fetchNotifikasjoner()
   return createFaktasideContext(faktaside, lang, notifikasjoner);
 }
 
