@@ -13,7 +13,14 @@ export default async function fetchAllFaktasider(lang: SupportedLanguage): Promi
   }
   `;
 
+  const oppsettQuery = groq`
+    *[_id == "oppsett"][0] {
+      title
+    }
+  `;
+
   const faktasider = await sanityClient.fetch(query);
   const notifikasjoner = await fetchNotifikasjoner();
-  return faktasider.map((faktaside) => createFaktasideContext(faktaside, lang, notifikasjoner));
+  const oppsett = await sanityClient.fetch(oppsettQuery);
+  return faktasider.map((faktaside) => createFaktasideContext(faktaside, oppsett.title, lang, notifikasjoner));
 }

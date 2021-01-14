@@ -45,6 +45,7 @@ export type FaktasideContext = Modify<Omit<LocalizedFaktasideData, "_updatedAt">
     rawData: Pick<RawFaktasideData, "title">;
     slug: string;
     notifikasjoner?: Notifikasjon[];
+    sideTittel: string
   }>;
 
 export default async function fetchFaktaside(lang: SupportedLanguage, slug: string): Promise<FaktasideContext> {
@@ -55,17 +56,26 @@ export default async function fetchFaktaside(lang: SupportedLanguage, slug: stri
   }
   `;
 
+  const oppsettQuery = groq`
+    *[_id == "oppsett"][0] {
+      title
+    }
+  `;
+
   const faktaside = await sanityClient.fetch(query);
-  const notifikasjoner = await fetchNotifikasjoner()
-  return createFaktasideContext(faktaside, lang, notifikasjoner);
+  const oppsett = await sanityClient.fetch(oppsettQuery);
+  const notifikasjoner = await fetchNotifikasjoner();
+  return createFaktasideContext(faktaside, oppsett.title, lang, notifikasjoner);
 }
 
 export function createFaktasideContext(
   page: RawFaktasideData,
+  tittel: string,
   lang: SupportedLanguage,
   alleNotifikasjoner?: Notifikasjon[]
 ): FaktasideContext {
   const localizedPage = localizeSanityContent(page, lang) as LocalizedFaktasideData;
+  const localizedTitle = localizeSanityContent(tittel, lang);
   const parsedInnhold = parseRichText(localizedPage.innhold);
   const parsedKortFortalt = parseRichText(localizedPage.kortFortalt);
   const publiseringsTidspunkt = getPubliseringsTidspunkt(localizedPage);
@@ -84,6 +94,7 @@ export function createFaktasideContext(
     rawData: {
       title: page.title
     },
+    sideTittel: localizedTitle,
     notifikasjoner: localizedNotifikasjoner
   };
 }

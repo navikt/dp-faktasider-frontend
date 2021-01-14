@@ -1,5 +1,4 @@
 import * as React from "react";
-import { FaktasideContext } from "../../../gatsby-utils/createFaktasider";
 import styled from "styled-components/macro";
 import UnderArbeid from "../templates/veiviser/UnderArbeid";
 import VelgDetSomPasserBest, { VeiviserValg } from "../templates/veiviser/VelgDetSomPasserBest";
@@ -20,6 +19,7 @@ import { Knapp } from "nav-frontend-knapper";
 import { GetStaticProps } from "next";
 import { SupportedLanguage } from "../i18n/supportedLanguages";
 import fetchAllFaktasider from "../hooks/graphQl/fetchAllFaktasider";
+import { FaktasideContext } from "../hooks/graphQl/fetchFaktaside";
 
 
 const Style = styled.div`

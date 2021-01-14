@@ -4,10 +4,10 @@ import withErrorBoundary from "../../../components/withErrorBoundary";
 import SideListe from "./SideListe";
 import MobilmenyWrapper from "./MobilmenyWrapper";
 import { theme } from "../../../styles/theme";
-import fetchProjectData from "../../../hooks/graphQl/fetchProjectData";
 import { Systemtittel } from "nav-frontend-typografi";
 import useUniqueId from "../../../utils/useUniqueId";
 import { navFrontend } from "../../../styles/navFrontend";
+import { useFaktasideContext } from "../FaktaSideContext";
 
 const DesktopNav = styled.nav`
   @media (${theme.media.smallScreen}) {
@@ -33,6 +33,7 @@ const MobileNav = styled.nav`
 const HeaderStyle = styled(Systemtittel)`
   padding: ${theme.layoutPadding} ${theme.layoutPadding} 0.75rem;
   pointer-events: none;
+
   &::after {
     border-bottom: ${navFrontend.navGra40} 0.1rem solid;
     content: "";
@@ -57,18 +58,18 @@ interface Props {
 function Navigasjonsmeny(props: Props) {
   const mobileTitleId = useUniqueId("mobile-menu");
   const desktopTitleId = useUniqueId("desktop-menu");
-  const projectData = fetchProjectData();
+  const { menuData, sideTittel } = useFaktasideContext();
 
   return (
     <>
       <DesktopNav className={props.className} aria-labelledby={desktopTitleId}>
-        <Header title={projectData.title} id={desktopTitleId} />
-        <SideListe />
+        <Header title={sideTittel} id={desktopTitleId} />
+        <SideListe menuData={menuData} />
       </DesktopNav>
       <MobileNav className={props.className} aria-labelledby={mobileTitleId}>
         <MobilmenyWrapper>
-          <Header title={projectData.title} id={mobileTitleId} />
-          <SideListe />
+          <Header title={sideTittel} id={mobileTitleId} />
+          <SideListe menuData={menuData} />
         </MobilmenyWrapper>
       </MobileNav>
     </>

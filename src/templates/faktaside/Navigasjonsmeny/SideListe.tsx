@@ -7,7 +7,7 @@ import { useFaktasideContext } from "../FaktaSideContext";
 import { loggMeny } from "../../../utils/logging";
 import { UnmountClosed } from "react-collapse";
 import { theme } from "../../../styles/theme";
-import { ExternalMenuLinkData, InternalMenuLinkData, isInternal } from "../../../hooks/graphQl/menuDataUtils";
+import { ExternalMenuLinkData, InternalMenuLinkData, isInternal, MenuItem } from "../../../hooks/graphQl/menuDataUtils";
 import Link from "next/link";
 import NavFrontendChevron from "nav-frontend-chevron";
 import HoyreChevron from "nav-frontend-chevron/lib/hoyre-chevron";
@@ -22,10 +22,12 @@ const listeElementCommonStyling = css`
   font-weight: 600;
   padding: 0.5rem ${theme.layoutPadding};
   color: inherit;
-  i {
+
+  .nav-frontend-chevron {
     margin-right: 0.5rem;
     margin-top: 0.7rem;
   }
+
   &:hover {
     background-color: ${theme.colors.navLysGra};
   }
@@ -114,8 +116,12 @@ function EksternLenke(props: { lenke: ExternalMenuLinkData }) {
   );
 }
 
-function SideListe() {
-  const menuData = useFaktasideContext().menuData;
+interface Props {
+  menuData: MenuItem[]
+}
+
+function SideListe(props: Props) {
+  const { menuData } = props;
   return (
     <StyledOl>
       {menuData.map((link, index) => (

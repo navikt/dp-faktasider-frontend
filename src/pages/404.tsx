@@ -3,10 +3,14 @@ import SEO from "../components/SEO";
 import styled from "styled-components/macro";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
 import { useTranslation } from "react-i18next";
-import { useLocale } from "../i18n/LocaleContext";
 import SideListe from "../templates/faktaside/Navigasjonsmeny/SideListe";
 import { useLocation, useMount } from "react-use";
 import { loggNotFound } from "../utils/logging";
+import { GetStaticProps } from "next";
+import { SupportedLanguage } from "../i18n/supportedLanguages";
+import fetchFaktasiderMenuData from "../hooks/graphQl/fetchFaktasiderMenuData";
+import { useRouter } from "next/router";
+import { MenuItem } from "../hooks/graphQl/menuDataUtils";
 
 const Style = styled.div`
   display: flex;
@@ -19,10 +23,23 @@ const Style = styled.div`
 const StyledNormaltekst = styled(Normaltekst)`
   margin: 2rem 0 0;
 `;
+export const getStaticProps: GetStaticProps = async (context) => {
+  const menuData = await fetchFaktasiderMenuData(context.locale as SupportedLanguage);
 
-const NotFoundPage = () => {
+  return {
+    props: {
+      menuData
+    }
+  };
+};
+
+interface Props {
+  menuData: MenuItem[];
+}
+
+const NotFoundPage = (props: Props) => {
   const { t } = useTranslation("global");
-  const lang = useLocale();
+  const lang = useRouter().locale as SupportedLanguage;
   const path = useLocation().pathname;
 
   useMount(() => {
@@ -35,7 +52,7 @@ const NotFoundPage = () => {
       <Innholdstittel>{t("404")}</Innholdstittel>
       <Normaltekst>{t("404-sub")}</Normaltekst>
       <StyledNormaltekst>{t("404-andre-sider")}</StyledNormaltekst>
-      <SideListe />
+      <SideListe menuData={props.menuData} />
     </Style>
   );
 };

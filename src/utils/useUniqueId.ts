@@ -8,7 +8,7 @@ function generateId(label: string) {
 }
 
 function useUniqueId(label: string) {
-  const [id, setId] = useState<undefined | string>(undefined);
+  const [id, setId] = useState(label);
 
   useEffect(() => setId(generateId(label)), [label]);
 
