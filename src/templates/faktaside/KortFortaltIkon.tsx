@@ -7,7 +7,7 @@ function KortFortaltIkon(props: React.SVGProps<SVGSVGElement>) {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M32.8 30.4c-1 3.5-3.1 6.3-5.8 8l.2 1.6-1.5 12.6h-9l-.1-.2L14.8 40v-1.5a14.7 14.7 0 01-5.7-8H9c-.7 0-1.3-.6-1.3-1.4v-4c0-.6.3-1 .6-1.2.6-7.7 6-13.7 12.6-13.7s12 6 12.7 13.6c.4.2.7.7.7 1.2v4.1c0 .8-.6 1.4-1.3 1.4h-.2z"
-        fill="#E7E9E9"
+        fill="#E7E5E2"
       />
       <path
         fillRule="evenodd"

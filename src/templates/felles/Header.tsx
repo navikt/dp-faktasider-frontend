@@ -14,7 +14,7 @@ interface Props {
 const Background = styled.div`
   background-color: ${theme.colors.navBlaLighten80};
   border-bottom: ${theme.border.banner};
-  box-shadow: inset 0 0.2rem 0.2rem rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   margin-bottom: ${theme.layoutMargin};

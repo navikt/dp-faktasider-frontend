@@ -37,6 +37,7 @@ const StyledTittel = styled(Innholdstittel).attrs({
   transition: top 0.2s;
   z-index: 10;
   margin-bottom: 1.5rem;
+  text-align: center;
 `;
 
 function H2GroupMarkup(props: Group) {

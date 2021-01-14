@@ -23,6 +23,7 @@ export const maxWidth = "77rem";
 const Brødsmulestyling = createGlobalStyle`
 .decorator-wrapper .decorator-utils-content {
   max-width: ${maxWidth};
+  margin-bottom: .5rem;
 }
 `;
 

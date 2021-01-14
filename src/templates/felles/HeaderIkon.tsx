@@ -7,7 +7,7 @@ function HeaderIkon(props: React.SVGProps<SVGSVGElement>) {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M53.2 56.5c-1.8 5.5-5.1 10.2-9.4 13L44 72l-2.3 20.5H26.9v-.4L24 72l.1-2.6a23.8 23.8 0 01-9.4-13h-.2c-1.1 0-2-1-2-2.2v-6.6c0-.8.4-1.5 1-2 1-12.4 9.7-22.2 20.4-22.2s19.5 9.8 20.4 22.2c.7.3 1.2 1 1.2 2v6.6c0 1.2-.9 2.2-2 2.2h-.3z"
-        fill="#E7E9E9"
+        fill="#E7E5E2"
       />
       <path
         fillRule="evenodd"
@@ -19,7 +19,7 @@ function HeaderIkon(props: React.SVGProps<SVGSVGElement>) {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M19.3 111H48l1.8-38.6-1.5-1.3L46 90.9l-23.7.8-2.5-20.9-1.5 1.1 1 39.1z"
-        fill="#DADE99"
+        fill="#F5A096"
       />
       <path
         fillRule="evenodd"
