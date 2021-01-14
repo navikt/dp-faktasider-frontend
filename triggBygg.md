@@ -35,3 +35,4 @@ Da er det lunsj!
 sf
 
 Det er vanskelig å finne på ting her. Men ikke så vanskelig. Eller lett.
+Ny leilighet og genser er topp. 
