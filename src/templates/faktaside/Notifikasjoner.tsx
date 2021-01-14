@@ -13,7 +13,7 @@ export interface Notifikasjon {
   title?: string;
   innhold?: SanityBlock[];
   visPaaForside?: boolean;
-  visPaaSider?: { id: string }[];
+  visPaaSider?: { _ref: string }[];
 }
 
 interface Props {

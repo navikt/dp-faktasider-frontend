@@ -4,7 +4,7 @@ import withErrorBoundary from "../components/withErrorBoundary";
 import { GetStaticProps } from "next";
 import fetchFaktasidePaths from "../hooks/graphQl/fetchFaktasidePaths";
 import { SupportedLanguage } from "../i18n/supportedLanguages";
-import fetchFaktaside, { FaktasideContext } from "../hooks/graphQl/fetchFaktaside";
+import fetchFaktaside from "../hooks/graphQl/fetchFaktaside";
 import { useMount } from "react-use";
 import { loggSidevisning } from "../utils/logging";
 import useLoggUtdatertHashlenke from "../templates/faktaside/useLoggUtdatertHashlenke";
@@ -20,17 +20,20 @@ import BlockContent from "../components/BlockContent/BlockContent";
 import RelatertInformasjon from "../templates/faktaside/RelatertInformasjon";
 import fetchFaktasiderMenuData from "../hooks/graphQl/fetchFaktasiderMenuData";
 import { FaktaSideProps } from "../templates/faktaside/types";
+import fetchNotifikasjoner from "../hooks/graphQl/fetchNotifikasjoner";
 
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const lang = context.locale as SupportedLanguage;
   const faktaside = await fetchFaktaside(lang, context.params.slug);
   const menuData = await fetchFaktasiderMenuData(lang);
+  const notifikasjoner = await fetchNotifikasjoner(lang, faktaside.id)
 
   return {
     props: {
       path: "random",
       menuData,
+      notifikasjoner,
       ...JSON.parse(JSON.stringify(faktaside))
     }
   };
@@ -53,9 +56,7 @@ function Faktaside(props: FaktaSideProps) {
   const tittel = props.title || "";
   const wordCountRef = useRef<HTMLDivElement>(null);
 
-  /*
-    useBreadcrumbs(page);
-  */
+  /*useBreadcrumbs(props);*/
 
   useMount(() => loggSidevisning(tittel));
   useLoggUtdatertHashlenke();
