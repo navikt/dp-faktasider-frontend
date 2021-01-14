@@ -27,14 +27,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const lang = context.locale as SupportedLanguage;
   const faktaside = await fetchFaktaside(lang, context.params.slug);
   const menuData = await fetchFaktasiderMenuData(lang);
-  const notifikasjoner = await fetchNotifikasjoner(lang, faktaside.id)
 
   return {
     props: {
+      ...JSON.parse(JSON.stringify(faktaside)),
       path: "random",
       menuData,
-      notifikasjoner,
-      ...JSON.parse(JSON.stringify(faktaside))
     }
   };
 };

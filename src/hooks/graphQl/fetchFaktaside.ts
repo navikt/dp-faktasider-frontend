@@ -8,6 +8,7 @@ import parseRichText, { ParsedRichText } from "../../utils/richTextUtils/parser/
 import { Notifikasjon } from "../../templates/faktaside/Notifikasjoner";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import { getPubliseringsTidspunkt } from "../../../gatsby-utils/getPubliseringstidspunkt";
+import fetchNotifikasjoner from "./fetchNotifikasjoner";
 
 export interface RawFaktasideData {
   id: string;
@@ -55,7 +56,8 @@ export default async function fetchFaktaside(lang: SupportedLanguage, slug: stri
   `;
 
   const faktaside = await sanityClient.fetch(query);
-  return createFaktasideContext(faktaside, lang, []);
+  const notifikasjoner = await fetchNotifikasjoner(lang, faktaside.id)
+  return createFaktasideContext(faktaside, lang, notifikasjoner);
 }
 
 export function createFaktasideContext(
@@ -68,7 +70,7 @@ export function createFaktasideContext(
   const parsedKortFortalt = parseRichText(localizedPage.kortFortalt);
   const publiseringsTidspunkt = getPubliseringsTidspunkt(localizedPage);
   const relevanteNotifikasjoner = alleNotifikasjoner?.filter((notifikasjon) =>
-    notifikasjon.visPaaSider?.some((side) => side.id === page.id)
+    notifikasjon.visPaaSider?.some((side) => side._ref === page.id)
   );
   const localizedNotifikasjoner = localizeSanityContent(relevanteNotifikasjoner, lang) as Notifikasjon[];
 

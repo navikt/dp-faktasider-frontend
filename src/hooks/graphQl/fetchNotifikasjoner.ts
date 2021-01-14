@@ -1,7 +1,6 @@
 import { sanityClient } from "../../../sanity/sanity-config";
 import { groq } from "next-sanity";
-import Notifikasjoner, { Notifikasjon } from "../../templates/faktaside/Notifikasjoner";
-import { SupportedLanguage } from "../../i18n/supportedLanguages";
+import { Notifikasjon } from "../../templates/faktaside/Notifikasjoner";
 
 const query = groq`
 *[_id == "oppsett"][0] {
@@ -9,8 +8,7 @@ const query = groq`
 }
 `;
 
-export default async function fetchNotifikasjoner(lang: SupportedLanguage, faktaSideId: string): Promise<Notifikasjon[]> {
+export default async function fetchNotifikasjoner(): Promise<Notifikasjon[]> {
   const data: { notifikasjoner: Notifikasjon[] } = await sanityClient.fetch(query);
-  return data.notifikasjoner.filter((notifikasjon) => notifikasjon.visPaaSider?.some((side) => {
-    console.log(side, faktaSideId); return side._ref === faktaSideId}));
+  return data.notifikasjoner;
 }
