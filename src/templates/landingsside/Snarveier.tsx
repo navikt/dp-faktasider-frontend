@@ -8,11 +8,12 @@ import styled from "styled-components";
 const Style = styled.div`
   background-color: white;
   padding: 3rem 0 4rem;
+  display: flex;
+  justify-content: center;
 `;
 
 const StyledForsideLenkePanel = styled(ForsideLenkePanel)`
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 1rem;
 `;
 
 export function Snarveier(props: { snarveier?: EksternLenkeI[] }) {

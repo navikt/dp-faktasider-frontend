@@ -7,12 +7,12 @@ import { theme } from "../../../styles/theme";
 import useProjectData from "../../../hooks/graphQl/useProjectData";
 import { Systemtittel } from "nav-frontend-typografi";
 import useUniqueId from "../../../utils/useUniqueId";
+import { navFrontend } from "../../../styles/navFrontend";
 
 const DesktopNav = styled.nav`
   @media (${theme.media.smallScreen}) {
     display: none;
   }
-  border-top: ${theme.border.banner};
   background-color: white;
   @supports (position: sticky) {
     position: sticky;
@@ -31,9 +31,14 @@ const MobileNav = styled.nav`
 `;
 
 const HeaderStyle = styled(Systemtittel)`
-  padding: ${theme.layoutPadding};
-  opacity: 0.8;
+  padding: ${theme.layoutPadding} ${theme.layoutPadding} 0.75rem;
   pointer-events: none;
+  &::after {
+    border-bottom: ${navFrontend.navGra40} 0.1rem solid;
+    content: "";
+    display: block;
+    margin-top: 1rem;
+  }
 `;
 
 function Header(props: { id: string; title: string }) {

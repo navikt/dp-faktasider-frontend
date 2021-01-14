@@ -10,16 +10,23 @@ import { loggMeny } from "../../../utils/logging";
 import { UnmountClosed } from "react-collapse";
 import { theme } from "../../../styles/theme";
 import { ExternalMenuLinkData, InternalMenuLinkData, isInternal } from "../../../hooks/graphQl/menuDataUtils";
+import NavFrontendChevron from "nav-frontend-chevron";
+import HoyreChevron from "nav-frontend-chevron/lib/hoyre-chevron";
 
 const StyledOl = styled.ol`
   margin-bottom: 8rem;
 `;
 
 const listeElementCommonStyling = css`
+  display: flex;
   font-size: 1.1rem;
   font-weight: 600;
   padding: 0.5rem ${theme.layoutPadding};
   color: inherit;
+  i {
+    margin-right: 0.5rem;
+    margin-top: 0.7rem;
+  }
   &:hover {
     background-color: ${theme.colors.navLysGra};
   }
@@ -71,7 +78,7 @@ function InternSideLenke(props: { page: InternalMenuLinkData }) {
 
   if (currentPage) {
     return (
-      <li>
+      <>
         <StyledButton
           isOpen={open}
           onClick={() => {
@@ -80,33 +87,32 @@ function InternSideLenke(props: { page: InternalMenuLinkData }) {
           }}
           aria-expanded={open}
         >
+          <NavFrontendChevron type={open ? "ned" : "høyre"} />
           <span>{props.page.tittel}</span>
         </StyledButton>
         <UnmountClosed isOpened={open}>
           <Innholdsfortegnelse />
         </UnmountClosed>
-      </li>
+      </>
     );
   }
 
   return (
-    <li>
-      <StyledInternalLink className="lenke" to={props.page.path} onClick={() => loggMeny("Gå til ny side")}>
-        <span>
-          {props.page.tittel} {!props.page.tilgjengeligPåValgtSpråk ? `(${props.page.språk})` : ""}
-        </span>
-      </StyledInternalLink>
-    </li>
+    <StyledInternalLink className="lenke" to={props.page.path} onClick={() => loggMeny("Gå til ny side")}>
+      <HoyreChevron />
+      <span>
+        {props.page.tittel} {!props.page.tilgjengeligPåValgtSpråk ? `(${props.page.språk})` : ""}
+      </span>
+    </StyledInternalLink>
   );
 }
 
 function EksternLenke(props: { lenke: ExternalMenuLinkData }) {
   return (
-    <li>
-      <StyledExternalLink className="lenke" href={props.lenke.url} onClick={() => loggMeny("Gå til ekstern side")}>
-        {props.lenke.tittel}
-      </StyledExternalLink>
-    </li>
+    <StyledExternalLink className="lenke" href={props.lenke.url} onClick={() => loggMeny("Gå til ekstern side")}>
+      <HoyreChevron />
+      <span>{props.lenke.tittel}</span>
+    </StyledExternalLink>
   );
 }
 
@@ -115,9 +121,15 @@ function SideListe() {
 
   return (
     <StyledOl>
-      {menuData.map((link) =>
-        isInternal(link) ? <InternSideLenke page={link} key={link.id} /> : <EksternLenke lenke={link} key={link.url} />
-      )}
+      {menuData.map((link) => (
+        <li>
+          {isInternal(link) ? (
+            <InternSideLenke page={link} key={link.id} />
+          ) : (
+            <EksternLenke lenke={link} key={link.url} />
+          )}
+        </li>
+      ))}
     </StyledOl>
   );
 }

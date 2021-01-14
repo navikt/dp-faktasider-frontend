@@ -23,7 +23,8 @@ const StyledUl = styled.ul`
 `;
 
 const StyledSection = styled.section`
-  max-width: ${contentMaxwidth};
+  width: ${contentMaxwidth};
+  max-width: 100vw;
 `;
 
 export function ForsideLenkePanel(props: {

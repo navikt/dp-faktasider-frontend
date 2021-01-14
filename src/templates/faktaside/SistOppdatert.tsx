@@ -5,17 +5,21 @@ import withErrorBoundary from "../../components/withErrorBoundary";
 
 const Style = styled.div`
   margin-top: 0.5rem;
-  text-align: center;
   font-style: italic;
   opacity: 0.8;
 `;
 
 interface Props {
-  publiseringsTidspunkt: string;
+  publiseringsTidspunkt?: string;
 }
 
 function SistOppdatert(props: Props) {
   const { t } = useTranslation("global");
+
+  if (!props.publiseringsTidspunkt) {
+    return null;
+  }
+
   return <Style>{t("sistOppdatert", { publiseringstidspunkt: new Date(props.publiseringsTidspunkt) })}</Style>;
 }
 
