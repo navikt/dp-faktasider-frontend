@@ -105,7 +105,7 @@ jobs:
 
   deploy-dev:
     name: Deploy to dev
-    needs: [ test, build ]
+    needs: [ build ]
     runs-on: ubuntu-latest
     steps:
       - name: Fetch NAIS yaml
