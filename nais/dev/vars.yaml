@@ -1,5 +1,5 @@
 app: dp-faktasider-frontend
-namespace: default
+namespace: teamdagpenger
 team: teamdagpenger
 ingresses: |
   ingresses:
