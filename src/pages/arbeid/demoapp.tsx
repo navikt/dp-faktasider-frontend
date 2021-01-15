@@ -1,25 +1,25 @@
 import * as React from "react";
 import styled from "styled-components/macro";
-import UnderArbeid from "../templates/veiviser/UnderArbeid";
-import VelgDetSomPasserBest, { VeiviserValg } from "../templates/veiviser/VelgDetSomPasserBest";
-import { veiviserMachine } from "../templates/veiviser/VeiviserStateChart";
+import UnderArbeid from "../../templates/veiviser/UnderArbeid";
+import VelgDetSomPasserBest, { VeiviserValg } from "../../templates/veiviser/VelgDetSomPasserBest";
+import { veiviserMachine } from "../../templates/veiviser/VeiviserStateChart";
 import { useMachine } from "@xstate/react";
-import getAlleTilpassInnholdValg from "../templates/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
-import { Group, isGroup } from "../utils/richTextUtils/richTextTypes";
-import BlockContent from "../components/BlockContent/BlockContent";
-import { visBasertPåFiltrering } from "../components/BlockContent/VisFor/VisFor";
-import { typografiStyle } from "../templates/faktaside/MainContentStyle";
-import VeiviserBrødsmuler from "../templates/veiviser/VeiviserBrødsmuler";
-import DevKnapper from "../components/DevKnapper/DevKnapper";
-import { useVisForContext } from "../components/BlockContent/VisFor/VisForContext";
-import { visBasertPaaVisPaaConfig } from "../components/BlockContent/VisFor/VisPaaSide";
-import { isDevelopment } from "../utils/environment";
-import { createH2Group } from "../utils/richTextUtils/createGroup";
+import getAlleTilpassInnholdValg from "../../templates/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
+import { Group, isGroup } from "../../utils/richTextUtils/richTextTypes";
+import BlockContent from "../../components/BlockContent/BlockContent";
+import { visBasertPåFiltrering } from "../../components/BlockContent/VisFor/VisFor";
+import { typografiStyle } from "../../templates/faktaside/MainContentStyle";
+import VeiviserBrødsmuler from "../../templates/veiviser/VeiviserBrødsmuler";
+import DevKnapper from "../../components/DevKnapper/DevKnapper";
+import { useVisForContext } from "../../components/BlockContent/VisFor/VisForContext";
+import { visBasertPaaVisPaaConfig } from "../../components/BlockContent/VisFor/VisPaaSide";
+import { isDevelopment } from "../../utils/environment";
+import { createH2Group } from "../../utils/richTextUtils/createGroup";
 import { Knapp } from "nav-frontend-knapper";
 import { GetStaticProps } from "next";
-import { SupportedLanguage } from "../i18n/supportedLanguages";
-import fetchAllFaktasider from "../hooks/graphQl/fetchAllFaktasider";
-import { FaktasideContext } from "../hooks/graphQl/fetchFaktaside";
+import { SupportedLanguage } from "../../i18n/supportedLanguages";
+import fetchAllFaktasider from "../../hooks/graphQl/fetchAllFaktasider";
+import { FaktasideContext } from "../../hooks/graphQl/fetchFaktaside";
 
 
 const Style = styled.div`

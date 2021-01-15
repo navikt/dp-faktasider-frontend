@@ -1,19 +1,19 @@
 import React from "react";
 import styled from "styled-components/macro";
-import fetchProjectData, { ProjectData } from "../hooks/graphQl/fetchProjectData";
-import { MenuItem } from "../hooks/graphQl/menuDataUtils";
-import { theme } from "../styles/theme";
-import DevKnapper from "../components/DevKnapper/DevKnapper";
-import Header from "../templates/felles/Header";
-import SEO from "../components/SEO";
+import fetchProjectData, { ProjectData } from "../../hooks/graphQl/fetchProjectData";
+import { MenuItem } from "../../hooks/graphQl/menuDataUtils";
+import { theme } from "../../styles/theme";
+import DevKnapper from "../../components/DevKnapper/DevKnapper";
+import Header from "../../templates/felles/Header";
+import SEO from "../../components/SEO";
 import { useMount } from "react-use";
-import { loggSidevisning } from "../utils/logging";
-import { SupportedLanguage } from "../i18n/supportedLanguages";
-import Notifikasjoner from "../templates/faktaside/Notifikasjoner";
-import { Snarveier } from "../templates/landingsside/Snarveier";
+import { loggSidevisning } from "../../utils/logging";
+import { SupportedLanguage } from "../../i18n/supportedLanguages";
+import Notifikasjoner from "../../templates/faktaside/Notifikasjoner";
+import { Snarveier } from "../../templates/landingsside/Snarveier";
 import { GetStaticProps } from "next";
-import InfosideLenker from "../templates/landingsside/InfosideLenker";
-import fetchFaktasiderMenuData from "../hooks/graphQl/fetchFaktasiderMenuData";
+import InfosideLenker from "../../templates/landingsside/InfosideLenker";
+import fetchFaktasiderMenuData from "../../hooks/graphQl/fetchFaktasiderMenuData";
 
 const Style = styled.div`
   background-color: ${theme.colors.bakgrunn};

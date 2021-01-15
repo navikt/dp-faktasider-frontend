@@ -1,25 +1,25 @@
 import * as React from "react";
 import { useRef } from "react";
-import withErrorBoundary from "../components/withErrorBoundary";
+import withErrorBoundary from "../../components/withErrorBoundary";
 import { GetStaticProps } from "next";
-import fetchFaktasidePaths from "../hooks/graphQl/fetchFaktasidePaths";
-import { SupportedLanguage } from "../i18n/supportedLanguages";
-import fetchFaktaside from "../hooks/graphQl/fetchFaktaside";
+import fetchFaktasidePaths from "../../hooks/graphQl/fetchFaktasidePaths";
+import { SupportedLanguage } from "../../i18n/supportedLanguages";
+import fetchFaktaside from "../../hooks/graphQl/fetchFaktaside";
 import { useMount } from "react-use";
-import { loggSidevisning } from "../utils/logging";
-import useLoggUtdatertHashlenke from "../templates/faktaside/useLoggUtdatertHashlenke";
-import IkkeOversatt from "../templates/faktaside/IkkeOversatt";
-import { FaktasideProvider } from "../templates/faktaside/FaktaSideContext";
-import SEO from "../components/SEO";
-import StickyFeedback from "../templates/faktaside/StickyFeedback";
-import FaktaSideLayout from "../templates/faktaside/FaktaSideLayout";
-import InnholdetErTilpasset from "../templates/faktaside/InnholdsMeny/InnholdetErTilpasset";
-import Notifikasjoner from "../templates/faktaside/Notifikasjoner";
-import KortFortalt from "../templates/faktaside/KortFortalt";
-import BlockContent from "../components/BlockContent/BlockContent";
-import RelatertInformasjon from "../templates/faktaside/RelatertInformasjon";
-import fetchFaktasiderMenuData from "../hooks/graphQl/fetchFaktasiderMenuData";
-import { FaktaSideProps } from "../templates/faktaside/types";
+import { loggSidevisning } from "../../utils/logging";
+import useLoggUtdatertHashlenke from "../../templates/faktaside/useLoggUtdatertHashlenke";
+import IkkeOversatt from "../../templates/faktaside/IkkeOversatt";
+import { FaktasideProvider } from "../../templates/faktaside/FaktaSideContext";
+import SEO from "../../components/SEO";
+import StickyFeedback from "../../templates/faktaside/StickyFeedback";
+import FaktaSideLayout from "../../templates/faktaside/FaktaSideLayout";
+import InnholdetErTilpasset from "../../templates/faktaside/InnholdsMeny/InnholdetErTilpasset";
+import Notifikasjoner from "../../templates/faktaside/Notifikasjoner";
+import KortFortalt from "../../templates/faktaside/KortFortalt";
+import BlockContent from "../../components/BlockContent/BlockContent";
+import RelatertInformasjon from "../../templates/faktaside/RelatertInformasjon";
+import fetchFaktasiderMenuData from "../../hooks/graphQl/fetchFaktasiderMenuData";
+import { FaktaSideProps } from "../../templates/faktaside/types";
 
 
 export const getStaticProps: GetStaticProps = async (context) => {

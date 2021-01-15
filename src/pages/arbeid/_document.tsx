@@ -2,7 +2,7 @@ import Document, { Head, Html, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 import { NextPageContext } from "next";
 import { RenderPage } from "next/dist/next-server/lib/utils";
-import getDekoratøren from "../dekoratøren/dekoratøren";
+import getDekoratøren from "../../dekoratøren/dekoratøren";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: any) {

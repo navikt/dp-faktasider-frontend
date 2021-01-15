@@ -1,5 +1,5 @@
 import * as React from "react";
-import FaktaSide from "../pages/[slug]";
+import FaktaSide from "../pages/arbeid/[slug]";
 import { Block } from "../utils/richTextUtils/richTextTypes";
 import { faktaSideMockContext } from "./faktaSideMockContext";
 import TestProvider from "./TestProvider";

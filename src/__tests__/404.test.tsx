@@ -1,6 +1,6 @@
 import React from "react";
 import { render, within } from "../testUtils/customized-testing-library";
-import NotFoundPage from "../pages/404";
+import NotFoundPage from "../pages/arbeid/404";
 import { mockFaktasiderMenuData } from "../hooks/graphQl/mockFaktasiderMenuData";
 
 describe("404-side", () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import IndexPage from "../pages";
+import IndexPage from "../pages/arbeid";
 import { render, within } from "../testUtils/customized-testing-library";
 import { mockFaktasiderMenuData } from "../hooks/graphQl/mockFaktasiderMenuData";
 import { InternalMenuLinkData } from "../hooks/graphQl/menuDataUtils";
