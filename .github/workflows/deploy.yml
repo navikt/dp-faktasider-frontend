@@ -79,7 +79,6 @@ jobs:
   update-docker-cache:
     name: Update Docker Cache
     needs: [ build ]
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
