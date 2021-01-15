@@ -1,6 +1,5 @@
-import { sanityClient } from "../../../sanity/sanity-config";
+import { sanityClient } from "../../sanity/sanity-config";
 import { groq } from "next-sanity";
-import { SupportedLanguage } from "../../i18n/supportedLanguages";
 
 interface FaktasidePath {
   slug: {

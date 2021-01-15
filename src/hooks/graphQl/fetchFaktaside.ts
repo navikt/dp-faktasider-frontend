@@ -1,4 +1,4 @@
-import { sanityClient } from "../../../sanity/sanity-config";
+import { sanityClient } from "../../sanity/sanity-config";
 import { groq } from "next-sanity";
 import { Translations } from "../../types/translations";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
@@ -7,7 +7,7 @@ import { SupportedLanguage } from "../../i18n/supportedLanguages";
 import parseRichText, { ParsedRichText } from "../../utils/richTextUtils/parser/parseRichText";
 import { Notifikasjon } from "../../templates/faktaside/Notifikasjoner";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
-import { getPubliseringsTidspunkt } from "../../../gatsby-utils/getPubliseringstidspunkt";
+import { getPubliseringsTidspunkt } from "../../gatsby-utils/getPubliseringstidspunkt";
 import fetchNotifikasjoner from "./fetchNotifikasjoner";
 
 export interface RawFaktasideData {
@@ -45,7 +45,8 @@ export type FaktasideContext = Modify<Omit<LocalizedFaktasideData, "_updatedAt">
     rawData: Pick<RawFaktasideData, "title">;
     slug: string;
     notifikasjoner?: Notifikasjon[];
-    sideTittel: string
+    sideTittel: string;
+    folketrygdensGrunnbellop: number;
   }>;
 
 export default async function fetchFaktaside(lang: SupportedLanguage, slug: string): Promise<FaktasideContext> {
@@ -57,25 +58,26 @@ export default async function fetchFaktaside(lang: SupportedLanguage, slug: stri
   `;
 
   const oppsettQuery = groq`
-    *[_id == "oppsett"][0] {
-      title
-    }
+  *[_id == "oppsett"][0] {
+    title,
+    folketrygdensGrunnbellop
+  }
   `;
 
   const faktaside = await sanityClient.fetch(query);
   const oppsett = await sanityClient.fetch(oppsettQuery);
   const notifikasjoner = await fetchNotifikasjoner();
-  return createFaktasideContext(faktaside, oppsett.title, lang, notifikasjoner);
+  return createFaktasideContext(faktaside, oppsett, lang, notifikasjoner);
 }
 
 export function createFaktasideContext(
   page: RawFaktasideData,
-  tittel: string,
+  oppsett: { title, folketrygdensGrunnbellop },
   lang: SupportedLanguage,
   alleNotifikasjoner?: Notifikasjon[]
 ): FaktasideContext {
   const localizedPage = localizeSanityContent(page, lang) as LocalizedFaktasideData;
-  const localizedTitle = localizeSanityContent(tittel, lang);
+  const localizedTitle = localizeSanityContent(oppsett.title, lang);
   const parsedInnhold = parseRichText(localizedPage.innhold);
   const parsedKortFortalt = parseRichText(localizedPage.kortFortalt);
   const publiseringsTidspunkt = getPubliseringsTidspunkt(localizedPage);
@@ -95,6 +97,7 @@ export function createFaktasideContext(
       title: page.title
     },
     sideTittel: localizedTitle,
-    notifikasjoner: localizedNotifikasjoner
+    notifikasjoner: localizedNotifikasjoner,
+    folketrygdensGrunnbellop: oppsett.folketrygdensGrunnbellop
   };
 }

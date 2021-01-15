@@ -1,9 +1,9 @@
 import * as React from "react";
-import { FaktasideContext } from "../../gatsby-utils/createFaktasider";
 import FaktaSide from "../pages/[slug]";
 import { Block } from "../utils/richTextUtils/richTextTypes";
 import { faktaSideMockContext } from "./faktaSideMockContext";
 import TestProvider from "./TestProvider";
+import { FaktasideContext } from "../hooks/graphQl/fetchFaktaside";
 
 type Props = {
   partialContext?: Partial<FaktasideContext>;

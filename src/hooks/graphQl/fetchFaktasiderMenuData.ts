@@ -2,7 +2,7 @@ import { SupportedLanguage, supportedLanguages } from "../../i18n/supportedLangu
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import { ExternalMenuLinkData, InternalMenuLinkData, MenuItem } from "./menuDataUtils";
 import { groq } from "next-sanity";
-import { sanityClient } from "../../../sanity/sanity-config";
+import { sanityClient } from "../../sanity/sanity-config";
 
 interface Side {
   title?: string;
@@ -38,9 +38,7 @@ function isSanityInternLenke(lenke: Lenke): lenke is SanityInternLenke {
 }
 
 interface SanityData {
-  lenker: {
-    sideoversiktLenker: Lenke[];
-  },
+  lenker: Lenke[];
   pages: Side[];
 }
 
@@ -72,7 +70,7 @@ const pagesQuery = groq`
 export function createMenuItemsData(data: SanityData, lang: SupportedLanguage): MenuItem[] {
   const { pages, lenker } = localizeSanityContent(data, lang) as SanityData;
 
-  const sortedMenuLinks = lenker.sideoversiktLenker.map((lenke) => {
+  const sortedMenuLinks = lenker.map((lenke) => {
     if (isSanityInternLenke(lenke)) {
       return createInternalLinkData(pages.find((page) => page.id === lenke.id) as Side, lang);
     }

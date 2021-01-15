@@ -5,12 +5,12 @@ import { mockFaktasiderMenuData } from "../../hooks/graphQl/mockFaktasiderMenuDa
 
 describe("404-side", () => {
   test("inneholder info om at denne siden ikke finnes", () => {
-    const result = render(<NotFoundPage />);
+    const result = render(<NotFoundPage menuData={mockFaktasiderMenuData} />);
     result.getByText("Denne siden finnes ikke");
   });
 
   test("inneholder en liste med lenker til alle sider i appen", () => {
-    const result = render(<NotFoundPage />);
+    const result = render(<NotFoundPage menuData={mockFaktasiderMenuData} />);
     const liste = result.getByRole("list");
     const lenker = within(liste).getAllByRole("link");
 

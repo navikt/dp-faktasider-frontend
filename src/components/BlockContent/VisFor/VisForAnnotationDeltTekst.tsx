@@ -1,9 +1,9 @@
 import * as React from "react";
-import { RawFaktasideData } from "../../../../gatsby-utils/createFaktasider";
 import VisForAnnotation from "./VisForAnnotation";
 import { VisForConfig } from "../../../utils/richTextUtils/richTextTypes";
 import VisPaaSide from "./VisPaaSide";
 import withErrorBoundary from "../../withErrorBoundary";
+import { RawFaktasideData } from "../../../hooks/graphQl/fetchFaktaside";
 
 interface Props {
   children: string[];

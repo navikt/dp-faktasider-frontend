@@ -1,6 +1,6 @@
-import { FaktasideContext } from "../../gatsby-utils/createFaktasider";
 import { createSanityBlock } from "./createSanityBlock";
 import parseRichText from "../utils/richTextUtils/parser/parseRichText";
+import { FaktasideContext } from "../hooks/graphQl/fetchFaktaside";
 
 const title = "Testside";
 
@@ -28,4 +28,6 @@ export const faktaSideMockContext: FaktasideContext = {
     en: false,
   },
   notifikasjoner: [],
+  folketrygdensGrunnbellop: 1000,
+  sideTittel: "testtittelside"
 };

@@ -1,8 +1,8 @@
 import { onBreadcrumbClick, setBreadcrumbs } from "@navikt/nav-dekoratoren-moduler/dist";
 import { Breadcrumb } from "@navikt/nav-dekoratoren-moduler/dist/functions/breadcrumbs";
-import { FaktasideContext } from "../../../gatsby-utils/createFaktasider";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { FaktasideContext } from "../../hooks/graphQl/fetchFaktaside";
 
 function useBreadcrumbs(faktaside?: FaktasideContext) {
   const lang = useRouter().locale;

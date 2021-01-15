@@ -1,5 +1,5 @@
 import { max } from "date-fns";
-import getPropertyRecursivlyFromDeepObject from "../src/utils/getPropertyRecursivlyFromDeepObject";
+import getPropertyRecursivlyFromDeepObject from "../utils/getPropertyRecursivlyFromDeepObject";
 
 export function getPubliseringsTidspunkt(page): string {
   const allUpdatedAt = getPropertyRecursivlyFromDeepObject<string>(page, "_updatedAt");

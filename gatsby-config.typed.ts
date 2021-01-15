@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import csp from "./gatsby-utils/csp";
+import csp from "./src/gatsby-utils/csp";
 
 dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,

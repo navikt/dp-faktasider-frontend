@@ -1,7 +1,7 @@
-import fetchProjectData from "../hooks/graphQl/fetchProjectData";
+import { useFaktasideContext } from "../templates/faktaside/FaktaSideContext";
 
 export function useGrunnbellop() {
-  const G = fetchProjectData().folketrygdensGrunnbellop;
+  const G = useFaktasideContext().folketrygdensGrunnbellop;
 
   return {
     GtoNOK: (g: number) => Math.round(g * G).toLocaleString("nb-NO"),

@@ -1,6 +1,6 @@
 import { DelttekstReference, SanityBlock, TidslinjeI, Tillegsinformasjon } from "../utils/richTextUtils/richTextTypes";
 import { guid } from "nav-frontend-js-utils";
-import { RawFaktasideData } from "../../gatsby-utils/createFaktasider";
+import { RawFaktasideData } from "../hooks/graphQl/fetchFaktaside";
 
 /*
  * Funksjoner for å lage sanity-mock-data til bruk i tester

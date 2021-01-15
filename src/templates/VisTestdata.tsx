@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useReducer } from "react";
-import { FaktasideContext } from "../../gatsby-utils/createFaktasider";
 import { visForTestData } from "../components/BlockContent/VisFor/visFor.testdata";
 import { faktaSideMockContext } from "../testUtils/faktaSideMockContext";
 import styled from "styled-components/macro";
@@ -19,6 +18,7 @@ import { visPaaSideTestData } from "../components/BlockContent/VisFor/VisPaaSide
 import { tillegsinformasjonTestData } from "../components/BlockContent/Tilleggsinnformasjon/TilleggsInnformasjon.testdata";
 import { groupMarkupTestData } from "../components/BlockContent/GroupMarkup/GroupMarkup.testdata";
 import { tidslinjeTestData } from "../components/BlockContent/Tidslinje/Tidslinje.testdata";
+import { FaktasideContext } from "../hooks/graphQl/fetchFaktaside";
 
 type Testdata = {
   data: Partial<FaktasideContext>;

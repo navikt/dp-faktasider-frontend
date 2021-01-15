@@ -10,7 +10,9 @@ const inital: FaktaSideProps = {
   publiseringsTidspunkt: "",
   innhold: [],
   rawData: {},
-  notifikasjoner: []
+  notifikasjoner: [],
+  folketrygdensGrunnbellop: NaN,
+  sideTittel: ""
 };
 
 const Context = createContext<FaktaSideProps>(inital);

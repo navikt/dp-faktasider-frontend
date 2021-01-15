@@ -1,13 +1,6 @@
 **
 
 !*.json
-!gatsby*.js
-!gatsby*.ts
 !gatsby-utils
-!nginx-server-rules.conf
-!plugins
 !src
-!static
-!jest*
-!__mocks__
-!.eslintrc.js
+!public

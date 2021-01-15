@@ -15,7 +15,7 @@ test("Index-side inneholder lenker til undersider med beskrivelse", () => {
         forsideNotifikasjoner: [],
       }}
       infosideLenker={mockFaktasiderMenuData}
-      path={"test"}
+      locale={"no"}
     />
   );
 

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { FaktaSideProps } from "../../pages/[slug]";
 import styled from "styled-components/macro";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
 import { useTranslation } from "react-i18next";
@@ -8,6 +7,7 @@ import FaktaSideLayout from "./FaktaSideLayout";
 import withErrorBoundary from "../../components/withErrorBoundary";
 import { useMount } from "react-use";
 import { loggIkkeOversatt } from "../../utils/logging";
+import { FaktaSideProps } from "./types";
 
 const Style = styled.div`
   display: flex;
