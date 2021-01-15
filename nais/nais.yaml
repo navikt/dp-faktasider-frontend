@@ -9,9 +9,9 @@ spec:
   image: {{ image }}
   port: 3000
   liveness:
-    path: /isalive
+    path: /api/isalive
   readiness:
-    path: /isready
+    path: /api/isready
   prometheus:
     enabled: false
   replicas:
