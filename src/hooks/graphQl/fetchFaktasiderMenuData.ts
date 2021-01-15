@@ -116,10 +116,10 @@ function createExternalLinkData(lenke: SanityEksternLenke): ExternalMenuLinkData
 }
 
 async function fetchFaktasiderMenuData(lang: SupportedLanguage): Promise<MenuItem[]> {
-  const lenker: Lenke[] = await sanityClient.fetch(lenkeQuery);
+  const lenker: { sideoversiktLenker: Lenke[] } = await sanityClient.fetch(lenkeQuery);
   const pages: Side[] = await sanityClient.fetch(pagesQuery);
 
-  return createMenuItemsData({ lenker, pages }, lang);
+  return createMenuItemsData({ lenker: lenker.sideoversiktLenker, pages }, lang);
 }
 
 export default fetchFaktasiderMenuData;

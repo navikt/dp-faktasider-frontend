@@ -1,7 +1,7 @@
 import React from "react";
-import { render, within } from "../../testUtils/customized-testing-library";
-import NotFoundPage from "../404";
-import { mockFaktasiderMenuData } from "../../hooks/graphQl/mockFaktasiderMenuData";
+import { render, within } from "../testUtils/customized-testing-library";
+import NotFoundPage from "../pages/404";
+import { mockFaktasiderMenuData } from "../hooks/graphQl/mockFaktasiderMenuData";
 
 describe("404-side", () => {
   test("inneholder info om at denne siden ikke finnes", () => {

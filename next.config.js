@@ -13,6 +13,6 @@ module.exports = withTranspileModules(
     i18n: {
       locales: ['no', 'en'],
       defaultLocale: 'no'
-    }
+    },
   })
 );
