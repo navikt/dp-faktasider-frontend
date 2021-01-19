@@ -86,7 +86,6 @@
     "start": "next start",
     "test": "jest",
     "typeCheck": "tsc",
-    "lint": "eslint src/",
     "docker": "echo '🚀 Hoster app på localhost/arbeid \n' && docker build -t dpfakta . && docker run --rm -p 80:80 dpfakta"
   },
   "prettier": {
@@ -95,11 +94,10 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm run typeCheck && npm run lint && npm run test"
+      "pre-push": "npm run typeCheck && npm run test"
     }
   },
   "lint-staged": {
-    "*.{js,jsx,json,md,ts,tsx}": "prettier --write",
-    "*.{js,jsx,ts,tsx}": "eslint"
+    "*.{js,jsx,json,md,ts,tsx}": "prettier --write"
   }
 }
