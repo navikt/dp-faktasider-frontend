@@ -2,30 +2,32 @@ import Document, { Head, Html, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 import { NextPageContext } from "next";
 import { RenderPage } from "next/dist/next-server/lib/utils";
-import getDekoratøren from "../dekoratøren/dekoratøren";
+import fetchDekoratorReact, { DekoratorReactComponents } from "../dekoratøren/fetchDekoratorReact";
 
-export default class MyDocument extends Document {
+export default class MyDocument extends Document<DekoratorReactComponents> {
   static async getInitialProps(ctx: any) {
     const styledComponentsStylesheet = await renderServersideStyledComponentsStylesheet(ctx);
-    const dekoratøren = await getDekoratøren();
+    const dekoratøren = await fetchDekoratorReact({
+      breadcrumbs: [{ title: "Forside", url: "https://www.nav.no/arbeid" }],
+    });
     return { ...styledComponentsStylesheet, ...dekoratøren };
   }
 
   render() {
-    const { Styles, Scripts, Header, Footer } = this.props as any;
+    const { DekoratorStyles, DekoratorScripts, DekoratorHeader, DekoratorFooter } = this.props;
 
     return (
       <Html>
         <Head /> {/* Head må først inn, så kan neste blokk inserte elementer */}
         <Head>
-          {Styles}
-          {Scripts}
+          <DekoratorStyles />
+          <DekoratorScripts />
         </Head>
         <body>
-        {Header}
-        <Main />
-        {Footer}
-        <NextScript />
+          <DekoratorHeader />
+          <Main />
+          <DekoratorFooter />
+          <NextScript />
         </body>
       </Html>
     );
@@ -39,7 +41,7 @@ async function renderServersideStyledComponentsStylesheet(ctx: NextPageContext &
   try {
     ctx.renderPage = () =>
       originalRenderPage({
-        enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />)
+        enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
       });
     const initialProps = await Document.getInitialProps(ctx);
     return {
@@ -49,7 +51,7 @@ async function renderServersideStyledComponentsStylesheet(ctx: NextPageContext &
           {initialProps.styles}
           {sheet.getStyleElement()}
         </>
-      )
+      ),
     };
   } finally {
     sheet.seal();
