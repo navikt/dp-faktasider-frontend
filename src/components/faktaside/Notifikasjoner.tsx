@@ -7,7 +7,7 @@ import withErrorBoundary from "../../components/withErrorBoundary";
 import BlockContent from "../../components/BlockContent/BlockContent";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import { typografiStyle } from "./MainContentStyle";
-import { contentMaxwidth } from "../landingsside/style";
+import { contentMaxwidth } from "../forside/style";
 
 export interface Notifikasjon {
   title?: string;
@@ -26,7 +26,7 @@ const Style = styled.div`
     margin-bottom: 0.5rem;
   }
   .alertstripe__tekst {
-    max-width: unset;
+    max-width: unset !important;
   }
   max-width: ${contentMaxwidth};
 `;

@@ -5,10 +5,10 @@ import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import { Modify } from "../../utils/typeUtils";
 import { SupportedLanguage } from "../../i18n/supportedLanguages";
 import parseRichText, { ParsedRichText } from "../../utils/richTextUtils/parser/parseRichText";
-import { Notifikasjon } from "../../templates/faktaside/Notifikasjoner";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import { getPubliseringsTidspunkt } from "../../gatsby-utils/getPubliseringstidspunkt";
 import fetchNotifikasjoner from "./fetchNotifikasjoner";
+import { Notifikasjon } from "../../components/faktaside/Notifikasjoner";
 
 export interface RawFaktasideData {
   id: string;
@@ -28,16 +28,19 @@ export interface RawFaktasideData {
   visIngenValgPasser?: boolean;
 }
 
-export type LocalizedFaktasideData = Modify<RawFaktasideData,
+export type LocalizedFaktasideData = Modify<
+  RawFaktasideData,
   {
     title?: string;
     beskrivelse?: string;
     innhold?: SanityBlock[];
     kortFortalt?: SanityBlock[];
     relatertInformasjon?: SanityBlock[];
-  }>;
+  }
+>;
 
-export type FaktasideContext = Modify<Omit<LocalizedFaktasideData, "_updatedAt">,
+export type FaktasideContext = Modify<
+  Omit<LocalizedFaktasideData, "_updatedAt">,
   {
     lang: SupportedLanguage;
     innhold: ParsedRichText;
@@ -47,7 +50,8 @@ export type FaktasideContext = Modify<Omit<LocalizedFaktasideData, "_updatedAt">
     notifikasjoner?: Notifikasjon[];
     sideTittel: string;
     folketrygdensGrunnbellop: number;
-  }>;
+  }
+>;
 
 export default async function fetchFaktaside(lang: SupportedLanguage, slug: string): Promise<FaktasideContext> {
   const query = groq`
@@ -72,7 +76,7 @@ export default async function fetchFaktaside(lang: SupportedLanguage, slug: stri
 
 export function createFaktasideContext(
   page: RawFaktasideData,
-  oppsett: { title, folketrygdensGrunnbellop },
+  oppsett: { title; folketrygdensGrunnbellop },
   lang: SupportedLanguage,
   alleNotifikasjoner?: Notifikasjon[]
 ): FaktasideContext {
@@ -94,10 +98,10 @@ export function createFaktasideContext(
     slug: page.slug?.current || "N/A",
     publiseringsTidspunkt,
     rawData: {
-      title: page.title
+      title: page.title,
     },
     sideTittel: localizedTitle,
     notifikasjoner: localizedNotifikasjoner,
-    folketrygdensGrunnbellop: oppsett.folketrygdensGrunnbellop
+    folketrygdensGrunnbellop: oppsett.folketrygdensGrunnbellop,
   };
 }

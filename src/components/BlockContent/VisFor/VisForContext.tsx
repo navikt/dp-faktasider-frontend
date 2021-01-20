@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useContext, useEffect, useReducer } from "react";
 import { useLocation, usePrevious } from "react-use";
 import { loggTilpassInnhold } from "../../../utils/logging";
-import { TilpassInnholdValg } from "../../../templates/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
+import { TilpassInnholdValg } from "../../faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
 
 type Actions =
   | { type: "toggle"; key: string }

@@ -44,7 +44,9 @@ const StyledLink = styled.a`
 `;
 
 export const menuHighlightStyle = css`
-  background-color: #f8f8f8;
+  && {
+    background-color: #f8f8f8;
+  }
   position: relative;
 
   &::after {
@@ -100,8 +102,8 @@ function InternSideLenke(props: { page: InternalMenuLinkData }) {
       <StyledLink className="lenke" onClick={() => loggMeny("Gå til ny side")}>
         <HoyreChevron />
         <span>
-            {props.page.tittel} {!props.page.tilgjengeligPåValgtSpråk ? `(${props.page.språk})` : ""}
-          </span>
+          {props.page.tittel} {!props.page.tilgjengeligPåValgtSpråk ? `(${props.page.språk})` : ""}
+        </span>
       </StyledLink>
     </Link>
   );
@@ -117,7 +119,7 @@ function EksternLenke(props: { lenke: ExternalMenuLinkData }) {
 }
 
 interface Props {
-  menuData: MenuItem[]
+  menuData: MenuItem[];
 }
 
 function SideListe(props: Props) {

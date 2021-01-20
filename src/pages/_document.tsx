@@ -9,6 +9,8 @@ export default class MyDocument extends Document<DekoratorReactComponents> {
     const styledComponentsStylesheet = await renderServersideStyledComponentsStylesheet(ctx);
     const dekoratøren = await fetchDekoratorReact({
       breadcrumbs: [{ title: "Forside", url: "https://www.nav.no/arbeid" }],
+      context: "privatperson",
+      chatbot: true,
     });
     return { ...styledComponentsStylesheet, ...dekoratøren };
   }
@@ -21,7 +23,7 @@ export default class MyDocument extends Document<DekoratorReactComponents> {
         <Head /> {/* Head må først inn, så kan neste blokk inserte elementer */}
         <Head>
           <DekoratorStyles />
-          <DekoratorScripts />
+          {DekoratorScripts}
         </Head>
         <body>
           <DekoratorHeader />

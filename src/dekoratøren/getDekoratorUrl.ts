@@ -21,6 +21,7 @@ export function getDekoratorUrl(params?: DekoratorParams): string {
 
   const stringified = {
     ...params,
+    context: params.context || "privatperson",
     availableLanguages: params.availableLanguages && JSON.stringify(params.availableLanguages),
     breadcrumbs: params.breadcrumbs && JSON.stringify(params.breadcrumbs),
   };

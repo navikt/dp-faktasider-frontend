@@ -4,7 +4,7 @@ import styled, { createGlobalStyle } from "styled-components/macro";
 import { theme } from "../../styles/theme";
 import withErrorBoundary from "../../components/withErrorBoundary";
 import HeaderIkon from "./HeaderIkon";
-import { contentMaxwidth } from "../landingsside/style";
+import { contentMaxwidth } from "./style";
 
 interface Props {
   heading: string;
@@ -21,7 +21,7 @@ const Background = styled.div`
 `;
 
 const StyledSidetittel = styled(Sidetittel)`
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem 0 !important;
 `;
 
 const Content = styled.div`

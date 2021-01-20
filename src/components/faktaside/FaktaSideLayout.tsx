@@ -2,7 +2,6 @@ import * as React from "react";
 import { ReactNode, RefObject } from "react";
 import styled, { createGlobalStyle } from "styled-components/macro";
 import Navigasjonsmeny from "./Navigasjonsmeny/Navigasjonsmeny";
-import LanguageSelector from "../../components/LanguageSelector/LanguageSelector";
 import DevKnapper from "../../components/DevKnapper/DevKnapper";
 import { MainContentStyle } from "./MainContentStyle";
 import withErrorBoundary from "../../components/withErrorBoundary";
@@ -53,7 +52,6 @@ function FaktaSideLayout(props: Props) {
   return (
     <>
       <Brødsmulestyling />
-      <LanguageSelector />
       <DevKnapper />
       <ContentStyle>
         <Navigasjonsmeny className="order-1" />

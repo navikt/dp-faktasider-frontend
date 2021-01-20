@@ -4,6 +4,8 @@ import { DevContextProvider } from "../components/DevKnapper/DevContext";
 import { TranslationsProvider } from "../i18n/i18nextConfig";
 import { AppStyling, GlobalStyling } from "../styles/GlobalStyling";
 import { AppProps } from "next/app";
+import NextBanner from "../components/NextBanner";
+import "../styles/index.less";
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,6 +15,7 @@ function App({ Component, pageProps }: AppProps) {
           <TranslationsProvider>
             <AppStyling className="typo-normal app">
               <GlobalStyling />
+              <NextBanner />
               <Component {...pageProps} />
             </AppStyling>
           </TranslationsProvider>

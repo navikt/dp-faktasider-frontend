@@ -4,16 +4,16 @@ import fetchProjectData, { ProjectData } from "../hooks/graphQl/fetchProjectData
 import { MenuItem } from "../hooks/graphQl/menuDataUtils";
 import { theme } from "../styles/theme";
 import DevKnapper from "../components/DevKnapper/DevKnapper";
-import Header from "../templates/felles/Header";
 import SEO from "../components/SEO";
 import { useMount } from "react-use";
 import { loggSidevisning } from "../utils/logging";
 import { SupportedLanguage } from "../i18n/supportedLanguages";
-import Notifikasjoner from "../templates/faktaside/Notifikasjoner";
-import { Snarveier } from "../templates/landingsside/Snarveier";
+import Notifikasjoner from "../components/faktaside/Notifikasjoner";
 import { GetStaticProps } from "next";
-import InfosideLenker from "../templates/landingsside/InfosideLenker";
 import fetchFaktasiderMenuData from "../hooks/graphQl/fetchFaktasiderMenuData";
+import Header from "../components/forside/Header";
+import InfosideLenker from "../components/forside/InfosideLenker";
+import { Snarveier } from "../components/forside/Snarveier";
 
 const Style = styled.div`
   background-color: ${theme.colors.bakgrunn};

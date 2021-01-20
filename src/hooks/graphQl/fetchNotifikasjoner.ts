@@ -1,6 +1,6 @@
 import { sanityClient } from "../../sanity/sanity-config";
 import { groq } from "next-sanity";
-import { Notifikasjon } from "../../templates/faktaside/Notifikasjoner";
+import { Notifikasjon } from "../../components/faktaside/Notifikasjoner";
 
 const query = groq`
 *[_id == "oppsett"][0] {

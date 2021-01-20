@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components/macro";
+import styled from "styled-components/macro";
 import { Normaltekst } from "nav-frontend-typografi";
 import { InternalMenuLinkData } from "../../hooks/graphQl/menuDataUtils";
 import { useTranslation } from "react-i18next";
@@ -17,9 +17,9 @@ const StyledChevron = styled(HoyreChevron)`
 `;
 
 const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: "lenke" })`
-  font-size: 1.2rem;
-  text-decoration: none;
-  margin-bottom: 0.75rem;
+  font-size: 1.2rem !important;
+  text-decoration: none !important;
+  margin-bottom: 0.75rem !important;
   display: inline-flex;
   align-items: center;
 
@@ -30,7 +30,7 @@ const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: "lenke" })`
   }
 `;
 
-export const lenkeStyling = css`
+export const LenkeStyle = styled.a`
   border-radius: 0.5rem;
   display: block;
   text-decoration: none;
@@ -41,10 +41,6 @@ export const lenkeStyling = css`
       text-decoration: underline;
     }
   }
-`;
-
-export const LenkeStyle = styled.a`
-  ${lenkeStyling};
 `;
 
 const KunTilgjengeligStyle = styled.p`

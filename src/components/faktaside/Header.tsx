@@ -16,7 +16,7 @@ const Style = styled.div`
 `;
 
 const StyledSidetittel = styled(Sidetittel)`
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.75rem !important;
 `;
 
 function Header(props: Props) {

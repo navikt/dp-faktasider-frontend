@@ -9,7 +9,7 @@ const StyledSection = styled.section`
 `;
 
 const StyledTittel = styled(Element).attrs({ as: "h4", className: "typo-element" })`
-  margin: 3rem 0 0.7rem;
+  margin: 3rem 0 0.7rem !important;
 `;
 
 function H4GroupMarkup(props: Group) {

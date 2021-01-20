@@ -1,8 +1,8 @@
-import localizeSanityContent from '../../i18n/localizeSanityContent';
-import { Notifikasjon } from '../../templates/faktaside/Notifikasjoner';
-import { sanityClient } from '../../sanity/sanity-config';
-import { groq } from 'next-sanity';
-import { SupportedLanguage } from '../../i18n/supportedLanguages';
+import localizeSanityContent from "../../i18n/localizeSanityContent";
+import { sanityClient } from "../../sanity/sanity-config";
+import { groq } from "next-sanity";
+import { SupportedLanguage } from "../../i18n/supportedLanguages";
+import { Notifikasjon } from "../../components/faktaside/Notifikasjoner";
 
 export interface EksternLenkeI {
   tittel: string;
@@ -27,7 +27,7 @@ async function fetchProjectData(lang: SupportedLanguage): Promise<ProjectData> {
   const localizedData = localizeSanityContent(data, lang);
 
   if (!data.folketrygdensGrunnbellop) {
-    throw new Error('Kunne ikke hente grunnbelløp');
+    throw new Error("Kunne ikke hente grunnbelløp");
   }
 
   const notifikasjoner: Notifikasjon[] = localizedData.notifikasjoner;
@@ -38,7 +38,7 @@ async function fetchProjectData(lang: SupportedLanguage): Promise<ProjectData> {
     folketrygdensGrunnbellop: data.folketrygdensGrunnbellop,
     komIgangLenker: localizedData.komIgangLenker,
     beskrivelse: localizedData.beskrivelse,
-    forsideNotifikasjoner: forsideNotifikasjoner
+    forsideNotifikasjoner: forsideNotifikasjoner,
   };
 }
 

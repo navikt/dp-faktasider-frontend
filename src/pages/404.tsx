@@ -3,7 +3,6 @@ import SEO from "../components/SEO";
 import styled from "styled-components/macro";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
 import { useTranslation } from "react-i18next";
-import SideListe from "../templates/faktaside/Navigasjonsmeny/SideListe";
 import { useLocation, useMount } from "react-use";
 import { loggNotFound } from "../utils/logging";
 import { GetStaticProps } from "next";
@@ -11,6 +10,7 @@ import { SupportedLanguage } from "../i18n/supportedLanguages";
 import fetchFaktasiderMenuData from "../hooks/graphQl/fetchFaktasiderMenuData";
 import { useRouter } from "next/router";
 import { MenuItem } from "../hooks/graphQl/menuDataUtils";
+import SideListe from "../components/faktaside/Navigasjonsmeny/SideListe";
 
 const Style = styled.div`
   display: flex;

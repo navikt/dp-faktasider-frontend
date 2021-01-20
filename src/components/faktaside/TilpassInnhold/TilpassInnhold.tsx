@@ -28,7 +28,7 @@ const StyledNav = styled.nav`
     max-width: 14rem;
   }
   > * {
-    margin-bottom: 1rem;
+    margin-bottom: 1rem !important;
   }
 `;
 
@@ -39,7 +39,7 @@ const StyledUl = styled.ul`
 `;
 
 const StyledUndertittel = styled(Systemtittel)`
-  margin-bottom: ${theme.layoutPadding};
+  margin-bottom: ${theme.layoutPadding} !important;
   &::after {
     border-bottom: ${navFrontend.navGra40} 0.1rem solid;
     content: "";

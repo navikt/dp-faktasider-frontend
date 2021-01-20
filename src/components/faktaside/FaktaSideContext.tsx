@@ -12,7 +12,7 @@ const inital: FaktaSideProps = {
   rawData: {},
   notifikasjoner: [],
   folketrygdensGrunnbellop: NaN,
-  sideTittel: ""
+  sideTittel: "",
 };
 
 const Context = createContext<FaktaSideProps>(inital);

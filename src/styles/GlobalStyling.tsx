@@ -1,8 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components/macro";
 import { theme } from "./theme";
-import "./index.less";
-import { ResetCss } from "./reset";
 
 const Styling = createGlobalStyle`
   * {
@@ -14,9 +12,9 @@ const Styling = createGlobalStyle`
   }
 
   html {
-    font-size: 112.5%;
+    font-size: 112.5% !important;
     @media (min-width: 1400px) {
-      font-size: 125%;
+      font-size: 125% !important;
     }
     font-family: 'Source Sans Pro', sans-serif;
   }
@@ -37,7 +35,6 @@ const Styling = createGlobalStyle`
 export function GlobalStyling() {
   return (
     <>
-      <ResetCss />
       <Styling />
     </>
   );
