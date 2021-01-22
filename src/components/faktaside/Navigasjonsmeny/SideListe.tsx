@@ -33,14 +33,10 @@ const listeElementCommonStyling = css`
   }
 `;
 
-const lenkeStyle = css`
+const StyledLink = styled.a`
   display: block;
   text-decoration: none;
   ${listeElementCommonStyling};
-`;
-
-const StyledLink = styled.a`
-  ${lenkeStyle};
 `;
 
 export const menuHighlightStyle = css`

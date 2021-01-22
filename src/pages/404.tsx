@@ -1,7 +1,7 @@
 import React from "react";
 import SEO from "../components/SEO";
 import styled from "styled-components/macro";
-import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
+import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
 import { useTranslation } from "react-i18next";
 import { useLocation, useMount } from "react-use";
 import { loggNotFound } from "../utils/logging";
@@ -13,15 +13,18 @@ import { MenuItem } from "../hooks/graphQl/menuDataUtils";
 import SideListe from "../components/faktaside/Navigasjonsmeny/SideListe";
 
 const Style = styled.div`
+  margin: 2rem 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
+  align-items: center;
   min-height: 60vh;
+  > * {
+    max-width: 30rem;
+  }
 `;
 
 const StyledNormaltekst = styled(Normaltekst)`
-  margin: 2rem 0 0;
+  margin: 2rem 0 1rem !important;
 `;
 export const getStaticProps: GetStaticProps = async (context) => {
   const menuData = await fetchFaktasiderMenuData(context.locale as SupportedLanguage);
@@ -49,7 +52,7 @@ const NotFoundPage = (props: Props) => {
   return (
     <Style>
       <SEO title="404: Not found" description="" lang={lang} path={"/404/"} />
-      <Innholdstittel>{t("404")}</Innholdstittel>
+      <Sidetittel>{t("404")}</Sidetittel>
       <Normaltekst>{t("404-sub")}</Normaltekst>
       <StyledNormaltekst>{t("404-andre-sider")}</StyledNormaltekst>
       <SideListe menuData={props.menuData} />
