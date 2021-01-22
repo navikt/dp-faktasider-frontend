@@ -35,7 +35,7 @@ const listeElementCommonStyling = css`
 
 const StyledLink = styled.a`
   display: block;
-  text-decoration: none;
+  text-decoration: none !important;
   ${listeElementCommonStyling};
 `;
 
@@ -94,7 +94,7 @@ function InternSideLenke(props: { page: InternalMenuLinkData }) {
   }
 
   return (
-    <Link href={props.page.path} locale={props.page.språk} passHref>
+    <Link href={props.page.path} locale={props.page.språk}>
       <StyledLink className="lenke" onClick={() => loggMeny("Gå til ny side")}>
         <HoyreChevron />
         <span>

@@ -54,7 +54,7 @@ export function InternLenke(props: { lenke: InternalMenuLinkData }) {
   const id = useRef(guid()).current;
 
   return (
-    <Link href={props.lenke.path} locale={props.lenke.språk} passHref>
+    <Link href={props.lenke.path} locale={props.lenke.språk}>
       <LenkeStyle aria-labelledby={id} lang={langAttribute}>
         <ForsideLenkeHeader id={id}>{props.lenke.tittel}</ForsideLenkeHeader>
         {!props.lenke.tilgjengeligPåValgtSpråk && (
