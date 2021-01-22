@@ -42,13 +42,10 @@ export function crateSanityListeElementMedVisFor(tekst: string, visFor: string[]
 }
 
 export function createDeltTekstBlock(innhold: SanityBlock[]): DelttekstReference {
-  const id = createKey();
   return {
     _type: "deltTekstReference",
     deltTekst: {
-      id: id,
       _type: "deltTekst",
-      _createdAt: "2020-07-03T09:21:09Z",
       _updatedAt: "2020-07-13T09:00:55Z",
       innhold: innhold,
     },

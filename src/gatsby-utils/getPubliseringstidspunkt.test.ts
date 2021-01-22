@@ -8,9 +8,7 @@ const updatedAtOldest = "2020-01-01T12:00:00.000Z";
 const deltTekstReference: DelttekstReference = {
   _type: "deltTekstReference",
   deltTekst: {
-    id: "",
     _type: "deltTekst",
-    _createdAt: "2020-07-07T12:19:13Z",
     _updatedAt: updatedAtLatest,
   },
 };

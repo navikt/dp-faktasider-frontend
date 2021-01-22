@@ -29,14 +29,14 @@ export type SanityBlock = {
   listItem?: "bullet";
 };
 
-export type DeltTekst = Modify<SanityBlock,
+export type DeltTekst = Modify<
+  SanityBlock,
   {
-    _createdAt: string;
     _updatedAt: string;
-    id: string;
     innhold?: SanityBlock[];
     _type: "deltTekst";
-  }>;
+  }
+>;
 
 export type DelttekstReference = {
   _type: "deltTekstReference";

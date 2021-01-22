@@ -57,7 +57,22 @@ export default async function fetchFaktaside(lang: SupportedLanguage, slug: stri
   const query = groq`
   *[_type == "faktaSide" && slug.current == "${slug}"][0] {
     "id": _id,
-    ...
+    ...,
+    innhold {
+      no[] {
+        ...,
+        defined(deltTekst) => {
+         "deltTekst": ^.deltTekst->{...}
+        }
+      },
+      en[] {
+        ...,
+        defined(deltTekst) => {
+         "deltTekst": ^.deltTekst->{...}
+        }
+      },
+      _type
+    }
   }
   `;
 
