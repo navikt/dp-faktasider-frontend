@@ -98,7 +98,7 @@ function InternSideLenke(props: { page: InternalMenuLinkData }) {
   }
 
   return (
-    <Link href={props.page.path}>
+    <Link href={props.page.path} locale={props.page.språk} passHref>
       <StyledLink className="lenke" onClick={() => loggMeny("Gå til ny side")}>
         <HoyreChevron />
         <span>

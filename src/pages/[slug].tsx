@@ -23,16 +23,22 @@ import { FaktaSideProps } from "../components/faktaside/types";
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const lang = context.locale as SupportedLanguage;
-  const faktaside = await fetchFaktaside(lang, context.params!.slug as string);
-  const menuData = await fetchFaktasiderMenuData(lang);
+  try {
+    const faktaside = await fetchFaktaside(lang, context.params!.slug as string);
+    const menuData = await fetchFaktasiderMenuData(lang);
 
-  return {
-    props: {
-      ...JSON.parse(JSON.stringify(faktaside)),
-      path: "random",
-      menuData,
-    },
-  };
+    return {
+      props: {
+        ...JSON.parse(JSON.stringify(faktaside)),
+        path: "random",
+        menuData,
+      },
+    };
+  } catch (e) {
+    return {
+      notFound: true,
+    };
+  }
 };
 
 export async function getStaticPaths() {
@@ -42,7 +48,7 @@ export async function getStaticPaths() {
   }));
   return {
     paths,
-    fallback: false,
+    fallback: true, // må settes til true for at sider som ikke er oversatt til norsk skal vises
   };
 }
 

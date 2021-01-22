@@ -10,6 +10,7 @@ module.exports = withTranspileModules(
     i18n: {
       locales: ["no", "en"],
       defaultLocale: "no",
+      localeDetection: false, // vi har ikke bra nok engelsk språkstøtte til at dette er bra
     },
   })
 );

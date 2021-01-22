@@ -42,7 +42,7 @@ function IkkeOversatt(props: FaktaSideProps) {
     const tittel = page.rawData.title?.[lang];
     return (
       <li>
-        <Link href={`/${lang}/${page.slug}`}>
+        <Link href={`/${page.slug}`} locale={lang}>
           <a>
             {tittel} - ({t(lang)})
           </a>

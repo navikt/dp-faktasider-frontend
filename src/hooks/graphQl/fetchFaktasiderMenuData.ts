@@ -42,7 +42,6 @@ interface SanityData {
   pages: Side[];
 }
 
-
 const lenkeQuery = groq`
 *[_id == "oppsett"][0] {
   sideoversiktLenker[] {
@@ -66,7 +65,6 @@ const pagesQuery = groq`
 }
 `;
 
-
 export function createMenuItemsData(data: SanityData, lang: SupportedLanguage): MenuItem[] {
   const { pages, lenker } = localizeSanityContent(data, lang) as SanityData;
 
@@ -89,7 +87,7 @@ function createInternalLinkData(page: Side, lang: SupportedLanguage): InternalMe
   const oversettelser = supportedLanguages.filter((lang) => page.visSprakversjon?.[lang]);
   const tilgjengeligPåValgtSpråk = oversettelser.includes(lang);
   const språk = tilgjengeligPåValgtSpråk ? lang : oversettelser[0];
-  const path = `/${språk}/${slug}/`;
+  const path = `/${slug}/`;
   const tittel = page.title || "Mangler tittel";
   const beskrivelse = page.beskrivelse || "";
   const nokkelordBeskrivelse = page.nokkelordBeskrivelse || "";
@@ -102,7 +100,7 @@ function createInternalLinkData(page: Side, lang: SupportedLanguage): InternalMe
     språk,
     tilgjengeligPåValgtSpråk,
     id: page.id,
-    type: "internal"
+    type: "internal",
   };
 }
 
@@ -111,7 +109,7 @@ function createExternalLinkData(lenke: SanityEksternLenke): ExternalMenuLinkData
     url: lenke.url,
     tittel: lenke.tittel,
     beskrivelse: lenke.beskrivelse,
-    type: "external"
+    type: "external",
   };
 }
 
