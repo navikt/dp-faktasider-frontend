@@ -3,4 +3,4 @@ namespace: default
 team: teamdagpenger
 ingresses: |
   ingresses:
-    - https://www.nav.no/arbeid
+    - https://www.nav.no/arbeid/

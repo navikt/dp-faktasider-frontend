@@ -3,4 +3,5 @@ namespace: default
 team: teamdagpenger
 ingresses: |
   ingresses:
-    - https://www-q1.nav.no/arbeid
+    - https://www-q6.nav.no/arbeid/
+    - https://www-q1.nav.no/arbeid/
