@@ -33,6 +33,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         path: "random",
         menuData,
       },
+      revalidate: 300,
     };
   } catch (e) {
     return {
