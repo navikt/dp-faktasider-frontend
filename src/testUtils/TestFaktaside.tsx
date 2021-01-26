@@ -1,9 +1,10 @@
 import * as React from "react";
-import FaktaSide from "../pages/[slug]";
 import { Block } from "../utils/richTextUtils/richTextTypes";
 import { faktaSideMockContext } from "./faktaSideMockContext";
 import TestProvider from "./TestProvider";
 import { FaktasideContext } from "../hooks/graphQl/fetchFaktaside";
+import FaktaSide from "../components/faktaside/Faktaside";
+import { FaktaSideProps } from "../components/faktaside/types";
 
 type Props = {
   partialContext?: Partial<FaktasideContext>;
@@ -11,7 +12,7 @@ type Props = {
 };
 
 function TestFaktaside(props: Props) {
-  const context: FaktasideContext = {
+  const context: FaktaSideProps = {
     ...faktaSideMockContext,
     ...props.partialContext,
     innhold: props.innhold || props.partialContext?.innhold || faktaSideMockContext.innhold,
@@ -19,8 +20,7 @@ function TestFaktaside(props: Props) {
 
   return (
     <TestProvider>
-      {/* @ts-ignore */}
-      <FaktaSide pageContext={context} location={{ pathname: "/test/" }} />
+      <FaktaSide {...context} />
     </TestProvider>
   );
 }

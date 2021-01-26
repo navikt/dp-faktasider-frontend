@@ -1,10 +1,10 @@
 import { createSanityBlock } from "./createSanityBlock";
 import parseRichText from "../utils/richTextUtils/parser/parseRichText";
-import { FaktasideContext } from "../hooks/graphQl/fetchFaktaside";
+import { FaktaSideProps } from "../components/faktaside/types";
 
 const title = "Testside";
 
-export const faktaSideMockContext: FaktasideContext = {
+export const faktaSideMockContext: FaktaSideProps = {
   publiseringsTidspunkt: new Date().toISOString(),
   innhold: parseRichText([
     createSanityBlock("Dette er en overskrift", "h2"),
@@ -29,5 +29,9 @@ export const faktaSideMockContext: FaktasideContext = {
   },
   notifikasjoner: [],
   folketrygdensGrunnbellop: 1000,
-  sideTittel: "testtittelside"
+  sideTittel: "Testside",
+  kortFortalt: [],
+  menuData: [],
+  path: "",
+  visIngenValgPasser: true,
 };

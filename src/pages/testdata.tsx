@@ -116,7 +116,7 @@ const StyledKnapp = styled(Knapp)`
   text-transform: none;
 `;
 
-const StyledTekstområde = styled(Tekstomrade)`
+const StyledPre = styled.pre`
   border: 0.2rem #888 solid;
   background-color: #0002;
   padding: 1rem;
@@ -138,7 +138,7 @@ function reducer(
   }
 }
 
-function VisTestdata() {
+function Testdata() {
   const [valgtData, dispatch] = useReducer(reducer, undefined);
 
   return (
@@ -157,13 +157,9 @@ function VisTestdata() {
         ))}
       </Style>
       {valgtData && <TestFaktaside partialContext={valgtData} />}
-      {valgtData && (
-        <StyledTekstområde>
-          {"Page context: \n\n" + JSON.stringify(valgtData, null, 4)?.replace(/ /g, "\u00a0")}
-        </StyledTekstområde>
-      )}
+      {valgtData && <StyledPre>{"Page context: \n\n" + JSON.stringify(valgtData, null, 2)}</StyledPre>}
     </>
   );
 }
 
-export default VisTestdata;
+export default Testdata;
