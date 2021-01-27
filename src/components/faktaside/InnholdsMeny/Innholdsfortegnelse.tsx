@@ -52,7 +52,7 @@ function useCurrentlyViewedGroup(items: Group[]): Group | undefined {
 function MenuItem(props: { item: Group; current: boolean }) {
   const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
   const visForContext = useVisForContext();
-  const faktasideContext = useFaktasideContext();
+  const faktaside = useFaktasideContext().faktaside;
   const blockConfig = props.item.blockConfig;
 
   const handleClick = () => {
@@ -62,7 +62,7 @@ function MenuItem(props: { item: Group; current: boolean }) {
 
   const vis =
     visBasertPåFiltrering(visForContext, blockConfig?.visFor).vis &&
-    visBasertPaaVisPaaConfig(faktasideContext.id, blockConfig?.visPaaSider);
+    visBasertPaaVisPaaConfig(faktaside.id, blockConfig?.visPaaSider);
 
   return (
     <Utkast erUtkast={!!blockConfig?.erUtkast}>
@@ -84,13 +84,13 @@ const StyledOl = styled.ol`
 
 function Innholdsfortegnelse() {
   const innholdsListe = useInnholdsListe();
-  const faktasideContext = useFaktasideContext();
+  const faktaside = useFaktasideContext().faktaside;
 
   if (!innholdsListe.length) {
     return null;
   }
 
-  return <PureInnholdsfortegnelse title={faktasideContext.title || "N/A"} innholdsListe={innholdsListe} />;
+  return <PureInnholdsfortegnelse title={faktaside.title || "N/A"} innholdsListe={innholdsListe} />;
 }
 
 interface Props {

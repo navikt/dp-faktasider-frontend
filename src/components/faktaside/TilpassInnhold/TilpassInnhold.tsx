@@ -56,7 +56,7 @@ interface Props {
 function TilpassInnhold(props: Props) {
   const visForContext = useVisForContext();
   const titleId = useUniqueId("tilpassInnhold");
-  const { innhold, visIngenValgPasser, kortFortalt } = useFaktasideContext();
+  const { innhold, visIngenValgPasser, kortFortalt } = useFaktasideContext().faktaside;
   const valgt = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
   const tilgjengeligeValg = getAlleTilpassInnholdValg(innhold, kortFortalt);

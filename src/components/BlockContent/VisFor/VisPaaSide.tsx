@@ -9,8 +9,8 @@ interface Props {
   visPaaSider?: VisPaaConfig;
 }
 
-export function visBasertPaaVisPaaConfig(faktasideId: string, visPaaConfig?: VisPaaConfig) {
-  const visSpesifiktPåDenneSiden = !!visPaaConfig?.includes(faktasideId);
+export function visBasertPaaVisPaaConfig(faktasideId?: string, visPaaConfig?: VisPaaConfig) {
+  const visSpesifiktPåDenneSiden = !!visPaaConfig?.includes(faktasideId || "N/A");
   const ingenVisPåConfig = !visPaaConfig?.length;
   const visPåDenneSiden = ingenVisPåConfig || visSpesifiktPåDenneSiden;
 
@@ -18,8 +18,8 @@ export function visBasertPaaVisPaaConfig(faktasideId: string, visPaaConfig?: Vis
 }
 
 function VisPaaSide(props: Props) {
-  const faktasideContext = useFaktasideContext();
-  const visPåDenneSiden = visBasertPaaVisPaaConfig(faktasideContext.id, props.visPaaSider);
+  const faktaside = useFaktasideContext().faktaside;
+  const visPåDenneSiden = visBasertPaaVisPaaConfig(faktaside.id, props.visPaaSider);
   const visPåDenneSidenDebug = useVisPaaSideDebug({ children: props.children, ikkeVisPåDenneSiden: !visPåDenneSiden });
 
   if (visPåDenneSidenDebug.debug) {

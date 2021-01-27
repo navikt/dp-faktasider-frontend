@@ -1,5 +1,4 @@
 import * as React from "react";
-import { FaktaSideProps } from "./types";
 import { useRef } from "react";
 import { useMount } from "react-use";
 import { loggSidevisning } from "../../utils/logging";
@@ -14,12 +13,24 @@ import Notifikasjoner from "./Notifikasjoner";
 import KortFortalt from "./KortFortalt";
 import BlockContent from "../BlockContent/BlockContent";
 import RelatertInformasjon from "./RelatertInformasjon";
+import { FaktasideParsedData } from "./types";
+import { useRouter } from "next/router";
+import { SupportedLanguage } from "../../i18n/supportedLanguages";
+import { MenuItem } from "../../hooks/graphQl/menuDataUtils";
+import Error from "next/error";
 
-function Faktaside(props: FaktaSideProps) {
-  const lang = props.lang;
-  const erPublisert = props.visSprakversjon?.[lang];
-  const tittel = props.title || "";
+function Faktaside(props: { data: FaktasideParsedData; menuData: MenuItem[] }) {
+  const lang = useRouter().locale as SupportedLanguage;
   const wordCountRef = useRef<HTMLDivElement>(null);
+  const { faktaside, oppsett } = props.data;
+
+  if (!faktaside) {
+    return <Error statusCode={404} />;
+  }
+
+  const erPublisert = faktaside.visSprakversjon?.[lang];
+  const tittel = faktaside.title || "";
+  const beskrivelse = faktaside.beskrivelse || "";
 
   /*useBreadcrumbs(props);*/
 
@@ -30,25 +41,22 @@ function Faktaside(props: FaktaSideProps) {
     return <IkkeOversatt {...props} />;
   }
 
-  const beskrivelse = props.beskrivelse || "";
-
-  const parsedInnhold = props.innhold;
   return (
-    <FaktasideProvider {...props}>
+    <FaktasideProvider faktasideData={props.data}>
       <StickyFeedback />
-      <SEO title={tittel} description={beskrivelse} lang={lang} path={props.path} />
+      <SEO title={tittel} description={beskrivelse} lang={lang} path={""} />
       <FaktaSideLayout
         wordCountRef={wordCountRef}
         header={tittel}
         beskrivelse={beskrivelse}
-        publiseringsTidspunkt={props.publiseringsTidspunkt}
+        publiseringsTidspunkt={faktaside.publiseringsTidspunkt}
       >
         <InnholdetErTilpasset />
-        <Notifikasjoner notifikasjoner={props.notifikasjoner} />
+        <Notifikasjoner notifikasjoner={oppsett?.notifikasjoner} />
         <div ref={wordCountRef}>
-          <KortFortalt blocks={props.kortFortalt} />
-          <BlockContent blocks={parsedInnhold} />
-          <RelatertInformasjon blocks={props.relatertInformasjon} />
+          <KortFortalt blocks={faktaside.kortFortalt} />
+          <BlockContent blocks={faktaside.innhold} />
+          <RelatertInformasjon blocks={faktaside.relatertInformasjon} />
         </div>
       </FaktaSideLayout>
     </FaktasideProvider>

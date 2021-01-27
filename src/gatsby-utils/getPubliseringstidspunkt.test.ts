@@ -1,6 +1,6 @@
 import { getPubliseringsTidspunkt } from "./getPubliseringstidspunkt";
 import { DelttekstReference } from "../utils/richTextUtils/richTextTypes";
-import { RawFaktasideData } from "../hooks/graphQl/fetchFaktaside";
+import { FaktasideQueryData } from "../hooks/graphQl/fetchFaktaside";
 
 const updatedAtLatest = "2020-12-12T16:59:00.000Z";
 const updatedAtOldest = "2020-01-01T12:00:00.000Z";

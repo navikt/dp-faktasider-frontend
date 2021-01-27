@@ -1,41 +1,32 @@
 import withErrorBoundary from "../components/withErrorBoundary";
-import { GetStaticProps } from "next";
-import fetchFaktasidePaths from "../hooks/graphQl/fetchFaktasidePaths";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { SupportedLanguage } from "../i18n/supportedLanguages";
 import fetchFaktaside from "../hooks/graphQl/fetchFaktaside";
-import fetchFaktasiderMenuData from "../hooks/graphQl/fetchFaktasiderMenuData";
 import Faktaside from "../components/faktaside/Faktaside";
+import { groq } from "next-sanity";
+import { sanityClient } from "../sanity/sanity-config";
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const lang = context.locale as SupportedLanguage;
-  try {
-    const faktaside = await fetchFaktaside(lang, context.params!.slug as string);
-    const menuData = await fetchFaktasiderMenuData(lang);
+const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 
-    return {
-      props: {
-        ...JSON.parse(JSON.stringify(faktaside)),
-        path: "random",
-        menuData,
-      },
-      revalidate: 300,
-    };
-  } catch (e) {
-    return {
-      notFound: true,
-    };
-  }
-};
-
-export async function getStaticPaths() {
-  const faktasidePaths = await fetchFaktasidePaths();
-  const paths = faktasidePaths.map((side) => ({
-    params: { slug: side.slug.current },
-  }));
+export const getStaticPaths: GetStaticPaths = async (ctx) => {
+  const faktasidePaths = await sanityClient.fetch(pathsQuery);
+  const paths = faktasidePaths.map((slug) => ({ params: { slug } }));
   return {
     paths,
     fallback: true, // må settes til true for at sider som ikke er oversatt til norsk skal vises
   };
-}
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const lang = context.locale as SupportedLanguage;
+  const faktaside = await fetchFaktaside(lang, context.params!.slug as string);
+
+  return {
+    props: {
+      data: JSON.parse(JSON.stringify(faktaside)),
+    },
+    revalidate: 300,
+  };
+};
 
 export default withErrorBoundary(Faktaside, "FaktaSide");

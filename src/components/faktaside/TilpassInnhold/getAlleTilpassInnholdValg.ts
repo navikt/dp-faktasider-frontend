@@ -1,11 +1,12 @@
 import getPropertyRecursivlyFromDeepObject from "../../../utils/getPropertyRecursivlyFromDeepObject";
 import { Block, MarkDef, SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
 import { visForAnnotationTypes } from "../../../utils/richTextUtils/allChildrenMarkedWith";
-import { getUniqueStrings } from "../../../components/BlockContent/VisFor/VisFor";
+import { getUniqueStrings } from "../../BlockContent/VisFor/VisFor";
 
 export type TilpassInnholdValg = string[];
 
-function getAlleTilpassInnholdValg(innhold: Block[], kortFortalt?: SanityBlock[]): TilpassInnholdValg {
+function getAlleTilpassInnholdValg(innhold?: Block[], kortFortalt?: SanityBlock[]): TilpassInnholdValg {
+  if (!innhold) return [];
   const altInnhold = [...innhold, ...(kortFortalt || [])];
   const alleMarkDefs = getPropertyRecursivlyFromDeepObject<MarkDef>(altInnhold, "markDefs");
   const alleVisForMarkDefs = alleMarkDefs.filter((markDef) => visForAnnotationTypes.includes(markDef._type));

@@ -70,7 +70,7 @@ function InternSideLenke(props: { page: InternalMenuLinkData }) {
   const faktasideContext = useFaktasideContext();
   const [open, toggle] = useReducer((state) => !state, true);
 
-  const currentPage = props.page.id === faktasideContext.id;
+  const currentPage = props.page.id === faktasideContext.faktaside.id;
 
   if (currentPage) {
     return (
@@ -115,14 +115,14 @@ function EksternLenke(props: { lenke: ExternalMenuLinkData }) {
 }
 
 interface Props {
-  menuData: MenuItem[];
+  menuData?: MenuItem[];
 }
 
 function SideListe(props: Props) {
   const { menuData } = props;
   return (
     <StyledOl>
-      {menuData.map((link, index) => (
+      {menuData?.map((link, index) => (
         <li key={index}>
           {isInternal(link) ? (
             <InternSideLenke page={link} key={link.id} />

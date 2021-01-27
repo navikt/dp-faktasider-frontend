@@ -17,7 +17,7 @@ import GtilNOKAnnotation from "./GtilNOKAnnotation";
 import Tidslinje from "./Tidslinje/Tidslinje";
 
 interface Props {
-  blocks: ParsedRichText;
+  blocks?: ParsedRichText;
 }
 
 type Serializers = {
@@ -51,7 +51,7 @@ const serializers: Serializers = {
 };
 
 function BlockContent(props: Props) {
-  return <SanityBlockContent serializers={serializers} blocks={props.blocks} />;
+  return <SanityBlockContent serializers={serializers} blocks={props.blocks || []} />;
 }
 
 export default withErrorBoundary(BlockContent, "BlockContent");

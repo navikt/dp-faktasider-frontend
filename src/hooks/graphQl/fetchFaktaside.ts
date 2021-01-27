@@ -1,122 +1,74 @@
 import { sanityClient } from "../../sanity/sanity-config";
 import { groq } from "next-sanity";
-import { Translations } from "../../types/translations";
-import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
-import { Modify } from "../../utils/typeUtils";
 import { SupportedLanguage } from "../../i18n/supportedLanguages";
-import parseRichText, { ParsedRichText } from "../../utils/richTextUtils/parser/parseRichText";
+import parseRichText from "../../utils/richTextUtils/parser/parseRichText";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import { getPubliseringsTidspunkt } from "../../gatsby-utils/getPubliseringstidspunkt";
-import fetchNotifikasjoner from "./fetchNotifikasjoner";
-import { Notifikasjon } from "../../components/faktaside/Notifikasjoner";
+import { FaktasideQueryData, FaktasideParsedData } from "../../components/faktaside/types";
+import fetchFaktasiderMenuData from "./fetchFaktasiderMenuData";
+import { MenuItem } from "./menuDataUtils";
 
-export interface RawFaktasideData {
-  id: string;
-  _updatedAt: string;
-  title?: Translations<string>;
-  beskrivelse?: Translations<string>;
-  innhold?: Translations<SanityBlock[]>;
-  kortFortalt?: Translations<SanityBlock[]>;
-  relatertInformasjon?: Translations<SanityBlock[]>;
-  slug?: {
-    current: string;
-  };
-  visSprakversjon?: {
-    en: boolean;
-    no: boolean;
-  };
-  visIngenValgPasser?: boolean;
-}
-
-export type LocalizedFaktasideData = Modify<
-  RawFaktasideData,
-  {
-    title?: string;
-    beskrivelse?: string;
-    innhold?: SanityBlock[];
-    kortFortalt?: SanityBlock[];
-    relatertInformasjon?: SanityBlock[];
+const innholdFields = `
+[] {
+  ...,
+  defined(deltTekst) => {
+    "deltTekst": ^.deltTekst->{...}
   }
->;
+}`;
 
-export type FaktasideContext = Modify<
-  Omit<LocalizedFaktasideData, "_updatedAt">,
-  {
-    lang: SupportedLanguage;
-    innhold: ParsedRichText;
-    publiseringsTidspunkt: string;
-    rawData: Pick<RawFaktasideData, "title">;
-    slug: string;
-    notifikasjoner?: Notifikasjon[];
-    sideTittel: string;
-    folketrygdensGrunnbellop: number;
-  }
->;
-
-export default async function fetchFaktaside(lang: SupportedLanguage, slug: string): Promise<FaktasideContext> {
-  const query = groq`
-  *[_type == "faktaSide" && slug.current == "${slug}"][0] {
+const query = groq`{
+  'faktaside': *[_type == "faktaSide" && slug.current == $slug][0] {
     "id": _id,
+    "slug": slug.current,
     ...,
     innhold {
-      no[] {
-        ...,
-        defined(deltTekst) => {
-         "deltTekst": ^.deltTekst->{...}
-        }
-      },
-      en[] {
-        ...,
-        defined(deltTekst) => {
-         "deltTekst": ^.deltTekst->{...}
-        }
-      },
+      no ${innholdFields},
+      en ${innholdFields},
       _type
     }
-  }
-  `;
-
-  const oppsettQuery = groq`
-  *[_id == "oppsett"][0] {
+  },
+  'oppsett': *[_id == "oppsett"][0] {
     title,
-    folketrygdensGrunnbellop
+    folketrygdensGrunnbellop,
+    notifikasjoner[]
   }
-  `;
+}`;
 
-  const faktaside = await sanityClient.fetch(query);
-  const oppsett = await sanityClient.fetch(oppsettQuery);
-  const notifikasjoner = await fetchNotifikasjoner();
-  return createFaktasideContext(faktaside, oppsett, lang, notifikasjoner);
+export default async function fetchFaktaside(lang: SupportedLanguage, slug: string): Promise<FaktasideParsedData> {
+  const data: FaktasideQueryData = await sanityClient.fetch(query, { slug });
+  const menuData = await fetchFaktasiderMenuData(lang);
+
+  return createFaktasideContext(data, menuData, lang);
 }
 
 export function createFaktasideContext(
-  page: RawFaktasideData,
-  oppsett: { title; folketrygdensGrunnbellop },
-  lang: SupportedLanguage,
-  alleNotifikasjoner?: Notifikasjon[]
-): FaktasideContext {
-  const localizedPage = localizeSanityContent(page, lang) as LocalizedFaktasideData;
-  const localizedTitle = localizeSanityContent(oppsett.title, lang);
-  const parsedInnhold = parseRichText(localizedPage.innhold);
-  const parsedKortFortalt = parseRichText(localizedPage.kortFortalt);
+  data: FaktasideQueryData,
+  menuData: MenuItem[],
+  lang: SupportedLanguage
+): FaktasideParsedData {
+  const localizedPage: FaktasideParsedData = localizeSanityContent(data, lang);
+  const parsedInnhold = parseRichText(localizedPage.faktaside?.innhold);
+  const parsedKortFortalt = parseRichText(localizedPage.faktaside?.kortFortalt);
+  const parsedRelatertInformasjon = parseRichText(localizedPage.faktaside?.relatertInformasjon);
   const publiseringsTidspunkt = getPubliseringsTidspunkt(localizedPage);
-  const relevanteNotifikasjoner = alleNotifikasjoner?.filter((notifikasjon) =>
-    notifikasjon.visPaaSider?.some((side) => side._ref === page.id)
+  const relevanteNotifikasjoner = localizedPage.oppsett.notifikasjoner?.filter((notifikasjon) =>
+    notifikasjon.visPaaSider?.some((side) => side._ref === data.faktaside.id)
   );
-  const localizedNotifikasjoner = localizeSanityContent(relevanteNotifikasjoner, lang) as Notifikasjon[];
 
   return {
     ...localizedPage,
-    innhold: parsedInnhold,
-    kortFortalt: parsedKortFortalt,
-    lang,
-    slug: page.slug?.current || "N/A",
-    publiseringsTidspunkt,
-    rawData: {
-      title: page.title,
+    faktaside: {
+      ...localizedPage.faktaside,
+      innhold: parsedInnhold,
+      kortFortalt: parsedKortFortalt,
+      relatertInformasjon: parsedRelatertInformasjon,
+      publiseringsTidspunkt,
     },
-    sideTittel: localizedTitle,
-    notifikasjoner: localizedNotifikasjoner,
-    folketrygdensGrunnbellop: oppsett.folketrygdensGrunnbellop,
+    oppsett: {
+      ...localizedPage.oppsett,
+      notifikasjoner: relevanteNotifikasjoner,
+    },
+    menuData,
+    rawData: data,
   };
 }

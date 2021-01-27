@@ -42,7 +42,7 @@ const HeaderStyle = styled(Systemtittel)`
   }
 `;
 
-function Header(props: { id: string; title: string }) {
+function Header(props: { id: string; title?: string }) {
   return (
     <HeaderStyle id={props.id}>
       <span className="sr-only">Sideoversikt</span>
@@ -58,17 +58,17 @@ interface Props {
 function Navigasjonsmeny(props: Props) {
   const mobileTitleId = useUniqueId("mobile-menu");
   const desktopTitleId = useUniqueId("desktop-menu");
-  const { menuData, sideTittel } = useFaktasideContext();
+  const { menuData, oppsett } = useFaktasideContext();
 
   return (
     <>
       <DesktopNav className={props.className} aria-labelledby={desktopTitleId}>
-        <Header title={sideTittel} id={desktopTitleId} />
+        <Header title={oppsett?.title} id={desktopTitleId} />
         <SideListe menuData={menuData} />
       </DesktopNav>
       <MobileNav className={props.className} aria-labelledby={mobileTitleId}>
         <MobilmenyWrapper>
-          <Header title={sideTittel} id={mobileTitleId} />
+          <Header title={oppsett?.title} id={mobileTitleId} />
           <SideListe menuData={menuData} />
         </MobilmenyWrapper>
       </MobileNav>

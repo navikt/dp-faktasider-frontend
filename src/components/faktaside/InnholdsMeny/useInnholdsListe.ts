@@ -4,7 +4,7 @@ import { useFaktasideContext } from "../FaktaSideContext";
 import { createH2Group } from "../../../utils/richTextUtils/createGroup";
 
 export function useInnholdsListe(): Group[] {
-  const { innhold, relatertInformasjon, kortFortalt } = useFaktasideContext();
+  const { innhold, relatertInformasjon, kortFortalt } = useFaktasideContext().faktaside;
   const { t } = useTranslation("global");
 
   if (!innhold) {
