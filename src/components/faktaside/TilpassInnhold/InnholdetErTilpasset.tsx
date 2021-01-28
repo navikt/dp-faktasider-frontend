@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useVisForContext } from "../../../components/BlockContent/VisFor/VisForContext";
+import { useVisForContext } from "../../BlockContent/VisFor/VisForContext";
 import { UnmountClosed } from "react-collapse";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
 import styled from "styled-components";

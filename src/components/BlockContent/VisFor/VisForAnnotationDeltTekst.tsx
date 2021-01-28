@@ -3,7 +3,7 @@ import VisForAnnotation from "./VisForAnnotation";
 import { VisForConfig } from "../../../utils/richTextUtils/richTextTypes";
 import VisPaaSide from "./VisPaaSide";
 import withErrorBoundary from "../../withErrorBoundary";
-import { FaktasideQueryData } from "../../../hooks/graphQl/fetchFaktaside";
+import { FaktasideQueryData } from "../../../hooks/groq/fetchFaktaside";
 
 interface Props {
   children: string[];

@@ -1,19 +1,14 @@
 import * as React from "react";
 import { ReactNode, RefObject } from "react";
-import styled, { createGlobalStyle } from "styled-components/macro";
-import Navigasjonsmeny from "./Navigasjonsmeny/Navigasjonsmeny";
+import styled, { createGlobalStyle, css } from "styled-components/macro";
 import DevKnapper from "../../components/DevKnapper/DevKnapper";
-import { MainContentStyle } from "./MainContentStyle";
 import withErrorBoundary from "../../components/withErrorBoundary";
 import Filtrering from "./TilpassInnhold/TilpassInnhold";
 import { theme } from "../../styles/theme";
-import Header from "./Header";
+import Meny from "./Meny/Meny";
 
 interface Props {
-  header: string;
-  beskrivelse: string;
   children: ReactNode;
-  publiseringsTidspunkt?: string;
   wordCountRef?: RefObject<HTMLElement>;
 }
 
@@ -24,6 +19,44 @@ const Brødsmulestyling = createGlobalStyle`
   max-width: ${maxWidth};
   margin-bottom: .5rem;
 }
+`;
+
+export const typografiStyle = css`
+  ul,
+  ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    li {
+      margin: 0.7rem 0;
+      padding-left: 0.3rem;
+    }
+  }
+  ul {
+    list-style: disc;
+    ul {
+      list-style: circle;
+    }
+  }
+  ol {
+    list-style: decimal;
+  }
+
+  p {
+    margin: 0.5rem 0 1rem;
+  }
+`;
+
+export const MainContentStyle = styled.main`
+  flex: 0 1 40rem;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 40rem;
+  padding: 0 1rem;
+  @media (${theme.media.smallScreen}) {
+    padding: 0;
+  }
+  ${typografiStyle}
 `;
 
 const ContentStyle = styled.div`
@@ -54,16 +87,9 @@ function FaktaSideLayout(props: Props) {
       <Brødsmulestyling />
       <DevKnapper />
       <ContentStyle>
-        <Navigasjonsmeny className="order-1" />
+        <Meny className="order-1" />
         {props.wordCountRef && <Filtrering wordCountRef={props.wordCountRef} className="order-3" />}
-        <div className="order-2">
-          <Header
-            heading={props.header}
-            beskrivelse={props.beskrivelse}
-            publiseringsTidspunkt={props.publiseringsTidspunkt}
-          />
-          <MainContentStyle>{props.children}</MainContentStyle>
-        </div>
+        <MainContentStyle className="order-2">{props.children}</MainContentStyle>
       </ContentStyle>
     </>
   );

@@ -8,7 +8,6 @@ import getAlleTilpassInnholdValg from "../components/faktaside/TilpassInnhold/ge
 import { Group, isGroup } from "../utils/richTextUtils/richTextTypes";
 import BlockContent from "../components/BlockContent/BlockContent";
 import { visBasertPåFiltrering } from "../components/BlockContent/VisFor/VisFor";
-import { typografiStyle } from "../components/faktaside/MainContentStyle";
 import VeiviserBrødsmuler from "../components/veiviser/VeiviserBrødsmuler";
 import DevKnapper from "../components/DevKnapper/DevKnapper";
 import { useVisForContext } from "../components/BlockContent/VisFor/VisForContext";
@@ -18,8 +17,9 @@ import { createH2Group } from "../utils/richTextUtils/createGroup";
 import { Knapp } from "nav-frontend-knapper";
 import { GetStaticProps } from "next";
 import { SupportedLanguage } from "../i18n/supportedLanguages";
-import fetchAllFaktasider from "../hooks/graphQl/fetchAllFaktasider";
-import { FaktasideContext } from "../hooks/graphQl/fetchFaktaside";
+import fetchAllFaktasider from "../sanity/groq/faktaside/fetchAllFaktasider";
+import { typografiStyle } from "../components/faktaside/FaktaSideLayout";
+import { FaktasideParsedData } from "../sanity/groq/faktaside/parseFaktasideData";
 
 const Style = styled.div`
   ${typografiStyle};
@@ -42,7 +42,7 @@ const Content = styled.div`
 `;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const faktasider = await fetchAllFaktasider(context.locale as SupportedLanguage);
+  const faktasider = await fetchAllFaktasider(context.locale as SupportedLanguage, context.preview);
 
   return {
     props: {
@@ -52,7 +52,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 interface Props {
-  pages: FaktasideContext[];
+  pages: FaktasideParsedData[];
 }
 
 function Demoapp(props: Props) {
@@ -66,10 +66,9 @@ function Demoapp(props: Props) {
   });
 
   const context = state.context;
-  // @ts-ignore
   const pages = props.pages;
 
-  const siderValg: VeiviserValg<FaktasideContext>[] = pages.map((page) => ({
+  const siderValg: VeiviserValg<FaktasideParsedData>[] = pages.map((page) => ({
     label: page.title || "Mangler tittel",
     id: page.id,
     object: page,

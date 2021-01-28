@@ -1,6 +1,6 @@
 import { assign, createMachine, MachineConfig } from "xstate";
 import { Group } from "../../utils/richTextUtils/richTextTypes";
-import { FaktasideContext } from "../../hooks/graphQl/fetchFaktaside";
+import { FaktasideContext } from "../../hooks/groq/fetchFaktaside";
 import getAlleTilpassInnholdValg from "../../components/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
 
 export interface VeiviserContext {

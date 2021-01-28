@@ -1,21 +1,21 @@
 import * as React from "react";
 import { useCallback, useEffect, useState } from "react";
-import { pxFromTop } from "../../../utils/domUtils";
+import { pxFromTop } from "../../../../utils/domUtils";
 import styled, { css } from "styled-components/macro";
-import useSmoothscrollOnClick from "../../../hooks/useSmoothscrollOnClick";
-import { Group } from "../../../utils/richTextUtils/richTextTypes";
+import useSmoothscrollOnClick from "../../../../hooks/useSmoothscrollOnClick";
+import { Group } from "../../../../utils/richTextUtils/richTextTypes";
 import { useInnholdsListe } from "./useInnholdsListe";
-import { LenkeUtenUnderstrek } from "../../../utils/common-styled-components";
-import withErrorBoundary from "../../../components/withErrorBoundary";
-import { useFaktasideContext } from "../FaktaSideContext";
-import { loggMeny } from "../../../utils/logging";
-import { useVisForContext } from "../../../components/BlockContent/VisFor/VisForContext";
+import { LenkeUtenUnderstrek } from "../../../../utils/common-styled-components";
+import withErrorBoundary from "../../../../components/withErrorBoundary";
+import { loggMeny } from "../../../../utils/logging";
+import { useVisForContext } from "../../../BlockContent/VisFor/VisForContext";
 import { UnmountClosed } from "react-collapse";
-import { visBasertPåFiltrering } from "../../../components/BlockContent/VisFor/VisFor";
-import Utkast from "../../../components/BlockContent/utkast/Utkast";
-import { menuHighlightStyle } from "../Navigasjonsmeny/SideListe";
-import { theme } from "../../../styles/theme";
-import { visBasertPaaVisPaaConfig } from "../../../components/BlockContent/VisFor/VisPaaSide";
+import { visBasertPåFiltrering } from "../../../BlockContent/VisFor/VisFor";
+import Utkast from "../../../../components/BlockContent/utkast/Utkast";
+import { theme } from "../../../../styles/theme";
+import { visBasertPaaVisPaaConfig } from "../../../BlockContent/VisFor/VisPaaSide";
+import { menuHighlightStyle } from "../SideListe";
+import { useFaktasideContext } from "../../FaktaSideContext";
 
 const StyledLenke = styled(({ erValgt, ...rest }) => <LenkeUtenUnderstrek {...rest} />)`
   display: block;
@@ -52,7 +52,7 @@ function useCurrentlyViewedGroup(items: Group[]): Group | undefined {
 function MenuItem(props: { item: Group; current: boolean }) {
   const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
   const visForContext = useVisForContext();
-  const faktaside = useFaktasideContext().faktaside;
+  const faktaside = useFaktasideContext();
   const blockConfig = props.item.blockConfig;
 
   const handleClick = () => {
@@ -84,7 +84,7 @@ const StyledOl = styled.ol`
 
 function Innholdsfortegnelse() {
   const innholdsListe = useInnholdsListe();
-  const faktaside = useFaktasideContext().faktaside;
+  const faktaside = useFaktasideContext();
 
   if (!innholdsListe.length) {
     return null;

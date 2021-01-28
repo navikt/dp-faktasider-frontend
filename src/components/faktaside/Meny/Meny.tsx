@@ -55,20 +55,20 @@ interface Props {
   className?: string;
 }
 
-function Navigasjonsmeny(props: Props) {
+function Meny(props: Props) {
   const mobileTitleId = useUniqueId("mobile-menu");
   const desktopTitleId = useUniqueId("desktop-menu");
-  const { menuData, oppsett } = useFaktasideContext();
+  const { menuData, domainTitle } = useFaktasideContext();
 
   return (
     <>
       <DesktopNav className={props.className} aria-labelledby={desktopTitleId}>
-        <Header title={oppsett?.title} id={desktopTitleId} />
+        <Header title={domainTitle} id={desktopTitleId} />
         <SideListe menuData={menuData} />
       </DesktopNav>
       <MobileNav className={props.className} aria-labelledby={mobileTitleId}>
         <MobilmenyWrapper>
-          <Header title={oppsett?.title} id={mobileTitleId} />
+          <Header title={domainTitle} id={mobileTitleId} />
           <SideListe menuData={menuData} />
         </MobilmenyWrapper>
       </MobileNav>
@@ -76,4 +76,4 @@ function Navigasjonsmeny(props: Props) {
   );
 }
 
-export default withErrorBoundary(Navigasjonsmeny, "Navigasjonsmeny");
+export default withErrorBoundary(Meny, "Navigasjonsmeny");

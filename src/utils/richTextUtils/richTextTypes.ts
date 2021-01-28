@@ -1,5 +1,4 @@
 import { Modify } from "../typeUtils";
-import { FaktasideQueryData } from "../../hooks/graphQl/fetchFaktaside";
 
 export type VisForConfig = {
   situasjoner?: string[];

@@ -1,9 +1,9 @@
 import styled from "styled-components/macro";
 import { Normaltekst } from "nav-frontend-typografi";
-import { InternalMenuLinkData } from "../../hooks/graphQl/menuDataUtils";
+import { InternalMenuLinkData } from "../../hooks/groq/menuDataUtils";
 import { useTranslation } from "react-i18next";
 import Utkast from "../../components/BlockContent/utkast/Utkast";
-import { EksternLenkeI } from "../../hooks/graphQl/fetchProjectData";
+import { EksternLenkeI } from "../../hooks/groq/fetchProjectData";
 import React, { useRef } from "react";
 import { guid } from "nav-frontend-js-utils";
 import { HoyreChevron } from "nav-frontend-chevron";

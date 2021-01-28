@@ -1,11 +1,11 @@
 import * as React from "react";
-import { Block } from "../../utils/richTextUtils/richTextTypes";
+import { Block } from "../../../utils/richTextUtils/richTextTypes";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components/macro";
-import { theme } from "../../styles/theme";
-import H2GroupMarkup from "../../components/BlockContent/GroupMarkup/H2GroupMarkup";
-import withErrorBoundary from "../../components/withErrorBoundary";
-import { createH2Group } from "../../utils/richTextUtils/createGroup";
+import { theme } from "../../../styles/theme";
+import H2GroupMarkup from "../../../components/BlockContent/GroupMarkup/H2GroupMarkup";
+import withErrorBoundary from "../../../components/withErrorBoundary";
+import { createH2Group } from "../../../utils/richTextUtils/createGroup";
 
 interface Props {
   blocks?: Block[];

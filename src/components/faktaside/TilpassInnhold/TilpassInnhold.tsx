@@ -1,5 +1,6 @@
 import * as React from "react";
-import { useVisForContext } from "../../../components/BlockContent/VisFor/VisForContext";
+import { RefObject } from "react";
+import { useVisForContext } from "../../BlockContent/VisFor/VisForContext";
 import styled from "styled-components/macro";
 import { Checkbox } from "nav-frontend-skjema";
 import { Normaltekst, Systemtittel } from "nav-frontend-typografi";
@@ -10,7 +11,6 @@ import { UnmountClosed } from "react-collapse";
 import getAlleTilpassInnholdValg from "./getAlleTilpassInnholdValg";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { useWordCount } from "./useWordCount";
-import { RefObject } from "react";
 import { navFrontend } from "../../../styles/navFrontend";
 
 const StyledNav = styled.nav`
@@ -56,7 +56,7 @@ interface Props {
 function TilpassInnhold(props: Props) {
   const visForContext = useVisForContext();
   const titleId = useUniqueId("tilpassInnhold");
-  const { innhold, visIngenValgPasser, kortFortalt } = useFaktasideContext().faktaside;
+  const { innhold, visIngenValgPasser, kortFortalt } = useFaktasideContext();
   const valgt = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
   const tilgjengeligeValg = getAlleTilpassInnholdValg(innhold, kortFortalt);

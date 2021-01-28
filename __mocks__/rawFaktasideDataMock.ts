@@ -1,4 +1,4 @@
-import { FaktasideQueryData } from "../src/hooks/graphQl/fetchFaktaside";
+import { FaktasideQueryData } from "../src/hooks/groq/fetchFaktaside";
 
 export const rawFaktasideDataMock = {
   id: "-b182d79a-6d0b-5652-8812-887910f218ee",

@@ -1,5 +1,5 @@
-import { EksternLenkeI } from "./fetchProjectData";
-import { SupportedLanguage } from "../../i18n/supportedLanguages";
+import { EksternLenkeI } from "../fetchProjectData";
+import { SupportedLanguage } from "../../../i18n/supportedLanguages";
 
 export interface ExternalMenuLinkData extends EksternLenkeI {
   type: "external";
@@ -17,7 +17,3 @@ export interface InternalMenuLinkData {
 }
 
 export type MenuItem = ExternalMenuLinkData | InternalMenuLinkData;
-
-export function isInternal(lenke: MenuItem): lenke is InternalMenuLinkData {
-  return lenke.type === "internal";
-}

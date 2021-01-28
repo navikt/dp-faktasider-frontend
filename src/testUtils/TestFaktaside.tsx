@@ -2,12 +2,11 @@ import * as React from "react";
 import { Block } from "../utils/richTextUtils/richTextTypes";
 import { faktaSideMockContext } from "./faktaSideMockContext";
 import TestProvider from "./TestProvider";
-import { FaktasideContext } from "../hooks/graphQl/fetchFaktaside";
 import FaktaSide from "../components/faktaside/Faktaside";
-import { FaktaSideProps } from "../components/faktaside/types";
+import { FaktasideParsedData } from "../sanity/groq/faktaside/parseFaktasideData";
 
 type Props = {
-  partialContext?: Partial<FaktasideContext>;
+  partialContext?: Partial<FaktasideParsedData>;
   innhold?: Block[];
 };
 

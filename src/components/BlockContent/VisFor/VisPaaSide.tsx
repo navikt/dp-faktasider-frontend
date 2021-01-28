@@ -18,7 +18,7 @@ export function visBasertPaaVisPaaConfig(faktasideId?: string, visPaaConfig?: Vi
 }
 
 function VisPaaSide(props: Props) {
-  const faktaside = useFaktasideContext().faktaside;
+  const faktaside = useFaktasideContext();
   const visPåDenneSiden = visBasertPaaVisPaaConfig(faktaside.id, props.visPaaSider);
   const visPåDenneSidenDebug = useVisPaaSideDebug({ children: props.children, ikkeVisPåDenneSiden: !visPåDenneSiden });
 

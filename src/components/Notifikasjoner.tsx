@@ -1,13 +1,13 @@
 import * as React from "react";
 import { AlertStripeInfo } from "nav-frontend-alertstriper";
 import styled from "styled-components/macro";
-import { theme } from "../../styles/theme";
 import { Element } from "nav-frontend-typografi";
-import withErrorBoundary from "../../components/withErrorBoundary";
-import BlockContent from "../../components/BlockContent/BlockContent";
-import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
-import { typografiStyle } from "./MainContentStyle";
-import { contentMaxwidth } from "../forside/style";
+import { SanityBlock } from "../utils/richTextUtils/richTextTypes";
+import { theme } from "../styles/theme";
+import { contentMaxwidth } from "./forside/style";
+import { typografiStyle } from "./faktaside/FaktaSideLayout";
+import BlockContent from "./BlockContent/BlockContent";
+import withErrorBoundary from "./withErrorBoundary";
 
 export interface Notifikasjon {
   title?: string;

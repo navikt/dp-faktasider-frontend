@@ -2,17 +2,15 @@ import { onBreadcrumbClick, setBreadcrumbs } from "@navikt/nav-dekoratoren-modul
 import { Breadcrumb } from "@navikt/nav-dekoratoren-moduler/dist/functions/breadcrumbs";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { FaktasideContext } from "../../hooks/graphQl/fetchFaktaside";
 
-function useBreadcrumbs(faktaside?: FaktasideContext) {
-  const lang = useRouter().locale;
-  const forsideUrl = `/${lang}/`;
-  const faktasideUrl = faktaside && `${forsideUrl}${faktaside?.slug}`;
+function useBreadcrumbs(forsideTittel?: string, side?: { tittel: string; slug: string }) {
+  const navigate = useRouter().push;
+  const forsideUrl = `/`;
+  const faktasideUrl = side && `${forsideUrl}${side.slug}`;
 
   onBreadcrumbClick((breadcrumb) => {
     switch (breadcrumb.url) {
       case forsideUrl:
-        // @ts-ignore
         navigate(forsideUrl);
         break;
       case faktasideUrl:
@@ -20,10 +18,10 @@ function useBreadcrumbs(faktaside?: FaktasideContext) {
     }
   });
 
-  const breadcrumbs: Breadcrumb[] = [{ title: "projectData.title", url: forsideUrl, handleInApp: true }];
+  const breadcrumbs: Breadcrumb[] = [{ title: forsideTittel || "Forside", url: forsideUrl, handleInApp: true }];
 
-  if (faktasideUrl) {
-    breadcrumbs.push({ title: faktaside?.title || "Du er her", url: faktasideUrl, handleInApp: true });
+  if (side) {
+    breadcrumbs.push({ title: side.tittel, url: faktasideUrl!, handleInApp: true });
   }
 
   useEffect(() => {

@@ -8,32 +8,36 @@ import { FaktasideProvider } from "./FaktaSideContext";
 import StickyFeedback from "./StickyFeedback";
 import SEO from "../SEO";
 import FaktaSideLayout from "./FaktaSideLayout";
-import InnholdetErTilpasset from "./InnholdsMeny/InnholdetErTilpasset";
-import Notifikasjoner from "./Notifikasjoner";
-import KortFortalt from "./KortFortalt";
+import InnholdetErTilpasset from "./TilpassInnhold/InnholdetErTilpasset";
 import BlockContent from "../BlockContent/BlockContent";
-import RelatertInformasjon from "./RelatertInformasjon";
-import { FaktasideParsedData } from "./types";
 import { useRouter } from "next/router";
 import { SupportedLanguage } from "../../i18n/supportedLanguages";
-import { MenuItem } from "../../hooks/graphQl/menuDataUtils";
 import Error from "next/error";
+import useBreadcrumbs from "./useBreadcrumbs";
+import { FaktasideParsedData } from "../../sanity/groq/faktaside/parseFaktasideData";
+import { MenuItem } from "../../sanity/groq/menuDataUtils";
+import Notifikasjoner from "../Notifikasjoner";
+import KortFortalt from "./content/KortFortalt";
+import RelatertInformasjon from "./content/RelatertInformasjon";
+import Header from "./content/Header";
 
-function Faktaside(props: { data: FaktasideParsedData; menuData: MenuItem[] }) {
+export interface FaktasideProps extends FaktasideParsedData {
+  menuData: MenuItem[];
+}
+
+function Faktaside(props: FaktasideProps) {
   const lang = useRouter().locale as SupportedLanguage;
   const wordCountRef = useRef<HTMLDivElement>(null);
-  const { faktaside, oppsett } = props.data;
 
-  if (!faktaside) {
+  if (!props.id) {
     return <Error statusCode={404} />;
   }
 
-  const erPublisert = faktaside.visSprakversjon?.[lang];
-  const tittel = faktaside.title || "";
-  const beskrivelse = faktaside.beskrivelse || "";
+  const erPublisert = props.visSprakversjon?.[lang];
+  const tittel = props.title || "";
+  const beskrivelse = props.beskrivelse || "";
 
-  /*useBreadcrumbs(props);*/
-
+  useBreadcrumbs(props.domainTitle, { tittel: props.title || "Du er her", slug: props.slug });
   useMount(() => loggSidevisning(tittel));
   useLoggUtdatertHashlenke();
 
@@ -42,21 +46,17 @@ function Faktaside(props: { data: FaktasideParsedData; menuData: MenuItem[] }) {
   }
 
   return (
-    <FaktasideProvider faktasideData={props.data}>
+    <FaktasideProvider faktasideProps={props}>
       <StickyFeedback />
-      <SEO title={tittel} description={beskrivelse} lang={lang} path={""} />
-      <FaktaSideLayout
-        wordCountRef={wordCountRef}
-        header={tittel}
-        beskrivelse={beskrivelse}
-        publiseringsTidspunkt={faktaside.publiseringsTidspunkt}
-      >
+      <SEO title={tittel} description={beskrivelse} lang={lang} slug={props.slug} />
+      <FaktaSideLayout wordCountRef={wordCountRef}>
+        <Header />
         <InnholdetErTilpasset />
-        <Notifikasjoner notifikasjoner={oppsett?.notifikasjoner} />
+        <Notifikasjoner notifikasjoner={props?.notifikasjoner} />
         <div ref={wordCountRef}>
-          <KortFortalt blocks={faktaside.kortFortalt} />
-          <BlockContent blocks={faktaside.innhold} />
-          <RelatertInformasjon blocks={faktaside.relatertInformasjon} />
+          <KortFortalt blocks={props.kortFortalt} />
+          <BlockContent blocks={props.innhold} />
+          <RelatertInformasjon blocks={props.relatertInformasjon} />
         </div>
       </FaktaSideLayout>
     </FaktasideProvider>

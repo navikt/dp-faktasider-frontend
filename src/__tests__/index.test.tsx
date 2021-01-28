@@ -1,20 +1,19 @@
 import React from "react";
 import { render, within } from "../testUtils/customized-testing-library";
-import { mockFaktasiderMenuData } from "../hooks/graphQl/mockFaktasiderMenuData";
-import { InternalMenuLinkData } from "../hooks/graphQl/menuDataUtils";
 import IndexPage from "../pages";
+import { mockMenuData } from "../sanity/groq/mockMenuData";
 
 test("Index-side inneholder lenker til undersider med beskrivelse", () => {
   const result = render(
     <IndexPage
-      projectData={{
+      forsideData={{
         title: "Arbeid",
         komIgangLenker: [],
         folketrygdensGrunnbellop: 1,
         beskrivelse: "",
         forsideNotifikasjoner: [],
       }}
-      infosideLenker={mockFaktasiderMenuData}
+      menuData={mockMenuData}
       locale={"no"}
     />
   );

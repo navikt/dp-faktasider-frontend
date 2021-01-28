@@ -2,15 +2,15 @@ import * as React from "react";
 import { useReducer } from "react";
 import styled, { css } from "styled-components/macro";
 import withErrorBoundary from "../../../components/withErrorBoundary";
-import Innholdsfortegnelse from "../InnholdsMeny/Innholdsfortegnelse";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { loggMeny } from "../../../utils/logging";
 import { UnmountClosed } from "react-collapse";
 import { theme } from "../../../styles/theme";
-import { ExternalMenuLinkData, InternalMenuLinkData, isInternal, MenuItem } from "../../../hooks/graphQl/menuDataUtils";
 import Link from "next/link";
 import NavFrontendChevron from "nav-frontend-chevron";
 import HoyreChevron from "nav-frontend-chevron/lib/hoyre-chevron";
+import Innholdsfortegnelse from "./Innholdsfortegnelse/Innholdsfortegnelse";
+import { ExternalMenuLinkData, InternalMenuLinkData, MenuItem } from "../../../sanity/groq/menu/menuDataUtils";
 
 const StyledOl = styled.ol`
   margin-bottom: 8rem;
@@ -67,10 +67,10 @@ const StyledButton = styled.button<{ isOpen: boolean }>`
 `;
 
 function InternSideLenke(props: { page: InternalMenuLinkData }) {
-  const faktasideContext = useFaktasideContext();
+  const faktaside = useFaktasideContext();
   const [open, toggle] = useReducer((state) => !state, true);
 
-  const currentPage = props.page.id === faktasideContext.faktaside.id;
+  const currentPage = props.page.id === faktaside.id;
 
   if (currentPage) {
     return (
@@ -124,7 +124,7 @@ function SideListe(props: Props) {
     <StyledOl>
       {menuData?.map((link, index) => (
         <li key={index}>
-          {isInternal(link) ? (
+          {link.type === "internal" ? (
             <InternSideLenke page={link} key={link.id} />
           ) : (
             <EksternLenke lenke={link} key={link.url} />

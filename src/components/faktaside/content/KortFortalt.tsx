@@ -1,13 +1,13 @@
 import * as React from "react";
-import { Block } from "../../utils/richTextUtils/richTextTypes";
+import { Block } from "../../../utils/richTextUtils/richTextTypes";
 import { useTranslation } from "react-i18next";
-import H2GroupMarkup from "../../components/BlockContent/GroupMarkup/H2GroupMarkup";
-import withErrorBoundary from "../../components/withErrorBoundary";
-import { createH2Group } from "../../utils/richTextUtils/createGroup";
+import H2GroupMarkup from "../../../components/BlockContent/GroupMarkup/H2GroupMarkup";
+import withErrorBoundary from "../../../components/withErrorBoundary";
+import { createH2Group } from "../../../utils/richTextUtils/createGroup";
 import KortFortaltIkon from "./KortFortaltIkon";
 import styled from "styled-components";
-import { navFrontend } from "../../styles/navFrontend";
-import { theme } from "../../styles/theme";
+import { navFrontend } from "../../../styles/navFrontend";
+import { theme } from "../../../styles/theme";
 
 interface Props {
   blocks?: Block[];

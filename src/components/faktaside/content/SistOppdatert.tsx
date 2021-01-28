@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import withErrorBoundary from "../../components/withErrorBoundary";
+import withErrorBoundary from "../../withErrorBoundary";
 
 const Style = styled.div`
   margin-top: 0.5rem;

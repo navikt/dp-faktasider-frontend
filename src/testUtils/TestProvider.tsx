@@ -1,12 +1,12 @@
 import * as React from "react";
 import { createContext, ReactNode, useContext } from "react";
 import { isTest } from "../utils/environment";
-import { mockFaktasiderMenuData } from "../hooks/graphQl/mockFaktasiderMenuData";
-import { ExternalMenuLinkData } from "../hooks/graphQl/menuDataUtils";
+import { mockMenuData } from "../sanity/groq/menu/mockMenuData";
+import { ExternalMenuLinkData } from "../sanity/groq/menu/menuDataUtils";
 
 const initial = {
   isTest: isTest(),
-  menuData: mockFaktasiderMenuData,
+  menuData: mockMenuData,
 };
 
 const TestContext = createContext(initial);

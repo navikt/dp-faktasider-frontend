@@ -1,20 +1,24 @@
 import React, { createContext, ReactNode, useContext } from "react";
-import { FaktasideParsedData } from "./types";
+import { FaktasideProps } from "./Faktaside";
 
-const defaultValue: FaktasideParsedData = {
-  faktaside: {},
-  oppsett: {},
-  menuData: [],
+const defaultValue: FaktasideProps = {
+  id: "N/A",
+  slug: "N/A",
   rawData: {
-    faktaside: {},
+    faktaside: {
+      id: "N/A",
+      _updatedAt: "N/A",
+      slug: "N/A",
+    },
     oppsett: {},
   },
+  menuData: [],
 };
 
-const Context = createContext<FaktasideParsedData>(defaultValue);
+const Context = createContext<FaktasideProps>(defaultValue);
 
 export const useFaktasideContext = () => useContext(Context);
 
-export const FaktasideProvider = (props: { children: ReactNode; faktasideData: FaktasideParsedData }) => {
-  return <Context.Provider value={props.faktasideData}>{props.children}</Context.Provider>;
+export const FaktasideProvider = (props: { children: ReactNode; faktasideProps: FaktasideProps }) => {
+  return <Context.Provider value={props.faktasideProps}>{props.children}</Context.Provider>;
 };

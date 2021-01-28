@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useState } from "react";
-import { useVisForContext } from "../../../components/BlockContent/VisFor/VisForContext";
+import { useVisForContext } from "../../BlockContent/VisFor/VisForContext";
 import { useMount } from "react-use";
 
 export function useWordCount(contentRef: RefObject<HTMLElement>) {

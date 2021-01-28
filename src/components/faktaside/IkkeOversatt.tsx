@@ -7,8 +7,8 @@ import FaktaSideLayout from "./FaktaSideLayout";
 import withErrorBoundary from "../../components/withErrorBoundary";
 import { useMount } from "react-use";
 import { loggIkkeOversatt } from "../../utils/logging";
-import { FaktaSideProps } from "./types";
 import Link from "next/link";
+import { FaktasideProps } from "./Faktaside";
 
 const Style = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const StyledNormaltekst = styled(Normaltekst)`
   margin: 2rem 0 0 !important;
 `;
 
-function IkkeOversatt(props: FaktaSideProps) {
+function IkkeOversatt(props: FaktasideProps) {
   const page = props;
   const { t } = useTranslation("global");
   const title = page.title || "";
@@ -39,7 +39,7 @@ function IkkeOversatt(props: FaktaSideProps) {
     if (!publisert) {
       return null;
     }
-    const tittel = page.rawData.title?.[lang];
+    const tittel = page.rawData?.faktaside.title?.[lang];
     return (
       <li>
         <Link href={`/${page.slug}`} locale={lang}>

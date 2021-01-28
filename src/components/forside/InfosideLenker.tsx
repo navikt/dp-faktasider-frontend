@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import React from "react";
-import { MenuItem } from "../../hooks/graphQl/menuDataUtils";
+import { MenuItem } from "../../hooks/groq/menuDataUtils";
 import { EksternLenke, InternLenke } from "./ForsideLenker";
 import styled from "styled-components/macro";
 import { Undertittel } from "nav-frontend-typografi";

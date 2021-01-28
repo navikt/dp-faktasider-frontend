@@ -3,14 +3,15 @@ import SEO from "../components/SEO";
 import styled from "styled-components/macro";
 import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
 import { useTranslation } from "react-i18next";
-import { useLocation, useMount } from "react-use";
+import { useMount } from "react-use";
 import { loggNotFound } from "../utils/logging";
 import { GetStaticProps } from "next";
-import { SupportedLanguage } from "../i18n/supportedLanguages";
-import fetchFaktasiderMenuData from "../hooks/graphQl/fetchFaktasiderMenuData";
 import { useRouter } from "next/router";
-import { MenuItem } from "../hooks/graphQl/menuDataUtils";
-import SideListe from "../components/faktaside/Navigasjonsmeny/SideListe";
+import SideListe from "../components/faktaside/Meny/SideListe";
+import { sanityClient } from "../sanity/sanity-config";
+import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
+import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
+import { useLocale } from "../i18n/useLocale";
 
 const Style = styled.div`
   margin: 2rem 0;
@@ -26,8 +27,13 @@ const Style = styled.div`
 const StyledNormaltekst = styled(Normaltekst)`
   margin: 2rem 0 1rem !important;
 `;
-export const getStaticProps: GetStaticProps = async (context) => {
-  const menuData = await fetchFaktasiderMenuData(context.locale as SupportedLanguage);
+
+interface Props {
+  menuData: MenuQueryData;
+}
+
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
+  const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
 
   return {
     props: {
@@ -36,14 +42,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-interface Props {
-  menuData: MenuItem[];
-}
-
 const NotFoundPage = (props: Props) => {
   const { t } = useTranslation("global");
-  const lang = useRouter().locale as SupportedLanguage;
-  const path = useLocation().pathname;
+  const lang = useLocale();
+  const path = useRouter().pathname;
+  const menuData = parseMenuData(props.menuData, lang);
 
   useMount(() => {
     loggNotFound(path || "N/A");
@@ -51,11 +54,11 @@ const NotFoundPage = (props: Props) => {
 
   return (
     <Style>
-      <SEO title="404: Not found" description="" lang={lang} path={"/404/"} />
+      <SEO title="404: Not found" description="" lang={lang} slug={"/404/"} />
       <Sidetittel>{t("404")}</Sidetittel>
       <Normaltekst>{t("404-sub")}</Normaltekst>
       <StyledNormaltekst>{t("404-andre-sider")}</StyledNormaltekst>
-      <SideListe menuData={props.menuData} />
+      <SideListe menuData={menuData} />
     </Style>
   );
 };

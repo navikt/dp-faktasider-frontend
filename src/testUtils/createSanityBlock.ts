@@ -1,10 +1,12 @@
 import { DelttekstReference, SanityBlock, TidslinjeI, Tillegsinformasjon } from "../utils/richTextUtils/richTextTypes";
 import { guid } from "nav-frontend-js-utils";
-import { FaktasideQueryData } from "../hooks/graphQl/fetchFaktaside";
+import { Translations } from "../types/translations";
 
 /*
  * Funksjoner for å lage sanity-mock-data til bruk i tester
  * */
+
+export const translated = <T>(item: T): Translations<T> => ({ _type: "localeItem", no: item });
 
 export function createSanityBlock(text: string, style: string, marks?: string[]): SanityBlock {
   const key = createKey();

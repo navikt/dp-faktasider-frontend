@@ -3,7 +3,7 @@ import getAlleTilpassInnholdValg from "./getAlleTilpassInnholdValg";
 import { SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
 import { createSanityBlock, createSanityBlockMedVisFor } from "../../../testUtils/createSanityBlock";
 
-const getAlleFiltreringsValgForInnholdTestData: SanityBlock[] = [
+const getAlleTilpassInnholdValgTestdata: SanityBlock[] = [
   createSanityBlockMedVisFor("Skal vises for student", "normal", ["student"]),
   createSanityBlockMedVisFor("Skal også vises for student", "normal", ["student"]),
   createSanityBlock("Overskrift", "h2"),
@@ -21,7 +21,7 @@ const getAlleFiltreringsValgForInnholdTestData: SanityBlock[] = [
 ];
 
 test("getAlleFiltreringsValgForInnhold lager en liste over alle tilgjengelige filtrerinsvalg for innhold", () => {
-  const parsedText = parseRichText(getAlleFiltreringsValgForInnholdTestData);
+  const parsedText = parseRichText(getAlleTilpassInnholdValgTestdata);
   const filtreringsValg = getAlleTilpassInnholdValg(parsedText);
 
   expect(filtreringsValg).toHaveLength(2);

@@ -1,7 +1,7 @@
 import React from "react";
-import { render, within } from "../../testUtils/customized-testing-library";
-import TestFaktaside from "../../testUtils/TestFaktaside";
-import { createSanityBlock } from "../../testUtils/createSanityBlock";
+import { render, within } from "../../../testUtils/customized-testing-library";
+import TestFaktaside from "../../../testUtils/TestFaktaside";
+import { createSanityBlock } from "../../../testUtils/createSanityBlock";
 
 describe("relatert innformasjon", () => {
   test("vises ikke om det ikke finnes innhold i relatert innformajson", () => {

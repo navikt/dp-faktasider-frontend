@@ -9,7 +9,6 @@ import parseRichText from "../utils/richTextUtils/parser/parseRichText";
 import { flattenH2TestData } from "../utils/richTextUtils/parser/flattenH2Versions/flattenH2Versions.testdata";
 import { makeUniqueIdTestData } from "../utils/richTextUtils/parser/makeUniqeGroupIDs/makeUniqeGroupIDs.testdata";
 import { parseDelteTeksterTestData } from "../utils/richTextUtils/parser/parseDelteTekster/parseDelteTekster.testdata";
-import Tekstomrade from "nav-frontend-tekstomrade";
 import { groupParserTestData } from "../utils/richTextUtils/parser/groupParser/groupParser.testdata";
 import { utkastTestData } from "../components/BlockContent/utkast/Utkast.testdata";
 import { visForAnnotationDeltTekstTestData } from "../components/BlockContent/VisFor/visForAnnotationDeltTekstTestData";
@@ -18,10 +17,10 @@ import { visPaaSideTestData } from "../components/BlockContent/VisFor/VisPaaSide
 import { tillegsinformasjonTestData } from "../components/BlockContent/Tilleggsinnformasjon/TilleggsInnformasjon.testdata";
 import { groupMarkupTestData } from "../components/BlockContent/GroupMarkup/GroupMarkup.testdata";
 import { tidslinjeTestData } from "../components/BlockContent/Tidslinje/Tidslinje.testdata";
-import { FaktasideContext } from "../hooks/graphQl/fetchFaktaside";
+import { FaktasideProps } from "../components/faktaside/Faktaside";
 
 type Testdata = {
-  data: Partial<FaktasideContext>;
+  data: Partial<FaktasideProps>;
   name: string;
 };
 
@@ -124,9 +123,9 @@ const StyledPre = styled.pre`
 `;
 
 function reducer(
-  state: FaktasideContext | undefined,
-  action: { type: "setData"; data: Partial<FaktasideContext> }
-): FaktasideContext | undefined {
+  state: FaktasideProps | undefined,
+  action: { type: "setData"; data: Partial<FaktasideProps> }
+): FaktasideProps | undefined {
   switch (action.type) {
     case "setData":
       return {
