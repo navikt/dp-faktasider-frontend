@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 import { Translations } from "../../../types/translations";
+import { Modify } from "../../../utils/typeUtils";
 
 export const menuQuery = groq`{
   "lenker": *[_id == "oppsett"][0].sideoversiktLenker[] {
@@ -25,6 +26,13 @@ export interface MenuQueryData {
   sider: MenuDataSide[];
 }
 
+export type TranslatedMenuQueryData = Modify<
+  MenuQueryData,
+  {
+    sider: TranslatedMenuDataSide[];
+  }
+>;
+
 export interface MenuDataSide {
   title?: Translations<string>;
   beskrivelse?: Translations<string>;
@@ -36,6 +44,15 @@ export interface MenuDataSide {
   id: string;
   slug: string;
 }
+
+export type TranslatedMenuDataSide = Modify<
+  MenuDataSide,
+  {
+    title?: string;
+    beskrivelse?: string;
+    nokkelordBeskrivelse?: string;
+  }
+>;
 
 export interface SanityInternLenke {
   _type: "reference";

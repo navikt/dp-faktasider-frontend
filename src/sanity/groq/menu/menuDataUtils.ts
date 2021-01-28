@@ -1,5 +1,5 @@
-import { EksternLenkeI } from "../fetchProjectData";
 import { SupportedLanguage } from "../../../i18n/supportedLanguages";
+import { EksternLenkeI } from "../forside/parseForsideData";
 
 export interface ExternalMenuLinkData extends EksternLenkeI {
   type: "external";

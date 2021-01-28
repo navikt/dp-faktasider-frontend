@@ -1,7 +1,6 @@
 import { createSanityBlock, createTidslinje } from "../../../testUtils/createSanityBlock";
-import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
 
-export const tidslinjeTestData = parseRichText([
+export const tidslinjeTestData = [
   createSanityBlock("Enkel tidslinje", "h2"),
   createTidslinje([
     createSanityBlock("Punkt 1", "tidslinjepunkt"),
@@ -17,4 +16,4 @@ export const tidslinjeTestData = parseRichText([
     createSanityBlock("Punkt 2", "tidslinjepunkt"),
     createSanityBlock("Innhold til punkt 2", "normal"),
   ]),
-]);
+];

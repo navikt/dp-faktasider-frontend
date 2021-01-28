@@ -1,11 +1,11 @@
 import { useTranslation } from "react-i18next";
 import React from "react";
-import { MenuItem } from "../../hooks/groq/menuDataUtils";
 import { EksternLenke, InternLenke } from "./ForsideLenker";
 import styled from "styled-components/macro";
 import { Undertittel } from "nav-frontend-typografi";
 import useUniqueId from "../../utils/useUniqueId";
 import { contentMaxwidth } from "./style";
+import { MenuItem } from "../../sanity/groq/menu/menuDataUtils";
 
 const StyledUl = styled.ul`
   margin: 2rem 0 4rem;

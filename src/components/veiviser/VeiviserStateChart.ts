@@ -1,10 +1,10 @@
 import { assign, createMachine, MachineConfig } from "xstate";
 import { Group } from "../../utils/richTextUtils/richTextTypes";
-import { FaktasideContext } from "../../hooks/groq/fetchFaktaside";
 import getAlleTilpassInnholdValg from "../../components/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
+import { FaktasideParsedData } from "../../sanity/groq/faktaside/parseFaktasideData";
 
 export interface VeiviserContext {
-  side?: FaktasideContext;
+  side?: FaktasideParsedData;
   filtrering?: string;
   group?: Group;
 }
@@ -20,7 +20,7 @@ interface States {
 
 type Events =
   | { type: "CLEAR" | "TILBAKETILVELGSIDE" | "TILBAKETILVELGFILTRERING" | "TILBAKETILVELGOVERSKRIFT" }
-  | { type: "VELGSIDE"; side: FaktasideContext }
+  | { type: "VELGSIDE"; side: FaktasideParsedData }
   | { type: "VELGFILTRERING"; filtrering: string }
   | { type: "VELGOVERSKRIFT"; group: Group };
 

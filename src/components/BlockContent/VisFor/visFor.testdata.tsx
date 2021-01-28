@@ -1,4 +1,3 @@
-import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
 import {
   crateSanityListeElement,
   crateSanityListeElementMedVisFor,
@@ -39,5 +38,5 @@ export const visForTestData = {
     bolkForAlle,
     bolkSkjulForPermittertOgKonkurs,
   },
-  innhold: parseRichText(data),
+  innhold: data,
 };

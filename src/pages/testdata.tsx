@@ -1,11 +1,10 @@
 import * as React from "react";
 import { useReducer } from "react";
 import { visForTestData } from "../components/BlockContent/VisFor/visFor.testdata";
-import { faktaSideMockContext } from "../testUtils/faktaSideMockContext";
+import { faktaSideMockQueryData } from "../testUtils/faktaSideMockQueryData";
 import styled from "styled-components/macro";
 import { Normaltekst, Sidetittel, Undertittel } from "nav-frontend-typografi";
 import { Knapp } from "nav-frontend-knapper";
-import parseRichText from "../utils/richTextUtils/parser/parseRichText";
 import { flattenH2TestData } from "../utils/richTextUtils/parser/flattenH2Versions/flattenH2Versions.testdata";
 import { makeUniqueIdTestData } from "../utils/richTextUtils/parser/makeUniqeGroupIDs/makeUniqeGroupIDs.testdata";
 import { parseDelteTeksterTestData } from "../utils/richTextUtils/parser/parseDelteTekster/parseDelteTekster.testdata";
@@ -17,10 +16,13 @@ import { visPaaSideTestData } from "../components/BlockContent/VisFor/VisPaaSide
 import { tillegsinformasjonTestData } from "../components/BlockContent/Tilleggsinnformasjon/TilleggsInnformasjon.testdata";
 import { groupMarkupTestData } from "../components/BlockContent/GroupMarkup/GroupMarkup.testdata";
 import { tidslinjeTestData } from "../components/BlockContent/Tidslinje/Tidslinje.testdata";
-import { FaktasideProps } from "../components/faktaside/Faktaside";
+import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
+import { translated } from "../testUtils/createSanityBlock";
+
+type FaktasideData = FaktasideQueryData["faktaside"];
 
 type Testdata = {
-  data: Partial<FaktasideProps>;
+  data: Partial<FaktasideData>;
   name: string;
 };
 
@@ -32,70 +34,70 @@ const testData: Testdata[] = [
   {
     name: "visFor",
     data: {
-      innhold: visForTestData.innhold,
+      innhold: translated(visForTestData.innhold),
       visIngenValgPasser: true,
     },
   },
   {
     name: "flattenH2",
     data: {
-      innhold: parseRichText(flattenH2TestData),
+      innhold: translated(flattenH2TestData),
     },
   },
   {
     name: "unique IDs",
     data: {
-      innhold: parseRichText(makeUniqueIdTestData),
+      innhold: translated(makeUniqueIdTestData),
     },
   },
   {
     name: "parse delte tekster",
     data: {
-      innhold: parseRichText(parseDelteTeksterTestData),
+      innhold: translated(parseDelteTeksterTestData),
     },
   },
   {
     name: "groupParser",
     data: {
-      innhold: parseRichText(groupParserTestData),
+      innhold: translated(groupParserTestData),
     },
   },
   {
     name: "group markup",
     data: {
-      innhold: groupMarkupTestData,
+      innhold: translated(groupMarkupTestData),
     },
   },
   {
     name: "utkast",
     data: {
-      innhold: parseRichText(utkastTestData),
+      innhold: translated(utkastTestData),
     },
   },
   {
     name: "visForAnnotation delt tekst",
     data: {
-      innhold: visForAnnotationDeltTekstTestData.data,
+      innhold: translated(visForAnnotationDeltTekstTestData.data),
       id: visForAnnotationDeltTekstTestData.secondPageId,
     },
   },
   {
     name: "visPaaSide delt tekst",
     data: {
-      innhold: visPaaSideTestData.innhold,
+      innhold: translated(visPaaSideTestData.innhold),
       id: visPaaSideTestData.id,
     },
   },
   {
     name: "tillegsinformasjon",
     data: {
-      innhold: tillegsinformasjonTestData,
+      innhold: translated(tillegsinformasjonTestData),
     },
   },
   {
     name: "tidslinje",
     data: {
-      innhold: tidslinjeTestData,
+      innhold: translated(tidslinjeTestData),
     },
   },
 ];
@@ -123,13 +125,13 @@ const StyledPre = styled.pre`
 `;
 
 function reducer(
-  state: FaktasideProps | undefined,
-  action: { type: "setData"; data: Partial<FaktasideProps> }
-): FaktasideProps | undefined {
+  state: FaktasideData | undefined,
+  action: { type: "setData"; data: Partial<FaktasideData> }
+): FaktasideData | undefined {
   switch (action.type) {
     case "setData":
       return {
-        ...faktaSideMockContext,
+        ...faktaSideMockQueryData.faktaside,
         ...action.data,
       };
     default:
@@ -155,7 +157,7 @@ function Testdata() {
           </StyledKnapp>
         ))}
       </Style>
-      {valgtData && <TestFaktaside partialContext={valgtData} />}
+      {valgtData && <TestFaktaside partialFaktaside={valgtData} />}
       {valgtData && <StyledPre>{"Page context: \n\n" + JSON.stringify(valgtData, null, 2)}</StyledPre>}
     </>
   );

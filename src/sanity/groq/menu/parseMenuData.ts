@@ -1,16 +1,22 @@
-import { ExternalMenuLinkData, InternalMenuLinkData, MenuItem } from "../menuDataUtils";
 import { SupportedLanguage, supportedLanguages } from "../../../i18n/supportedLanguages";
-import { isSanityInternLenke, MenuDataSide, MenuQueryData, SanityEksternLenke } from "./menuQuery";
+import {
+  isSanityInternLenke,
+  MenuQueryData,
+  SanityEksternLenke,
+  TranslatedMenuDataSide,
+  TranslatedMenuQueryData,
+} from "./menuQuery";
 import localizeSanityContent from "../../../i18n/localizeSanityContent";
+import { ExternalMenuLinkData, InternalMenuLinkData, MenuItem } from "./menuDataUtils";
 
 export type ParsedMenuData = MenuItem[];
 
 export function parseMenuData(data: MenuQueryData, lang: SupportedLanguage): ParsedMenuData {
-  const { sider, lenker } = localizeSanityContent(data, lang) as MenuQueryData;
+  const { sider, lenker } = localizeSanityContent(data, lang) as TranslatedMenuQueryData;
 
   const sortedMenuLinks = lenker.map((lenke) => {
     if (isSanityInternLenke(lenke)) {
-      return createInternalLinkData(sider.find((page) => page.id === lenke.id) as MenuDataSide, lang);
+      return createInternalLinkData(sider.find((page) => page.id === lenke.id) as TranslatedMenuDataSide, lang);
     }
     return createExternalLinkData(lenke);
   });
@@ -22,7 +28,7 @@ export function parseMenuData(data: MenuQueryData, lang: SupportedLanguage): Par
   return [...sortedMenuLinks, ...unsortedLinks];
 }
 
-export function createInternalLinkData(page: MenuDataSide, lang: SupportedLanguage): InternalMenuLinkData {
+export function createInternalLinkData(page: TranslatedMenuDataSide, lang: SupportedLanguage): InternalMenuLinkData {
   const slug = page.slug;
   const oversettelser = supportedLanguages.filter((lang) => page.visSprakversjon?.[lang]);
   const tilgjengeligPåValgtSpråk = oversettelser.includes(lang);

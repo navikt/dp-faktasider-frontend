@@ -3,12 +3,12 @@ import styled from "styled-components/macro";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
 import { useTranslation } from "react-i18next";
 import { supportedLanguages } from "../../i18n/supportedLanguages";
-import FaktaSideLayout from "./FaktaSideLayout";
 import withErrorBoundary from "../../components/withErrorBoundary";
 import { useMount } from "react-use";
 import { loggIkkeOversatt } from "../../utils/logging";
 import Link from "next/link";
 import { FaktasideProps } from "./Faktaside";
+import SEO from "../SEO";
 
 const Style = styled.div`
   display: flex;
@@ -30,7 +30,6 @@ function IkkeOversatt(props: FaktasideProps) {
   const page = props;
   const { t } = useTranslation("global");
   const title = page.title || "";
-  const beskrivelse = page.beskrivelse || "";
 
   useMount(() => loggIkkeOversatt(title));
 
@@ -52,17 +51,16 @@ function IkkeOversatt(props: FaktasideProps) {
   });
 
   return (
-    <FaktaSideLayout header={title} beskrivelse={beskrivelse}>
-      <Style>
-        <Innholdstittel>{t("ikkeOversatt")}</Innholdstittel>
-        {oversettelser.length && (
-          <>
-            <StyledNormaltekst>{t("tilgjengeligPåAndreSpråk")}</StyledNormaltekst>
-            <StyledUl>{oversettelser}</StyledUl>
-          </>
-        )}
-      </Style>
-    </FaktaSideLayout>
+    <Style>
+      <SEO title={title} description={props.beskrivelse || ""} />
+      <Innholdstittel>{t("ikkeOversatt")}</Innholdstittel>
+      {oversettelser.length && (
+        <>
+          <StyledNormaltekst>{t("tilgjengeligPåAndreSpråk")}</StyledNormaltekst>
+          <StyledUl>{oversettelser}</StyledUl>
+        </>
+      )}
+    </Style>
   );
 }
 

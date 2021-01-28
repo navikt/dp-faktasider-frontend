@@ -7,7 +7,7 @@ describe("visFor i en delt tekst", () => {
   const { firstPageId, secondPageId, data } = visForAnnotationDeltTekstTestData;
 
   test("innhold merket for å kun vises på side 1 vises kun på side 1", () => {
-    const result = render(<TestFaktaside partialContext={{ innhold: data, id: firstPageId }} />);
+    const result = render(<TestFaktaside partialFaktaside={{ innhold: data, id: firstPageId }} />);
 
     result.getByText("Vis for side nummer 1");
     expect(result.queryByText("Vis for side nummer 2")).toBeFalsy();
@@ -17,7 +17,7 @@ describe("visFor i en delt tekst", () => {
   });
 
   test("innhold merket for å kun vises på side 2 vises kun på side 2", () => {
-    const result = render(<TestFaktaside partialContext={{ innhold: data, id: secondPageId }} />);
+    const result = render(<TestFaktaside partialFaktaside={{ innhold: data, id: secondPageId }} />);
 
     result.getByText("Vis for side nummer 2");
     expect(result.queryByText("Vis for side nummer 1")).toBeFalsy();

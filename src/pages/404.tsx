@@ -54,7 +54,7 @@ const NotFoundPage = (props: Props) => {
 
   return (
     <Style>
-      <SEO title="404: Not found" description="" lang={lang} slug={"/404/"} />
+      <SEO title="404: Not found" description="Fant ikke siden du lette etter" />
       <Sidetittel>{t("404")}</Sidetittel>
       <Normaltekst>{t("404-sub")}</Normaltekst>
       <StyledNormaltekst>{t("404-andre-sider")}</StyledNormaltekst>

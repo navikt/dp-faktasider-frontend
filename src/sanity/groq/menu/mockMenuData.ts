@@ -1,4 +1,3 @@
-import { faktaSideMockContext } from "../../../testUtils/faktaSideMockContext";
 import { MenuQueryData } from "./menuQuery";
 import { translated } from "../../../testUtils/createSanityBlock";
 
@@ -13,14 +12,14 @@ export const mockMenuData: MenuQueryData = {
   ],
   sider: [
     {
-      slug: faktaSideMockContext.faktaside.slug,
-      title: faktaSideMockContext.faktaside.title,
+      slug: "ermittert",
+      title: translated("Permittert"),
       visSprakversjon: {
         no: true,
       },
-      beskrivelse: faktaSideMockContext.faktaside.beskrivelse,
-      nokkelordBeskrivelse: faktaSideMockContext.faktaside.beskrivelse,
-      id: faktaSideMockContext.faktaside.id,
+      beskrivelse: translated("Har du blitt permittert?"),
+      nokkelordBeskrivelse: translated("Permittert, dagpenger"),
+      id: "random-id-permittert",
     },
     {
       slug: "arbeidsledig",

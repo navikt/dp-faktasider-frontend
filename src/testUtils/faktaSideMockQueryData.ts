@@ -1,7 +1,7 @@
 import { createSanityBlock, translated } from "./createSanityBlock";
 import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
 
-export const faktaSideMockContext: FaktasideQueryData = {
+export const faktaSideMockQueryData: FaktasideQueryData = {
   faktaside: {
     _updatedAt: new Date().toISOString(),
     innhold: translated([

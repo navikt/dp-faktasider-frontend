@@ -1,8 +1,8 @@
 import React from "react";
-import { getPubliseringsTidspunkt } from "../../gatsby-utils/getPubliseringstidspunkt";
-import { render } from "../../testUtils/customized-testing-library";
 import SistOppdatert from "./SistOppdatert";
-import { rawFaktasideDataMock } from "../../../__mocks__/rawFaktasideDataMock";
+import { getPubliseringsTidspunkt } from "../../../gatsby-utils/getPubliseringstidspunkt";
+import { rawFaktasideDataMock } from "../../../../__mocks__/rawFaktasideDataMock";
+import { render } from "../../../testUtils/customized-testing-library";
 
 describe("Sist oppdatert funker finfint med internasjonalisering", () => {
   test("På norsk", () => {

@@ -1,25 +1,24 @@
 import { render, within } from "../../../testUtils/customized-testing-library";
 import React from "react";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
-import { mockMenuData } from "../../../sanity/groq/mockMenuData";
-import { isInternal } from "../../../sanity/groq/menuDataUtils";
+import { mockMenuData } from "../../../sanity/groq/menu/mockMenuData";
 
 // 'partialContext={{ id: 'N/A'}}' gjør at det ikke rendres innholdsliste som en del av sidelisten.
 // Innholdslisten inneholder også lenker som gjorde det litt vanskelig å skrive disse testene
 
 describe("Navigasjonsmeny", () => {
   test("inneholder en liste med lenker til alle sider i appen", () => {
-    const result = render(<TestFaktaside partialContext={{ id: "N/A" }} />);
+    const result = render(<TestFaktaside partialFaktaside={{ id: "N/A" }} />);
 
     const desktopNavigasjonsmeny = result.getAllByLabelText(/Sideoversikt/i)[0];
     const sideliste = within(desktopNavigasjonsmeny).getAllByRole("list")[0];
     const lenker = within(sideliste).getAllByRole("listitem");
 
-    expect(lenker).toHaveLength(mockMenuData.length);
+    expect(lenker).toHaveLength(mockMenuData.sider.length + mockMenuData.lenker.length);
   });
 
   test("lenkene er bygd opp riktig", () => {
-    const result = render(<TestFaktaside partialContext={{ id: "N/A" }} />);
+    const result = render(<TestFaktaside partialFaktaside={{ id: "N/A" }} />);
 
     const desktopNavigasjonsmeny = result.getAllByLabelText(/Sideoversikt/i)[0];
     const sideliste = within(desktopNavigasjonsmeny).getAllByRole("list")[0];

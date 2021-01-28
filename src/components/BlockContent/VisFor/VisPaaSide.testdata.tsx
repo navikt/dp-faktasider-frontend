@@ -2,11 +2,11 @@ import {
   createDeltTekstBlock,
   createSanityBlock,
   createSanityBlockMedDeltTekstVisForAnnotation,
+  translated,
 } from "../../../testUtils/createSanityBlock";
-import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
-import { faktaSideMockContext } from "../../../testUtils/faktaSideMockContext";
+import { faktaSideMockQueryData } from "../../../testUtils/faktaSideMockQueryData";
 
-const testId = faktaSideMockContext.id;
+const testId = faktaSideMockQueryData.faktaside.id;
 
 export const innhold = [
   createDeltTekstBlock([
@@ -20,6 +20,6 @@ export const innhold = [
 ];
 
 export const visPaaSideTestData = {
-  innhold: parseRichText(innhold),
+  innhold: translated(innhold),
   id: testId,
 };

@@ -1,4 +1,3 @@
-import { EksternLenkeI } from "../../hooks/groq/fetchProjectData";
 import { useTranslation } from "react-i18next";
 import React from "react";
 import { EksternLenke } from "./ForsideLenker";
@@ -6,6 +5,7 @@ import styled from "styled-components";
 import { Undertittel } from "nav-frontend-typografi";
 import { contentMaxwidth } from "./style";
 import useUniqueId from "../../utils/useUniqueId";
+import { EksternLenkeI } from "../../sanity/groq/forside/parseForsideData";
 
 const Wrapper = styled.div`
   background-color: white;

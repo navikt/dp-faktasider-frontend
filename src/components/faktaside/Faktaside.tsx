@@ -15,11 +15,12 @@ import { SupportedLanguage } from "../../i18n/supportedLanguages";
 import Error from "next/error";
 import useBreadcrumbs from "./useBreadcrumbs";
 import { FaktasideParsedData } from "../../sanity/groq/faktaside/parseFaktasideData";
-import { MenuItem } from "../../sanity/groq/menuDataUtils";
 import Notifikasjoner from "../Notifikasjoner";
 import KortFortalt from "./content/KortFortalt";
 import RelatertInformasjon from "./content/RelatertInformasjon";
 import Header from "./content/Header";
+import { MenuItem } from "../../sanity/groq/menu/menuDataUtils";
+import useLanguageSelector from "./useLanguageSelector";
 
 export interface FaktasideProps extends FaktasideParsedData {
   menuData: MenuItem[];
@@ -38,6 +39,7 @@ function Faktaside(props: FaktasideProps) {
   const beskrivelse = props.beskrivelse || "";
 
   useBreadcrumbs(props.domainTitle, { tittel: props.title || "Du er her", slug: props.slug });
+  useLanguageSelector();
   useMount(() => loggSidevisning(tittel));
   useLoggUtdatertHashlenke();
 
@@ -48,7 +50,7 @@ function Faktaside(props: FaktasideProps) {
   return (
     <FaktasideProvider faktasideProps={props}>
       <StickyFeedback />
-      <SEO title={tittel} description={beskrivelse} lang={lang} slug={props.slug} />
+      <SEO title={tittel} description={beskrivelse} />
       <FaktaSideLayout wordCountRef={wordCountRef}>
         <Header />
         <InnholdetErTilpasset />

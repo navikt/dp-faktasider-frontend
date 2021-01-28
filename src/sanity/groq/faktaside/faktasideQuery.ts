@@ -7,7 +7,7 @@ const innholdFields = `
 [] {
   ...,
   defined(deltTekst) => {
-    "deltTekst": ^.deltTekst->{...}
+    "deltTekst": ^.deltTekst->
   }
 }`;
 

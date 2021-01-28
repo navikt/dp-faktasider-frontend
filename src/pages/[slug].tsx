@@ -31,6 +31,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const slug = context.params!.slug as string;
   const faktaside: FaktasideQueryData = await getClient(!!context.preview).fetch(faktasideQuery, { slug });
   const menuData: MenuQueryData = await getClient(!!context.preview).fetch(menuQuery);
+  console.log(context);
 
   return {
     props: {
@@ -43,7 +44,11 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
 function PreviewWrapper(props: Props) {
   const locale = useLocale();
-  return <Faktaside {...parseFaktasideData(props.data, locale)} menuData={parseMenuData(props.menuData, locale)} />;
+
+  const parsedFaktasideData = parseFaktasideData(props.data, locale);
+  const parsedMenuData = parseMenuData(props.menuData, locale);
+
+  return <Faktaside {...parsedFaktasideData} menuData={parsedMenuData} />;
 }
 
 export default withErrorBoundary(PreviewWrapper, "FaktaSide");

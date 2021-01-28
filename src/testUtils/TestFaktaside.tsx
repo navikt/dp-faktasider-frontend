@@ -1,27 +1,50 @@
 import * as React from "react";
 import { Block } from "../utils/richTextUtils/richTextTypes";
-import { faktaSideMockContext } from "./faktaSideMockContext";
-import TestProvider from "./TestProvider";
+import { faktaSideMockQueryData } from "./faktaSideMockQueryData";
 import FaktaSide from "../components/faktaside/Faktaside";
-import { FaktasideParsedData } from "../sanity/groq/faktaside/parseFaktasideData";
+import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
+import { translated } from "./createSanityBlock";
+import { mockMenuData } from "../sanity/groq/menu/mockMenuData";
+import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
+import { parseFaktasideData } from "../sanity/groq/faktaside/parseFaktasideData";
+import { MenuQueryData } from "../sanity/groq/menu/menuQuery";
 
 type Props = {
-  partialContext?: Partial<FaktasideParsedData>;
+  partialFaktaside?: Partial<FaktasideQueryData["faktaside"]>;
   innhold?: Block[];
 };
 
 function TestFaktaside(props: Props) {
-  const context: FaktaSideProps = {
-    ...faktaSideMockContext,
-    ...props.partialContext,
-    innhold: props.innhold || props.partialContext?.innhold || faktaSideMockContext.innhold,
+  const faktaSide = { ...faktaSideMockQueryData.faktaside, ...props.partialFaktaside };
+  const oppsett = { ...faktaSideMockQueryData.oppsett };
+
+  const context: FaktasideQueryData = {
+    faktaside: {
+      ...faktaSide,
+      innhold: props.innhold ? translated(props.innhold) : faktaSide.innhold,
+    },
+    oppsett,
   };
 
-  return (
-    <TestProvider>
-      <FaktaSide {...context} />
-    </TestProvider>
-  );
+  const menuData: MenuQueryData = {
+    sider: [
+      {
+        title: faktaSide.title,
+        slug: faktaSide.slug,
+        beskrivelse: faktaSide.beskrivelse,
+        id: faktaSide.id,
+        nokkelordBeskrivelse: translated("Noen nøkkelord"),
+        visSprakversjon: faktaSide.visSprakversjon,
+      },
+      ...mockMenuData.sider,
+    ],
+    lenker: [...mockMenuData.lenker],
+  };
+
+  const parsedMenudata = parseMenuData(menuData, "no");
+  const parsedFaktasidedata = parseFaktasideData(context, "no");
+
+  return <FaktaSide menuData={parsedMenudata} {...parsedFaktasidedata} />;
 }
 
 export default TestFaktaside;

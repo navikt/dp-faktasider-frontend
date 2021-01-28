@@ -61,7 +61,7 @@ export default function IndexPage(props: Props) {
     <Style>
       <DevKnapper />
       <Header heading={title} beskrivelse={beskrivelse} />
-      <SEO lang={props.locale} description={beskrivelse} title={title} slug={`/${props.locale}`} />
+      <SEO description={beskrivelse} title={title} />
       <Content>
         <Notifikasjoner notifikasjoner={forsideNotifikasjoner} />
         <InfosideLenker lenker={menuItems} />
