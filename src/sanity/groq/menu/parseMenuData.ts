@@ -9,14 +9,17 @@ import {
 import localizeSanityContent from "../../../i18n/localizeSanityContent";
 import { ExternalMenuLinkData, InternalMenuLinkData, MenuItem } from "./menuDataUtils";
 
-export type ParsedMenuData = MenuItem[];
+export type MenuParsedData = MenuItem[];
 
-export function parseMenuData(data: MenuQueryData, lang: SupportedLanguage): ParsedMenuData {
-  const { sider, lenker } = localizeSanityContent(data, lang) as TranslatedMenuQueryData;
+export function parseMenuData(data: MenuQueryData, lang: SupportedLanguage): MenuParsedData {
+  const localizedMenuData = localizeSanityContent(data, lang) as TranslatedMenuQueryData;
+
+  const lenker = Array.isArray(localizedMenuData.lenker) ? localizedMenuData.lenker : [];
+  const sider = localizedMenuData.sider || [];
 
   const sortedMenuLinks = lenker.map((lenke) => {
     if (isSanityInternLenke(lenke)) {
-      return createInternalLinkData(sider.find((page) => page.id === lenke.id) as TranslatedMenuDataSide, lang);
+      return createInternalLinkData(sider?.find((page) => page.id === lenke.id) as TranslatedMenuDataSide, lang);
     }
     return createExternalLinkData(lenke);
   });

@@ -1,12 +1,12 @@
 import React from "react";
 import { render, within } from "../testUtils/customized-testing-library";
-import IndexPage from "../pages";
+import PreviewWrapper from "../pages";
 import { mockMenuData } from "../sanity/groq/menu/mockMenuData";
 import { translated } from "../testUtils/createSanityBlock";
 
 test("Index-side inneholder lenker til undersider med beskrivelse", () => {
   const result = render(
-    <IndexPage
+    <PreviewWrapper
       forsideData={{
         title: translated("Arbeid"),
       }}

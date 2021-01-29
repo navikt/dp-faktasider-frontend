@@ -1,74 +1,46 @@
-import React from "react";
-import styled from "styled-components/macro";
-import { theme } from "../styles/theme";
-import DevKnapper from "../components/DevKnapper/DevKnapper";
-import SEO from "../components/SEO";
-import { useMount } from "react-use";
-import { loggSidevisning } from "../utils/logging";
-import { SupportedLanguage } from "../i18n/supportedLanguages";
-import Notifikasjoner from "../components/Notifikasjoner";
 import { GetStaticProps } from "next";
-import Header from "../components/forside/Header";
-import InfosideLenker from "../components/forside/InfosideLenker";
-import { Snarveier } from "../components/forside/Snarveier";
-import { getClient } from "../sanity/sanity-config";
+import { getClient, usePreviewSubscription } from "../sanity/sanity-config";
 import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
 import { useLocale } from "../i18n/useLocale";
-import useBreadcrumbs from "../components/faktaside/useBreadcrumbs";
 import { forsideQuery, ForsideQueryData } from "../sanity/groq/forside/forsideQuery";
 import parseForsideData from "../sanity/groq/forside/parseForsideData";
-
-const Style = styled.div`
-  background-color: ${theme.colors.bakgrunn};
-`;
-
-const Content = styled.main`
-  > * {
-    margin-left: auto;
-    margin-right: auto;
-  }
-`;
+import { isDevelopment } from "../utils/environment";
+import Forside from "../components/forside/Forside";
 
 interface Props {
   forsideData: ForsideQueryData;
   menuData: MenuQueryData;
-  locale: SupportedLanguage;
+  preview: boolean;
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const forsideData: ForsideQueryData = await getClient(!!context.preview).fetch(forsideQuery);
-  const menuData: MenuQueryData = await getClient(!!context.preview).fetch(menuQuery);
+  const preview = !!context.preview || isDevelopment();
+  const forsideData: ForsideQueryData = await getClient(preview).fetch(forsideQuery);
+  const menuData: MenuQueryData = await getClient(preview).fetch(menuQuery);
   return {
     props: {
       forsideData,
       menuData,
-      locale: context.locale as SupportedLanguage,
+      preview,
     },
   };
 };
 
-export default function IndexPage(props: Props) {
+export default function PreviewWrapper(props: Props) {
+  const { data: forsideData } = usePreviewSubscription(forsideQuery, {
+    initialData: props.forsideData,
+    enabled: props.preview,
+  });
+
+  const { data: menuData } = usePreviewSubscription(menuQuery, {
+    initialData: props.menuData,
+    enabled: props.preview,
+  });
+
   const lang = useLocale();
-  const parsedData = parseForsideData(props.forsideData, lang);
-  const menuItems = parseMenuData(props.menuData, lang);
+  const parsedForsideData = parseForsideData(forsideData, lang);
+  const parsedMenuData = parseMenuData(menuData, lang);
 
-  useMount(() => loggSidevisning("Forside - nav.no/arbeid"));
-
-  const title = parsedData.title || "Arbeid";
-  const beskrivelse = parsedData.beskrivelse || "";
-  useBreadcrumbs(title);
-
-  return (
-    <Style>
-      <DevKnapper />
-      <Header heading={title} beskrivelse={beskrivelse} />
-      <SEO description={beskrivelse} title={title} />
-      <Content>
-        <Notifikasjoner notifikasjoner={parsedData.forsideNotifikasjoner} />
-        <InfosideLenker lenker={menuItems} />
-        <Snarveier snarveier={parsedData.komIgangLenker} />
-      </Content>
-    </Style>
-  );
+  return <Forside forsideData={parsedForsideData} menuData={parsedMenuData} />;
 }

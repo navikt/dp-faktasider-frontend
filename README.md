@@ -1,6 +1,6 @@
 # Dagpenger faktasider
 
-Gatsby-frontend for dagpengerelaterte faktasider på www.nav.no/arbeid/. Inhhold kan redigeres på https://dagpenger.sanity.studio/.
+Nextjs-frontend for dagpengerelaterte faktasider på www.nav.no/arbeid/. Inhhold kan redigeres på https://dagpenger.sanity.studio/.
 
 ## Utvikle lokalt
 
@@ -14,27 +14,18 @@ npm start
 Opprett filen `.env.development` i root-folderet med innholdet:
 
 ```
-# SECRET - DO NOT COMMIT TO GIT
-# SANITY_READ_TOKEN="MITT_HEMMELIGE_TOKEN"
-
-# DATASET="development"
+NEXT_PUBLIC_SANITY_PROJECT_ID="rt6o382n"
+NEXT_PUBLIC_SANITY_DATASET="development"
 ```
 
 #### Live oppdatering / SANITY_READ_TOKEN
 
-Kommenter ut `SANITY_READ_TOKEN="MITT_HEMMELIGE_TOKEN"` og opprett token på https://manage.sanity.io/projects/rt6o382n:
+Jeg tror det funker ca sånn her:
 
-`Settings -> API -> Add new token (velg "Read" og skriv hvem du er så vi har oversikt over tokens)`
-
-> NB! Ikke commit token til git
-
-#### Development-datasett
-
-Kommenter ut `DATASET="development"` og du kan jobbe mot et test-datasett fra sanity (anbefales dersom du ønsker å lage custom innhold i sanity under utvikling). Dette datasettet er privat og krever at du setter opp et `SANITY_READ_TOKEN`.
+Start opp sanity studio lokalt og logg inn i prosjektet. Det blir da satt en autentiseringscookie på localhost. Denne cookien funker også fra frontenden og sørger automatisk for at du kan lese drafts fra sanity vha nextjs (dette sørger `usePreviewSubscription` for).
 
 ### Scripts
 
-- `npm run seHvordanDetBlirIProd` lager et bygg og hoster lokalt på [localhost:9000/arbeid]() (Hvis du går til [localhost:9000]() får du bare `Cannot GET /`, husk å legge til `/arbeid`). Dette blir prodlikt mtp innhold og statiske filer.
 - `npm run docker` bygger appen i en dockercontainer på samme måte som i pipeline, hoser appen på [localhost/arbeid]().
 
 ### Sanity Studio-repo

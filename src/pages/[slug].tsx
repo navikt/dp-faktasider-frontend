@@ -2,7 +2,7 @@ import withErrorBoundary from "../components/withErrorBoundary";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Faktaside from "../components/faktaside/Faktaside";
 import { groq } from "next-sanity";
-import { getClient, sanityClient } from "../sanity/sanity-config";
+import { getClient, sanityClient, usePreviewSubscription } from "../sanity/sanity-config";
 import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
 import { parseFaktasideData } from "../sanity/groq/faktaside/parseFaktasideData";
 import { useLocale } from "../i18n/useLocale";
@@ -10,6 +10,8 @@ import { MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
 import { faktasideQuery } from "../sanity/groq/faktaside/faktasideQuery";
 import { menuQuery } from "../sanity/groq/menu/menuQuery";
+import { forsideQuery } from "../sanity/groq/forside/forsideQuery";
+import { isDevelopment } from "../utils/environment";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 
@@ -23,30 +25,44 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 };
 
 interface Props {
-  data: FaktasideQueryData;
+  faktasideData: FaktasideQueryData;
   menuData: MenuQueryData;
+  preview: boolean;
+  slug: string;
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
+  const preview = !!context.preview || isDevelopment();
   const slug = context.params!.slug as string;
-  const faktaside: FaktasideQueryData = await getClient(!!context.preview).fetch(faktasideQuery, { slug });
-  const menuData: MenuQueryData = await getClient(!!context.preview).fetch(menuQuery);
-  console.log(context);
+  const faktaside: FaktasideQueryData = await getClient(preview).fetch(faktasideQuery, { slug });
+  const menuData: MenuQueryData = await getClient(preview).fetch(menuQuery);
 
   return {
     props: {
-      data: faktaside,
+      faktasideData: faktaside,
       menuData: menuData,
+      preview,
+      slug,
     },
     revalidate: 300,
   };
 };
 
 function PreviewWrapper(props: Props) {
-  const locale = useLocale();
+  const { data: faktasideData } = usePreviewSubscription(faktasideQuery, {
+    params: { slug: props.slug },
+    initialData: props.faktasideData,
+    enabled: props.preview,
+  });
 
-  const parsedFaktasideData = parseFaktasideData(props.data, locale);
-  const parsedMenuData = parseMenuData(props.menuData, locale);
+  const { data: menuData } = usePreviewSubscription(menuQuery, {
+    initialData: props.menuData,
+    enabled: props.preview,
+  });
+
+  const locale = useLocale();
+  const parsedFaktasideData = parseFaktasideData(faktasideData, locale);
+  const parsedMenuData = parseMenuData(menuData, locale);
 
   return <Faktaside {...parsedFaktasideData} menuData={parsedMenuData} />;
 }

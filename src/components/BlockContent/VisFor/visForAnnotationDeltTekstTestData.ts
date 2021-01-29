@@ -482,7 +482,7 @@ const visForAnnotationDeltTekstRawTestData = [
 ];
 
 export const visForAnnotationDeltTekstTestData = {
-  data: localizeSanityContent(visForAnnotationDeltTekstRawTestData, "no"),
+  faktasideData: localizeSanityContent(visForAnnotationDeltTekstRawTestData, "no"),
   firstPageId: "-af2e15a0-d8c7-5402-8487-964431592a70",
   secondPageId: "-4c12238e-6387-5b05-ac3e-0f091a6c8631",
 };

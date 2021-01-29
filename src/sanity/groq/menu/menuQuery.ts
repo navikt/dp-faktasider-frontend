@@ -22,14 +22,14 @@ export const menuQuery = groq`{
 `;
 
 export interface MenuQueryData {
-  lenker: SideoversiktLenke[];
-  sider: MenuDataSide[];
+  lenker?: SideoversiktLenke[] | {};
+  sider?: MenuDataSide[];
 }
 
 export type TranslatedMenuQueryData = Modify<
   MenuQueryData,
   {
-    sider: TranslatedMenuDataSide[];
+    sider?: TranslatedMenuDataSide[];
   }
 >;
 
