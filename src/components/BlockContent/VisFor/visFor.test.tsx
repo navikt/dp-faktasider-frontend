@@ -5,6 +5,7 @@ import { visForTestData } from "./visFor.testdata";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
 import { toggleFilter } from "../../../testUtils/tilpassInnholdUtils";
 import { translated } from "../../../testUtils/createSanityBlock";
+import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
 
 const { innhold } = visForTestData;
 const {
@@ -19,7 +20,7 @@ const {
 
 describe("visFor-logikk", () => {
   test("Hvis ingen filtrering er valgt vises all tekst", () => {
-    const result = render(<BlockContent blocks={innhold} />);
+    const result = render(<BlockContent blocks={parseRichText(innhold)} />);
 
     result.getByLabelText(bolkStudent);
     result.getByLabelText(bolkPermittert);
@@ -99,7 +100,7 @@ describe("visFor-logikk", () => {
 
 describe("skjulFor-logikk", () => {
   test("Vises dersom ingen filtrering er valgt", () => {
-    const result = render(<BlockContent blocks={innhold} />);
+    const result = render(<BlockContent blocks={parseRichText(innhold)} />);
 
     result.getByLabelText(bolkSkjulForPermittertOgKonkurs);
   });

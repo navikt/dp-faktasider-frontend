@@ -12,13 +12,12 @@ export const mockMenuData: MenuQueryData = {
   ],
   sider: [
     {
-      slug: "ermittert",
+      slug: "permittert",
       title: translated("Permittert"),
       visSprakversjon: {
         no: true,
       },
       beskrivelse: translated("Har du blitt permittert?"),
-      nokkelordBeskrivelse: translated("Permittert, dagpenger"),
       id: "random-id-permittert",
     },
     {
@@ -30,7 +29,6 @@ export const mockMenuData: MenuQueryData = {
       beskrivelse: translated(
         "Har du blitt arbeidsledig, kan du ha rett til økonomisk støtte og hjelp til å komme i arbeid."
       ),
-      nokkelordBeskrivelse: translated("Arbeidsleidg, støtte, velferd"),
       id: "-89eddf21-6b78-5f89-8d1f-7f5f8ebfe735",
     },
   ],

@@ -2,10 +2,11 @@ import React from "react";
 import { groupMarkupTestData } from "./GroupMarkup.testdata";
 import BlockContent from "../BlockContent";
 import { render, within } from "../../../testUtils/customized-testing-library";
+import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
 
 describe("group-markup", () => {
   test("h2-gruppe får overskrift med ankerlenke og anchor", () => {
-    const result = render(<BlockContent blocks={groupMarkupTestData} />);
+    const result = render(<BlockContent blocks={parseRichText(groupMarkupTestData)} />);
     const bolk = result.getByLabelText(/Overskrift 1/i);
     const lenke = within(bolk).getByRole("link");
 
@@ -14,7 +15,7 @@ describe("group-markup", () => {
   });
 
   test("h2-gruppe får overskrift og innhold", () => {
-    const result = render(<BlockContent blocks={groupMarkupTestData} />);
+    const result = render(<BlockContent blocks={parseRichText(groupMarkupTestData)} />);
 
     result.getByLabelText(/Overskrift 1/i);
     result.getByText(/Innhold 1/i);

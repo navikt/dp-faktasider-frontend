@@ -5,14 +5,9 @@ import { createSanityBlock, translated } from "../../../testUtils/createSanityBl
 
 describe("kortFortalt", () => {
   test("vises ikke om det ikke finnes innhold i kort fortalt", () => {
-    const result = render(
-      <TestFaktaside
-        partialFaktaside={{ innhold: translated([]), kortFortalt: translated([]), relatertInformasjon: translated([]) }}
-      />
-    );
+    const result = render(<TestFaktaside partialFaktaside={{ kortFortalt: translated([]) }} />);
 
-    const main = result.getByRole("main");
-    expect(within(main).queryAllByRole("heading")).toHaveLength(0);
+    result.queryByLabelText(/Kort fortalt/);
   });
 
   test("vises ikke i innholdsmeny om det ikke finnes innhold i kort fortalt", () => {

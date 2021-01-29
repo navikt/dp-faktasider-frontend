@@ -5,12 +5,10 @@ import { createSanityBlock, translated } from "../../../testUtils/createSanityBl
 
 describe("relatert innformasjon", () => {
   test("vises ikke om det ikke finnes innhold i relatert innformajson", () => {
-    const result = render(
-      <TestFaktaside partialFaktaside={{ innhold: translated([]), relatertInformasjon: translated([]) }} />
-    );
+    const result = render(<TestFaktaside partialFaktaside={{ relatertInformasjon: translated([]) }} />);
 
     const main = result.getByRole("main");
-    expect(within(main).queryAllByRole("heading")).toHaveLength(0);
+    expect(within(main).queryByLabelText(/Relatert/)).toBeFalsy();
   });
 
   test("vises ikke i innholdsmeny om det ikke finnes innhold i relatert innformasjon", () => {

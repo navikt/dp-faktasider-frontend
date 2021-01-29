@@ -10,16 +10,16 @@ export interface EksternLenkeI {
 }
 
 export interface ForsideParsedData {
-  title: string;
+  title?: string;
   komIgangLenker?: EksternLenkeI[];
-  beskrivelse: string;
+  beskrivelse?: string;
   forsideNotifikasjoner?: Notifikasjon[];
 }
 
 function parseForsideData(data: ForsideQueryData, lang: SupportedLanguage): ForsideParsedData {
   const localizedData = localizeSanityContent(data, lang);
   const notifikasjoner: Notifikasjon[] = localizedData.notifikasjoner;
-  const forsideNotifikasjoner = notifikasjoner.filter((notifikasjon) => notifikasjon.visPaaForside);
+  const forsideNotifikasjoner = notifikasjoner?.filter((notifikasjon) => notifikasjon.visPaaForside);
 
   return {
     title: localizedData.title,

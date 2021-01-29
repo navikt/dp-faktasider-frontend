@@ -9,3 +9,14 @@ jest.mock("react-collapse", () => {
     Collapse: (props) => (props.isOpened ? props.children : null),
   };
 });
+
+jest.mock("next/router", () => {
+  return {
+    useRouter: () => ({
+      locale: "no",
+      query: {
+        slug: "testside",
+      },
+    }),
+  };
+});

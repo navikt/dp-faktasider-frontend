@@ -31,7 +31,7 @@ describe("utkast", () => {
   });
 
   test("Dersom en hel overskrift er merket med utkast skal ikke bolken vises i meny", () => {
-    const result = render(<TestFaktaside innhold={parsedInnhold} />);
+    const result = render(<TestFaktaside innhold={utkastTestData} />);
 
     const desktopInnholdsfortegnelse = result.getAllByLabelText(/innholdsfortegnelse/i)[0];
 

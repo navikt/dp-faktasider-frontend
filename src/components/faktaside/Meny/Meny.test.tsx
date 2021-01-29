@@ -8,7 +8,7 @@ import { mockMenuData } from "../../../sanity/groq/menu/mockMenuData";
 
 describe("Navigasjonsmeny", () => {
   test("inneholder en liste med lenker til alle sider i appen", () => {
-    const result = render(<TestFaktaside partialFaktaside={{ id: "N/A" }} />);
+    const result = render(<TestFaktaside partialMeny={mockMenuData} />);
 
     const desktopNavigasjonsmeny = result.getAllByLabelText(/Sideoversikt/i)[0];
     const sideliste = within(desktopNavigasjonsmeny).getAllByRole("list")[0];
@@ -18,13 +18,16 @@ describe("Navigasjonsmeny", () => {
   });
 
   test("lenkene er bygd opp riktig", () => {
-    const result = render(<TestFaktaside partialFaktaside={{ id: "N/A" }} />);
+    const result = render(<TestFaktaside partialMeny={mockMenuData} />);
 
     const desktopNavigasjonsmeny = result.getAllByLabelText(/Sideoversikt/i)[0];
     const sideliste = within(desktopNavigasjonsmeny).getAllByRole("list")[0];
     const lenker = within(sideliste).getAllByRole("link") as HTMLLinkElement[];
 
-    const expectedHrefs = mockMenuData.map((it) => (isInternal(it) ? it.path : it.url));
+    const expectedHrefs = [
+      ...mockMenuData.lenker.map((it) => (it._type === "eksternLenke" ? it.url : undefined)),
+      ...mockMenuData.sider.map((it) => it.slug),
+    ].filter(Boolean);
     const actualHrefs = lenker.map((it) => it.href);
 
     expect(actualHrefs[0]).toContain(expectedHrefs[0]);

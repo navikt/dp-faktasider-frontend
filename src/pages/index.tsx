@@ -50,11 +50,13 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
 export default function IndexPage(props: Props) {
   const lang = useLocale();
-  const { beskrivelse, title, komIgangLenker, forsideNotifikasjoner } = parseForsideData(props.forsideData, lang);
+  const parsedData = parseForsideData(props.forsideData, lang);
   const menuItems = parseMenuData(props.menuData, lang);
 
   useMount(() => loggSidevisning("Forside - nav.no/arbeid"));
 
+  const title = parsedData.title || "Arbeid";
+  const beskrivelse = parsedData.beskrivelse || "";
   useBreadcrumbs(title);
 
   return (
@@ -63,9 +65,9 @@ export default function IndexPage(props: Props) {
       <Header heading={title} beskrivelse={beskrivelse} />
       <SEO description={beskrivelse} title={title} />
       <Content>
-        <Notifikasjoner notifikasjoner={forsideNotifikasjoner} />
+        <Notifikasjoner notifikasjoner={parsedData.forsideNotifikasjoner} />
         <InfosideLenker lenker={menuItems} />
-        <Snarveier snarveier={komIgangLenker} />
+        <Snarveier snarveier={parsedData.komIgangLenker} />
       </Content>
     </Style>
   );

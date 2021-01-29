@@ -12,6 +12,7 @@ import { MenuQueryData } from "../sanity/groq/menu/menuQuery";
 type Props = {
   partialFaktaside?: Partial<FaktasideQueryData["faktaside"]>;
   innhold?: Block[];
+  partialMeny?: Partial<MenuQueryData>;
 };
 
 function TestFaktaside(props: Props) {
@@ -27,7 +28,7 @@ function TestFaktaside(props: Props) {
   };
 
   const menuData: MenuQueryData = {
-    sider: [
+    sider: props.partialMeny?.sider || [
       {
         title: faktaSide.title,
         slug: faktaSide.slug,
@@ -38,7 +39,7 @@ function TestFaktaside(props: Props) {
       },
       ...mockMenuData.sider,
     ],
-    lenker: [...mockMenuData.lenker],
+    lenker: props.partialMeny?.lenker || mockMenuData.lenker,
   };
 
   const parsedMenudata = parseMenuData(menuData, "no");

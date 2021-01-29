@@ -82,20 +82,17 @@ function Demoapp(props: Props) {
       }))
     : [];
 
-  const overskriftsValg: VeiviserValg<Group>[] = context.side
-    ? context.side.innhold
-        .filter(isGroup)
-        .filter((group: Group) => visBasertPåFiltrering(visForContest, group.blockConfig?.visFor).vis)
-        .filter((group: Group) =>
-          visBasertPaaVisPaaConfig(state.context.side?.id || "", group.blockConfig?.visPaaSider)
-        )
-        .filter((group: Group) => isDevelopment() || !group.blockConfig?.erUtkast)
-        .map((group) => ({
-          label: group.title,
-          id: group.blockConfig?.id || "N/A",
-          object: group,
-        }))
-    : [];
+  const overskriftsValg: VeiviserValg<Group>[] =
+    context.side?.innhold
+      ?.filter(isGroup)
+      .filter((group: Group) => visBasertPåFiltrering(visForContest, group.blockConfig?.visFor).vis)
+      .filter((group: Group) => visBasertPaaVisPaaConfig(state.context.side?.id || "", group.blockConfig?.visPaaSider))
+      .filter((group: Group) => isDevelopment() || !group.blockConfig?.erUtkast)
+      .map((group) => ({
+        label: group.title,
+        id: group.blockConfig?.id || "N/A",
+        object: group,
+      })) || [];
 
   if (context.side?.kortFortalt) {
     overskriftsValg.unshift({
