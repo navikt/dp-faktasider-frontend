@@ -1,19 +1,16 @@
 import * as React from "react";
 import VisForAnnotation from "./VisForAnnotation";
-import { VisForConfig } from "../../../utils/richTextUtils/richTextTypes";
+import { MarkDef } from "../../../utils/richTextUtils/richTextTypes";
 import VisPaaSide from "./VisPaaSide";
 import withErrorBoundary from "../../withErrorBoundary";
 
 interface Props {
   children: string[];
-  mark: {
-    visFor?: VisForConfig;
-    visPaaSider?: RawFaktasideData[];
-  };
+  mark: MarkDef;
 }
 
 const VisForAnnotationDeltTekst = (props: Props) => {
-  const visPaa = props.mark.visPaaSider?.map((side) => side.id);
+  const visPaa = props.mark.visPaaSider?.map((side) => side._ref);
 
   return (
     <VisPaaSide visPaaSider={visPaa}>

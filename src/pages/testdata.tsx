@@ -29,74 +29,74 @@ type Testdata = {
 const testData: Testdata[] = [
   {
     name: "Base",
-    faktasideData: {},
+    data: {},
   },
   {
     name: "visFor",
-    faktasideData: {
+    data: {
       innhold: translated(visForTestData.innhold),
       visIngenValgPasser: true,
     },
   },
   {
     name: "flattenH2",
-    faktasideData: {
+    data: {
       innhold: translated(flattenH2TestData),
     },
   },
   {
     name: "unique IDs",
-    faktasideData: {
+    data: {
       innhold: translated(makeUniqueIdTestData),
     },
   },
   {
     name: "parse delte tekster",
-    faktasideData: {
+    data: {
       innhold: translated(parseDelteTeksterTestData),
     },
   },
   {
     name: "groupParser",
-    faktasideData: {
+    data: {
       innhold: translated(groupParserTestData),
     },
   },
   {
     name: "group markup",
-    faktasideData: {
+    data: {
       innhold: translated(groupMarkupTestData),
     },
   },
   {
     name: "utkast",
-    faktasideData: {
+    data: {
       innhold: translated(utkastTestData),
     },
   },
   {
     name: "visForAnnotation delt tekst",
-    faktasideData: {
-      innhold: translated(visForAnnotationDeltTekstTestData.faktasideData),
+    data: {
+      innhold: translated(visForAnnotationDeltTekstTestData.data),
       id: visForAnnotationDeltTekstTestData.secondPageId,
     },
   },
   {
     name: "visPaaSide delt tekst",
-    faktasideData: {
+    data: {
       innhold: translated(visPaaSideTestData.innhold),
       id: visPaaSideTestData.id,
     },
   },
   {
     name: "tillegsinformasjon",
-    faktasideData: {
+    data: {
       innhold: translated(tillegsinformasjonTestData),
     },
   },
   {
     name: "tidslinje",
-    faktasideData: {
+    data: {
       innhold: translated(tidslinjeTestData),
     },
   },
@@ -132,7 +132,7 @@ function reducer(
     case "setData":
       return {
         ...faktaSideMockQueryData.faktaside,
-        ...action.faktasideData,
+        ...action.data,
       };
     default:
       return state;
@@ -152,7 +152,7 @@ function Testdata() {
           navigasjonsmenyen har blitt mocket med en test-provider.
         </Normaltekst>
         {testData.map((data) => (
-          <StyledKnapp key={data.name} onClick={() => dispatch({ type: "setData", faktasideData: data.faktasideData })}>
+          <StyledKnapp key={data.name} onClick={() => dispatch({ type: "setData", data: data.data })}>
             {data.name}
           </StyledKnapp>
         ))}

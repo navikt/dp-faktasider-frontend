@@ -37,7 +37,7 @@ function TestFaktaside(props: Props) {
         nokkelordBeskrivelse: translated("Noen nøkkelord"),
         visSprakversjon: faktaSide.visSprakversjon,
       },
-      ...mockMenuData.sider,
+      ...mockMenuData.sider!,
     ],
     lenker: props.partialMeny?.lenker || mockMenuData.lenker,
   };

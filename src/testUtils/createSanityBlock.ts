@@ -117,12 +117,9 @@ export function createSanityBlockMedDeltTekstVisForAnnotation(
       {
         _key: markKey,
         _type: "visForAnnotationDeltTekst",
-        visPaaSider: visPaaSideIder?.map(
-          (id) =>
-            ({
-              id: id,
-            } as RawFaktasideData)
-        ),
+        visPaaSider: visPaaSideIder?.map((id) => ({
+          _ref: id,
+        })),
       },
     ],
   };

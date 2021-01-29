@@ -50,6 +50,6 @@ function createBlockConfig(block: ParsedSanityBlock): BlockConfigFromParser {
     visFor: getCommonVisForConfig(block)?.visFor,
     visPaaSider: block.markDefs
       ?.find((markDef) => markDef._type === "visForAnnotationDeltTekst")
-      ?.visPaaSider?.map((side) => side.id),
+      ?.visPaaSider?.map((side) => side._ref),
   };
 }

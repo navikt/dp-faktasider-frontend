@@ -11,7 +11,7 @@ import Forside from "../components/forside/Forside";
 interface Props {
   forsideData: ForsideQueryData;
   menuData: MenuQueryData;
-  preview: boolean;
+  preview?: boolean;
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   };
 };
 
-export default function PreviewWrapper(props: Props) {
+export default function ForsideWrapper(props: Props) {
   const { data: forsideData } = usePreviewSubscription(forsideQuery, {
     initialData: props.forsideData,
     enabled: props.preview,

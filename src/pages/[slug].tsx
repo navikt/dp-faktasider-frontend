@@ -10,7 +10,6 @@ import { MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
 import { faktasideQuery } from "../sanity/groq/faktaside/faktasideQuery";
 import { menuQuery } from "../sanity/groq/menu/menuQuery";
-import { forsideQuery } from "../sanity/groq/forside/forsideQuery";
 import { isDevelopment } from "../utils/environment";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;

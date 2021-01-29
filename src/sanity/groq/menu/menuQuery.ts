@@ -22,7 +22,7 @@ export const menuQuery = groq`{
 `;
 
 export interface MenuQueryData {
-  lenker?: SideoversiktLenke[] | {};
+  lenker?: SideoversiktLenke[];
   sider?: MenuDataSide[];
 }
 

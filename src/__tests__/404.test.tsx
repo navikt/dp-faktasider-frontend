@@ -14,6 +14,6 @@ describe("404-side", () => {
     const liste = result.getByRole("list");
     const lenker = within(liste).getAllByRole("link");
 
-    expect(lenker).toHaveLength(mockMenuData.sider.length + mockMenuData.lenker.length);
+    expect(lenker).toHaveLength(mockMenuData.sider!.length + mockMenuData.lenker!.length);
   });
 });
