@@ -12,6 +12,7 @@ import { sanityClient } from "../sanity/sanity-config";
 import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
 import { useLocale } from "../i18n/useLocale";
+import useBreadcrumbs from "../components/faktaside/useBreadcrumbs";
 
 const Style = styled.div`
   margin: 2rem 0;
@@ -47,6 +48,9 @@ const NotFoundPage = (props: Props) => {
   const lang = useLocale();
   const path = useRouter().pathname;
   const menuData = parseMenuData(props.menuData, lang);
+  const title = "404: Not found";
+
+  useBreadcrumbs(title);
 
   useMount(() => {
     loggNotFound(path || "N/A");
@@ -54,7 +58,7 @@ const NotFoundPage = (props: Props) => {
 
   return (
     <Style>
-      <SEO title="404: Not found" description="Fant ikke siden du lette etter" />
+      <SEO title={title} description="Fant ikke siden du lette etter" />
       <Sidetittel>{t("404")}</Sidetittel>
       <Normaltekst>{t("404-sub")}</Normaltekst>
       <StyledNormaltekst>{t("404-andre-sider")}</StyledNormaltekst>
