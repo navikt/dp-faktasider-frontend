@@ -1,6 +1,6 @@
-import { FaktasideQueryData } from "../src/sanity/groq/faktaside/faktasideQuery";
+import { FaktasideQueryData } from "../../../sanity/groq/faktaside/faktasideQuery";
 
-export const rawFaktasideDataMock: FaktasideQueryData = {
+export const sistOppdatertTestdata: FaktasideQueryData = {
   faktaside: {
     id: "-b182d79a-6d0b-5652-8812-887910f218ee",
     _updatedAt: "2020-07-10T10:54:03Z",
