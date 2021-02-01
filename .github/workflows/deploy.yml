@@ -124,7 +124,7 @@ jobs:
 
   deploy-dev-gcp:
     name: Deploy to dev gcp
-    needs: [ test, build ]
+    needs: [ build ]
     runs-on: ubuntu-latest
     steps:
       - name: Fetch NAIS yaml
