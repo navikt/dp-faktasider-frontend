@@ -10,7 +10,6 @@ import { makeUniqueIdTestData } from "../utils/richTextUtils/parser/makeUniqeGro
 import { parseDelteTeksterTestData } from "../utils/richTextUtils/parser/parseDelteTekster/parseDelteTekster.testdata";
 import { groupParserTestData } from "../utils/richTextUtils/parser/groupParser/groupParser.testdata";
 import { utkastTestData } from "../components/BlockContent/utkast/Utkast.testdata";
-import { visForAnnotationDeltTekstTestData } from "../components/BlockContent/VisFor/visForAnnotationDeltTekstTestData";
 import TestFaktaside from "../testUtils/TestFaktaside";
 import { visPaaSideTestData } from "../components/BlockContent/VisFor/VisPaaSide.testdata";
 import { tillegsinformasjonTestData } from "../components/BlockContent/Tilleggsinnformasjon/TilleggsInnformasjon.testdata";
@@ -75,16 +74,9 @@ const testData: Testdata[] = [
     },
   },
   {
-    name: "visForAnnotation delt tekst",
-    data: {
-      innhold: translated(visForAnnotationDeltTekstTestData.data),
-      id: visForAnnotationDeltTekstTestData.secondPageId,
-    },
-  },
-  {
     name: "visPaaSide delt tekst",
     data: {
-      innhold: translated(visPaaSideTestData.innhold),
+      innhold: visPaaSideTestData.innhold,
       id: visPaaSideTestData.id,
     },
   },
@@ -158,7 +150,7 @@ function Testdata() {
         ))}
       </Style>
       {valgtData && <TestFaktaside partialFaktaside={valgtData} />}
-      {valgtData && <StyledPre>{"Page context: \n\n" + JSON.stringify(valgtData, null, 2)}</StyledPre>}
+      {valgtData && <StyledPre>{"FaktasideProps: \n\n" + JSON.stringify(valgtData, null, 2)}</StyledPre>}
     </>
   );
 }

@@ -1,13 +1,13 @@
 import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
 import getAlleTilpassInnholdValg from "./getAlleTilpassInnholdValg";
 import { SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
-import { createSanityBlock, createSanityBlockMedVisFor } from "../../../testUtils/createSanityBlock";
+import { createSanityBlock } from "../../../testUtils/createSanityBlock";
 
 const getAlleTilpassInnholdValgTestdata: SanityBlock[] = [
-  createSanityBlockMedVisFor("Skal vises for student", "normal", ["student"]),
-  createSanityBlockMedVisFor("Skal også vises for student", "normal", ["student"]),
+  createSanityBlock("Skal vises for student", "normal", { visFor: ["student"] }),
+  createSanityBlock("Skal også vises for student", "normal", { visFor: ["student"] }),
   createSanityBlock("Overskrift", "h2"),
-  createSanityBlock("Jeg har en mark som ikke skal regnes med", "normal", ["randomMark"]),
+  createSanityBlock("Jeg har en mark som ikke skal regnes med", "normal", { marks: ["randomMark"] }),
   {
     ...createSanityBlock("Jeg har en markDef som ikke skal regnes med", "normal"),
     markDefs: [
@@ -17,7 +17,7 @@ const getAlleTilpassInnholdValgTestdata: SanityBlock[] = [
       },
     ],
   },
-  createSanityBlockMedVisFor("Skal vises for permittert", "normal", ["permittert"]),
+  createSanityBlock("Skal vises for permittert", "normal", { visFor: ["permittert"] }),
 ];
 
 test("getAlleFiltreringsValgForInnhold lager en liste over alle tilgjengelige filtrerinsvalg for innhold", () => {

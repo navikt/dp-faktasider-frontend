@@ -1,12 +1,11 @@
-import { SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
-import { crateSanityListeElement, createSanityBlock } from "../../../testUtils/createSanityBlock";
+import { createSanityBlock } from "../../../testUtils/createSanityBlock";
 
 export const utkastTestData = [
-  crateSanityListeElement("Utkast i bulletpointliste", ["utkast"]),
-  crateSanityListeElement("Litt tekst"),
-  createSanityBlock("Frittstående utkast", "normal", ["utkast"]),
+  createSanityBlock("Utkast i bulletpointliste", "normal", { listItem: "bullet", marks: ["utkast"] }),
+  createSanityBlock("Litt tekst", "normal", { listItem: "bullet" }),
+  createSanityBlock("Frittstående utkast", "normal", { marks: ["utkast"] }),
   createSanityBlock("Frittstående tekst", "normal"),
-  createSanityBlock("Overskrift utkast", "h2", ["utkast"]),
+  createSanityBlock("Overskrift utkast", "h2", { marks: ["utkast"] }),
   createSanityBlock("Påfølgende innhold", "normal"),
   createSanityBlock("Overskrift vanlig", "h2"),
-] as SanityBlock[];
+];

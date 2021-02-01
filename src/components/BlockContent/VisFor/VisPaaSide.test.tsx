@@ -37,4 +37,14 @@ describe("innhold i delt tekst merket med visPaa", () => {
 
     expect(within(meny).queryByText("Ikke vis på denne siden")).toBeNull();
   });
+
+  test("bulletpoints fjernes helt om de ikke skal vises på siden", () => {
+    const result = render(<TestFaktaside partialFaktaside={visPaaSideTestData} />);
+
+    result.getByText("Bullet som skal vises");
+    expect(result.queryByText("Bullet som ikke skal vises")).toBeFalsy();
+
+    const bulletPoints = within(result.getByLabelText("Bolk med bullets")).getAllByRole("listitem");
+    expect(bulletPoints).toHaveLength(1);
+  });
 });

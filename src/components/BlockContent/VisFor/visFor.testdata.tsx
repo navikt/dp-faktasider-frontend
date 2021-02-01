@@ -1,9 +1,4 @@
-import {
-  crateSanityListeElement,
-  crateSanityListeElementMedVisFor,
-  createSanityBlock,
-  createSanityBlockMedVisFor,
-} from "../../../testUtils/createSanityBlock";
+import { createSanityBlock } from "../../../testUtils/createSanityBlock";
 
 const bolkStudent = "Bolk som bare vises for student";
 const bolkPermittert = "Bolk som bare vises for permittert";
@@ -15,17 +10,20 @@ const bolkSkjulForPermittertOgKonkurs = "Bolk som skjules for permittert";
 
 const data = [
   createSanityBlock(bolkForAlle, "h2"),
-  crateSanityListeElement("Bulletpoint som vises for alle"),
-  crateSanityListeElementMedVisFor("Bulletpoint som vises for student", ["student"]),
+  createSanityBlock("Bulletpoint som vises for alle", "normal", { listItem: "bullet" }),
+  createSanityBlock("Bulletpoint som vises for student", "normal", { listItem: "bullet", visFor: ["student"] }),
   createSanityBlock(innholdForAlle, "normal"),
-  createSanityBlockMedVisFor(innholdStudent, "normal", ["student"]),
-  createSanityBlockMedVisFor(innholdPermittert, "normal", ["permittert"]),
-  createSanityBlockMedVisFor(bolkStudent, "h2", ["student"]),
+  createSanityBlock(innholdStudent, "normal", { visFor: ["student"] }),
+  createSanityBlock(innholdPermittert, "normal", { visFor: ["permittert"] }),
+  createSanityBlock(bolkStudent, "h2", { visFor: ["student"] }),
   createSanityBlock("Studentinnhold", "normal"),
-  createSanityBlockMedVisFor(bolkPermittert, "h2", ["permittert"]),
+  createSanityBlock(bolkPermittert, "h2", { visFor: ["permittert"] }),
   createSanityBlock("Permittertinnhold", "normal"),
-  createSanityBlockMedVisFor(bolkSkjulForPermittertOgKonkurs, "h2", ["permittert", "konkurs"], true),
-  createSanityBlockMedVisFor("Innhold som skjules for permittert", "normal"),
+  createSanityBlock(bolkSkjulForPermittertOgKonkurs, "h2", {
+    visFor: ["permittert", "konkurs"],
+    omvendtFiltrering: true,
+  }),
+  createSanityBlock("Innhold som skjules for permittert", "normal"),
 ];
 
 export const visForTestData = {
