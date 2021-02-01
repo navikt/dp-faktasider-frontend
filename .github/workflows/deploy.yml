@@ -44,7 +44,7 @@ jobs:
         run: |
           npm install --no-save --no-audit
           npm test
-          npm run tsc
+          npm run typeCheck
 
   build:
     name: Build and publish Docker image
