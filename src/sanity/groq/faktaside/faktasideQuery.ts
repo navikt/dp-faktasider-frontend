@@ -6,9 +6,7 @@ import { Notifikasjon } from "../../../components/Notifikasjoner";
 const innholdFields = `
 [] {
   ...,
-  defined(deltTekst) => {
-    "deltTekst": ^.deltTekst->
-  }
+  "deltTekst": deltTekst->
 }`;
 
 export const faktasideQuery = groq`{
