@@ -39,6 +39,8 @@ jobs:
             ${{ runner.os }}-
 
       - name: Test
+        env:
+          TZ: Europe/Oslo
         run: |
           npm install --no-save --no-audit
           npm test

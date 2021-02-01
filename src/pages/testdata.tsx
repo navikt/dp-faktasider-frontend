@@ -17,6 +17,7 @@ import { groupMarkupTestData } from "../components/BlockContent/GroupMarkup/Grou
 import { tidslinjeTestData } from "../components/BlockContent/Tidslinje/Tidslinje.testdata";
 import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
 import { translated } from "../testUtils/createSanityBlock";
+import { sistOppdatertTestdata } from "../components/faktaside/content/SistOppdatert.testdata";
 
 type FaktasideData = FaktasideQueryData["faktaside"];
 
@@ -91,6 +92,10 @@ const testData: Testdata[] = [
     data: {
       innhold: translated(tidslinjeTestData),
     },
+  },
+  {
+    name: "sist oppdatert",
+    data: sistOppdatertTestdata.faktaside,
   },
 ];
 
