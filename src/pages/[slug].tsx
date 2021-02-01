@@ -17,9 +17,10 @@ const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   const faktasidePaths = await sanityClient.fetch(pathsQuery);
   const paths = faktasidePaths.map((slug) => ({ params: { slug } }));
+
   return {
     paths,
-    fallback: true, // må settes til true for at sider som ikke er oversatt til norsk skal vises
+    fallback: false,
   };
 };
 
