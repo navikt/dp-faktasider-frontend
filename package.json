@@ -87,7 +87,7 @@
     "start": "next start",
     "test": "jest",
     "typeCheck": "tsc",
-    "docker": "echo '🚀 Hoster app på localhost/arbeid \n' && docker build -t dpfakta . && docker run --rm -p 80:80 dpfakta"
+    "docker": "docker build -t dpfakta . && docker run --rm -p 3000:3000 dpfakta"
   },
   "prettier": {
     "printWidth": 120
