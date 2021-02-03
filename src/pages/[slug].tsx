@@ -11,21 +11,21 @@ import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
 import { faktasideQuery } from "../sanity/groq/faktaside/faktasideQuery";
 import { menuQuery } from "../sanity/groq/menu/menuQuery";
 import { isDevelopment } from "../utils/environment";
-import { supportedLanguages } from "../i18n/supportedLanguages";
 import NavFrontendSpinner from "nav-frontend-spinner";
+import { supportedLanguages } from "../i18n/supportedLanguages";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   const faktasidePaths = await sanityClient.fetch(pathsQuery);
 
-  const paths = faktasidePaths.flatMap((slug) => supportedLanguages.map((locale) => ({ params: { slug, locale } })));
+  const paths = faktasidePaths.flatMap((slug) => supportedLanguages.map((locale) => ({ params: { slug }, locale })));
 
   console.log("🐌s ", paths);
 
   return {
     paths,
-    fallback: true,
+    fallback: false
   };
 };
 
