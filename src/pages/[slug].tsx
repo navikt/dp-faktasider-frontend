@@ -12,6 +12,7 @@ import { faktasideQuery } from "../sanity/groq/faktaside/faktasideQuery";
 import { menuQuery } from "../sanity/groq/menu/menuQuery";
 import { isDevelopment } from "../utils/environment";
 import { supportedLanguages } from "../i18n/supportedLanguages";
+import NavFrontendSpinner from "nav-frontend-spinner";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 
@@ -69,6 +70,11 @@ function PreviewWrapper(props: Props) {
   });
 
   const locale = useLocale();
+
+  if (!faktasideData?.faktaside?.id) {
+    return <NavFrontendSpinner />;
+  }
+
   const parsedFaktasideData = parseFaktasideData(faktasideData, locale);
   const parsedMenuData = parseMenuData(menuData, locale);
 
