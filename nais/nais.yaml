@@ -6,7 +6,6 @@ metadata:
   labels:
     team: {{team}}
 spec:
-  webproxy: true
   image: {{ image }}
   port: 3000
   liveness:

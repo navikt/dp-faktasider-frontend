@@ -21,11 +21,9 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
   const paths = faktasidePaths.flatMap((slug) => supportedLanguages.map((locale) => ({ params: { slug }, locale })));
 
-  console.log("🐌s ", paths);
-
   return {
     paths,
-    fallback: false
+    fallback: false,
   };
 };
 
@@ -40,12 +38,8 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const preview = !!context.preview || isDevelopment();
   const slug = context.params!.slug as string;
 
-  console.log("getStaticProps 1: ", { context, slug });
-
   const faktaside: FaktasideQueryData = await getClient(preview).fetch(faktasideQuery, { slug });
   const menuData: MenuQueryData = await getClient(preview).fetch(menuQuery);
-
-  console.log("getStaticProps 2:", { context, slug, faktaside, menuData });
 
   if (!faktaside?.faktaside?.id) {
     return {
