@@ -11,16 +11,18 @@ import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
 import { faktasideQuery } from "../sanity/groq/faktaside/faktasideQuery";
 import { menuQuery } from "../sanity/groq/menu/menuQuery";
 import { isDevelopment } from "../utils/environment";
+import { supportedLanguages } from "../i18n/supportedLanguages";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   const faktasidePaths = await sanityClient.fetch(pathsQuery);
-  const paths = faktasidePaths.map((slug) => ({ params: { slug } }));
+
+  const paths = faktasidePaths.flatMap((slug) => supportedLanguages.map((locale) => ({ params: { slug, locale } })));
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
@@ -37,6 +39,12 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const faktaside: FaktasideQueryData = await getClient(preview).fetch(faktasideQuery, { slug });
   const menuData: MenuQueryData = await getClient(preview).fetch(menuQuery);
 
+  if (!faktaside?.faktaside?.id) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       faktasideData: faktaside,
@@ -44,7 +52,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
       preview,
       slug,
     },
-    revalidate: 300,
+    revalidate: 120,
   };
 };
 
