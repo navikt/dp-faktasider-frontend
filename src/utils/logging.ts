@@ -1,5 +1,5 @@
 /*
-Vi må lazy-loade loggingConfig, da gatsby pre-rendrer html, og kresjer dermed amplitude-sdk
+Vi må lazy-loade loggingConfig, da nextjs rendrer html på server, og kresjer dermed amplitude-sdk
 Prøver derfor å ikke initiere amplitude-sdk instansen før en logevent blir kalt.
 */
 

@@ -1,9 +1,9 @@
 import { SupportedLanguage } from "../../../i18n/supportedLanguages";
 import localizeSanityContent from "../../../i18n/localizeSanityContent";
 import parseRichText, { ParsedRichText } from "../../../utils/richTextUtils/parser/parseRichText";
-import { getPubliseringsTidspunkt } from "../../../gatsby-utils/getPubliseringstidspunkt";
 import { FaktasideQueryData, LocalizedFaktasideQueryData } from "./faktasideQuery";
 import { Notifikasjon } from "../../../components/Notifikasjoner";
+import { getPubliseringsTidspunkt } from "../../getPubliseringstidspunkt";
 
 export interface FaktasideParsedData {
   id: string;

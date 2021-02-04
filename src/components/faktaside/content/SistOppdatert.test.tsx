@@ -1,8 +1,8 @@
 import React from "react";
 import SistOppdatert from "./SistOppdatert";
-import { getPubliseringsTidspunkt } from "../../../gatsby-utils/getPubliseringstidspunkt";
 import { render } from "../../../testUtils/customized-testing-library";
 import { sistOppdatertTestdata } from "./SistOppdatert.testdata";
+import { getPubliseringsTidspunkt } from "../../../sanity/getPubliseringstidspunkt";
 
 describe("Sist oppdatert funker finfint med internasjonalisering", () => {
   test("På norsk", () => {
