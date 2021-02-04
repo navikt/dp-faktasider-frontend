@@ -40,7 +40,7 @@ const StyledAside = styled.aside<{ isOpen: boolean }>`
 
 const Label = styled(Undertekst)`
   opacity: 0.75;
-  font-size: 0.7rem;
+  font-size: 0.7rem !important;
   margin: 0 !important;
   text-transform: uppercase;
 `;

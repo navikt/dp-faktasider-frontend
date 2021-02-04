@@ -4,6 +4,8 @@ import { render, within } from "../../../testUtils/customized-testing-library";
 import { visForTestData } from "./visFor.testdata";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
 import { toggleFilter } from "../../../testUtils/tilpassInnholdUtils";
+import { translated } from "../../../testUtils/createSanityBlock";
+import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
 
 const { innhold } = visForTestData;
 const {
@@ -18,7 +20,7 @@ const {
 
 describe("visFor-logikk", () => {
   test("Hvis ingen filtrering er valgt vises all tekst", () => {
-    const result = render(<BlockContent blocks={innhold} />);
+    const result = render(<BlockContent blocks={parseRichText(innhold)} />);
 
     result.getByLabelText(bolkStudent);
     result.getByLabelText(bolkPermittert);
@@ -57,7 +59,7 @@ describe("visFor-logikk", () => {
   });
 
   test("Hvis man filtrer på ingen valg passer vises hverken permittertinnhold eller studentinnhold, men vanlig innhold vises", async () => {
-    const result = render(<TestFaktaside innhold={innhold} partialContext={{ visIngenValgPasser: true }} />);
+    const result = render(<TestFaktaside innhold={innhold} partialFaktaside={{ visIngenValgPasser: true }} />);
 
     toggleFilter(result, /Ingen valg/i);
 
@@ -71,7 +73,7 @@ describe("visFor-logikk", () => {
   });
 
   test("bulletpoint med visFor på hele teksten skjules dersom det filtreres bort", () => {
-    const result = render(<TestFaktaside innhold={innhold} partialContext={{ visIngenValgPasser: true }} />);
+    const result = render(<TestFaktaside innhold={innhold} partialFaktaside={{ visIngenValgPasser: true }} />);
 
     const førsteBolk = result.getByLabelText(bolkForAlle);
 
@@ -83,7 +85,7 @@ describe("visFor-logikk", () => {
   });
 
   test("viser tilpasset innhold checkboxer også for innhold som ligger i Kort Fortalt", () => {
-    const result = render(<TestFaktaside innhold={[]} partialContext={{ kortFortalt: innhold }} />);
+    const result = render(<TestFaktaside innhold={[]} partialFaktaside={{ kortFortalt: translated(innhold) }} />);
     toggleFilter(result, /student/i);
   });
 
@@ -98,7 +100,7 @@ describe("visFor-logikk", () => {
 
 describe("skjulFor-logikk", () => {
   test("Vises dersom ingen filtrering er valgt", () => {
-    const result = render(<BlockContent blocks={innhold} />);
+    const result = render(<BlockContent blocks={parseRichText(innhold)} />);
 
     result.getByLabelText(bolkSkjulForPermittertOgKonkurs);
   });
@@ -120,7 +122,7 @@ describe("skjulFor-logikk", () => {
   });
 
   test('skjules ikke dersom "ingen valg passer" er valgt', () => {
-    const result = render(<TestFaktaside innhold={innhold} partialContext={{ visIngenValgPasser: true }} />);
+    const result = render(<TestFaktaside innhold={innhold} partialFaktaside={{ visIngenValgPasser: true }} />);
 
     toggleFilter(result, /Ingen valg/i);
 
@@ -128,7 +130,7 @@ describe("skjulFor-logikk", () => {
   });
 
   test("skjules ikke dersom man har valgt to situasjoner, en den skal skjules for og en den ikke skal skjules for", () => {
-    const result = render(<TestFaktaside innhold={innhold} partialContext={{ visIngenValgPasser: true }} />);
+    const result = render(<TestFaktaside innhold={innhold} partialFaktaside={{ visIngenValgPasser: true }} />);
 
     toggleFilter(result, /Permittert/i);
     toggleFilter(result, /Student/i);
@@ -137,7 +139,7 @@ describe("skjulFor-logikk", () => {
   });
 
   test("skjules dersom man har huket av to situasjoner der teksten skal skjules for begge", () => {
-    const result = render(<TestFaktaside innhold={innhold} partialContext={{ visIngenValgPasser: true }} />);
+    const result = render(<TestFaktaside innhold={innhold} partialFaktaside={{ visIngenValgPasser: true }} />);
 
     toggleFilter(result, /Permittert/i);
     toggleFilter(result, /Konkurs/i);

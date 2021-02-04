@@ -1,131 +1,86 @@
-import { DelttekstReference, SanityBlock, TidslinjeI, Tillegsinformasjon } from "../utils/richTextUtils/richTextTypes";
+import {
+  DelttekstReference,
+  MarkDef,
+  SanityBlock,
+  TidslinjeI,
+  Tillegsinformasjon,
+} from "../utils/richTextUtils/richTextTypes";
 import { guid } from "nav-frontend-js-utils";
-import { RawFaktasideData } from "../../gatsby-utils/createFaktasider";
+import { Translations } from "../types/translations";
 
 /*
  * Funksjoner for å lage sanity-mock-data til bruk i tester
  * */
 
-export function createSanityBlock(text: string, style: string, marks?: string[]): SanityBlock {
+export const translated = <T>(item: T): Translations<T> => ({ _type: "localeItem", no: item });
+
+export function createSanityBlock(
+  text: string,
+  style: string,
+  config?: { listItem?: "bullet"; marks?: string[]; visFor?: string[]; visPaa?: string[]; omvendtFiltrering?: boolean }
+): SanityBlock {
+  const visForMark = createVisForMark({
+    visFor: config?.visFor,
+    visPaaSideIder: config?.visPaa,
+    omvendtFiltrering: config?.omvendtFiltrering,
+  });
+
+  const markDefs = [visForMark?.markDef].filter((it) => !!it) as MarkDef[];
+  const marks = [...(config?.marks || []), visForMark?.markKey].filter((it) => !!it) as string[];
+
+  const listProps = config?.listItem ? { level: 1, listItem: config.listItem } : {};
+
   const key = createKey();
 
   return {
     _type: "block",
     _key: key,
     style: style,
-    markDefs: [],
+    markDefs: markDefs,
+    ...listProps,
     children: [
       {
         _type: "span",
         _key: key + "0",
         text: text,
-        marks: marks || [],
+        marks: marks,
       },
     ],
   };
 }
 
-export function crateSanityListeElement(tekst: string, marks?: string[]): SanityBlock {
-  return {
-    ...createSanityBlock(tekst, "normal", marks),
-    level: 1,
-    listItem: "bullet",
-  };
-}
-
-export function crateSanityListeElementMedVisFor(tekst: string, visFor: string[]): SanityBlock {
-  return {
-    ...createSanityBlockMedVisFor(tekst, "normal", visFor),
-    level: 1,
-    listItem: "bullet",
-  };
-}
-
 export function createDeltTekstBlock(innhold: SanityBlock[]): DelttekstReference {
-  const id = createKey();
   return {
     _type: "deltTekstReference",
     deltTekst: {
-      id: id,
       _type: "deltTekst",
-      _createdAt: "2020-07-03T09:21:09Z",
       _updatedAt: "2020-07-13T09:00:55Z",
       innhold: innhold,
     },
   };
 }
 
-export function createSanityBlockMedVisFor(
-  text: string,
-  style: string,
-  visFor?: string[],
-  omvendtFiltrering_SkjulFor?: boolean
-): SanityBlock {
-  const block = createSanityBlock(text, style);
-
-  if (!visFor) {
-    return block;
+function createVisForMark(config: { visPaaSideIder?: string[]; visFor?: string[]; omvendtFiltrering?: boolean }) {
+  if (!config.visPaaSideIder && !config.visFor) {
+    return undefined;
   }
 
   const markKey = createKey();
 
   return {
-    ...block,
-    children: [
-      {
-        ...block.children![0],
-        marks: [markKey],
+    markKey: markKey,
+    markDef: {
+      _key: markKey,
+      _type: config.visPaaSideIder ? "visForAnnotationDeltTekst" : "visForAnnotation",
+      visFor: {
+        situasjoner: config.visFor,
+        skjulFor: config.omvendtFiltrering,
+        _type: "visFor",
       },
-    ],
-    markDefs: [
-      {
-        _key: markKey,
-        _type: "visForAnnotation",
-        visFor: {
-          situasjoner: visFor,
-          skjulFor: omvendtFiltrering_SkjulFor,
-          _type: "visFor",
-        },
-      },
-    ],
-  };
-}
-
-export function createSanityBlockMedDeltTekstVisForAnnotation(
-  text: string,
-  style: string,
-  visPaaSideIder?: string[],
-  visFor?: string[]
-): SanityBlock {
-  const block = createSanityBlockMedVisFor(text, style, visFor || []);
-
-  if (!visPaaSideIder) {
-    return block;
-  }
-
-  const markKey = createKey();
-
-  return {
-    ...block,
-    children: [
-      {
-        ...block.children![0],
-        marks: [markKey],
-      },
-    ],
-    markDefs: [
-      ...(block.markDefs || []),
-      {
-        _key: markKey,
-        _type: "visForAnnotationDeltTekst",
-        visPaaSider: visPaaSideIder?.map(
-          (id) =>
-            ({
-              id: id,
-            } as RawFaktasideData)
-        ),
-      },
-    ],
+      visPaaSider: config.visPaaSideIder?.map((id) => ({
+        _ref: id,
+      })),
+    } as MarkDef,
   };
 }
 

@@ -36,7 +36,7 @@ const StyledTittel = styled(Innholdstittel).attrs({
   top: 0;
   transition: top 0.2s;
   z-index: 10;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem !important;
   text-align: center;
 `;
 

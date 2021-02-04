@@ -1,13 +1,13 @@
 import * as React from "react";
-import styled, { css } from "styled-components/macro";
 import { useReducer, useRef } from "react";
+import styled, { css } from "styled-components/macro";
 import { isDevelopment } from "../../utils/environment";
 import { useClickAway } from "react-use";
 import { useDevContext } from "./DevContext";
 import { Checkbox } from "nav-frontend-skjema";
 import withErrorBoundary from "../withErrorBoundary";
-import { Link } from "gatsby";
 import { useQueryParams } from "../../utils/useQueryParams";
+import Link from "next/link";
 
 const Style = styled.div<{ isOpen: boolean }>`
   position: fixed;
@@ -41,13 +41,15 @@ const Button = styled.button`
 
 const Innhold = styled.div`
   padding: 1rem;
+
   > * {
     margin-bottom: 0.5rem;
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
   color: white;
+  text-decoration: underline;
 `;
 
 function reducer(state: boolean, action: "toggle" | "close") {
@@ -95,7 +97,9 @@ function DevKnapper() {
             label="Debug grunnbelløp"
             checked={context.value.debugGronnbellop}
           />
-          <StyledLink to="/testdata">Visualisering av test-data</StyledLink>
+          <Link href="/testdata" passHref>
+            <StyledLink>Visualisering av test-data</StyledLink>
+          </Link>
         </Innhold>
       )}
     </Style>

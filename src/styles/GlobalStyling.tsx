@@ -1,33 +1,35 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components/macro";
 import { theme } from "./theme";
-import "./index.less";
 
 const Styling = createGlobalStyle`
-    * {
-        box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    word-break: break-word;
+  }
+
+  html {
+    font-size: 112.5% !important;
+    @media (min-width: 1400px) {
+      font-size: 125% !important;
     }
-    a {
-        word-break: break-word;
-    }
-    html {
-        font-size: 112.5%;
-        @media (min-width: 1400px) {
-          font-size: 125%;
-        }
-        font-family: 'Source Sans Pro', sans-serif;
-    }
-    body {
-        background-color: ${theme.colors.bakgrunn};
-    }
-    
-    .ReactCollapse--collapse {
-        transition: height 0.3s;
-    }
-    
-    .decorator-wrapper .sticky-container {
-      position: static !important;
-    }
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  body {
+    background-color: ${theme.colors.bakgrunn};
+  }
+
+  .ReactCollapse--collapse {
+    transition: height 0.3s;
+  }
+
+  .decorator-wrapper .sticky-container {
+    position: static !important;
+  }
 `;
 
 export function GlobalStyling() {

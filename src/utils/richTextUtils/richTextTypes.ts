@@ -1,4 +1,3 @@
-import { RawFaktasideData } from "../../../gatsby-utils/createFaktasider";
 import { Modify } from "../typeUtils";
 
 export type VisForConfig = {
@@ -13,7 +12,7 @@ export type MarkDef = {
   _key: string;
   _type: string;
   visFor?: VisForConfig;
-  visPaaSider?: RawFaktasideData[];
+  visPaaSider?: { _ref: string }[];
 };
 
 // SanityBlock-typen er uhøytidelig hamret sammen basert på hvilke parametere jeg ser i consollen, det er ikke sikkert den stemmer helt
@@ -32,9 +31,7 @@ export type SanityBlock = {
 export type DeltTekst = Modify<
   SanityBlock,
   {
-    _createdAt: string;
     _updatedAt: string;
-    id: string;
     innhold?: SanityBlock[];
     _type: "deltTekst";
   }

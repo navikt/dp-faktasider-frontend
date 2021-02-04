@@ -19,7 +19,7 @@ export function getCommonVisForConfig(block: Block): CommonVisConfig | undefined
   if (alleMerketMedVisFor) {
     return {
       visFor: visForAnnotation?.visFor,
-      visPaa: visForAnnotation?.visPaaSider?.map((side) => side.id),
+      visPaa: visForAnnotation?.visPaaSider?.map((side) => side._ref),
     };
   }
 
