@@ -1,20 +1,19 @@
 # Dagpenger faktasider
 
-Nextjs-frontend for dagpengerelaterte faktasider på www.nav.no/arbeid/. Inhhold kan redigeres på https://dagpenger.sanity.studio/.
+Nextjs-frontend for infosider rettet mot arbeidsledige og permitterte på www.nav.no/arbeid/. Inhhold kan redigeres på https://dagpenger.sanity.studio/.
 
 ## Utvikle lokalt
 
 ```
 npm i
-npm start
+npm run dev
 ```
 
 ### Optional
 
-Opprett filen `.env.development` i root-folderet med innholdet:
+Opprett filen `.env.development` i root-folderet med innholdet (Trengs ikke, men lar deg jobbe mot et development-datasett):
 
 ```
-NEXT_PUBLIC_SANITY_PROJECT_ID="rt6o382n"
 NEXT_PUBLIC_SANITY_DATASET="development"
 ```
 
@@ -22,11 +21,13 @@ NEXT_PUBLIC_SANITY_DATASET="development"
 
 Jeg tror det funker ca sånn her:
 
-Start opp sanity studio lokalt og logg inn i prosjektet. Det blir da satt en autentiseringscookie på localhost. Denne cookien funker også fra frontenden og sørger automatisk for at du kan lese drafts fra sanity vha nextjs (dette sørger `usePreviewSubscription` for).
+- Last ned dette prosjektet og start opp lokalt: https://github.com/navikt/dp-sanity-cms.
+- Når du har startet opp prosjektet og åpnet det på localhost blir du bedt om å logge inn i sanity. Det blir da satt en autentiseringscookie på localhost.
+- Denne cookien funker også fra nextjs-frontenden og sørger automatisk for at du kan lese drafts fra sanity vha nextjs (dette sørger `usePreviewSubscription` for).
 
 ### Scripts
 
-- `npm run docker` bygger appen i en dockercontainer på samme måte som i pipeline, hoser appen på [localhost/arbeid]().
+- `npm run docker` bygger appen i en dockercontainer på samme måte som i pipeline, hoser appen på [localhost:3000/arbeid]().
 
 ### Sanity Studio-repo
 
@@ -67,18 +68,11 @@ Sanity oversettelser og i18next oversettelser er i utgangpunktet ikke knyttet sa
 
 ## Tester
 
-Mange av de automatiske testene har testdata du man kan få visualisert dersom du går til `localhost:8000/testdata`. Appen må kjøre i development-mode.
+Mange av de automatiske testene har testdata du man kan få visualisert dersom du går til `localhost:3000/arbeid/testdata`.
 
 ## Deploy av nye tekster fra sanity
 
-For at endringer i sanity skal bli publisert på nav.no/arbeid må appen bygges og deployes på nytt. Dette er fordi Gatsby bygger statiske sider buildtime. Du kan feks trigge bygg ved å pushe en tom commit slik:
-
-```
-git commit -m "Trigger bygg" --allow-empty
-git push
-```
-
-Det har blitt forsøkt å trigge automatisk bygg fra sanity når man endrer tekster der, men vi ga opp fordi webhookapi’et trenger autentisering, og det var vanskelig å se hvordan vi får til det uten å legge inn for mye tokens/hemligheter. Kontakt Giao for mer innformasjon. Siden det tar oss lite tid å trigge bygg manuelt har vi ikke valgt å prioritere dette.
+Nextjs sjekker med jevne mellomrom for nytt innhold fra sanity som automatisk vil gå ut i prod. Se `revalidate` i `getStaticProps`-metodene for hvor hyppig intervallet er (2 minutter i dag).
 
 ## Kontakt
 
@@ -90,4 +84,4 @@ Spørsmål tilknyttet koden kan rettes mot:
 
 ### Internt
 
-Slack: #team-dagpenger, #team-dagpenger-dev
+Slack: #område-arbeid-innhold, #område-arbeid, #team-dagpenger, #team-dagpenger-dev
