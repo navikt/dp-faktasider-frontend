@@ -41,3 +41,4 @@ Hurra, endelig fungerte det, nå gjenstår bare en liten trykkleif. Hei, sveis. 
 Og så var eksperimentet over. Og sånn går dagene. DAG FOR DAG. Time for time. Dag for dag
 :)
 jhk, dbs, dumdidum, heididei. Desisi. Leisi. Keisi. Deisi. Leisa. Luke, kjl- T. CULtr
+Når vi trudde historia var slutt, kom det uventa hindringar i vegen.  
