@@ -14,6 +14,7 @@ spec:
     path: /arbeid/api/isready
   prometheus:
     enabled: false
+  webproxy: true
   replicas:
     min: 1
     max: 3
