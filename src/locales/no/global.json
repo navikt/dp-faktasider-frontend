@@ -8,6 +8,7 @@
   "kunTilgjengeligPå": "Kun tilgjengelig på",
   "404": "Fant ikke siden",
   "404-sub": "Du har fulgt en url som ikke er i bruk",
+  "404-tilbake-til": "Tilbake til",
   "404-andre-sider": "Sider du kanskje er interessert i:",
   "sistOppdatert": "Sist oppdatert {{ publiseringstidspunkt, d. MMMM yyyy HH:mm }}",
   "visMer": "Vis mer",
