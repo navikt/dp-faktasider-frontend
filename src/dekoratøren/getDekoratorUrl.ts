@@ -14,7 +14,7 @@ export interface DekoratorParams {
   chatbot?: boolean;
 }
 
-const baseUrl = "https://www.nav.no/dekoratoren/";
+const baseUrl = process.env.DEKORATOR_URL || "https://www.nav.no/dekoratoren/";
 
 export function getDekoratorUrl(params?: DekoratorParams): string {
   if (!params) return baseUrl;
