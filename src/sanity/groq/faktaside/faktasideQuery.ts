@@ -11,9 +11,9 @@ const innholdFields = `
 
 export const faktasideQuery = groq`{
   'faktaside': *[_type == "faktaSide" && slug.current == $slug][0] {
+    ...,
     "id": _id,
     "slug": slug.current,
-    ...,
     innhold {
       no ${innholdFields},
       en ${innholdFields},
