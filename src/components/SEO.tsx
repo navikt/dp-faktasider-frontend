@@ -8,14 +8,16 @@ interface Props {
   description: string;
 }
 
+const navUrl = "https://www.nav.no";
+
 function SEO(props: Props) {
-  const siteUrl = "https://www.nav.no/arbeid/";
-  const { query } = useRouter();
+  const { basePath, asPath } = useRouter();
+  const cannonical = `${navUrl}${basePath}${asPath}`;
 
   return (
     <Head>
       <title>{props.title} | www.nav.no</title>
-      <link rel="canonical" href={`${siteUrl}/${query.slug || ""}`} />
+      <link rel="canonical" href={cannonical} />
       <meta name="description" content={props.description} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={props.title} />
