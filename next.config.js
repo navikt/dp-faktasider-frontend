@@ -6,9 +6,24 @@ const navFrontendModuler = Object.keys(require("./package.json").dependencies).f
 
 const withTranspileModules = require("next-transpile-modules")(navFrontendModuler);
 
+const csp = require("./csp");
+
 module.exports = withTranspileModules(
   withLess({
     basePath: "/arbeid",
+    async headers() {
+      return [
+        {
+          source: "/:path*",
+          headers: [
+            {
+              key: "Content-Security-Policy",
+              value: csp,
+            },
+          ],
+        },
+      ];
+    },
     i18n: {
       locales: ["no", "en"],
       defaultLocale: "no",
