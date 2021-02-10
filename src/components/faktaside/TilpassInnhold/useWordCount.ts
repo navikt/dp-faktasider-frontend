@@ -1,15 +1,16 @@
 import { RefObject, useEffect, useState } from "react";
 import { useVisForContext } from "../../BlockContent/VisFor/VisForContext";
-import { useMount } from "react-use";
+import { useFaktasideContext } from "../FaktaSideContext";
 
 export function useWordCount(contentRef: RefObject<HTMLElement>) {
   const { checked, ingenPasserMeg } = useVisForContext().value;
   const [totalWordCount, setTotalWordCount] = useState<number | undefined>(0);
   const [currentWordCount, setCurrentWordCount] = useState<number | undefined>(0);
+  const { id } = useFaktasideContext();
 
-  useMount(() => {
+  useEffect(() => {
     setTotalWordCount(getWordCount(contentRef));
-  });
+  }, [id]);
 
   useEffect(() => {
     if (checked.length || ingenPasserMeg) {
