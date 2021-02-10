@@ -10,7 +10,6 @@ interface Props {
 
 function SEO(props: Props) {
   const siteUrl = "https://www.nav.no/arbeid/";
-  const imageUrl = "https://www.nav.no/arbeid/images/navlogo.png";
   const { query } = useRouter();
 
   return (
@@ -25,9 +24,6 @@ function SEO(props: Props) {
       <meta property="twitter:card" content="summary" />
       <meta property="twitter:title" content={props.title} />
       <meta property="twitter:description" content={props.description} />
-      <meta property="twitter:image" content={imageUrl} />
-      <meta property="og:image" content={imageUrl} />
-      <meta property="image" content={imageUrl} />
     </Head>
   );
 }
