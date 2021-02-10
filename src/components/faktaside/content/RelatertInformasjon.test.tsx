@@ -22,7 +22,7 @@ describe("relatert innformasjon", () => {
     const result = render(
       <TestFaktaside
         partialFaktaside={{
-          relatertInformasjon: translated([createSanityBlock("Litt relatert info", "normal")]),
+          relatertInformasjon: translated([createSanityBlock("Litt relatert info")]),
         }}
       />
     );
@@ -35,7 +35,7 @@ describe("relatert innformasjon", () => {
     const result = render(
       <TestFaktaside
         partialFaktaside={{
-          kortFortalt: translated([createSanityBlock("Litt relatert info", "normal")]),
+          kortFortalt: translated([createSanityBlock("Litt relatert info")]),
         }}
       />
     );

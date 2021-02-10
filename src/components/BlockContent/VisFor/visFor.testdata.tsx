@@ -9,21 +9,22 @@ const innholdForAlle = "Innhold som vises for alle";
 const bolkSkjulForPermittertOgKonkurs = "Bolk som skjules for permittert";
 
 const data = [
-  createSanityBlock(bolkForAlle, "h2"),
-  createSanityBlock("Bulletpoint som vises for alle", "normal", { listItem: "bullet" }),
-  createSanityBlock("Bulletpoint som vises for student", "normal", { listItem: "bullet", visFor: ["student"] }),
-  createSanityBlock(innholdForAlle, "normal"),
-  createSanityBlock(innholdStudent, "normal", { visFor: ["student"] }),
-  createSanityBlock(innholdPermittert, "normal", { visFor: ["permittert"] }),
-  createSanityBlock(bolkStudent, "h2", { visFor: ["student"] }),
-  createSanityBlock("Studentinnhold", "normal"),
-  createSanityBlock(bolkPermittert, "h2", { visFor: ["permittert"] }),
-  createSanityBlock("Permittertinnhold", "normal"),
-  createSanityBlock(bolkSkjulForPermittertOgKonkurs, "h2", {
+  createSanityBlock(bolkForAlle, { style: "h2" }),
+  createSanityBlock("Bulletpoint som vises for alle", { listItem: "bullet" }),
+  createSanityBlock("Bulletpoint som vises for student", { listItem: "bullet", visFor: ["student"] }),
+  createSanityBlock(innholdForAlle),
+  createSanityBlock(innholdStudent, { visFor: ["student"] }),
+  createSanityBlock(innholdPermittert, { visFor: ["permittert"] }),
+  createSanityBlock(bolkStudent, { style: "h2", visFor: ["student"] }),
+  createSanityBlock("Studentinnhold"),
+  createSanityBlock(bolkPermittert, { style: "h2", visFor: ["permittert"] }),
+  createSanityBlock("Permittertinnhold"),
+  createSanityBlock(bolkSkjulForPermittertOgKonkurs, {
+    style: "h2",
     visFor: ["permittert", "konkurs"],
     omvendtFiltrering: true,
   }),
-  createSanityBlock("Innhold som skjules for permittert", "normal"),
+  createSanityBlock("Innhold som skjules for permittert"),
 ];
 
 export const visForTestData = {

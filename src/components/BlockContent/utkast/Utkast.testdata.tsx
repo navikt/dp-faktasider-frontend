@@ -1,11 +1,11 @@
 import { createSanityBlock } from "../../../testUtils/createSanityBlock";
 
 export const utkastTestData = [
-  createSanityBlock("Utkast i bulletpointliste", "normal", { listItem: "bullet", marks: ["utkast"] }),
-  createSanityBlock("Litt tekst", "normal", { listItem: "bullet" }),
-  createSanityBlock("Frittstående utkast", "normal", { marks: ["utkast"] }),
-  createSanityBlock("Frittstående tekst", "normal"),
-  createSanityBlock("Overskrift utkast", "h2", { marks: ["utkast"] }),
-  createSanityBlock("Påfølgende innhold", "normal"),
-  createSanityBlock("Overskrift vanlig", "h2"),
+  createSanityBlock("Utkast i bulletpointliste", { listItem: "bullet", marks: ["utkast"] }),
+  createSanityBlock("Litt tekst", { listItem: "bullet" }),
+  createSanityBlock("Frittstående utkast", { marks: ["utkast"] }),
+  createSanityBlock("Frittstående tekst"),
+  createSanityBlock("Overskrift utkast", { style: "h2", marks: ["utkast"] }),
+  createSanityBlock("Påfølgende innhold"),
+  createSanityBlock("Overskrift vanlig", { style: "h2" }),
 ];

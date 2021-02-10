@@ -21,7 +21,7 @@ describe("kortFortalt", () => {
     const result = render(
       <TestFaktaside
         partialFaktaside={{
-          kortFortalt: translated([createSanityBlock("Litt innhold", "normal")]),
+          kortFortalt: translated([createSanityBlock("Litt innhold")]),
         }}
       />
     );
@@ -34,7 +34,7 @@ describe("kortFortalt", () => {
     const result = render(
       <TestFaktaside
         partialFaktaside={{
-          kortFortalt: translated([createSanityBlock("Litt innhold", "normal")]),
+          kortFortalt: translated([createSanityBlock("Litt innhold")]),
         }}
       />
     );

@@ -14,10 +14,18 @@ import { Translations } from "../types/translations";
 
 export const translated = <T>(item: T): Translations<T> => ({ _type: "localeItem", no: item });
 
+type Style = "normal" | "h2" | "h3" | "h4" | "tidslinjepunkt" | "h2-no-background" | "h2-m-meny";
+
 export function createSanityBlock(
   text: string,
-  style: string,
-  config?: { listItem?: "bullet"; marks?: string[]; visFor?: string[]; visPaa?: string[]; omvendtFiltrering?: boolean }
+  config?: {
+    style?: Style;
+    listItem?: "bullet";
+    marks?: string[];
+    visFor?: string[];
+    visPaa?: string[];
+    omvendtFiltrering?: boolean;
+  }
 ): SanityBlock {
   const visForMark = createVisForMark({
     visFor: config?.visFor,
@@ -35,7 +43,7 @@ export function createSanityBlock(
   return {
     _type: "block",
     _key: key,
-    style: style,
+    style: config?.style || "normal",
     markDefs: markDefs,
     ...listProps,
     children: [
