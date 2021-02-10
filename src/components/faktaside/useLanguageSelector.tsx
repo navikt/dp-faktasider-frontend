@@ -1,9 +1,10 @@
-import { setAvailableLanguages } from "@navikt/nav-dekoratoren-moduler";
+import { setAvailableLanguages, setParams } from "@navikt/nav-dekoratoren-moduler";
 import { useMount } from "react-use";
 import { SupportedLanguage, supportedLanguages } from "../../i18n/supportedLanguages";
 import { onLanguageSelect } from "@navikt/nav-dekoratoren-moduler";
 import { useRouter } from "next/router";
 import { isDevelopment } from "../../utils/environment";
+import { useEffect } from "react";
 
 function getDekoratørSpråk(lang: SupportedLanguage) {
   switch (lang) {
@@ -24,18 +25,23 @@ function getSpråkFromDekoratørSpråk(lang: string): SupportedLanguage {
 }
 
 function useLanguageSelector() {
-  const router = useRouter();
-  const { push, asPath, query } = router;
+  const { push, asPath, basePath, locale } = useRouter();
+
+  useEffect(() => {
+    locale && setParams({ language: getDekoratørSpråk(locale as SupportedLanguage) });
+  }, [locale]);
 
   useMount(() => {
     if (isDevelopment()) {
       // Har ikke bra nok språkstøtte enda til at det gir mening å vise denne i prod
       setAvailableLanguages(
-        supportedLanguages.map((lang) => ({
-          locale: getDekoratørSpråk(lang),
-          handleInApp: true,
-          url: `https://www.nav.no/arbeid/${lang}/${query.slug}`,
-        }))
+        supportedLanguages.map((lang) => {
+          return {
+            locale: getDekoratørSpråk(lang),
+            handleInApp: true,
+            url: `https://www.nav.no${basePath}/${lang}${asPath}`,
+          };
+        })
       );
       onLanguageSelect((event) => push(asPath, undefined, { locale: getSpråkFromDekoratørSpråk(event.locale) }));
     }

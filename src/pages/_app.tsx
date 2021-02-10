@@ -5,12 +5,14 @@ import { i18nextConfig, TranslationsProvider } from "../i18n/i18nextConfig";
 import { AppStyling, GlobalStyling } from "../styles/GlobalStyling";
 import { AppProps } from "next/app";
 import "../styles/index.less";
-import { useMount } from "react-use";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 function App({ Component, pageProps }: AppProps) {
   const locale = useRouter().locale;
-  useMount(() => locale && i18nextConfig.changeLanguage(locale));
+  useEffect(() => {
+    locale && i18nextConfig.changeLanguage(locale);
+  }, [locale]);
 
   return (
     <ErrorBoundary>
