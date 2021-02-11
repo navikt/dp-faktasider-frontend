@@ -5,7 +5,6 @@ import { loggSidevisning } from "../../utils/logging";
 import useLoggUtdatertHashlenke from "./useLoggUtdatertHashlenke";
 import IkkeOversatt from "./IkkeOversatt";
 import { FaktasideProvider } from "./FaktaSideContext";
-import StickyFeedback from "./StickyFeedback";
 import SEO from "../SEO";
 import FaktaSideLayout from "./FaktaSideLayout";
 import InnholdetErTilpasset from "./TilpassInnhold/InnholdetErTilpasset";
@@ -49,7 +48,6 @@ function Faktaside(props: FaktasideProps) {
 
   return (
     <FaktasideProvider faktasideProps={props}>
-      <StickyFeedback />
       <SEO title={tittel} description={beskrivelse} />
       <FaktaSideLayout wordCountRef={wordCountRef}>
         <Header />
