@@ -26,7 +26,7 @@ const csp = {
     "rt6o382n.api.sanity.io",
   ],
   "font-src": ["data:", "*.psplugin.com", "*.hotjar.com", "fonts.gstatic.com"],
-  "frame-src": ["video.qbrick.com/", "vars.hotjar.com"],
+  "frame-src": ["video.qbrick.com/", "vars.hotjar.com", "player.vimeo.com"],
   "img-src": ["*.hotjar.com", "www.google-analytics.com", "*.nav.no", "data:"],
 };
 
