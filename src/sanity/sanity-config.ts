@@ -1,10 +1,10 @@
 import {
-  createClient,
   createImageUrlBuilder,
   createPortableTextComponent,
   createPreviewSubscriptionHook,
   createCurrentUserHook,
 } from "next-sanity";
+import createClient from "@sanity/client"; // klienten fra next-sanity støtter ikke webproxy, men det skal klienten fra @sanity/next gjøre
 
 const config = {
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
