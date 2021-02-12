@@ -1,0 +1,60 @@
+{
+  "root": true,
+  "project": {
+    "name": "dp-sanity-cms"
+  },
+  "__experimental_spaces": [
+    {
+      "name": "production",
+      "title": "Produksjon",
+      "default": true,
+      "api": {
+        "projectId": "rt6o382n",
+        "dataset": "production"
+      }
+    },
+    {
+      "name": "development",
+      "title": "Development",
+      "api": {
+        "projectId": "rt6o382n",
+        "dataset": "development"
+      }
+    },
+    {
+      "name": "demo",
+      "title": "Demo",
+      "api": {
+        "projectId": "rt6o382n",
+        "dataset": "demo"
+      }
+    }
+  ],
+  "api": {
+    "projectId": "rt6o382n",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "@sanity/dashboard"
+  ],
+  "env": {
+    "development": {
+      "plugins": ["@sanity/vision"]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./deskStructure.ts"
+    }
+  ]
+}
