@@ -2,13 +2,17 @@ FROM node:14 AS builder
 
 WORKDIR /usr/src/app
 
-COPY package*.json /usr/src/app/
+COPY *.json ./
+COPY sanity/*.json ./sanity/
 RUN npm ci
+RUN npm i lerna -g
+RUN lerna bootstrap
 
+RUN npm i @sanity/cli -g
 ENV NODE_ENV=production
 
-COPY . /usr/src/app
-RUN npm run build
+COPY . ./
+RUN npm run build-next
 
 FROM node:14-alpine AS runtime
 
@@ -20,6 +24,11 @@ ENV PORT=3000 \
 EXPOSE 3000
 USER node
 
-COPY --from=builder /usr/src/app/ /usr/src/app/
+COPY --from=builder /usr/src/app/next.config.js ./
+COPY --from=builder /usr/src/app/package.json ./
+COPY --from=builder /usr/src/app/csp.js ./
+COPY --from=builder /usr/src/app/public ./public
+COPY --from=builder /usr/src/app/.next ./.next
+COPY --from=builder /usr/src/app/node_modules ./node_modules
 
 CMD ["npm", "start"]

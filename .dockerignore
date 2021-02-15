@@ -8,3 +8,5 @@
 !jest*
 !triggBygg.md
 !csp.js
+!sanity
+sanity/node_modules
