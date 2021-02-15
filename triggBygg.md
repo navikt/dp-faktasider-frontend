@@ -43,4 +43,4 @@ Og så var eksperimentet over. Og sånn går dagene. DAG FOR DAG. Time for time.
 jhk, dbs, dumdidum, heididei. Desisi. Leisi. Keisi. Deisi. Leisa. Luke, kjl- T. CULtr
 Når vi trudde historia var slutt, kom det uventa hindringar i vegen. Og sånn går no dagane. Vi prøver en gang til, kanskje var det treig cdn som var problemet? Eller noe anna? Eller ikke? 
 
-Og der nærmer vi oss slutten på dagen. Og så var det morgen igjen. MORNA. Trigg bygg. I dag og i morgen.
+Og der nærmer vi oss slutten på dagen. Og så var det morgen igjen. MORNA. Trigg bygg. I dag og i morgen.asf 
