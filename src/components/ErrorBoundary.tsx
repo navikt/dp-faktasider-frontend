@@ -5,7 +5,7 @@ import Tekstomrade from "nav-frontend-tekstomrade";
 import SlideDown from "./SlideDown";
 import styled from "styled-components/macro";
 import { loggError } from "../utils/logging";
-import { EtikettLiten, Normaltekst } from "nav-frontend-typografi";
+import { Normaltekst, Element } from "nav-frontend-typografi";
 import { isDevelopment, isTest } from "../utils/environment";
 
 interface Props {
@@ -55,9 +55,9 @@ class ErrorBoundary extends React.Component<Props, State> {
         <div>
           <AlertStripeFeil>
             <Normaltekst>Beklager, det skjedde en teknisk feil.</Normaltekst>
-            <EtikettLiten>
+            <Element>
               Feilen blir automatisk rapportert og vi jobber med å løse den så raskt som mulig. Prøv igjen om litt.
-            </EtikettLiten>
+            </Element>
             {isDevelopment() && (stackTrace || errormsg) && (
               <StyledSlideDown title="Info - feilsøking">
                 <StyledTekstomrade>{errormsg || ""}</StyledTekstomrade>
