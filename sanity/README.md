@@ -1,4 +1,4 @@
-# Dagpenger cms - sanity studio
+# CMS - sanity studio
 
 [Sanity-studio](https://www.sanity.io/studio) / cms-frontend for dagpengerelatert informasjon.
 
@@ -17,13 +17,13 @@ Du må logge deg inn i appen med feks github-bruker, du må få tilgang av en ad
 
 ### Scripts
 
-`backup` lagrer en backup av proddatasettet lokalt
-`clearDevelopmentDataset` sletter all data i development-datasettet slik at du har et clean utgangspunkt
-`copyProdDataToDevelopment` sletter development-datasettet og bytter det ut med en kopi av prod-datasettet
+- `backup` lagrer en backup av proddatasettet lokalt
+- `clearDevelopmentDataset` sletter all data i development-datasettet slik at du har et clean utgangspunkt
+- `copyProdDataToDevelopment` sletter development-datasettet og bytter det ut med en kopi av prod-datasettet
 
 ### Deploy av endringer i Sanity Studio
 
-Push på master kjører ikke build & deploy, så for å deploye kodeendringer til [https://dagpenger.sanity.studio](https://dagpenger.sanity.studio) må du deploye slik:
+Push på main kjører ikke build & deploy, så for å deploye kodeendringer til [https://dagpenger.sanity.studio](https://dagpenger.sanity.studio) må du deploye slik:
 
 `npm run deploy`
 
@@ -33,13 +33,7 @@ Alt innhold som legges inn i alle dataset i dette sanityprosjektet må regnes so
 
 ## Publisere innhold
 
-Først må innholdet publiseres i Sanity. Innholdet blir dessverre ikke publisert på nav.no automatisk etter dette, men det jobber vi med. I mellomtiden kan man trigge et manuelt bygg av [faktasider-frontend](https://github.com/navikt/dp-faktasider-frontend) ved å pushe en tom commit `git commit -m "Trigger bygg" --allow-empty` (ikke i dette repoet, men i faktasider-frontend).
-
-## Konsumenter
-
-Innholdet brukes av:
-
-- https://github.com/navikt/dp-faktasider-frontend
+> Etter at vi migrerte frontenden til nextjs skal innholdet egentlig bli publisert automatisk etter at du trykker "Publish" i sanity, men pga noen webproxy-greier på nais funker ikke dette pr idag. Men vi er på saken.
 
 ## Kontakt
 
@@ -51,4 +45,4 @@ Spørsmål tilknyttet koden kan rettes mot:
 
 ### Internt
 
-Slack: #team-dagpenger, #team-dagpenger-dev
+Slack: #område-arbeid-innhold, #område-arbeid, #team-dagpenger, #team-dagpenger-dev
