@@ -1,12 +1,12 @@
-import { supportedLanguages } from '../utils/languages';
+import { supportedLanguages } from "../utils/languages";
 
 export default {
-  name: 'visSprakversjon',
-  title: 'Vis Sprakversjon',
-  type: 'object',
+  name: "visSprakversjon",
+  title: "Vis Sprakversjon",
+  type: "object",
   fields: supportedLanguages.map((lang) => ({
     title: lang.title,
     name: lang.id,
-    type: 'boolean',
+    type: "boolean",
   })),
 };

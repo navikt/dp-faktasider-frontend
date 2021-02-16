@@ -1,10 +1,10 @@
-import * as React from 'react';
-import PatchEvent, { set, unset } from 'part:@sanity/form-builder/patch-event';
-import useSanityQuery from '../../utils/useSanityQuery';
-import styled from 'styled-components';
-import CheckBox from '../../components/CheckBox';
-import withErrorBoundary from '../../components/withErrorBoundary';
-import { PopoverWorkarround } from '../../style/PopoverWorkarround';
+import * as React from "react";
+import PatchEvent, { set, unset } from "part:@sanity/form-builder/patch-event";
+import useSanityQuery from "../../utils/useSanityQuery";
+import styled from "styled-components";
+import CheckBox from "../../components/CheckBox";
+import withErrorBoundary from "../../components/withErrorBoundary";
+import { PopoverWorkarround } from "../../style/PopoverWorkarround";
 
 interface FiltreringsValgData {
   filtreringsvalg?: {
@@ -102,7 +102,7 @@ function VelgSituasjoner(props: Props) {
         )}
         {finnesUgyldigeValg && (
           <UgyldigeValgStyle>
-            <p>Ugyldige valg funnet: {ugyldigeValg?.join(', ')}</p>
+            <p>Ugyldige valg funnet: {ugyldigeValg?.join(", ")}</p>
             <FjernValgButton onClick={handleFjerneUgyldigeValg}>Fjern ugyldige valg</FjernValgButton>
           </UgyldigeValgStyle>
         )}

@@ -1,8 +1,8 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import InlinePreview from '../../components/InlinePreview';
+import * as React from "react";
+import styled from "styled-components";
+import InlinePreview from "../../components/InlinePreview";
 
-const yellow = '#ff0a';
+const yellow = "#ff0a";
 
 export const InlineUtkastIkon = styled.span`
   font-size: 0.8rem;
@@ -11,7 +11,7 @@ export const InlineUtkastIkon = styled.span`
   background-color: ${yellow};
   color: black !important;
   &::after {
-    content: 'U';
+    content: "U";
   }
 `;
 

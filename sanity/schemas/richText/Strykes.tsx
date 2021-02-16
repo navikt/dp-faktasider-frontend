@@ -1,8 +1,8 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import InlinePreview from '../../components/InlinePreview';
+import * as React from "react";
+import styled from "styled-components";
+import InlinePreview from "../../components/InlinePreview";
 
-const color = '#f006';
+const color = "#f006";
 
 export const InlineStrykesIkon = styled.span`
   font-size: 0.8rem;
@@ -11,7 +11,7 @@ export const InlineStrykesIkon = styled.span`
   background-color: ${color};
   color: black !important;
   &::after {
-    content: 'S';
+    content: "S";
   }
 `;
 

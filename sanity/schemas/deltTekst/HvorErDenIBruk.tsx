@@ -1,6 +1,6 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import useSanityQuery from '../../utils/useSanityQuery';
+import * as React from "react";
+import styled from "styled-components";
+import useSanityQuery from "../../utils/useSanityQuery";
 
 const Header = styled.div`
   font-size: 1.25rem;
@@ -15,13 +15,13 @@ const Emoji = styled.span`
 `;
 
 type Referrer = {
-  title?: { _type: 'localeString'; no: string };
+  title?: { _type: "localeString"; no: string };
   _id: string;
   _type: string;
 };
 
 function HvorErDenIBruk(props: any) {
-  const documentId = window.location.pathname.split(';').reverse()[0].slice(0, 36);
+  const documentId = window.location.pathname.split(";").reverse()[0].slice(0, 36);
   const query = `*[references("${documentId}")]`;
   const { data, error } = useSanityQuery<Referrer[]>(query);
 
@@ -42,7 +42,7 @@ function HvorErDenIBruk(props: any) {
     );
   }
 
-  const referenceBaseUrl = window.location.pathname.split('/').slice(0, -1).join('/');
+  const referenceBaseUrl = window.location.pathname.split("/").slice(0, -1).join("/");
 
   return (
     <div {...props}>

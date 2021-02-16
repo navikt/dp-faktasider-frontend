@@ -1,12 +1,12 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import { headerMixin } from '../richText/HeaderPreviews';
-import BlockContentPreview from '../../components/BlockContentPreview';
-import { MdTimeline } from 'react-icons/md/';
+import * as React from "react";
+import styled from "styled-components";
+import { headerMixin } from "../richText/HeaderPreviews";
+import BlockContentPreview from "../../components/BlockContentPreview";
+import { MdTimeline } from "react-icons/md/";
 
 export const TidslinjeIkon = MdTimeline;
 
-const color = 'burlywood';
+const color = "burlywood";
 
 interface Props {
   blocks: any;
@@ -16,9 +16,9 @@ export const TidslinjePunkt = styled.div`
   margin-top: 1rem;
   font-size: 1.1rem;
   font-weight: 600;
-  ${headerMixin('Punkt')}
+  ${headerMixin("Punkt")}
   &::before {
-    content: '';
+    content: "";
     display: inline-block;
     width: 0.7em;
     height: 0.7em;

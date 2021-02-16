@@ -1,6 +1,6 @@
-import * as React from 'react';
-import BlockContentPreview from '../../components/BlockContentPreview';
-import styled from 'styled-components';
+import * as React from "react";
+import BlockContentPreview from "../../components/BlockContentPreview";
+import styled from "styled-components";
 
 export const TillegsInfoIkon = () => <>‍📎️</>;
 

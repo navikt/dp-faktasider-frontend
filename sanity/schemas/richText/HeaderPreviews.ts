@@ -1,13 +1,13 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const headerMixin = (description: string) => css`
   &::after {
-      content: ' (${description})';
-      opacity: .5;
-      font-size: .7em;
-    }
+    content: " (${description})";
+    opacity: 0.5;
+    font-size: 0.7em;
+  }
   &::before {
-    content: '';
+    content: "";
     display: block;
     height: 1em;
   }
@@ -15,25 +15,25 @@ export const headerMixin = (description: string) => css`
 
 export const H2Header = styled.span`
   font-size: 2.2rem;
-  ${headerMixin('Overskrift')}
+  ${headerMixin("Overskrift")}
 `;
 
 export const H2HeaderMMeny = styled.span`
   font-size: 2.2rem;
-  ${headerMixin('Overskrift m/meny')}
+  ${headerMixin("Overskrift m/meny")}
 `;
 
 export const H2NoBackround = styled.span`
   font-size: 2.2rem;
-  ${headerMixin('Overskrift uten bakgrunn')}
+  ${headerMixin("Overskrift uten bakgrunn")}
 `;
 
 export const H3Header = styled.span`
   font-size: 1.5rem;
-  ${headerMixin('Mellomtittel')}
+  ${headerMixin("Mellomtittel")}
 `;
 
 export const H4Header = styled.span`
   font-size: 1.3rem;
-  ${headerMixin('Liten mellomtittel')}
+  ${headerMixin("Liten mellomtittel")}
 `;

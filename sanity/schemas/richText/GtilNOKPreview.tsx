@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { FaMoneyBill } from 'react-icons/fa';
-import InlinePreview from '../../components/InlinePreview';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import * as React from "react";
+import { FaMoneyBill } from "react-icons/fa";
+import InlinePreview from "../../components/InlinePreview";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 export const GtilNOKIcon = FaMoneyBill;
 
@@ -19,9 +19,9 @@ export const GtilNOKPeview = (props: Props) => {
   }, [props.children]);
 
   return (
-    <InlinePreview ref={ref} color={notNumeric ? 'red' : 'limegreen'} label={notNumeric ? 'Ikke et tall!' : 'G'}>
+    <InlinePreview ref={ref} color={notNumeric ? "red" : "limegreen"} label={notNumeric ? "Ikke et tall!" : "G"}>
       {props.children}
-      <GtilNOKIcon style={{ marginLeft: '.3rem' }} />
+      <GtilNOKIcon style={{ marginLeft: ".3rem" }} />
     </InlinePreview>
   );
 };

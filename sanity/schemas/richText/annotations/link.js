@@ -1,8 +1,8 @@
-import { MdLink } from 'react-icons/lib';
-import styled, { css } from 'styled-components';
-import React, { useEffect, useRef, useState } from 'react';
+import { MdLink } from "react-icons/lib";
+import styled, { css } from "styled-components";
+import React, { useEffect, useRef, useState } from "react";
 
-const color = '#2276fc';
+const color = "#2276fc";
 
 const Style = styled.span`
   color: ${color};
@@ -13,7 +13,7 @@ const Style = styled.span`
     css`
       box-shadow: 0 0 0 0.2rem red;
       &::after {
-        content: ' (Denne lenketeksten er for kort)';
+        content: " (Denne lenketeksten er for kort)";
         opacity: 0.6;
         font-size: 0.8em;
         color: black;
@@ -45,23 +45,23 @@ export const LenkePreview = (props) => {
 };
 
 export default {
-  name: 'link',
-  type: 'object',
-  title: 'Lenke',
+  name: "link",
+  type: "object",
+  title: "Lenke",
   icon: MdLink,
   blockEditor: {
     render: (props) => <LenkePreview knapp={props.knapp}>{props.children}</LenkePreview>,
   },
   fields: [
     {
-      name: 'href',
-      type: 'url',
-      title: 'URL',
+      name: "href",
+      type: "url",
+      title: "URL",
     },
     {
-      title: 'Vis som knapp',
-      name: 'knapp',
-      type: 'boolean',
+      title: "Vis som knapp",
+      name: "knapp",
+      type: "boolean",
     },
   ],
 };

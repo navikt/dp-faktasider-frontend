@@ -1,15 +1,15 @@
-import React from 'react';
-import link from '../richText/annotations/link';
-import { decorators, styles } from '../richText/richText';
+import React from "react";
+import link from "../richText/annotations/link";
+import { decorators, styles } from "../richText/richText";
 
 export default {
-  title: 'Notifikasjon Rich Text',
-  name: 'notifikasjonRichText',
-  type: 'array',
+  title: "Notifikasjon Rich Text",
+  name: "notifikasjonRichText",
+  type: "array",
   of: [
     {
-      title: 'Block',
-      type: 'block',
+      title: "Block",
+      type: "block",
       styles: [styles.normal],
       marks: {
         decorators: [
