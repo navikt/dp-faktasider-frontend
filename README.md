@@ -1,6 +1,6 @@
-# Dagpenger faktasider
+# Produktområde arbeid - infosider
 
-Nextjs-frontend for infosider rettet mot arbeidsledige og permitterte på www.nav.no/arbeid/. Inhhold kan redigeres på https://dagpenger.sanity.studio/.
+Monorepo med [nextjs-frontend](src) og [sanity-cms](sanity/README.md) for infosider rettet mot arbeidsledige og permitterte på www.nav.no/arbeid/. Inhhold kan redigeres på https://dagpenger.sanity.studio/.
 
 ## Utvikle lokalt
 
@@ -17,21 +17,17 @@ Opprett filen `.env.development` i root-folderet med innholdet (Trengs ikke, men
 NEXT_PUBLIC_SANITY_DATASET="development"
 ```
 
-#### Live oppdatering / SANITY_READ_TOKEN
+#### Live oppdatering
 
-Jeg tror det funker ca sånn her:
+Det funker ca sånn her:
 
-- Last ned dette prosjektet og start opp lokalt: https://github.com/navikt/dp-sanity-cms.
-- Når du har startet opp prosjektet og åpnet det på localhost blir du bedt om å logge inn i sanity. Det blir da satt en autentiseringscookie på localhost.
+- [Start Sanity Studio opp lokalt](sanity/README.md)
+- Når du har startet opp sanity og åpnet det på localhost blir du bedt om å logge inn i sanity. Det blir da satt en autentiseringscookie på localhost-domenet.
 - Denne cookien funker også fra nextjs-frontenden og sørger automatisk for at du kan lese drafts fra sanity vha nextjs (dette sørger `usePreviewSubscription` for).
 
 ### Scripts
 
-- `npm run docker` bygger appen i en dockercontainer på samme måte som i pipeline, hoser appen på [localhost:3000/arbeid]().
-
-### Sanity Studio-repo
-
-Innholdet hentes fra sanity https://github.com/navikt/dp-sanity-cms.
+- `npm run docker` bygger appen i en dockercontainer på samme måte som i pipeline, hoster appen på [localhost:3000/arbeid]().
 
 ## Oversettelser
 
@@ -71,6 +67,8 @@ Sanity oversettelser og i18next oversettelser er i utgangpunktet ikke knyttet sa
 Mange av de automatiske testene har testdata du man kan få visualisert dersom du går til `localhost:3000/arbeid/testdata`.
 
 ## Deploy av nye tekster fra sanity
+
+> NB! Dette funker ikke for øyeblikket, appen må bygges på nytt for å få ut nye tekster. Dette skal løse seg om vi får ordnet med web-proxy eller kommer oss ut på gcp, jobber med saken
 
 Nextjs sjekker med jevne mellomrom for nytt innhold fra sanity som automatisk vil gå ut i prod. Se `revalidate` i `getStaticProps`-metodene for hvor hyppig intervallet er (2 minutter i dag).
 
