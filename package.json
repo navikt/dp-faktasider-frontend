@@ -84,7 +84,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "concurrently \"next\" \"cd sanity && sanity start\"",
-    "build": "next build",
+    "build:next": "next build",
+    "build:sanity": "echo 'Building Sanity to public/studio…' && cd sanity && sanity build ../public/studio -y && cd ..",
+    "build": "npm run build:sanity && npm run build:next",
     "start": "next start",
     "test": "jest",
     "typeCheck": "tsc",
