@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components/macro";
-import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
+import { Sidetittel } from "nav-frontend-typografi";
 import SistOppdatert from "./SistOppdatert";
 import { useFaktasideContext } from "../FaktaSideContext";
 
@@ -19,7 +19,6 @@ function Header() {
   return (
     <Style>
       <StyledSidetittel>{faktaside.title}</StyledSidetittel>
-      <Normaltekst>{faktaside.beskrivelse}</Normaltekst>
       <SistOppdatert publiseringsTidspunkt={faktaside.publiseringsTidspunkt} />
     </Style>
   );

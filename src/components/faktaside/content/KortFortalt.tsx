@@ -8,9 +8,11 @@ import KortFortaltIkon from "./KortFortaltIkon";
 import styled from "styled-components";
 import { navFrontend } from "../../../styles/navFrontend";
 import { theme } from "../../../styles/theme";
+import { createSanityBlock } from "../../../testUtils/createSanityBlock";
 
 interface Props {
   blocks?: Block[];
+  beskrivelse?: string;
 }
 
 const Style = styled.div`
@@ -41,12 +43,9 @@ const IkonWrapper = styled.div`
 function KortFortalt(props: Props) {
   const { t } = useTranslation("global");
 
-  const blocks = props.blocks;
-  if (!blocks || !blocks.length) {
-    return null;
-  }
+  const blocks = props.blocks || [];
 
-  const h2Group = createH2Group(t("kortFortalt"), blocks);
+  const h2Group = createH2Group(t("kortFortalt"), [createSanityBlock(props.beskrivelse || ""), ...blocks]);
 
   return (
     <Style>

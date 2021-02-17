@@ -51,9 +51,9 @@ export default {
     {
       name: "beskrivelse",
       type: "localeText",
-      title: "Beskrivelse",
+      title: "Søkemotortekst",
       description:
-        "Kort beskrivelse av innholdet for ingress, søkemotorer og sosiale medier. Skriv en sammenhengende setning",
+        "Vises også øverst i kort fortalt. Kort beskrivelse av innholdet for ingress, søkemotorer og sosiale medier. Skriv en sammenhengende setning",
     },
     {
       name: "nokkelordBeskrivelse",
