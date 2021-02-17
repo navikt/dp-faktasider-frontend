@@ -17,7 +17,7 @@ interface Props {
 
 const Style = styled.div`
   position: relative;
-  margin-top: 3.5rem;
+  margin: 3.5rem 0.15rem 0.15rem;
   box-shadow: 0 0 0 0.15rem ${navFrontend.navBlaLighten40};
   border-radius: ${theme.borderRadius};
 `;
