@@ -9,8 +9,9 @@ const withTranspileModules = require("next-transpile-modules")(navFrontendModule
 const csp = require("./csp");
 
 const STUDIO_REWRITE = {
-  source: "/studio/:path*",
-  destination: process.env.NODE_ENV === "development" ? "http://localhost:3333/studio/:path*" : "/studio/index.html",
+  source: "/arbeid/studio/:path*",
+  destination:
+    process.env.NODE_ENV === "development" ? "http://localhost:3333/studio/:path*" : "/arbeid/studio/index.html",
 };
 
 module.exports = withTranspileModules(
