@@ -5,6 +5,7 @@ import MenyButton from "./MenyButton";
 import { useClickAway, useLocation } from "react-use";
 import { theme } from "../../../styles/theme";
 import { loggMeny } from "../../../utils/logging";
+import { navFrontend } from "../../../styles/navFrontend";
 
 interface Props {
   children: ReactNode;
@@ -65,12 +66,12 @@ const MenyWrapper = styled.div<{ visMeny: boolean }>`
 `;
 
 const StyledMenyButton = styled(MenyButton)`
-  margin: 1rem;
-  background-color: white;
+  margin: 1rem 0;
+  background-color: ${navFrontend.navBla};
+  color: white;
   position: absolute;
   right: 0;
   top: 0;
-  box-shadow: 0 0 0 0.2rem #8886;
   z-index: 10;
 `;
 
