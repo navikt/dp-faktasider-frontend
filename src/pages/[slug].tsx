@@ -13,6 +13,7 @@ import { menuQuery } from "../sanity/groq/menu/menuQuery";
 import { isDevelopment } from "../utils/environment";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { supportedLanguages } from "../i18n/supportedLanguages";
+import { useRouter } from "next/router";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 
@@ -59,15 +60,18 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 };
 
 function PreviewWrapper(props: Props) {
+  const router = useRouter();
+  const enablePreview = !!props.preview || !!router.query.preview;
+
   const { data: faktasideData } = usePreviewSubscription(faktasideQuery, {
     params: { slug: props.slug },
     initialData: props.faktasideData,
-    enabled: props.preview,
+    enabled: enablePreview,
   });
 
   const { data: menuData } = usePreviewSubscription(menuQuery, {
     initialData: props.menuData,
-    enabled: props.preview,
+    enabled: enablePreview,
   });
 
   const locale = useLocale();
