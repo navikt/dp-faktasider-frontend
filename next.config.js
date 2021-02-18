@@ -10,11 +10,13 @@ const csp = require("./csp");
 
 const STUDIO_REWRITE = {
   source: "/studio/:path*",
-  destination: process.env.NODE_ENV === "development" ? "http://localhost:3333/studio/:path*" : "/studio/index.html",
+  destination:
+    process.env.NODE_ENV === "development" ? "http://localhost:3333/arbeid/no/studio/:path*" : "/studio/index.html",
 };
 
 module.exports = withTranspileModules(
   withLess({
+    basePath: "/arbeid",
     rewrites: () => [STUDIO_REWRITE],
     async headers() {
       return [
