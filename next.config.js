@@ -9,14 +9,13 @@ const withTranspileModules = require("next-transpile-modules")(navFrontendModule
 const csp = require("./csp");
 
 const STUDIO_REWRITE = {
-  source: "/arbeid/studio/:path*",
-  destination:
-    process.env.NODE_ENV === "development" ? "http://localhost:3333/studio/:path*" : "/arbeid/studio/index.html",
+  source: "/studio/:path*",
+  destination: process.env.NODE_ENV === "development" ? "http://localhost:3333/studio/:path*" : "/studio/index.html",
+  locale: false,
 };
 
 module.exports = withTranspileModules(
   withLess({
-    basePath: "/arbeid",
     rewrites: () => [STUDIO_REWRITE],
     async headers() {
       return [
@@ -31,6 +30,7 @@ module.exports = withTranspileModules(
         },
       ];
     },
+    // Remove i18n-config after next build, before next start to make studio-redirect work
     i18n: {
       locales: ["no", "en"],
       defaultLocale: "no",
