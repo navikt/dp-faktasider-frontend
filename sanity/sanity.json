@@ -2,7 +2,7 @@
   "root": true,
   "project": {
     "name": "dp-sanity-cms",
-    "basePath": "/studio"
+    "basePath": "/no/studio"
   },
   "__experimental_spaces": [
     {
