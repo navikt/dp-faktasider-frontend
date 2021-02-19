@@ -26,6 +26,8 @@ spec:
       cpu: 200m
       memory: 256Mi
   env:
+    - name: NODE_EXTRA_CA_CERTS
+      value: "/etc/pki/tls/certs/ca-bundle.crt"
     - name: DEKORATOR_URL
       value: {{dekoratorUrl}}
   {{ingresses}}
