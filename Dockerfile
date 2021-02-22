@@ -12,13 +12,14 @@ RUN npm run build
 
 FROM node:14-alpine AS runtime
 
+USER node
+
 WORKDIR /usr/src/app
 
 ENV PORT=3000 \
     NODE_ENV=production
 
 EXPOSE 3000
-USER node
 
 COPY --from=builder /usr/src/app/ /usr/src/app/
 
