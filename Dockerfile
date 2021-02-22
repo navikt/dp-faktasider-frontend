@@ -1,26 +1,26 @@
 FROM node:14 AS builder
 
-WORKDIR /usr/src/app
+WORKDIR /home/node/app
 
-COPY package*.json /usr/src/app/
+COPY package*.json /home/node/app/
 RUN npm ci
 
 ENV NODE_ENV=production
 
-COPY . /usr/src/app
+COPY . /home/node/app
 RUN npm run build
 
 FROM node:14-alpine AS runtime
 
 USER node
 
-WORKDIR /usr/src/app
+WORKDIR /home/node/app
 
 ENV PORT=3000 \
     NODE_ENV=production
 
 EXPOSE 3000
 
-COPY --from=builder /usr/src/app/ /usr/src/app/
+COPY --from=builder /home/node/app/ /home/node/app/
 
 CMD ["npm", "start"]
