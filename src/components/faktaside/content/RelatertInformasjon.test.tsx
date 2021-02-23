@@ -8,14 +8,14 @@ describe("relatert innformasjon", () => {
     const result = render(<TestFaktaside partialFaktaside={{ relatertInformasjon: translated([]) }} />);
 
     const main = result.getByRole("main");
-    expect(within(main).queryByLabelText(/Relatert/)).toBeFalsy();
+    expect(within(main).queryByLabelText(/Snarveier/)).toBeFalsy();
   });
 
   test("vises ikke i innholdsmeny om det ikke finnes innhold i relatert innformasjon", () => {
     const result = render(<TestFaktaside partialFaktaside={{ relatertInformasjon: translated([]) }} />);
 
     const meny = result.getAllByLabelText(/Innholdsfortegnelse/i)[0];
-    expect(within(meny).queryByLabelText(/Relatert/)).toBeFalsy();
+    expect(within(meny).queryByLabelText(/Snarveier/)).toBeFalsy();
   });
 
   test("vises dersom det finnes innhold i relatert innformasjon", () => {
@@ -27,20 +27,20 @@ describe("relatert innformasjon", () => {
       />
     );
 
-    const kortFortalt = result.getByLabelText(/Relatert/i);
-    within(kortFortalt).getByText("Litt relatert info");
+    const relatertInfo = result.getByLabelText(/Snarveier/i);
+    within(relatertInfo).getByText("Litt relatert info");
   });
 
-  test("vises i meny dersom det finnes innhold i kort fortalt", () => {
+  test("vises i meny dersom det finnes innhold i relatert informasjon", () => {
     const result = render(
       <TestFaktaside
         partialFaktaside={{
-          kortFortalt: translated([createSanityBlock("Litt relatert info")]),
+          relatertInformasjon: translated([createSanityBlock("Litt relatert info")]),
         }}
       />
     );
 
     const meny = result.getAllByLabelText(/Innholdsfortegnelse/i)[0];
-    within(meny).getByText(/Relatert/i);
+    within(meny).getByText(/Snarveier/i);
   });
 });
