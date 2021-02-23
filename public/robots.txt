@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://www.nav.no/arbeid/sitemap.xml
