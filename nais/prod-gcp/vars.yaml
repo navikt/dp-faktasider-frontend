@@ -4,5 +4,4 @@ team: teamdagpenger
 dekoratorUrl: https://www.nav.no/dekoratoren
 ingresses: |
   ingresses:
-    - https://www.nav.no/arbeid/no
-    - https://www.nav.no/arbeid/en
+    - https://www.nav.no/arbeid
