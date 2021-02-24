@@ -73,6 +73,7 @@ export default {
       of: [
         {
           type: `localeString`,
+          title: "Filtreringsvalg",
           icon: FiCheckSquare,
         },
       ],
