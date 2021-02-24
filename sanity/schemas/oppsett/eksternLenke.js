@@ -1,9 +1,11 @@
 import React from "react";
+import { FiLink } from "react-icons/fi";
 
 export default {
   name: "eksternLenke",
-  title: "Ekstern lenke",
+  title: "Snarvei",
   type: "object",
+  icon: FiLink,
   fields: [
     {
       title: "Tittel",
@@ -14,11 +16,6 @@ export default {
       title: "Url",
       name: "url",
       type: "localeUrl",
-    },
-    {
-      title: "Beskrivelse",
-      name: "beskrivelse",
-      type: "localeText",
     },
   ],
   preview: {
