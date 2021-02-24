@@ -7,7 +7,6 @@ export const mockMenuData: MenuQueryData = {
       _type: "eksternLenke",
       url: "https://www.nav.no/ekstern/side",
       tittel: "Ekstern lenke",
-      beskrivelse: "Hit kan du gå for å lese om spennende eksterne ting",
     },
   ],
   sider: [

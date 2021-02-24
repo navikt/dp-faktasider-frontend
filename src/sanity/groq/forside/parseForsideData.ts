@@ -5,7 +5,6 @@ import { ForsideQueryData } from "./forsideQuery";
 
 export interface EksternLenkeI {
   tittel: string;
-  beskrivelse: string;
   url: string;
 }
 

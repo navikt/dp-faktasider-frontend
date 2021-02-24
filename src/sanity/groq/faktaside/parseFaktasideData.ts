@@ -4,6 +4,7 @@ import parseRichText, { ParsedRichText } from "../../../utils/richTextUtils/pars
 import { FaktasideQueryData, LocalizedFaktasideQueryData } from "./faktasideQuery";
 import { Notifikasjon } from "../../../components/Notifikasjoner";
 import { getPubliseringsTidspunkt } from "../../getPubliseringstidspunkt";
+import { Snarvei } from "../menu/menuQuery";
 
 export interface FaktasideParsedData {
   id: string;
@@ -22,6 +23,7 @@ export interface FaktasideParsedData {
   domainTitle?: string;
   folketrygdensGrunnbellop?: number;
   notifikasjoner?: Notifikasjon[];
+  snarveier?: Snarvei[];
   rawData: FaktasideQueryData;
 }
 
@@ -34,6 +36,9 @@ export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLang
   const relevanteNotifikasjoner = localizedPage.oppsett.notifikasjoner?.filter((notifikasjon) =>
     notifikasjon.visPaaSider?.some((side) => side._ref === data.faktaside.id)
   );
+  const relevanteSnarveier = localizedPage.oppsett.snarveier?.filter((snarvei) =>
+    snarvei.visPaaSider?.some((side) => side._ref === data.faktaside.id)
+  );
 
   return {
     ...localizedPage.oppsett,
@@ -45,5 +50,6 @@ export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLang
     notifikasjoner: relevanteNotifikasjoner,
     rawData: data,
     domainTitle: localizedPage.oppsett.title,
+    snarveier: relevanteSnarveier,
   };
 }

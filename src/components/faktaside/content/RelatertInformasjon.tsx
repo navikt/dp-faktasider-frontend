@@ -6,9 +6,12 @@ import { theme } from "../../../styles/theme";
 import H2GroupMarkup from "../../../components/BlockContent/GroupMarkup/H2GroupMarkup";
 import withErrorBoundary from "../../../components/withErrorBoundary";
 import { createH2Group } from "../../../utils/richTextUtils/createGroup";
+import { Snarvei } from "../../../sanity/groq/menu/menuQuery";
+import { createSanityBlock } from "../../../testUtils/createSanityBlock";
 
 interface Props {
   blocks?: Block[];
+  snarveier?: Snarvei[];
 }
 
 const Style = styled.div`
@@ -26,12 +29,16 @@ const Style = styled.div`
 function RelatertInformasjon(props: Props) {
   const { t } = useTranslation("global");
 
-  const blocks = props.blocks;
-  if (!blocks || !blocks.length) {
+  const blocks = props.blocks || [];
+  const snarveier = props.snarveier || [];
+  if (!blocks.length && !snarveier.length) {
     return null;
   }
 
-  const h2Group = createH2Group(t("relatertInformasjon"), blocks);
+  const h2Group = createH2Group(t("relatertInformasjon"), [
+    ...blocks,
+    ...snarveier.map((snarvei) => createSanityBlock(snarvei.tittel, { listItem: "bullet" })),
+  ]);
 
   return (
     <Style>

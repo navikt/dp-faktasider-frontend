@@ -2,6 +2,7 @@ import { groq } from "next-sanity";
 import { Translations } from "../../../types/translations";
 import { SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
 import { Notifikasjon } from "../../../components/Notifikasjoner";
+import { Snarvei } from "../menu/menuQuery";
 
 const innholdFields = `
 [] {
@@ -23,7 +24,8 @@ export const faktasideQuery = groq`{
   'oppsett': *[_id == "oppsett"][0] {
     title,
     folketrygdensGrunnbellop,
-    notifikasjoner[]
+    notifikasjoner[],
+    "snarveier": komIgangLenker
   }
 }`;
 
@@ -47,28 +49,21 @@ export interface FaktasideQueryData {
     title?: Translations<string>;
     folketrygdensGrunnbellop?: number;
     notifikasjoner?: Notifikasjon[];
+    snarveier?: Snarvei[];
   };
 }
 
 export interface LocalizedFaktasideQueryData {
-  faktaside: {
-    id: string;
-    _updatedAt: string;
+  faktaside: FaktasideQueryData["faktaside"] & {
     title?: string;
     beskrivelse?: string;
     innhold?: SanityBlock[];
     kortFortalt?: SanityBlock[];
     relatertInformasjon?: SanityBlock[];
-    slug: string;
-    visSprakversjon?: {
-      en?: boolean;
-      no?: boolean;
-    };
-    visIngenValgPasser?: boolean;
   };
-  oppsett: {
+  oppsett: FaktasideQueryData["oppsett"] & {
     title?: string;
-    folketrygdensGrunnbellop?: number;
     notifikasjoner?: Notifikasjon[];
+    snarveier?: Snarvei[];
   };
 }

@@ -56,7 +56,7 @@ function Faktaside(props: FaktasideProps) {
         <div ref={wordCountRef}>
           <KortFortalt blocks={props.kortFortalt} beskrivelse={beskrivelse} />
           <BlockContent blocks={props.innhold} />
-          <RelatertInformasjon blocks={props.relatertInformasjon} />
+          <RelatertInformasjon blocks={props.relatertInformasjon} snarveier={props.snarveier} />
         </div>
       </FaktaSideLayout>
     </FaktasideProvider>

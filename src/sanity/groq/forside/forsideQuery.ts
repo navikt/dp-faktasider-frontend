@@ -1,11 +1,11 @@
 import { groq } from "next-sanity";
 import { Translations } from "../../../types/translations";
 import { Notifikasjon } from "../../../components/Notifikasjoner";
-import { SanityEksternLenke, SideoversiktLenke } from "../menu/menuQuery";
+import { Snarvei, SideoversiktLenke } from "../menu/menuQuery";
 
 export interface ForsideQueryData {
   beskrivelse?: Translations<string>;
-  snarveier?: SanityEksternLenke[];
+  snarveier?: Snarvei[];
   notifikasjoner?: Translations<Notifikasjon>;
   sideoversiktLenker?: SideoversiktLenke[];
   title?: Translations<string>;

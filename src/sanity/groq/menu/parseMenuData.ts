@@ -2,7 +2,7 @@ import { SupportedLanguage, supportedLanguages } from "../../../i18n/supportedLa
 import {
   isSanityInternLenke,
   MenuQueryData,
-  SanityEksternLenke,
+  Snarvei,
   TranslatedMenuDataSide,
   TranslatedMenuQueryData,
 } from "./menuQuery";
@@ -48,11 +48,10 @@ export function createInternalLinkData(page: TranslatedMenuDataSide, lang: Suppo
   };
 }
 
-function createExternalLinkData(lenke: SanityEksternLenke): ExternalMenuLinkData {
+function createExternalLinkData(lenke: Snarvei): ExternalMenuLinkData {
   return {
     url: lenke.url,
     tittel: lenke.tittel,
-    beskrivelse: lenke.beskrivelse,
     type: "external",
   };
 }

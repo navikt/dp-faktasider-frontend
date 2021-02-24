@@ -60,14 +60,14 @@ export interface SanityInternLenke {
   id: string;
 }
 
-export interface SanityEksternLenke {
+export interface Snarvei {
   _type: "eksternLenke";
   url: string;
   tittel: string;
-  beskrivelse: string;
+  visPaaSider?: { _ref: string }[];
 }
 
-export type SideoversiktLenke = SanityInternLenke | SanityEksternLenke;
+export type SideoversiktLenke = SanityInternLenke | Snarvei;
 
 export function isSanityInternLenke(lenke: SideoversiktLenke): lenke is SanityInternLenke {
   return lenke._type === "reference" && lenke.referenceType === "faktaSide";

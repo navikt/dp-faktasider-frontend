@@ -79,7 +79,6 @@ export function EksternLenke(props: { lenke: EksternLenkeI; chevron?: boolean })
         {props.chevron && <StyledChevron />}
         <span>{props.lenke.tittel}</span>
       </ForsideLenkeHeader>
-      <p>{props.lenke.beskrivelse}</p>
     </LenkeStyle>
   );
 }
