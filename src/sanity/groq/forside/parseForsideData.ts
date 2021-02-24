@@ -11,7 +11,7 @@ export interface EksternLenkeI {
 
 export interface ForsideParsedData {
   title?: string;
-  komIgangLenker?: EksternLenkeI[];
+  snarveier?: EksternLenkeI[];
   beskrivelse?: string;
   forsideNotifikasjoner?: Notifikasjon[];
 }
@@ -23,7 +23,7 @@ function parseForsideData(data: ForsideQueryData, lang: SupportedLanguage): Fors
 
   return {
     title: localizedData.title,
-    komIgangLenker: localizedData.komIgangLenker,
+    snarveier: localizedData.snarveier,
     beskrivelse: localizedData.beskrivelse,
     forsideNotifikasjoner: forsideNotifikasjoner,
   };

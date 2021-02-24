@@ -44,7 +44,7 @@ function Forside(props: Props) {
       <Content>
         <Notifikasjoner notifikasjoner={props.forsideData.forsideNotifikasjoner} />
         <InfosideLenker lenker={props.menuData} />
-        <Snarveier snarveier={props.forsideData.komIgangLenker} />
+        <Snarveier snarveier={props.forsideData.snarveier} />
       </Content>
     </Style>
   );

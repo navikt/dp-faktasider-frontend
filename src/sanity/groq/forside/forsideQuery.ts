@@ -5,7 +5,7 @@ import { SanityEksternLenke, SideoversiktLenke } from "../menu/menuQuery";
 
 export interface ForsideQueryData {
   beskrivelse?: Translations<string>;
-  komIgangLenker?: SanityEksternLenke[];
+  snarveier?: SanityEksternLenke[];
   notifikasjoner?: Translations<Notifikasjon>;
   sideoversiktLenker?: SideoversiktLenke[];
   title?: Translations<string>;
@@ -13,7 +13,7 @@ export interface ForsideQueryData {
 
 export const forsideQuery = groq`*[_id == "oppsett"][0]{
   beskrivelse,
-  komIgangLenker,
+  "snarveier": komIgangLenker[visPaaForside == true],
   notifikasjoner,
   sideoversiktLenker,
   title
