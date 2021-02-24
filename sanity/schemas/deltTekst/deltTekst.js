@@ -1,5 +1,6 @@
 import { DeltTekstIkon } from "./DeltTekstPreview";
 import HvorErDenIBruk from "./HvorErDenIBruk";
+import { localeValueRequired } from "../utils/validationHelpers";
 
 export default {
   type: "document",
@@ -24,6 +25,7 @@ export default {
       name: "innhold",
       title: "Innhold",
       type: "localeDeltRichText",
+      validation: localeValueRequired,
     },
   ],
   preview: {

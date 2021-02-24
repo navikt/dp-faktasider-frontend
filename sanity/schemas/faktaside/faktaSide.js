@@ -1,4 +1,5 @@
 import { MdWeb } from "react-icons/md";
+import { localeValueRequired } from "../utils/validationHelpers";
 
 export default {
   name: "faktaSide",
@@ -21,6 +22,7 @@ export default {
       type: "localeString",
       title: "Tittel",
       fieldset: "oppsett",
+      validation: localeValueRequired,
     },
     {
       name: "slug",
@@ -54,6 +56,7 @@ export default {
       title: "Søkemotortekst",
       description:
         "Vises også øverst i kort fortalt. Kort beskrivelse av innholdet for ingress, søkemotorer og sosiale medier. Skriv en sammenhengende setning",
+      validation: localeValueRequired,
     },
     {
       name: "nokkelordBeskrivelse",
@@ -65,11 +68,13 @@ export default {
       name: "kortFortalt",
       type: "localeKortFortaltRichText",
       title: "Kort fortalt",
+      validation: localeValueRequired,
     },
     {
       name: "innhold",
       type: "localeRichText",
       title: "Innhold",
+      validation: localeValueRequired,
     },
     {
       name: "relatertInformasjon",

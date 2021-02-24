@@ -1,5 +1,6 @@
 import React from "react";
 import { FiCheckSquare } from "react-icons/fi";
+import { localeValueRequired } from "../utils/validationHelpers";
 
 export default {
   name: "oppsett",
@@ -12,12 +13,14 @@ export default {
       type: "localeString",
       title: "Tittel",
       description: "Hovedtittel på forsiden nav.no/arbeid",
+      validation: localeValueRequired,
     },
     {
       name: "beskrivelse",
       type: "localeText",
       title: "Beskrivelse",
       description: "Kort beskrivelse av innholdet på landingssiden for ingress, søkemotorer og sosiale medier",
+      validation: localeValueRequired,
     },
     {
       name: "sideoversiktLenker",

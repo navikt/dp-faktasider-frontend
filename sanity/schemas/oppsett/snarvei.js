@@ -1,5 +1,6 @@
 import React from "react";
 import { FiLink } from "react-icons/fi";
+import { localeValueRequired } from "../utils/validationHelpers";
 
 export default {
   name: "eksternLenke",
@@ -11,11 +12,13 @@ export default {
       title: "Tittel",
       name: "tittel",
       type: "localeString",
+      validation: localeValueRequired,
     },
     {
       title: "Url",
       name: "url",
       type: "localeUrl",
+      validation: localeValueRequired,
     },
     {
       name: "visPaaForside",
