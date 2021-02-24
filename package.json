@@ -66,7 +66,7 @@
     "xstate": "^4.16.2"
   },
   "devDependencies": {
-    "@sanity/cli": "^2.0.9",
+    "@sanity/cli": "^2.4.0",
     "@types/amplitude-js": "^6.0.0",
     "@types/date-fns": "^2.6.0",
     "@types/node": "^14.14.28",
