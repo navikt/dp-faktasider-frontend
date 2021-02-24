@@ -17,6 +17,23 @@ export default {
       name: "url",
       type: "localeUrl",
     },
+    {
+      name: "visPaaForside",
+      title: "Vis på nav.no/arbeid",
+      type: "boolean",
+    },
+    {
+      name: "visPaaSider",
+      title: "Vis på side:",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          description: 'Faktasiden må være "Published" for å dukke opp i denne lista',
+          to: { type: "faktaSide" },
+        },
+      ],
+    },
   ],
   preview: {
     select: {
