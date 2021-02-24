@@ -1,4 +1,5 @@
 import React from "react";
+import { FiCheckSquare } from "react-icons/fi";
 
 export default {
   name: "oppsett",
@@ -72,6 +73,7 @@ export default {
       of: [
         {
           type: `localeString`,
+          icon: FiCheckSquare,
         },
       ],
     },
