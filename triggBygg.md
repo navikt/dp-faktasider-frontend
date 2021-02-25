@@ -46,4 +46,4 @@ Når vi trudde historia var slutt, kom det uventa hindringar i vegen. Og sånn g
 Og der nærmer vi oss slutten på dagen. Og så var det morgen igjen. MORNA. Trigg bygg. I dag og i morgen.asf 
 :) Og der forsvant videoen. Og sånn er det. 
 
-Mulig at dette er mitt siste bygg?
+Mulig at dette er mitt siste bygg? Kanskje fungerer dette?
