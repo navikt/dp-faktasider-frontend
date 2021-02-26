@@ -49,3 +49,4 @@ Og der nærmer vi oss slutten på dagen. Og så var det morgen igjen. MORNA. Tri
 Mulig at dette er mitt siste bygg? Kanskje fungerer dette? Nå :) og da publiseres det.
 
 :)
+:))
