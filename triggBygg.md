@@ -38,7 +38,7 @@ Det er vanskelig å finne på ting her. Men ikke så vanskelig. Eller lett.
 Ny leilighet og genser er topp. 
 Auda, dette gikk ikke så bra, vi får bare prøve på nytt enda en gang og se om det går bedre. 
 Hurra, endelig fungerte det, nå gjenstår bare en liten trykkleif. Hei, sveis. Vis for alle. Og husk alle setninger. Og fjern tull, men ikke gull.
-Og så var eksperimentet over. Og sånn går dagene. DAG FOR DAG. Time for time. Dag for dag
+Og så var eksperimentet over. Og sånn går dagene. DAG FOR DAG. Time for time. Dag for dag. uke for uke
 :)
 jhk, dbs, dumdidum, heididei. Desisi. Leisi. Keisi. Deisi. Leisa. Luke, kjl- T. CULtr
 Når vi trudde historia var slutt, kom det uventa hindringar i vegen. Og sånn går no dagane. Vi prøver en gang til, kanskje var det treig cdn som var problemet? Eller noe anna? Eller ikke? 
