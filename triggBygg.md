@@ -3,7 +3,7 @@
 Gjør en liten endring i denne fila og commit til main. Skriv feks noe tekst. Tralala. #detEnkeleErEfteDetEnkleste. Honorable mention til Andre Roaldset 😎
 Hei og god morgen :) God kveld og god natt
 
-Det var en gang det var en feil som ble rettet fordi et hamster løp i et hjul. Hamsteren ville ta utdanning. Objektet endret seg! Punktene og tallene gikk over hverandre, og sidene hadde ulik informasjon ulike steder. (Vi heier på parantes). Hvertfall når me tek språket på alvor. Formuleringer er viktig, og også sluttføringer.
+Det var en gang det var en feil som dfgble rettet fordi et hamster løp i et hjul. Hamsteren ville ta utdanning. Objektet endret seg! Punktene og tallene gikk over hverandre, og sidene hadde ulik informasjon ulike steder. (Vi heier på parantes). Hvertfall når me tek språket på alvor. Formuleringer er viktig, og også sluttføringer.
 
 Endringen var bastant. Skatten måtte betales. Og filtreringen må fungere. De unge fortjener god informasjon <3 Meldekort og fiksing av informasjon.
 BURSDAG!! Hurra :D
