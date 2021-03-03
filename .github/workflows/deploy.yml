@@ -144,6 +144,7 @@ jobs:
   deploy-prod-gcp:
     name: Deploy to prod gcp
     needs: [ deploy-dev-gcp, test ]
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Fetch NAIS yaml
