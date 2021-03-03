@@ -5,3 +5,4 @@ dekoratorUrl: https://www.nav.no/dekoratoren
 ingresses: |
   ingresses:
     - https://www.nav.no/arbeid/
+    - https://intern.nav.no/arbeid/
