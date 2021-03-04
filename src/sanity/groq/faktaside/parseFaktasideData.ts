@@ -37,7 +37,7 @@ export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLang
     notifikasjon.visPaaSider?.some((side) => side._ref === data.faktaside.id)
   );
   const relevanteSnarveier = localizedPage.oppsett.snarveier?.filter((snarvei) =>
-    snarvei.visPaaSider?.some((side) => side._ref === data.faktaside.id)
+    snarvei.visPaaSider?.some((side) => side === data.faktaside.id)
   );
 
   return {
