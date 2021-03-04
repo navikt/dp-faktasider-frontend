@@ -20,9 +20,12 @@ import RelatertInformasjon from "./content/RelatertInformasjon";
 import Header from "./content/Header";
 import { MenuItem } from "../../sanity/groq/menu/menuDataUtils";
 import useLanguageSelector from "./useLanguageSelector";
+import { Elements } from "@navikt/nav-dekoratoren-moduler/ssr";
+import Dekoratør from "../../utils/dekoratør/Dekoratør";
 
 export interface FaktasideProps extends FaktasideParsedData {
   menuData: MenuItem[];
+  dekoratør: Elements;
 }
 
 function Faktaside(props: FaktasideProps) {
@@ -47,19 +50,21 @@ function Faktaside(props: FaktasideProps) {
   }
 
   return (
-    <FaktasideProvider faktasideProps={props}>
-      <SEO title={tittel} description={beskrivelse} />
-      <FaktaSideLayout wordCountRef={wordCountRef}>
-        <Header />
-        <InnholdetErTilpasset />
-        <Notifikasjoner notifikasjoner={props?.notifikasjoner} />
-        <div ref={wordCountRef}>
-          <KortFortalt blocks={props.kortFortalt} beskrivelse={beskrivelse} />
-          <BlockContent blocks={props.innhold} />
-          <RelatertInformasjon blocks={props.relatertInformasjon} snarveier={props.snarveier} />
-        </div>
-      </FaktaSideLayout>
-    </FaktasideProvider>
+    <Dekoratør elements={props.dekoratør}>
+      <FaktasideProvider faktasideProps={props}>
+        <SEO title={tittel} description={beskrivelse} />
+        <FaktaSideLayout wordCountRef={wordCountRef}>
+          <Header />
+          <InnholdetErTilpasset />
+          <Notifikasjoner notifikasjoner={props?.notifikasjoner} />
+          <div ref={wordCountRef}>
+            <KortFortalt blocks={props.kortFortalt} beskrivelse={beskrivelse} />
+            <BlockContent blocks={props.innhold} />
+            <RelatertInformasjon blocks={props.relatertInformasjon} snarveier={props.snarveier} />
+          </div>
+        </FaktaSideLayout>
+      </FaktasideProvider>
+    </Dekoratør>
   );
 }
 

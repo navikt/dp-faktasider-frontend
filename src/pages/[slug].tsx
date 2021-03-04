@@ -3,17 +3,17 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Faktaside from "../components/faktaside/Faktaside";
 import { groq } from "next-sanity";
 import { getClient, sanityClient, usePreviewSubscription } from "../sanity/sanity-config";
-import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
+import { faktasideQuery, FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
 import { parseFaktasideData } from "../sanity/groq/faktaside/parseFaktasideData";
 import { useLocale } from "../i18n/useLocale";
-import { MenuQueryData } from "../sanity/groq/menu/menuQuery";
+import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
-import { faktasideQuery } from "../sanity/groq/faktaside/faktasideQuery";
-import { menuQuery } from "../sanity/groq/menu/menuQuery";
 import { isDevelopment } from "../utils/environment";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { supportedLanguages } from "../i18n/supportedLanguages";
 import { useRouter } from "next/router";
+import { Elements } from "@navikt/nav-dekoratoren-moduler/ssr";
+import getDekoratørHtml from "../utils/dekoratør/getDekoratørHTML";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 
@@ -33,6 +33,7 @@ interface Props {
   menuData: MenuQueryData;
   preview: boolean;
   slug: string;
+  dekoratør: Elements;
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
@@ -41,6 +42,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
   const faktaside: FaktasideQueryData = await getClient(preview).fetch(faktasideQuery, { slug });
   const menuData: MenuQueryData = await getClient(preview).fetch(menuQuery);
+  const dekoratør = await getDekoratørHtml();
 
   if (!faktaside?.faktaside?.id) {
     return {
@@ -54,6 +56,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
       menuData: menuData,
       preview,
       slug,
+      dekoratør,
     },
     revalidate: 120,
   };
@@ -83,7 +86,7 @@ function PreviewWrapper(props: Props) {
   const parsedFaktasideData = parseFaktasideData(faktasideData, locale);
   const parsedMenuData = parseMenuData(menuData, locale);
 
-  return <Faktaside {...parsedFaktasideData} menuData={parsedMenuData} />;
+  return <Faktaside {...parsedFaktasideData} menuData={parsedMenuData} dekoratør={props.dekoratør} />;
 }
 
 export default withErrorBoundary(PreviewWrapper, "FaktaSide");
