@@ -37,8 +37,10 @@ function RelatertInformasjon(props: Props) {
 
   const h2Group = createH2Group(t("relatertInformasjon"), [
     ...blocks,
-    ...snarveier.map((snarvei) => createSanityBlock(snarvei.tittel, { listItem: "bullet" })),
+    ...snarveier.map((snarvei) => createSanityBlock(snarvei.tittel, { listItem: "bullet", linkTo: snarvei.url })),
   ]);
+
+  console.log(h2Group.children);
 
   return (
     <Style>

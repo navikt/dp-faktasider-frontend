@@ -13,6 +13,7 @@ export type MarkDef = {
   _type: string;
   visFor?: VisForConfig;
   visPaaSider?: { _ref: string }[];
+  href?: string;
 };
 
 // SanityBlock-typen er uhøytidelig hamret sammen basert på hvilke parametere jeg ser i consollen, det er ikke sikkert den stemmer helt

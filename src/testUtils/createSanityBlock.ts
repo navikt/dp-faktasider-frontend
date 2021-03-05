@@ -25,6 +25,7 @@ export function createSanityBlock(
     visFor?: string[];
     visPaa?: string[];
     omvendtFiltrering?: boolean;
+    linkTo?: string;
   }
 ): SanityBlock {
   const visForMark = createVisForMark({
@@ -33,8 +34,10 @@ export function createSanityBlock(
     omvendtFiltrering: config?.omvendtFiltrering,
   });
 
-  const markDefs = [visForMark?.markDef].filter((it) => !!it) as MarkDef[];
-  const marks = [...(config?.marks || []), visForMark?.markKey].filter((it) => !!it) as string[];
+  const linkMark = createLinkMark(config?.linkTo);
+
+  const markDefs = [visForMark?.markDef, linkMark?.markDef].filter((it) => !!it) as MarkDef[];
+  const marks = [...(config?.marks || []), visForMark?.markKey, linkMark?.markKey].filter((it) => !!it) as string[];
 
   const listProps = config?.listItem ? { level: 1, listItem: config.listItem } : {};
 
@@ -88,6 +91,23 @@ function createVisForMark(config: { visPaaSideIder?: string[]; visFor?: string[]
       visPaaSider: config.visPaaSideIder?.map((id) => ({
         _ref: id,
       })),
+    } as MarkDef,
+  };
+}
+
+function createLinkMark(linkTo?: string) {
+  if (!linkTo) {
+    return undefined;
+  }
+
+  const markKey = createKey();
+
+  return {
+    markKey: markKey,
+    markDef: {
+      _key: markKey,
+      _type: "link",
+      href: linkTo,
     } as MarkDef,
   };
 }
