@@ -1,9 +1,0 @@
-app: dp-faktasider-frontend
-namespace: default
-team: teamdagpenger
-dekoratorUrl: https://dekoratoren.dev.nav.no/
-ingresses: |
-  ingresses:
-    - https://www.dev.nav.no/arbeid/
-    - https://www-q6.nav.no/arbeid/
-    - https://www-q1.nav.no/arbeid/
