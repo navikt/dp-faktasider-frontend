@@ -6,7 +6,8 @@ import { sanityClient, urlFor } from "../sanity/sanity-config";
 import { Components, Props, fetchDecoratorReact } from "@navikt/nav-dekoratoren-moduler/ssr";
 
 const dekoratørParams: Props = {
-  env: "prod",
+  // @ts-ignore
+  env: process.env.DEKORATOR_MILJO || "prod",
   breadcrumbs: [
     { title: "Forside", url: "https://www.nav.no/arbeid" },
     { title: "Underside", url: "https://www.nav.no" },
