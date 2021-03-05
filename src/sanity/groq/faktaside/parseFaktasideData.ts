@@ -13,7 +13,6 @@ export interface FaktasideParsedData {
   beskrivelse?: string;
   innhold?: ParsedRichText;
   kortFortalt?: ParsedRichText;
-  relatertInformasjon?: ParsedRichText;
   slug: string;
   visSprakversjon?: {
     en?: boolean;
@@ -31,7 +30,6 @@ export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLang
   const localizedPage: LocalizedFaktasideQueryData = localizeSanityContent(data, lang);
   const parsedInnhold = parseRichText(localizedPage.faktaside?.innhold);
   const parsedKortFortalt = parseRichText(localizedPage.faktaside?.kortFortalt);
-  const parsedRelatertInformasjon = parseRichText(localizedPage.faktaside?.relatertInformasjon);
   const publiseringsTidspunkt = getPubliseringsTidspunkt(localizedPage);
   const relevanteNotifikasjoner = localizedPage.oppsett.notifikasjoner?.filter((notifikasjon) =>
     notifikasjon.visPaaSider?.some((side) => side._ref === data.faktaside.id)
@@ -45,7 +43,6 @@ export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLang
     ...localizedPage.faktaside,
     innhold: parsedInnhold,
     kortFortalt: parsedKortFortalt,
-    relatertInformasjon: parsedRelatertInformasjon,
     publiseringsTidspunkt,
     notifikasjoner: relevanteNotifikasjoner,
     rawData: data,

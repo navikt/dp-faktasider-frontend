@@ -4,7 +4,7 @@ import { useFaktasideContext } from "../../FaktaSideContext";
 import { createH2Group } from "../../../../utils/richTextUtils/createGroup";
 
 export function useInnholdsListe(): Group[] {
-  const { innhold, relatertInformasjon, kortFortalt } = useFaktasideContext();
+  const { innhold, snarveier, kortFortalt } = useFaktasideContext();
   const { t } = useTranslation("global");
 
   if (!innhold) {
@@ -17,8 +17,8 @@ export function useInnholdsListe(): Group[] {
     h2Groups.unshift(createH2Group(t("kortFortalt"), []));
   }
 
-  if (relatertInformasjon?.length) {
-    h2Groups.push(createH2Group(t("relatertInformasjon"), []));
+  if (snarveier?.length) {
+    h2Groups.push(createH2Group(t("snarveier"), []));
   }
 
   return h2Groups;

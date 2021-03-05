@@ -141,41 +141,6 @@ export const sistOppdatertTestdata: FaktasideQueryData = {
       en: "This is used for testing",
       no: "Denne brukes i test",
     },
-    relatertInformasjon: {
-      _type: "localeRelatertInformasjonRichText",
-      en: [
-        {
-          _key: "1c281ff3773e",
-          _type: "block",
-          children: [
-            {
-              _key: "1c281ff3773e0",
-              _type: "span",
-              marks: [],
-              text: "Some other information",
-            },
-          ],
-          markDefs: [],
-          style: "normal",
-        },
-      ],
-      no: [
-        {
-          _key: "57366733aa32",
-          _type: "block",
-          children: [
-            {
-              _key: "57366733aa320",
-              _type: "span",
-              marks: [],
-              text: "Relatert info",
-            },
-          ],
-          markDefs: [],
-          style: "normal",
-        },
-      ],
-    },
     slug: "dette-er-litt-testdata",
     visSprakversjon: {
       en: true,

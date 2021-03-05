@@ -16,7 +16,7 @@ import useBreadcrumbs from "./useBreadcrumbs";
 import { FaktasideParsedData } from "../../sanity/groq/faktaside/parseFaktasideData";
 import Notifikasjoner from "../Notifikasjoner";
 import KortFortalt from "./content/KortFortalt";
-import RelatertInformasjon from "./content/RelatertInformasjon";
+import Snarveier from "./content/Snarveier";
 import Header from "./content/Header";
 import { MenuItem } from "../../sanity/groq/menu/menuDataUtils";
 import useLanguageSelector from "./useLanguageSelector";
@@ -56,7 +56,7 @@ function Faktaside(props: FaktasideProps) {
         <div ref={wordCountRef}>
           <KortFortalt blocks={props.kortFortalt} beskrivelse={beskrivelse} />
           <BlockContent blocks={props.innhold} />
-          <RelatertInformasjon blocks={props.relatertInformasjon} snarveier={props.snarveier} />
+          <Snarveier snarveier={props.snarveier} />
         </div>
       </FaktaSideLayout>
     </FaktasideProvider>

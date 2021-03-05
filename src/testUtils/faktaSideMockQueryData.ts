@@ -11,7 +11,6 @@ export const faktaSideMockQueryData: FaktasideQueryData = {
     title: translated("Faktasidemock"),
     id: "id",
     slug: "test",
-    relatertInformasjon: translated([createSanityBlock("Relatert info")]),
     beskrivelse: translated("Dette er testdata"),
     visSprakversjon: {
       no: true,

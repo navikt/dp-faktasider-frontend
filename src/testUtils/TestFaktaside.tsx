@@ -11,13 +11,14 @@ import { MenuQueryData } from "../sanity/groq/menu/menuQuery";
 
 type Props = {
   partialFaktaside?: Partial<FaktasideQueryData["faktaside"]>;
+  partialOppsett?: Partial<FaktasideQueryData["oppsett"]>;
   innhold?: Block[];
   partialMeny?: Partial<MenuQueryData>;
 };
 
 function TestFaktaside(props: Props) {
   const faktaSide = { ...faktaSideMockQueryData.faktaside, ...props.partialFaktaside };
-  const oppsett = { ...faktaSideMockQueryData.oppsett };
+  const oppsett = { ...faktaSideMockQueryData.oppsett, ...props.partialOppsett };
 
   const context: FaktasideQueryData = {
     faktaside: {

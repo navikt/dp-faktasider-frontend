@@ -37,7 +37,6 @@ export interface FaktasideQueryData {
     beskrivelse?: Translations<string>;
     innhold?: Translations<SanityBlock[]>;
     kortFortalt?: Translations<SanityBlock[]>;
-    relatertInformasjon?: Translations<SanityBlock[]>;
     slug: string;
     visSprakversjon?: {
       en?: boolean;
@@ -59,7 +58,6 @@ export interface LocalizedFaktasideQueryData {
     beskrivelse?: string;
     innhold?: SanityBlock[];
     kortFortalt?: SanityBlock[];
-    relatertInformasjon?: SanityBlock[];
   };
   oppsett: FaktasideQueryData["oppsett"] & {
     title?: string;

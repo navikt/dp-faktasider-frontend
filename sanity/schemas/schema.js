@@ -9,7 +9,6 @@ import fremhevetTekst from "./fremhevetTekst/fremhevetTekst";
 import visSprakversjon from "./faktaside/visSprakversjon";
 import fremhevetRichText from "./fremhevetTekst/fremhevetRichText";
 import visFor from "./richText/annotations/visFor";
-import relatertInformasjonRichText from "./faktaside/relatertInformasjonRichText";
 import oppsett from "./oppsett/oppsett";
 import deltTekst from "./deltTekst/deltTekst";
 import deltRichText from "./deltTekst/deltRichText";
@@ -36,7 +35,6 @@ export default createSchema({
     fremhevetTekst,
     visSprakversjon,
     visFor,
-    relatertInformasjonRichText,
     oppsett,
     deltTekst,
     deltTekstReference,
@@ -57,7 +55,6 @@ export default createSchema({
     localize("deltRichText"),
     localize("string"),
     localize("text"),
-    localize("relatertInformasjonRichText"),
     localize("url"),
   ]),
 });

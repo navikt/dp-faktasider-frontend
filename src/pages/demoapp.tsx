@@ -101,14 +101,14 @@ function Demoapp(props: Props) {
       object: createH2Group("Kort fortalt", context.side.kortFortalt),
     });
   }
-
-  if (context.side?.relatertInformasjon) {
-    overskriftsValg.push({
-      label: "Relatert informasjon",
-      id: "relatert-informasjon",
-      object: createH2Group("Relatert informasjon", context.side.relatertInformasjon),
-    });
-  }
+  // TODO: Relatert informasjon er fjernet, legg til relevante snarveier istedenfor
+  // if (context.side?.relatertInformasjon) {
+  //   overskriftsValg.push({
+  //     label: "Relatert informasjon",
+  //     id: "relatert-informasjon",
+  //     object: createH2Group("Relatert informasjon", context.side.relatertInformasjon),
+  //   });
+  // }
 
   const groupIndex = overskriftsValg.findIndex(
     (valg) => valg.object?.blockConfig?.id === context.group?.blockConfig?.id

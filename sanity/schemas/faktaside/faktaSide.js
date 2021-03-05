@@ -76,10 +76,6 @@ export default {
       title: "Innhold",
       validation: localeValueRequired,
     },
-    {
-      name: "relatertInformasjon",
-      type: "localeRelatertInformasjonRichText",
-    },
   ],
   preview: {
     select: {
