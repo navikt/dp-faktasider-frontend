@@ -102,25 +102,6 @@ jobs:
           docker build . -t ${{ env.IMAGE_CACHE_RUNTIME }} --target runtime --build-arg BUILDKIT_INLINE_CACHE=1 --cache-from=${{ env.IMAGE_CACHE_RUNTIME }}
           docker push ${{ env.IMAGE_CACHE_RUNTIME }}
 
-  deploy-dev:
-    name: Deploy to dev
-    needs: [ build ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fetch NAIS yaml
-        uses: actions/download-artifact@v1
-        with:
-          name: nais-yaml
-          path: nais
-
-      - uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-sbs
-          RESOURCE: nais/nais.yaml
-          VARS: nais/dev/vars.yaml
-          PRINT_PAYLOAD: true
-
   deploy-dev-gcp:
     name: Deploy to dev gcp
     needs: [ build ]
@@ -158,24 +139,4 @@ jobs:
           CLUSTER: prod-gcp
           RESOURCE: nais/nais.yaml
           VARS: nais/prod-gcp/vars.yaml
-          PRINT_PAYLOAD: true
-
-  deploy-prod:
-    name: Deploy to Production
-    needs: [ deploy-dev, test ]
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fetch NAIS yaml
-        uses: actions/download-artifact@v1
-        with:
-          name: nais-yaml
-          path: nais
-
-      - uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: prod-sbs
-          RESOURCE: nais/nais.yaml
-          VARS: nais/prod/vars.yaml
           PRINT_PAYLOAD: true
