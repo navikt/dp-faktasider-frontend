@@ -1,5 +1,5 @@
 import React from "react";
-import VelgSituasjoner from "../../oppsett/VelgSituasjoner";
+import VelgSituasjoner from "./VelgSituasjoner";
 
 export default {
   name: "visFor",

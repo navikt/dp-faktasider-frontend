@@ -1,6 +1,7 @@
 import React from "react";
 import { FiLink } from "react-icons/fi";
 import { localeValueRequired } from "../utils/validationHelpers";
+import VelgInfosider from "./VelgInfosider";
 
 export default {
   name: "eksternLenke",
@@ -29,13 +30,8 @@ export default {
       name: "visPaaSider",
       title: "Vis på side:",
       type: "array",
-      of: [
-        {
-          type: "reference",
-          description: 'Faktasiden må være "Published" for å dukke opp i denne lista',
-          to: { type: "faktaSide" },
-        },
-      ],
+      of: [{ type: "string" }],
+      inputComponent: VelgInfosider,
     },
   ],
   preview: {

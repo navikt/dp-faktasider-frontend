@@ -64,7 +64,7 @@ export interface Snarvei {
   _type: "eksternLenke";
   url: string;
   tittel: string;
-  visPaaSider?: { _ref: string }[];
+  visPaaSider?: string[];
 }
 
 export type SideoversiktLenke = SanityInternLenke | Snarvei;
