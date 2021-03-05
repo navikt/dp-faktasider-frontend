@@ -51,18 +51,18 @@ export default {
       type: "boolean",
     },
     {
+      name: "nokkelordBeskrivelse",
+      type: "localeString",
+      title: "Nøkkelord",
+      description: "Beskriv innholdet med noen få nøkkelord, til bruk på navigasjonsside",
+    },
+    {
       name: "beskrivelse",
       type: "localeText",
       title: "Søkemotortekst",
       description:
         "Vises også øverst i kort fortalt. Kort beskrivelse av innholdet for ingress, søkemotorer og sosiale medier. Skriv en sammenhengende setning",
       validation: localeValueRequired,
-    },
-    {
-      name: "nokkelordBeskrivelse",
-      type: "localeString",
-      title: "Nøkkelord",
-      description: "Beskriv innholdet med noen få nøkkelord, til bruk på navigasjonsside",
     },
     {
       name: "kortFortalt",
