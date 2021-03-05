@@ -4,4 +4,4 @@ team: teamdagpenger
 dekoratorMiljo: dev
 ingresses: |
   ingresses:
-    - https://arbeid.dev.nav.no/arbeid/
+    - https://dev.nav.no/arbeid/
