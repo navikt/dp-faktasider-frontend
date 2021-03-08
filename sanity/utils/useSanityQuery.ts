@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import sanityClient from "@sanity/client";
+import { getDataset } from "./getDataset";
 
 function useSanityQuery<Data>(query: string) {
   const [data, setData] = useState<Data | undefined>(undefined);
   const [error, setError] = useState<Error | undefined>(undefined);
 
   useEffect(() => {
-    const dataset = window.location.pathname.split("/")[1];
+    const dataset = getDataset();
     const client = sanityClient({
       projectId: "rt6o382n",
       dataset: dataset,
