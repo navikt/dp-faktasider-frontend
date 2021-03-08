@@ -1,6 +1,3 @@
-app: dp-faktasider-frontend
-namespace: teamdagpenger
-team: teamdagpenger
 dekoratorMiljo: dev
 ingresses: |
   ingresses:
