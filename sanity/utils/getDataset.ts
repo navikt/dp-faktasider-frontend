@@ -1,3 +1,5 @@
+import client from "part:@sanity/base/client";
+
 export function getDataset() {
-  return window.location.pathname.split("/")[1];
+  return client.config().dataset;
 }
