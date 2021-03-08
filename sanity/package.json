@@ -10,9 +10,9 @@
     "start": "sanity start",
     "test": "sanity check",
     "deploy": "sanity deploy",
-    "backup": "curl https://rt6o382n.api.sanity.io/v1/data/export/production/ > backup.ndjson",
+    "backup": "sanity dataset export production production.tar.gz --overwrite",
     "clearDevelopmentDataset": "sanity dataset delete development && sanity dataset create development --visibility public",
-    "copyProdDataToDevelopment": "npm run backup && npm run clearDevelopmentDataset && sanity dataset import backup.ndjson development --replace"
+    "copyProdDataToDevelopment": "npm run backup && npm run clearDevelopmentDataset && sanity dataset import production.tar.gz development --replace"
   },
   "dependencies": {
     "@sanity/base": "^2.4.1",
