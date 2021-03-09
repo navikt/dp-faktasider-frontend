@@ -1,16 +1,11 @@
 import localizeSanityContent from "../../../i18n/localizeSanityContent";
 import { SupportedLanguage } from "../../../i18n/supportedLanguages";
 import { Notifikasjon } from "../../../components/Notifikasjoner";
-import { ForsideQueryData } from "./forsideQuery";
-
-export interface EksternLenkeI {
-  tittel: string;
-  url: string;
-}
+import { ForsideQueryData, Snarvei } from "./forsideQuery";
 
 export interface ForsideParsedData {
   title?: string;
-  snarveier?: EksternLenkeI[];
+  snarveier?: Snarvei[];
   beskrivelse?: string;
   forsideNotifikasjoner?: Notifikasjon[];
 }

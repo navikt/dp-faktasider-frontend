@@ -1,12 +1,12 @@
 import React from "react";
 import { render, within } from "../../../testUtils/customized-testing-library";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
-import { Snarvei } from "../../../sanity/groq/menu/menuQuery";
+import { Snarvei } from "../../../sanity/groq/forside/forsideQuery";
 
 const id = "testId";
 
 const snarvei: Snarvei = {
-  _type: "eksternLenke",
+  _type: "snarvei",
   url: "vg.no",
   tittel: "En snarvei til vg",
   visPaaSider: [id],

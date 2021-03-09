@@ -4,9 +4,10 @@ import { translated } from "../../../testUtils/createSanityBlock";
 export const mockMenuData: MenuQueryData = {
   lenker: [
     {
-      _type: "eksternLenke",
+      _type: "menylenkeEkstern",
       url: "https://www.nav.no/ekstern/side",
       tittel: "Ekstern lenke",
+      beskrivelse: "Lenke til en ekstern side",
     },
   ],
   sider: [

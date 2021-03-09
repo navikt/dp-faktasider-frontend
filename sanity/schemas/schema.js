@@ -23,6 +23,7 @@ import tidslinjeRichText from "./tidslinje/tidslinjeRichText";
 import tidslinje from "./tidslinje/tidslinje";
 import notifikasjon from "./notifikasjon/notifikasjon";
 import notifikasjonRichText from "./notifikasjon/notifikasjonRichText";
+import menyLenkeEkstern from "./oppsett/menyLenkeEkstern";
 
 export default createSchema({
   name: "dagpenger-info",
@@ -45,6 +46,7 @@ export default createSchema({
     tilleggsInfoRichText,
     kortFortaltRichText,
     snarvei,
+    menyLenkeEkstern,
     tidslinjeRichText,
     tidslinje,
     notifikasjon,

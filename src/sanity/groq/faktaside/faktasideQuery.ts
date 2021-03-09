@@ -2,7 +2,7 @@ import { groq } from "next-sanity";
 import { Translations } from "../../../types/translations";
 import { SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
 import { Notifikasjon } from "../../../components/Notifikasjoner";
-import { Snarvei } from "../menu/menuQuery";
+import { Snarvei } from "../forside/forsideQuery";
 
 const innholdFields = `
 [] {
@@ -25,7 +25,7 @@ export const faktasideQuery = groq`{
     title,
     folketrygdensGrunnbellop,
     notifikasjoner[],
-    "snarveier": komIgangLenker
+    snarveier
   }
 }`;
 

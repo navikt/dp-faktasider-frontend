@@ -23,8 +23,8 @@ export default {
       validation: localeValueRequired,
     },
     {
-      name: "sideoversiktLenker",
-      title: "Lenker sideoversikt",
+      name: "menyLenker",
+      title: "Lenker meny",
       type: "array",
       description:
         "Brukes for å bestemme innhold og rekkefølge på lenker i menyen på forside og på faktasider. Interne sider som ikke blir eksplisitt lagt til her vil automatisk dukke opp sist i menyen",
@@ -38,17 +38,17 @@ export default {
           ],
         },
         {
-          type: "eksternLenke",
+          type: "menylenkeEkstern",
         },
       ],
     },
     {
-      name: "komIgangLenker",
+      name: "snarveier",
       title: "Snarveier",
       type: "array",
       of: [
         {
-          type: "eksternLenke",
+          type: "snarvei",
         },
       ],
     },

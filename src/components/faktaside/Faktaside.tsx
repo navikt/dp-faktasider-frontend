@@ -18,8 +18,8 @@ import Notifikasjoner from "../Notifikasjoner";
 import KortFortalt from "./content/KortFortalt";
 import Snarveier from "./content/Snarveier";
 import Header from "./content/Header";
-import { MenuItem } from "../../sanity/groq/menu/menuDataUtils";
 import useLanguageSelector from "./useLanguageSelector";
+import { MenuItem } from "../../sanity/groq/menu/parseMenuData";
 
 export interface FaktasideProps extends FaktasideParsedData {
   menuData: MenuItem[];

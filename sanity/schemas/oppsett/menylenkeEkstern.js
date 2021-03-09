@@ -1,13 +1,12 @@
 import React from "react";
-import { FiLink } from "react-icons/fi";
+import { FiExternalLink } from "react-icons/fi";
 import { localeValueRequired } from "../utils/validationHelpers";
-import VelgInfosider from "./VelgInfosider";
 
 export default {
-  name: "snarvei",
-  title: "Snarvei",
+  name: "menylenkeEkstern",
+  title: "Meny lenke til ekstern side",
   type: "object",
-  icon: FiLink,
+  icon: FiExternalLink,
   fields: [
     {
       title: "Tittel",
@@ -22,16 +21,9 @@ export default {
       validation: localeValueRequired,
     },
     {
-      name: "visPaaForside",
-      title: "Vis på nav.no/arbeid",
-      type: "boolean",
-    },
-    {
-      name: "visPaaSider",
-      title: "Vis på side:",
-      type: "array",
-      of: [{ type: "string" }],
-      inputComponent: VelgInfosider,
+      name: "beskrivelse",
+      title: "Beskrivelse",
+      type: "localeText",
     },
   ],
   preview: {
