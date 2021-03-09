@@ -4,23 +4,23 @@ import styled from "styled-components";
 import { BsExclamationCircle } from "react-icons/bs";
 
 const Style = styled.div`
-  &:first-letter {
-    text-transform: uppercase;
-  }
+  display: flex;
+  align-items: center;
 `;
 
 const Logo = () => {
-  const dataset = getDataset();
-  switch (dataset) {
-    case "production":
-      return <ProductionLogo />;
-  }
-
-  return <Style>{dataset}</Style>;
+  return (
+    <Style>
+      <span>POA cms</span>
+      {getBadge()}
+    </Style>
+  );
 };
 
-const ProductionStyle = styled.div`
-  background-color: darkolivegreen;
+const BadgeStyle = styled.div<{ bgColor: string }>`
+  margin-left: 0.5rem;
+  background-color: ${(p) => p.bgColor};
+  color: white;
   padding: 0.5rem 1rem;
   border-radius: 0.2rem;
   display: flex;
@@ -28,13 +28,25 @@ const ProductionStyle = styled.div`
   > *:not(:last-child) {
     margin-right: 0.5rem;
   }
+  text-transform: capitalize;
 `;
 
-const ProductionLogo = () => {
+function getBadge() {
+  const dataset = getDataset();
+  switch (dataset) {
+    case "production":
+      return <ProductionBadge />;
+    default:
+      return <BadgeStyle bgColor="darkslateblue">{dataset}</BadgeStyle>;
+  }
+}
+
+const ProductionBadge = () => {
   return (
-    <ProductionStyle>
-      <BsExclamationCircle /> <span>Production</span>
-    </ProductionStyle>
+    <BadgeStyle bgColor="darkolivegreen">
+      <BsExclamationCircle />
+      <span>Produksjon</span>
+    </BadgeStyle>
   );
 };
 
