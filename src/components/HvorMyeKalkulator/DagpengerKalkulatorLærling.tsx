@@ -80,7 +80,7 @@ function DagpengerKalkulatorLRling() {
       <Collapse isOpened={true}>
         <InputWrapper>
           <GrunnlagInput
-            label="Skriv ei årsinntekt:"
+            label="Skriv inn di årsinntekt:"
             type="number"
             value={grunnlag || ""}
             onChange={(e) => setGrunnlag(Math.max(0, +e.target.value) || undefined)}
