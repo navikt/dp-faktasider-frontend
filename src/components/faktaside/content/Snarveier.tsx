@@ -5,8 +5,8 @@ import { theme } from "../../../styles/theme";
 import H2GroupMarkup from "../../../components/BlockContent/GroupMarkup/H2GroupMarkup";
 import withErrorBoundary from "../../../components/withErrorBoundary";
 import { createH2Group } from "../../../utils/richTextUtils/createGroup";
-import { Snarvei } from "../../../sanity/groq/menu/menuQuery";
 import { createSanityBlock } from "../../../testUtils/createSanityBlock";
+import { Snarvei } from "../../../sanity/groq/forside/forsideQuery";
 
 interface Props {
   snarveier?: Snarvei[];

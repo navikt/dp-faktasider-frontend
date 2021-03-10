@@ -10,7 +10,8 @@ import Link from "next/link";
 import NavFrontendChevron from "nav-frontend-chevron";
 import HoyreChevron from "nav-frontend-chevron/lib/hoyre-chevron";
 import Innholdsfortegnelse from "./Innholdsfortegnelse/Innholdsfortegnelse";
-import { ExternalMenuLinkData, InternalMenuLinkData, MenuItem } from "../../../sanity/groq/menu/menuDataUtils";
+import { MenylenkeEkstern } from "../../../sanity/groq/menu/menuQuery";
+import { MenuItem, MenylenkeInternParsed } from "../../../sanity/groq/menu/parseMenuData";
 
 const StyledOl = styled.ol`
   margin-bottom: 8rem;
@@ -66,11 +67,11 @@ const StyledButton = styled.button<{ isOpen: boolean }>`
   ${(props) => !props.isOpen && menuHighlightStyle}
 `;
 
-function InternSideLenke(props: { page: InternalMenuLinkData }) {
+function InternLenke(props: { lenke: MenylenkeInternParsed }) {
   const faktaside = useFaktasideContext();
   const [open, toggle] = useReducer((state) => !state, true);
 
-  const currentPage = props.page.id === faktaside.id;
+  const currentPage = props.lenke.pageId === faktaside.id;
 
   if (currentPage) {
     return (
@@ -84,7 +85,7 @@ function InternSideLenke(props: { page: InternalMenuLinkData }) {
           aria-expanded={open}
         >
           <NavFrontendChevron type={open ? "ned" : "høyre"} />
-          <span>{props.page.tittel}</span>
+          <span>{props.lenke.tittel}</span>
         </StyledButton>
         <UnmountClosed isOpened={open}>
           <Innholdsfortegnelse />
@@ -94,18 +95,18 @@ function InternSideLenke(props: { page: InternalMenuLinkData }) {
   }
 
   return (
-    <Link href={props.page.path} locale={props.page.språk} passHref>
+    <Link href={props.lenke.path} locale={props.lenke.språk} passHref>
       <StyledLink className="lenke" onClick={() => loggMeny("Gå til ny side")}>
         <HoyreChevron />
         <span>
-          {props.page.tittel} {!props.page.tilgjengeligPåValgtSpråk ? `(${props.page.språk})` : ""}
+          {props.lenke.tittel} {!props.lenke.tilgjengeligPåValgtSpråk ? `(${props.lenke.språk})` : ""}
         </span>
       </StyledLink>
     </Link>
   );
 }
 
-function EksternLenke(props: { lenke: ExternalMenuLinkData }) {
+function EksternLenke(props: { lenke: MenylenkeEkstern }) {
   return (
     <StyledLink className="lenke" href={props.lenke.url} onClick={() => loggMeny("Gå til ekstern side")}>
       <HoyreChevron />
@@ -124,8 +125,8 @@ function SideListe(props: Props) {
     <StyledOl>
       {menuData?.map((link, index) => (
         <li key={index}>
-          {link.type === "internal" ? (
-            <InternSideLenke page={link} key={link.id} />
+          {link._type === "menylenkeIntern" ? (
+            <InternLenke lenke={link} key={link.pageId} />
           ) : (
             <EksternLenke lenke={link} key={link.url} />
           )}

@@ -11,7 +11,7 @@ import { Snarveier } from "./Snarveier";
 import styled from "styled-components/macro";
 import { theme } from "../../styles/theme";
 import { ForsideParsedData } from "../../sanity/groq/forside/parseForsideData";
-import { MenuParsedData } from "../../sanity/groq/menu/parseMenuData";
+import { MenuItem } from "../../sanity/groq/menu/parseMenuData";
 
 const Style = styled.div`
   background-color: ${theme.colors.bakgrunn};
@@ -26,7 +26,7 @@ const Content = styled.main`
 
 interface Props {
   forsideData: ForsideParsedData;
-  menuData: MenuParsedData;
+  menuData: MenuItem[];
 }
 
 function Forside(props: Props) {

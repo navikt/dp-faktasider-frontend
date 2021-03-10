@@ -4,7 +4,7 @@ import parseRichText, { ParsedRichText } from "../../../utils/richTextUtils/pars
 import { FaktasideQueryData, LocalizedFaktasideQueryData } from "./faktasideQuery";
 import { Notifikasjon } from "../../../components/Notifikasjoner";
 import { getPubliseringsTidspunkt } from "../../getPubliseringstidspunkt";
-import { Snarvei } from "../menu/menuQuery";
+import { Snarvei } from "../forside/forsideQuery";
 
 export interface FaktasideParsedData {
   id: string;

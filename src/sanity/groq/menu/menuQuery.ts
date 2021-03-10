@@ -3,10 +3,10 @@ import { Translations } from "../../../types/translations";
 import { Modify } from "../../../utils/typeUtils";
 
 export const menuQuery = groq`{
-  "lenker": *[_id == "oppsett"][0].sideoversiktLenker[] {
+  "lenker": *[_id == "oppsett"][0].menyLenker[] {
     ...,
     defined(_ref) => {
-      "id": @-> _id,
+      "pageId": @-> _id,
       "referenceType": @-> _type
     }
   },
@@ -22,7 +22,7 @@ export const menuQuery = groq`{
 `;
 
 export interface MenuQueryData {
-  lenker?: SideoversiktLenke[];
+  lenker?: MenyLenkeRaw[];
   sider?: MenuDataSide[];
 }
 
@@ -54,21 +54,17 @@ export type TranslatedMenuDataSide = Modify<
   }
 >;
 
-export interface SanityInternLenke {
+export interface MenylenkeInternRaw {
   _type: "reference";
   referenceType: "faktaSide";
-  id: string;
+  pageId: string;
 }
 
-export interface Snarvei {
-  _type: "eksternLenke";
+export interface MenylenkeEkstern {
+  _type: "menylenkeEkstern";
   url: string;
   tittel: string;
-  visPaaSider?: string[];
+  beskrivelse?: string;
 }
 
-export type SideoversiktLenke = SanityInternLenke | Snarvei;
-
-export function isSanityInternLenke(lenke: SideoversiktLenke): lenke is SanityInternLenke {
-  return lenke._type === "reference" && lenke.referenceType === "faktaSide";
-}
+export type MenyLenkeRaw = MenylenkeInternRaw | MenylenkeEkstern;

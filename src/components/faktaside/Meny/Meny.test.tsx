@@ -25,7 +25,7 @@ describe("Navigasjonsmeny", () => {
     const lenker = within(sideliste).getAllByRole("link") as HTMLLinkElement[];
 
     const expectedHrefs = [
-      ...mockMenuData.lenker!.map((it) => (it._type === "eksternLenke" ? it.url : undefined)),
+      ...mockMenuData.lenker!.map((it) => (it._type === "menylenkeEkstern" ? it.url : undefined)),
       ...mockMenuData.sider!.map((it) => it.slug),
     ].filter(Boolean);
     const actualHrefs = lenker.map((it) => it.href);

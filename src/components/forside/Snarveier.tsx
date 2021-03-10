@@ -1,11 +1,11 @@
 import { useTranslation } from "react-i18next";
 import React from "react";
-import { EksternLenke } from "./ForsideLenker";
 import styled from "styled-components";
 import { Undertittel } from "nav-frontend-typografi";
 import { contentMaxwidth } from "./style";
 import useUniqueId from "../../utils/useUniqueId";
-import { EksternLenkeI } from "../../sanity/groq/forside/parseForsideData";
+import { Snarvei } from "../../sanity/groq/forside/forsideQuery";
+import { HoyreChevron } from "nav-frontend-chevron";
 
 const Wrapper = styled.div`
   background-color: white;
@@ -37,7 +37,30 @@ const StyledUl = styled.ul`
   }
 `;
 
-export function Snarveier(props: { snarveier?: EksternLenkeI[] }) {
+const StyledChevron = styled(HoyreChevron)`
+  margin-right: 0.75rem;
+  transition: 0.3s !important;
+  position: relative;
+  left: 0;
+`;
+
+export const LenkeStyle = styled.a.attrs({ className: "lenke" })`
+  border-radius: 0.5rem;
+  text-decoration: none !important;
+  font-size: 1.2rem !important;
+  margin-bottom: 0.75rem !important;
+  display: inline-flex;
+  align-items: center;
+
+  &:hover {
+    text-decoration: underline !important;
+    ${StyledChevron} {
+      left: 0.5rem;
+    }
+  }
+`;
+
+export function Snarveier(props: { snarveier?: Snarvei[] }) {
   const { t } = useTranslation("global");
   const id = useUniqueId("snartveier");
 
@@ -52,7 +75,10 @@ export function Snarveier(props: { snarveier?: EksternLenkeI[] }) {
         <StyledUl>
           {props.snarveier?.map((lenke) => (
             <li key={lenke.url}>
-              <EksternLenke lenke={lenke} chevron={true} />
+              <LenkeStyle href={lenke.url}>
+                <StyledChevron />
+                <span>{lenke.tittel}</span>
+              </LenkeStyle>
             </li>
           ))}
         </StyledUl>
