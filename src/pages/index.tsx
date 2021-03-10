@@ -24,6 +24,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
       menuData,
       preview,
     },
+    revalidate: 120,
   };
 };
 
