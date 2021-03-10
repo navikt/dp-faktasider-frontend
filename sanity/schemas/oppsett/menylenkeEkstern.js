@@ -4,7 +4,7 @@ import { localeValueRequired } from "../utils/validationHelpers";
 
 export default {
   name: "menylenkeEkstern",
-  title: "Meny lenke til ekstern side",
+  title: "Menylenke til ekstern side",
   type: "object",
   icon: FiExternalLink,
   fields: [
