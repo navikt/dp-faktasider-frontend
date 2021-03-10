@@ -55,7 +55,6 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
       preview,
       slug,
     },
-    revalidate: 120,
   };
 };
 
