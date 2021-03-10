@@ -1,6 +1,5 @@
 import styled from "styled-components/macro";
 import { Input } from "nav-frontend-skjema";
-import { Element } from "nav-frontend-typografi";
 
 export const KalkulatorStyle = styled.aside`
   margin: 3rem 0;
@@ -10,11 +9,6 @@ export const KalkulatorStyle = styled.aside`
   .ReactCollapse--content {
     text-align: center;
   }
-`;
-
-export const KalkulatorHeader = styled(Element).attrs({ tag: "h1" })`
-  text-align: center;
-  margin-bottom: 1rem !important;
 `;
 
 export const ResultatTable = styled.table`

@@ -1,8 +1,7 @@
 {
-  "heading": "Forstå regnestykket",
   "label": "Dine inntekter",
   "forLavtGrunnlag": "Inntekt under {{G}} gir ikke rett til dagpenger.",
-  "sendSøknadLikvel": "Vi anbefaler likevel at du sender søknad så kan NAV vurdere din rett til dagpenger.",
+  "sendSøknadLikvel": "Vi anbefaler likevel at du sender søknad så NAV kan vurdere retten din til dagpenger.",
   "mellom": "Mellom {{over}} og {{under}} G",
   "tilsammen": "Til sammen",
   "ukesats": "Dette gir en ukesats (før skatt) på",
