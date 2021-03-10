@@ -1,7 +1,8 @@
 {
   "root": true,
   "project": {
-    "name": "dp-sanity-cms"
+    "name": "dp-sanity-cms",
+    "basePath": "/arbeid/cms"
   },
   "__experimental_spaces": [
     {
