@@ -1,4 +1,3 @@
-import React from "react";
 import link from "../richText/annotations/link";
 import { decorators, styles } from "../richText/richText";
 import visForAnnotationDeltTekst from "./annotations/visForAnnotationDeltTekst";

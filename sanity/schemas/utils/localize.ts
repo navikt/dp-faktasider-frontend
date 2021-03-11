@@ -1,7 +1,7 @@
 import { supportedLanguages } from "./languages";
 
 // Hjelpefunksjon som slenger på språkstøtte for typer/objeketer
-export default (type) => {
+export default (type: string) => {
   const name = type.charAt(0).toUpperCase() + type.slice(1);
   return {
     name: "locale" + name,

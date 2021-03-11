@@ -1,4 +1,3 @@
-import React from "react";
 import visForAnnotation from "../../richText/annotations/visForAnnotation";
 
 export default {

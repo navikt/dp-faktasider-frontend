@@ -1,17 +1,16 @@
-import React from "react";
 import link from "../richText/annotations/link";
 import { decorators, styles } from "../richText/richText";
 import visForAnnotation from "../richText/annotations/visForAnnotation";
 
 export default {
-  title: "Fremhevet Rich Text",
-  name: "fremhevetRichText",
+  title: "Kort Fortalt Rich Text",
+  name: "kortFortaltRichText",
   type: "array",
   of: [
     {
       title: "Block",
       type: "block",
-      styles: [styles.normal, styles.h3, styles.h4],
+      styles: [styles.normal, styles.h4, styles.h3],
       marks: {
         decorators: [
           decorators.strong,
@@ -23,7 +22,5 @@ export default {
         annotations: [link, visForAnnotation],
       },
     },
-    { type: "customComponent" },
-    { type: "video" },
   ],
 };

@@ -1,17 +1,21 @@
-import React from "react";
 import link from "../richText/annotations/link";
-import { decorators, styles } from "../richText/richText";
 import visForAnnotation from "../richText/annotations/visForAnnotation";
+import { TidslinjePunkt } from "./TidslinjePreview";
+import { decorators, styles } from "../richText/richText";
+import pasChildren from "../../components/pasChildren";
 
 export default {
-  title: "Kort Fortalt Rich Text",
-  name: "kortFortaltRichText",
+  name: "tidslinjeRichText",
+  title: "TidslinjePreview richtext",
   type: "array",
   of: [
     {
       title: "Block",
       type: "block",
-      styles: [styles.normal, styles.h4, styles.h3],
+      styles: [
+        styles.normal,
+        { title: "Punkt", value: "tidslinjepunkt", blockEditor: { render: pasChildren(TidslinjePunkt) } },
+      ],
       marks: {
         decorators: [
           decorators.strong,
