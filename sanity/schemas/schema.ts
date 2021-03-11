@@ -22,8 +22,8 @@ import snarvei from "./oppsett/snarvei";
 import tidslinjeRichText from "./tidslinje/tidslinjeRichText";
 import tidslinje from "./tidslinje/tidslinje";
 import notifikasjon from "./notifikasjon/notifikasjon";
+import menyLenkeEkstern from "./oppsett/menylenkeEkstern";
 import notifikasjonRichText from "./notifikasjon/notifikasjonRichText";
-import menyLenkeEkstern from "./oppsett/menyLenkeEkstern";
 
 export default createSchema({
   name: "dagpenger-info",
