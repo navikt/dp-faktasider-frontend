@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { studioClient } from "../utils/studioClient";
-import { urlFor } from "../../src/sanity/sanity-config";
+import { studioClient, urlFor } from "../utils/studioClient";
 
 const Style = styled.div`
   margin: 1rem;

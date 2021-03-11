@@ -26,6 +26,7 @@
     "@sanity/default-layout": "^2.6.0",
     "@sanity/default-login": "^2.2.6",
     "@sanity/desk-tool": "^2.6.1",
+    "@sanity/image-url": "^0.140.22",
     "@sanity/vision": "^2.2.6",
     "nav-frontend-js-utils": "^1.0.15",
     "prop-types": "^15.7.2",
