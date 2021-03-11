@@ -20,6 +20,7 @@ import { SupportedLanguage } from "../i18n/supportedLanguages";
 import fetchAllFaktasider from "../sanity/groq/faktaside/fetchAllFaktasider";
 import { typografiStyle } from "../components/faktaside/FaktaSideLayout";
 import { FaktasideParsedData } from "../sanity/groq/faktaside/parseFaktasideData";
+import { createSanityBlock } from "../testUtils/createSanityBlock";
 
 const Style = styled.div`
   ${typografiStyle};
@@ -101,14 +102,17 @@ function Demoapp(props: Props) {
       object: createH2Group("Kort fortalt", context.side.kortFortalt),
     });
   }
-  // TODO: Relatert informasjon er fjernet, legg til relevante snarveier istedenfor
-  // if (context.side?.relatertInformasjon) {
-  //   overskriftsValg.push({
-  //     label: "Relatert informasjon",
-  //     id: "relatert-informasjon",
-  //     object: createH2Group("Relatert informasjon", context.side.relatertInformasjon),
-  //   });
-  // }
+
+  if (context.side?.snarveier) {
+    overskriftsValg.push({
+      label: "Snarveier",
+      id: "snarveier",
+      object: createH2Group(
+        "Snarveier",
+        context.side.snarveier.map((snarvei) => createSanityBlock(snarvei.tittel, { linkTo: snarvei.url }))
+      ),
+    });
+  }
 
   const groupIndex = overskriftsValg.findIndex(
     (valg) => valg.object?.blockConfig?.id === context.group?.blockConfig?.id

@@ -4,6 +4,7 @@ import FaktasidePreview from "./previews/FaktasidePreview";
 import FaktasideSEOPreview from "./previews/FaktasideSEOPreview";
 import ForsideSEOPreview from "./previews/ForsideSEOPreview";
 import ForsidePreview from "./previews/ForsidePreview";
+import DemoappPreview from "./previews/DemoappPreview";
 
 export default () =>
   S.list()
@@ -32,6 +33,7 @@ export const getDefaultDocumentNode = ({ schemaType }) => {
         S.view.form(),
         S.view.component(FaktasidePreview).title("Preview"),
         S.view.component(FaktasideSEOPreview).title("SEO"),
+        S.view.component(DemoappPreview).title("Demoapp"),
       ]);
   }
 };
