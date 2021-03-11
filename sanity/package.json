@@ -11,7 +11,6 @@
     "test": "sanity check",
     "build": "sanity build",
     "docker": "npm run build && docker build -t dp-faktasider-cms . && docker run -p 8000:8000 dp-faktasider-cms",
-    "deploy": "sanity deploy",
     "backup": "sanity dataset export production production.tar.gz --overwrite",
     "clearDevelopmentDataset": "sanity dataset delete development && sanity dataset create development --visibility public",
     "copyProdDataToDevelopment": "npm run backup && npm run clearDevelopmentDataset && sanity dataset import production.tar.gz development --replace"

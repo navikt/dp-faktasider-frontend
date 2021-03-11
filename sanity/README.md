@@ -20,12 +20,11 @@ Du må logge deg inn i appen med feks github-bruker, du må få tilgang av en ad
 - `backup` lagrer en backup av proddatasettet lokalt
 - `clearDevelopmentDataset` sletter all data i development-datasettet slik at du har et clean utgangspunkt
 - `copyProdDataToDevelopment` sletter development-datasettet og bytter det ut med en kopi av prod-datasettet
+- `npm run docker` bygger appen i en dockercontainer på samme måte som i pipeline, hoster appen på [localhost:3000/arbeid]().
 
 ### Deploy av endringer i Sanity Studio
 
-Push på main kjører ikke build & deploy, så for å deploye kodeendringer til [https://dagpenger.sanity.studio](https://dagpenger.sanity.studio) må du deploye slik:
-
-`npm run deploy`
+Push på main vil automatisk deploye Studio til [https://www.nav.no/arbeid/cms](https://www.nav.no/arbeid/cms).
 
 ## Public data
 
