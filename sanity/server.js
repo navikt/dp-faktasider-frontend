@@ -20,7 +20,5 @@ const server = app.listen(port, () => console.info(`🚀 App listening on port: 
 
 process.on("SIGINT", () => {
   console.log("✊ Caught SIGINT. Shutting down! ☠️");
-  server.close(() => {
-    process.exit(0);
-  });
+  server.close(() => process.exit(0));
 });
