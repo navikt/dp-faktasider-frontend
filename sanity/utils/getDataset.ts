@@ -1,5 +1,5 @@
-import client from "part:@sanity/base/client";
+import { studioClient } from "./studioClient";
 
 export function getDataset() {
-  return client.config().dataset;
+  return studioClient.config().dataset;
 }

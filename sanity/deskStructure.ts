@@ -1,6 +1,7 @@
 import S from "@sanity/desk-tool/structure-builder";
 import { MdSettings } from "react-icons/md";
-import { FaktasideSanityPreview } from "./components/FaktasideSanityPreview";
+import FaktasidePreview from "./previews/FaktasidePreview";
+import FaktasideSEOPreview from "./previews/FaktasideSEOPreview";
 
 export default () =>
   S.list()
@@ -13,6 +14,10 @@ export default () =>
 export const getDefaultDocumentNode = ({ schemaType }) => {
   switch (schemaType) {
     case "faktaSide":
-      return S.document().views([S.view.form(), S.view.component(FaktasideSanityPreview).title("Preview")]);
+      return S.document().views([
+        S.view.form(),
+        S.view.component(FaktasidePreview).title("Preview"),
+        S.view.component(FaktasideSEOPreview).title("SEO"),
+      ]);
   }
 };
