@@ -7,6 +7,7 @@ import { forsideQuery, ForsideQueryData } from "../sanity/groq/forside/forsideQu
 import parseForsideData from "../sanity/groq/forside/parseForsideData";
 import { isDevelopment } from "../utils/environment";
 import Forside from "../components/forside/Forside";
+import { useRouter } from "next/router";
 
 interface Props {
   forsideData: ForsideQueryData;
@@ -29,14 +30,17 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 };
 
 export default function ForsideWrapper(props: Props) {
+  const router = useRouter();
+  const enablePreview = !!props.preview || !!router.query.preview;
+
   const { data: forsideData } = usePreviewSubscription(forsideQuery, {
     initialData: props.forsideData,
-    enabled: props.preview,
+    enabled: enablePreview,
   });
 
   const { data: menuData } = usePreviewSubscription(menuQuery, {
     initialData: props.menuData,
-    enabled: props.preview,
+    enabled: enablePreview,
   });
 
   const lang = useLocale();

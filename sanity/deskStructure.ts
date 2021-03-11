@@ -3,6 +3,7 @@ import { MdSettings } from "react-icons/md";
 import FaktasidePreview from "./previews/FaktasidePreview";
 import FaktasideSEOPreview from "./previews/FaktasideSEOPreview";
 import ForsideSEOPreview from "./previews/ForsideSEOPreview";
+import ForsidePreview from "./previews/ForsidePreview";
 
 export default () =>
   S.list()
@@ -15,7 +16,11 @@ export default () =>
           S.editor()
             .schemaType("oppsett")
             .documentId("oppsett")
-            .views([S.view.form(), S.view.component(ForsideSEOPreview).title("SEO")])
+            .views([
+              S.view.form(),
+              S.view.component(ForsideSEOPreview).title("SEO"),
+              S.view.component(ForsidePreview).title("Forside-preview"),
+            ])
         ),
       ...S.documentTypeListItems().filter((listItem) => !["oppsett"].includes(listItem.getId())),
     ]);
