@@ -1,7 +1,7 @@
 import React from "react";
 import { WebPreviewWrapper } from "./PreviewWrapper";
 
-export const FaktasideSanityPreview = (ctx: any) => {
+const FaktasidePreview = (ctx: any) => {
   const slug = ctx.document.displayed?.slug?.current;
 
   if (!slug) {
@@ -17,3 +17,5 @@ export const FaktasideSanityPreview = (ctx: any) => {
 
   return <WebPreviewWrapper url={url} />;
 };
+
+export default FaktasidePreview;
