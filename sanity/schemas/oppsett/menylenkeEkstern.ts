@@ -1,4 +1,3 @@
-import React from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { localeValueRequired } from "../utils/validationHelpers";
 
