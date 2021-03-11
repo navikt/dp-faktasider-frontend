@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - deploy-sanity-paa-nais
 
 env:
   IMAGE: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-cms:${{ github.sha }}
