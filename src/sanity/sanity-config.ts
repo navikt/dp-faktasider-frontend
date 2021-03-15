@@ -1,10 +1,11 @@
 import {
+  createCurrentUserHook,
   createImageUrlBuilder,
   createPortableTextComponent,
   createPreviewSubscriptionHook,
-  createCurrentUserHook,
 } from "next-sanity";
 import createClient from "@sanity/client"; // klienten fra next-sanity støtter ikke webproxy, men det skal klienten fra @sanity/next gjøre
+import { useMemo } from "react";
 
 const config = {
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
@@ -14,7 +15,9 @@ const config = {
 
 export const urlFor = (source) => createImageUrlBuilder(config).image(source);
 
-export const usePreviewSubscription = createPreviewSubscriptionHook(config);
+export const usePreviewSubscription = (dataset?: string) => {
+  return useMemo(() => createPreviewSubscriptionHook({ ...config, dataset: dataset || config.dataset }), [dataset]);
+};
 
 export const PortableText = createPortableTextComponent({
   ...config,
