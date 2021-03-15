@@ -11,10 +11,15 @@ const Style = styled.div`
   box-shadow: 0 0 1rem #888;
 `;
 
-export function WebPreviewWrapper(props: { url: string }) {
+export function WebPreviewWrapper(props: { path: string }) {
+  const url =
+    process.env.NODE_ENV === "production"
+      ? `https://www.nav.no/arbeid${props.path}`
+      : `http://localhost:3000/arbeid${props.path}`;
+
   return (
     <Style>
-      <iframe src={props.url} frameBorder={0} />
+      <iframe src={url} frameBorder={0} />
     </Style>
   );
 }

@@ -32,13 +32,14 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 export default function ForsideWrapper(props: Props) {
   const router = useRouter();
   const enablePreview = !!props.preview || !!router.query.preview;
+  const dataset = (enablePreview && (router.query.dataset as string)) || undefined;
 
-  const { data: forsideData } = usePreviewSubscription(forsideQuery, {
+  const { data: forsideData } = usePreviewSubscription(dataset)(forsideQuery, {
     initialData: props.forsideData,
     enabled: enablePreview,
   });
 
-  const { data: menuData } = usePreviewSubscription(menuQuery, {
+  const { data: menuData } = usePreviewSubscription(dataset)(menuQuery, {
     initialData: props.menuData,
     enabled: enablePreview,
   });
