@@ -4,6 +4,7 @@ import { i18nextConfig, TranslationsProvider } from "../i18n/i18nextConfig";
 import { VisForContextProvider } from "../components/BlockContent/VisFor/VisForContext";
 import { DevContextProvider } from "../components/DevKnapper/DevContext";
 import { SupportedLanguage } from "../i18n/supportedLanguages";
+import { PreviewContextProvider } from "../components/Preview/previewContext";
 
 // https://testing-library.com/docs/react-testing-library/setup#custom-render
 const AllTheProviders = (lang: SupportedLanguage): React.FunctionComponent<any> => (props: { children: ReactNode }) => {
@@ -14,7 +15,9 @@ const AllTheProviders = (lang: SupportedLanguage): React.FunctionComponent<any> 
   return (
     <VisForContextProvider>
       <DevContextProvider>
-        <TranslationsProvider>{props.children}</TranslationsProvider>
+        <PreviewContextProvider>
+          <TranslationsProvider>{props.children}</TranslationsProvider>
+        </PreviewContextProvider>
       </DevContextProvider>
     </VisForContextProvider>
   );

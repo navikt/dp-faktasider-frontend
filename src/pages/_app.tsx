@@ -6,7 +6,9 @@ import { AppStyling, GlobalStyling } from "../styles/GlobalStyling";
 import { AppProps } from "next/app";
 import "../styles/index.less";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import PreviewBanner from "../components/Preview/PreviewBanner";
+import { PreviewContextProvider } from "../components/Preview/previewContext";
 
 function App({ Component, pageProps }: AppProps) {
   const locale = useRouter().locale;
@@ -19,10 +21,13 @@ function App({ Component, pageProps }: AppProps) {
       <VisForContextProvider>
         <DevContextProvider>
           <TranslationsProvider>
-            <AppStyling className="typo-normal app">
-              <GlobalStyling />
-              <Component {...pageProps} />
-            </AppStyling>
+            <PreviewContextProvider>
+              <AppStyling className="typo-normal app">
+                <PreviewBanner />
+                <GlobalStyling />
+                <Component {...pageProps} />
+              </AppStyling>
+            </PreviewContextProvider>
           </TranslationsProvider>
         </DevContextProvider>
       </VisForContextProvider>
