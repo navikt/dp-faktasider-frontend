@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { getClient, usePreviewSubscription } from "../sanity/sanity-config";
+import { getClient } from "../sanity/sanity-config";
 import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
 import { useLocale } from "../i18n/useLocale";
@@ -7,7 +7,7 @@ import { forsideQuery, ForsideQueryData } from "../sanity/groq/forside/forsideQu
 import parseForsideData from "../sanity/groq/forside/parseForsideData";
 import { isDevelopment } from "../utils/environment";
 import Forside from "../components/forside/Forside";
-import { useRouter } from "next/router";
+import { useSanityPreveiw } from "../sanity/useSanityPreview";
 
 interface Props {
   forsideData: ForsideQueryData;
@@ -30,19 +30,8 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 };
 
 export default function ForsideWrapper(props: Props) {
-  const router = useRouter();
-  const enablePreview = !!props.preview || !!router.query.preview;
-  const dataset = (enablePreview && (router.query.dataset as string)) || undefined;
-
-  const { data: forsideData } = usePreviewSubscription(dataset)(forsideQuery, {
-    initialData: props.forsideData,
-    enabled: enablePreview,
-  });
-
-  const { data: menuData } = usePreviewSubscription(dataset)(menuQuery, {
-    initialData: props.menuData,
-    enabled: enablePreview,
-  });
+  const forsideData = useSanityPreveiw(props.forsideData, forsideQuery);
+  const menuData = useSanityPreveiw(props.menuData, menuQuery);
 
   const lang = useLocale();
   const parsedForsideData = parseForsideData(forsideData, lang);
