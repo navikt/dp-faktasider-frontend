@@ -2,18 +2,16 @@ import withErrorBoundary from "../components/withErrorBoundary";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Faktaside from "../components/faktaside/Faktaside";
 import { groq } from "next-sanity";
-import { getClient, sanityClient, usePreviewSubscription } from "../sanity/sanity-config";
-import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
+import { getClient, sanityClient } from "../sanity/sanity-config";
+import { faktasideQuery, FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
 import { parseFaktasideData } from "../sanity/groq/faktaside/parseFaktasideData";
 import { useLocale } from "../i18n/useLocale";
-import { MenuQueryData } from "../sanity/groq/menu/menuQuery";
+import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
-import { faktasideQuery } from "../sanity/groq/faktaside/faktasideQuery";
-import { menuQuery } from "../sanity/groq/menu/menuQuery";
 import { isDevelopment } from "../utils/environment";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { supportedLanguages } from "../i18n/supportedLanguages";
-import { useRouter } from "next/router";
+import { useSanityPreveiw } from "../sanity/useSanityPreview";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 
@@ -60,20 +58,8 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 };
 
 function PreviewWrapper(props: Props) {
-  const router = useRouter();
-  const enablePreview = !!props.preview || !!router.query.preview;
-  const dataset = (enablePreview && (router.query.dataset as string)) || undefined;
-
-  const { data: faktasideData } = usePreviewSubscription(dataset)(faktasideQuery, {
-    params: { slug: props.slug },
-    initialData: props.faktasideData,
-    enabled: enablePreview,
-  });
-
-  const { data: menuData } = usePreviewSubscription(dataset)(menuQuery, {
-    initialData: props.menuData,
-    enabled: enablePreview,
-  });
+  const faktasideData = useSanityPreveiw(props.faktasideData, faktasideQuery, { slug: props.slug });
+  const menuData = useSanityPreveiw(props.menuData, menuQuery);
 
   const locale = useLocale();
 
