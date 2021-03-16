@@ -35,11 +35,13 @@ function PreviewBanner() {
     <Style>
       <div>Preview</div>
       <div>{context.dataset}</div>
-      <StyledCheckbox
-        label="Show drafts"
-        checked={context.showDrafts}
-        onChange={() => dispatch({ showDrafts: !context.showDrafts })}
-      />
+      {context.dataset === "production" && (
+        <StyledCheckbox
+          label="Show drafts"
+          checked={context.showDrafts}
+          onChange={() => dispatch({ showDrafts: !context.showDrafts })}
+        />
+      )}
     </Style>
   );
 }
