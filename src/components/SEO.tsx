@@ -9,14 +9,15 @@ interface Props {
   title: string;
   description: string;
   seoImage?: SanityImage;
+  path: string;
 }
 
 const navUrl = "https://www.nav.no";
 
 function SEO(props: Props) {
-  const { basePath, asPath } = useRouter();
+  const { basePath } = useRouter();
   const imageUrl = urlFor(props.seoImage).url() || "";
-  const cannonical = `${navUrl}${basePath}${asPath}`;
+  const cannonical = `${navUrl}${basePath}${props.path}`;
 
   return (
     <Head>

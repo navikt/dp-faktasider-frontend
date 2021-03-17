@@ -80,7 +80,7 @@ const NotFoundPage = (props: Props) => {
 
   return (
     <Style>
-      <SEO title={title} description="Fant ikke siden du lette etter" seoImage={props.data.seoImage} />
+      <SEO title={title} description="Fant ikke siden du lette etter" seoImage={props.data.seoImage} path="/404" />
       <Sidetittel>{t("404")}</Sidetittel>
       <Normaltekst>{t("404-sub")}</Normaltekst>
       <Link href={"/"} passHref>

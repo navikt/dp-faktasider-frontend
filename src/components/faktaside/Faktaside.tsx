@@ -48,7 +48,7 @@ function Faktaside(props: FaktasideProps) {
 
   return (
     <FaktasideProvider faktasideProps={props}>
-      <SEO title={tittel} description={beskrivelse} seoImage={props.rawData.oppsett.seoImage} />
+      <SEO title={tittel} description={beskrivelse} seoImage={props.rawData.oppsett.seoImage} path={`/${props.slug}`} />
       <FaktaSideLayout wordCountRef={wordCountRef}>
         <Header />
         <InnholdetErTilpasset />

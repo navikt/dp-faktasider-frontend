@@ -40,7 +40,7 @@ function Forside(props: Props) {
     <Style>
       <DevKnapper />
       <Header heading={title} beskrivelse={beskrivelse} />
-      <SEO description={beskrivelse} title={title} seoImage={props.forsideData.seoImage} />
+      <SEO description={beskrivelse} title={title} seoImage={props.forsideData.seoImage} path="" />
       <Content>
         <Notifikasjoner notifikasjoner={props.forsideData.forsideNotifikasjoner} />
         <InfosideLenker lenker={props.menuData} />
