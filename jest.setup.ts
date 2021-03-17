@@ -20,3 +20,5 @@ jest.mock("next/router", () => {
     }),
   };
 });
+
+jest.mock("react-use/lib/useKeyboardJs", () => () => [false]);

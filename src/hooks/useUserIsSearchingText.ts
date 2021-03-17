@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { loggSøkITekst } from "../utils/logging";
 
 function useUserIsSearchingText() {
-  const [userIsSearchingText] = useKeyboardJs(["ctrl + f", "command + f"]); // Denne gir warning i test (Warning: An update to Tilleggsinnformasjon inside a test was not wrapped in act(...))
+  const [userIsSearchingText] = useKeyboardJs(["ctrl + f", "command + f"]);
 
   useEffect(() => {
     userIsSearchingText && loggSøkITekst();
