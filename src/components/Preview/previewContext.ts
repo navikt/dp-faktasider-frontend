@@ -1,9 +1,10 @@
 import { createReducerContext } from "react-use";
+import { sanityConfig } from "../../sanity/sanity-config";
 
 const initState = {
   previewMode: false,
   showDrafts: false,
-  dataset: "N/A",
+  dataset: sanityConfig.dataset,
 };
 
 type State = typeof initState;

@@ -9,16 +9,13 @@ export function useSanityPreveiw<Data>(initialData: Data, query: string, params?
   const router = useRouter();
   const [context, dispatch] = usePreviewContext();
   const enablePreview = router.query.preview === "true" || isDevelopment() || context.previewMode;
-  const dataset = (router.query.dataset as string) || "production";
+  const dataset = (router.query.dataset as string) || context.dataset;
 
   useEffect(() => {
     enablePreview && dispatch({ previewMode: true, dataset: dataset, showDrafts: true });
   }, [enablePreview, dataset]);
 
-  const usePreviewSubscription = useMemo(
-    () => createPreviewSubscriptionHook({ ...sanityConfig, dataset: dataset || sanityConfig.dataset }),
-    [dataset]
-  );
+  const usePreviewSubscription = useMemo(() => createPreviewSubscriptionHook({ ...sanityConfig, dataset }), [dataset]);
 
   const { data: previewData, error } = usePreviewSubscription(query, { params, initialData, enabled: enablePreview });
 
