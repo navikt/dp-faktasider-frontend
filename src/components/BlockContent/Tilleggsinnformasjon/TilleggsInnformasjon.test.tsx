@@ -16,7 +16,7 @@ describe("tillegsinformasjon", () => {
   test("viser en vismerknapp man kan trykke på for å ekspandere", () => {
     render(<TestFaktaside innhold={tillegsinformasjonTestData} />);
 
-    const knapp = screen.getByText("Vis mer");
+    const knapp = screen.getByRole("button", { name: "Vis mer" });
 
     expect(knapp.getAttribute("aria-expanded")).toBe("false");
 
