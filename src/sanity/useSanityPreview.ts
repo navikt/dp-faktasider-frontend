@@ -7,9 +7,9 @@ import { usePreviewContext } from "../components/Preview/previewContext";
 
 export function useSanityPreveiw<Data>(initialData: Data, query: string, params?: Record<string, any>): Data {
   const router = useRouter();
-  const enablePreview = router.query.preview === "true" || isDevelopment();
-  const dataset = (router.query.dataset as string) || "production";
   const [context, dispatch] = usePreviewContext();
+  const enablePreview = router.query.preview === "true" || isDevelopment() || context.previewMode;
+  const dataset = (router.query.dataset as string) || "production";
 
   useEffect(() => {
     enablePreview && dispatch({ previewMode: true, dataset: dataset, showDrafts: true });
