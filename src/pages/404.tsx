@@ -15,6 +15,8 @@ import useBreadcrumbs from "../components/faktaside/useBreadcrumbs";
 import localizeSanityContent from "../i18n/localizeSanityContent";
 import { SupportedLanguage } from "../i18n/supportedLanguages";
 import Link from "next/link";
+import { SanityImage } from "../sanity/types";
+import { groq } from "next-sanity";
 
 const Style = styled.div`
   margin: 2rem 0;
@@ -40,17 +42,25 @@ const TilbakeTilForsidelenke = styled.a`
 
 interface Props {
   menuData: MenuQueryData;
-  domeneTittel: string;
+  data: {
+    seoImage?: SanityImage;
+    domeneTittel?: string;
+  };
 }
+
+const query = groq`*[_id == "oppsett"][0]{
+  "domeneTittel": title,
+  seoImage
+}`;
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
-  const domeneTittel = await sanityClient.fetch(`*[_id == "oppsett"][0].title`);
+  const data = await sanityClient.fetch(query);
 
   return {
     props: {
       menuData,
-      domeneTittel,
+      data,
     },
   };
 };
@@ -60,7 +70,7 @@ const NotFoundPage = (props: Props) => {
   const { pathname, locale } = useRouter();
   const menuData = parseMenuData(props.menuData, locale as SupportedLanguage);
   const title = "404: Not found";
-  const forsideTittel = localizeSanityContent(props.domeneTittel, locale as SupportedLanguage);
+  const forsideTittel = localizeSanityContent(props.data.domeneTittel, locale as SupportedLanguage);
 
   useBreadcrumbs(forsideTittel, { tittel: title, slug: "404" });
 
@@ -70,7 +80,7 @@ const NotFoundPage = (props: Props) => {
 
   return (
     <Style>
-      <SEO title={title} description="Fant ikke siden du lette etter" />
+      <SEO title={title} description="Fant ikke siden du lette etter" seoImage={props.data.seoImage} />
       <Sidetittel>{t("404")}</Sidetittel>
       <Normaltekst>{t("404-sub")}</Normaltekst>
       <Link href={"/"} passHref>

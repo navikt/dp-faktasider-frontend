@@ -5,12 +5,12 @@ import { mockMenuData } from "../sanity/groq/menu/mockMenuData";
 
 describe("404-side", () => {
   test("inneholder info om at denne siden ikke finnes", () => {
-    const result = render(<NotFoundPage menuData={mockMenuData} domeneTittel="Test.com" />);
+    const result = render(<NotFoundPage menuData={mockMenuData} data={{ domeneTittel: "Test.com" }} />);
     result.getByText("Fant ikke siden");
   });
 
   test("inneholder en liste med lenker til alle sider i appen", () => {
-    const result = render(<NotFoundPage menuData={mockMenuData} domeneTittel="Test.com" />);
+    const result = render(<NotFoundPage menuData={mockMenuData} data={{ domeneTittel: "Test.com" }} />);
     const liste = result.getByRole("list");
     const lenker = within(liste).getAllByRole("link");
 

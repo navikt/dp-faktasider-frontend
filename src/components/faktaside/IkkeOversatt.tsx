@@ -52,7 +52,7 @@ function IkkeOversatt(props: FaktasideProps) {
 
   return (
     <Style>
-      <SEO title={title} description={props.beskrivelse || ""} />
+      <SEO title={title} description={props.beskrivelse || ""} seoImage={props.rawData.oppsett.seoImage} />
       <Innholdstittel>{t("ikkeOversatt")}</Innholdstittel>
       {oversettelser.length && (
         <>

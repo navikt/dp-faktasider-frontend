@@ -1,6 +1,7 @@
 import { groq } from "next-sanity";
 import { Translations } from "../../../types/translations";
 import { Notifikasjon } from "../../../components/Notifikasjoner";
+import { SanityImage } from "../../types";
 
 export interface Snarvei {
   _type: "snarvei";
@@ -10,6 +11,7 @@ export interface Snarvei {
 }
 
 export interface ForsideQueryData {
+  seoImage?: SanityImage;
   beskrivelse?: Translations<string>;
   snarveier?: Snarvei[];
   notifikasjoner?: Translations<Notifikasjon>;
@@ -17,6 +19,7 @@ export interface ForsideQueryData {
 }
 
 export const forsideQuery = groq`*[_id == "oppsett"][0]{
+  seoImage,
   beskrivelse,
   "snarveier": snarveier[visPaaForside == true],
   notifikasjoner,

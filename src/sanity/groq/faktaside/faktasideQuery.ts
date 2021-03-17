@@ -3,6 +3,7 @@ import { Translations } from "../../../types/translations";
 import { SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
 import { Notifikasjon } from "../../../components/Notifikasjoner";
 import { Snarvei } from "../forside/forsideQuery";
+import { SanityImage } from "../../types";
 
 const innholdFields = `
 [] {
@@ -22,6 +23,7 @@ export const faktasideQuery = groq`{
     }
   },
   'oppsett': *[_id == "oppsett"][0] {
+    seoImage,
     title,
     folketrygdensGrunnbellop,
     notifikasjoner[],
@@ -45,6 +47,7 @@ export interface FaktasideQueryData {
     visIngenValgPasser?: boolean;
   };
   oppsett: {
+    seoImage?: SanityImage;
     title?: Translations<string>;
     folketrygdensGrunnbellop?: number;
     notifikasjoner?: Notifikasjon[];

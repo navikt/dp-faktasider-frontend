@@ -2,16 +2,20 @@ import React from "react";
 import withErrorBoundary from "./withErrorBoundary";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { urlFor } from "../sanity/sanity-config";
+import { SanityImage } from "../sanity/types";
 
 interface Props {
   title: string;
   description: string;
+  seoImage?: SanityImage;
 }
 
 const navUrl = "https://www.nav.no";
 
 function SEO(props: Props) {
   const { basePath, asPath } = useRouter();
+  const imageUrl = urlFor(props.seoImage).url() || "";
   const cannonical = `${navUrl}${basePath}${asPath}`;
 
   return (
@@ -26,6 +30,9 @@ function SEO(props: Props) {
       <meta property="twitter:card" content="summary" />
       <meta property="twitter:title" content={props.title} />
       <meta property="twitter:description" content={props.description} />
+      <meta property="twitter:image" content={imageUrl} />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="image" content={imageUrl} />
     </Head>
   );
 }
