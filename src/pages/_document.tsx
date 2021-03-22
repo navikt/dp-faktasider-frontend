@@ -3,20 +3,19 @@ import { ServerStyleSheet } from "styled-components";
 import { NextPageContext } from "next";
 import { RenderPage } from "next/dist/next-server/lib/utils";
 import { Components, Props, fetchDecoratorReact } from "@navikt/nav-dekoratoren-moduler/ssr";
-
-const dekoratørParams: Props = {
-  // @ts-ignore
-  env: process.env.DEKORATOR_MILJO || "prod",
-  breadcrumbs: [
-    { title: "Forside", url: "https://www.nav.no/arbeid" },
-    { title: "Underside", url: "https://www.nav.no" },
-  ],
-  context: "privatperson",
-};
+import { sanityClient } from "../sanity/sanity-config";
+import { groq } from "next-sanity";
 
 export default class MyDocument extends Document<{ Dekoratøren: Components }> {
   static async getInitialProps(ctx: any) {
     const styledComponentsStylesheet = await renderServersideStyledComponentsStylesheet(ctx);
+    const domeneTittel = await sanityClient.fetch(groq`*[_type == 'oppsett'][0].title.no`);
+    const dekoratørParams: Props = {
+      // @ts-ignore
+      env: process.env.DEKORATOR_MILJO || "prod",
+      breadcrumbs: [{ title: domeneTittel, url: "https://www.nav.no/arbeid/" }],
+      context: "privatperson",
+    };
     const Dekoratøren = await fetchDecoratorReact(dekoratørParams);
     return { ...styledComponentsStylesheet, Dekoratøren };
   }
