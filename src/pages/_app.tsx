@@ -6,15 +6,13 @@ import { AppStyling, GlobalStyling } from "../styles/GlobalStyling";
 import { AppProps } from "next/app";
 import "../styles/index.less";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React from "react";
 import PreviewBanner from "../components/Preview/PreviewBanner";
 import { PreviewContextProvider } from "../components/Preview/previewContext";
 
 function App({ Component, pageProps }: AppProps) {
   const locale = useRouter().locale;
-  useEffect(() => {
-    locale && i18nextConfig.changeLanguage(locale);
-  }, [locale]);
+  locale && i18nextConfig.changeLanguage(locale);
 
   return (
     <ErrorBoundary>
