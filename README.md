@@ -68,8 +68,6 @@ Mange av de automatiske testene har testdata du man kan få visualisert dersom d
 
 ## Deploy av nye tekster fra sanity
 
-> NB! Dette funker ikke for øyeblikket, appen må bygges på nytt for å få ut nye tekster. Dette skal løse seg om vi får ordnet med web-proxy eller kommer oss ut på gcp, jobber med saken
-
 Nextjs sjekker med jevne mellomrom for nytt innhold fra sanity som automatisk vil gå ut i prod. Se `revalidate` i `getStaticProps`-metodene for hvor hyppig intervallet er (2 minutter i dag).
 
 ## Kontakt
