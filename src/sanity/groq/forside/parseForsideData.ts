@@ -14,14 +14,12 @@ export interface ForsideParsedData {
 
 function parseForsideData(data: ForsideQueryData, lang: SupportedLanguage): ForsideParsedData {
   const localizedData = localizeSanityContent(data, lang);
-  const notifikasjoner: Notifikasjon[] = localizedData.notifikasjoner;
-  const forsideNotifikasjoner = notifikasjoner?.filter((notifikasjon) => notifikasjon.visPaaForside);
 
   return {
     title: localizedData.title,
     snarveier: localizedData.snarveier,
     beskrivelse: localizedData.beskrivelse,
-    forsideNotifikasjoner: forsideNotifikasjoner,
+    forsideNotifikasjoner: localizedData.notifikasjoner,
     seoImage: data.seoImage,
   };
 }

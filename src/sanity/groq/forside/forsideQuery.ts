@@ -22,6 +22,6 @@ export const forsideQuery = groq`*[_id == "oppsett"][0]{
   seoImage,
   beskrivelse,
   "snarveier": snarveier[visPaaForside == true],
-  notifikasjoner,
+  "notifikasjoner": notifikasjoner[visPaaForside == true],
   title
 }`;
