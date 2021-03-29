@@ -42,7 +42,7 @@ function Forside(props: Props) {
       <Header heading={title} beskrivelse={beskrivelse} />
       <SEO description={beskrivelse} title={title} seoImage={props.forsideData.seoImage} path="" />
       <Content>
-        <Notifikasjoner notifikasjoner={props.forsideData.forsideNotifikasjoner} />
+        <Notifikasjoner notifikasjoner={props.forsideData.notifikasjoner} />
         <InfosideLenker lenker={props.menuData} />
         <Snarveier snarveier={props.forsideData.snarveier} />
       </Content>

@@ -9,7 +9,7 @@ export interface ForsideParsedData {
   title?: string;
   snarveier?: Snarvei[];
   beskrivelse?: string;
-  forsideNotifikasjoner?: Notifikasjon[];
+  notifikasjoner?: Notifikasjon[];
 }
 
 function parseForsideData(data: ForsideQueryData, lang: SupportedLanguage): ForsideParsedData {
@@ -19,7 +19,7 @@ function parseForsideData(data: ForsideQueryData, lang: SupportedLanguage): Fors
     title: localizedData.title,
     snarveier: localizedData.snarveier,
     beskrivelse: localizedData.beskrivelse,
-    forsideNotifikasjoner: localizedData.notifikasjoner,
+    notifikasjoner: localizedData.notifikasjoner,
     seoImage: data.seoImage,
   };
 }
