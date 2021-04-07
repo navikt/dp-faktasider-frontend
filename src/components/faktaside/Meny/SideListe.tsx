@@ -23,6 +23,7 @@ const listeElementCommonStyling = css`
   font-weight: 600;
   padding: 0.5rem ${theme.layoutPadding};
   color: inherit;
+  text-decoration: none;
 
   .nav-frontend-chevron {
     margin-right: 0.5rem;
@@ -31,19 +32,17 @@ const listeElementCommonStyling = css`
 
   &:hover {
     background-color: ${theme.colors.navLysGra};
+    color: inherit;
   }
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled.a.attrs({ className: "lenke" })`
   display: block;
-  text-decoration: none !important;
   ${listeElementCommonStyling};
 `;
 
 export const menuHighlightStyle = css`
-  && {
-    background-color: #f8f8f8;
-  }
+  background-color: #f8f8f8;
   position: relative;
 
   &::after {
@@ -57,7 +56,7 @@ export const menuHighlightStyle = css`
   }
 `;
 
-const StyledButton = styled.button<{ isOpen: boolean }>`
+const StyledButton = styled.button.attrs({ className: "lenke" })<{ isOpen: boolean }>`
   ${listeElementCommonStyling};
   width: 100%;
   border: none;
@@ -96,7 +95,7 @@ function InternLenke(props: { lenke: MenylenkeInternParsed }) {
 
   return (
     <Link href={props.lenke.path} locale={props.lenke.språk} passHref>
-      <StyledLink className="lenke" onClick={() => loggMeny("Gå til ny side")}>
+      <StyledLink onClick={() => loggMeny("Gå til ny side")}>
         <HoyreChevron />
         <span>
           {props.lenke.tittel} {!props.lenke.tilgjengeligPåValgtSpråk ? `(${props.lenke.språk})` : ""}
