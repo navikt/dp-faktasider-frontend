@@ -1,6 +1,6 @@
 import link from "../richText/annotations/link";
 import { decorators, styles } from "../richText/richText";
-import visForAnnotation from "../richText/annotations/visForAnnotation";
+import visForAnnotationDeltTekst from "../deltTekst/annotations/visForAnnotationDeltTekst";
 
 export default {
   name: "tilleggsInfoRichText",
@@ -19,7 +19,7 @@ export default {
           decorators.foreslattStykes,
           decorators.GtilNOK,
         ],
-        annotations: [link, visForAnnotation],
+        annotations: [link, visForAnnotationDeltTekst],
       },
     },
   ],
