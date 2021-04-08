@@ -11,7 +11,7 @@ const query = `*[_id == "oppsett"][0].filtreringsvalg`;
 function VelgSituasjoner(props: InputComponentProps) {
   const { data } = useSanityQuery<FiltreringsValgData>(query);
 
-  const valg = data?.map((it) => ({ value: valg.no || valg.en || "N/A", label: valg.no || valg.en || "N/A" }));
+  const valg = data?.map((it) => ({ value: it.no || it.en || "N/A", label: it.no || it.en || "N/A" }));
 
   return <StringArrayAsChecboxesInput {...props} tilgjengeligeValg={valg || []} />;
 }
