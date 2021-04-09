@@ -18,6 +18,7 @@ import { tidslinjeTestData } from "../components/BlockContent/Tidslinje/Tidslinj
 import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
 import { translated } from "../testUtils/createSanityBlock";
 import { sistOppdatertTestdata } from "../components/faktaside/content/SistOppdatert.testdata";
+import { wordCountTestData } from "../../cypress/testData/wordcount.testdata";
 
 type FaktasideData = FaktasideQueryData["faktaside"];
 
@@ -96,6 +97,10 @@ const testData: Testdata[] = [
   {
     name: "sist oppdatert",
     data: sistOppdatertTestdata.faktaside,
+  },
+  {
+    name: "Cypress - word count",
+    data: { innhold: translated(wordCountTestData.innhold), kortFortalt: translated(wordCountTestData.kortFortalt) },
   },
 ];
 

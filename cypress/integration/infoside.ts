@@ -2,16 +2,16 @@ describe("infoside", () => {
   it('Viser informasjon om hvor mange ord som er skjult når man bruker "Tilpass innhold"', () => {
     cy.viewport(1200, 600);
     cy.visit("http://localhost:3000/arbeid/testdata");
-    cy.findByRole("button", { name: /visFor/ }).click();
+    cy.findByRole("button", { name: /Cypress - word count/ }).click();
 
     cy.findByLabelText(/tilpass/i).within(() => {
       cy.findByText(/permittert/i).click();
-      cy.contains("viser nå 31 av 58 ord");
+      cy.contains("viser nå 20 av 49 ord");
       cy.findByText(/permittert/i).click();
       cy.findByText(/konkurs/i).click();
-      cy.contains("viser nå 19 av 58 ord");
+      cy.contains("viser nå 12 av 49 ord");
       cy.findByText(/ingen valg/i).click();
-      cy.contains("viser nå 29 av 58 ord");
+      cy.contains("viser nå 26 av 49 ord");
     });
   });
 
