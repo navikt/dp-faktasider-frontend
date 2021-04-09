@@ -8,4 +8,4 @@
 !jest*
 !triggBygg.md
 !csp.js
-!cypress
+!cypress/testData
