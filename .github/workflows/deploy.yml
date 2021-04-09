@@ -1,4 +1,4 @@
-name: Build and deploy dp-faktasider-frontend
+name: Test, build and deploy dp-faktasider-frontend
 
 on:
   workflow_dispatch:
@@ -6,23 +6,24 @@ on:
     branches:
       - main
       - dev
+      - cypress
+
 env:
   IMAGE: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend:${{ github.sha }}
   IMAGE_CACHE_RUNTIME: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend-cache-runtime
   IMAGE_CACHE_BUILDER: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend-cache-builder
+
 jobs:
-  test:
-    name: Run tests
+  jest-test:
+    name: Jest tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Set up node
         uses: actions/setup-node@v1
         with:
           node-version: '14.x'
-
       - name: Cache node modules
         uses: actions/cache@v2
         env:
@@ -45,20 +46,30 @@ jobs:
           npm test
           npm run typeCheck
 
+  cypress-test:
+    name: Cypress tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm start
+
   build:
     name: Build and publish Docker image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
           registry: docker.pkg.github.com
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Build docker image with cache
         env:
           DOCKER_BUILDKIT: 1
@@ -69,7 +80,6 @@ jobs:
             --cache-from=${{ env.IMAGE_CACHE_BUILDER }},${{ env.IMAGE_CACHE_RUNTIME }} \
             --build-arg BUILDKIT_INLINE_CACHE=1
           docker push ${{ env.IMAGE }}
-
       - name: Archive NAIS yaml
         uses: actions/upload-artifact@v1
         with:
@@ -83,14 +93,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
           registry: docker.pkg.github.com
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Build and push
         env:
           DOCKER_BUILDKIT: 1
@@ -112,7 +120,6 @@ jobs:
         with:
           name: nais-yaml
           path: nais
-
       - uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
@@ -123,7 +130,7 @@ jobs:
 
   deploy-prod-gcp:
     name: Deploy to prod gcp
-    needs: [ deploy-dev-gcp, test ]
+    needs: [ deploy-dev-gcp, jest-test, cypress-test ]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
@@ -132,7 +139,6 @@ jobs:
         with:
           name: nais-yaml
           path: nais
-
       - uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}

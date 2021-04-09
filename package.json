@@ -69,6 +69,7 @@
   },
   "devDependencies": {
     "@sanity/cli": "^2.6.0",
+    "@testing-library/cypress": "^7.0.4",
     "@types/amplitude-js": "^6.0.0",
     "@types/date-fns": "^2.6.0",
     "@types/node": "^14.14.28",
@@ -78,6 +79,7 @@
     "@types/react-i18next": "^8.1.0",
     "@types/styled-components": "^5.1.7",
     "concurrently": "^5.3.0",
+    "cypress": "^6.7.1",
     "husky": "^4.3.0",
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.0",
@@ -89,6 +91,8 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
+    "cypress:open": "npx cypress open",
+    "cypress:run": "npm run build && concurrently \"npm run start\" \"npx cypress run\"",
     "typeCheck": "tsc",
     "postinstall": "lerna bootstrap",
     "docker": "docker build -t dpfakta . && docker run --rm -p 3000:3000 dpfakta"
