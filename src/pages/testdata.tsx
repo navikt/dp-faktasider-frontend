@@ -3,7 +3,7 @@ import { useReducer } from "react";
 import { visForTestData } from "../components/BlockContent/VisFor/visFor.testdata";
 import { faktaSideMockQueryData } from "../testUtils/faktaSideMockQueryData";
 import styled from "styled-components/macro";
-import { Normaltekst, Sidetittel, Undertittel } from "nav-frontend-typografi";
+import { Sidetittel, Undertittel } from "nav-frontend-typografi";
 import { Knapp } from "nav-frontend-knapper";
 import { flattenH2TestData } from "../utils/richTextUtils/parser/flattenH2Versions/flattenH2Versions.testdata";
 import { makeUniqueIdTestData } from "../utils/richTextUtils/parser/makeUniqeGroupIDs/makeUniqeGroupIDs.testdata";
@@ -144,10 +144,6 @@ function Testdata() {
       <Style>
         <Sidetittel>Visualisering av testdata brukt i automatiske tester</Sidetittel>
         <Undertittel>Velg testdata:</Undertittel>
-        <Normaltekst>
-          Ikke all data her blir mocket, komponenter som bruker staticQuery er litt vanskelig å mocke run-time, men
-          navigasjonsmenyen har blitt mocket med en test-provider.
-        </Normaltekst>
         {testData.map((data) => (
           <StyledKnapp key={data.name} onClick={() => dispatch({ type: "setData", data: data.data })}>
             {data.name}
