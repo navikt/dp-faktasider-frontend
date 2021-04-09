@@ -3,7 +3,7 @@ import { useReducer } from "react";
 import { visForTestData } from "../components/BlockContent/VisFor/visFor.testdata";
 import { faktaSideMockQueryData } from "../testUtils/faktaSideMockQueryData";
 import styled from "styled-components/macro";
-import { Normaltekst, Sidetittel, Undertittel } from "nav-frontend-typografi";
+import { Sidetittel, Undertittel } from "nav-frontend-typografi";
 import { Knapp } from "nav-frontend-knapper";
 import { flattenH2TestData } from "../utils/richTextUtils/parser/flattenH2Versions/flattenH2Versions.testdata";
 import { makeUniqueIdTestData } from "../utils/richTextUtils/parser/makeUniqeGroupIDs/makeUniqeGroupIDs.testdata";
@@ -18,6 +18,7 @@ import { tidslinjeTestData } from "../components/BlockContent/Tidslinje/Tidslinj
 import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
 import { translated } from "../testUtils/createSanityBlock";
 import { sistOppdatertTestdata } from "../components/faktaside/content/SistOppdatert.testdata";
+import { wordCountTestData } from "../../cypress/testData/wordcount.testdata";
 
 type FaktasideData = FaktasideQueryData["faktaside"];
 
@@ -97,6 +98,10 @@ const testData: Testdata[] = [
     name: "sist oppdatert",
     data: sistOppdatertTestdata.faktaside,
   },
+  {
+    name: "Cypress - word count",
+    data: { innhold: translated(wordCountTestData.innhold), kortFortalt: translated(wordCountTestData.kortFortalt) },
+  },
 ];
 
 const Style = styled.div`
@@ -144,10 +149,6 @@ function Testdata() {
       <Style>
         <Sidetittel>Visualisering av testdata brukt i automatiske tester</Sidetittel>
         <Undertittel>Velg testdata:</Undertittel>
-        <Normaltekst>
-          Ikke all data her blir mocket, komponenter som bruker staticQuery er litt vanskelig å mocke run-time, men
-          navigasjonsmenyen har blitt mocket med en test-provider.
-        </Normaltekst>
         {testData.map((data) => (
           <StyledKnapp key={data.name} onClick={() => dispatch({ type: "setData", data: data.data })}>
             {data.name}
