@@ -11,7 +11,7 @@ describe("infoside", () => {
       cy.findByText(/konkurs/i).click();
       cy.contains("viser nå 19 av 58 ord");
       cy.findByText(/ingen valg/i).click();
-      cy.contains("viser nå 20 av 58 ord");
+      cy.contains("viser nå 29 av 58 ord");
     });
   });
 
