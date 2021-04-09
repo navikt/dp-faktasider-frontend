@@ -28,5 +28,8 @@ export function useWordCount(contentRef: RefObject<HTMLElement>) {
 }
 
 function getWordCount(ref: RefObject<HTMLElement>) {
-  return ref.current?.innerText?.match(/\s+/g)?.length ?? NaN;
+  const whitespaces = ref.current?.innerText?.trim().match(/\s+/g)?.length;
+  if (whitespaces === undefined) return NaN;
+  //plusser på en da siste ord ikke har whitespace
+  else return whitespaces + 1;
 }
