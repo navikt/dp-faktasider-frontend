@@ -20,6 +20,7 @@ import Snarveier from "./content/Snarveier";
 import Header from "./content/Header";
 import useLanguageSelector from "./useLanguageSelector";
 import { MenuItem } from "../../sanity/groq/menu/parseMenuData";
+import TilpassInnhold from "./TilpassInnhold/TilpassInnhold";
 
 export interface FaktasideProps extends FaktasideParsedData {
   menuData: MenuItem[];
@@ -49,12 +50,13 @@ function Faktaside(props: FaktasideProps) {
   return (
     <FaktasideProvider faktasideProps={props}>
       <SEO title={tittel} description={beskrivelse} seoImage={props.rawData.oppsett.seoImage} path={`/${props.slug}`} />
-      <FaktaSideLayout wordCountRef={wordCountRef}>
+      <FaktaSideLayout>
         <Header />
         <InnholdetErTilpasset />
         <Notifikasjoner notifikasjoner={props?.notifikasjoner} />
         <div ref={wordCountRef}>
           <KortFortalt blocks={props.kortFortalt} beskrivelse={beskrivelse} />
+          {wordCountRef && <TilpassInnhold wordCountRef={wordCountRef} />}
           <BlockContent blocks={props.innhold} />
           <Snarveier snarveier={props.snarveier} />
         </div>
