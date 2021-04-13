@@ -4,8 +4,8 @@ import { useFaktasideContext } from "../FaktaSideContext";
 
 export function useWordCount(contentRef: RefObject<HTMLElement>) {
   const { checked, ingenPasserMeg } = useVisForContext().value;
-  const [totalWordCount, setTotalWordCount] = useState<number | undefined>(0);
-  const [currentWordCount, setCurrentWordCount] = useState<number | undefined>(0);
+  const [totalWordCount, setTotalWordCount] = useState<number>(0);
+  const [currentWordCount, setCurrentWordCount] = useState<number>(0);
   const { id } = useFaktasideContext();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function useWordCount(contentRef: RefObject<HTMLElement>) {
     }
   }, [checked, contentRef, ingenPasserMeg]);
 
-  const removed = totalWordCount && currentWordCount ? totalWordCount - currentWordCount : undefined;
+  const removed = totalWordCount - currentWordCount;
 
   return {
     total: totalWordCount,
@@ -28,5 +28,8 @@ export function useWordCount(contentRef: RefObject<HTMLElement>) {
 }
 
 function getWordCount(ref: RefObject<HTMLElement>) {
-  return ref.current?.innerText?.match(/\s+/g)?.length;
+  const whitespaces = ref.current?.innerText?.trim().match(/\s+/g)?.length;
+  if (whitespaces === undefined) return NaN;
+  //plusser på en da siste ord ikke har whitespace
+  else return whitespaces + 1;
 }

@@ -1,15 +1,13 @@
 import * as React from "react";
-import { ReactNode, RefObject } from "react";
+import { ReactNode } from "react";
 import styled, { createGlobalStyle, css } from "styled-components/macro";
 import DevKnapper from "../../components/DevKnapper/DevKnapper";
 import withErrorBoundary from "../../components/withErrorBoundary";
-import Filtrering from "./TilpassInnhold/TilpassInnhold";
 import { theme } from "../../styles/theme";
 import Meny from "./Meny/Meny";
 
 interface Props {
   children: ReactNode;
-  wordCountRef?: RefObject<HTMLElement>;
 }
 
 export const maxWidth = "77rem";
@@ -68,16 +66,6 @@ const ContentStyle = styled.div`
   @media (${theme.media.bigScreen}) {
     display: flex;
     align-items: flex-start;
-    .order-1 {
-      order: 1;
-    }
-    .order-2 {
-      order: 2;
-      flex-grow: 1;
-    }
-    .order-3 {
-      order: 3;
-    }
   }
 `;
 
@@ -87,9 +75,8 @@ function FaktaSideLayout(props: Props) {
       <Brødsmulestyling />
       <DevKnapper />
       <ContentStyle>
-        <Meny className="order-1" />
-        {props.wordCountRef && <Filtrering wordCountRef={props.wordCountRef} className="order-3" />}
-        <MainContentStyle className="order-2">{props.children}</MainContentStyle>
+        <Meny />
+        <MainContentStyle>{props.children}</MainContentStyle>
       </ContentStyle>
     </>
   );
