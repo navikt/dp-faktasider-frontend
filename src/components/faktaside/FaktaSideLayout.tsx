@@ -10,7 +10,7 @@ interface Props {
   children: ReactNode;
 }
 
-export const maxWidth = "77rem";
+export const maxWidth = "67rem";
 
 const Brødsmulestyling = createGlobalStyle`
 .decorator-wrapper .decorator-utils-content {
