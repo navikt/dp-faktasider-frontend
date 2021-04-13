@@ -12,6 +12,7 @@ import getAlleTilpassInnholdValg from "./getAlleTilpassInnholdValg";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { useWordCount } from "./useWordCount";
 import { navFrontend } from "../../../styles/navFrontend";
+import InnholdetErTilpasset from "./InnholdetErTilpasset";
 
 const StyledNav = styled.nav`
   background-color: white;
@@ -27,6 +28,7 @@ const StyledNav = styled.nav`
 const StyledUl = styled.ul`
   list-style: none !important;
   padding-left: 0 !important;
+
   li {
     margin-top: 0.6rem;
   }
@@ -34,6 +36,7 @@ const StyledUl = styled.ul`
 
 const StyledUndertittel = styled(Systemtittel)`
   margin-bottom: ${theme.layoutPadding} !important;
+
   &::after {
     border-bottom: ${navFrontend.navGra40} 0.1rem solid;
     content: "";
@@ -65,33 +68,36 @@ function TilpassInnhold(props: Props) {
   }
 
   return (
-    <StyledNav className={props.className} aria-labelledby={titleId} ref={tilpassInnholdRef}>
-      <StyledUndertittel id={titleId}>Tilpass innhold</StyledUndertittel>
-      <Normaltekst>Velg det som passer din situasjon best:</Normaltekst>
-      <StyledUl>
-        {tilgjengeligeValg.map((valg) => (
-          <li key={valg}>
-            <Checkbox
-              label={valg}
-              onChange={() => visForContext.dispatch({ type: "toggle", key: valg })}
-              checked={valgt.includes(valg)}
-            />
-          </li>
-        ))}
-        {visIngenValgPasser && (
-          <li>
-            <Checkbox
-              label={"Ingen valg passer"}
-              onChange={() => visForContext.dispatch({ type: "toggleIngenPasser" })}
-              checked={ingenPasserMeg}
-            />
-          </li>
-        )}
-      </StyledUl>
-      <UnmountClosed isOpened={valgt.length > 0 || ingenPasserMeg}>
-        Vi viser nå {currentWords} av {totalWords} ord på denne siden
-      </UnmountClosed>
-    </StyledNav>
+    <div ref={tilpassInnholdRef}>
+      <StyledNav className={props.className} aria-labelledby={titleId}>
+        <StyledUndertittel id={titleId}>Tilpass innhold</StyledUndertittel>
+        <Normaltekst>Velg det som passer din situasjon best:</Normaltekst>
+        <StyledUl>
+          {tilgjengeligeValg.map((valg) => (
+            <li key={valg}>
+              <Checkbox
+                label={valg}
+                onChange={() => visForContext.dispatch({ type: "toggle", key: valg })}
+                checked={valgt.includes(valg)}
+              />
+            </li>
+          ))}
+          {visIngenValgPasser && (
+            <li>
+              <Checkbox
+                label={"Ingen valg passer"}
+                onChange={() => visForContext.dispatch({ type: "toggleIngenPasser" })}
+                checked={ingenPasserMeg}
+              />
+            </li>
+          )}
+        </StyledUl>
+        <UnmountClosed isOpened={valgt.length > 0 || ingenPasserMeg}>
+          Vi viser nå {currentWords} av {totalWords} ord på denne siden
+        </UnmountClosed>
+      </StyledNav>
+      <InnholdetErTilpasset />
+    </div>
   );
 }
 

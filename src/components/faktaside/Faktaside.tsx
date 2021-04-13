@@ -7,7 +7,6 @@ import IkkeOversatt from "./IkkeOversatt";
 import { FaktasideProvider } from "./FaktaSideContext";
 import SEO from "../SEO";
 import FaktaSideLayout from "./FaktaSideLayout";
-import InnholdetErTilpasset from "./TilpassInnhold/InnholdetErTilpasset";
 import BlockContent from "../BlockContent/BlockContent";
 import { useRouter } from "next/router";
 import { SupportedLanguage } from "../../i18n/supportedLanguages";
@@ -52,7 +51,6 @@ function Faktaside(props: FaktasideProps) {
       <SEO title={tittel} description={beskrivelse} seoImage={props.rawData.oppsett.seoImage} path={`/${props.slug}`} />
       <FaktaSideLayout>
         <Header />
-        <InnholdetErTilpasset />
         <Notifikasjoner notifikasjoner={props?.notifikasjoner} />
         <div ref={wordCountRef}>
           <KortFortalt blocks={props.kortFortalt} beskrivelse={beskrivelse} />
