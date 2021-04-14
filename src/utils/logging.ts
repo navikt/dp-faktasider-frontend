@@ -11,13 +11,15 @@ const loggEvent = (event: string, ekstraData?: object) => {
     return;
   }
 
-  import("../utils/loggingConfig").then((logging) =>
+  import("../utils/loggingConfig").then((logging) => {
+    const smallScreen = window.innerWidth < mediaBreakpoint;
     logging.loggInstance.logEvent(event, {
       ...ekstraData,
       appName: "dp-faktasider",
-      smallScreen: window.innerWidth < mediaBreakpoint,
-    })
-  );
+      smallScreen, // TODO fjern denne når det har gått litt tid, feks etter mai 2021. erstattes av 'screenSize'
+      screenSize: smallScreen ? "small" : "large",
+    });
+  });
 };
 
 export const loggError = (error: Error, ekstraData?: object) => {
