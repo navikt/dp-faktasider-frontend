@@ -11,13 +11,15 @@ const loggEvent = (event: string, ekstraData?: object) => {
     return;
   }
 
-  import("../utils/loggingConfig").then((logging) =>
+  import("../utils/loggingConfig").then((logging) => {
+    const smallScreen = window.innerWidth < mediaBreakpoint;
     logging.loggInstance.logEvent(event, {
       ...ekstraData,
       appName: "dp-faktasider",
-      smallScreen: window.innerWidth < mediaBreakpoint,
-    })
-  );
+      smallScreen, // TODO fjern denne når det har gått litt tid, feks etter mai 2021. erstattes av 'screenSize'
+      screenSize: smallScreen ? "small" : "large",
+    });
+  });
 };
 
 export const loggError = (error: Error, ekstraData?: object) => {
@@ -34,8 +36,6 @@ export const loggError = (error: Error, ekstraData?: object) => {
   return loggEvent("Error", data);
 };
 
-export const loggRedirect = (fraLenke: string) => loggEvent("Redirect fra gammel lenke", { fraLenke });
-
 export const loggSidevisning = (side: string) => {
   loggEvent("Side vist", { side });
   setTimeout(() => loggEvent("Ble mer enn 3 sekunder", { side }), 3000);
@@ -44,8 +44,6 @@ export const loggSidevisning = (side: string) => {
 export const loggIkkeOversatt = (side: string) => loggEvent("Ikke oversatt", { side });
 
 export const loggKalkulatorbruk = (type: string) => loggEvent("Brukt kalkulator", { type });
-
-export const loggHashlenkeKlikk = () => loggEvent("Brukt hashlenke");
 
 export const loggMeny = (type: string) => loggEvent("Meny", { type });
 
@@ -58,5 +56,3 @@ export const loggTilpassInnhold = (situasjon: string) => loggEvent("Tilpasset in
 export const loggNotFound = (path: string) => loggEvent("404 - not found", { path });
 
 export const loggHashNotFound = (hash: string, path: string) => loggEvent("Hashlenke finnes ikke", { path, hash });
-
-export const loggSøkITekst = () => loggEvent("Søk i tekst");

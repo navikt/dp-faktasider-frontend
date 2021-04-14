@@ -1,7 +1,6 @@
 import * as React from "react";
 import styled from "styled-components/macro";
 import { theme } from "../styles/theme";
-import { loggHashlenkeKlikk } from "../utils/logging";
 
 const StyledA = styled.a`
   margin-left: 0.5rem;
@@ -21,7 +20,7 @@ interface Props {
 function HashLink(props: Props) {
   return (
     <Wrapper>
-      <StyledA aria-label=" Ankerlenke" href={`#${props.id}`} onClick={loggHashlenkeKlikk}>
+      <StyledA aria-label=" Ankerlenke" href={`#${props.id}`}>
         <LinkIcon />
       </StyledA>
     </Wrapper>
