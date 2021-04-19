@@ -76,7 +76,7 @@ function FaktaSideLayout(props: Props) {
       <DevKnapper />
       <ContentStyle>
         <Meny />
-        <MainContentStyle>{props.children}</MainContentStyle>
+        <MainContentStyle id={"maincontent"}>{props.children}</MainContentStyle>
       </ContentStyle>
     </>
   );
