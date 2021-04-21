@@ -5,6 +5,7 @@ import FaktasideSEOPreview from "./previews/FaktasideSEOPreview";
 import ForsideSEOPreview from "./previews/ForsideSEOPreview";
 import ForsidePreview from "./previews/ForsidePreview";
 import DemoappPreview from "./previews/DemoappPreview";
+import { DagpengeKalkulatorIkon } from "./schemas/kalkulator/kalkulator";
 
 export default () =>
   S.list()
@@ -23,7 +24,11 @@ export default () =>
               S.view.component(ForsidePreview).title("Forside-preview"),
             ])
         ),
-      ...S.documentTypeListItems().filter((listItem) => !["oppsett"].includes(listItem.getId())),
+      S.listItem()
+        .title("DagpengerKalkulator")
+        .icon(DagpengeKalkulatorIkon)
+        .child(S.editor().schemaType("dagpengekalkulator").documentId("dagpengekalkulator")),
+      ...S.documentTypeListItems().filter((listItem) => !["oppsett", "dagpengekalkulator"].includes(listItem.getId())),
     ]);
 
 export const getDefaultDocumentNode = ({ schemaType }) => {
