@@ -4,7 +4,7 @@ import getPreviewTextFromBlockContent from "../utils/getPreviewTextFromBlockCont
 export default {
   type: "object",
   name: "notifikasjon",
-  title: "Notifikasjon",
+  title: "Blå informasjonsboks",
   icon: FiAlertCircle,
   fields: [
     {

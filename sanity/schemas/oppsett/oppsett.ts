@@ -62,6 +62,7 @@ export default {
     },
     {
       name: "notifikasjoner",
+      title: "Blå informasjonsbokser",
       type: "array",
       of: [
         {
