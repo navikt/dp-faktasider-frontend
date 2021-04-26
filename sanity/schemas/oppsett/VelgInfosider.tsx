@@ -9,7 +9,7 @@ type Infoside = {
   title: Translations<string>;
 };
 
-const query = `*[_type == "faktaSide"] {
+const query = `*[_type == "faktaSide" && !(_id in path("drafts.**"))] {
   _id,
   title
 }`;

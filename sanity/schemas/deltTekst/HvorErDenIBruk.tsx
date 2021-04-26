@@ -15,7 +15,7 @@ const Emoji = styled.span`
 `;
 
 type Referrer = {
-  title?: { _type: "localeString"; no: string };
+  title?: { _type: "localeString"; no?: string; en?: string };
   _id: string;
   _type: string;
 };
@@ -42,19 +42,33 @@ function HvorErDenIBruk(props: any) {
     );
   }
 
-  const referenceBaseUrl = window.location.pathname.split("/").slice(0, -1).join("/");
-
   return (
     <div {...props}>
       <Header>Denne delte teksten er brukt {data.length} steder:</Header>
       <ul>
-        {data.map((ref) => (
-          <li>
-            <a href={`${referenceBaseUrl}/${ref._type};${ref._id}`}>{ref?.title?.no}</a>
-          </li>
+        {data.map((refferer) => (
+          <Element refferer={refferer} />
         ))}
       </ul>
     </div>
+  );
+}
+
+function Element(props: { refferer: Referrer }) {
+  const { refferer } = props;
+  const refferenceBaseUrl = window.location.pathname.split("/").slice(0, -1).join("/");
+
+  const isDraft = refferer._id.includes("drafts.");
+  const url = `${refferenceBaseUrl}/${refferer._type};${refferer._id.replace("drafts.", "")}`;
+  const title = refferer?.title?.no || refferer?.title?.en;
+
+  return (
+    <li>
+      <a href={url}>
+        {title}
+        {isDraft && " (draft)"}
+      </a>
+    </li>
   );
 }
 
