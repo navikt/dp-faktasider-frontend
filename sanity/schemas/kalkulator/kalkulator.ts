@@ -24,6 +24,11 @@ export default {
       type: "string",
     },
     {
+      name: "loadingmessage",
+      type: "string",
+      title: "Ventebeskjed - laster inntekter fra skatteetaten",
+    },
+    {
       name: "tilbake",
       title: "Tilbake til dagpenger - lenketekst",
       type: "string",
