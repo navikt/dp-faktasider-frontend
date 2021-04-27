@@ -24,10 +24,14 @@ import tidslinje from "./tidslinje/tidslinje";
 import notifikasjon from "./notifikasjon/notifikasjon";
 import menyLenkeEkstern from "./oppsett/menylenkeEkstern";
 import notifikasjonRichText from "./notifikasjon/notifikasjonRichText";
+import kalkulator from "./kalkulator/kalkulator";
+import richTextKalkulator from "./kalkulator/richTextKalkulator";
 
 export default createSchema({
   name: "dagpenger-info",
   types: schemaTypes.concat([
+    kalkulator,
+    richTextKalkulator,
     richText,
     faktaSide,
     customComponent,
