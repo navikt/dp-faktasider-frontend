@@ -49,7 +49,7 @@ export default {
     prepare(selection) {
       return {
         title: selection.title,
-        media: FaCalculator,
+        media: DagpengeKalkulatorIkon,
       };
     },
   },

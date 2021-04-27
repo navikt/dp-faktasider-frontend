@@ -24,11 +24,11 @@ export default () =>
               S.view.component(ForsidePreview).title("Forside-preview"),
             ])
         ),
+      ...S.documentTypeListItems().filter((listItem) => !["oppsett", "dagpengekalkulator"].includes(listItem.getId())),
       S.listItem()
         .title("DagpengerKalkulator")
         .icon(DagpengeKalkulatorIkon)
         .child(S.editor().schemaType("dagpengekalkulator").documentId("dagpengekalkulator")),
-      ...S.documentTypeListItems().filter((listItem) => !["oppsett", "dagpengekalkulator"].includes(listItem.getId())),
     ]);
 
 export const getDefaultDocumentNode = ({ schemaType }) => {
