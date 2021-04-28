@@ -44,12 +44,12 @@ export const groupParser: RichTextParser = (blocks) => {
 
 function createBlockConfig(block: ParsedSanityBlock): BlockConfigFromParser {
   const currentConfig = block?.blockConfig;
+  const commonVisForConfig = getCommonVisForConfig(block);
+
   return {
     ...currentConfig,
     erUtkast: allChildrenMarkedWith(block, "utkast"),
-    visFor: getCommonVisForConfig(block)?.visFor,
-    visPaaSider: block.markDefs
-      ?.find((markDef) => markDef._type === "visForAnnotationDeltTekst")
-      ?.visPaaSider?.map((side) => side._ref),
+    visFor: commonVisForConfig?.visFor,
+    visPaaSider: commonVisForConfig?.visPaa,
   };
 }

@@ -9,7 +9,6 @@ import FremhevetTekst from "./FremhevetTekst";
 import { UtkastInline } from "./utkast/Utkast";
 import VisForAnnotation from "./VisFor/VisForAnnotation";
 import GroupMarkup from "./GroupMarkup/GroupMarkup";
-import VisForAnnotationDeltTekst from "./VisFor/VisForAnnotationDeltTekst";
 import withErrorBoundary from "../withErrorBoundary";
 import Tilleggsinnformasjon from "./Tilleggsinnformasjon/TilleggsInnformasjon";
 import ListItemRenderer from "./ListItemRenderer";
@@ -46,7 +45,7 @@ const serializers: Serializers = {
     utkast: UtkastInline,
     GtilNOK: GtilNOKAnnotation,
     visForAnnotation: VisForAnnotation,
-    visForAnnotationDeltTekst: VisForAnnotationDeltTekst,
+    visForAnnotationDeltTekst: VisForAnnotation,
   },
 };
 

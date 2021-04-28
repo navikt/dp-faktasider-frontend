@@ -4,5 +4,5 @@ import visForAnnotation from "../../richText/annotations/visForAnnotation";
 export default {
   ...visForAnnotation,
   name: "visForAnnotationDeltTekst",
-  fields: visForAnnotation.fields,
+  title: "Vis for (gammel)",
 };

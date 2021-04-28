@@ -4,7 +4,7 @@ import ConditionalField from "../../../components/ConditionalField";
 export default {
   name: "visForAnnotation",
   type: "object",
-  title: "Vis merket tekst",
+  title: "Vis for",
   blockEditor: {
     icon: InlineVisForIkon,
     render: InlineVisForPreview,

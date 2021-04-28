@@ -82,7 +82,7 @@ function createVisForMark(config: { visPaaSideIder?: string[]; visFor?: string[]
     markKey: markKey,
     markDef: {
       _key: markKey,
-      _type: config.visPaaSideIder ? "visForAnnotationDeltTekst" : "visForAnnotation",
+      _type: "visForAnnotation",
       visFor: {
         situasjoner: config.visFor,
         skjulFor: config.omvendtFiltrering,
