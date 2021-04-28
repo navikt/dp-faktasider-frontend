@@ -21,7 +21,7 @@ export const faktaSideMockQueryData: FaktasideQueryData = {
   },
   oppsett: {
     folketrygdensGrunnbellop: 1000,
-    notifikasjoner: [],
     title: translated("Domenetittel"),
   },
+  notifikasjoner: [],
 };

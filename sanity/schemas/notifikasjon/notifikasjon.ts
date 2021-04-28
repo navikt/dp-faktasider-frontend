@@ -1,8 +1,9 @@
 import { FiAlertCircle } from "react-icons/fi";
 import getPreviewTextFromBlockContent from "../utils/getPreviewTextFromBlockContent";
+import VelgInfosider from "../oppsett/VelgInfosider";
 
 export default {
-  type: "object",
+  type: "document",
   name: "notifikasjon",
   title: "Blå informasjonsboks",
   icon: FiAlertCircle,
@@ -22,16 +23,16 @@ export default {
       type: "boolean",
     },
     {
-      name: "visPaaSider",
-      title: "Vis på side:",
+      name: "visPaaKalkulator",
+      title: "Vis på dagpengekalkulatoren",
+      type: "boolean",
+    },
+    {
+      name: "visPaaFaktaSider",
+      title: "Vis på Infoside",
       type: "array",
-      of: [
-        {
-          type: "reference",
-          description: 'Faktasiden må være "Published" for å dukke opp i denne lista',
-          to: { type: "faktaSide" },
-        },
-      ],
+      of: [{ type: "string" }],
+      inputComponent: VelgInfosider,
     },
   ],
   preview: {
