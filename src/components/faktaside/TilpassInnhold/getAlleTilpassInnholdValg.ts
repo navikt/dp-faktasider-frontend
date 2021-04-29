@@ -5,6 +5,7 @@ import { getUniqueStrings } from "../../BlockContent/VisFor/VisFor";
 
 export type TilpassInnholdValg = string[];
 
+// fikser bug med markDef som kan eksistere på sanity-data selv om den ikke er i bruk.
 function fjernMarkDefsSomIkkeErIBruk(markDefs: MarkDef[], altInnhold: Block[]) {
   const alleMarks = getPropertyRecursivlyFromDeepObject<string>(altInnhold, "marks");
   return markDefs.filter((markDef) => alleMarks.includes(markDef._key));

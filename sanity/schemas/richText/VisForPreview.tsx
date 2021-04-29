@@ -14,7 +14,7 @@ type VisFor = {
 
 function getVisForLabel(visFor: VisFor): string {
   if (!visFor?.situasjoner?.length) {
-    return "Ingen situasjoner valgt";
+    return "";
   }
 
   return (visFor.skjulFor ? "Skjules for " : "Vises for ") + visFor.situasjoner.join(" & ");
@@ -24,14 +24,20 @@ interface Props {
   visPaaSider: any[];
   visFor: VisFor;
   children: ReactNode;
+  _type: "visForAnnotation" | "visForAnnotationDeltTekst";
 }
 
 export function InlineVisForPreview(props: Props) {
-  const visForSide = props.visPaaSider?.length ? "Vises på utvalgte sider. " : "";
-  const label = getVisForLabel(props.visFor);
+  const visPaaSideLabel = props.visPaaSider?.length ? "Vises på utvalgte sider." : "";
+  const visForSituasjonLabel = getVisForLabel(props.visFor);
+  const deprecatedAnnotation = props._type === "visForAnnotationDeltTekst";
+  const label = deprecatedAnnotation
+    ? "Bytt til visForAnnotation"
+    : visForSituasjonLabel + visPaaSideLabel || "Ingen situasjoner valgt";
+  const color = deprecatedAnnotation ? "red" : props.visFor?.skjulFor ? skjulForColor : visForColor;
 
   return (
-    <InlinePreview label={visForSide + label} color={props.visFor?.skjulFor ? skjulForColor : visForColor}>
+    <InlinePreview label={label} color={color}>
       {props.children}
     </InlinePreview>
   );
