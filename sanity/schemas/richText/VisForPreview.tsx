@@ -24,17 +24,14 @@ interface Props {
   visPaaSider: any[];
   visFor: VisFor;
   children: ReactNode;
-  _type: "visForAnnotation" | "visForAnnotationDeltTekst";
+  _type: "visForAnnotation";
 }
 
 export function InlineVisForPreview(props: Props) {
   const visPaaSideLabel = props.visPaaSider?.length ? "Vises på utvalgte sider." : "";
   const visForSituasjonLabel = getVisForLabel(props.visFor);
-  const deprecatedAnnotation = props._type === "visForAnnotationDeltTekst";
-  const label = deprecatedAnnotation
-    ? "Bytt til visForAnnotation"
-    : visForSituasjonLabel + visPaaSideLabel || "Ingen situasjoner valgt";
-  const color = deprecatedAnnotation ? "red" : props.visFor?.skjulFor ? skjulForColor : visForColor;
+  const label = visForSituasjonLabel + visPaaSideLabel || "Ingen situasjoner valgt";
+  const color = props.visFor?.skjulFor ? skjulForColor : visForColor;
 
   return (
     <InlinePreview label={label} color={color}>

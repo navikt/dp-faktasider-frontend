@@ -56,7 +56,6 @@ const serializers: Serializers = {
     GtilNOK: (props) => <GtilNOKPeview children={props.children} />,
     utkast: InlineUtkast,
     visForAnnotation: (props) => <InlineVisForPreview {...props.mark} children={props.children} />,
-    visForAnnotationDeltTekst: (props) => <InlineVisForPreview {...props.mark} children={props.children} />,
     link: (props) => <LenkePreview {...props.mark} children={props.children} />,
   },
 };

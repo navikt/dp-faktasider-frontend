@@ -45,7 +45,6 @@ const serializers: Serializers = {
     utkast: UtkastInline,
     GtilNOK: GtilNOKAnnotation,
     visForAnnotation: VisForAnnotation,
-    visForAnnotationDeltTekst: VisForAnnotation,
   },
 };
 
