@@ -13,22 +13,15 @@ const loggEvent = (event: string, ekstraData?: object) => {
 
   import("../utils/loggingConfig").then((logging) => {
     const smallScreen = window.innerWidth < mediaBreakpoint;
-    logging.loggInstance.logEvent(event, {
+    const data = {
       ...ekstraData,
       appName: "dp-faktasider",
       smallScreen, // TODO fjern denne når det har gått litt tid, feks etter mai 2021. erstattes av 'screenSize'
       screenSize: smallScreen ? "small" : "large",
-    });
-  });
+    };
 
-  import("../utils/loggingConfigDeprecated").then((logging) => {
-    const smallScreen = window.innerWidth < mediaBreakpoint;
-    logging.loggInstanceDeprecated.logEvent(event, {
-      ...ekstraData,
-      appName: "dp-faktasider",
-      smallScreen, // TODO fjern denne når det har gått litt tid, feks etter mai 2021. erstattes av 'screenSize'
-      screenSize: smallScreen ? "small" : "large",
-    });
+    logging.loggInstance.logEvent(event, data);
+    logging.loggInstanceDeprecated.logEvent(event, data);
   });
 };
 
