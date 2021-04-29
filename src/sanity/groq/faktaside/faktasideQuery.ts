@@ -26,9 +26,9 @@ export const faktasideQuery = groq`{
     seoImage,
     title,
     folketrygdensGrunnbellop,
-    notifikasjoner[],
     snarveier
-  }
+  },
+  'notifikasjoner': *[_type == "notifikasjon"]
 }`;
 
 export interface FaktasideQueryData {
@@ -50,9 +50,9 @@ export interface FaktasideQueryData {
     seoImage?: SanityImage;
     title?: Translations<string>;
     folketrygdensGrunnbellop?: number;
-    notifikasjoner?: Notifikasjon[];
     snarveier?: Snarvei[];
   };
+  notifikasjoner?: Notifikasjon[];
 }
 
 export interface LocalizedFaktasideQueryData {
@@ -64,7 +64,7 @@ export interface LocalizedFaktasideQueryData {
   };
   oppsett: FaktasideQueryData["oppsett"] & {
     title?: string;
-    notifikasjoner?: Notifikasjon[];
     snarveier?: Snarvei[];
   };
+  notifikasjoner?: Notifikasjon[];
 }

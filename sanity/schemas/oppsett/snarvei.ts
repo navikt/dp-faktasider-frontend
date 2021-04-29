@@ -1,4 +1,3 @@
-import React from "react";
 import { FiLink } from "react-icons/fi";
 import { localeValueRequired } from "../utils/validationHelpers";
 import VelgInfosider from "./VelgInfosider";

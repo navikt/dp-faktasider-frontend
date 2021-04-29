@@ -31,8 +31,8 @@ export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLang
   const parsedInnhold = parseRichText(localizedPage.faktaside?.innhold);
   const parsedKortFortalt = parseRichText(localizedPage.faktaside?.kortFortalt);
   const publiseringsTidspunkt = getPubliseringsTidspunkt(localizedPage);
-  const relevanteNotifikasjoner = localizedPage.oppsett.notifikasjoner?.filter((notifikasjon) =>
-    notifikasjon.visPaaSider?.some((side) => side._ref === data.faktaside.id)
+  const relevanteNotifikasjoner = localizedPage.notifikasjoner?.filter((notifikasjon) =>
+    notifikasjon.visPaaFaktaSider?.some((side) => side === data.faktaside.id)
   );
   const relevanteSnarveier = localizedPage.oppsett.snarveier?.filter((snarvei) =>
     snarvei.visPaaSider?.some((side) => side === data.faktaside.id)
