@@ -1,4 +1,4 @@
 dekoratorMiljo: dev
 ingresses: |
   ingresses:
-    - https://arbeid.dev.nav.no/arbeid/
+    - https://arbeid.dev.nav.no/arbeid
