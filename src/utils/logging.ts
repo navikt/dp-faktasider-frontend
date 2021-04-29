@@ -11,18 +11,22 @@ const loggEvent = (event: string, ekstraData?: object) => {
     return;
   }
 
-  import("../utils/loggingConfig").then((logging) => {
-    const smallScreen = window.innerWidth < mediaBreakpoint;
-    const data = {
-      ...ekstraData,
-      appName: "dp-faktasider",
-      smallScreen, // TODO fjern denne når det har gått litt tid, feks etter mai 2021. erstattes av 'screenSize'
-      screenSize: smallScreen ? "small" : "large",
-    };
+  try {
+    import("../utils/loggingConfig").then((logging) => {
+      const smallScreen = window.innerWidth < mediaBreakpoint;
+      const data = {
+        ...ekstraData,
+        appName: "dp-faktasider",
+        smallScreen, // TODO fjern denne når det har gått litt tid, feks etter mai 2021. erstattes av 'screenSize'
+        screenSize: smallScreen ? "small" : "large",
+      };
 
-    logging.loggInstance.logEvent(event, data);
-    logging.loggInstanceDeprecated.logEvent(event, data);
-  });
+      logging.loggInstance.logEvent(event, data);
+      logging.loggInstanceDeprecated.logEvent(event, data);
+    });
+  } catch (e) {
+    console.error("Kunne ikke logge til amplitdue:", e);
+  }
 };
 
 export const loggError = (error: Error, ekstraData?: object) => {
