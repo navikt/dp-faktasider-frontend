@@ -1,6 +1,5 @@
 import link from "../richText/annotations/link";
 import { decorators, styles } from "../richText/richText";
-import visForAnnotationDeltTekst from "../deltTekst/annotations/visForAnnotationDeltTekst";
 import visForAnnotation from "../richText/annotations/visForAnnotation";
 
 export default {
@@ -20,7 +19,7 @@ export default {
           decorators.foreslattStykes,
           decorators.GtilNOK,
         ],
-        annotations: [link, visForAnnotationDeltTekst, visForAnnotation],
+        annotations: [link, visForAnnotation],
       },
     },
   ],
