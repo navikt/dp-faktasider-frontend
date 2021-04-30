@@ -7,6 +7,7 @@ const InlinePreview = styled.span<{ color: string; label: string }>`
     content: " (${(props) => props.label})";
     opacity: 0.6;
     font-size: 0.8em;
+    font-weight: 400;
   }
 `;
 
