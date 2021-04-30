@@ -14,8 +14,4 @@ describe("infoside", () => {
       cy.contains("viser nå 27 av 50 ord");
     });
   });
-
-  it("klikk på overskrift i meny ruller overskriften inn i viewporten", () => {});
-
-  it("hash-lenke scroller rett til riktig overskrift", () => {});
 });
