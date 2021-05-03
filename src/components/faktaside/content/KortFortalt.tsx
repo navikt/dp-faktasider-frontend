@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Block } from "../../../utils/richTextUtils/richTextTypes";
 import { useTranslation } from "react-i18next";
 import H2GroupMarkup from "../../../components/BlockContent/GroupMarkup/H2GroupMarkup";
 import withErrorBoundary from "../../../components/withErrorBoundary";
@@ -9,9 +8,10 @@ import styled from "styled-components";
 import { navFrontend } from "../../../styles/navFrontend";
 import { theme } from "../../../styles/theme";
 import { createSanityBlock } from "../../../testUtils/createSanityBlock";
+import { RichText } from "../../../utils/richTextUtils/RichText";
 
 interface Props {
-  blocks?: Block[];
+  richText: RichText;
   beskrivelse?: string;
 }
 
@@ -43,9 +43,7 @@ const IkonWrapper = styled.div`
 function KortFortalt(props: Props) {
   const { t } = useTranslation("global");
 
-  const blocks = props.blocks || [];
-
-  const h2Group = createH2Group(t("kortFortalt"), [createSanityBlock(props.beskrivelse || ""), ...blocks]);
+  const h2Group = createH2Group(t("kortFortalt"), new RichText([createSanityBlock(props.beskrivelse || ""), ...props.richText.blocks]));
 
   return (
     <Style>

@@ -1,10 +1,11 @@
 import { idFromString } from "../idFromString";
-import { Block, Group, GroupTypes } from "./richTextTypes";
+import { Group, GroupTypes } from "./richTextTypes";
+import { RichText } from "./RichText";
 
-export function createH2Group(title: string, children: Block[], style?: GroupTypes): Group {
+export function createH2Group(title: string, richText: RichText, style?: GroupTypes): Group {
   return {
     title: title,
-    children: children,
+    richText: richText,
     _type: "group",
     style: style || "h2",
     blockConfig: {

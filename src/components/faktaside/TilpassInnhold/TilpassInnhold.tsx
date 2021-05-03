@@ -8,11 +8,11 @@ import withErrorBoundary from "../../../components/withErrorBoundary";
 import { theme } from "../../../styles/theme";
 import useUniqueId from "../../../utils/useUniqueId";
 import { UnmountClosed } from "react-collapse";
-import getAlleTilpassInnholdValg from "./getAlleTilpassInnholdValg";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { useWordCount } from "./useWordCount";
 import { navFrontend } from "../../../styles/navFrontend";
 import InnholdetErTilpasset from "./InnholdetErTilpasset";
+import { getUniqueStrings } from "../../BlockContent/VisFor/VisFor";
 
 const StyledNav = styled.nav`
   background-color: white;
@@ -57,7 +57,7 @@ function TilpassInnhold(props: Props) {
   const { innhold, visIngenValgPasser, kortFortalt } = useFaktasideContext();
   const valgt = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
-  const tilgjengeligeValg = getAlleTilpassInnholdValg(innhold, kortFortalt);
+  const tilgjengeligeValg = getUniqueStrings([...kortFortalt.tilpassInnholdValg(), ...innhold.tilpassInnholdValg()]);
   const faktasideWordCount = useWordCount(props.wordCountRef);
   const tilpassInnholdWordCount = useWordCount(tilpassInnholdRef);
   const currentWords = faktasideWordCount.current - tilpassInnholdWordCount.current;

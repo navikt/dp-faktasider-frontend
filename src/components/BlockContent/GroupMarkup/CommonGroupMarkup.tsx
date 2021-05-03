@@ -61,7 +61,7 @@ function CommonGroupMarkup(props: Props) {
         <HashLink id={id} />
       </Header>
       {props.beforeContent}
-      <BlockContent blocks={group.children} />
+      <BlockContent blocks={group.richText.blocks} />
     </Region>
   );
 }

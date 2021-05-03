@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled, { css } from "styled-components/macro";
-import { Group, isH3Group } from "../../../utils/richTextUtils/richTextTypes";
+import { Group } from "../../../utils/richTextUtils/richTextTypes";
 import { theme } from "../../../styles/theme";
 import { Innholdstittel } from "nav-frontend-typografi";
 import H2GroupMenu from "./H2GroupMenu";
@@ -42,7 +42,7 @@ const StyledTittel = styled(Innholdstittel).attrs({
 
 function H2GroupMarkup(props: Group) {
   const noBackground = props.blockConfig?.noBackground;
-  const underGrupper = props.children.filter(isH3Group);
+  const underGrupper = props.richText.groups();
 
   const headerProps: TittelProps = { noBackground };
   const regionProps: RegionProps = { noBackground };

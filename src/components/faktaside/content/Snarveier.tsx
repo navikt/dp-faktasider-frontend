@@ -7,6 +7,7 @@ import withErrorBoundary from "../../../components/withErrorBoundary";
 import { createH2Group } from "../../../utils/richTextUtils/createGroup";
 import { createSanityBlock } from "../../../testUtils/createSanityBlock";
 import { Snarvei } from "../../../sanity/groq/forside/forsideQuery";
+import { RichText } from "../../../utils/richTextUtils/RichText";
 
 interface Props {
   snarveier?: Snarvei[];
@@ -34,7 +35,7 @@ function Snarveier(props: Props) {
 
   const h2Group = createH2Group(
     t("snarveier"),
-    snarveier.map((snarvei) => createSanityBlock(snarvei.tittel, { listItem: "bullet", linkTo: snarvei.url }))
+    new RichText(snarveier.map((snarvei) => createSanityBlock(snarvei.tittel, { listItem: "bullet", linkTo: snarvei.url })))
   );
 
   return (

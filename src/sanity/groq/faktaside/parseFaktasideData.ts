@@ -1,18 +1,19 @@
 import { SupportedLanguage } from "../../../i18n/supportedLanguages";
 import localizeSanityContent from "../../../i18n/localizeSanityContent";
-import parseRichText, { ParsedRichText } from "../../../utils/richTextUtils/parser/parseRichText";
 import { FaktasideQueryData, LocalizedFaktasideQueryData } from "./faktasideQuery";
 import { Notifikasjon } from "../../../components/Notifikasjoner";
 import { getPubliseringsTidspunkt } from "../../getPubliseringstidspunkt";
 import { Snarvei } from "../forside/forsideQuery";
+import { RichText } from "../../../utils/richTextUtils/RichText";
+import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
 
 export interface FaktasideParsedData {
   id: string;
   publiseringsTidspunkt?: string;
   title?: string;
   beskrivelse?: string;
-  innhold?: ParsedRichText;
-  kortFortalt?: ParsedRichText;
+  innhold: RichText;
+  kortFortalt: RichText;
   slug: string;
   visSprakversjon?: {
     en?: boolean;
@@ -28,8 +29,8 @@ export interface FaktasideParsedData {
 
 export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLanguage): FaktasideParsedData {
   const localizedPage: LocalizedFaktasideQueryData = localizeSanityContent(data, lang);
-  const parsedInnhold = parseRichText(localizedPage.faktaside?.innhold);
-  const parsedKortFortalt = parseRichText(localizedPage.faktaside?.kortFortalt);
+  const innhold = new RichText(parseRichText(localizedPage.faktaside?.innhold));
+  const kortFortalt = new RichText(parseRichText(localizedPage.faktaside?.kortFortalt));
   const publiseringsTidspunkt = getPubliseringsTidspunkt(localizedPage);
   const relevanteNotifikasjoner = localizedPage.notifikasjoner?.filter((notifikasjon) =>
     notifikasjon.visPaaFaktaSider?.some((side) => side === data.faktaside.id)
@@ -41,8 +42,8 @@ export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLang
   return {
     ...localizedPage.oppsett,
     ...localizedPage.faktaside,
-    innhold: parsedInnhold,
-    kortFortalt: parsedKortFortalt,
+    innhold,
+    kortFortalt,
     publiseringsTidspunkt,
     notifikasjoner: relevanteNotifikasjoner,
     rawData: data,

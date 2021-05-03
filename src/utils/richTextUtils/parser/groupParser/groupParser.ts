@@ -2,6 +2,7 @@ import { Block, BlockConfigFromParser, Group, GroupTypes, ParsedSanityBlock } fr
 import { RichTextParser } from "../parseRichText";
 import allChildrenMarkedWith, { getCommonVisForConfig } from "../../allChildrenMarkedWith";
 import { getTextFromSanityBlock } from "../../getTextFromSanityBlock";
+import { RichText } from "../../RichText";
 
 const groupByStyles: GroupTypes[] = ["h2", "h3", "h4"].reverse() as GroupTypes[]; // Rekkefølgen her er viktig. Den første gruppen vil aldri få andre grupper inni seg.
 
@@ -25,7 +26,7 @@ export const groupParser: RichTextParser = (blocks) => {
             style: block.style as GroupTypes,
             title: getTextFromSanityBlock(block),
             _type: "group",
-            children: [],
+            richText: new RichText(),
             blockConfig: createBlockConfig(block),
           };
           parsedBlocks.push(currentGroup);
@@ -34,7 +35,7 @@ export const groupParser: RichTextParser = (blocks) => {
           parsedBlocks.push(block);
         }
       } else {
-        currentGroup ? currentGroup.children.push(block) : parsedBlocks.push(block);
+        currentGroup ? currentGroup.richText.addBlock(block) : parsedBlocks.push(block);
       }
     });
 

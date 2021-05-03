@@ -1,6 +1,5 @@
 import { assign, createMachine, MachineConfig } from "xstate";
 import { Group } from "../../utils/richTextUtils/richTextTypes";
-import getAlleTilpassInnholdValg from "../../components/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
 import { FaktasideParsedData } from "../../sanity/groq/faktaside/parseFaktasideData";
 
 export interface VeiviserContext {
@@ -98,6 +97,6 @@ const machineConfig: MachineConfig<VeiviserContext, States, Events> = {
 
 export const veiviserMachine = createMachine(machineConfig, {
   guards: {
-    ingenFiltreringsvalg: (ctx) => getAlleTilpassInnholdValg(ctx.side!.innhold).length === 0,
+    ingenFiltreringsvalg: (ctx) => ctx.side!.innhold?.tilpassInnholdValg().length === 0,
   },
 });

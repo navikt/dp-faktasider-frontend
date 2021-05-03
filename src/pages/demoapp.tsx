@@ -4,8 +4,7 @@ import UnderArbeid from "../components/veiviser/UnderArbeid";
 import VelgDetSomPasserBest, { VeiviserValg } from "../components/veiviser/VelgDetSomPasserBest";
 import { veiviserMachine } from "../components/veiviser/VeiviserStateChart";
 import { useMachine } from "@xstate/react";
-import getAlleTilpassInnholdValg from "../components/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
-import { Group, isGroup } from "../utils/richTextUtils/richTextTypes";
+import { Group } from "../utils/richTextUtils/richTextTypes";
 import BlockContent from "../components/BlockContent/BlockContent";
 import { visBasertPåFiltrering } from "../components/BlockContent/VisFor/VisFor";
 import VeiviserBrødsmuler from "../components/veiviser/VeiviserBrødsmuler";
@@ -21,6 +20,7 @@ import fetchAllFaktasider from "../sanity/groq/faktaside/fetchAllFaktasider";
 import { typografiStyle } from "../components/faktaside/FaktaSideLayout";
 import { FaktasideParsedData } from "../sanity/groq/faktaside/parseFaktasideData";
 import { createSanityBlock } from "../testUtils/createSanityBlock";
+import { RichText } from "../utils/richTextUtils/RichText";
 
 const Style = styled.div`
   ${typografiStyle};
@@ -75,17 +75,15 @@ function Demoapp(props: Props) {
     object: page,
   }));
 
-  const filtreringsValg: VeiviserValg<string>[] = context.side
-    ? getAlleTilpassInnholdValg(context.side.innhold).map((valg) => ({
+  const filtreringsValg: VeiviserValg<string>[] = context.side?.innhold?.tilpassInnholdValg().map((valg) => ({
         label: valg,
         id: valg,
         object: valg,
       }))
-    : [];
+    ?? [];
 
   const overskriftsValg: VeiviserValg<Group>[] =
-    context.side?.innhold
-      ?.filter(isGroup)
+    context.side?.innhold?.groups()
       .filter((group: Group) => visBasertPåFiltrering(visForContest, group.blockConfig?.visFor).vis)
       .filter((group: Group) => visBasertPaaVisPaaConfig(state.context.side?.id || "", group.blockConfig?.visPaaSider))
       .filter((group: Group) => isDevelopment() || !group.blockConfig?.erUtkast)
@@ -109,7 +107,7 @@ function Demoapp(props: Props) {
       id: "snarveier",
       object: createH2Group(
         "Snarveier",
-        context.side.snarveier.map((snarvei) => createSanityBlock(snarvei.tittel, { linkTo: snarvei.url }))
+        new RichText(context.side.snarveier.map((snarvei) => createSanityBlock(snarvei.tittel, { linkTo: snarvei.url })))
       ),
     });
   }

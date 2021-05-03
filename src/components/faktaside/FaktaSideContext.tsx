@@ -1,9 +1,12 @@
 import React, { createContext, ReactNode, useContext } from "react";
 import { FaktasideProps } from "./Faktaside";
+import { RichText } from "../../utils/richTextUtils/RichText";
 
 const defaultValue: FaktasideProps = {
   id: "N/A",
   slug: "N/A",
+  innhold: new RichText(),
+  kortFortalt: new RichText(),
   rawData: {
     faktaside: {
       id: "N/A",
