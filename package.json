@@ -60,7 +60,6 @@
     "xstate": "^4.19.0"
   },
   "devDependencies": {
-    "@sanity/cli": "^2.6.0",
     "@testing-library/cypress": "^7.0.4",
     "@testing-library/react": "^11.2.6",
     "@types/amplitude-js": "^6.0.0",
