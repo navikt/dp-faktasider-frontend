@@ -56,6 +56,11 @@ jobs:
         with:
           build: npm run build
           start: npm start
+      - uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos
 
   build:
     name: Build and publish Docker image
