@@ -5,13 +5,8 @@ describe("basics funker - ", () => {
     cy.visit(url);
 
     cy.findByRole("navigation", { name: /Hovedmeny/i }).within(() => {
-      // Tester at dekoratøren ble lasta inn riktig så bla javascript funker, hvis knappen funker så funker javascript. Sjekker at knappen funker ved at menyen og noen lenker vises.
-      cy.findByRole("button", { name: /meny/i }).click();
-      cy.findByRole("region", { name: /Arbeidssøker/i }).within(() => {
-        cy.findByRole("link", { name: /Permittert/i });
-        cy.findByRole("link", { name: /Arbeidsledig/i });
-      });
-      cy.findByRole("button", { name: /meny/i }).click();
+      cy.findByRole("button", { name: /meny/i });
+      cy.findByRole("button", { name: /søk/i });
     });
 
     cy.findByRole("navigation", { name: /Brødsmulesti/i });
