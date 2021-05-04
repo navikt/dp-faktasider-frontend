@@ -1,5 +1,6 @@
 import { idFromString } from "../idFromString";
-import { Block, Group, GroupTypes } from "./richTextTypes";
+import { Group, GroupTypes } from "./parser/groupParser/groupParser";
+import { Block } from "./richTextTypes";
 
 export function createH2Group(title: string, children: Block[], style?: GroupTypes): Group {
   return {

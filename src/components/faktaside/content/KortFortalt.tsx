@@ -1,14 +1,15 @@
 import * as React from "react";
 import { Block } from "../../../utils/richTextUtils/richTextTypes";
 import { useTranslation } from "react-i18next";
-import H2GroupMarkup from "../../../components/BlockContent/GroupMarkup/H2GroupMarkup";
+import H2Section from "../../Section/H2Section";
 import withErrorBoundary from "../../../components/withErrorBoundary";
-import { createH2Group } from "../../../utils/richTextUtils/createGroup";
 import KortFortaltIkon from "./KortFortaltIkon";
 import styled from "styled-components";
 import { navFrontend } from "../../../styles/navFrontend";
 import { theme } from "../../../styles/theme";
-import { createSanityBlock } from "../../../testUtils/createSanityBlock";
+import BlockContent from "../../BlockContent/BlockContent";
+import { idFromString } from "../../../utils/idFromString";
+import { Normaltekst } from "nav-frontend-typografi";
 
 interface Props {
   blocks?: Block[];
@@ -42,17 +43,17 @@ const IkonWrapper = styled.div`
 
 function KortFortalt(props: Props) {
   const { t } = useTranslation("global");
-
-  const blocks = props.blocks || [];
-
-  const h2Group = createH2Group(t("kortFortalt"), [createSanityBlock(props.beskrivelse || ""), ...blocks]);
+  const title = t("kortFortalt");
 
   return (
     <Style>
       <IkonWrapper>
         <KortFortaltIkon />
       </IkonWrapper>
-      <H2GroupMarkup {...h2Group} />
+      <H2Section id={idFromString(title)} title={title}>
+        <Normaltekst>{props.beskrivelse}</Normaltekst>
+        <BlockContent blocks={props.blocks} />
+      </H2Section>
     </Style>
   );
 }

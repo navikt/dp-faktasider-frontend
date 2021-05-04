@@ -1,7 +1,7 @@
 import { assign, createMachine, MachineConfig } from "xstate";
-import { Group } from "../../utils/richTextUtils/richTextTypes";
 import getAlleTilpassInnholdValg from "../../components/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
 import { FaktasideParsedData } from "../../sanity/groq/faktaside/parseFaktasideData";
+import { Group } from "../../utils/richTextUtils/parser/groupParser/groupParser";
 
 export interface VeiviserContext {
   side?: FaktasideParsedData;

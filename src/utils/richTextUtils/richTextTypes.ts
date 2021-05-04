@@ -1,4 +1,5 @@
 import { Modify } from "../typeUtils";
+import { Group } from "./parser/groupParser/groupParser";
 
 export type VisForConfig = {
   situasjoner?: string[];
@@ -67,29 +68,8 @@ export type TidslinjeI = ParsedSanityBlock & {
   innhold: SanityBlock[];
 };
 
-export type GroupTypes = "h2" | "h3" | "h4";
-
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 export type Block = SanityBlock | Group | ParsedSanityBlock;
-
-export type Group = ParsedSanityBlock & {
-  title: string;
-  children: Block[];
-  _type: "group";
-  style: GroupTypes;
-};
-
-export function isGroup(block: Block): block is Group {
-  return block._type === "group";
-}
-
-export function isH2Group(block: Block): block is Group {
-  return isGroup(block) && block.style === "h2";
-}
-
-export function isH3Group(block: Block): block is Group {
-  return isGroup(block) && block.style === "h3";
-}
 
 export function isDeltTekstReference(candidate: Block): candidate is DelttekstReference {
   return candidate._type === "deltTekstReference";

@@ -2,9 +2,9 @@ import * as React from "react";
 import styled from "styled-components/macro";
 import useSmoothscrollOnClick from "../../../hooks/useSmoothscrollOnClick";
 import { LenkeUtenUnderstrek } from "../../../utils/common-styled-components";
-import { Group } from "../../../utils/richTextUtils/richTextTypes";
 import { loggH2MenyKlikk } from "../../../utils/logging";
 import useUniqueId from "../../../utils/useUniqueId";
+import { Group } from "../../../utils/richTextUtils/parser/groupParser/groupParser";
 
 interface Props {
   underGrupper: Group[];
@@ -20,7 +20,7 @@ const StyledUl = styled.ul`
   margin-left: 1rem;
 `;
 
-function H2GroupMenu(props: Props) {
+function GroupMenu(props: Props) {
   const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
   const id = useUniqueId("meny-" + props.title);
 
@@ -48,4 +48,4 @@ function H2GroupMenu(props: Props) {
   );
 }
 
-export default H2GroupMenu;
+export default GroupMenu;

@@ -2,11 +2,11 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components/macro";
 import { theme } from "../../../styles/theme";
-import H2GroupMarkup from "../../../components/BlockContent/GroupMarkup/H2GroupMarkup";
+import H2Section from "../../Section/H2Section";
 import withErrorBoundary from "../../../components/withErrorBoundary";
-import { createH2Group } from "../../../utils/richTextUtils/createGroup";
-import { createSanityBlock } from "../../../testUtils/createSanityBlock";
 import { Snarvei } from "../../../sanity/groq/forside/forsideQuery";
+import { idFromString } from "../../../utils/idFromString";
+import Lenke from "nav-frontend-lenker";
 
 interface Props {
   snarveier?: Snarvei[];
@@ -15,9 +15,11 @@ interface Props {
 const Style = styled.div`
   ul {
     list-style: none;
+
     li {
       margin-top: 0;
     }
+    
     @media (${theme.media.bigScreen}) {
       column-count: 2;
     }
@@ -32,14 +34,15 @@ function Snarveier(props: Props) {
     return null;
   }
 
-  const h2Group = createH2Group(
-    t("snarveier"),
-    snarveier.map((snarvei) => createSanityBlock(snarvei.tittel, { listItem: "bullet", linkTo: snarvei.url }))
-  );
+  const title = t("snarveier");
 
   return (
     <Style>
-      <H2GroupMarkup {...h2Group} />
+      <H2Section title={title} id={idFromString(title)}>
+        <ul>
+          {snarveier.map((snarvei, i) => <li key={i}><Lenke href={snarvei.url}>{snarvei.tittel}</Lenke></li>)}
+        </ul>
+      </H2Section>
     </Style>
   );
 }

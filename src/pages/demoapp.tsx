@@ -5,7 +5,6 @@ import VelgDetSomPasserBest, { VeiviserValg } from "../components/veiviser/VelgD
 import { veiviserMachine } from "../components/veiviser/VeiviserStateChart";
 import { useMachine } from "@xstate/react";
 import getAlleTilpassInnholdValg from "../components/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
-import { Group, isGroup } from "../utils/richTextUtils/richTextTypes";
 import BlockContent from "../components/BlockContent/BlockContent";
 import { visBasertPåFiltrering } from "../components/BlockContent/VisFor/VisFor";
 import VeiviserBrødsmuler from "../components/veiviser/VeiviserBrødsmuler";
@@ -21,6 +20,7 @@ import fetchAllFaktasider from "../sanity/groq/faktaside/fetchAllFaktasider";
 import { typografiStyle } from "../components/faktaside/FaktaSideLayout";
 import { FaktasideParsedData } from "../sanity/groq/faktaside/parseFaktasideData";
 import { createSanityBlock } from "../testUtils/createSanityBlock";
+import { Group, isGroup } from "../utils/richTextUtils/parser/groupParser/groupParser";
 
 const Style = styled.div`
   ${typografiStyle};

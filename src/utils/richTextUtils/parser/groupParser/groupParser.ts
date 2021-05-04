@@ -1,4 +1,4 @@
-import { Block, BlockConfigFromParser, Group, GroupTypes, ParsedSanityBlock } from "../../richTextTypes";
+import { Block, BlockConfigFromParser, ParsedSanityBlock } from "../../richTextTypes";
 import { RichTextParser } from "../parseRichText";
 import allChildrenMarkedWith, { getCommonVisForConfig } from "../../allChildrenMarkedWith";
 import { getTextFromSanityBlock } from "../../getTextFromSanityBlock";
@@ -52,4 +52,26 @@ function createBlockConfig(block: ParsedSanityBlock): BlockConfigFromParser {
     visFor: commonVisForConfig?.visFor,
     visPaaSider: commonVisForConfig?.visPaa,
   };
+}
+
+export type GroupTypes = "h2" | "h3" | "h4";
+
+export type Group = ParsedSanityBlock & {
+  blockConfig: BlockConfigFromParser;
+  title: string;
+  children: Block[];
+  _type: "group";
+  style: GroupTypes;
+};
+
+export function isGroup(block: Block): block is Group {
+  return block._type === "group";
+}
+
+export function isH2Group(block: Block): block is Group {
+  return isGroup(block) && block.style === "h2";
+}
+
+export function isH3Group(block: Block): block is Group {
+  return isGroup(block) && block.style === "h3";
 }
