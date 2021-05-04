@@ -31,27 +31,11 @@
       }
     },
     {
-      "name": "test-arb-perm",
-      "title": "test-arb-perm",
+      "name": "lekegrind",
+      "title": "Lekegrind🧚🏾",
       "api": {
         "projectId": "rt6o382n",
-        "dataset": "test-arb-perm"
-      }
-    },
-    {
-      "name": "test-arb",
-      "title": "test-arb",
-      "api": {
-        "projectId": "rt6o382n",
-        "dataset": "test-arb"
-      }
-    },
-    {
-      "name": "test-perm",
-      "title": "test-perm",
-      "api": {
-        "projectId": "rt6o382n",
-        "dataset": "test-perm"
+        "dataset": "lekegrind"
       }
     }
   ],
