@@ -1,7 +1,8 @@
-import { Block, GroupTypes, isTillegsinformajon, ParsedSanityBlock } from "../../richTextTypes";
+import { Block, isTillegsinformajon, ParsedSanityBlock } from "../../richTextTypes";
 import { RichTextParser } from "../parseRichText";
 import { idFromString } from "../../../idFromString";
 import { getTextFromSanityBlock } from "../../getTextFromSanityBlock";
+import { GroupTypes } from "../../Group";
 
 let usedIds: string[] = [];
 

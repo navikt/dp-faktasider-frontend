@@ -15,7 +15,7 @@ import { useMount, usePrevious } from "react-use";
 import useUserIsSearchingText from "../../../hooks/useUserIsSearchingText";
 import HashLink from "../../HashLink";
 import Anchor from "../../Anchor";
-import { showLinkOnHover } from "../GroupMarkup/CommonGroupMarkup";
+import { showLinkOnHover } from "../GroupMarkup/CommonSectionMarkup";
 import { useIsHashInUrl } from "../../../hooks/useIsHashInUrl";
 
 interface Props {
@@ -105,7 +105,7 @@ function Tilleggsinnformasjon(props: Props) {
         <Label>{t("tilleggsinformasjon")}</Label>
       </StyledHeader>
       <VisMerPanel toggle={() => dispatch("toggle")} open={open}>
-        <BlockContent blocks={parsedText} />
+        <BlockContent blocks={parsedText.blocks} />
       </VisMerPanel>
     </StyledAside>
   );

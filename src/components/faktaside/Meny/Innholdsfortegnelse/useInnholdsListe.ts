@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
-import { Group } from "../../../../utils/richTextUtils/richTextTypes";
 import { useFaktasideContext } from "../../FaktaSideContext";
-import { createH2Group } from "../../../../utils/richTextUtils/createGroup";
+import { Group } from "../../../../utils/richTextUtils/Group";
+import { createGroup } from "../../../../utils/richTextUtils/createGroup";
 import { RichText } from "../../../../utils/richTextUtils/RichText";
 
 export function useInnholdsListe(): Group[] {
@@ -15,11 +15,11 @@ export function useInnholdsListe(): Group[] {
   let h2Groups = innhold.groups();
 
   if (kortFortalt) {
-    h2Groups.unshift(createH2Group(t("kortFortalt"), kortFortalt));
+    h2Groups.unshift(createGroup(t("kortFortalt"), kortFortalt));
   }
 
   if (snarveier?.length) {
-    h2Groups.push(createH2Group(t("snarveier"), new RichText()));
+    h2Groups.push(createGroup(t("snarveier"), new RichText()));
   }
 
   return h2Groups;

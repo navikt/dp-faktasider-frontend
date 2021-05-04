@@ -45,7 +45,7 @@ function FremhevetTekst(props: Props) {
 
   return (
     <Style>
-      <BlockContent blocks={parsedText} />
+      <BlockContent blocks={parsedText.blocks} />
     </Style>
   );
 }

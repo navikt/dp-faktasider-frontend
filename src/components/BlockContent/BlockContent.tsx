@@ -4,7 +4,6 @@ import CustomComponent from "./CustomComponent";
 import LinkMarkup from "./Link";
 import SanityBlockContent from "@sanity/block-content-to-react";
 import Video from "./VideoMarkup";
-import { ParsedRichText } from "../../utils/richTextUtils/parser/parseRichText";
 import FremhevetTekst from "./FremhevetTekst";
 import { UtkastInline } from "./utkast/Utkast";
 import VisForAnnotation from "./VisFor/VisForAnnotation";
@@ -14,9 +13,10 @@ import Tilleggsinnformasjon from "./Tilleggsinnformasjon/TilleggsInnformasjon";
 import ListItemRenderer from "./ListItemRenderer";
 import GtilNOKAnnotation from "./GtilNOKAnnotation";
 import Tidslinje from "./Tidslinje/Tidslinje";
+import { Block } from "../../utils/richTextUtils/richTextTypes";
 
 interface Props {
-  blocks?: ParsedRichText;
+  blocks?: Block[];
 }
 
 type Serializers = {

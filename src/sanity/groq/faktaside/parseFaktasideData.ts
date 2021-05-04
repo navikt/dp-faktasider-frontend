@@ -29,8 +29,8 @@ export interface FaktasideParsedData {
 
 export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLanguage): FaktasideParsedData {
   const localizedPage: LocalizedFaktasideQueryData = localizeSanityContent(data, lang);
-  const innhold = new RichText(parseRichText(localizedPage.faktaside?.innhold));
-  const kortFortalt = new RichText(parseRichText(localizedPage.faktaside?.kortFortalt));
+  const innhold = parseRichText(localizedPage.faktaside?.innhold);
+  const kortFortalt = parseRichText(localizedPage.faktaside?.kortFortalt);
   const publiseringsTidspunkt = getPubliseringsTidspunkt(localizedPage);
   const relevanteNotifikasjoner = localizedPage.notifikasjoner?.filter((notifikasjon) =>
     notifikasjon.visPaaFaktaSider?.some((side) => side === data.faktaside.id)

@@ -1,10 +1,8 @@
 import * as React from "react";
 import styled, { css } from "styled-components/macro";
-import { Group } from "../../../utils/richTextUtils/richTextTypes";
 import { theme } from "../../../styles/theme";
 import { Innholdstittel } from "nav-frontend-typografi";
-import H2GroupMenu from "./H2GroupMenu";
-import CommonGroupMarkup from "./CommonGroupMarkup";
+import Section, { CommonGroupProps } from "./CommonSectionMarkup";
 
 type RegionProps = { noBackground?: boolean };
 
@@ -40,23 +38,26 @@ const StyledTittel = styled(Innholdstittel).attrs({
   text-align: center;
 `;
 
-function H2GroupMarkup(props: Group) {
-  const noBackground = props.blockConfig?.noBackground;
-  const underGrupper = props.richText.groups();
+interface Props extends CommonGroupProps {
+  noBackground?: boolean;
+}
 
-  const headerProps: TittelProps = { noBackground };
-  const regionProps: RegionProps = { noBackground };
+function H2Section(props: Props) {
+  const headerProps: TittelProps = { noBackground: props.noBackground };
+  const regionProps: RegionProps = { noBackground: props.noBackground };
 
   return (
-    <CommonGroupMarkup
+    <Section
       header={StyledTittel}
       headerProps={headerProps}
       region={StyledArticle}
       regionProps={regionProps}
-      group={props}
-      beforeContent={props.blockConfig?.meny && <H2GroupMenu title={props.title} underGrupper={underGrupper} />}
-    />
+      title={props.title}
+      id={props.id}
+    >
+      {props.children}
+    </Section>
   );
 }
 
-export default H2GroupMarkup;
+export default H2Section;

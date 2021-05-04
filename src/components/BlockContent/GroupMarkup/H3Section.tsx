@@ -1,8 +1,7 @@
 import * as React from "react";
 import styled from "styled-components/macro";
 import { Systemtittel } from "nav-frontend-typografi";
-import { Group } from "../../../utils/richTextUtils/richTextTypes";
-import CommonGroupMarkup from "./CommonGroupMarkup";
+import CommonSectionMarkup, { CommonGroupProps } from "./CommonSectionMarkup";
 
 const StyledSection = styled.section`
   margin: 3rem 0 2rem;
@@ -12,8 +11,8 @@ const StyledTittel = styled(Systemtittel).attrs({ as: "h3", className: "typo-sys
   margin-bottom: 1rem !important;
 `;
 
-function H3GroupMarkup(props: Group) {
-  return <CommonGroupMarkup header={StyledTittel} region={StyledSection} group={props} anchorMarginTop="6rem" />;
+function H3Section(props: CommonGroupProps) {
+  return <CommonSectionMarkup header={StyledTittel} region={StyledSection} anchorMarginTop="6rem" {...props}/>;
 }
 
-export default H3GroupMarkup;
+export default H3Section;

@@ -2,9 +2,9 @@ import * as React from "react";
 import styled from "styled-components/macro";
 import useSmoothscrollOnClick from "../../../hooks/useSmoothscrollOnClick";
 import { LenkeUtenUnderstrek } from "../../../utils/common-styled-components";
-import { Group } from "../../../utils/richTextUtils/richTextTypes";
 import { loggH2MenyKlikk } from "../../../utils/logging";
 import useUniqueId from "../../../utils/useUniqueId";
+import { Group } from "../../../utils/richTextUtils/Group";
 
 interface Props {
   underGrupper: Group[];

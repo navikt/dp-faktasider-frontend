@@ -4,7 +4,6 @@ import UnderArbeid from "../components/veiviser/UnderArbeid";
 import VelgDetSomPasserBest, { VeiviserValg } from "../components/veiviser/VelgDetSomPasserBest";
 import { veiviserMachine } from "../components/veiviser/VeiviserStateChart";
 import { useMachine } from "@xstate/react";
-import { Group } from "../utils/richTextUtils/richTextTypes";
 import BlockContent from "../components/BlockContent/BlockContent";
 import { visBasertPåFiltrering } from "../components/BlockContent/VisFor/VisFor";
 import VeiviserBrødsmuler from "../components/veiviser/VeiviserBrødsmuler";
@@ -12,7 +11,7 @@ import DevKnapper from "../components/DevKnapper/DevKnapper";
 import { useVisForContext } from "../components/BlockContent/VisFor/VisForContext";
 import { visBasertPaaVisPaaConfig } from "../components/BlockContent/VisFor/VisPaaSide";
 import { isDevelopment } from "../utils/environment";
-import { createH2Group } from "../utils/richTextUtils/createGroup";
+import { createGroup } from "../utils/richTextUtils/createGroup";
 import { Knapp } from "nav-frontend-knapper";
 import { GetStaticProps } from "next";
 import { SupportedLanguage } from "../i18n/supportedLanguages";
@@ -21,6 +20,7 @@ import { typografiStyle } from "../components/faktaside/FaktaSideLayout";
 import { FaktasideParsedData } from "../sanity/groq/faktaside/parseFaktasideData";
 import { createSanityBlock } from "../testUtils/createSanityBlock";
 import { RichText } from "../utils/richTextUtils/RichText";
+import { Group } from "../utils/richTextUtils/Group";
 
 const Style = styled.div`
   ${typografiStyle};
@@ -97,7 +97,7 @@ function Demoapp(props: Props) {
     overskriftsValg.unshift({
       label: "Kort fortalt",
       id: "kort-fortalt",
-      object: createH2Group("Kort fortalt", context.side.kortFortalt),
+      object: createGroup("Kort fortalt", context.side.kortFortalt),
     });
   }
 
@@ -105,7 +105,7 @@ function Demoapp(props: Props) {
     overskriftsValg.push({
       label: "Snarveier",
       id: "snarveier",
-      object: createH2Group(
+      object: createGroup(
         "Snarveier",
         new RichText(context.side.snarveier.map((snarvei) => createSanityBlock(snarvei.tittel, { linkTo: snarvei.url })))
       ),

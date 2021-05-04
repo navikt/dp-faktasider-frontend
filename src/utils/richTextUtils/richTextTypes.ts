@@ -1,5 +1,5 @@
 import { Modify } from "../typeUtils";
-import { RichText } from "./RichText";
+import { Group } from "./Group";
 
 export type VisForConfig = {
   situasjoner?: string[];
@@ -68,21 +68,7 @@ export type TidslinjeI = ParsedSanityBlock & {
   innhold: SanityBlock[];
 };
 
-export type GroupTypes = "h2" | "h3" | "h4";
-
-// eslint-disable-next-line @typescript-eslint/no-use-before-define
 export type Block = SanityBlock | Group | ParsedSanityBlock;
-
-export type Group = ParsedSanityBlock & {
-  title: string;
-  richText: RichText;
-  _type: "group";
-  style: GroupTypes;
-};
-
-export function isGroup(block: Block): block is Group {
-  return block._type === "group";
-}
 
 export function isDeltTekstReference(candidate: Block): candidate is DelttekstReference {
   return candidate._type === "deltTekstReference";

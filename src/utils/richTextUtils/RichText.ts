@@ -1,10 +1,10 @@
-import { Block, BlockConfigFromParser, isGroup, MarkDef } from "./richTextTypes";
+import { Block, BlockConfigFromParser, MarkDef } from "./richTextTypes";
 import getPropertyRecursivlyFromDeepObject from "../getPropertyRecursivlyFromDeepObject";
 import { getUniqueStrings } from "../../components/BlockContent/VisFor/VisFor";
-import { ParsedRichText } from "./parser/parseRichText";
+import { Group } from "./Group";
 
 export class RichText {
-  constructor(private readonly richText: ParsedRichText = []) {}
+  constructor(private readonly richText: Block[] = []) {}
 
   private alleMarkDefs = () => getPropertyRecursivlyFromDeepObject<MarkDef>(this.richText, "markDefs");
   private alleVisForMarkDefs = () => this.alleMarkDefs().filter((markDef) => markDef._type === "visForAnnotation");
@@ -19,7 +19,7 @@ export class RichText {
     return getUniqueStrings([...situasjonerFraMarkDefs, ...situasjonerFraBlockConfig]).sort();
   }
 
-  public groups = () => this.richText.filter(isGroup)
+  public groups = () => this.richText.filter(Group.isGroup)
 
   get blocks() {
    return this.richText;
@@ -27,6 +27,10 @@ export class RichText {
 
   public addBlock(block: Block) {
     this.richText.push(block);
+  }
+
+  get children() {
+    return this.blocks;
   }
 }
 

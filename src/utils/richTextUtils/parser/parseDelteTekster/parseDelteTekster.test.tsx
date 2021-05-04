@@ -5,9 +5,9 @@ import BlockContent from "../../../../components/BlockContent/BlockContent";
 import { parseDelteTeksterTestData } from "./parseDelteTekster.testdata";
 
 test("innhold fra delt-tekst blir integrert sømløst i resten av innholdet", () => {
-  const parsedBlocks = parseRichText(parseDelteTeksterTestData);
+  const richText = parseRichText(parseDelteTeksterTestData);
 
-  const result = render(<BlockContent blocks={parsedBlocks} />);
+  const result = render(<BlockContent blocks={richText.blocks} />);
 
   const overskriftFørDeltTekst = result.getByLabelText("Overskrift utenfor delt tekst");
   within(overskriftFørDeltTekst).getByText("Tekst fra delt tekst men før delt overskrift");

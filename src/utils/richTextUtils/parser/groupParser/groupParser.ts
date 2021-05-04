@@ -1,8 +1,6 @@
-import { Block, BlockConfigFromParser, Group, GroupTypes, ParsedSanityBlock } from "../../richTextTypes";
+import { Block } from "../../richTextTypes";
 import { RichTextParser } from "../parseRichText";
-import allChildrenMarkedWith, { getCommonVisForConfig } from "../../allChildrenMarkedWith";
-import { getTextFromSanityBlock } from "../../getTextFromSanityBlock";
-import { RichText } from "../../RichText";
+import { Group, GroupTypes } from "../../Group";
 
 const groupByStyles: GroupTypes[] = ["h2", "h3", "h4"].reverse() as GroupTypes[]; // Rekkefølgen her er viktig. Den første gruppen vil aldri få andre grupper inni seg.
 
@@ -21,36 +19,17 @@ export const groupParser: RichTextParser = (blocks) => {
 
       if (endOfCurrentGroup) {
         if (startOfNewGroup) {
-          currentGroup = {
-            ...block,
-            style: block.style as GroupTypes,
-            title: getTextFromSanityBlock(block),
-            _type: "group",
-            richText: new RichText(),
-            blockConfig: createBlockConfig(block),
-          };
+          currentGroup = new Group(block);
           parsedBlocks.push(currentGroup);
         } else {
           currentGroup = undefined;
           parsedBlocks.push(block);
         }
       } else {
-        currentGroup ? currentGroup.richText.addBlock(block) : parsedBlocks.push(block);
+        currentGroup ? currentGroup.addBlock(block) : parsedBlocks.push(block);
       }
     });
 
     return parsedBlocks;
   }, blocks);
 };
-
-function createBlockConfig(block: ParsedSanityBlock): BlockConfigFromParser {
-  const currentConfig = block?.blockConfig;
-  const commonVisForConfig = getCommonVisForConfig(block);
-
-  return {
-    ...currentConfig,
-    erUtkast: allChildrenMarkedWith(block, "utkast"),
-    visFor: commonVisForConfig?.visFor,
-    visPaaSider: commonVisForConfig?.visPaa,
-  };
-}

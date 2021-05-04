@@ -20,7 +20,7 @@ const {
 
 describe("visFor-logikk", () => {
   test("Hvis ingen filtrering er valgt vises all tekst", () => {
-    const result = render(<BlockContent blocks={parseRichText(innhold)} />);
+    const result = render(<BlockContent blocks={parseRichText(innhold).blocks} />);
 
     result.getByLabelText(bolkStudent);
     result.getByLabelText(bolkPermittert);
@@ -100,7 +100,7 @@ describe("visFor-logikk", () => {
 
 describe("skjulFor-logikk", () => {
   test("Vises dersom ingen filtrering er valgt", () => {
-    const result = render(<BlockContent blocks={parseRichText(innhold)} />);
+    const result = render(<BlockContent blocks={parseRichText(innhold).blocks} />);
 
     result.getByLabelText(bolkSkjulForPermittertOgKonkurs);
   });

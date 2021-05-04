@@ -1,6 +1,6 @@
 import { assign, createMachine, MachineConfig } from "xstate";
-import { Group } from "../../utils/richTextUtils/richTextTypes";
 import { FaktasideParsedData } from "../../sanity/groq/faktaside/parseFaktasideData";
+import { Group } from "../../utils/richTextUtils/Group";
 
 export interface VeiviserContext {
   side?: FaktasideParsedData;

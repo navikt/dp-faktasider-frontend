@@ -1,15 +1,12 @@
 import { idFromString } from "../idFromString";
-import { Group, GroupTypes } from "./richTextTypes";
 import { RichText } from "./RichText";
+import { Group, GroupTypes } from "./Group";
 
-export function createH2Group(title: string, richText: RichText, style?: GroupTypes): Group {
-  return {
-    title: title,
-    richText: richText,
-    _type: "group",
-    style: style || "h2",
+export function createGroup(title: string, richText: RichText, style: GroupTypes = 'h2'): Group {
+  return new Group({
+    _type: 'group',
     blockConfig: {
       id: idFromString(title),
     },
-  };
+  }, title);
 }

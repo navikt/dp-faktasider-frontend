@@ -1,5 +1,4 @@
 import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
-import getAlleTilpassInnholdValg from "./getAlleTilpassInnholdValg";
 import { Block, SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
 import { createSanityBlock } from "../../../testUtils/createSanityBlock";
 
@@ -14,7 +13,7 @@ describe("getAlleFiltreringsValgForInnhold", () => {
     ];
 
     const parsedText = parseRichText(getAlleTilpassInnholdValgTestdata);
-    const filtreringsValg = getAlleTilpassInnholdValg(parsedText);
+    const filtreringsValg = parsedText.tilpassInnholdValg();
 
     expect(filtreringsValg).toHaveLength(2);
     expect(filtreringsValg).toContain("student");
@@ -28,7 +27,7 @@ describe("getAlleFiltreringsValgForInnhold", () => {
     ];
 
     const parsedText = parseRichText(getAlleTilpassInnholdValgTestdata);
-    const filtreringsValg = getAlleTilpassInnholdValg(parsedText);
+    const filtreringsValg = parsedText.tilpassInnholdValg();
 
     expect(filtreringsValg).toHaveLength(1);
     expect(filtreringsValg).toContain("student");
@@ -60,7 +59,7 @@ describe("getAlleFiltreringsValgForInnhold", () => {
     };
 
     const parsedText = parseRichText([blockMedUbrukMarkDef]);
-    const filtreringsValg = getAlleTilpassInnholdValg(parsedText);
+    const filtreringsValg = parsedText.tilpassInnholdValg();
 
     expect(filtreringsValg).toHaveLength(0);
   });
