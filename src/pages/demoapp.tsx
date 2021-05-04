@@ -4,7 +4,6 @@ import UnderArbeid from "../components/veiviser/UnderArbeid";
 import VelgDetSomPasserBest, { VeiviserValg } from "../components/veiviser/VelgDetSomPasserBest";
 import { veiviserMachine } from "../components/veiviser/VeiviserStateChart";
 import { useMachine } from "@xstate/react";
-import getAlleTilpassInnholdValg from "../components/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
 import BlockContent from "../components/BlockContent/BlockContent";
 import { visBasertPåFiltrering } from "../components/BlockContent/VisFor/VisFor";
 import VeiviserBrødsmuler from "../components/veiviser/VeiviserBrødsmuler";
@@ -76,7 +75,7 @@ function Demoapp(props: Props) {
   }));
 
   const filtreringsValg: VeiviserValg<string>[] = context.side
-    ? getAlleTilpassInnholdValg(context.side.innhold).map((valg) => ({
+    ? context.side.tilpassInnholdValg.map((valg) => ({
         label: valg,
         id: valg,
         object: valg,

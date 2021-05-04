@@ -8,7 +8,6 @@ import withErrorBoundary from "../../../components/withErrorBoundary";
 import { theme } from "../../../styles/theme";
 import useUniqueId from "../../../utils/useUniqueId";
 import { UnmountClosed } from "react-collapse";
-import getAlleTilpassInnholdValg from "./getAlleTilpassInnholdValg";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { useWordCount } from "./useWordCount";
 import { navFrontend } from "../../../styles/navFrontend";
@@ -54,16 +53,15 @@ function TilpassInnhold(props: Props) {
   const tilpassInnholdRef = useRef<HTMLDivElement>(null);
   const visForContext = useVisForContext();
   const titleId = useUniqueId("tilpassInnhold");
-  const { innhold, visIngenValgPasser, kortFortalt } = useFaktasideContext();
+  const { visIngenValgPasser, tilpassInnholdValg } = useFaktasideContext();
   const valgt = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
-  const tilgjengeligeValg = getAlleTilpassInnholdValg(innhold, kortFortalt);
   const faktasideWordCount = useWordCount(props.wordCountRef);
   const tilpassInnholdWordCount = useWordCount(tilpassInnholdRef);
   const currentWords = faktasideWordCount.current - tilpassInnholdWordCount.current;
   const totalWords = faktasideWordCount.total - tilpassInnholdWordCount.total;
 
-  if (tilgjengeligeValg.length === 0) {
+  if (tilpassInnholdValg.length === 0) {
     return null;
   }
 
@@ -73,7 +71,7 @@ function TilpassInnhold(props: Props) {
         <StyledUndertittel id={titleId}>Tilpass innhold</StyledUndertittel>
         <Normaltekst>Velg det som passer din situasjon best:</Normaltekst>
         <StyledUl>
-          {tilgjengeligeValg.map((valg) => (
+          {tilpassInnholdValg.map((valg) => (
             <li key={valg}>
               <Checkbox
                 label={valg}
