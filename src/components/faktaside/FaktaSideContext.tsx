@@ -4,6 +4,7 @@ import { FaktasideProps } from "./Faktaside";
 const defaultValue: FaktasideProps = {
   id: "N/A",
   slug: "N/A",
+  tilpassInnholdValg: [],
   rawData: {
     faktaside: {
       id: "N/A",
