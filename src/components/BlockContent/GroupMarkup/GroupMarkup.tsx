@@ -1,38 +1,47 @@
 import * as React from "react";
-import { Group } from "../../../utils/richTextUtils/richTextTypes";
 import Utkast from "../utkast/Utkast";
-import H2GroupMarkup from "./H2GroupMarkup";
-import H3GroupMarkup from "./H3GroupMarkup";
-import H4GroupMarkup from "./H4GroupMarkup";
+import H2Section from "../../Section/H2Section";
+import H3Section from "../../Section/H3Section";
+import H4Section from "../../Section/H4Section";
 import VisFor from "../VisFor/VisFor";
 import VisPaaSide from "../VisFor/VisPaaSide";
 import withErrorBoundary from "../../withErrorBoundary";
+import BlockContent from "../BlockContent";
+import GroupMenu from "./GroupMenu";
+import { Group, GroupTypes, isGroup } from "../../../utils/richTextUtils/parser/groupParser/groupParser";
 
 interface Props {
   node: Group;
 }
 
-function getContent(group: Group) {
-  switch (group.style) {
+function getComponent(groupType: GroupTypes) {
+  switch (groupType) {
     case "h2":
-      return <H2GroupMarkup {...group} />;
+      return H2Section;
     case "h3":
-      return <H3GroupMarkup {...group} />;
+      return H3Section;
     case "h4":
-      return <H4GroupMarkup {...group} />;
+      return H4Section;
     default:
-      throw Error(`Ukjent gruppe: ${group.style}`);
+      throw Error(`Ukjent gruppe: ${groupType}`);
   }
 }
 
 function GroupMarkup(props: Props) {
-  const visPaaSider = props.node.blockConfig?.visPaaSider;
-  const visFor = props.node.blockConfig?.visFor;
+  const { visPaaSider, visFor, id, erUtkast, noBackground, meny } = props.node.blockConfig;
+  const {title, children } = props.node;
+  const Section = getComponent(props.node.style)
+  const menyGrupper = meny ? children.filter(isGroup) : undefined;
 
   return (
     <VisPaaSide visPaaSider={visPaaSider}>
-      <Utkast erUtkast={!!props.node.blockConfig?.erUtkast}>
-        <VisFor visForConfig={visFor}>{getContent(props.node)}</VisFor>
+      <Utkast erUtkast={erUtkast}>
+        <VisFor visForConfig={visFor}>
+          <Section title={title} id={id || 'N/A'} noBackground={noBackground}>
+            {menyGrupper && <GroupMenu title={title} underGrupper={menyGrupper} />}
+            <BlockContent blocks={children} />
+          </Section>
+        </VisFor>
       </Utkast>
     </VisPaaSide>
   );

@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import { pxFromTop } from "../../../../utils/domUtils";
 import styled, { css } from "styled-components/macro";
 import useSmoothscrollOnClick from "../../../../hooks/useSmoothscrollOnClick";
-import { Group } from "../../../../utils/richTextUtils/richTextTypes";
 import { useInnholdsListe } from "./useInnholdsListe";
 import { LenkeUtenUnderstrek } from "../../../../utils/common-styled-components";
 import withErrorBoundary from "../../../../components/withErrorBoundary";
@@ -16,6 +15,7 @@ import { theme } from "../../../../styles/theme";
 import { visBasertPaaVisPaaConfig } from "../../../BlockContent/VisFor/VisPaaSide";
 import { menuHighlightStyle } from "../SideListe";
 import { useFaktasideContext } from "../../FaktaSideContext";
+import { Group } from "../../../../utils/richTextUtils/parser/groupParser/groupParser";
 
 const StyledLenke = styled(({ erValgt, ...rest }) => <LenkeUtenUnderstrek {...rest} />)`
   display: block;

@@ -5,6 +5,7 @@ import { FaktasideQueryData, LocalizedFaktasideQueryData } from "./faktasideQuer
 import { Notifikasjon } from "../../../components/Notifikasjoner";
 import { getPubliseringsTidspunkt } from "../../getPubliseringstidspunkt";
 import { Snarvei } from "../forside/forsideQuery";
+import getAlleTilpassInnholdValg from "../../../components/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
 
 export interface FaktasideParsedData {
   id: string;
@@ -13,6 +14,7 @@ export interface FaktasideParsedData {
   beskrivelse?: string;
   innhold?: ParsedRichText;
   kortFortalt?: ParsedRichText;
+  tilpassInnholdValg: string[];
   slug: string;
   visSprakversjon?: {
     en?: boolean;
@@ -43,6 +45,7 @@ export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLang
     ...localizedPage.faktaside,
     innhold: parsedInnhold,
     kortFortalt: parsedKortFortalt,
+    tilpassInnholdValg: getAlleTilpassInnholdValg(parsedInnhold, parsedKortFortalt),
     publiseringsTidspunkt,
     notifikasjoner: relevanteNotifikasjoner,
     rawData: data,

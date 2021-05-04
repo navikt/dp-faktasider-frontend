@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
-import { Group, isH2Group } from "../../../../utils/richTextUtils/richTextTypes";
 import { useFaktasideContext } from "../../FaktaSideContext";
 import { createH2Group } from "../../../../utils/richTextUtils/createGroup";
+import { Group, isH2Group } from "../../../../utils/richTextUtils/parser/groupParser/groupParser";
 
 export function useInnholdsListe(): Group[] {
   const { innhold, snarveier, kortFortalt } = useFaktasideContext();

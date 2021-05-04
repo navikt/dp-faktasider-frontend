@@ -15,8 +15,8 @@ import { useMount, usePrevious } from "react-use";
 import useUserIsSearchingText from "../../../hooks/useUserIsSearchingText";
 import HashLink from "../../HashLink";
 import Anchor from "../../Anchor";
-import { showLinkOnHover } from "../GroupMarkup/CommonGroupMarkup";
 import { useIsHashInUrl } from "../../../hooks/useIsHashInUrl";
+import { showLinkOnHover } from "../../Section/CommonSectionMarkup";
 
 interface Props {
   node: Tillegsinformasjon;
