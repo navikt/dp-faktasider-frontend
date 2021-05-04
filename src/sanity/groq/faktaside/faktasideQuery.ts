@@ -28,7 +28,7 @@ export const faktasideQuery = groq`{
     folketrygdensGrunnbellop,
     snarveier
   },
-  'notifikasjoner': *[_type == "notifikasjon"]
+  'notifikasjoner': *[_type == "notifikasjon" && *[_type == "faktaSide" && slug.current == $slug][0]._id in visPaaFaktaSider]
 }`;
 
 export interface FaktasideQueryData {
