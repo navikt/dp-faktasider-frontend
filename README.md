@@ -1,6 +1,6 @@
 # Produktområde arbeid - infosider
 
-Monorepo med [nextjs-frontend](src) og [sanity-cms](sanity/README.md) for infosider rettet mot arbeidsledige og permitterte på www.nav.no/arbeid/. Inhhold kan redigeres på https://dagpenger.sanity.studio/.
+Monorepo med [nextjs-frontend](src) og [sanity-cms](sanity/README.md) for infosider rettet mot arbeidsledige og permitterte på www.nav.no/arbeid/. Inhhold kan redigeres på www.nav.no/arbeid/cms.
 
 ## Utvikle lokalt
 
