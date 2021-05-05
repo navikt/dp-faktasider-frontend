@@ -21,27 +21,29 @@
 
 import { studioClient } from "../utils/studioClient";
 
-const client = studioClient.withConfig({ dataset: "development", apiVersion: 'v2021-03-25' });
+const client = studioClient.withConfig({ dataset: "development", apiVersion: "v2021-03-25" });
 console.log(client.config());
 
 const fetchDocuments = () => client.fetch(`*[_type == 'deltTekst']`);
 
 const buildPatches = (docs) =>
   docs.map((doc) => {
-    const skalMigreres = doc.innhold.no.some(it => it._type === "deltFremhevetTekst");
+    const skalMigreres = doc.innhold.no.some((it) => it._type === "deltFremhevetTekst");
     if (!skalMigreres) return undefined;
-    const nyttInnhold = doc.innhold.no.map(it => it._type === "deltFremhevetTekst" ? {...it, _type: "fremhevetTekst"}: it)
-    return ({
+    const nyttInnhold = doc.innhold.no.map((it) =>
+      it._type === "deltFremhevetTekst" ? { ...it, _type: "fremhevetTekst" } : it
+    );
+    return {
       id: doc._id,
       patch: {
         set: {
-          innhold: { no: nyttInnhold }
+          innhold: { ...doc.innhold, no: nyttInnhold },
         },
         // this will cause the transaction to fail if the documents has been
         // modified since it was fetched.
-        ifRevisionID: doc._rev
-      }
-    });
+        ifRevisionID: doc._rev,
+      },
+    };
   });
 
 const createTransaction = (patches) =>
@@ -51,7 +53,7 @@ const commitTransaction = (tx) => tx.commit();
 
 const migrateNextBatch = async () => {
   const documents = await fetchDocuments();
-  const patches = buildPatches(documents).filter(it => !!it);
+  const patches = buildPatches(documents).filter((it) => !!it);
   console.log("Jobs: ", patches.length);
   if (patches.length === 0) {
     console.log("No more documents to migrate!");
