@@ -40,26 +40,22 @@ export const decorators = {
   em: { title: "Emphasis", value: "em" },
 };
 
+export const block = {
+  title: "Block",
+  type: "block",
+  styles: [styles.normal, styles.h4, styles.h3, styles.h2, styles.h2_M_Meny, styles.h2_no_background],
+  marks: {
+    decorators: [decorators.strong, decorators.em, decorators.utkast, decorators.foreslattStykes, decorators.GtilNOK],
+    annotations: [link, visForAnnotation],
+  },
+};
+
 export default {
   title: "Rich Text",
   name: "richText",
   type: "array",
   of: [
-    {
-      title: "Block",
-      type: "block",
-      styles: [styles.normal, styles.h4, styles.h3, styles.h2, styles.h2_M_Meny, styles.h2_no_background],
-      marks: {
-        decorators: [
-          decorators.strong,
-          decorators.em,
-          decorators.utkast,
-          decorators.foreslattStykes,
-          decorators.GtilNOK,
-        ],
-        annotations: [link, visForAnnotation],
-      },
-    },
+    block,
     { type: "customComponent" },
     { type: "fremhevetTekst" },
     { type: "video" },
