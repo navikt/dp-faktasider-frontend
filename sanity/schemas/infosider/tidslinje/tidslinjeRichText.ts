@@ -2,7 +2,7 @@ import link from "../richText/annotations/link";
 import visForAnnotation from "../richText/annotations/visForAnnotation";
 import { TidslinjePunkt } from "./TidslinjePreview";
 import { decorators, styles } from "../richText/richText";
-import pasChildren from "../../components/pasChildren";
+import pasChildren from "../../../components/pasChildren";
 
 export default {
   name: "tidslinjeRichText",

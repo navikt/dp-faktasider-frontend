@@ -1,6 +1,6 @@
 import { FiAlertCircle } from "react-icons/fi";
 import getPreviewTextFromBlockContent from "../utils/getPreviewTextFromBlockContent";
-import VelgInfosider from "../oppsett/VelgInfosider";
+import VelgInfosider from "../infosider/oppsett/VelgInfosider";
 
 export default {
   type: "document",

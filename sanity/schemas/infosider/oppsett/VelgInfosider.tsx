@@ -1,8 +1,8 @@
 import * as React from "react";
-import withErrorBoundary from "../../components/withErrorBoundary";
-import { Translations } from "../../../src/types/translations";
-import useSanityQuery from "../../utils/useSanityQuery";
-import StringArrayAsChecboxesInput, { InputComponentProps } from "../utils/StringArrayAsChecboxesInput";
+import withErrorBoundary from "../../../components/withErrorBoundary";
+import { Translations } from "../../../../src/types/translations";
+import useSanityQuery from "../../../utils/useSanityQuery";
+import StringArrayAsChecboxesInput, { InputComponentProps } from "../../utils/StringArrayAsChecboxesInput";
 
 type Infoside = {
   _id: string;

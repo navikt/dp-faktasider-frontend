@@ -1,6 +1,6 @@
 import * as React from "react";
 import { FaMoneyBill } from "react-icons/fa";
-import InlinePreview from "../../components/InlinePreview";
+import InlinePreview from "../../../components/InlinePreview";
 import { ReactNode, useEffect, useRef, useState } from "react";
 
 export const GtilNOKIcon = FaMoneyBill;

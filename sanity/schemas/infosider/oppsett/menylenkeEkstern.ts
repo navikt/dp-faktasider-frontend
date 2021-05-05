@@ -1,5 +1,5 @@
 import { FiExternalLink } from "react-icons/fi";
-import { localeValueRequired } from "../utils/validationHelpers";
+import { localeValueRequired } from "../../utils/validationHelpers";
 
 export default {
   name: "menylenkeEkstern",
