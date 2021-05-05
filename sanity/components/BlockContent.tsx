@@ -45,7 +45,7 @@ const BlockRenderer = (props) => {
 
 const serializers: Serializers = {
   types: {
-    deltFremhevetTekst: (props) => <FremhevetTekstPreview blocks={props.node.innhold} />,
+    fremhevetTekst: (props) => <FremhevetTekstPreview blocks={props.node.innhold} />,
     customComponent: (props) => <CustomComponentPreview name={props.node.komponent} />,
     tileggsInformasjon: (props) => <TillegsInformasjonPreview title={props.node.title} blocks={props.node.innhold} />,
     video: (props) => <VideoPreview name={props.node.title} url={props.node.url} />,
