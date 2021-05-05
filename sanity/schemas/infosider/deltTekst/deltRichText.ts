@@ -23,7 +23,6 @@ export default {
       },
     },
     { type: "customComponent" },
-    { type: "deltFremhevetTekst" },
     { type: "fremhevetTekst" },
     { type: "video" },
     { type: "tileggsInformasjon" },

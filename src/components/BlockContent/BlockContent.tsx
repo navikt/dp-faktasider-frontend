@@ -35,7 +35,6 @@ const serializers: Serializers = {
     customComponent: CustomComponent,
     video: Video,
     fremhevetTekst: FremhevetTekst,
-    deltFremhevetTekst: FremhevetTekst,
     tileggsInformasjon: Tilleggsinnformasjon,
     tidslinje: Tidslinje,
   },

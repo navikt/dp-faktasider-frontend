@@ -10,8 +10,6 @@ import oppsett from "./oppsett/oppsett";
 import deltTekst from "./deltTekst/deltTekst";
 import deltTekstReference from "./deltTekst/deltTekstReference";
 import deltRichText from "./deltTekst/deltRichText";
-import deltFremhevetTekst from "./deltTekst/deltFremhevetTekst";
-import deltFremhevetRichText from "./deltTekst/deltFremhevetRichText";
 import tileggsInformasjon from "./tillegsinfo/tileggsInformasjon";
 import tilleggsInfoRichText from "./tillegsinfo/tilleggsInfoRichText";
 import kortFortaltRichText from "./faktaside/kortFortaltRichText";
@@ -34,8 +32,6 @@ export const infosideSchemas = [
   deltTekst,
   deltTekstReference,
   deltRichText,
-  deltFremhevetTekst,
-  deltFremhevetRichText,
   tileggsInformasjon,
   tilleggsInfoRichText,
   kortFortaltRichText,
