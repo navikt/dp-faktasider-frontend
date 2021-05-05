@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import InlinePreview from "../../components/InlinePreview";
+import InlinePreview from "../../../components/InlinePreview";
 
 const color = "#f006";
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { GoGift } from "react-icons/go";
-import MediaPreview from "../../components/MediaPreview";
+import MediaPreview from "../../../components/MediaPreview";
 
 export const CustomComponentIkon = GoGift;
 

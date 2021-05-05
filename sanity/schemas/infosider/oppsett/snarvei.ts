@@ -1,5 +1,5 @@
 import { FiLink } from "react-icons/fi";
-import { localeValueRequired } from "../utils/validationHelpers";
+import { localeValueRequired } from "../../utils/validationHelpers";
 import VelgInfosider from "./VelgInfosider";
 
 export default {

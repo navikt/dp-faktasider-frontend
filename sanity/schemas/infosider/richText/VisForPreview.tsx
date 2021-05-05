@@ -1,8 +1,8 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import { FaLightbulb } from "react-icons/fa";
-import InlinePreview from "../../components/InlinePreview";
-import { useFaktasider } from "../../utils/useFaktasider";
+import InlinePreview from "../../../components/InlinePreview";
+import { useFaktasider } from "../../../utils/useFaktasider";
 
 export const InlineVisForIkon = FaLightbulb;
 const visForColor = "#80f8";

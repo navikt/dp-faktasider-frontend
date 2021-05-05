@@ -5,7 +5,7 @@ import { InlineUtkast, InlineUtkastIkon } from "./Utkast";
 import visForAnnotation from "./annotations/visForAnnotation";
 import { GtilNOKIcon, GtilNOKPeview } from "./GtilNOKPreview";
 import { InlineStrykes, InlineStrykesIkon } from "./Strykes";
-import pasChildren from "../../components/pasChildren";
+import pasChildren from "../../../components/pasChildren";
 
 export const styles = {
   normal: { title: "Normal", value: "normal" },

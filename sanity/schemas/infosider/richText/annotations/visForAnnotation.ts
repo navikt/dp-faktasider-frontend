@@ -1,5 +1,5 @@
 import { InlineVisForPreview, InlineVisForIkon } from "../VisForPreview";
-import ConditionalField from "../../../components/ConditionalField";
+import ConditionalField from "../../../../components/ConditionalField";
 
 export default {
   name: "visForAnnotation",

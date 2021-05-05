@@ -1,5 +1,5 @@
 import { MdWeb } from "react-icons/md";
-import { localeValueRequired } from "../utils/validationHelpers";
+import { localeValueRequired } from "../../utils/validationHelpers";
 
 export default {
   name: "faktaSide",

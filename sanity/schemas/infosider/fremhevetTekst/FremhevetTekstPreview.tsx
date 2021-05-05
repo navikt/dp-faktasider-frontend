@@ -1,5 +1,5 @@
 import * as React from "react";
-import BlockContentPreview from "../../components/BlockContentPreview";
+import BlockContentPreview from "../../../components/BlockContentPreview";
 
 export const FremhevetTekstIkon = () => <>❤️</>;
 

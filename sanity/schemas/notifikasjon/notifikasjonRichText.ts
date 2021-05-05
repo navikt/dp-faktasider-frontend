@@ -1,5 +1,5 @@
-import link from "../richText/annotations/link";
-import { decorators, styles } from "../richText/richText";
+import link from "../infosider/richText/annotations/link";
+import { decorators, styles } from "../infosider/richText/richText";
 
 export default {
   title: "Notifikasjon Rich Text",

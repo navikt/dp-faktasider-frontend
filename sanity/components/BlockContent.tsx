@@ -1,17 +1,17 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import SanityBlockContent from "@sanity/block-content-to-react";
-import { GtilNOKPeview } from "../schemas/richText/GtilNOKPreview";
-import FremhevetTekstPreview from "../schemas/fremhevetTekst/FremhevetTekstPreview";
+import { GtilNOKPeview } from "../schemas/infosider/richText/GtilNOKPreview";
+import FremhevetTekstPreview from "../schemas/infosider/fremhevetTekst/FremhevetTekstPreview";
 import withErrorBoundary from "./withErrorBoundary";
-import CustomComponentPreview from "../schemas/richText/CustomComponentPreview";
-import TillegsInformasjonPreview from "../schemas/tillegsinfo/TillegsInformasjonPreview";
-import { InlineUtkast } from "../schemas/richText/Utkast";
+import CustomComponentPreview from "../schemas/infosider/richText/CustomComponentPreview";
+import TillegsInformasjonPreview from "../schemas/infosider/tillegsinfo/TillegsInformasjonPreview";
+import { InlineUtkast } from "../schemas/infosider/richText/Utkast";
 import VideoPreview from "../schemas/video/VideoPreview";
-import { InlineVisForPreview } from "../schemas/richText/VisForPreview";
-import { H2Header, H3Header, H2NoBackround, H2HeaderMMeny, H4Header } from "../schemas/richText/HeaderPreviews";
-import TidslinjePreview, { TidslinjePunkt } from "../schemas/tidslinje/TidslinjePreview";
-import { LenkePreview } from "../schemas/richText/annotations/link";
+import { InlineVisForPreview } from "../schemas/infosider/richText/VisForPreview";
+import { H2Header, H3Header, H2NoBackround, H2HeaderMMeny, H4Header } from "../schemas/infosider/richText/HeaderPreviews";
+import TidslinjePreview, { TidslinjePunkt } from "../schemas/infosider/tidslinje/TidslinjePreview";
+import { LenkePreview } from "../schemas/infosider/richText/annotations/link";
 
 type Serializers = {
   types: {

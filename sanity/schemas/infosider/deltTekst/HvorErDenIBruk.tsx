@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import useSanityQuery from "../../utils/useSanityQuery";
+import useSanityQuery from "../../../utils/useSanityQuery";
 
 const Header = styled.div`
   font-size: 1.25rem;
