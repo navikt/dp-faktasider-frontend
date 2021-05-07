@@ -1,26 +1,13 @@
-import link from "../richText/annotations/link";
-import { decorators, styles } from "../richText/richText";
-import visForAnnotation from "../richText/annotations/visForAnnotation";
+import richText, { block, styles } from "../richText/richText";
 
 export default {
+  ...richText,
   name: "tilleggsInfoRichText",
   title: "Tillegsinfo richtext",
-  type: "array",
   of: [
     {
-      title: "Block",
-      type: "block",
+      ...block,
       styles: [styles.normal],
-      marks: {
-        decorators: [
-          decorators.strong,
-          decorators.em,
-          decorators.utkast,
-          decorators.foreslattStykes,
-          decorators.GtilNOK,
-        ],
-        annotations: [link, visForAnnotation],
-      },
     },
   ],
 };
