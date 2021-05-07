@@ -15,10 +15,11 @@ const loggEvent = (event: string, ekstraData?: object) => {
     import("../utils/loggingConfig").then((logging) => {
       const smallScreen = window.innerWidth < mediaBreakpoint;
       const data = {
-        ...ekstraData,
         appName: "dp-faktasider",
         smallScreen, // TODO fjern denne når det har gått litt tid, feks etter mai 2021. erstattes av 'screenSize'
         screenSize: smallScreen ? "small" : "large",
+        path: window.location.pathname,
+        ...ekstraData,
       };
 
       logging.loggInstance.logEvent(event, data);
@@ -32,7 +33,6 @@ const loggEvent = (event: string, ekstraData?: object) => {
 export const loggError = (error: Error, ekstraData?: object) => {
   const data = {
     ...ekstraData,
-    siteUrl: window.location.pathname,
     msg: error.message,
     name: error.name,
     stack: error.stack,
