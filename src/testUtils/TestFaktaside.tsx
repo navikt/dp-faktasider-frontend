@@ -46,7 +46,7 @@ function TestFaktaside(props: Props) {
   const parsedMenudata = parseMenuData(menuData, "no");
   const parsedFaktasidedata = parseFaktasideData(context, "no");
 
-  return <FaktaSide menuData={parsedMenudata} {...parsedFaktasidedata} />;
+  return <FaktaSide menuData={parsedMenudata} {...parsedFaktasidedata} revisions={[]} />;
 }
 
 export default TestFaktaside;

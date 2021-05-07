@@ -20,9 +20,11 @@ import Header from "./content/Header";
 import useLanguageSelector from "./useLanguageSelector";
 import { MenuItem } from "../../sanity/groq/menu/parseMenuData";
 import TilpassInnhold from "./TilpassInnhold/TilpassInnhold";
+import { Revision } from "../../sanity/revisionsFetcher";
 
 export interface FaktasideProps extends FaktasideParsedData {
   menuData: MenuItem[];
+  revisions: Revision[];
 }
 
 function Faktaside(props: FaktasideProps) {

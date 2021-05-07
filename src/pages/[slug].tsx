@@ -12,6 +12,7 @@ import { isDevelopment } from "../utils/environment";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { supportedLanguages } from "../i18n/supportedLanguages";
 import { useSanityPreveiw } from "../sanity/useSanityPreview";
+import { Revision, revisionsFetcher } from "../sanity/revisionsFetcher";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 
@@ -31,6 +32,7 @@ interface Props {
   menuData: MenuQueryData;
   preview: boolean;
   slug: string;
+  revisions: Revision[];
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
@@ -39,6 +41,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
   const faktaside: FaktasideQueryData = await getClient(preview).fetch(faktasideQuery, { slug });
   const menuData: MenuQueryData = await getClient(preview).fetch(menuQuery);
+  const revisions = await revisionsFetcher(faktaside.faktaside.id);
 
   if (!faktaside?.faktaside?.id) {
     return {
@@ -52,6 +55,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
       menuData: menuData,
       preview,
       slug,
+      revisions,
     },
     revalidate: 120,
   };
@@ -70,7 +74,7 @@ function PreviewWrapper(props: Props) {
   const parsedFaktasideData = parseFaktasideData(faktasideData, locale);
   const parsedMenuData = parseMenuData(menuData, locale);
 
-  return <Faktaside {...parsedFaktasideData} menuData={parsedMenuData} />;
+  return <Faktaside {...parsedFaktasideData} menuData={parsedMenuData} revisions={props.revisions} />;
 }
 
 export default withErrorBoundary(PreviewWrapper, "FaktaSide");
