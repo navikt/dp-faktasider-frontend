@@ -4,6 +4,7 @@ import { Sidetittel } from "nav-frontend-typografi";
 import SistOppdatert from "./SistOppdatert";
 import { useFaktasideContext } from "../FaktaSideContext";
 import Revisions from "./Revisions";
+import Utkast from "../../BlockContent/utkast/Utkast";
 
 const Style = styled.div`
   text-align: center;
@@ -21,7 +22,9 @@ function Header() {
     <Style>
       <StyledSidetittel>{faktaside.title}</StyledSidetittel>
       <SistOppdatert publiseringsTidspunkt={faktaside.publiseringsTidspunkt} />
-      <Revisions />
+      <Utkast>
+        <Revisions documentId={faktaside.id} revisions={faktaside.revisions} />
+      </Utkast>
     </Style>
   );
 }
