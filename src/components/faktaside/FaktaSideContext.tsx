@@ -5,7 +5,6 @@ const defaultValue: FaktasideProps = {
   id: "N/A",
   slug: "N/A",
   tilpassInnholdValg: [],
-  revisions: [],
   rawData: {
     faktaside: {
       id: "N/A",

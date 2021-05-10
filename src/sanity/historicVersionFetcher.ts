@@ -1,7 +1,7 @@
 import { sanityConfig } from "./sanity-config";
 
 interface Document extends Record<string, any> {
-  _type: string;
+  _type: "faktaSide" | "deltTekst";
   _createdAt: string;
   _id: string;
   _rev: string;

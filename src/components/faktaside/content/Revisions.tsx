@@ -13,7 +13,7 @@ const StyledLenke = styled.a`
 interface Props {
   documentId: string;
   revisions: Revision[];
-  currentRevision?: string;
+  currentRevision?: string | null;
 }
 
 // Denne lista er ikke komplett. Her regnes ikke delte tekster og notifikasjoner med feks, de kan være oppdatert uten at det vises her. Dersom en delt tekst som trekkes inn er oppdatert vil det være en endring ut mot bruker, så for at denne lista skal kunne brukes må det regnes inn på et vis.

@@ -3,8 +3,6 @@ import styled from "styled-components/macro";
 import { Sidetittel } from "nav-frontend-typografi";
 import SistOppdatert from "./SistOppdatert";
 import { useFaktasideContext } from "../FaktaSideContext";
-import Revisions from "./Revisions";
-import Utkast from "../../BlockContent/utkast/Utkast";
 
 const Style = styled.div`
   text-align: center;
@@ -21,10 +19,7 @@ function Header() {
   return (
     <Style>
       <StyledSidetittel>{faktaside.title}</StyledSidetittel>
-      <SistOppdatert publiseringsTidspunkt={faktaside.publiseringsTidspunkt} />
-      <Utkast>
-        <Revisions documentId={faktaside.id} revisions={faktaside.revisions} />
-      </Utkast>
+      <SistOppdatert />
     </Style>
   );
 }

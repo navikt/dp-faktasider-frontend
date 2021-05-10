@@ -1,0 +1,141 @@
+import styled from "styled-components/macro";
+import { navFrontend } from "../../styles/navFrontend";
+import { typografiStyle } from "../faktaside/FaktaSideLayout";
+import H2Section from "../Section/H2Section";
+import BlockContent from "../BlockContent/BlockContent";
+import parseRichText from "../../utils/richTextUtils/parser/parseRichText";
+import { HistoricVersionResponse } from "../../sanity/historicVersionFetcher";
+import localizeSanityContent from "../../i18n/localizeSanityContent";
+import Revisions from "../faktaside/content/Revisions";
+import React from "react";
+import { Normaltekst, Sidetittel, Undertittel } from "nav-frontend-typografi";
+import { AlertStripeAdvarsel } from "nav-frontend-alertstriper";
+import { DokumentHistorikkProps } from "../../pages/historikk/[...slug]";
+import DevKnapper from "../DevKnapper/DevKnapper";
+import { format } from "date-fns";
+
+const Style = styled.div`
+  max-width: 80rem;
+  margin: auto;
+  background-color: white;
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const StyledPre = styled.pre`
+  font-size: 0.75rem;
+  border: dashed ${navFrontend.navBlaLighten60} 0.4rem;
+  padding: 1rem;
+  background-color: hsl(0deg 0% 95%);
+`;
+
+const StyledRekonstruksjon = styled.main`
+  box-shadow: 0 0.2rem 2rem hsl(0deg 0% 70%);
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 50rem;
+  background-color: hsl(0deg 0% 95%);
+  ${typografiStyle};
+`;
+
+function FaktasideRekonstruksjon(props: any) {
+  return (
+    <StyledRekonstruksjon>
+      <Sidetittel>{props.title}</Sidetittel>
+      <Normaltekst>{props.beskrivelse}</Normaltekst>
+      {props.kortFortalt && (
+        <H2Section title="Kort fortalt" id="kort-fortalt">
+          <BlockContent blocks={props.kortFortalt} />
+        </H2Section>
+      )}
+      /* TODO parseRichText fjerner delte tekster her, må løses */
+      <BlockContent blocks={parseRichText(props.innhold)} />
+    </StyledRekonstruksjon>
+  );
+}
+
+function DeltTekstRekonstruksjon(props: any) {
+  return (
+    <StyledRekonstruksjon>
+      /* TODO, biter av teksten i delte tekster kan merkes med visPaaSide, men disse tekstene blir nok skjult nå som de
+      ikke vises på en side */
+      <BlockContent blocks={parseRichText(props.innhold)} />
+    </StyledRekonstruksjon>
+  );
+}
+
+type Dokument = HistoricVersionResponse["documents"][0];
+
+function getRekonstruksjon(document?: Dokument) {
+  switch (document?._type) {
+    case "faktaSide":
+      return <FaktasideRekonstruksjon {...document} />;
+    case "deltTekst":
+      return <DeltTekstRekonstruksjon {...document} />;
+    default:
+      return "Ingen dokument valgt";
+  }
+}
+
+const MetadataStyle = styled.div`
+  padding: 1rem 1.5rem;
+  background-color: hsl(0deg 0% 95%);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+`;
+
+const Bold = styled.span`
+  font-weight: 600;
+`;
+
+function Metadata(props: Dokument) {
+  return (
+    <MetadataStyle>
+      <Undertittel>Dokument-metadata</Undertittel>
+      <p>
+        ID: <Bold>{props._id}</Bold>
+      </p>
+      <p>
+        Type: <Bold>{props._type}</Bold>
+      </p>
+      <p>
+        Tittel: <Bold>{props.title}</Bold>
+      </p>
+      <p>
+        Sist oppdatert: <Bold>{format(new Date(props._updatedAt), "PPpp")}</Bold>
+      </p>
+    </MetadataStyle>
+  );
+}
+
+function DokumentHistorikk(props: DokumentHistorikkProps) {
+  const localizedDoc: Dokument | undefined = localizeSanityContent(props.response?.documents[0], "no");
+
+  return (
+    <Style>
+      <DevKnapper />
+      <div>
+        <Sidetittel>Historiske data</Sidetittel>
+        <Revisions revisions={props.revisions} documentId={props.id} currentRevision={localizedDoc?._updatedAt} />
+      </div>
+
+      {localizedDoc && <Metadata {...localizedDoc} />}
+
+      <AlertStripeAdvarsel>
+        Dette er en automatisk rekonstruksjon og vil ikke nøyaktig gjenspeile hvordan siden ble opplevd på gjeldende
+        tidspunkt.
+      </AlertStripeAdvarsel>
+
+      {getRekonstruksjon(localizedDoc)}
+
+      <details>
+        <summary>Rådata</summary>
+        <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
+      </details>
+    </Style>
+  );
+}
+
+export default DokumentHistorikk;
