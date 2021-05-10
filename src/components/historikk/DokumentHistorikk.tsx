@@ -13,6 +13,7 @@ import { AlertStripeAdvarsel } from "nav-frontend-alertstriper";
 import { DokumentHistorikkProps } from "../../pages/historikk/[...slug]";
 import DevKnapper from "../DevKnapper/DevKnapper";
 import { format } from "date-fns";
+import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 
 const Style = styled.div`
   max-width: 80rem;
@@ -40,6 +41,13 @@ const StyledRekonstruksjon = styled.main`
   ${typografiStyle};
 `;
 
+function parseHistoriskRichText(blocks: SanityBlock[]) {
+  const behandlet = blocks.map((it) =>
+    it._type === "deltTekstReference" ? { ...it, _type: "historiskDeltTekst" } : it
+  );
+  return parseRichText(behandlet);
+}
+
 function FaktasideRekonstruksjon(props: any) {
   return (
     <StyledRekonstruksjon>
@@ -51,7 +59,7 @@ function FaktasideRekonstruksjon(props: any) {
         </H2Section>
       )}
       /* TODO parseRichText fjerner delte tekster her, må løses */
-      <BlockContent blocks={parseRichText(props.innhold)} />
+      <BlockContent blocks={parseHistoriskRichText(props.innhold)} />
     </StyledRekonstruksjon>
   );
 }
@@ -61,7 +69,7 @@ function DeltTekstRekonstruksjon(props: any) {
     <StyledRekonstruksjon>
       /* TODO, biter av teksten i delte tekster kan merkes med visPaaSide, men disse tekstene blir nok skjult nå som de
       ikke vises på en side */
-      <BlockContent blocks={parseRichText(props.innhold)} />
+      <BlockContent blocks={parseHistoriskRichText(props.innhold)} />
     </StyledRekonstruksjon>
   );
 }

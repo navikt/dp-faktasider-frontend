@@ -14,6 +14,9 @@ npm run dev
 Opprett filen `.env.development` i root-folderet med innholdet (Trengs ikke, men lar deg jobbe mot et development-datasett):
 
 ```
+# SECRET - DO NOT COMMIT TO GIT
+SANITY_READ_TOKEN="ditt hemmelige token her"
+
 NEXT_PUBLIC_SANITY_DATASET="development"
 ```
 
