@@ -60,7 +60,6 @@ function FaktasideRekonstruksjon(props: any) {
           <BlockContent blocks={props.kortFortalt} />
         </H2Section>
       )}
-      /* TODO parseRichText fjerner delte tekster her, må løses */
       <BlockContent blocks={parseHistoriskRichText(props.innhold)} />
     </StyledRekonstruksjon>
   );
