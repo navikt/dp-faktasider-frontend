@@ -18,6 +18,7 @@ import Lenke from "nav-frontend-lenker";
 import UnderArbeid from "../veiviser/UnderArbeid";
 import { formaterDato } from "../../utils/formaterDato";
 import Head from "next/head";
+import HistorikkContextProvider from "./HistorikkContext";
 
 const Style = styled.div`
   max-width: 80rem;
@@ -145,7 +146,7 @@ function DokumentHistorikk(props: DokumentHistorikkProps) {
         tidspunkt. <Lenke href={`#${infoId}`}>Les mer</Lenke>
       </AlertStripeAdvarsel>
 
-      {getRekonstruksjon(localizedDoc)}
+      <HistorikkContextProvider timestamp={props.time}>{getRekonstruksjon(localizedDoc)}</HistorikkContextProvider>
 
       <details>
         <summary>Rådata</summary>

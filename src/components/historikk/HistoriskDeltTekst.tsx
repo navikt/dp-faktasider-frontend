@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 import SlideDown from "../SlideDown";
+import { useHistorikkContext } from "./HistorikkContext";
 
 const Header = styled.p`
   font-weight: 600;
@@ -10,8 +11,9 @@ const Header = styled.p`
 `;
 
 export function HistoriskDeltTekst(props) {
-  let documentId = props.node.deltTekst._ref;
-  const href = `/historikk/${documentId}`;
+  const documentId = props.node.deltTekst._ref;
+  const timestamp = useHistorikkContext().timestamp || "";
+  const href = `/historikk/${documentId}/${timestamp}`;
 
   return (
     <AlertStripeAdvarsel>
