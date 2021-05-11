@@ -16,6 +16,7 @@ import { format } from "date-fns";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import useUniqueId from "../../utils/useUniqueId";
 import Lenke from "nav-frontend-lenker";
+import UnderArbeid from "../veiviser/UnderArbeid";
 
 const Style = styled.div`
   max-width: 80rem;
@@ -125,6 +126,7 @@ function DokumentHistorikk(props: DokumentHistorikkProps) {
 
   return (
     <Style>
+      <UnderArbeid />
       <DevKnapper />
       <div>
         <Sidetittel>Historiske data</Sidetittel>
