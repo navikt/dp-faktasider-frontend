@@ -1,8 +1,8 @@
-import { format } from "date-fns";
 import styled from "styled-components/macro";
 import compareDesc from "date-fns/compareDesc";
 import { Revision } from "../../../sanity/revisionsFetcher";
 import Link from "next/link";
+import { formaterDato } from "../../../utils/formaterDato";
 
 const Style = styled.div``;
 
@@ -23,10 +23,10 @@ function Revisions(props: Props) {
   return (
     <Style>
       <details>
-        <summary>{props.currentRevision ? format(new Date(props.currentRevision), "PPpp") : "Historikk"}</summary>
+        <summary>{props.currentRevision ? formaterDato(props.currentRevision) : "Historikk"}</summary>
         {sortedRevisions?.map((rev) => (
           <Link key={rev.id} href={`/historikk/${props.documentId}/${rev.timestamp}`} passHref>
-            <StyledLenke className="lenke">{format(new Date(rev.timestamp), "PPpp")}</StyledLenke>
+            <StyledLenke className="lenke">{formaterDato(rev.timestamp)}</StyledLenke>
           </Link>
         ))}
       </details>

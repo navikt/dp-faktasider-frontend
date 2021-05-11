@@ -12,11 +12,11 @@ import { Normaltekst, Sidetittel, Undertittel } from "nav-frontend-typografi";
 import { AlertStripeAdvarsel, AlertStripeInfo } from "nav-frontend-alertstriper";
 import { DokumentHistorikkProps } from "../../pages/historikk/[...slug]";
 import DevKnapper from "../DevKnapper/DevKnapper";
-import { format } from "date-fns";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import useUniqueId from "../../utils/useUniqueId";
 import Lenke from "nav-frontend-lenker";
 import UnderArbeid from "../veiviser/UnderArbeid";
+import { formaterDato } from "../../utils/formaterDato";
 
 const Style = styled.div`
   max-width: 80rem;
@@ -114,7 +114,7 @@ function Metadata(props: Dokument) {
         Tittel: <Bold>{props.title}</Bold>
       </p>
       <p>
-        Sist oppdatert: <Bold>{format(new Date(props._updatedAt), "PPpp")}</Bold>
+        Publisert: <Bold>{formaterDato(props._updatedAt)}</Bold>
       </p>
     </MetadataStyle>
   );
