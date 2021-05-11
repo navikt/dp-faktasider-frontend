@@ -2,7 +2,6 @@ import * as React from "react";
 import { useCallback, useEffect, useState } from "react";
 import { pxFromTop } from "../../../../utils/domUtils";
 import styled, { css } from "styled-components/macro";
-import useSmoothscrollOnClick from "../../../../hooks/useSmoothscrollOnClick";
 import { useInnholdsListe } from "./useInnholdsListe";
 import { LenkeUtenUnderstrek } from "../../../../utils/common-styled-components";
 import withErrorBoundary from "../../../../components/withErrorBoundary";
@@ -50,13 +49,11 @@ function useCurrentlyViewedGroup(items: Group[]): Group | undefined {
 }
 
 function MenuItem(props: { item: Group; current: boolean }) {
-  const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
   const visForContext = useVisForContext();
   const faktaside = useFaktasideContext();
   const blockConfig = props.item.blockConfig;
 
   const handleClick = () => {
-    activateSmoothScroll();
     loggMeny("Hopp til overskrift");
   };
 
@@ -68,7 +65,6 @@ function MenuItem(props: { item: Group; current: boolean }) {
     <Utkast erUtkast={!!blockConfig?.erUtkast}>
       <UnmountClosed isOpened={vis}>
         <li key={blockConfig?.id}>
-          <SmoothScroll />
           <StyledLenke erValgt={props.current} href={`#${blockConfig?.id}`} onClick={handleClick}>
             {props.item.title}
           </StyledLenke>
