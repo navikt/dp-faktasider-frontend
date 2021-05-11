@@ -17,6 +17,7 @@ import useUniqueId from "../../utils/useUniqueId";
 import Lenke from "nav-frontend-lenker";
 import UnderArbeid from "../veiviser/UnderArbeid";
 import { formaterDato } from "../../utils/formaterDato";
+import Head from "next/head";
 
 const Style = styled.div`
   max-width: 80rem;
@@ -126,6 +127,10 @@ function DokumentHistorikk(props: DokumentHistorikkProps) {
 
   return (
     <Style>
+      <Head>
+        <meta name="robots" content="none" />
+        <title>Historiske data | www.nav.no</title>
+      </Head>
       <UnderArbeid />
       <DevKnapper />
       <div>
