@@ -9,11 +9,13 @@ import localizeSanityContent from "../../i18n/localizeSanityContent";
 import Revisions from "../faktaside/content/Revisions";
 import React from "react";
 import { Normaltekst, Sidetittel, Undertittel } from "nav-frontend-typografi";
-import { AlertStripeAdvarsel } from "nav-frontend-alertstriper";
+import { AlertStripeAdvarsel, AlertStripeInfo } from "nav-frontend-alertstriper";
 import { DokumentHistorikkProps } from "../../pages/historikk/[...slug]";
 import DevKnapper from "../DevKnapper/DevKnapper";
 import { format } from "date-fns";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
+import useUniqueId from "../../utils/useUniqueId";
+import Lenke from "nav-frontend-lenker";
 
 const Style = styled.div`
   max-width: 80rem;
@@ -120,6 +122,7 @@ function Metadata(props: Dokument) {
 
 function DokumentHistorikk(props: DokumentHistorikkProps) {
   const localizedDoc: Dokument | undefined = localizeSanityContent(props.response?.documents[0], "no");
+  const infoId = useUniqueId("info");
 
   return (
     <Style>
@@ -133,7 +136,7 @@ function DokumentHistorikk(props: DokumentHistorikkProps) {
 
       <AlertStripeAdvarsel>
         Dette er en automatisk rekonstruksjon og vil ikke nøyaktig gjenspeile hvordan siden ble opplevd på gjeldende
-        tidspunkt.
+        tidspunkt. <Lenke href={`#${infoId}`}>Les mer</Lenke>
       </AlertStripeAdvarsel>
 
       {getRekonstruksjon(localizedDoc)}
@@ -142,6 +145,16 @@ function DokumentHistorikk(props: DokumentHistorikkProps) {
         <summary>Rådata</summary>
         <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
       </details>
+      <AlertStripeInfo id={infoId}>
+        <p>Mer informasjon</p>
+        <p>Gammel data, ny kode</p>
+        <p>Info om delte tekster</p>
+        <p>Info om Custom Components</p>
+        <p>Info om G-belløp</p>
+        <p>Info om hvor man kan hente kode</p>
+        <p>Info om å kontakte NAV hvis man trenger nøyaktig gjengivelse</p>
+        <p>Info om at data er korrekt/tidsriktig</p>
+      </AlertStripeInfo>
     </Style>
   );
 }
