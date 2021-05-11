@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps<DokumentHistorikkProps> = async (con
       time: time || null,
       response,
     },
-    revalidate: 3600,
+    revalidate: 86400, // En gang i døgnet
   };
 };
 

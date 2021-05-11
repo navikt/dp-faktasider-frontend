@@ -153,6 +153,7 @@ function DokumentHistorikk(props: DokumentHistorikkProps) {
         <p>Info om hvor man kan hente kode</p>
         <p>Info om å kontakte NAV hvis man trenger nøyaktig gjengivelse</p>
         <p>Info om at data er korrekt/tidsriktig</p>
+        <p>Oppdateres ca en gang i døgnet</p>
       </AlertStripeInfo>
     </Style>
   );
