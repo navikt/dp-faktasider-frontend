@@ -8,7 +8,7 @@ interface RawRevision {
   timestamp: string;
 }
 
-export type Revision = Omit<RawRevision, "author">;
+export type Revision = Omit<RawRevision, "author" | "documentIDs" | "mutations">;
 
 const token = process.env.SANITY_READ_TOKEN;
 const { projectId, dataset } = sanityConfig;
@@ -31,8 +31,8 @@ export const revisionsFetcher = async (docId: string): Promise<Revision[]> => {
       return [];
     }
 
-    // Har ikke lyst til å sende med author til frontend
-    return revisions.map(({ id, documentIDs, timestamp, mutations }) => ({ id, documentIDs, timestamp, mutations }));
+    // Begrenser litt hva vi sender til frontenden
+    return revisions.map(({ id, timestamp }) => ({ id, timestamp }));
   } catch (e) {
     console.error(e);
     return [];
