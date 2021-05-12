@@ -12,7 +12,7 @@ import { SupportedLanguage } from "../../i18n/supportedLanguages";
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   return {
     paths: [],
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
