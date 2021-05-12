@@ -15,7 +15,7 @@ const { projectId, dataset } = sanityConfig;
 
 export const revisionsFetcher = async (docId: string): Promise<Revision[]> => {
   try {
-    const url = `https://${projectId}.api.sanity.io/v1/data/history/${dataset}/transactions/${docId}?excludeContent=true`;
+    const url = `https://${projectId}.apicdn.sanity.io/v1/data/history/${dataset}/transactions/${docId}?excludeContent=true`;
 
     const response = await fetch(url, {
       headers: {
