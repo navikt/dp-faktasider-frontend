@@ -3,7 +3,7 @@ import { navFrontend } from "../../styles/navFrontend";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import Revisions from "../faktaside/content/Revisions";
 import React from "react";
-import { Sidetittel } from "nav-frontend-typografi";
+import { Sidetittel, Undertittel } from "nav-frontend-typografi";
 import { AlertStripeAdvarsel, AlertStripeInfo } from "nav-frontend-alertstriper";
 import { DokumentHistorikkProps } from "../../pages/historikk/[...slug]";
 import DevKnapper from "../DevKnapper/DevKnapper";
@@ -15,6 +15,7 @@ import HistorikkContextProvider from "./HistorikkContext";
 import DokumentRekonstruksjon from "./DokumentRekonstruksjon";
 import { HistoriskDokument } from "./api/historikkFetcher";
 import HistoriskDokumentMetadata from "./HistoriskDokumentMetadata";
+import { formaterDato } from "../../utils/formaterDato";
 
 const Style = styled.div`
   max-width: 80rem;
@@ -33,6 +34,12 @@ const StyledPre = styled.pre`
   background-color: hsl(0deg 0% 95%);
 `;
 
+const SidetittelStyle = styled(Undertittel)`
+  opacity: 0.8;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+`;
+
 function DokumentHistorikk(props: DokumentHistorikkProps) {
   const localizedDoc: HistoriskDokument | undefined = localizeSanityContent(props.response?.documents[0], "no");
   const infoId = useUniqueId("info");
@@ -41,16 +48,16 @@ function DokumentHistorikk(props: DokumentHistorikkProps) {
     <Style>
       <Head>
         <meta name="robots" content="none" />
-        <title>Historiske data | www.nav.no</title>
+        <title>Historiske versjoner | www.nav.no</title>
       </Head>
       <UnderArbeid />
       <DevKnapper />
       <div>
-        <Sidetittel>Historiske data</Sidetittel>
-        <Revisions revisions={props.revisions} documentId={props.id} currentRevision={localizedDoc?._updatedAt} />
+        <Sidetittel>Historiske versjoner</Sidetittel>
+        <SidetittelStyle>{getTitle(localizedDoc)}</SidetittelStyle>
+        {localizedDoc && <time>{formaterDato(localizedDoc._updatedAt)}</time>}
+        <Revisions revisions={props.revisions} documentId={props.id} currentRevision={localizedDoc?._rev} />
       </div>
-
-      {localizedDoc && <HistoriskDokumentMetadata dokument={localizedDoc} />}
 
       <AlertStripeAdvarsel>
         Dette er en automatisk rekonstruksjon og vil ikke nøyaktig gjenspeile hvordan siden ble opplevd på gjeldende
@@ -60,6 +67,8 @@ function DokumentHistorikk(props: DokumentHistorikkProps) {
       <HistorikkContextProvider timestamp={props.time}>
         <DokumentRekonstruksjon dokument={localizedDoc} />
       </HistorikkContextProvider>
+
+      {localizedDoc && <HistoriskDokumentMetadata dokument={localizedDoc} />}
 
       <details>
         <summary>Rådata</summary>
@@ -78,6 +87,17 @@ function DokumentHistorikk(props: DokumentHistorikkProps) {
       </AlertStripeInfo>
     </Style>
   );
+}
+
+function getTitle(dokument?: HistoriskDokument) {
+  switch (dokument?._type) {
+    case "deltTekst":
+      return dokument.title;
+    case "faktaSide":
+      return dokument.title;
+    default:
+      return "Ingen dokument valgt";
+  }
 }
 
 export default DokumentHistorikk;

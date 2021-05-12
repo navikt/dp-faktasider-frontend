@@ -17,13 +17,13 @@ export function HistoriskDeltTekst(props) {
 
   return (
     <AlertStripeAdvarsel>
-      <Header>Her var det en delt tekst.</Header>
+      <Header>Beklager, vi klarer ikke å hente teksten som var her</Header>
       <p>
         <Link href={href} passHref>
-          <a className="lenke">Gå til versjonshistorikk for den delte teksten</a>
+          <a className="lenke">Trykk her for å se versjonshistorikk av denne teksten</a>
         </Link>
       </p>
-      <SlideDown title="Hva er en delt tekst?">
+      <SlideDown title="Hvorfor kan dere ikke vise denne teksten?">
         <p>
           På informasjonssidene våre har vi en del tekster som går igjen på flere sider. Disse tekstene kaller vi for
           "delte tekster".
