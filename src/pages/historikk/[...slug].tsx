@@ -3,6 +3,11 @@ import { Revision, revisionsFetcher } from "../../components/historikk/api/revis
 import withErrorBoundary from "../../components/withErrorBoundary";
 import { historikkFetcher, HistorikkResponse } from "../../components/historikk/api/historikkFetcher";
 import DokumentHistorikk from "../../components/historikk/DokumentHistorikk";
+import { getClient } from "../../sanity/sanity-config";
+import { groq } from "next-sanity";
+import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
+import localizeSanityContent from "../../i18n/localizeSanityContent";
+import { SupportedLanguage } from "../../i18n/supportedLanguages";
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   return {
@@ -11,11 +16,19 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   };
 };
 
+export interface HistorikkTekster {
+  title: string;
+  kortInfo: string;
+  langInfo: SanityBlock[];
+  deltTekstForklaring: SanityBlock[];
+}
+
 export interface DokumentHistorikkProps {
   revisions: Revision[];
   response: HistorikkResponse | null;
   id: string;
   time: string | null;
+  tekster?: HistorikkTekster;
 }
 
 export const getStaticProps: GetStaticProps<DokumentHistorikkProps> = async (context) => {
@@ -29,6 +42,7 @@ export const getStaticProps: GetStaticProps<DokumentHistorikkProps> = async (con
 
   const revisions = await revisionsFetcher(id);
   const response = time ? await historikkFetcher(id, time) : null;
+  const tekster = await getClient(context.preview).fetch(groq`*[_id == 'historikkHjelpetekster'][0]`);
 
   return {
     props: {
@@ -36,6 +50,7 @@ export const getStaticProps: GetStaticProps<DokumentHistorikkProps> = async (con
       id,
       time: time || null,
       response,
+      tekster: localizeSanityContent(tekster, context.locale as SupportedLanguage),
     },
     revalidate: 86400, // En gang i døgnet
   };

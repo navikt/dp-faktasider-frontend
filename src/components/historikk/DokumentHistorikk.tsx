@@ -16,6 +16,7 @@ import DokumentRekonstruksjon from "./DokumentRekonstruksjon";
 import { HistoriskDokument } from "./api/historikkFetcher";
 import HistoriskDokumentMetadata from "./HistoriskDokumentMetadata";
 import { formaterDato } from "../../utils/formaterDato";
+import BlockContent from "../BlockContent/BlockContent";
 
 const Style = styled.div`
   max-width: 80rem;
@@ -48,23 +49,22 @@ function DokumentHistorikk(props: DokumentHistorikkProps) {
     <Style>
       <Head>
         <meta name="robots" content="none" />
-        <title>Historiske versjoner | www.nav.no</title>
+        <title>{props.tekster?.title} | www.nav.no</title>
       </Head>
       <UnderArbeid />
       <DevKnapper />
       <div>
-        <Sidetittel>Historiske versjoner</Sidetittel>
+        <Sidetittel>{props.tekster?.title}</Sidetittel>
         <SidetittelStyle>{getTitle(localizedDoc)}</SidetittelStyle>
         {localizedDoc && <time>{formaterDato(localizedDoc._updatedAt)}</time>}
         <Revisions revisions={props.revisions} documentId={props.id} currentRevision={localizedDoc?._rev} />
       </div>
 
       <AlertStripeAdvarsel>
-        Dette er en automatisk rekonstruksjon og vil ikke nøyaktig gjenspeile hvordan siden ble opplevd på gjeldende
-        tidspunkt. <Lenke href={`#${infoId}`}>Les mer</Lenke>
+       {props.tekster?.kortInfo} <Lenke href={`#${infoId}`}>Les mer</Lenke>
       </AlertStripeAdvarsel>
 
-      <HistorikkContextProvider timestamp={props.time}>
+      <HistorikkContextProvider timestamp={props.time} tekster={props.tekster}>
         <DokumentRekonstruksjon dokument={localizedDoc} />
       </HistorikkContextProvider>
 
@@ -75,15 +75,7 @@ function DokumentHistorikk(props: DokumentHistorikkProps) {
         <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
       </details>
       <AlertStripeInfo id={infoId}>
-        <p>Mer informasjon</p>
-        <p>Gammel data, ny kode</p>
-        <p>Info om delte tekster</p>
-        <p>Info om Custom Components</p>
-        <p>Info om G-belløp</p>
-        <p>Info om hvor man kan hente kode</p>
-        <p>Info om å kontakte NAV hvis man trenger nøyaktig gjengivelse</p>
-        <p>Info om at data er korrekt/tidsriktig</p>
-        <p>Oppdateres ca en gang i døgnet</p>
+        <BlockContent blocks={props.tekster?.langInfo} />
       </AlertStripeInfo>
     </Style>
   );

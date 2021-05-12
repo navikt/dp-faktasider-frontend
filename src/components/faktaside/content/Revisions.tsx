@@ -37,7 +37,7 @@ function Revisions(props: Props) {
             <Link key={rev.id} href={`/historikk/${props.documentId}/${rev.timestamp}`} passHref>
               <StyledLenke current={current} className="lenke">
                 {formaterDato(rev.timestamp)}
-                {current && " (Gjeldende)"}
+                {current && " (Vises nå)"}
               </StyledLenke>
             </Link>
           );

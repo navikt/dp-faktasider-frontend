@@ -4,6 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import SlideDown from "../SlideDown";
 import { useHistorikkContext } from "./HistorikkContext";
+import BlockContent from "../BlockContent/BlockContent";
 
 const Header = styled.p`
   font-weight: 600;
@@ -12,8 +13,8 @@ const Header = styled.p`
 
 export function HistoriskDeltTekst(props) {
   const documentId = props.node.deltTekst._ref;
-  const timestamp = useHistorikkContext().timestamp || "";
-  const href = `/historikk/${documentId}/${timestamp}`;
+  const historikkContext = useHistorikkContext();
+  const href = `/historikk/${documentId}/${historikkContext.timestamp || ''}`;
 
   return (
     <AlertStripeAdvarsel>
@@ -24,18 +25,7 @@ export function HistoriskDeltTekst(props) {
         </Link>
       </p>
       <SlideDown title="Hvorfor kan dere ikke vise denne teksten?">
-        <p>
-          På informasjonssidene våre har vi en del tekster som går igjen på flere sider. Disse tekstene kaller vi for
-          "delte tekster".
-        </p>
-        <p>
-          På live-sidene våre trekker vi automatisk inn de delte tekstene, og for bruker oppleves det som en
-          sammenhengende side. Da slipper brukeren å navigere mellom flere sider og sy sammen innholdet selv. Dette
-          skjer dessverre ikke når vi viser historiske versjoner av sidene.
-        </p>
-        <p>
-          De delte tekstene blir oppdatert uavhengig av informasjonssidene og har derfor sin egen versjonshistorikk.
-        </p>
+        <BlockContent blocks={historikkContext.tekster?.deltTekstForklaring} />
       </SlideDown>
     </AlertStripeAdvarsel>
   );
