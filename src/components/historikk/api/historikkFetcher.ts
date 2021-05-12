@@ -27,6 +27,7 @@ export const historikkFetcher = async (docId: string, time: string): Promise<His
 
     return response.json();
   } catch (e) {
+    // TODO logg til amplitude/sentry?
     console.error(e);
     return null;
   }

@@ -34,6 +34,7 @@ export const revisionsFetcher = async (docId: string): Promise<Revision[]> => {
     // Begrenser litt hva vi sender til frontenden
     return revisions.map(({ id, timestamp }) => ({ id, timestamp }));
   } catch (e) {
+    // TODO logg til amplitude/sentry?
     console.error(e);
     return [];
   }
