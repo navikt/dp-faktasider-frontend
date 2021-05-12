@@ -1,4 +1,4 @@
-import { sanityConfig } from "./sanity-config";
+import { sanityConfig } from "../../../sanity/sanity-config";
 
 interface RawRevision {
   author: string;

@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 import compareDesc from "date-fns/compareDesc";
-import { Revision } from "../../../sanity/revisionsFetcher";
+import { Revision } from "../../historikk/api/revisionsFetcher";
 import Link from "next/link";
 import { formaterDato } from "../../../utils/formaterDato";
 

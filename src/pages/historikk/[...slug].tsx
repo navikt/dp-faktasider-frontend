@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Revision, revisionsFetcher } from "../../sanity/revisionsFetcher";
+import { Revision, revisionsFetcher } from "../../components/historikk/api/revisionsFetcher";
 import withErrorBoundary from "../../components/withErrorBoundary";
-import { historicVersionFetcher, HistoricVersionResponse } from "../../sanity/historicVersionFetcher";
+import { historikkFetcher, HistorikkResponse } from "../../components/historikk/api/historikkFetcher";
 import DokumentHistorikk from "../../components/historikk/DokumentHistorikk";
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
@@ -13,7 +13,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
 export interface DokumentHistorikkProps {
   revisions: Revision[];
-  response: HistoricVersionResponse | null;
+  response: HistorikkResponse | null;
   id: string;
   time: string | null;
 }
@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps<DokumentHistorikkProps> = async (con
   }
 
   const revisions = await revisionsFetcher(id);
-  const response = time ? await historicVersionFetcher(id, time) : null;
+  const response = time ? await historikkFetcher(id, time) : null;
 
   return {
     props: {
