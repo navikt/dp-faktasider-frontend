@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components/macro";
-import useSmoothscrollOnClick from "../../../hooks/useSmoothscrollOnClick";
 import { LenkeUtenUnderstrek } from "../../../utils/common-styled-components";
 import { loggH2MenyKlikk } from "../../../utils/logging";
 import useUniqueId from "../../../utils/useUniqueId";
@@ -21,11 +20,9 @@ const StyledUl = styled.ul`
 `;
 
 function GroupMenu(props: Props) {
-  const { SmoothScroll, activateSmoothScroll } = useSmoothscrollOnClick();
   const id = useUniqueId("meny-" + props.title);
 
   const handleOnClick = () => {
-    activateSmoothScroll();
     loggH2MenyKlikk();
   };
 
@@ -34,7 +31,6 @@ function GroupMenu(props: Props) {
       <h3 className="sr-only" id={id}>
         Innhold {props.title}
       </h3>
-      <SmoothScroll />
       <StyledUl>
         {props.underGrupper.map((underGruppe) => (
           <StyledLi key={underGruppe.blockConfig?.id}>

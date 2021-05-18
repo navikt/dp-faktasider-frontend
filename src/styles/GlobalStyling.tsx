@@ -17,6 +17,10 @@ const Styling = createGlobalStyle`
       font-size: 125% !important;
     }
     font-family: 'Source Sans Pro', sans-serif;
+    
+    &:focus-within {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
