@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { Revision, revisionsFetcher } from "../../components/historikk/api/revisionsFetcher";
 import withErrorBoundary from "../../components/withErrorBoundary";
 import { historikkFetcher, HistorikkResponse } from "../../components/historikk/api/historikkFetcher";
-import DokumentHistorikk from "../../components/historikk/DokumentHistorikk";
+import Historikk from "../../components/historikk/Historikk";
 import { getClient } from "../../sanity/sanity-config";
 import { groq } from "next-sanity";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
@@ -23,7 +23,7 @@ export interface HistorikkTekster {
   deltTekstForklaring: SanityBlock[];
 }
 
-export interface DokumentHistorikkProps {
+export interface HistorikkProps {
   revisions: Revision[];
   response: HistorikkResponse | null;
   id: string;
@@ -31,7 +31,7 @@ export interface DokumentHistorikkProps {
   tekster?: HistorikkTekster;
 }
 
-export const getStaticProps: GetStaticProps<DokumentHistorikkProps> = async (context) => {
+export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) => {
   const [id, time] = context.params!.slug as string[];
 
   if (!id) {
@@ -56,4 +56,4 @@ export const getStaticProps: GetStaticProps<DokumentHistorikkProps> = async (con
   };
 };
 
-export default withErrorBoundary(DokumentHistorikk, "Historikk");
+export default withErrorBoundary(Historikk, "Historikk");

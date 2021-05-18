@@ -5,7 +5,7 @@ import Revisions from "../faktaside/content/Revisions";
 import React from "react";
 import { Sidetittel, Undertittel } from "nav-frontend-typografi";
 import { AlertStripeAdvarsel, AlertStripeInfo } from "nav-frontend-alertstriper";
-import { DokumentHistorikkProps } from "../../pages/historikk/[...slug]";
+import { HistorikkProps } from "../../pages/historikk/[...slug]";
 import DevKnapper from "../DevKnapper/DevKnapper";
 import useUniqueId from "../../utils/useUniqueId";
 import Lenke from "nav-frontend-lenker";
@@ -41,7 +41,7 @@ const SidetittelStyle = styled(Undertittel)`
   font-size: 1.5rem;
 `;
 
-function DokumentHistorikk(props: DokumentHistorikkProps) {
+function Historikk(props: HistorikkProps) {
   const localizedDoc: HistoriskDokument | undefined = localizeSanityContent(props.response?.documents[0], "no");
   const infoId = useUniqueId("info");
 
@@ -61,7 +61,7 @@ function DokumentHistorikk(props: DokumentHistorikkProps) {
       </div>
 
       <AlertStripeAdvarsel>
-       {props.tekster?.kortInfo} <Lenke href={`#${infoId}`}>Les mer</Lenke>
+        {props.tekster?.kortInfo} <Lenke href={`#${infoId}`}>Les mer</Lenke>
       </AlertStripeAdvarsel>
 
       <HistorikkContextProvider timestamp={props.time} tekster={props.tekster}>
@@ -92,4 +92,4 @@ function getTitle(dokument?: HistoriskDokument) {
   }
 }
 
-export default DokumentHistorikk;
+export default Historikk;
