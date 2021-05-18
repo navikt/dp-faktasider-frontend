@@ -16,7 +16,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   };
 };
 
-export interface HistorikkTekster {
+export interface HistorikkHjelpeTekster {
   title: string;
   kortInfo: string;
   langInfo: SanityBlock[];
@@ -28,7 +28,7 @@ export interface HistorikkProps {
   response: HistorikkResponse | null;
   id: string;
   time: string | null;
-  tekster?: HistorikkTekster;
+  hjelpeTekster?: HistorikkHjelpeTekster;
 }
 
 export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) => {
@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) =>
 
   const revisions = await revisionsFetcher(id);
   const response = time ? await historikkFetcher(id, time) : null;
-  const tekster = await getClient(context.preview).fetch(groq`*[_id == 'historikkHjelpetekster'][0]`);
+  const hjelpeTekster = await getClient(context.preview).fetch(groq`*[_id == 'historikkHjelpetekster'][0]`);
 
   return {
     props: {
@@ -50,7 +50,7 @@ export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) =>
       id,
       time: time || null,
       response,
-      tekster: localizeSanityContent(tekster, context.locale as SupportedLanguage),
+      hjelpeTekster: localizeSanityContent(hjelpeTekster, context.locale as SupportedLanguage),
     },
     revalidate: 86400, // En gang i døgnet
   };

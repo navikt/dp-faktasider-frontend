@@ -14,7 +14,7 @@ const Header = styled.p`
 export function HistoriskDeltTekst(props) {
   const documentId = props.node.deltTekst._ref;
   const historikkContext = useHistorikkContext();
-  const href = `/historikk/${documentId}/${historikkContext.timestamp || ''}`;
+  const href = `/historikk/${documentId}/${historikkContext.timestamp || ""}`;
 
   return (
     <AlertStripeAdvarsel>
@@ -25,7 +25,7 @@ export function HistoriskDeltTekst(props) {
         </Link>
       </p>
       <SlideDown title="Hvorfor kan dere ikke vise denne teksten?">
-        <BlockContent blocks={historikkContext.tekster?.deltTekstForklaring} />
+        <BlockContent blocks={historikkContext.hjelpeTekster?.deltTekstForklaring} />
       </SlideDown>
     </AlertStripeAdvarsel>
   );

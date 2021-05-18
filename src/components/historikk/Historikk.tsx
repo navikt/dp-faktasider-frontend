@@ -49,22 +49,22 @@ function Historikk(props: HistorikkProps) {
     <Style>
       <Head>
         <meta name="robots" content="none" />
-        <title>{props.tekster?.title} | www.nav.no</title>
+        <title>{props.hjelpeTekster?.title} | www.nav.no</title>
       </Head>
       <UnderArbeid />
       <DevKnapper />
       <div>
-        <Sidetittel>{props.tekster?.title}</Sidetittel>
+        <Sidetittel>{props.hjelpeTekster?.title}</Sidetittel>
         <SidetittelStyle>{getTitle(localizedDoc)}</SidetittelStyle>
         {localizedDoc && <time>{formaterDato(localizedDoc._updatedAt)}</time>}
         <Revisions revisions={props.revisions} documentId={props.id} currentRevision={localizedDoc?._rev} />
       </div>
 
       <AlertStripeAdvarsel>
-        {props.tekster?.kortInfo} <Lenke href={`#${infoId}`}>Les mer</Lenke>
+        {props.hjelpeTekster?.kortInfo} <Lenke href={`#${infoId}`}>Les mer</Lenke>
       </AlertStripeAdvarsel>
 
-      <HistorikkContextProvider timestamp={props.time} tekster={props.tekster}>
+      <HistorikkContextProvider timestamp={props.time} hjelpeTekster={props.hjelpeTekster}>
         <DokumentRekonstruksjon dokument={localizedDoc} />
       </HistorikkContextProvider>
 
@@ -75,7 +75,7 @@ function Historikk(props: HistorikkProps) {
         <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
       </details>
       <AlertStripeInfo id={infoId}>
-        <BlockContent blocks={props.tekster?.langInfo} />
+        <BlockContent blocks={props.hjelpeTekster?.langInfo} />
       </AlertStripeInfo>
     </Style>
   );
