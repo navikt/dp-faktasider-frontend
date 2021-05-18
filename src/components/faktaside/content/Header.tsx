@@ -19,7 +19,7 @@ function Header() {
   return (
     <Style>
       <StyledSidetittel>{faktaside.title}</StyledSidetittel>
-      <SistOppdatert publiseringsTidspunkt={faktaside.publiseringsTidspunkt} />
+      <SistOppdatert />
     </Style>
   );
 }

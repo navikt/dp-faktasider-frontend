@@ -6,6 +6,7 @@ import ForsideSEOPreview from "./previews/ForsideSEOPreview";
 import ForsidePreview from "./previews/ForsidePreview";
 import DemoappPreview from "./previews/DemoappPreview";
 import { DagpengeKalkulatorIkon } from "./schemas/kalkulator/kalkulator";
+import { HistorikkIkon } from "./schemas/infosider/historikk/historikkHjelpetekster";
 
 export default () =>
   S.list()
@@ -24,7 +25,11 @@ export default () =>
               S.view.component(ForsidePreview).title("Forside-preview"),
             ])
         ),
-      ...S.documentTypeListItems().filter((listItem) => !["oppsett", "dagpengekalkulator"].includes(listItem.getId())),
+      S.listItem()
+        .title("Historikk")
+        .icon(HistorikkIkon)
+        .child(S.editor().schemaType("historikkHjelpetekster").documentId("historikkHjelpetekster")),
+      ...S.documentTypeListItems().filter((listItem) => !["oppsett", "dagpengekalkulator", "historikkHjelpetekster"].includes(listItem.getId())),
       S.listItem()
         .title("DagpengerKalkulator")
         .icon(DagpengeKalkulatorIkon)

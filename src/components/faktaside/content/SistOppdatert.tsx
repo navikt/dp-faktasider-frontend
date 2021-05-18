@@ -2,6 +2,9 @@ import styled from "styled-components/macro";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import withErrorBoundary from "../../withErrorBoundary";
+import Utkast from "../../BlockContent/utkast/Utkast";
+import Link from "next/link";
+import { useFaktasideContext } from "../FaktaSideContext";
 
 const Style = styled.div`
   margin-top: 0.5rem;
@@ -9,18 +12,33 @@ const Style = styled.div`
   opacity: 0.8;
 `;
 
-interface Props {
-  publiseringsTidspunkt?: string;
-}
+const Lenke = styled.a`
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
 
-function SistOppdatert(props: Props) {
+function SistOppdatert() {
   const { t } = useTranslation("global");
+  const faktaside = useFaktasideContext();
 
-  if (!props.publiseringsTidspunkt) {
+  if (!faktaside.publiseringsTidspunkt) {
     return null;
   }
 
-  return <Style>{t("sistOppdatert", { publiseringstidspunkt: new Date(props.publiseringsTidspunkt) })}</Style>;
+  const tekst = t("sistOppdatert", { publiseringstidspunkt: new Date(faktaside.publiseringsTidspunkt) });
+  return (
+    <Style>
+      <Utkast>
+        <Link href={`/historikk/${faktaside.id}/${faktaside.publiseringsTidspunkt}`} passHref>
+          <Lenke>{tekst}</Lenke>
+        </Link>
+      </Utkast>
+      {tekst}
+    </Style>
+  );
 }
 
 export default withErrorBoundary(SistOppdatert, "SistOppdatert");

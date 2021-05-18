@@ -1,7 +1,6 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import styled from "styled-components/macro";
-import { isProduction } from "../../../utils/environment";
 import { useDevContext } from "../../DevKnapper/DevContext";
 import withErrorBoundary from "../../withErrorBoundary";
 
@@ -29,7 +28,7 @@ const Label = styled.div`
 function Utkast(props: Props) {
   const devContext = useDevContext();
   const vis = props.erUtkast !== undefined && !props.erUtkast;
-  const visSomUtkast = !isProduction() && devContext.value.visUtkast;
+  const visSomUtkast = devContext.value.visUtkast;
 
   if (vis) {
     return <>{props.children}</>;
