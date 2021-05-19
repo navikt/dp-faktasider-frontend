@@ -17,6 +17,7 @@ import { HistoriskDokument } from "./api/historikkFetcher";
 import HistoriskDokumentMetadata from "./HistoriskDokumentMetadata";
 import { formaterDato } from "../../utils/formaterDato";
 import BlockContent from "../BlockContent/BlockContent";
+import { typografiStyle } from "../faktaside/FaktaSideLayout";
 
 const Style = styled.div`
   max-width: 80rem;
@@ -39,6 +40,17 @@ const SidetittelStyle = styled(Undertittel)`
   opacity: 0.8;
   text-transform: uppercase;
   font-size: 1.5rem;
+`;
+
+const LangInfoStyle = styled(AlertStripeInfo)`
+  ${typografiStyle};
+  h2,
+  h3 {
+    margin-bottom: 0.5em;
+  }
+  h3 {
+    margin-top: 3rem;
+  }
 `;
 
 function Historikk(props: HistorikkProps) {
@@ -74,9 +86,9 @@ function Historikk(props: HistorikkProps) {
         <summary>Rådata</summary>
         <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
       </details>
-      <AlertStripeInfo id={infoId}>
+      <LangInfoStyle id={infoId}>
         <BlockContent blocks={props.hjelpeTekster?.langInfo} />
-      </AlertStripeInfo>
+      </LangInfoStyle>
     </Style>
   );
 }
