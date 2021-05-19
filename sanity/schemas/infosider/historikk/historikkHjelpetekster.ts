@@ -10,29 +10,26 @@ export default {
   icon: HistorikkIkon,
   fields: [
     {
-      type: 'localeString',
-      name: 'title',
-      title: 'Tittel'
+      type: "localeString",
+      name: "title",
+      title: "Tittel",
     },
     {
-      type: 'localeText',
-      name: 'kortInfo'
+      type: "localeText",
+      name: "kortInfo",
     },
     {
-      type: 'localeHistorikkRichText',
-      name: 'langInfo'
+      type: "localeHistorikkRichText",
+      name: "langInfo",
     },
     {
-      type: 'localeHistorikkRichText',
-      name: 'deltTekstForklaring'
+      type: "localeHistorikkRichText",
+      name: "deltTekstForklaring",
     },
   ],
   preview: {
-    prepare(selection) {
-      return {
-        title: selection.title,
-        media: HistorikkIkon,
-      };
+    select: {
+      title: "title.no",
     },
   },
 };
