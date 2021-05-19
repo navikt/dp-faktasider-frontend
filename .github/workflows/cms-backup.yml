@@ -9,6 +9,9 @@ jobs:
   backup-dataset:
     runs-on: ubuntu-18.04
     name: Backup dataset
+    defaults:
+      run:
+        working-directory: sanity
     steps:
       - uses: actions/checkout@v2
       - name: Export dataset
