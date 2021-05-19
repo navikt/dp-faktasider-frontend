@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - './sanity/**'
 
 env:
   IMAGE: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend:${{ github.sha }}
