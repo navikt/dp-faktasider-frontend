@@ -32,7 +32,10 @@ export interface HistorikkProps {
 }
 
 export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) => {
-  const [id, time] = context.params!.slug as string[];
+  const slugs = context.params!.slug as string[];
+
+  const id = encodeURIComponent(slugs[0]);
+  const time = encodeURIComponent(slugs[1]);
 
   if (!id) {
     return {
