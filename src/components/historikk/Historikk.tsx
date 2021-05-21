@@ -6,7 +6,6 @@ import React from "react";
 import { Sidetittel, Undertittel } from "nav-frontend-typografi";
 import { AlertStripeAdvarsel, AlertStripeInfo } from "nav-frontend-alertstriper";
 import { HistorikkProps } from "../../pages/historikk/[...slug]";
-import DevKnapper from "../DevKnapper/DevKnapper";
 import useUniqueId from "../../utils/useUniqueId";
 import Lenke from "nav-frontend-lenker";
 import UnderArbeid from "../veiviser/UnderArbeid";
@@ -64,7 +63,6 @@ function Historikk(props: HistorikkProps) {
         <title>{props.hjelpeTekster?.title} | www.nav.no</title>
       </Head>
       <UnderArbeid />
-      <DevKnapper />
       <div>
         <Sidetittel>{props.hjelpeTekster?.title}</Sidetittel>
         <SidetittelStyle>{getTitle(localizedDoc)}</SidetittelStyle>

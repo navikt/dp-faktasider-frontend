@@ -1,7 +1,6 @@
 import * as React from "react";
 import { ReactNode } from "react";
 import styled, { createGlobalStyle, css } from "styled-components/macro";
-import DevKnapper from "../../components/DevKnapper/DevKnapper";
 import withErrorBoundary from "../../components/withErrorBoundary";
 import { theme } from "../../styles/theme";
 import Meny from "./Meny/Meny";
@@ -73,7 +72,6 @@ function FaktaSideLayout(props: Props) {
   return (
     <>
       <Brødsmulestyling />
-      <DevKnapper />
       <ContentStyle>
         <Meny />
         <MainContentStyle id={"maincontent"}>{props.children}</MainContentStyle>
