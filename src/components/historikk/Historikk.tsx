@@ -6,7 +6,6 @@ import React from "react";
 import { Sidetittel, Undertittel } from "nav-frontend-typografi";
 import { AlertStripeAdvarsel, AlertStripeInfo } from "nav-frontend-alertstriper";
 import { HistorikkProps } from "../../pages/historikk/[...slug]";
-import DevKnapper from "../DevKnapper/DevKnapper";
 import useUniqueId from "../../utils/useUniqueId";
 import Lenke from "nav-frontend-lenker";
 import UnderArbeid from "../veiviser/UnderArbeid";
@@ -64,19 +63,18 @@ function Historikk(props: HistorikkProps) {
         <title>{props.hjelpeTekster?.title} | www.nav.no</title>
       </Head>
       <UnderArbeid />
-      <DevKnapper />
       <div>
         <Sidetittel>{props.hjelpeTekster?.title}</Sidetittel>
         <SidetittelStyle>{getTitle(localizedDoc)}</SidetittelStyle>
         {localizedDoc && <time>{formaterDato(localizedDoc._updatedAt)}</time>}
-        <Revisions revisions={props.revisions} documentId={props.id} currentRevision={localizedDoc?._rev} />
+        <Revisions revisions={props.revisions} documentId={props.request.id} currentRevision={localizedDoc?._rev} />
       </div>
 
       <AlertStripeAdvarsel>
         {props.hjelpeTekster?.kortInfo} <Lenke href={`#${infoId}`}>Les mer</Lenke>
       </AlertStripeAdvarsel>
 
-      <HistorikkContextProvider timestamp={props.time} hjelpeTekster={props.hjelpeTekster}>
+      <HistorikkContextProvider timestamp={props.request.time} hjelpeTekster={props.hjelpeTekster}>
         <DokumentRekonstruksjon dokument={localizedDoc} />
       </HistorikkContextProvider>
 

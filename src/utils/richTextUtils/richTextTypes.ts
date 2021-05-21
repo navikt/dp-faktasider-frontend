@@ -68,7 +68,6 @@ export type TidslinjeI = ParsedSanityBlock & {
   innhold: SanityBlock[];
 };
 
-// eslint-disable-next-line @typescript-eslint/no-use-before-define
 export type Block = SanityBlock | Group | ParsedSanityBlock;
 
 export function isDeltTekstReference(candidate: Block): candidate is DelttekstReference {

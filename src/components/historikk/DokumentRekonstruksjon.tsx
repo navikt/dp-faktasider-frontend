@@ -7,6 +7,7 @@ import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import parseRichText from "../../utils/richTextUtils/parser/parseRichText";
 import { HistoriskDokument } from "./api/historikkFetcher";
 import styled from "styled-components/macro";
+import useUniqueId from "../../utils/useUniqueId";
 
 const RekonstruksjonWrapper = styled.article`
   box-shadow: 0 0.2rem 2rem hsl(0deg 0% 70%);
@@ -19,6 +20,7 @@ const RekonstruksjonWrapper = styled.article`
 
 function DokumentRekonstruksjon(props: { dokument?: HistoriskDokument }) {
   const Component = getComponent(props.dokument?._type);
+  const id = useUniqueId("rekonstruksjon");
 
   if (Component === undefined || !props.dokument) {
     // TODO, denne stemmer kanskje ikke alltid?
@@ -26,7 +28,10 @@ function DokumentRekonstruksjon(props: { dokument?: HistoriskDokument }) {
   }
 
   return (
-    <RekonstruksjonWrapper>
+    <RekonstruksjonWrapper aria-labelledby={id}>
+      <h1 className="sr-only" id={id}>
+        Rekonstruksjon
+      </h1>
       <Component {...props.dokument} />
     </RekonstruksjonWrapper>
   );
