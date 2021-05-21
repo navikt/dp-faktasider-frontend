@@ -69,14 +69,14 @@ function Historikk(props: HistorikkProps) {
         <Sidetittel>{props.hjelpeTekster?.title}</Sidetittel>
         <SidetittelStyle>{getTitle(localizedDoc)}</SidetittelStyle>
         {localizedDoc && <time>{formaterDato(localizedDoc._updatedAt)}</time>}
-        <Revisions revisions={props.revisions} documentId={props.id} currentRevision={localizedDoc?._rev} />
+        <Revisions revisions={props.revisions} documentId={props.request.id} currentRevision={localizedDoc?._rev} />
       </div>
 
       <AlertStripeAdvarsel>
         {props.hjelpeTekster?.kortInfo} <Lenke href={`#${infoId}`}>Les mer</Lenke>
       </AlertStripeAdvarsel>
 
-      <HistorikkContextProvider timestamp={props.time} hjelpeTekster={props.hjelpeTekster}>
+      <HistorikkContextProvider timestamp={props.request.time} hjelpeTekster={props.hjelpeTekster}>
         <DokumentRekonstruksjon dokument={localizedDoc} />
       </HistorikkContextProvider>
 

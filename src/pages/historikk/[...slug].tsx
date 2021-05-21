@@ -26,32 +26,35 @@ export interface HistorikkHjelpeTekster {
 export interface HistorikkProps {
   revisions: Revision[];
   response: HistorikkResponse | null;
-  id: string;
-  time: string | null;
+  request: {
+    id: string;
+    time: string | null;
+  };
   hjelpeTekster?: HistorikkHjelpeTekster;
 }
 
 export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) => {
   const slugs = context.params!.slug as string[];
 
-  const id = encodeURIComponent(slugs[0]);
-  const time = encodeURIComponent(slugs[1]);
+  const request = {
+    id: encodeURIComponent(slugs[0]),
+    time: encodeURIComponent(slugs[1]),
+  };
 
-  if (!id) {
+  if (!request.id) {
     return {
       notFound: true,
     };
   }
 
-  const revisions = await revisionsFetcher(id);
-  const response = time ? await historikkFetcher(id, time) : null;
+  const revisions = await revisionsFetcher(request.id);
+  const response = request.time ? await historikkFetcher(request.id, request.time) : null;
   const hjelpeTekster = await getClient(context.preview).fetch(groq`*[_id == 'historikkHjelpetekster'][0]`);
 
   return {
     props: {
       revisions,
-      id,
-      time: time || null,
+      request,
       response,
       hjelpeTekster: localizeSanityContent(hjelpeTekster, context.locale as SupportedLanguage),
     },
