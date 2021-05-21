@@ -20,6 +20,6 @@ describe("Historikk", () => {
   });
 
   it.skip("ved custom components vises info om at dette ikke gjennspeiler hvordan det faktisk så ut på gjeldende tidspunkt", () => {
-    // TODO whaat whaaat
+    // TODO whaat whaaaat
   });
 });
