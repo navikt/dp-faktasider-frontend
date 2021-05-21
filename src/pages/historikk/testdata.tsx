@@ -4,13 +4,17 @@ import Undertittel from "nav-frontend-typografi/lib/undertittel";
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 import Historikk from "../../components/historikk/Historikk";
-import { historikkDeltTekstTestdata } from "../../components/historikk/historikk.testdata";
+import { historikkDeltTekstTestdata, historikkGBelløpTestdata } from "../../components/historikk/historikk.testdata";
 import { HistorikkProps } from "./[...slug]";
 
 const testData = [
   {
     name: "delte tekster",
     data: historikkDeltTekstTestdata,
+  },
+  {
+    name: "Grunnbelløp",
+    data: historikkGBelløpTestdata,
   },
 ];
 

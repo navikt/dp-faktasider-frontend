@@ -56,6 +56,7 @@ function getHistorikkTestDataMedInnhold(innhold: Block[]): HistorikkProps {
 }
 
 export const historikkDeltTekstTestdata = getHistorikkTestDataMedInnhold([
+  createSanityBlock("Dette er en bolk", { style: "h2" }),
   {
     _type: "deltTekstReference",
     // @ts-ignore
@@ -63,4 +64,9 @@ export const historikkDeltTekstTestdata = getHistorikkTestDataMedInnhold([
       _ref: "testyTest",
     },
   },
+]);
+
+export const historikkGBelløpTestdata = getHistorikkTestDataMedInnhold([
+  createSanityBlock("Dette er en bolk", { style: "h2" }),
+  createSanityBlock("2", { marks: ["GtilNOK"] }),
 ]);
