@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { useVisForContext, VisForContextI } from "./VisForContext";
 import VisForDebug from "./VisForDebug";
 import { VisForConfig } from "../../../utils/richTextUtils/richTextTypes";
+import { useHistorikkContext } from "../../historikk/HistorikkContext";
 
 interface Props {
   children: ReactNode;
@@ -43,6 +44,7 @@ export function visBasertPåFiltrering(visForContext: VisForContextI, visForConf
 }
 
 function VisFor(props: Props) {
+  const historikkContext = useHistorikkContext();
   const visForContext = useVisForContext();
 
   if (props.visForConfig === undefined) {
@@ -50,6 +52,17 @@ function VisFor(props: Props) {
   }
 
   const { situasjoner, vis, omvendtFiltrering } = visBasertPåFiltrering(visForContext, props.visForConfig);
+
+  if (historikkContext.isHistorikk) {
+    return (
+      <VisForDebug
+        situasjoner={situasjoner}
+        omvendtFiltrering={omvendtFiltrering}
+        as={props.inline ? "span" : undefined}
+        children={props.children}
+      />
+    );
+  }
 
   if (vis) {
     return (

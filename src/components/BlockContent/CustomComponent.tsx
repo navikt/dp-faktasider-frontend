@@ -1,8 +1,9 @@
 import * as React from "react";
-import { AlertStripeFeil } from "nav-frontend-alertstriper";
+import { AlertStripeAdvarsel, AlertStripeFeil } from "nav-frontend-alertstriper";
 import DagpengerKalkulator from "../HvorMyeKalkulator/DagpengerKalkulator";
 import DagpengerKalkulatorLRling from "../HvorMyeKalkulator/DagpengerKalkulatorLærling";
 import withErrorBoundary from "../withErrorBoundary";
+import { useHistorikkContext } from "../historikk/HistorikkContext";
 
 interface Props {
   node: {
@@ -11,6 +12,10 @@ interface Props {
 }
 
 function CustomComponent(props: Props) {
+  const historikkContext = useHistorikkContext();
+
+  if (historikkContext.isHistorikk)
+    return <AlertStripeAdvarsel>Her var det en spesialkomponent ved navn: ${props.node.komponent}</AlertStripeAdvarsel>;
   switch (props.node.komponent) {
     case "DagpengeKalkulator - normal":
       return <DagpengerKalkulator />;

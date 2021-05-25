@@ -5,6 +5,7 @@ import { loggError } from "../../utils/logging";
 import { useGrunnbellop } from "../../utils/folketrygdensGrunnbeløp";
 import { useDevContext } from "../DevKnapper/DevContext";
 import styled from "styled-components";
+import { useHistorikkContext } from "../historikk/HistorikkContext";
 
 interface Props {
   children: string[];
@@ -19,6 +20,7 @@ const GtilNOKAnnotation = (props: Props) => {
   const notNumber = isNaN(Number(G));
   const { GtoNOK } = useGrunnbellop();
   const devContext = useDevContext();
+  const historikkContext = useHistorikkContext();
 
   useEffect(() => {
     notNumber &&
@@ -32,6 +34,14 @@ const GtilNOKAnnotation = (props: Props) => {
   const g = parseFloat(G);
 
   if (devContext.value.debugGronnbellop) {
+    return (
+      <GtoNokDebug>
+        {g} G = {GtoNOK(g)}
+      </GtoNokDebug>
+    );
+  }
+
+  if (historikkContext.isHistorikk) {
     return (
       <GtoNokDebug>
         {g} G = {GtoNOK(g)}
