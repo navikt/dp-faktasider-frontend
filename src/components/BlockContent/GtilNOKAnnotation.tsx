@@ -42,11 +42,7 @@ const GtilNOKAnnotation = (props: Props) => {
   }
 
   if (historikkContext.isHistorikk) {
-    return (
-      <GtoNokDebug>
-        {g} G = {GtoNOK(g)}
-      </GtoNokDebug>
-    );
+    return <GtoNokDebug>Her var et tall i NOK tilsvarende: {g} G</GtoNokDebug>;
   }
 
   return <>{GtoNOK(g)}</>;

@@ -4,6 +4,7 @@ import { useVisForContext, VisForContextI } from "./VisForContext";
 import VisForDebug from "./VisForDebug";
 import { VisForConfig } from "../../../utils/richTextUtils/richTextTypes";
 import { useHistorikkContext } from "../../historikk/HistorikkContext";
+import { AlertStripeAdvarsel, AlertStripeInfo } from "nav-frontend-alertstriper";
 
 interface Props {
   children: ReactNode;
@@ -55,12 +56,13 @@ function VisFor(props: Props) {
 
   if (historikkContext.isHistorikk) {
     return (
-      <VisForDebug
-        situasjoner={situasjoner}
-        omvendtFiltrering={omvendtFiltrering}
-        as={props.inline ? "span" : undefined}
-        children={props.children}
-      />
+      <AlertStripeInfo>
+        <p>
+          Denne teksten ble kun vist hvis man enten valgte en av disse situasjonene: {props.visForConfig.situasjoner}
+        </p>
+        <p>eller skjult hvis man valgte en av disse situasjonene: {props.visForConfig.skjulFor}</p>
+        <AlertStripeAdvarsel>{props.children}</AlertStripeAdvarsel>
+      </AlertStripeInfo>
     );
   }
 
