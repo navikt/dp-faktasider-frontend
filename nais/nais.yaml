@@ -39,4 +39,6 @@ spec:
       value: "/etc/pki/tls/certs/ca-bundle.crt"
     - name: DEKORATOR_MILJO
       value: {{dekoratorMiljo}}
+  envFrom:
+    - secret: dp_faktasider_frontend_sanity_cms_read_token
   {{ingresses}}
