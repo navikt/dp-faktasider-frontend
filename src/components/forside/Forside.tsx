@@ -2,7 +2,6 @@ import * as React from "react";
 import { useMount } from "react-use";
 import { loggSidevisning } from "../../utils/logging";
 import useBreadcrumbs from "../faktaside/useBreadcrumbs";
-import DevKnapper from "../DevKnapper/DevKnapper";
 import Header from "./Header";
 import SEO from "../SEO";
 import Notifikasjoner from "../Notifikasjoner";
@@ -38,7 +37,6 @@ function Forside(props: Props) {
 
   return (
     <Style>
-      <DevKnapper />
       <Header heading={title} beskrivelse={beskrivelse} />
       <SEO description={beskrivelse} title={title} seoImage={props.forsideData.seoImage} path="" />
       <Content id={"maincontent"}>

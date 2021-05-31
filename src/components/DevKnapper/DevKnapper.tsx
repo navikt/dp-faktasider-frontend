@@ -50,6 +50,7 @@ const Innhold = styled.div`
 const StyledLink = styled.a`
   color: white;
   text-decoration: underline;
+  display: block;
 `;
 
 function reducer(state: boolean, action: "toggle" | "close") {
@@ -98,7 +99,10 @@ function DevKnapper() {
             checked={context.value.debugGronnbellop}
           />
           <Link href="/testdata" passHref>
-            <StyledLink>Visualisering av test-data</StyledLink>
+            <StyledLink>Test-data</StyledLink>
+          </Link>
+          <Link href="/historikk/testdata" passHref>
+            <StyledLink>Historikk test-data</StyledLink>
           </Link>
         </Innhold>
       )}

@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths-ignore:
-      - './src/**'
+      - 'src/**'
 
 env:
   IMAGE: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-cms:${{ github.sha }}

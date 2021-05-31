@@ -1,6 +1,6 @@
 # CMS - sanity studio
 
-[Sanity-studio](https://www.sanity.io/studio) / cms-frontend for dagpengerelatert informasjon.
+[Sanity-studio](https://www.sanity.io/studio) / cms-frontend for dagpengerelatert informasjon
 
 ## Utvikling
 
