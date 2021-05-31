@@ -40,5 +40,5 @@ spec:
     - name: DEKORATOR_MILJO
       value: {{dekoratorMiljo}}
   envFrom:
-    - secret: dp_faktasider_frontend_sanity_cms_read_token
+    - secret: dp-faktasider-frontend-sanity-cms-read-token
   {{ingresses}}
