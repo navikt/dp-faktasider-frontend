@@ -7,7 +7,6 @@ import { useMachine } from "@xstate/react";
 import BlockContent from "../components/BlockContent/BlockContent";
 import { visBasertPåFiltrering } from "../components/BlockContent/VisFor/VisFor";
 import VeiviserBrødsmuler from "../components/veiviser/VeiviserBrødsmuler";
-import DevKnapper from "../components/DevKnapper/DevKnapper";
 import { useVisForContext } from "../components/BlockContent/VisFor/VisForContext";
 import { visBasertPaaVisPaaConfig } from "../components/BlockContent/VisFor/VisPaaSide";
 import { isDevelopment } from "../utils/environment";
@@ -120,7 +119,6 @@ function Demoapp(props: Props) {
   return (
     <Style>
       <UnderArbeid />
-      <DevKnapper />
       <VeiviserBrødsmuler context={state.context} send={send} />
       {state.matches("velgSide") && (
         <VelgDetSomPasserBest valg={siderValg} setValg={(side) => send({ type: "VELGSIDE", side })} />
