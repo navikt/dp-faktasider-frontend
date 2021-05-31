@@ -15,7 +15,7 @@ function CustomComponent(props: Props) {
   const historikkContext = useHistorikkContext();
 
   if (historikkContext.isHistorikk)
-    return <AlertStripeAdvarsel>Her var det en spesialkomponent ved navn: ${props.node.komponent}</AlertStripeAdvarsel>;
+    return <AlertStripeAdvarsel>Her var det en spesialkomponent ved navn: {props.node.komponent}</AlertStripeAdvarsel>;
   switch (props.node.komponent) {
     case "DagpengeKalkulator - normal":
       return <DagpengerKalkulator />;
