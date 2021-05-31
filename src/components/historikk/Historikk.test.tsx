@@ -11,12 +11,12 @@ describe("Historikk", () => {
     within(rekonstrukjon).getByRole("link", { name: /versjonshistorikk av denne teksten/i });
   });
 
-  it("G-belløp kan ikke konverteres til kroner siden vi ikke vet hva grunnbelløpet var på gjeldende tidspunkt", () => {
+  it("G-beløp kan ikke konverteres til kroner siden vi ikke vet hva grunnbelløpet var på gjeldende tidspunkt", () => {
     render(<Historikk {...historikkGBelløpTestdata} />);
 
     const rekonstrukjon = screen.getByLabelText(/Rekonstruksjon/i);
 
-    within(rekonstrukjon).getByText(/NaN/); // TODO Bra jobba, denne funker ikke lenger nei 🙌😎
+    within(rekonstrukjon).getByText(/Her var et tall i NOK tilsvarende: 2 G/);
   });
 
   it.skip("ved custom components vises info om at dette ikke gjennspeiler hvordan det faktisk så ut på gjeldende tidspunkt", () => {

@@ -74,7 +74,8 @@ function Historikk(props: HistorikkProps) {
         {props.hjelpeTekster?.kortInfo} <Lenke href={`#${infoId}`}>Les mer</Lenke>
       </AlertStripeAdvarsel>
 
-      <HistorikkContextProvider timestamp={props.request.time} hjelpeTekster={props.hjelpeTekster}>
+      <HistorikkContextProvider timestamp={props.request.time} hjelpeTekster={props.hjelpeTekster} isHistorikk={true}>
+
         <DokumentRekonstruksjon dokument={localizedDoc} />
       </HistorikkContextProvider>
 
