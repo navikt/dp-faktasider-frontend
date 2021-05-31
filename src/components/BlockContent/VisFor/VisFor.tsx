@@ -61,7 +61,7 @@ function VisFor(props: Props) {
           Denne teksten ble kun vist hvis man enten valgte en av disse situasjonene: {props.visForConfig.situasjoner}
         </p>
         <p>eller skjult hvis man valgte en av disse situasjonene: {props.visForConfig.skjulFor}</p>
-        <AlertStripeAdvarsel>{props.children}</AlertStripeAdvarsel>
+        <p>{props.children}</p>
       </AlertStripeInfo>
     );
   }
