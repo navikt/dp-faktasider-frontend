@@ -4,7 +4,7 @@ import { useVisForContext, VisForContextI } from "./VisForContext";
 import VisForDebug from "./VisForDebug";
 import { VisForConfig } from "../../../utils/richTextUtils/richTextTypes";
 import { useHistorikkContext } from "../../historikk/HistorikkContext";
-import { AlertStripeAdvarsel, AlertStripeInfo } from "nav-frontend-alertstriper";
+import { AlertStripeInfo } from "nav-frontend-alertstriper";
 
 interface Props {
   children: ReactNode;
