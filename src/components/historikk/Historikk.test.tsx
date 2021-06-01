@@ -16,7 +16,8 @@ describe("Historikk", () => {
 
     const rekonstrukjon = screen.getByLabelText(/Rekonstruksjon/i);
 
-    within(rekonstrukjon).getByText(/Her var et tall i NOK tilsvarende: 2 G/);
+    within(rekonstrukjon).getByText(/G-beløp her var oversatt til NOK/);
+    within(rekonstrukjon).getByText(/2 G/);
   });
 
   it.skip("ved custom components vises info om at dette ikke gjennspeiler hvordan det faktisk så ut på gjeldende tidspunkt", () => {
