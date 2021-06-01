@@ -1,7 +1,9 @@
 import React from "react";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
 import { render, within } from "../../../testUtils/customized-testing-library";
+import Historikk from "../../historikk/Historikk";
 import { visPaaSideTestData } from "./VisPaaSide.testdata";
+import { historikkVisPaaTestdata } from "../../historikk/historikk.testdata";
 
 describe("innhold i delt tekst merket med visPaa", () => {
   test("skal vises for alle sider dersom innholdet er merket med et tomt visPaa-array", () => {
@@ -46,5 +48,12 @@ describe("innhold i delt tekst merket med visPaa", () => {
 
     const bulletPoints = within(result.getByLabelText("Bolk med bullets")).getAllByRole("listitem");
     expect(bulletPoints).toHaveLength(1);
+  });
+
+  test("skal også fungere for historikk", () => {
+    const result = render(<Historikk {...historikkVisPaaTestdata} />);
+
+    const rekonstruksjon = result.getByLabelText(/rekonstruksjon/i);
+    within(rekonstruksjon).getByText(/Dette skal kun vises på en bestemt side/i);
   });
 });

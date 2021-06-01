@@ -41,13 +41,14 @@ const testProps: HistorikkProps = {
   hjelpeTekster: testHjelpetekster,
 };
 
-function getHistorikkTestDataMedInnhold(innhold: Block[]): HistorikkProps {
+function getHistorikkTestDataMedInnhold(innhold: Block[], type?: "faktaSide" | "deltTekst"): HistorikkProps {
   return {
     ...testProps,
     response: {
       documents: [
         {
           ...document,
+          _type: type || document._type,
           innhold: innhold,
         },
       ],
@@ -70,3 +71,11 @@ export const historikkGBelløpTestdata = getHistorikkTestDataMedInnhold([
   createSanityBlock("Dette er en bolk", { style: "h2" }),
   createSanityBlock("2", { marks: ["GtilNOK"] }),
 ]);
+
+export const historikkVisPaaTestdata = getHistorikkTestDataMedInnhold(
+  [
+    createSanityBlock("Dette er en bolk", { style: "h2" }),
+    createSanityBlock("Dette skal kun vises på en bestemt side", { visPaa: ["minFaktasideId"] }),
+  ],
+  "deltTekst"
+);

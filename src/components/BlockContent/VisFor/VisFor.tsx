@@ -3,8 +3,6 @@ import { ReactNode } from "react";
 import { useVisForContext, VisForContextI } from "./VisForContext";
 import VisForDebug from "./VisForDebug";
 import { VisForConfig } from "../../../utils/richTextUtils/richTextTypes";
-import { useHistorikkContext } from "../../historikk/HistorikkContext";
-import { AlertStripeInfo } from "nav-frontend-alertstriper";
 
 interface Props {
   children: ReactNode;
@@ -45,7 +43,6 @@ export function visBasertPåFiltrering(visForContext: VisForContextI, visForConf
 }
 
 function VisFor(props: Props) {
-  const historikkContext = useHistorikkContext();
   const visForContext = useVisForContext();
 
   if (props.visForConfig === undefined) {
@@ -53,18 +50,6 @@ function VisFor(props: Props) {
   }
 
   const { situasjoner, vis, omvendtFiltrering } = visBasertPåFiltrering(visForContext, props.visForConfig);
-
-  if (historikkContext.isHistorikk) {
-    return (
-      <AlertStripeInfo>
-        <p>
-          Denne teksten ble kun vist hvis man enten valgte en av disse situasjonene: {props.visForConfig.situasjoner}
-        </p>
-        <p>eller skjult hvis man valgte en av disse situasjonene: {props.visForConfig.skjulFor}</p>
-        <p>{props.children}</p>
-      </AlertStripeInfo>
-    );
-  }
 
   if (vis) {
     return (
