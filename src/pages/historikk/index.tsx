@@ -1,42 +1,47 @@
 import { GetStaticProps } from "next";
 import React from "react";
-import Forside from "../../components/forside/Forside";
 import { useLocale } from "../../i18n/useLocale";
-import { forsideQuery, ForsideQueryData } from "../../sanity/groq/forside/forsideQuery";
-import parseForsideData from "../../sanity/groq/forside/parseForsideData";
-import { menuQuery, MenuQueryData } from "../../sanity/groq/menu/menuQuery";
-import { parseMenuData } from "../../sanity/groq/menu/parseMenuData";
-import { getClient } from "../../sanity/sanity-config";
-import { useSanityPreveiw } from "../../sanity/useSanityPreview";
-import { isDevelopment } from "../../utils/environment";
+import { sanityClient } from "../../sanity/sanity-config";
+import { HistoriskFaktasideData, historiskFaktasideQuery } from "../../sanity/groq/historikk/faktasideQuery";
+import localizeSanityContent from "../../i18n/localizeSanityContent";
+import Link from "next/link";
+import styled from "styled-components";
 
 interface Props {
-  forsideData: ForsideQueryData;
-  menuData: MenuQueryData;
-  preview?: boolean;
+  data: HistoriskFaktasideData[];
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const preview = !!context.preview || isDevelopment();
-  const forsideData: ForsideQueryData = await getClient(preview).fetch(forsideQuery);
-  const menuData: MenuQueryData = await getClient(preview).fetch(menuQuery);
+  const data = await sanityClient.fetch(historiskFaktasideQuery);
+
   return {
-    props: {
-      forsideData,
-      menuData,
-      preview,
-    },
+    props: { data },
     revalidate: 120,
   };
 };
 
-export default function ForsideWrapper(props: Props) {
-  const forsideData = useSanityPreveiw(props.forsideData, forsideQuery);
-  const menuData = useSanityPreveiw(props.menuData, menuQuery);
+const Style = styled.div`
+  margin: 5rem auto;
+  max-width: 40rem;
+  > * {
+    margin-bottom: 1rem;
+  }
+`;
 
+export default function HistorikkIndeks(props: Props) {
   const lang = useLocale();
-  const parsedForsideData = parseForsideData(forsideData, lang);
-  const parsedMenuData = parseMenuData(menuData, lang);
+  const localizedFaktasider: HistoriskFaktasideData[] = localizeSanityContent(props.data, lang);
+  const faktasider = localizedFaktasider.map((faktaside) => (
+    <li key={faktaside._id}>
+      <Link href={`/historikk/${faktaside._id}/${faktaside._updatedAt}`}>{faktaside.title}</Link>
+    </li>
+  ));
 
-  return <Forside forsideData={parsedForsideData} menuData={parsedMenuData} />;
+  return (
+    <Style>
+      <h1>Historikk av faktasidene</h1>
+      <p>Her kan du velge mellom faktasidene, og se historiske revisjoner av dem</p>
+      <ul>{faktasider}</ul>
+    </Style>
+  );
 }
