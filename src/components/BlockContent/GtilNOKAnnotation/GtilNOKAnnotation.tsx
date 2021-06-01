@@ -1,11 +1,11 @@
 import * as React from "react";
-import withErrorBoundary from "../withErrorBoundary";
+import withErrorBoundary from "../../withErrorBoundary";
 import { useEffect } from "react";
-import { loggError } from "../../utils/logging";
-import { useGrunnbellop } from "../../utils/folketrygdensGrunnbeløp";
-import { useDevContext } from "../DevKnapper/DevContext";
+import { loggError } from "../../../utils/logging";
+import { useGrunnbellop } from "../../../utils/folketrygdensGrunnbeløp";
+import { useDevContext } from "../../DevKnapper/DevContext";
 import styled from "styled-components";
-import { useHistorikkContext } from "../historikk/HistorikkContext";
+import { useHistorikkContext } from "../../historikk/HistorikkContext";
 import Hjelpetekst from "nav-frontend-hjelpetekst";
 import "nav-frontend-hjelpetekst-style/src/hjelpetekst-style.less";
 

@@ -12,7 +12,7 @@ import GroupMarkup from "./GroupMarkup/GroupMarkup";
 import withErrorBoundary from "../withErrorBoundary";
 import Tilleggsinnformasjon from "./Tilleggsinnformasjon/TilleggsInnformasjon";
 import ListItemRenderer from "./ListItemRenderer";
-import GtilNOKAnnotation from "./GtilNOKAnnotation";
+import GtilNOKAnnotation from "./GtilNOKAnnotation/GtilNOKAnnotation";
 import Tidslinje from "./Tidslinje/Tidslinje";
 import { HistoriskDeltTekst } from "../historikk/HistoriskDeltTekst";
 

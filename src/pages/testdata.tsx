@@ -19,6 +19,7 @@ import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
 import { translated } from "../testUtils/createSanityBlock";
 import { sistOppdatertTestdata } from "../components/faktaside/content/SistOppdatert.testdata";
 import { wordCountTestData } from "../../cypress/testData/wordcount.testdata";
+import { GtilNOKAnnotationTestdata } from "../components/BlockContent/GtilNOKAnnotation/GtilNOKAnnotation.testdata";
 
 type FaktasideData = FaktasideQueryData["faktaside"];
 
@@ -101,6 +102,10 @@ const testData: Testdata[] = [
   {
     name: "Cypress - word count",
     data: { innhold: translated(wordCountTestData.innhold), kortFortalt: translated(wordCountTestData.kortFortalt) },
+  },
+  {
+    name: "GtilNOK",
+    data: { innhold: translated(GtilNOKAnnotationTestdata) },
   },
 ];
 
