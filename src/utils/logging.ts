@@ -16,7 +16,6 @@ const loggEvent = (event: string, ekstraData?: object) => {
       const smallScreen = window.innerWidth < mediaBreakpoint;
       const data = {
         appName: "dp-faktasider",
-        smallScreen, // TODO fjern denne når det har gått litt tid, feks etter mai 2021. erstattes av 'screenSize'
         screenSize: smallScreen ? "small" : "large",
         path: window.location.pathname,
         ...ekstraData,
