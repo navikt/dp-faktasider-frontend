@@ -17,6 +17,8 @@ import HistoriskDokumentMetadata from "./HistoriskDokumentMetadata";
 import { formaterDato } from "../../utils/formaterDato";
 import BlockContent from "../BlockContent/BlockContent";
 import { typografiStyle } from "../faktaside/FaktaSideLayout";
+import { useMount } from "react-use";
+import { loggSidevisning } from "../../utils/logging";
 
 const Style = styled.div`
   max-width: 80rem;
@@ -56,6 +58,8 @@ function Historikk(props: HistorikkProps) {
   const localizedDoc: HistoriskDokument | undefined = localizeSanityContent(props.response?.documents[0], "no");
   const infoId = useUniqueId("info");
 
+  useMount(() => loggSidevisning("Historikk"));
+
   return (
     <Style>
       <Head>
@@ -75,7 +79,6 @@ function Historikk(props: HistorikkProps) {
       </AlertStripeAdvarsel>
 
       <HistorikkContextProvider timestamp={props.request.time} hjelpeTekster={props.hjelpeTekster} isHistorikk={true}>
-
         <DokumentRekonstruksjon dokument={localizedDoc} />
       </HistorikkContextProvider>
 
