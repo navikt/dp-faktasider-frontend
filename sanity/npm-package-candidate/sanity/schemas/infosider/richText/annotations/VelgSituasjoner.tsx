@@ -2,7 +2,7 @@ import * as React from "react";
 import StringArrayAsChecboxesInput, { InputComponentProps } from "../../../utils/StringArrayAsChecboxesInput";
 import useSanityQuery from "../../../../utils/useSanityQuery";
 import withErrorBoundary from "../../../../components/withErrorBoundary";
-import { Translations } from "../../../../../src/types/translations";
+import { Translations } from "../../../../../../../src/types/translations";
 
 type FiltreringsValgData = Translations<string>[] | undefined;
 

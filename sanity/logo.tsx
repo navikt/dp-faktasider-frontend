@@ -1,5 +1,5 @@
 import React from "react";
-import { getDataset } from "./utils/getDataset";
+import { getDataset } from "./npm-package-candidate/sanity/utils/getDataset";
 import styled from "styled-components";
 import { BsExclamationCircle } from "react-icons/bs";
 

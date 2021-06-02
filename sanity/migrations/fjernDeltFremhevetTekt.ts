@@ -19,7 +19,7 @@
 // NOTE: This query should eventually return an empty set of documents to mark the migration
 // as complete
 
-import { studioClient } from "../utils/studioClient";
+import { studioClient } from "../npm-package-candidate/sanity/utils/studioClient";
 
 const client = studioClient.withConfig({ dataset: "development", apiVersion: "v2021-03-25" });
 console.log(client.config());

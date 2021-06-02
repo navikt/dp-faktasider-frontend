@@ -9,7 +9,13 @@ import TillegsInformasjonPreview from "../schemas/infosider/tillegsinfo/TillegsI
 import { InlineUtkast } from "../schemas/infosider/richText/Utkast";
 import VideoPreview from "../schemas/video/VideoPreview";
 import { InlineVisForPreview } from "../schemas/infosider/richText/VisForPreview";
-import { H2Header, H3Header, H2NoBackround, H2HeaderMMeny, H4Header } from "../schemas/infosider/richText/HeaderPreviews";
+import {
+  H2Header,
+  H3Header,
+  H2NoBackround,
+  H2HeaderMMeny,
+  H4Header,
+} from "../schemas/infosider/richText/HeaderPreviews";
 import TidslinjePreview, { TidslinjePunkt } from "../schemas/infosider/tidslinje/TidslinjePreview";
 import { LenkePreview } from "../schemas/infosider/richText/annotations/link";
 

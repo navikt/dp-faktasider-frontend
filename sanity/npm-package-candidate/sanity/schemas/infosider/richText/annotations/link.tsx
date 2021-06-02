@@ -1,10 +1,10 @@
-import { MdLink } from "react-icons/lib";
+import { MdLink } from "react-icons/md";
 import styled, { css } from "styled-components";
 import React, { useEffect, useRef, useState } from "react";
 
 const color = "#2276fc";
 
-const Style = styled.span`
+const Style = styled.span<{ isEmpty: boolean; knapp: boolean }>`
   color: ${color};
   min-width: 1rem;
   text-decoration: underline;
@@ -33,11 +33,11 @@ const Style = styled.span`
 `;
 
 export const LenkePreview = (props) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const [isEmpty, setIsEmpty] = useState(false);
 
   useEffect(() => {
-    const innerText = ref.current?.innerText;
+    const innerText = ref.current?.innerText ?? "";
     setIsEmpty(innerText.length < 2);
   }, []);
 
