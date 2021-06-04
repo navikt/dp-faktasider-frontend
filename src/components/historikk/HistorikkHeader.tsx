@@ -1,5 +1,5 @@
 import { Sidetittel } from "nav-frontend-typografi";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components/macro";
 import { formaterDato } from "../../utils/formaterDato";
 import Revisions from "../faktaside/content/Revisions";
@@ -7,6 +7,7 @@ import { HistoriskDokument } from "./api/historikkFetcher";
 import { useHistorikkContext } from "./HistorikkContext";
 import { Revision } from "./api/revisionsFetcher";
 import { colors } from "../../styles/theme";
+import { useRouter } from "next/router";
 
 const Style = styled.div`
   width: var(--content-max-width);
@@ -67,6 +68,11 @@ const DatovelgerStyle = styled.div`
 function HistorikkHeader(props: { document?: HistoriskDokument; revisions: Revision[]; title: string }) {
   const context = useHistorikkContext();
   const [openRevisions, setOpenRevisions] = useState(false);
+
+  const path = useRouter().asPath;
+  useEffect(() => {
+    setOpenRevisions(false);
+  }, [path]);
 
   return (
     <Style>
