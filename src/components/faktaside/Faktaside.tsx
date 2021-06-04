@@ -37,7 +37,7 @@ function Faktaside(props: FaktasideProps) {
   const tittel = props.title || "";
   const beskrivelse = props.beskrivelse || "";
 
-  useBreadcrumbs(props.domainTitle, { tittel: props.title || "Du er her", slug: props.slug });
+  useBreadcrumbs(props.domainTitle, [{ tittel: props.title || "Du er her", path: props.slug }]);
   useLanguageSelector();
   useMount(() => loggSidevisning(tittel));
   useLoggUtdatertHashlenke();

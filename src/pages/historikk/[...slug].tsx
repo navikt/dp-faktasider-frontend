@@ -3,11 +3,12 @@ import { Revision, revisionsFetcher } from "../../components/historikk/api/revis
 import withErrorBoundary from "../../components/withErrorBoundary";
 import { historikkFetcher, HistorikkResponse } from "../../components/historikk/api/historikkFetcher";
 import Historikk from "../../components/historikk/Historikk";
-import { getClient } from "../../sanity/sanity-config";
+import { getClient, sanityClient } from "../../sanity/sanity-config";
 import { groq } from "next-sanity";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import { SupportedLanguage } from "../../i18n/supportedLanguages";
+import { domeneTittelQuery } from "../../sanity/groq/commonQuerries";
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   return {
@@ -31,10 +32,12 @@ export interface HistorikkProps {
     time: string | null;
   };
   hjelpeTekster?: HistorikkHjelpeTekster;
+  domeneTittel: string;
 }
 
 export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) => {
   const slugs = context.params!.slug as string[];
+  const domeneTittel = await sanityClient.fetch(domeneTittelQuery);
 
   const request = {
     id: encodeURIComponent(slugs[0]),
@@ -57,6 +60,7 @@ export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) =>
       request,
       response,
       hjelpeTekster: localizeSanityContent(hjelpeTekster, context.locale as SupportedLanguage),
+      domeneTittel,
     },
     revalidate: 86400, // En gang i døgnet
   };

@@ -39,6 +39,7 @@ const testProps: HistorikkProps = {
     time: timestamp,
   },
   hjelpeTekster: testHjelpetekster,
+  domeneTittel: "Testy test",
 };
 
 function getHistorikkTestDataMedInnhold(innhold: Block[], type?: "faktaSide" | "deltTekst"): HistorikkProps {

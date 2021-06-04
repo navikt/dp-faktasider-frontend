@@ -19,6 +19,7 @@ import BlockContent from "../BlockContent/BlockContent";
 import { typografiStyle } from "../faktaside/FaktaSideLayout";
 import { useMount } from "react-use";
 import { loggSidevisning } from "../../utils/logging";
+import useBreadcrumbs from "../faktaside/useBreadcrumbs";
 
 const Style = styled.div`
   max-width: 80rem;
@@ -57,8 +58,13 @@ const LangInfoStyle = styled(AlertStripeInfo)`
 function Historikk(props: HistorikkProps) {
   const localizedDoc: HistoriskDokument | undefined = localizeSanityContent(props.response?.documents[0], "no");
   const infoId = useUniqueId("info");
+  const documentTitle = getTitle(localizedDoc);
 
   useMount(() => loggSidevisning("Historikk"));
+  useBreadcrumbs(props.domeneTittel, [
+    { tittel: "Historikk", path: "historikk" },
+    { tittel: documentTitle, path: `historikk/${localizedDoc?._id}/${localizedDoc?._updatedAt}` },
+  ]);
 
   return (
     <Style>
@@ -69,7 +75,7 @@ function Historikk(props: HistorikkProps) {
       <UnderArbeid />
       <div>
         <Sidetittel>{props.hjelpeTekster?.title}</Sidetittel>
-        <SidetittelStyle>{getTitle(localizedDoc)}</SidetittelStyle>
+        <SidetittelStyle>{documentTitle}</SidetittelStyle>
         {localizedDoc && <time>{formaterDato(localizedDoc._updatedAt)}</time>}
         <Revisions revisions={props.revisions} documentId={props.request.id} currentRevision={localizedDoc?._rev} />
       </div>

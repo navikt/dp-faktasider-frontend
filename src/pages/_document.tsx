@@ -4,12 +4,12 @@ import { NextPageContext } from "next";
 import { RenderPage } from "next/dist/next-server/lib/utils";
 import { Components, Props, fetchDecoratorReact } from "@navikt/nav-dekoratoren-moduler/ssr";
 import { sanityClient } from "../sanity/sanity-config";
-import { groq } from "next-sanity";
+import { domeneTittelQuery } from "../sanity/groq/commonQuerries";
 
 export default class MyDocument extends Document<{ Dekoratøren: Components }> {
   static async getInitialProps(ctx: any) {
     const styledComponentsStylesheet = await renderServersideStyledComponentsStylesheet(ctx);
-    const domeneTittel = await sanityClient.fetch(groq`*[_type == 'oppsett'][0].title.no`);
+    const domeneTittel = await sanityClient.fetch(domeneTittelQuery);
     const dekoratørParams: Props = {
       // @ts-ignore
       env: process.env.DEKORATOR_MILJO || "prod",

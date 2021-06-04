@@ -6,23 +6,29 @@ import { HistoriskFaktasideData, historiskFaktasideQuery } from "../../sanity/gr
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import Link from "next/link";
 import styled from "styled-components";
+import useBreadcrumbs from "../../components/faktaside/useBreadcrumbs";
+import { domeneTittelQuery } from "../../sanity/groq/commonQuerries";
 
 interface Props {
   data: HistoriskFaktasideData[];
+  domeneTittel: string;
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const data = await sanityClient.fetch(historiskFaktasideQuery);
+  const domeneTittel = await sanityClient.fetch(domeneTittelQuery);
 
   return {
-    props: { data },
+    props: { data, domeneTittel },
     revalidate: 120,
   };
 };
 
 const Style = styled.div`
-  margin: 5rem auto;
+  margin: 2rem auto;
   max-width: 40rem;
+  background-color: white;
+  padding: 4rem 2rem;
   > * {
     margin-bottom: 1rem;
   }
@@ -33,9 +39,13 @@ export default function HistorikkIndeks(props: Props) {
   const localizedFaktasider: HistoriskFaktasideData[] = localizeSanityContent(props.data, lang);
   const faktasider = localizedFaktasider.map((faktaside) => (
     <li key={faktaside._id}>
-      <Link href={`/historikk/${faktaside._id}/${faktaside._updatedAt}`}>{faktaside.title}</Link>
+      <Link href={`/historikk/${faktaside._id}/${faktaside._updatedAt}`} passHref>
+        <a className="lenke">{faktaside.title}</a>
+      </Link>
     </li>
   ));
+
+  useBreadcrumbs(props.domeneTittel, [{ tittel: "Historikk", path: "historikk" }]);
 
   return (
     <Style>
