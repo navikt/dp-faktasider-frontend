@@ -64,13 +64,7 @@ function FaktasideRekonstruksjon(props: HistoriskDokument) {
 }
 
 function DeltTekstRekonstruksjon(props: HistoriskDokument) {
-  return (
-    <>
-      /* TODO, biter av teksten i delte tekster kan merkes med visPaaSide, men disse tekstene blir nok skjult nå som de
-      ikke vises på en side */
-      <BlockContent blocks={parseHistoriskRichText(props.innhold)} />
-    </>
-  );
+  return <BlockContent blocks={parseHistoriskRichText(props.innhold)} />;
 }
 
 function parseHistoriskRichText(blocks: SanityBlock[]) {
