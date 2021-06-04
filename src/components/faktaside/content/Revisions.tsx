@@ -29,20 +29,17 @@ function Revisions(props: Props) {
 
   return (
     <StyledNav>
-      <details>
-        <summary>Velg dato</summary>
-        {sortedRevisions?.map((rev) => {
-          const current = props.currentRevision === rev.id;
-          return (
-            <Link key={rev.id} href={`/historikk/${props.documentId}/${rev.timestamp}`} passHref>
-              <StyledLenke current={current} className="lenke">
-                {formaterDato(rev.timestamp)}
-                {current && " (Vises nå)"}
-              </StyledLenke>
-            </Link>
-          );
-        })}
-      </details>
+      {sortedRevisions?.map((rev) => {
+        const current = props.currentRevision === rev.id;
+        return (
+          <Link key={rev.id} href={`/historikk/${props.documentId}/${rev.timestamp}`} passHref>
+            <StyledLenke current={current} className="lenke">
+              {formaterDato(rev.timestamp)}
+              {current && " (Vises nå)"}
+            </StyledLenke>
+          </Link>
+        );
+      })}
     </StyledNav>
   );
 }

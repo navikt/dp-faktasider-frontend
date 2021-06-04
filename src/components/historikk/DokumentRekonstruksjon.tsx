@@ -8,19 +8,28 @@ import parseRichText from "../../utils/richTextUtils/parser/parseRichText";
 import { HistoriskDokument } from "./api/historikkFetcher";
 import styled from "styled-components/macro";
 import useUniqueId from "../../utils/useUniqueId";
+import { AlertStripeAdvarsel } from "nav-frontend-alertstriper";
+import Lenke from "nav-frontend-lenker";
+import { useHistorikkContext } from "./HistorikkContext";
 
 const RekonstruksjonWrapper = styled.article`
   box-shadow: 0 0.2rem 2rem hsl(0deg 0% 70%);
   padding: 2rem;
   margin: 2rem auto;
-  max-width: 50rem;
+  width: var(--content-max-width);
+  max-width: 100vw;
   background-color: hsl(0deg 0% 95%);
   ${typografiStyle};
 `;
 
-function DokumentRekonstruksjon(props: { dokument?: HistoriskDokument }) {
+const StyledAlertstripe = styled(AlertStripeAdvarsel)`
+  margin-bottom: 2rem;
+`;
+
+function DokumentRekonstruksjon(props: { dokument?: HistoriskDokument; lesMerLenkeId: string }) {
   const Component = getComponent(props.dokument?._type);
   const id = useUniqueId("rekonstruksjon");
+  const hjelpetekster = useHistorikkContext().hjelpeTekster;
 
   if (Component === undefined || !props.dokument) {
     // TODO, denne stemmer kanskje ikke alltid?
@@ -32,6 +41,9 @@ function DokumentRekonstruksjon(props: { dokument?: HistoriskDokument }) {
       <h1 className="sr-only" id={id}>
         Rekonstruksjon
       </h1>
+      <StyledAlertstripe>
+        {hjelpetekster?.kortInfo} <Lenke href={`#${props.lesMerLenkeId}`}>Les mer</Lenke>
+      </StyledAlertstripe>
       <Component {...props.dokument} />
     </RekonstruksjonWrapper>
   );

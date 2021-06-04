@@ -4,7 +4,7 @@ import styled from "styled-components/macro";
 const Style = styled.div`
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   z-index: 1000;
   pointer-events: none;
   padding: 1rem;
@@ -13,7 +13,7 @@ const Style = styled.div`
   color: white;
   text-align: center;
   width: 30rem;
-  transform: rotate(-45deg) translate(-30%, -84%);
+  transform: rotate(45deg) translate(31%, -84%);
 `;
 
 function UnderArbeid() {

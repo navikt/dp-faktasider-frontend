@@ -49,8 +49,8 @@ export default function HistorikkIndeks(props: Props) {
 
   return (
     <Style>
-      <h1>Historikk av faktasidene</h1>
-      <p>Her kan du velge mellom faktasidene, og se historiske revisjoner av dem</p>
+      <h1>Historikk for {props.domeneTittel}</h1>
+      <p>Velg mellom faktasidene og se historiske versjoner:</p>
       <ul>{faktasider}</ul>
     </Style>
   );

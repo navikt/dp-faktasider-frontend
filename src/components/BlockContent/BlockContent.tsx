@@ -36,6 +36,7 @@ const serializers: Serializers = {
     customComponent: CustomComponent,
     video: Video,
     fremhevetTekst: FremhevetTekst,
+    deltFremhevetTekst: FremhevetTekst, // Må være her for at historisk visning skal funke
     tileggsInformasjon: Tilleggsinnformasjon,
     tidslinje: Tidslinje,
     historiskDeltTekst: HistoriskDeltTekst,
