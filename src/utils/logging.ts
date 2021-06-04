@@ -29,6 +29,7 @@ const loggEvent = (event: string, ekstraData?: object) => {
   }
 };
 
+// TODO logge error til noe mer egnet enn amplitude og sette opp automatisk varsling til feks slack
 export const loggError = (error: Error, ekstraData?: object) => {
   const data = {
     ...ekstraData,
