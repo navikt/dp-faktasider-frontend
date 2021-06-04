@@ -11,6 +11,7 @@ import useUniqueId from "../../utils/useUniqueId";
 import { AlertStripeAdvarsel } from "nav-frontend-alertstriper";
 import Lenke from "nav-frontend-lenker";
 import { useHistorikkContext } from "./HistorikkContext";
+import withErrorBoundary from "../withErrorBoundary";
 
 const RekonstruksjonWrapper = styled.article`
   box-shadow: 0 0.2rem 2rem hsl(0deg 0% 70%);
@@ -79,11 +80,11 @@ function DeltTekstRekonstruksjon(props: HistoriskDokument) {
   return <BlockContent blocks={parseHistoriskRichText(props.innhold)} />;
 }
 
-function parseHistoriskRichText(blocks: SanityBlock[]) {
-  const behandlet = blocks.map((it) =>
+function parseHistoriskRichText(blocks?: SanityBlock[]) {
+  const behandlet = blocks?.map((it) =>
     it._type === "deltTekstReference" ? { ...it, _type: "historiskDeltTekst" } : it
   );
   return parseRichText(behandlet);
 }
 
-export default DokumentRekonstruksjon;
+export default withErrorBoundary(DokumentRekonstruksjon, "DokumentRekonstruksjon");
