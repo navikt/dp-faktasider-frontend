@@ -17,8 +17,6 @@ const RekonstruksjonWrapper = styled.article`
   box-shadow: 0 0.2rem 2rem hsl(0deg 0% 70%);
   padding: 2rem;
   margin: 2rem auto;
-  width: var(--content-max-width);
-  max-width: 100vw;
   background-color: hsl(0deg 0% 95%);
   ${typografiStyle};
 `;

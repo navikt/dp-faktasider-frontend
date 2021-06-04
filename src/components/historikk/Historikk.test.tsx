@@ -8,7 +8,7 @@ describe("Historikk", () => {
 
     const rekonstrukjon = screen.getByLabelText(/Rekonstruksjon/i);
 
-    within(rekonstrukjon).getByRole("link", { name: /versjonshistorikk av denne teksten/i });
+    within(rekonstrukjon).getByRole("link", { name: /Se versjonshistorikk for den delte teksten/i });
   });
 
   it("G-beløp kan ikke konverteres til kroner siden vi ikke vet hva grunnbelløpet var på gjeldende tidspunkt", () => {
@@ -16,7 +16,7 @@ describe("Historikk", () => {
 
     const rekonstrukjon = screen.getByLabelText(/Rekonstruksjon/i);
 
-    within(rekonstrukjon).getByText(/G-beløp her var oversatt til NOK/);
+    within(rekonstrukjon).getByText(/G-beløpet her var oversatt/);
     within(rekonstrukjon).getByText(/2 G/);
   });
 

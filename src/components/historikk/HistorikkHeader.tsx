@@ -10,10 +10,6 @@ import { colors } from "../../styles/theme";
 import { useRouter } from "next/router";
 
 const Style = styled.div`
-  width: var(--content-max-width);
-  max-width: 100vw;
-  margin: auto;
-
   > * {
     margin-bottom: 0.5rem;
   }
@@ -40,7 +36,7 @@ const etikettStyle = (color: string) => css`
 `;
 
 const TypeStyle = styled.div`
-  ${etikettStyle(colors.navGronnDarken60)}
+  ${etikettStyle(colors.navBlaDarken60)}
 `;
 
 const IdStyle = styled.div`

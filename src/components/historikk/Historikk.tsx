@@ -1,8 +1,6 @@
 import styled from "styled-components/macro";
-import { navFrontend } from "../../styles/navFrontend";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import React from "react";
-import { AlertStripeInfo } from "nav-frontend-alertstriper";
 import { HistorikkProps } from "../../pages/historikk/[...slug]";
 import useUniqueId from "../../utils/useUniqueId";
 import UnderArbeid from "../veiviser/UnderArbeid";
@@ -10,13 +8,13 @@ import Head from "next/head";
 import HistorikkContextProvider from "./HistorikkContext";
 import DokumentRekonstruksjon from "./DokumentRekonstruksjon";
 import { HistoriskDokument } from "./api/historikkFetcher";
-import BlockContent from "../BlockContent/BlockContent";
-import { typografiStyle } from "../faktaside/FaktaSideLayout";
 import { useMount } from "react-use";
 import { loggSidevisning } from "../../utils/logging";
 import useBreadcrumbs from "../faktaside/useBreadcrumbs";
 import HistorikkHeader from "./HistorikkHeader";
 import withErrorBoundary from "../withErrorBoundary";
+import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel/lib/index";
+import LangInfo from "./LangInfo";
 
 const Style = styled.div`
   max-width: 70rem;
@@ -27,26 +25,26 @@ const Style = styled.div`
   flex-direction: column;
   gap: 1rem;
   --content-max-width: 50rem;
+  .popover__content-inner {
+    max-width: 40ch;
+  }
+  > * {
+    width: var(--content-max-width);
+    max-width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
+
+const RådataEkspanderbartPanel = styled(Ekspanderbartpanel)`
+  .ekspanderbartPanel__innhold {
+    background-color: #efefef;
+  }
 `;
 
 const StyledPre = styled.pre`
   font-size: 0.75rem;
-  border: dashed ${navFrontend.navBlaLighten60} 0.4rem;
-  padding: 1rem;
-  background-color: hsl(0deg 0% 95%);
-`;
-
-const LangInfoStyle = styled(AlertStripeInfo)`
-  ${typografiStyle};
-
-  h2,
-  h3 {
-    margin-bottom: 0.5em;
-  }
-
-  h3 {
-    margin-top: 3rem;
-  }
+  white-space: break-spaces;
 `;
 
 function Historikk(props: HistorikkProps) {
@@ -62,23 +60,21 @@ function Historikk(props: HistorikkProps) {
 
   return (
     <HistorikkContextProvider timestamp={props.request.time} hjelpeTekster={props.hjelpeTekster} isHistorikk={true}>
+      <UnderArbeid />
+      <Head>
+        <meta name="robots" content="none" />
+        <title>{props.hjelpeTekster?.title} | www.nav.no</title>
+      </Head>
       <Style>
-        <Head>
-          <meta name="robots" content="none" />
-          <title>{props.hjelpeTekster?.title} | www.nav.no</title>
-        </Head>
-        <UnderArbeid />
         <HistorikkHeader document={localizedDoc} revisions={props.revisions} title={documentTitle} />
 
         <DokumentRekonstruksjon dokument={localizedDoc} lesMerLenkeId={infoId} />
 
-        <details>
-          <summary>Rådata</summary>
+        <RådataEkspanderbartPanel tittel="Rådata">
           <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
-        </details>
-        <LangInfoStyle id={infoId}>
-          <BlockContent blocks={props.hjelpeTekster?.langInfo} />
-        </LangInfoStyle>
+        </RådataEkspanderbartPanel>
+
+        <LangInfo infoId={infoId} />
       </Style>
     </HistorikkContextProvider>
   );
