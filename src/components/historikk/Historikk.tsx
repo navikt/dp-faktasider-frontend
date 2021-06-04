@@ -16,6 +16,7 @@ import { useMount } from "react-use";
 import { loggSidevisning } from "../../utils/logging";
 import useBreadcrumbs from "../faktaside/useBreadcrumbs";
 import HistorikkHeader from "./HistorikkHeader";
+import withErrorBoundary from "../withErrorBoundary";
 
 const Style = styled.div`
   max-width: 70rem;
@@ -94,4 +95,4 @@ function getTitle(dokument?: HistoriskDokument) {
   }
 }
 
-export default Historikk;
+export default withErrorBoundary(Historikk, "Historikk");
