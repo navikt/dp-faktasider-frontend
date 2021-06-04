@@ -20,7 +20,7 @@ const Style = styled.div`
   max-width: 70rem;
   margin: auto;
   background-color: white;
-  padding: 5rem 2rem;
+  padding: 5rem 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -30,7 +30,7 @@ const Style = styled.div`
   }
   > * {
     width: var(--content-max-width);
-    max-width: 100vw;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -45,6 +45,7 @@ const RådataEkspanderbartPanel = styled(Ekspanderbartpanel)`
 const StyledPre = styled.pre`
   font-size: 0.75rem;
   white-space: break-spaces;
+  word-break: break-word;
 `;
 
 function Historikk(props: HistorikkProps) {

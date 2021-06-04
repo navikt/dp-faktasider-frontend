@@ -36,7 +36,9 @@ const etikettStyle = (color: string) => css`
 `;
 
 const TypeStyle = styled.div`
-  ${etikettStyle(colors.navBlaDarken60)}
+  ${etikettStyle(colors.navBlaDarken60)};
+  align-self: start;
+  justify-self: start;
 `;
 
 const IdStyle = styled.div`

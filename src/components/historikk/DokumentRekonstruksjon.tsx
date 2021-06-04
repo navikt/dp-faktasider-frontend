@@ -15,7 +15,7 @@ import withErrorBoundary from "../withErrorBoundary";
 
 const RekonstruksjonWrapper = styled.article`
   box-shadow: 0 0.2rem 2rem hsl(0deg 0% 70%);
-  padding: 2rem;
+  padding: min(3vw, 2rem);
   margin: 2rem auto;
   background-color: hsl(0deg 0% 95%);
   ${typografiStyle};

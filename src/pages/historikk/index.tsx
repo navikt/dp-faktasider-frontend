@@ -8,6 +8,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import useBreadcrumbs from "../../components/faktaside/useBreadcrumbs";
 import { domeneTittelQuery } from "../../sanity/groq/commonQuerries";
+import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
 
 interface Props {
   data: HistoriskFaktasideData[];
@@ -49,8 +50,8 @@ export default function HistorikkIndeks(props: Props) {
 
   return (
     <Style>
-      <h1>Historikk for {props.domeneTittel}</h1>
-      <p>Velg mellom faktasidene og se historiske versjoner:</p>
+      <Sidetittel>Historikk for {props.domeneTittel}</Sidetittel>
+      <Normaltekst>Velg mellom faktasidene og se historiske versjoner:</Normaltekst>
       <ul>{faktasider}</ul>
     </Style>
   );
