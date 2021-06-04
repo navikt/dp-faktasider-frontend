@@ -14,6 +14,9 @@ interface Props {
 
 const HistorikkStyle = styled.span`
   border-bottom: 0.2rem solid yellowgreen;
+  & + & {
+    margin-left: 0.5rem; // For å skille to elementer som ligger intill hverandre
+  }
 `;
 
 export function visBasertPaaVisPaaConfig(faktasideId?: string, visPaaConfig?: VisPaaConfig) {
