@@ -20,7 +20,7 @@ interface Props {
   notifikasjoner?: Notifikasjon[];
 }
 
-const Style = styled.div`
+const Style = styled.article`
   margin-bottom: ${theme.layoutMargin};
   > *:not(:last-child) {
     margin-bottom: 0.5rem;
@@ -46,6 +46,7 @@ function Notifikasjoner(props: Props) {
 
   return (
     <Style>
+      <h2 className="sr-only">Notifikasjoner</h2>
       {props.notifikasjoner.map((notifikasjon, i) => (
         <AlertStripeInfo key={i}>
           <Element>{notifikasjon.title}</Element>
