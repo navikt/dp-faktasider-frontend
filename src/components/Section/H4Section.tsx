@@ -4,7 +4,8 @@ import { Element } from "nav-frontend-typografi";
 import CommonSectionMarkup, { CommonSectionProps } from "./CommonSectionMarkup";
 
 const StyledSection = styled.section`
-  margin: 3rem 0 2rem;
+  margin: 2rem -1 1rem;
+  padding: 1rem; //gjøres for å gi luft til outline når seksjonen har fokus
 `;
 
 const StyledTittel = styled(Element).attrs({ as: "h4", className: "typo-element" })`
