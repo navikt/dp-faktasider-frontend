@@ -28,6 +28,11 @@ export default {
       type: "boolean",
     },
     {
+      name: "visPaaInnsyn",
+      title: "Vis på innsynsløsninga på dine-dagpenger",
+      type: "boolean",
+    },
+    {
       name: "visPaaFaktaSider",
       title: "Vis på Infoside",
       type: "array",
