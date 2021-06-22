@@ -20,6 +20,7 @@ const document: HistoriskDokument = {
   _rev: revisionId,
   _updatedAt: timestamp,
   title: "Testtittel",
+  beskrivelse: "testbeskrivelse",
 };
 
 const testHjelpetekster: HistorikkHjelpeTekster = {
@@ -71,6 +72,15 @@ export const historikkDeltTekstTestdata = getHistorikkTestDataMedInnhold([
 export const historikkGBelløpTestdata = getHistorikkTestDataMedInnhold([
   createSanityBlock("Dette er en bolk", { style: "h2" }),
   createSanityBlock("2", { marks: ["GtilNOK"] }),
+]);
+
+export const historikkCustomComponentTestdata = getHistorikkTestDataMedInnhold([
+  createSanityBlock("Dette er en bolk", { style: "h2" }),
+  {
+    _type: "customComponent",
+    // @ts-ignore
+    komponent: "DagpengeKalkulator - Normal",
+  },
 ]);
 
 export const historikkVisPaaTestdata = getHistorikkTestDataMedInnhold(
