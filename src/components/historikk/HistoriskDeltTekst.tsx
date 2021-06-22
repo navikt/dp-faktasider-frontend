@@ -11,13 +11,19 @@ const Header = styled.p`
   margin-top: 0 !important;
 `;
 
+const StyledAlerstripeInfo = styled(AlertStripeInfo)`
+  & + & {
+    margin-top: 1rem;
+  }
+`;
+
 export function HistoriskDeltTekst(props) {
   const documentId = props.node.deltTekst._ref;
   const historikkContext = useHistorikkContext();
   const href = `/historikk/${documentId}/${historikkContext.requestTimestamp || ""}`;
 
   return (
-    <AlertStripeInfo>
+    <StyledAlerstripeInfo>
       <Header>Her var det en delt tekst</Header>
       <p>
         <Link href={href} passHref>
@@ -27,6 +33,6 @@ export function HistoriskDeltTekst(props) {
       <SlideDown title="Hvorfor vises ikke denne teksten her?">
         <BlockContent blocks={historikkContext.hjelpeTekster?.deltTekstForklaring} />
       </SlideDown>
-    </AlertStripeInfo>
+    </StyledAlerstripeInfo>
   );
 }
