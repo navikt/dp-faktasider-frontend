@@ -3,7 +3,6 @@ import localizeSanityContent from "../../i18n/localizeSanityContent";
 import React from "react";
 import { HistorikkProps } from "../../pages/historikk/[...slug]";
 import useUniqueId from "../../utils/useUniqueId";
-import UnderArbeid from "../veiviser/UnderArbeid";
 import Head from "next/head";
 import HistorikkContextProvider from "./HistorikkContext";
 import DokumentRekonstruksjon from "./DokumentRekonstruksjon";
@@ -15,6 +14,7 @@ import HistorikkHeader from "./HistorikkHeader";
 import withErrorBoundary from "../withErrorBoundary";
 import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel/lib/index";
 import LangInfo from "./LangInfo";
+import HistoirkkWatermark from "./Watermark";
 
 const Style = styled.div`
   max-width: 70rem;
@@ -60,8 +60,12 @@ function Historikk(props: HistorikkProps) {
   ]);
 
   return (
-    <HistorikkContextProvider timestamp={props.request.time} hjelpeTekster={props.hjelpeTekster} isHistorikk={true}>
-      <UnderArbeid />
+    <HistorikkContextProvider
+      requestTimestamp={props.request.time}
+      hjelpeTekster={props.hjelpeTekster}
+      isHistorikk={true}
+    >
+      <HistoirkkWatermark />
       <Head>
         <meta name="robots" content="none" />
         <title>{props.hjelpeTekster?.title} | www.nav.no</title>
