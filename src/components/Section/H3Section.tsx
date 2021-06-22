@@ -4,7 +4,7 @@ import { Systemtittel } from "nav-frontend-typografi";
 import CommonSectionMarkup, { CommonSectionProps } from "./CommonSectionMarkup";
 
 const StyledSection = styled.section`
-  margin: 1.5rem -1rem 0rem;
+  margin: 1.5rem -1rem -1rem;
   padding: 1rem; //gjøres for å gi luft til outline når seksjonen har fokus
 `;
 
