@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import styled from "styled-components/macro";
 import Historikk from "../../components/historikk/Historikk";
 import {
+  historikkCustomComponentTestdata,
   historikkDeltTekstTestdata,
   historikkGBelløpTestdata,
   historikkVisPaaTestdata,
@@ -23,6 +24,10 @@ const testData = [
   {
     name: "visPaaSide",
     data: historikkVisPaaTestdata,
+  },
+  {
+    name: "customComponent",
+    data: historikkCustomComponentTestdata,
   },
 ];
 
