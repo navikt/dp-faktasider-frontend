@@ -9,6 +9,7 @@ import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import { SupportedLanguage } from "../../i18n/supportedLanguages";
 import { domeneTittelQuery } from "../../sanity/groq/commonQuerries";
+import { historiskGyldigeIdQuery } from "../../sanity/groq/historikk/faktasideQuery";
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   return {
@@ -36,6 +37,7 @@ export interface HistorikkProps {
 }
 
 export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) => {
+  const gyldigeIder: string[] = await sanityClient.fetch(historiskGyldigeIdQuery);
   const slugs = context.params!.slug as string[];
   const domeneTittel = await sanityClient.fetch(domeneTittelQuery);
 
@@ -44,7 +46,7 @@ export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) =>
     time: encodeURIComponent(slugs[1]),
   };
 
-  if (!request.id) {
+  if (!gyldigeIder.includes(request.id)) {
     return {
       notFound: true,
     };

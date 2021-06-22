@@ -6,6 +6,8 @@ export const historiskFaktasideQuery = groq`*[_type == "faktaSide"]{
   title
 }`;
 
+export const historiskGyldigeIdQuery = groq`*[_type in ["faktaSide", "deltTekst"] && !(_id in path("drafts.**"))]._id`;
+
 export interface HistoriskFaktasideData {
   _id: string;
   _updatedAt: string;
