@@ -14,7 +14,7 @@ describe("historikk funker - ", () => {
 
       cy.findByRole("main").within(() => cy.findAllByRole("link").first().click());
 
-      cy.wait(5000);
+      cy.wait(10000);
 
       cy.findByRole("heading", { name: /Historiske/i });
       cy.findByRole("main").within(() => {
@@ -22,7 +22,7 @@ describe("historikk funker - ", () => {
         cy.findAllByRole("link").first().next().click();
       });
 
-      cy.wait(6000);
+      cy.wait(10000);
       cy.findByRole("main").within(() => {
         cy.findByRole("button", { name: /endre/i }).click();
         cy.findAllByRole("link")
