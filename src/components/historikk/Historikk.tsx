@@ -16,7 +16,7 @@ import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel/lib/index";
 import LangInfo from "./LangInfo";
 import HistoirkkWatermark from "./Watermark";
 
-const Style = styled.div`
+const StyledMain = styled.main`
   max-width: 70rem;
   margin: auto;
   background-color: white;
@@ -70,19 +70,17 @@ function Historikk(props: HistorikkProps) {
         <meta name="robots" content="none" />
         <title>{props.hjelpeTekster?.title} | www.nav.no</title>
       </Head>
-      <Style>
-        <main>
-          <HistorikkHeader document={localizedDoc} revisions={props.revisions} title={documentTitle} />
+      <StyledMain>
+        <HistorikkHeader document={localizedDoc} revisions={props.revisions} title={documentTitle} />
 
-          <DokumentRekonstruksjon dokument={localizedDoc} lesMerLenkeId={infoId} />
+        <DokumentRekonstruksjon dokument={localizedDoc} lesMerLenkeId={infoId} />
 
-          <RådataEkspanderbartPanel tittel="Rådata">
-            <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
-          </RådataEkspanderbartPanel>
+        <RådataEkspanderbartPanel tittel="Rådata">
+          <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
+        </RådataEkspanderbartPanel>
 
-          <LangInfo infoId={infoId} />
-        </main>
-      </Style>
+        <LangInfo infoId={infoId} />
+      </StyledMain>
     </HistorikkContextProvider>
   );
 }

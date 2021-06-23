@@ -14,12 +14,21 @@ describe("historikk funker - ", () => {
 
       cy.findByRole("main").within(() => cy.findAllByRole("link").first().click());
 
-      cy.wait(7000);
+      cy.wait(5000);
 
       cy.findByRole("heading", { name: /Historiske/i });
       cy.findByRole("main").within(() => {
-        cy.findAllByRole("button").first().click();
-        cy.findAllByRole("link").first().next().next().next().click();
+        cy.findByRole("button", { name: /endre/i }).click();
+        cy.findAllByRole("link").first().next().click();
+      });
+
+      cy.wait(6000);
+      cy.findByRole("main").within(() => {
+        cy.findByRole("button", { name: /endre/i }).click();
+        cy.findAllByRole("link")
+          .first()
+          .next()
+          .contains(/vises nå/i);
       });
     }
   );
