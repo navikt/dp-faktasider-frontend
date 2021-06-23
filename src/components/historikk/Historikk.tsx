@@ -71,15 +71,17 @@ function Historikk(props: HistorikkProps) {
         <title>{props.hjelpeTekster?.title} | www.nav.no</title>
       </Head>
       <Style>
-        <HistorikkHeader document={localizedDoc} revisions={props.revisions} title={documentTitle} />
+        <main>
+          <HistorikkHeader document={localizedDoc} revisions={props.revisions} title={documentTitle} />
 
-        <DokumentRekonstruksjon dokument={localizedDoc} lesMerLenkeId={infoId} />
+          <DokumentRekonstruksjon dokument={localizedDoc} lesMerLenkeId={infoId} />
 
-        <RådataEkspanderbartPanel tittel="Rådata">
-          <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
-        </RådataEkspanderbartPanel>
+          <RådataEkspanderbartPanel tittel="Rådata">
+            <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
+          </RådataEkspanderbartPanel>
 
-        <LangInfo infoId={infoId} />
+          <LangInfo infoId={infoId} />
+        </main>
       </Style>
     </HistorikkContextProvider>
   );
