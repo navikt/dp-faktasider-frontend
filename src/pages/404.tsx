@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
 const NotFoundPage = (props: Props) => {
   const { t } = useTranslation("global");
-  const { pathname, locale } = useRouter();
+  const { asPath, locale } = useRouter();
   const menuData = parseMenuData(props.menuData, locale as SupportedLanguage);
   const title = "404: Not found";
   const forsideTittel = localizeSanityContent(props.data.domeneTittel, locale as SupportedLanguage);
@@ -75,7 +75,7 @@ const NotFoundPage = (props: Props) => {
   useBreadcrumbs(forsideTittel, [{ tittel: title, path: "404" }]);
 
   useMount(() => {
-    loggNotFound(pathname || "N/A");
+    loggNotFound(asPath || "N/A");
   });
 
   return (
