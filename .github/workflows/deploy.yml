@@ -57,6 +57,8 @@ jobs:
         with:
           build: npm run build
           start: npm start
+        env:
+          SANITY_READ_TOKEN: ${{ secrets.CYPRESS_READ_TOKEN_SANITY }}
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
