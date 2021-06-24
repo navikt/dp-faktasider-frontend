@@ -24,7 +24,7 @@ describe("historikk funker - ", () => {
 
       cy.wait(10000);
       cy.findByRole("main").within(() => {
-        cy.findByRole("button", { name: /endre/i }).click();
+        cy.findByRole("button", { name: /endre/i, expanded: false }).click();
         cy.findAllByRole("link")
           .first()
           .next()
