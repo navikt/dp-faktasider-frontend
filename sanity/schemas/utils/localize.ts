@@ -11,7 +11,6 @@ export default (type: string) => {
       {
         title: "Oversettelser",
         name: "translations",
-        options: { collapsible: true },
       },
     ],
     fields: supportedLanguages.map((lang) => ({
