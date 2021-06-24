@@ -7,7 +7,6 @@ import { HistoriskDokument } from "./api/historikkFetcher";
 import { useHistorikkContext } from "./HistorikkContext";
 import { Revision } from "./api/revisionsFetcher";
 import { colors } from "../../styles/theme";
-import { useRouter } from "next/router";
 
 const Style = styled.div`
   > * {
@@ -67,10 +66,9 @@ function HistorikkHeader(props: { document?: HistoriskDokument; revisions: Revis
   const context = useHistorikkContext();
   const [openRevisions, setOpenRevisions] = useState(false);
 
-  const path = useRouter().asPath;
   useEffect(() => {
     setOpenRevisions(false);
-  }, [path]);
+  }, [props.document]);
 
   return (
     <Style>
