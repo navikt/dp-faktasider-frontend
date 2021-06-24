@@ -31,8 +31,7 @@ function DokumentRekonstruksjon(props: { dokument?: HistoriskDokument; lesMerLen
   const hjelpetekster = useHistorikkContext().hjelpeTekster;
 
   if (Component === undefined || !props.dokument) {
-    // TODO, denne stemmer kanskje ikke alltid?
-    return <>Ingen dokument valgt</>;
+    return <AlertStripeAdvarsel>Kunne ikke gjennskape dokumentet</AlertStripeAdvarsel>;
   }
 
   return (

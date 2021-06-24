@@ -92,7 +92,7 @@ function getTitle(dokument?: HistoriskDokument) {
     case "faktaSide":
       return dokument.title;
     default:
-      return "Ingen dokument valgt";
+      return "Kunne ikke finne tittel";
   }
 }
 
