@@ -2,7 +2,12 @@ import { FiAlertCircle } from "react-icons/fi";
 import getPreviewTextFromBlockContent from "../utils/getPreviewTextFromBlockContent";
 import VelgInfosider from "../infosider/oppsett/VelgInfosider";
 
-export default {
+export type NotifikasjonBoolean = {
+  name: string;
+  label: string;
+};
+
+export default (ekstraNotifikasjonsBooleans: NotifikasjonBoolean[] = []) => ({
   type: "document",
   name: "notifikasjon",
   title: "Blå informasjonsboks",
@@ -22,16 +27,11 @@ export default {
       title: "Vis på nav.no/arbeid",
       type: "boolean",
     },
-    {
-      name: "visPaaKalkulator",
-      title: "Vis på dagpengekalkulatoren",
+    ...ekstraNotifikasjonsBooleans.map((it) => ({
+      name: it.name,
+      title: it.label,
       type: "boolean",
-    },
-    {
-      name: "visPaaInnsyn",
-      title: "Vis på innsynsløsninga på dine-dagpenger",
-      type: "boolean",
-    },
+    })),
     {
       name: "visPaaFaktaSider",
       title: "Vis på Infoside",
@@ -54,4 +54,4 @@ export default {
       };
     },
   },
-};
+});

@@ -21,10 +21,10 @@ import localize from "../utils/localize";
 import historikkHjelpetekster from "./historikk/historikkHjelpetekster";
 import historikkRichText from "./historikk/historikkRichText";
 
-export const infosideSchemas = [
+export const infosideSchemas = (customComponentKeys?: string[]) => [
   richText,
   faktaSide,
-  customComponent,
+  customComponent(customComponentKeys),
   video,
   fremhevetRichText,
   fremhevetTekst,

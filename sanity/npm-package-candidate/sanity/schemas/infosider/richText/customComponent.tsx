@@ -1,9 +1,7 @@
 import React from "react";
 import CustomComponentPreview, { CustomComponentIkon } from "./CustomComponentPreview";
 
-const tilgjengeligeKomponenter = ["DagpengeKalkulator - normal", "DagpengeKalkulator - lærling"];
-
-export default {
+export default (customComponentKeys?: string[]) => ({
   name: "customComponent",
   title: "Komponent",
   type: "object",
@@ -16,7 +14,7 @@ export default {
       description: "Nye komponenter må opprettes av en utvikler i sanity-studio og i frontenden",
       validation: (Rule) => Rule.required(),
       options: {
-        list: tilgjengeligeKomponenter,
+        list: customComponentKeys || ["Ingen custom component er lagt inn i systemet"],
       },
     },
   ],
@@ -27,4 +25,4 @@ export default {
     prepare: (selection) => selection,
     component: (props) => <CustomComponentPreview name={props.value.title} />,
   },
-};
+});
