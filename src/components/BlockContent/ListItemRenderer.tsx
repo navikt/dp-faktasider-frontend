@@ -3,9 +3,7 @@ import { ReactNode } from "react";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import { UtkastInline } from "./utkast/Utkast";
 import SanityBlockContent from "@sanity/block-content-to-react";
-import allChildrenMarkedWith, { getCommonVisForConfig } from "../../utils/richTextUtils/allChildrenMarkedWith";
-import VisFor from "./VisFor/VisFor";
-import VisPaaSide from "./VisFor/VisPaaSide";
+import allChildrenMarkedWith from "../../utils/richTextUtils/allChildrenMarkedWith";
 
 interface Props {
   node: SanityBlock;
@@ -16,15 +14,8 @@ function ListItemRenderer(props: Props): ReactNode {
   const serializedListItem = SanityBlockContent.defaultSerializers.listItem(props);
 
   const heleErUtkast = allChildrenMarkedWith(props.node, "utkast");
-  const commonVisForConfig = getCommonVisForConfig(props.node);
 
-  return (
-    <VisPaaSide visPaaSider={commonVisForConfig?.visPaa}>
-      <UtkastInline erUtkast={heleErUtkast}>
-        <VisFor visForConfig={commonVisForConfig?.visFor}>{serializedListItem}</VisFor>
-      </UtkastInline>
-    </VisPaaSide>
-  );
+  return <UtkastInline erUtkast={heleErUtkast}>{serializedListItem}</UtkastInline>;
 }
 
 export default ListItemRenderer;

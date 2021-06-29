@@ -26,6 +26,9 @@ export const typografiStyle = css`
     li {
       margin: 0.7rem 0;
       padding-left: 0.3rem;
+      &:empty {
+        display: none; //Dette gjøres for å hindre bulletpoints uten tekst å dukke opp, da vi skjuler tekst på visse sider (visFor og visPaaSide)
+      }
     }
   }
   ul {
