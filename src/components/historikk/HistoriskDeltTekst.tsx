@@ -27,7 +27,9 @@ export function HistoriskDeltTekst(props) {
       <Header>Her var det en delt tekst</Header>
       <p>
         <Link href={href} passHref>
-          <a className="lenke">Se versjonshistorikk for den delte teksten</a>
+          <a className="lenke" target="_blank">
+            Se versjonshistorikk for den delte teksten (åpnes i ny fane)
+          </a>
         </Link>
       </p>
       <SlideDown title="Hvorfor vises ikke denne teksten her?">
