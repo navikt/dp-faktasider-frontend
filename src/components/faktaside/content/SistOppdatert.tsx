@@ -2,7 +2,6 @@ import styled from "styled-components/macro";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import withErrorBoundary from "../../withErrorBoundary";
-import Utkast from "../../BlockContent/utkast/Utkast";
 import Link from "next/link";
 import { useFaktasideContext } from "../FaktaSideContext";
 
@@ -15,6 +14,7 @@ const Style = styled.div`
 const Lenke = styled.a`
   color: inherit;
   text-decoration: none;
+
   &:hover {
     text-decoration: underline;
   }
@@ -31,12 +31,9 @@ function SistOppdatert() {
   const tekst = t("sistOppdatert", { publiseringstidspunkt: new Date(faktaside.publiseringsTidspunkt) });
   return (
     <Style>
-      <Utkast>
-        <Link href={`/historikk/${faktaside.id}/${faktaside.publiseringsTidspunkt}`} passHref>
-          <Lenke>{tekst}</Lenke>
-        </Link>
-      </Utkast>
-      {tekst}
+      <Link href={`/historikk/${faktaside.id}/${faktaside.publiseringsTidspunkt}`} passHref>
+        <Lenke>{tekst}</Lenke>
+      </Link>
     </Style>
   );
 }
