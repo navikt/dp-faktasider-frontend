@@ -1,14 +1,14 @@
 import * as React from "react";
-import withErrorBoundary from "../../withErrorBoundary";
 import { useEffect } from "react";
+import withErrorBoundary from "../../withErrorBoundary";
 import { loggError } from "../../../utils/logging";
 import { useGrunnbellop } from "../../../utils/folketrygdensGrunnbeløp";
 import { useDevContext } from "../../DevKnapper/DevContext";
 import styled from "styled-components";
 import { useHistorikkContext } from "../../historikk/HistorikkContext";
-import Hjelpetekst from "nav-frontend-hjelpetekst";
 import "nav-frontend-hjelpetekst-style/src/hjelpetekst-style.less";
 import Lenke from "nav-frontend-lenker";
+import LitenHjelpetekst from "../../historikk/LitenHjelpetekst";
 
 interface Props {
   children: string[];
@@ -52,12 +52,12 @@ const GtilNOKAnnotation = (props: Props) => {
     return (
       <HistorikkStyle>
         {g} G{" "}
-        <Hjelpetekst>
+        <LitenHjelpetekst>
           G-beløpet her var oversatt til kroner.{" "}
           <Lenke href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden">
             Du kan se historisk verdi av g-beløp her.
           </Lenke>
-        </Hjelpetekst>
+        </LitenHjelpetekst>
       </HistorikkStyle>
     );
   }

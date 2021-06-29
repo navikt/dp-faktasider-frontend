@@ -4,9 +4,9 @@ import useVisPaaSideDebug from "./useVisPaaSideDebug";
 import { VisPaaConfig } from "../../../utils/richTextUtils/richTextTypes";
 import { useFaktasideContext } from "../../faktaside/FaktaSideContext";
 import { useHistorikkContext } from "../../historikk/HistorikkContext";
-import Hjelpetekst from "nav-frontend-hjelpetekst";
 import styled from "styled-components";
 import { colors } from "../../../styles/theme";
+import LitenHjelpetekst from "../../historikk/LitenHjelpetekst";
 
 interface Props {
   children: ReactNode;
@@ -15,6 +15,7 @@ interface Props {
 
 const HistorikkStyle = styled.span`
   border-bottom: 0.2rem dashed ${colors.navBlaLighten40};
+
   & + & {
     margin-left: 1rem; // For å skille to elementer som ligger intill hverandre
   }
@@ -39,7 +40,9 @@ function VisPaaSide(props: Props) {
     return (
       <HistorikkStyle>
         {props.children}{" "}
-        <Hjelpetekst>Denne teksten ble kun vist på utvalgte sider med id: {props.visPaaSider?.join(", ")}</Hjelpetekst>
+        <LitenHjelpetekst>
+          Denne teksten ble kun vist på utvalgte sider med id: {props.visPaaSider?.join(", ")}
+        </LitenHjelpetekst>
       </HistorikkStyle>
     );
   }
