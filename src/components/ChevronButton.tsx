@@ -18,7 +18,7 @@ const StyledButton = styled.button`
 
 function ChevronButton({ open, title, ...rest }: Props) {
   return (
-    <StyledButton {...rest}>
+    <StyledButton aria-expanded={open} {...rest}>
       {title} <NavFrontendChevron type={open ? "opp" : "ned"} />
     </StyledButton>
   );

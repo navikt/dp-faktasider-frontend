@@ -49,7 +49,6 @@ function VisMerPanel(props: Props) {
         </Content>
       </Collapse>
       <StyledChevronButton
-        aria-expanded={props.open}
         aria-controls={id}
         className="lenke"
         open={props.open}
