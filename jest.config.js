@@ -11,4 +11,5 @@ module.exports = {
     "^.+\\.module\\.(css|sass|scss|less)$": "identity-obj-proxy",
     "^.+\\.svg$": "jest-transform-stub",
   },
+  testEnvironment: "jsdom",
 };
