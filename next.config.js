@@ -29,5 +29,6 @@ module.exports = withTranspileModules(
       defaultLocale: "no",
       localeDetection: false, // vi har ikke bra nok engelsk språkstøtte til at dette er bra
     },
+    webpack5: false, // For at less skal funke
   })
 );
