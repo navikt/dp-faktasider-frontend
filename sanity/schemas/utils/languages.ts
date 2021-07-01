@@ -1,4 +1,4 @@
 export const supportedLanguages = [
-  { id: "no", title: "Norsk", isDefault: true },
-  { id: "en", title: "English" },
+  { id: "no", title: "Norsk 🇳🇴", isDefault: true },
+  { id: "en", title: "English 🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
 ];

@@ -68,6 +68,10 @@
     {
       "implements": "part:@sanity/base/brand-logo",
       "path": "./logo.tsx"
+    },
+    {
+      "implements": "part:@sanity/base/theme/variables/override-style",
+      "path": "./style/customStyles.css"
     }
   ]
 }

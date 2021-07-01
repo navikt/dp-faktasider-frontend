@@ -1,0 +1,8 @@
+:root {
+    --brand-primary: #C86151;
+    --brand-secondary: #0C5EA8;
+}
+
+:global([class^="documentPanel_documentViewerContainer"]) {
+    background-color: #efefef;
+}

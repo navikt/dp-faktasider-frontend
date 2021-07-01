@@ -9,8 +9,11 @@ export default (type: string) => {
     type: "object",
     fieldsets: [
       {
-        title: "Oversettelser",
+        title: "Oversettelser 💬",
         name: "translations",
+        options: {
+          collapsible: false,
+        },
       },
     ],
     fields: supportedLanguages.map((lang) => ({
