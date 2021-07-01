@@ -51,12 +51,14 @@ export default {
       type: "boolean",
     },
     {
+      fieldset: "oppsett",
       name: "nokkelordBeskrivelse",
       type: "localeString",
       title: "Nøkkelord",
       description: "Beskriv innholdet med noen få nøkkelord, til bruk på navigasjonsside",
     },
     {
+      fieldset: "oppsett",
       name: "beskrivelse",
       type: "localeText",
       title: "Søkemotortekst",
