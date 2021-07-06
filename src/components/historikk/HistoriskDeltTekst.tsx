@@ -8,13 +8,19 @@ import BlockContent from "../BlockContent/BlockContent";
 
 const Header = styled.p`
   font-weight: 600;
-  margin-top: 0 !important;
+  margin: 0 !important;
 `;
 
 const StyledAlerstripeInfo = styled(AlertStripeInfo)`
   & + & {
     margin-top: 1rem;
   }
+`;
+
+const IdStyle = styled.p`
+  opacity: 0.7;
+  font-size: 0.8rem;
+  margin-top: 0 !important;
 `;
 
 export function HistoriskDeltTekst(props) {
@@ -25,6 +31,7 @@ export function HistoriskDeltTekst(props) {
   return (
     <StyledAlerstripeInfo>
       <Header>Her var det en delt tekst</Header>
+      <IdStyle>Id: {documentId}</IdStyle>
       <p>
         <Link href={href} passHref>
           <a className="lenke" target="_blank">
