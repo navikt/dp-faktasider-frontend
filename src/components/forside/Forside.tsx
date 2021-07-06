@@ -11,6 +11,7 @@ import styled from "styled-components/macro";
 import { theme } from "../../styles/theme";
 import { ForsideParsedData } from "../../sanity/groq/forside/parseForsideData";
 import { MenuItem } from "../../sanity/groq/menu/parseMenuData";
+import KortFortalt from "./KortFortalt";
 
 const Style = styled.div`
   background-color: ${theme.colors.bakgrunn};
@@ -20,6 +21,7 @@ const Content = styled.main`
   > * {
     margin-left: auto;
     margin-right: auto;
+    margin-top: ${theme.layoutMargin};
   }
 `;
 
@@ -41,6 +43,7 @@ function Forside(props: Props) {
       <SEO description={beskrivelse} title={title} seoImage={props.forsideData.seoImage} path="" />
       <Content id={"maincontent"}>
         <Notifikasjoner notifikasjoner={props.forsideData.notifikasjoner} />
+        <KortFortalt kortFortalt={props.forsideData.kortFortalt} />
         <InfosideLenker lenker={props.menuData} />
         <Snarveier snarveier={props.forsideData.snarveier} />
       </Content>

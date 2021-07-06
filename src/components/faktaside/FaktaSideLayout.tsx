@@ -56,7 +56,7 @@ export const MainContentStyle = styled.main`
   @media (${theme.media.smallScreen}) {
     padding: 0;
   }
-  ${typografiStyle}
+  ${typografiStyle};
 `;
 
 const ContentStyle = styled.div`

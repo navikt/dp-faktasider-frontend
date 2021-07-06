@@ -17,7 +17,6 @@ const Background = styled.div`
   box-shadow: inset 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
-  margin-bottom: ${theme.layoutMargin};
 `;
 
 const StyledSidetittel = styled(Sidetittel)`

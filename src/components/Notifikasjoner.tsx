@@ -3,11 +3,11 @@ import { AlertStripeInfo } from "nav-frontend-alertstriper";
 import styled from "styled-components/macro";
 import { Element } from "nav-frontend-typografi";
 import { SanityBlock } from "../utils/richTextUtils/richTextTypes";
-import { theme } from "../styles/theme";
 import { contentMaxwidth } from "./forside/style";
 import { typografiStyle } from "./faktaside/FaktaSideLayout";
 import BlockContent from "./BlockContent/BlockContent";
 import withErrorBoundary from "./withErrorBoundary";
+import { theme } from "../styles/theme";
 
 export interface Notifikasjon {
   title?: string;

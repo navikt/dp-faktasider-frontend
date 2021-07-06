@@ -16,7 +16,7 @@ import InnholdetErTilpasset from "./InnholdetErTilpasset";
 const StyledNav = styled.nav`
   background-color: white;
   padding: ${theme.layoutPadding} calc(${theme.layoutPadding} * 1.75);
-  margin-bottom: 2rem;
+  margin-bottom: ${theme.layoutMargin};
   border-radius: ${theme.borderRadius};
 
   > * {

@@ -11,7 +11,6 @@ import Link from "next/link";
 import { MenuItem, MenylenkeInternParsed } from "../../sanity/groq/menu/parseMenuData";
 
 const StyledUl = styled.ul`
-  margin: 2rem 0 4rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

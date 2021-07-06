@@ -22,6 +22,11 @@ export default {
       validation: localeValueRequired,
     },
     {
+      name: "kortFortalt",
+      type: "localeOppsettRichText",
+      title: "Kort fortalt",
+    },
+    {
       name: "menyLenker",
       title: "Lenker meny",
       type: "array",

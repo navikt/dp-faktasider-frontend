@@ -20,6 +20,7 @@ import tidslinje from "./tidslinje/tidslinje";
 import localize from "../utils/localize";
 import historikkHjelpetekster from "./historikk/historikkHjelpetekster";
 import historikkRichText from "./historikk/historikkRichText";
+import oppsettRichText from "./oppsett/oppsettRichText";
 
 export const infosideSchemas = [
   richText,
@@ -43,9 +44,11 @@ export const infosideSchemas = [
   tidslinje,
   historikkHjelpetekster,
   historikkRichText,
+  oppsettRichText,
   localize("historikkRichText"),
   localize("notifikasjonRichText"),
   localize("kortFortaltRichText"),
   localize("richText"),
   localize("deltRichText"),
+  localize("oppsettRichText"),
 ];
