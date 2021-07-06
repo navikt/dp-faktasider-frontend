@@ -7,6 +7,7 @@ const Style = styled.div`
   box-shadow: 0 0 1rem #888;
   display: flex;
   width: 40rem;
+  background-color: white;
   > * {
     border: 1px solid #bbb;
   }
