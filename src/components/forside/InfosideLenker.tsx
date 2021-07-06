@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import React, { useRef } from "react";
 import styled from "styled-components/macro";
-import { Normaltekst, Undertittel } from "nav-frontend-typografi";
+import { Normaltekst } from "nav-frontend-typografi";
 import useUniqueId from "../../utils/useUniqueId";
 import { contentMaxwidth } from "./style";
 import Utkast from "../BlockContent/utkast/Utkast";
@@ -9,6 +9,7 @@ import { MenylenkeEkstern } from "../../sanity/groq/menu/menuQuery";
 import { guid } from "nav-frontend-js-utils";
 import Link from "next/link";
 import { MenuItem, MenylenkeInternParsed } from "../../sanity/groq/menu/parseMenuData";
+import { theme } from "../../styles/theme";
 
 const StyledUl = styled.ul`
   display: flex;
@@ -17,7 +18,7 @@ const StyledUl = styled.ul`
   @supports (display: grid) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-    grid-gap: 1.5rem;
+    grid-gap: min(1.5rem, ${theme.layoutMargin});
   }
 `;
 
@@ -36,6 +37,9 @@ const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: "lenke" })`
   font-size: 1.2rem !important;
   text-decoration: none !important;
   margin-bottom: 0.75rem !important;
+  @media (max-width: 600px) {
+    text-decoration: underline !important; // Lettere å se at det er klikkbare lenker på mobil
+  }
 `;
 
 export const LenkeStyle = styled.a`
@@ -63,9 +67,9 @@ function InfosideLenker(props: { lenker: MenuItem[] }) {
 
   return (
     <StyledSection aria-labelledby={id}>
-      <Undertittel className={"sr-only"} id={id}>
+      <h2 className={"sr-only"} id={id}>
         {t("forsideInformasjonHeader")}
-      </Undertittel>
+      </h2>
       <StyledUl>
         {props.lenker.map((lenke, index) => (
           <StyledLi key={index}>

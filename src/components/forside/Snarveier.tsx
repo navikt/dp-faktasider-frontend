@@ -17,6 +17,7 @@ const Wrapper = styled.div`
 const Style = styled.section`
   width: ${contentMaxwidth};
   max-width: 100vw;
+  margin: auto 2rem;
 `;
 
 const StyledUndertittel = styled(Undertittel)`
