@@ -7,6 +7,7 @@ export const sanityConfig = {
   dataset: dataset,
   projectId: projectId,
   useCdn: process.env.NODE_ENV === "production",
+  apiVersion: "2021-06-06",
 };
 
 export const urlFor = (source) => createImageUrlBuilder(sanityConfig).image(source);
