@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { onBreadcrumbClick, setBreadcrumbs } from "@navikt/nav-dekoratoren-moduler";
-import { Breadcrumb } from "@navikt/nav-dekoratoren-moduler/csr/functions/breadcrumbs";
+import { Breadcrumb, onBreadcrumbClick, setBreadcrumbs } from "@navikt/nav-dekoratoren-moduler";
 
 function useBreadcrumbs(forsideTittel?: string, sider?: { tittel: string; path: string }[]) {
   const navigate = useRouter().push;
