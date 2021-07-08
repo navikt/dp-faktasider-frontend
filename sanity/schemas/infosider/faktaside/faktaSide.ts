@@ -70,7 +70,6 @@ export default {
       name: "kortFortalt",
       type: "localeKortFortaltRichText",
       title: "Kort fortalt",
-      validation: localeValueRequired,
     },
     {
       name: "innhold",
