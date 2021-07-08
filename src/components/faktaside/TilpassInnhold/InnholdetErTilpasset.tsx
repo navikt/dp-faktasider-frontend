@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useVisForContext } from "../../BlockContent/VisFor/VisForContext";
 import { UnmountClosed } from "react-collapse";
-import { AlertStripeInfo } from "nav-frontend-alertstriper";
+import { Alert } from "@navikt/ds-react";
 import styled from "styled-components";
 import { theme } from "../../../styles/theme";
 import withErrorBoundary from "../../../components/withErrorBoundary";
 import { LenkeKnapp } from "../../../utils/common-styled-components";
 
-const StyledAlertStripeInfo = styled(AlertStripeInfo)`
+const StyledAlertStripeInfo = styled(Alert).attrs({ variant: "info" })`
   margin-bottom: ${theme.layoutMargin};
 `;
 

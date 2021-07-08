@@ -1,4 +1,4 @@
-import { AlertStripeInfo } from "nav-frontend-alertstriper";
+import { Alert } from "@navikt/ds-react";
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
@@ -11,7 +11,7 @@ const Header = styled.p`
   margin: 0 !important;
 `;
 
-const StyledAlerstripeInfo = styled(AlertStripeInfo)`
+const StyledAlerstripeInfo = styled(Alert).attrs({ variant: "info" })`
   & + & {
     margin-top: 1rem;
   }

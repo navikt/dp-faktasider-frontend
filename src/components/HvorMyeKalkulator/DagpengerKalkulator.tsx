@@ -2,7 +2,7 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import { Normaltekst } from "nav-frontend-typografi";
 import { Collapse } from "react-collapse";
-import { AlertStripeInfo } from "nav-frontend-alertstriper";
+import { Alert } from "@navikt/ds-react";
 import { GrunnlagInput, InputWrapper, KalkulatorStyle, ResultatTable, toKR } from "./felles";
 import { useDebouncedValue } from "../../hooks/useDebouncedValue";
 import { useTranslation } from "react-i18next";
@@ -21,7 +21,7 @@ function Resultat(props: { grunnlag?: number }) {
     return (
       <>
         <Normaltekst>{t("forLavtGrunnlag", { G: `0.75 G (${GtoNOK(0.75)} kroner)` })} </Normaltekst>
-        <AlertStripeInfo>{t("sendSøknadLikvel")}</AlertStripeInfo>
+        <Alert variant="info">{t("sendSøknadLikvel")}</Alert>
       </>
     );
   }
@@ -71,7 +71,7 @@ function Resultat(props: { grunnlag?: number }) {
           </tr>
         </tbody>
       </ResultatTable>
-      <AlertStripeInfo>{t("kunveiledende")}</AlertStripeInfo>
+      <Alert variant="info">{t("kunveiledende")}</Alert>
     </>
   );
 }
