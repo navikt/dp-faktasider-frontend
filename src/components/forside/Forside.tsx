@@ -39,11 +39,11 @@ function Forside(props: Props) {
 
   return (
     <Style>
-      <Header heading={title} beskrivelse={beskrivelse} />
+      <Header heading={title} />
       <SEO description={beskrivelse} title={title} seoImage={props.forsideData.seoImage} path="" />
       <Content id={"maincontent"}>
         <Notifikasjoner notifikasjoner={props.forsideData.notifikasjoner} />
-        <KortFortalt kortFortalt={props.forsideData.kortFortalt} />
+        <KortFortalt kortFortalt={props.forsideData.kortFortalt} beskrivelse={beskrivelse} />
         <InfosideLenker lenker={props.menuData} />
         <Snarveier snarveier={props.forsideData.snarveier} />
       </Content>

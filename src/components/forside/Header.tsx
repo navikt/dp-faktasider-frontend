@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
+import { Sidetittel } from "nav-frontend-typografi";
 import styled, { createGlobalStyle } from "styled-components/macro";
 import { theme } from "../../styles/theme";
 import withErrorBoundary from "../../components/withErrorBoundary";
@@ -8,7 +8,6 @@ import { contentMaxwidth } from "./style";
 
 interface Props {
   heading: string;
-  beskrivelse: string;
 }
 
 const Background = styled.div`
@@ -20,22 +19,20 @@ const Background = styled.div`
 `;
 
 const StyledSidetittel = styled(Sidetittel)`
-  margin: 0 0 0.5rem 0 !important;
+  align-self: center;
 `;
 
 const Content = styled.div`
-  padding: 1rem 0 1.5rem;
   max-width: 100vw;
   width: ${contentMaxwidth};
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
   margin: 0 1rem;
 `;
 
 const StyledHeaderIkon = styled(HeaderIkon)`
+  padding-top: 1rem;
   width: 12rem;
-  transform: translateY(1.5rem);
   margin-left: 2rem;
   @media (max-width: 50em) {
     display: none;
@@ -53,10 +50,7 @@ const Header = (props: Props) => {
     <Background>
       <BrødsmuleStyling />
       <Content>
-        <div>
-          <StyledSidetittel>{props.heading}</StyledSidetittel>
-          <Normaltekst>{props.beskrivelse}</Normaltekst>
-        </div>
+        <StyledSidetittel>{props.heading}</StyledSidetittel>
         <StyledHeaderIkon />
       </Content>
     </Background>
