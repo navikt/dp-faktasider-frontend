@@ -24,10 +24,6 @@ const Content = styled.div`
 function KortFortalt(props: { kortFortalt?: ParsedRichText; beskrivelse?: string }) {
   const { t } = useTranslation();
 
-  if (!props.kortFortalt?.length) {
-    return null;
-  }
-
   return (
     <Style>
       <Innholdstittel>{t("forsideIntroTittel")}</Innholdstittel>
