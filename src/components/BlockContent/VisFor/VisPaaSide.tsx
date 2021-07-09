@@ -13,7 +13,7 @@ interface Props {
   visPaaSider?: VisPaaConfig;
 }
 
-const HistorikkStyle = styled.span`
+const HistorikkStyle = styled.abbr`
   border-bottom: 0.2rem dashed ${colors.navBlaLighten40};
 
   & + & {
@@ -40,7 +40,7 @@ function VisPaaSide(props: Props) {
     return (
       <HistorikkStyle>
         {props.children}{" "}
-        <LitenHjelpetekst>
+        <LitenHjelpetekst title="Forklaring">
           Denne teksten ble kun vist på utvalgte sider med id: {props.visPaaSider?.join(", ")}
         </LitenHjelpetekst>
       </HistorikkStyle>
