@@ -52,7 +52,10 @@ const GtilNOKAnnotation = (props: Props) => {
     return (
       <HistorikkStyle>
         {g} G{" "}
-        <LitenHjelpetekst title="Grunnbelløp, hjelp" onClick={() => loggHistorikk("Viser hjelpetekst for grunnbelløp")}>
+        <LitenHjelpetekst
+          tittel="Grunnbelløp, hjelp"
+          onClick={() => loggHistorikk("Viser hjelpetekst for grunnbelløp")}
+        >
           G-beløpet her var oversatt til kroner.{" "}
           <Lenke href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden">
             Du kan se historisk verdi av g-beløp her.

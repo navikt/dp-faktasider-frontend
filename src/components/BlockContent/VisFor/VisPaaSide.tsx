@@ -41,7 +41,7 @@ function VisPaaSide(props: Props) {
     return (
       <HistorikkStyle>
         {props.children}{" "}
-        <LitenHjelpetekst title="Forklaring" onClick={() => loggHistorikk("Viser hjelpetekst for visPaaSide")}>
+        <LitenHjelpetekst tittel="Forklaring" onClick={() => loggHistorikk("Viser hjelpetekst for visPaaSide")}>
           Denne teksten ble kun vist på utvalgte sider med id: {props.visPaaSider?.join(", ")}
         </LitenHjelpetekst>
       </HistorikkStyle>
