@@ -4,12 +4,14 @@ import { createGlobalStyle, css, StyledComponent } from "styled-components/macro
 import Anchor from "../Anchor";
 import HashLink from "../HashLink";
 import useUniqueId from "../../utils/useUniqueId";
+import { useLoggHarBlittSett } from "../../utils/useLoggHarBlittSett";
 
 export const showLinkOnHover = css`
   a {
     transition: 0.2s;
     opacity: 0;
   }
+
   &:hover,
   &:focus-within,
   &:focus {
@@ -51,6 +53,8 @@ function CommonSectionMarkup(props: Props) {
 
   const Region = props.region;
   const Header = props.header;
+
+  useLoggHarBlittSett(props.id, props.title);
 
   return (
     <Region data-testid={props.id} aria-labelledby={headerId} style={{ position: "relative" }} {...props.regionProps}>

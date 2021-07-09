@@ -67,3 +67,5 @@ export const loggHashNotFound = (hash: string, path: string) => loggEvent("Hashl
 
 export const loggHistorikk = (hendelse: string, ekstraData?: object) =>
   loggEvent("Historikk", { hendelse, ...ekstraData });
+
+export const loggHarSett = (tittel: string) => loggEvent("Overskrift sett", { tittel });
