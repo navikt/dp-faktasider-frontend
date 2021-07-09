@@ -23,7 +23,6 @@ const loggEvent = (event: string, ekstraData?: object) => {
 
       isDevelopment() && console.log("Log event:", event, data);
       logging.loggInstance.logEvent(event, data);
-      logging.loggInstanceDeprecated.logEvent(event, data);
     });
   } catch (e) {
     console.error("Kunne ikke logge til amplitdue:", e);
