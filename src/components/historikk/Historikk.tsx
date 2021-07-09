@@ -8,13 +8,14 @@ import HistorikkContextProvider from "./HistorikkContext";
 import DokumentRekonstruksjon from "./DokumentRekonstruksjon";
 import { HistoriskDokument } from "./api/historikkFetcher";
 import { useMount } from "react-use";
-import { loggSidevisning } from "../../utils/logging";
+import { loggHistorikk } from "../../utils/logging";
 import useBreadcrumbs from "../faktaside/useBreadcrumbs";
 import HistorikkHeader from "./HistorikkHeader";
 import withErrorBoundary from "../withErrorBoundary";
 import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel/lib/index";
 import LangInfo from "./LangInfo";
 import HistoirkkWatermark from "./Watermark";
+import { formaterDato } from "../../utils/formaterDato";
 
 const StyledMain = styled.main`
   max-width: 70rem;
@@ -53,7 +54,12 @@ function Historikk(props: HistorikkProps) {
   const infoId = useUniqueId("info");
   const documentTitle = getTitle(localizedDoc);
 
-  useMount(() => loggSidevisning("Historikk"));
+  const loggingInfo = {
+    nåværendeTittel: props.nåværendeSidetittel,
+    timestamp: formaterDato(localizedDoc?._updatedAt || ""),
+  };
+
+  useMount(() => loggHistorikk("Sidevisning", loggingInfo));
   useBreadcrumbs(props.domeneTittel, [
     { tittel: "Historikk", path: "historikk" },
     { tittel: documentTitle, path: `historikk/${localizedDoc?._id}/${localizedDoc?._updatedAt}` },
@@ -64,6 +70,7 @@ function Historikk(props: HistorikkProps) {
       requestTimestamp={props.request.time}
       hjelpeTekster={props.hjelpeTekster}
       isHistorikk={true}
+      loggingInfo={loggingInfo}
     >
       <HistoirkkWatermark />
       <Head>
@@ -75,7 +82,7 @@ function Historikk(props: HistorikkProps) {
 
         <DokumentRekonstruksjon dokument={localizedDoc} lesMerLenkeId={infoId} />
 
-        <RådataEkspanderbartPanel tittel="Rådata">
+        <RådataEkspanderbartPanel tittel="Rådata" onClick={() => loggHistorikk("Åpner rådata", loggingInfo)}>
           <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
         </RådataEkspanderbartPanel>
 
