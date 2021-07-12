@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AlertStripeFeil } from "nav-frontend-alertstriper";
+import { Alert } from "@navikt/ds-react";
 import { ErrorInfo } from "react";
 import Tekstomrade from "nav-frontend-tekstomrade";
 import SlideDown from "./SlideDown";
@@ -53,7 +53,7 @@ class ErrorBoundary extends React.Component<Props, State> {
 
       return (
         <div>
-          <AlertStripeFeil>
+          <Alert variant="error">
             <Normaltekst>Beklager, det skjedde en teknisk feil.</Normaltekst>
             <Element>
               Feilen blir automatisk rapportert og vi jobber med å løse den så raskt som mulig. Prøv igjen om litt.
@@ -65,7 +65,7 @@ class ErrorBoundary extends React.Component<Props, State> {
                 <StyledTekstomrade>{stackTrace || ""}</StyledTekstomrade>
               </StyledSlideDown>
             )}
-          </AlertStripeFeil>
+          </Alert>
         </div>
       );
     }

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { AlertStripeInfo } from "nav-frontend-alertstriper";
 import styled from "styled-components/macro";
 import { Element } from "nav-frontend-typografi";
 import { SanityBlock } from "../utils/richTextUtils/richTextTypes";
@@ -8,6 +7,7 @@ import { typografiStyle } from "./faktaside/FaktaSideLayout";
 import BlockContent from "./BlockContent/BlockContent";
 import withErrorBoundary from "./withErrorBoundary";
 import { theme } from "../styles/theme";
+import { Alert } from "@navikt/ds-react";
 
 export interface Notifikasjon {
   title?: string;
@@ -48,14 +48,14 @@ function Notifikasjoner(props: Props) {
     <Style>
       <h2 className="sr-only">Notifikasjoner</h2>
       {props.notifikasjoner.map((notifikasjon, i) => (
-        <AlertStripeInfo key={i}>
+        <Alert variant="info" key={i}>
           <Element>{notifikasjon.title}</Element>
           {notifikasjon.innhold && (
             <Content>
               <BlockContent blocks={notifikasjon.innhold} />
             </Content>
           )}
-        </AlertStripeInfo>
+        </Alert>
       ))}
     </Style>
   );

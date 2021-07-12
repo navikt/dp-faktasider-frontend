@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { Collapse } from "react-collapse";
-import { AlertStripeInfo } from "nav-frontend-alertstriper";
+import { Alert } from "@navikt/ds-react";
 import { GrunnlagInput, InputWrapper, KalkulatorStyle, ResultatTable, toKR } from "./felles";
 import { useDebouncedValue } from "../../hooks/useDebouncedValue";
 import { loggKalkulatorbruk } from "../../utils/logging";
@@ -58,7 +58,7 @@ function Resultat(props: { grunnlag?: number }) {
           </tr>
         </tbody>
       </ResultatTable>
-      <AlertStripeInfo>Tala viser omtrent kor mykje du kan ha rett til, ut frå inntekta ovanfor.</AlertStripeInfo>
+      <Alert variant="info">Tala viser omtrent kor mykje du kan ha rett til, ut frå inntekta ovanfor.</Alert>
     </>
   );
 }

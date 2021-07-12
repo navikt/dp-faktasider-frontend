@@ -8,7 +8,7 @@ import parseRichText from "../../utils/richTextUtils/parser/parseRichText";
 import { HistoriskDokument } from "./api/historikkFetcher";
 import styled from "styled-components/macro";
 import useUniqueId from "../../utils/useUniqueId";
-import { AlertStripeAdvarsel } from "nav-frontend-alertstriper";
+import { Alert } from "@navikt/ds-react";
 import Lenke from "nav-frontend-lenker";
 import { useHistorikkContext } from "./HistorikkContext";
 import withErrorBoundary from "../withErrorBoundary";
@@ -21,7 +21,7 @@ const RekonstruksjonWrapper = styled.article`
   ${typografiStyle};
 `;
 
-const StyledAlertstripe = styled(AlertStripeAdvarsel)`
+const StyledAlertstripe = styled(Alert).attrs({ variant: "warning" })`
   margin-bottom: 2rem;
 `;
 
@@ -31,7 +31,7 @@ function DokumentRekonstruksjon(props: { dokument?: HistoriskDokument; lesMerLen
   const hjelpetekster = useHistorikkContext().hjelpeTekster;
 
   if (Component === undefined || !props.dokument) {
-    return <AlertStripeAdvarsel>Kunne ikke gjennskape dokumentet</AlertStripeAdvarsel>;
+    return <Alert variant="warning">Kunne ikke gjennskape dokumentet</Alert>;
   }
 
   return (

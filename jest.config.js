@@ -10,6 +10,8 @@ module.exports = {
   moduleNameMapper: {
     "^.+\\.module\\.(css|sass|scss|less)$": "identity-obj-proxy",
     "^.+\\.svg$": "jest-transform-stub",
+    "@navikt/ds-react(.*)": "@navikt/ds-react/cjs$1",
+    "@navikt/ds-icons(.*)": "@navikt/ds-icons/cjs$1",
   },
   testEnvironment: "jsdom",
 };

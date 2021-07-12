@@ -10,6 +10,7 @@ import React from "react";
 import PreviewBanner from "../components/Preview/PreviewBanner";
 import { PreviewContextProvider } from "../components/Preview/previewContext";
 import DevKnapper from "../components/DevKnapper/DevKnapper";
+import "@navikt/ds-css";
 
 function App({ Component, pageProps }: AppProps) {
   const locale = useRouter().locale;
