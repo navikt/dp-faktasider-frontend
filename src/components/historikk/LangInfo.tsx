@@ -1,11 +1,11 @@
-import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 import BlockContent from "../BlockContent/BlockContent";
 import { typografiStyle } from "../faktaside/FaktaSideLayout";
 import { useHistorikkContext } from "./HistorikkContext";
 import { getTextFromSanityBlock } from "../../utils/richTextUtils/getTextFromSanityBlock";
 import { loggHistorikk } from "../../utils/logging";
+import { Accordion } from "@navikt/ds-react";
 
 const LangInfoStyle = styled.div`
   ${typografiStyle};
@@ -22,21 +22,25 @@ const LangInfoStyle = styled.div`
 
 function LangInfo(props: { infoId: string }) {
   const hjelpeTekster = useHistorikkContext().hjelpeTekster;
-
   const titleBlock = hjelpeTekster?.langInfo.find((block) => block.style === "h2");
   const title = titleBlock && getTextFromSanityBlock(titleBlock);
   const textWithoutTitle = hjelpeTekster?.langInfo.filter((it) => it !== titleBlock);
+  const [open, setOpen] = useState(false);
 
   return (
-    <Ekspanderbartpanel
-      tittel={title}
+    <Accordion
+      heading={title}
+      open={open}
       id={props.infoId}
-      onClick={() => loggHistorikk("Åpner Informasjon om historiske tekster")}
+      onClick={() => {
+        !open && loggHistorikk("Åpner Informasjon om historiske tekster");
+        setOpen(!open);
+      }}
     >
       <LangInfoStyle>
         <BlockContent blocks={textWithoutTitle} />
       </LangInfoStyle>
-    </Ekspanderbartpanel>
+    </Accordion>
   );
 }
 

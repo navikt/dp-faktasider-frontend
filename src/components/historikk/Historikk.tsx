@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
-import React from "react";
+import React, { useState } from "react";
 import { HistorikkProps } from "../../pages/historikk/[...slug]";
 import useUniqueId from "../../utils/useUniqueId";
 import Head from "next/head";
@@ -11,11 +11,11 @@ import { useMount } from "react-use";
 import { loggHistorikk } from "../../utils/logging";
 import useBreadcrumbs from "../faktaside/useBreadcrumbs";
 import HistorikkHeader from "./HistorikkHeader";
-import withErrorBoundary from "../withErrorBoundary";
-import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel/lib/index";
-import LangInfo from "./LangInfo";
 import HistoirkkWatermark from "./Watermark";
 import { formaterDato } from "../../utils/formaterDato";
+import { Accordion } from "@navikt/ds-react";
+import LangInfo from "./LangInfo";
+import withErrorBoundary from "../withErrorBoundary";
 
 const StyledMain = styled.main`
   max-width: 70rem;
@@ -26,9 +26,11 @@ const StyledMain = styled.main`
   flex-direction: column;
   gap: 1rem;
   --content-max-width: 50rem;
+
   .popover__content-inner {
     max-width: 40ch;
   }
+
   > * {
     width: var(--content-max-width);
     max-width: 100%;
@@ -37,8 +39,8 @@ const StyledMain = styled.main`
   }
 `;
 
-const RådataEkspanderbartPanel = styled(Ekspanderbartpanel)`
-  .ekspanderbartPanel__innhold {
+const RådataEkspanderbartPanel = styled(Accordion)`
+  .navds-accordion__content {
     background-color: #efefef;
   }
 `;
@@ -53,6 +55,7 @@ function Historikk(props: HistorikkProps) {
   const localizedDoc: HistoriskDokument | undefined = localizeSanityContent(props.response?.documents[0], "no");
   const infoId = useUniqueId("info");
   const documentTitle = getTitle(localizedDoc);
+  const [openRådata, setOpenRådata] = useState(false);
 
   const loggingInfo = {
     nåværendeTittel: props.nåværendeSidetittel,
@@ -82,7 +85,14 @@ function Historikk(props: HistorikkProps) {
 
         <DokumentRekonstruksjon dokument={localizedDoc} lesMerLenkeId={infoId} />
 
-        <RådataEkspanderbartPanel tittel="Rådata" onClick={() => loggHistorikk("Åpner rådata", loggingInfo)}>
+        <RådataEkspanderbartPanel
+          open={openRådata}
+          heading="Rådata"
+          onClick={() => {
+            !openRådata && loggHistorikk("Åpner rådata", loggingInfo);
+            setOpenRådata(!openRådata);
+          }}
+        >
           <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
         </RådataEkspanderbartPanel>
 
