@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import withErrorBoundary from "../../withErrorBoundary";
-import { loggError } from "../../../utils/logging";
+import { loggError, loggHistorikk } from "../../../utils/logging";
 import { useGrunnbellop } from "../../../utils/folketrygdensGrunnbeløp";
 import { useDevContext } from "../../DevKnapper/DevContext";
 import styled from "styled-components";
@@ -18,7 +18,7 @@ const GtoNokDebug = styled.span`
   box-shadow: 0 0 0 0.2rem limegreen;
 `;
 
-const HistorikkStyle = styled.span`
+const HistorikkStyle = styled.abbr`
   border-bottom: 0.2rem limegreen dashed;
 `;
 
@@ -52,7 +52,10 @@ const GtilNOKAnnotation = (props: Props) => {
     return (
       <HistorikkStyle>
         {g} G{" "}
-        <LitenHjelpetekst>
+        <LitenHjelpetekst
+          tittel="Grunnbelløp, hjelp"
+          onClick={() => loggHistorikk("Viser hjelpetekst for grunnbelløp")}
+        >
           G-beløpet her var oversatt til kroner.{" "}
           <Lenke href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden">
             Du kan se historisk verdi av g-beløp her.

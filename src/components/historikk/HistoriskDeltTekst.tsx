@@ -5,6 +5,7 @@ import styled from "styled-components";
 import SlideDown from "../SlideDown";
 import { useHistorikkContext } from "./HistorikkContext";
 import BlockContent from "../BlockContent/BlockContent";
+import { loggHistorikk } from "../../utils/logging";
 
 const Header = styled.p`
   font-weight: 600;
@@ -39,7 +40,7 @@ export function HistoriskDeltTekst(props) {
           </a>
         </Link>
       </p>
-      <SlideDown title="Hvorfor vises ikke denne teksten her?">
+      <SlideDown title="Hva er en delt tekst?" onClick={() => loggHistorikk('Åpner "Hva er en delt tekst?"')}>
         <BlockContent blocks={historikkContext.hjelpeTekster?.deltTekstForklaring} />
       </SlideDown>
     </StyledAlerstripeInfo>

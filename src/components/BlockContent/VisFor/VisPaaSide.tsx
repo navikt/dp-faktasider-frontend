@@ -7,13 +7,14 @@ import { useHistorikkContext } from "../../historikk/HistorikkContext";
 import styled from "styled-components";
 import { colors } from "../../../styles/theme";
 import LitenHjelpetekst from "../../historikk/LitenHjelpetekst";
+import { loggHistorikk } from "../../../utils/logging";
 
 interface Props {
   children: ReactNode;
   visPaaSider?: VisPaaConfig;
 }
 
-const HistorikkStyle = styled.span`
+const HistorikkStyle = styled.abbr`
   border-bottom: 0.2rem dashed ${colors.navBlaLighten40};
 
   & + & {
@@ -40,7 +41,7 @@ function VisPaaSide(props: Props) {
     return (
       <HistorikkStyle>
         {props.children}{" "}
-        <LitenHjelpetekst>
+        <LitenHjelpetekst tittel="Forklaring" onClick={() => loggHistorikk("Viser hjelpetekst for visPaaSide")}>
           Denne teksten ble kun vist på utvalgte sider med id: {props.visPaaSider?.join(", ")}
         </LitenHjelpetekst>
       </HistorikkStyle>

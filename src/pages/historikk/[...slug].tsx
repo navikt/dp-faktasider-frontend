@@ -34,12 +34,12 @@ export interface HistorikkProps {
   };
   hjelpeTekster?: HistorikkHjelpeTekster;
   domeneTittel: string;
+  nåværendeSidetittel: string;
 }
 
 export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) => {
   const gyldigeIder: string[] = await sanityClient.fetch(historiskGyldigeIdQuery);
   const slugs = context.params!.slug as string[];
-  const domeneTittel = await sanityClient.fetch(domeneTittelQuery);
 
   const request = {
     id: encodeURIComponent(slugs[0]),
@@ -52,6 +52,11 @@ export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) =>
     };
   }
 
+  const domeneTittel = await sanityClient.fetch(domeneTittelQuery);
+  const nåværendeSidetittel = await sanityClient.fetch(groq`*[_type == "faktaSide" && _id == $id][0].title.no`, {
+    id: request.id,
+  });
+
   const revisions = await revisionsFetcher(request.id);
   const response = request.time ? await historikkFetcher(request.id, request.time) : null;
   const hjelpeTekster = await getClient(context.preview).fetch(groq`*[_id == 'historikkHjelpetekster'][0]`);
@@ -63,6 +68,7 @@ export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) =>
       response,
       hjelpeTekster: localizeSanityContent(hjelpeTekster, context.locale as SupportedLanguage),
       domeneTittel,
+      nåværendeSidetittel,
     },
     revalidate: 86400, // En gang i døgnet
   };

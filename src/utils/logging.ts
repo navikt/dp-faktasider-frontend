@@ -3,7 +3,7 @@ Vi må lazy-loade loggingConfig, da nextjs rendrer html på server, og kresjer d
 Prøver derfor å ikke initiere amplitude-sdk instansen før en logevent blir kalt.
 */
 
-import { isTest } from "./environment";
+import { isDevelopment, isTest } from "./environment";
 import { mediaBreakpoint } from "../styles/theme";
 
 const loggEvent = (event: string, ekstraData?: object) => {
@@ -21,8 +21,8 @@ const loggEvent = (event: string, ekstraData?: object) => {
         ...ekstraData,
       };
 
+      isDevelopment() && console.log("Log event:", event, data);
       logging.loggInstance.logEvent(event, data);
-      logging.loggInstanceDeprecated.logEvent(event, data);
     });
   } catch (e) {
     console.error("Kunne ikke logge til amplitdue:", e);
@@ -63,3 +63,6 @@ export const loggTilpassInnhold = (situasjon: string) => loggEvent("Tilpasset in
 export const loggNotFound = (path: string) => loggEvent("404 - not found", { path });
 
 export const loggHashNotFound = (hash: string, path: string) => loggEvent("Hashlenke finnes ikke", { path, hash });
+
+export const loggHistorikk = (hendelse: string, ekstraData?: object) =>
+  loggEvent("Historikk", { hendelse, ...ekstraData });

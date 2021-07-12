@@ -5,6 +5,7 @@ import BlockContent from "../BlockContent/BlockContent";
 import { typografiStyle } from "../faktaside/FaktaSideLayout";
 import { useHistorikkContext } from "./HistorikkContext";
 import { getTextFromSanityBlock } from "../../utils/richTextUtils/getTextFromSanityBlock";
+import { loggHistorikk } from "../../utils/logging";
 
 const LangInfoStyle = styled.div`
   ${typografiStyle};
@@ -27,7 +28,11 @@ function LangInfo(props: { infoId: string }) {
   const textWithoutTitle = hjelpeTekster?.langInfo.filter((it) => it !== titleBlock);
 
   return (
-    <Ekspanderbartpanel tittel={title} id={props.infoId}>
+    <Ekspanderbartpanel
+      tittel={title}
+      id={props.infoId}
+      onClick={() => loggHistorikk("Åpner Informasjon om historiske tekster")}
+    >
       <LangInfoStyle>
         <BlockContent blocks={textWithoutTitle} />
       </LangInfoStyle>

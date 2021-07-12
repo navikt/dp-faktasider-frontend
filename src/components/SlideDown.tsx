@@ -8,6 +8,7 @@ interface Props {
   title: string;
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
 const Style = styled.div<{ isOpen: boolean }>`
@@ -26,9 +27,14 @@ const Style = styled.div<{ isOpen: boolean }>`
 function SlideDown(props: Props) {
   const [open, toggle] = useReducer((state) => !state, false);
 
+  const onClick = () => {
+    toggle();
+    props.onClick?.();
+  };
+
   return (
     <Style isOpen={open} className={props.className}>
-      <ChevronButton title={props.title} open={open} onClick={toggle} />
+      <ChevronButton title={props.title} open={open} onClick={onClick} />
       <Collapse isOpened={open}>{props.children}</Collapse>
     </Style>
   );

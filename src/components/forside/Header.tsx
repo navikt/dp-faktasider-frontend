@@ -13,13 +13,13 @@ interface Props {
 const Background = styled.div`
   background-color: ${theme.colors.navBlaLighten80};
   border-bottom: ${theme.border.banner};
-  box-shadow: inset 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
 `;
 
 const StyledSidetittel = styled(Sidetittel)`
   align-self: center;
+  padding: 1rem 2rem;
 `;
 
 const Content = styled.div`
@@ -27,11 +27,11 @@ const Content = styled.div`
   width: ${contentMaxwidth};
   display: flex;
   justify-content: space-between;
-  margin: 0 1rem;
 `;
 
 const StyledHeaderIkon = styled(HeaderIkon)`
   padding-top: 1rem;
+  margin-right: 2rem;
   width: 12rem;
   margin-left: 2rem;
   @media (max-width: 50em) {

@@ -9,6 +9,8 @@ import styled from "styled-components";
 import useBreadcrumbs from "../../components/faktaside/useBreadcrumbs";
 import { domeneTittelQuery } from "../../sanity/groq/commonQuerries";
 import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
+import { loggHistorikk } from "../../utils/logging";
+import useMount from "react-use/lib/useMount";
 
 interface Props {
   data: HistoriskFaktasideData[];
@@ -46,6 +48,7 @@ export default function HistorikkIndeks(props: Props) {
     </li>
   ));
 
+  useMount(() => loggHistorikk("Forside sidevisning"));
   useBreadcrumbs(props.domeneTittel, [{ tittel: "Historikk", path: "historikk" }]);
 
   return (
