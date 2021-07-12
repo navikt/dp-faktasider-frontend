@@ -1,4 +1,4 @@
-import { Knapp } from "nav-frontend-knapper";
+import { Button } from "@navikt/ds-react";
 import { Sidetittel } from "nav-frontend-typografi";
 import Undertittel from "nav-frontend-typografi/lib/undertittel";
 import React, { useState } from "react";
@@ -43,7 +43,7 @@ const Style = styled.div`
   border-bottom: 0.2rem #888 dashed;
 `;
 
-const StyledKnapp = styled(Knapp)`
+const StyledKnapp = styled(Button)`
   margin: 0.5rem;
   text-transform: none;
 `;

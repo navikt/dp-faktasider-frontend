@@ -4,7 +4,6 @@ import { visForTestData } from "../components/BlockContent/VisFor/visFor.testdat
 import { faktaSideMockQueryData } from "../testUtils/faktaSideMockQueryData";
 import styled from "styled-components/macro";
 import { Sidetittel, Undertittel } from "nav-frontend-typografi";
-import { Knapp } from "nav-frontend-knapper";
 import { flattenH2TestData } from "../utils/richTextUtils/parser/flattenH2Versions/flattenH2Versions.testdata";
 import { makeUniqueIdTestData } from "../utils/richTextUtils/parser/makeUniqeGroupIDs/makeUniqeGroupIDs.testdata";
 import { parseDelteTeksterTestData } from "../utils/richTextUtils/parser/parseDelteTekster/parseDelteTekster.testdata";
@@ -20,6 +19,7 @@ import { translated } from "../testUtils/createSanityBlock";
 import { sistOppdatertTestdata } from "../components/faktaside/content/SistOppdatert.testdata";
 import { wordCountTestData } from "../../cypress/testData/wordcount.testdata";
 import { GtilNOKAnnotationTestdata } from "../components/BlockContent/GtilNOKAnnotation/GtilNOKAnnotation.testdata";
+import { Button } from "@navikt/ds-react";
 
 type FaktasideData = FaktasideQueryData["faktaside"];
 
@@ -119,7 +119,7 @@ const Style = styled.div`
   border-bottom: 0.2rem #888 dashed;
 `;
 
-const StyledKnapp = styled(Knapp)`
+const StyledKnapp = styled(Button)`
   margin: 0.5rem;
   text-transform: none;
 `;

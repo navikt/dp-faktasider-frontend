@@ -104,6 +104,9 @@ function DevKnapper() {
           <Link href="/historikk/testdata" passHref>
             <StyledLink>Historikk test-data</StyledLink>
           </Link>
+          <Link href="/demoapp" passHref>
+            <StyledLink>Demoapp</StyledLink>
+          </Link>
         </Innhold>
       )}
     </Style>

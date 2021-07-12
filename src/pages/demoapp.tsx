@@ -11,7 +11,6 @@ import { useVisForContext } from "../components/BlockContent/VisFor/VisForContex
 import { visBasertPaaVisPaaConfig } from "../components/BlockContent/VisFor/VisPaaSide";
 import { isDevelopment } from "../utils/environment";
 import { createH2Group } from "../utils/richTextUtils/createGroup";
-import { Knapp } from "nav-frontend-knapper";
 import { GetStaticProps } from "next";
 import { SupportedLanguage } from "../i18n/supportedLanguages";
 import fetchAllFaktasider from "../sanity/groq/faktaside/fetchAllFaktasider";
@@ -19,6 +18,7 @@ import { typografiStyle } from "../components/faktaside/FaktaSideLayout";
 import { FaktasideParsedData } from "../sanity/groq/faktaside/parseFaktasideData";
 import { createSanityBlock } from "../testUtils/createSanityBlock";
 import { Group, isGroup } from "../utils/richTextUtils/parser/groupParser/groupParser";
+import { Button } from "@navikt/ds-react";
 
 const Style = styled.div`
   ${typografiStyle};
@@ -137,7 +137,7 @@ function Demoapp(props: Props) {
       )}
       {state.matches("visGruppe") && (
         <Content>
-          <Knapp
+          <Button
             onClick={() =>
               send({
                 type: "VELGOVERSKRIFT",
@@ -146,9 +146,9 @@ function Demoapp(props: Props) {
             }
           >
             Forrige
-          </Knapp>
+          </Button>
           <BlockContent blocks={state.context.group ? [state.context.group] : []} />
-          <Knapp
+          <Button
             onClick={() =>
               send({
                 type: "VELGOVERSKRIFT",
@@ -157,7 +157,7 @@ function Demoapp(props: Props) {
             }
           >
             Neste
-          </Knapp>
+          </Button>
         </Content>
       )}
     </Style>

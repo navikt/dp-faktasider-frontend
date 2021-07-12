@@ -1,5 +1,4 @@
 import styled from "styled-components/macro";
-import "nav-frontend-knapper-style/src/index.less";
 import { Element } from "nav-frontend-typografi";
 import Lenke from "nav-frontend-lenker";
 
@@ -12,7 +11,7 @@ export const LenkeKnapp = styled.button.attrs({ className: "lenke" })`
   text-align: left;
 `;
 
-export const KnappLenke = styled.a.attrs({ className: "knapp knapp--standard" })`
+export const KnappLenke = styled.a.attrs({ className: "navds-button navds-button--primary navds-body-short" })`
   text-transform: none;
   white-space: normal !important;
   text-align: center;
