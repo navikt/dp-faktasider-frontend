@@ -6,6 +6,7 @@ COPY package*.json /home/node/app/
 RUN npm ci
 
 ENV NODE_ENV=production
+ENV TZ Europe/Oslo
 
 COPY . /home/node/app
 RUN npm run build
@@ -14,8 +15,9 @@ FROM node:14-alpine AS runtime
 
 WORKDIR /home/node/app
 
-ENV PORT=3000 \
-    NODE_ENV=production
+ENV PORT=3000
+ENV NODE_ENV=production
+ENV TZ Europe/Oslo
 
 EXPOSE 3000
 
