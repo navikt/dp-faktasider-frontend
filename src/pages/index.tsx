@@ -1,11 +1,10 @@
 import { GetStaticProps } from "next";
-import { getClient } from "../sanity/sanity-config";
+import { sanityClient } from "../sanity/sanity-config";
 import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
 import { useLocale } from "../i18n/useLocale";
 import { forsideQuery, ForsideQueryData } from "../sanity/groq/forside/forsideQuery";
 import parseForsideData from "../sanity/groq/forside/parseForsideData";
-import { isDevelopment } from "../utils/environment";
 import Forside from "../components/forside/Forside";
 import { useSanityPreveiw } from "../sanity/useSanityPreview";
 
@@ -16,14 +15,12 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const preview = !!context.preview || isDevelopment();
-  const forsideData: ForsideQueryData = await getClient(preview).fetch(forsideQuery);
-  const menuData: MenuQueryData = await getClient(preview).fetch(menuQuery);
+  const forsideData: ForsideQueryData = await sanityClient.fetch(forsideQuery);
+  const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
   return {
     props: {
       forsideData,
       menuData,
-      preview,
     },
     revalidate: 120,
   };

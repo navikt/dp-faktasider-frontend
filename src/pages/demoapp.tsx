@@ -41,7 +41,7 @@ const Content = styled.div`
 `;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const faktasider = await fetchAllFaktasider(context.locale as SupportedLanguage, context.preview);
+  const faktasider = await fetchAllFaktasider(context.locale as SupportedLanguage);
 
   return {
     props: {
