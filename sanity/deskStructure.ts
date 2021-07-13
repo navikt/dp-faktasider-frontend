@@ -7,6 +7,7 @@ import ForsidePreview from "./previews/ForsidePreview";
 import DemoappPreview from "./previews/DemoappPreview";
 import { DagpengeKalkulatorIkon } from "./schemas/kalkulator/kalkulator";
 import { HistorikkIkon } from "./schemas/infosider/historikk/historikkHjelpetekster";
+import KalkulatorPreview from "./previews/KalkulatorPreview";
 
 export default () =>
   S.list()
@@ -29,11 +30,18 @@ export default () =>
         .title("Historikk")
         .icon(HistorikkIkon)
         .child(S.editor().schemaType("historikkHjelpetekster").documentId("historikkHjelpetekster")),
-      ...S.documentTypeListItems().filter((listItem) => !["oppsett", "dagpengekalkulator", "historikkHjelpetekster"].includes(listItem.getId())),
+      ...S.documentTypeListItems().filter(
+        (listItem) => !["oppsett", "dagpengekalkulator", "historikkHjelpetekster"].includes(listItem.getId())
+      ),
       S.listItem()
         .title("DagpengerKalkulator")
         .icon(DagpengeKalkulatorIkon)
-        .child(S.editor().schemaType("dagpengekalkulator").documentId("dagpengekalkulator")),
+        .child(
+          S.editor()
+            .schemaType("dagpengekalkulator")
+            .documentId("dagpengekalkulator")
+            .views([S.view.form(), S.view.component(KalkulatorPreview).title("Kalkulator-preview")])
+        ),
     ]);
 
 export const getDefaultDocumentNode = ({ schemaType }) => {
