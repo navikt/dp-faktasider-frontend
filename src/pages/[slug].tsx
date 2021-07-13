@@ -2,13 +2,12 @@ import withErrorBoundary from "../components/withErrorBoundary";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Faktaside from "../components/faktaside/Faktaside";
 import { groq } from "next-sanity";
-import { getClient, sanityClient } from "../sanity/sanity-config";
+import { sanityClient } from "../sanity/sanity-config";
 import { faktasideQuery, FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
 import { parseFaktasideData } from "../sanity/groq/faktaside/parseFaktasideData";
 import { useLocale } from "../i18n/useLocale";
 import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
-import { isDevelopment } from "../utils/environment";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { supportedLanguages } from "../i18n/supportedLanguages";
 import { useSanityPreveiw } from "../sanity/useSanityPreview";
@@ -29,16 +28,14 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 interface Props {
   faktasideData: FaktasideQueryData;
   menuData: MenuQueryData;
-  preview: boolean;
   slug: string;
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const preview = !!context.preview || isDevelopment();
   const slug = context.params!.slug as string;
 
-  const faktaside: FaktasideQueryData = await getClient(preview).fetch(faktasideQuery, { slug });
-  const menuData: MenuQueryData = await getClient(preview).fetch(menuQuery);
+  const faktaside: FaktasideQueryData = await sanityClient.fetch(faktasideQuery, { slug });
+  const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
 
   if (!faktaside?.faktaside?.id) {
     return {
@@ -50,7 +47,6 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     props: {
       faktasideData: faktaside,
       menuData: menuData,
-      preview,
       slug,
     },
     revalidate: 120,

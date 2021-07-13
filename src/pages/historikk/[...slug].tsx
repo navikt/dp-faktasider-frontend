@@ -3,7 +3,7 @@ import { Revision, revisionsFetcher } from "../../components/historikk/api/revis
 import withErrorBoundary from "../../components/withErrorBoundary";
 import { historikkFetcher, HistorikkResponse } from "../../components/historikk/api/historikkFetcher";
 import Historikk from "../../components/historikk/Historikk";
-import { getClient, sanityClient } from "../../sanity/sanity-config";
+import { sanityClient } from "../../sanity/sanity-config";
 import { groq } from "next-sanity";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) =>
 
   const revisions = await revisionsFetcher(request.id);
   const response = request.time ? await historikkFetcher(request.id, request.time) : null;
-  const hjelpeTekster = await getClient(context.preview).fetch(groq`*[_id == 'historikkHjelpetekster'][0]`);
+  const hjelpeTekster = await sanityClient.fetch(groq`*[_id == 'historikkHjelpetekster'][0]`);
 
   return {
     props: {
