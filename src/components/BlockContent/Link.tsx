@@ -1,6 +1,6 @@
 import * as React from "react";
 import { KnappLenke } from "../../utils/common-styled-components";
-import Lenke from "nav-frontend-lenker";
+import { Link } from "@navikt/ds-react";
 import styled from "styled-components/macro";
 import withErrorBoundary from "../withErrorBoundary";
 
@@ -27,7 +27,7 @@ function LinkMarkup(props: Props) {
     );
   }
 
-  return <Lenke href={props.mark.href}>{props.children}</Lenke>;
+  return <Link href={props.mark.href}>{props.children}</Link>;
 }
 
 export default withErrorBoundary(LinkMarkup, "LinkMarkup");
