@@ -107,7 +107,7 @@ function InternLenke(props: { lenke: MenylenkeInternParsed }) {
 
 function EksternLenke(props: { lenke: MenylenkeEkstern }) {
   return (
-    <StyledLink className="navds-link" href={props.lenke.url} onClick={() => loggMeny("Gå til ekstern side")}>
+    <StyledLink href={props.lenke.url} onClick={() => loggMeny("Gå til ekstern side")}>
       <HoyreChevron />
       {props.lenke.tittel}
     </StyledLink>

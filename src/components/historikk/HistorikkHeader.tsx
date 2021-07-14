@@ -81,11 +81,7 @@ function HistorikkHeader(props: { document?: HistoriskDokument; revisions: Revis
       <DatovelgerStyle>
         <div>
           Valgt dato: {props.document && <StyledTime>{formaterDato(props.document._updatedAt)}</StyledTime>}
-          <StyledButton
-            aria-expanded={openRevisions}
-            className="navds-link"
-            onClick={() => setOpenRevisions(!openRevisions)}
-          >
+          <StyledButton aria-expanded={openRevisions} onClick={() => setOpenRevisions(!openRevisions)}>
             Endre
           </StyledButton>
         </div>
