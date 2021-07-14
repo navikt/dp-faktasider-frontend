@@ -9,9 +9,9 @@ import { HistoriskDokument } from "./api/historikkFetcher";
 import styled from "styled-components/macro";
 import useUniqueId from "../../utils/useUniqueId";
 import { Alert } from "@navikt/ds-react";
-import Lenke from "nav-frontend-lenker";
 import { useHistorikkContext } from "./HistorikkContext";
 import withErrorBoundary from "../withErrorBoundary";
+import { Link } from "@navikt/ds-react";
 
 const RekonstruksjonWrapper = styled.article`
   box-shadow: 0 0.2rem 2rem hsl(0deg 0% 70%);
@@ -40,7 +40,7 @@ function DokumentRekonstruksjon(props: { dokument?: HistoriskDokument; lesMerLen
         Rekonstruksjon
       </h1>
       <StyledAlertstripe>
-        {hjelpetekster?.kortInfo} <Lenke href={`#${props.lesMerLenkeId}`}>Les mer</Lenke>
+        {hjelpetekster?.kortInfo} <Link href={`#${props.lesMerLenkeId}`}>Les mer</Link>
       </StyledAlertstripe>
       <Component {...props.dokument} />
     </RekonstruksjonWrapper>

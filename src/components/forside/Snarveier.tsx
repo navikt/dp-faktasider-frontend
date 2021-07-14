@@ -45,7 +45,7 @@ const StyledChevron = styled(HoyreChevron)`
   left: 0;
 `;
 
-export const LenkeStyle = styled.a.attrs({ className: "lenke" })`
+export const LenkeStyle = styled.a.attrs({ className: "navds-link" })`
   border-radius: 0.5rem;
   text-decoration: none !important;
   font-size: 1.2rem !important;

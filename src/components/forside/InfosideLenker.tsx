@@ -33,7 +33,7 @@ const StyledLi = styled.li`
   flex: 15rem 0 0;
 `;
 
-const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: "lenke" })`
+const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: "navds-link" })`
   font-size: 1.2rem !important;
   text-decoration: none !important;
   margin-bottom: 0.75rem !important;

@@ -36,7 +36,7 @@ const listeElementCommonStyling = css`
   }
 `;
 
-const StyledLink = styled.a.attrs({ className: "lenke" })`
+const StyledLink = styled.a.attrs({ className: "navds-link" })`
   display: block;
   ${listeElementCommonStyling};
 `;
@@ -56,7 +56,7 @@ export const menuHighlightStyle = css`
   }
 `;
 
-const StyledButton = styled.button.attrs({ className: "lenke" })<{ isOpen: boolean }>`
+const StyledButton = styled.button.attrs({ className: "navds-link" })<{ isOpen: boolean }>`
   ${listeElementCommonStyling};
   width: 100%;
   border: none;
@@ -107,7 +107,7 @@ function InternLenke(props: { lenke: MenylenkeInternParsed }) {
 
 function EksternLenke(props: { lenke: MenylenkeEkstern }) {
   return (
-    <StyledLink className="lenke" href={props.lenke.url} onClick={() => loggMeny("Gå til ekstern side")}>
+    <StyledLink className="navds-link" href={props.lenke.url} onClick={() => loggMeny("Gå til ekstern side")}>
       <HoyreChevron />
       {props.lenke.tittel}
     </StyledLink>

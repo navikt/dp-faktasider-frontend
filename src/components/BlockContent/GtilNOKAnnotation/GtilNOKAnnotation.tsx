@@ -7,8 +7,8 @@ import { useDevContext } from "../../DevKnapper/DevContext";
 import styled from "styled-components";
 import { useHistorikkContext } from "../../historikk/HistorikkContext";
 import "nav-frontend-hjelpetekst-style/src/hjelpetekst-style.less";
-import Lenke from "nav-frontend-lenker";
 import LitenHjelpetekst from "../../historikk/LitenHjelpetekst";
+import { Link } from "@navikt/ds-react";
 
 interface Props {
   children: string[];
@@ -57,9 +57,9 @@ const GtilNOKAnnotation = (props: Props) => {
           onClick={() => loggHistorikk("Viser hjelpetekst for grunnbelløp")}
         >
           G-beløpet her var oversatt til kroner.{" "}
-          <Lenke href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden">
+          <Link href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden">
             Du kan se historisk verdi av g-beløp her.
-          </Lenke>
+          </Link>
         </LitenHjelpetekst>
       </HistorikkStyle>
     );

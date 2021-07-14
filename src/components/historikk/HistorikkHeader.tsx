@@ -49,7 +49,7 @@ const StyledTime = styled.time`
   ${etikettStyle(colors.navBlaDarken60)}
 `;
 
-const StyledButton = styled.button.attrs({ className: "lenke" })`
+const StyledButton = styled.button.attrs({ className: "navds-link" })`
   background-color: transparent;
   border: none;
   margin-left: 0.5rem;
@@ -83,7 +83,7 @@ function HistorikkHeader(props: { document?: HistoriskDokument; revisions: Revis
           Valgt dato: {props.document && <StyledTime>{formaterDato(props.document._updatedAt)}</StyledTime>}
           <StyledButton
             aria-expanded={openRevisions}
-            className="lenke"
+            className="navds-link"
             onClick={() => setOpenRevisions(!openRevisions)}
           >
             Endre

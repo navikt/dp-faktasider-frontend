@@ -1,8 +1,8 @@
 import styled from "styled-components/macro";
 import { Element } from "nav-frontend-typografi";
-import Lenke from "nav-frontend-lenker";
+import { Link } from "@navikt/ds-react";
 
-export const LenkeKnapp = styled.button.attrs({ className: "lenke" })`
+export const LenkeKnapp = styled.button.attrs({ className: "navds-link" })`
   border: none;
   padding: 0;
   border-radius: 0.2rem;
@@ -48,7 +48,7 @@ export const H4 = styled(Element).attrs({ tag: "h4" })`
   margin-bottom: 1rem !important;
 `;
 
-export const LenkeUtenUnderstrek = styled(Lenke).attrs({ className: "lenke" })`
+export const LenkeUtenUnderstrek = styled(Link).attrs({ className: "navds-link" })`
   text-decoration: none !important;
   &:hover {
     text-decoration: underline !important;
