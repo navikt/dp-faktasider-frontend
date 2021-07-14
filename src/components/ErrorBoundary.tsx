@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Alert } from "@navikt/ds-react";
 import { ErrorInfo } from "react";
-import Tekstomrade from "nav-frontend-tekstomrade";
 import SlideDown from "./SlideDown";
 import styled from "styled-components/macro";
 import { loggError } from "../utils/logging";
@@ -23,8 +22,11 @@ const StyledSlideDown = styled(SlideDown)`
   word-break: break-word;
 `;
 
-const StyledTekstomrade = styled(Tekstomrade)`
+const StyledPre = styled.pre`
   padding-top: 0.5rem;
+  word-break: break-all;
+  white-space: pre-wrap;
+  font-size: 0.8rem;
 `;
 
 class ErrorBoundary extends React.Component<Props, State> {
@@ -60,9 +62,9 @@ class ErrorBoundary extends React.Component<Props, State> {
             </Element>
             {isDevelopment() && (stackTrace || errormsg) && (
               <StyledSlideDown title="Info - feilsøking">
-                <StyledTekstomrade>{errormsg || ""}</StyledTekstomrade>
-                <StyledTekstomrade>{info || ""}</StyledTekstomrade>
-                <StyledTekstomrade>{stackTrace || ""}</StyledTekstomrade>
+                <StyledPre>{errormsg || ""}</StyledPre>
+                <StyledPre>{info || ""}</StyledPre>
+                <StyledPre>{stackTrace || ""}</StyledPre>
               </StyledSlideDown>
             )}
           </Alert>
