@@ -5,7 +5,7 @@ import { Undertittel } from "nav-frontend-typografi";
 import { contentMaxwidth } from "./style";
 import useUniqueId from "../../utils/useUniqueId";
 import { Snarvei } from "../../sanity/groq/forside/forsideQuery";
-import { HoyreChevron } from "nav-frontend-chevron";
+import Chevron from "../faktaside/Meny/Chevron";
 
 const Wrapper = styled.div`
   background-color: white;
@@ -38,7 +38,7 @@ const StyledUl = styled.ul`
   }
 `;
 
-const StyledChevron = styled(HoyreChevron)`
+const StyledChevron = styled(Chevron).attrs({ retning: "høyre" })`
   margin-right: 0.75rem;
   transition: 0.3s !important;
   position: relative;

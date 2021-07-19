@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components/macro";
 import { VeiviserContext } from "./VeiviserStateChart";
-import NavFrontendChevron from "nav-frontend-chevron";
+import Chevron from "../faktaside/Meny/Chevron";
 
 const Style = styled.div`
   margin-left: 5rem;
@@ -26,7 +26,7 @@ function Brødsmule(props: { label: string; onClick: () => void }) {
   return (
     <BrødsmuleStyle className="lenke" onClick={props.onClick}>
       <span>{props.label}</span>
-      <NavFrontendChevron type="høyre" />
+      <Chevron retning="høyre" />
     </BrødsmuleStyle>
   );
 }

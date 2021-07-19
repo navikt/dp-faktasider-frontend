@@ -7,11 +7,10 @@ import { loggMeny } from "../../../utils/logging";
 import { UnmountClosed } from "react-collapse";
 import { theme } from "../../../styles/theme";
 import Link from "next/link";
-import NavFrontendChevron from "nav-frontend-chevron";
-import HoyreChevron from "nav-frontend-chevron/lib/hoyre-chevron";
 import Innholdsfortegnelse from "./Innholdsfortegnelse/Innholdsfortegnelse";
 import { MenylenkeEkstern } from "../../../sanity/groq/menu/menuQuery";
 import { MenuItem, MenylenkeInternParsed } from "../../../sanity/groq/menu/parseMenuData";
+import Chevron from "./Chevron";
 
 const StyledOl = styled.ol`
   margin-bottom: 8rem;
@@ -25,9 +24,8 @@ const listeElementCommonStyling = css`
   color: inherit;
   text-decoration: none;
 
-  .nav-frontend-chevron {
-    margin-right: 0.5rem;
-    margin-top: 0.7rem;
+  svg {
+    flex-shrink: 0;
   }
 
   &:hover {
@@ -83,7 +81,7 @@ function InternLenke(props: { lenke: MenylenkeInternParsed }) {
           }}
           aria-expanded={open}
         >
-          <NavFrontendChevron type={open ? "ned" : "høyre"} />
+          <Chevron retning={open ? "ned" : "høyre"} />
           <span>{props.lenke.tittel}</span>
         </StyledButton>
         <UnmountClosed isOpened={open}>
@@ -96,7 +94,7 @@ function InternLenke(props: { lenke: MenylenkeInternParsed }) {
   return (
     <Link href={props.lenke.path} locale={props.lenke.språk} passHref>
       <StyledLink onClick={() => loggMeny("Gå til ny side")}>
-        <HoyreChevron />
+        <Chevron retning="høyre" />
         <span>
           {props.lenke.tittel} {!props.lenke.tilgjengeligPåValgtSpråk ? `(${props.lenke.språk})` : ""}
         </span>
@@ -108,7 +106,7 @@ function InternLenke(props: { lenke: MenylenkeInternParsed }) {
 function EksternLenke(props: { lenke: MenylenkeEkstern }) {
   return (
     <StyledLink href={props.lenke.url} onClick={() => loggMeny("Gå til ekstern side")}>
-      <HoyreChevron />
+      <Chevron retning="høyre" />
       {props.lenke.tittel}
     </StyledLink>
   );
