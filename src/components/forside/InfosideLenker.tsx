@@ -46,7 +46,7 @@ export const LenkeStyle = styled.a`
   display: block;
   text-decoration: none;
   color: inherit;
-  padding: 1rem 2rem;
+  padding: 1rem ${theme.layoutPadding};
   height: 100%;
 
   &:hover {

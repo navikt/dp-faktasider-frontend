@@ -19,7 +19,7 @@ const Background = styled.div`
 
 const StyledSidetittel = styled(Title).attrs({ level: "1", size: "2xl" })`
   align-self: center;
-  padding: 1rem 2rem;
+  padding: 1rem ${theme.layoutPadding};
 `;
 
 const Content = styled.div`
