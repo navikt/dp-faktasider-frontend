@@ -43,6 +43,7 @@ const StyledChevron = styled(Chevron).attrs({ retning: "høyre" })`
   transition: 0.3s !important;
   position: relative;
   left: 0;
+  flex-shrink: 0;
 `;
 
 export const LenkeStyle = styled.a.attrs({ className: "navds-link" })`
