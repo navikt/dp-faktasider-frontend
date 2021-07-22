@@ -45,7 +45,7 @@ const StyledLabel = styled(BodyShort)`
   text-transform: uppercase;
 `;
 
-const StyledHeading = styled.h1.attrs({ className: "typo-element" })`
+const StyledHeading = styled.h1.attrs({ className: "navds-label" })`
   margin-top: 0;
   ${showLinkOnHover};
   ${theme.focusOnRelativeParent};

@@ -22,7 +22,7 @@ function App({ Component, pageProps }: AppProps) {
         <DevContextProvider>
           <TranslationsProvider>
             <PreviewContextProvider>
-              <AppStyling className="typo-normal app">
+              <AppStyling className="app">
                 <DevKnapper />
                 <PreviewBanner />
                 <GlobalStyling />

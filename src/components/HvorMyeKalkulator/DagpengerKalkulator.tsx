@@ -36,7 +36,7 @@ function Resultat(props: { grunnlag?: number }) {
   return (
     <>
       <ResultatTable>
-        <tbody className="typo-normal">
+        <tbody>
           <tr>
             <td>
               <i>Under 3 G</i>

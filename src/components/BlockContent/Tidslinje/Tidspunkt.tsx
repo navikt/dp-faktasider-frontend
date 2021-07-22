@@ -34,7 +34,7 @@ const StyledLi = styled.li`
   }
 `;
 
-const StyledElement = styled.div.attrs({ className: "typo-element" })`
+const StyledElement = styled.div.attrs({ className: "navds-label" })`
   display: flex;
   align-items: center;
   min-height: ${circleSize};

@@ -27,7 +27,7 @@ function GroupMenu(props: Props) {
   };
 
   return (
-    <nav className="typo-normal" aria-labelledby={id}>
+    <nav aria-labelledby={id}>
       <h3 className="sr-only" id={id}>
         Innhold {props.title}
       </h3>

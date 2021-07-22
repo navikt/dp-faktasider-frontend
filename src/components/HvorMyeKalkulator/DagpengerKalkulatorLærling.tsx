@@ -24,7 +24,7 @@ function Resultat(props: { grunnlag?: number }) {
   return (
     <>
       <ResultatTable>
-        <tbody className="typo-normal">
+        <tbody>
           <tr>
             <td>
               <i>Under 1.5 G</i>
