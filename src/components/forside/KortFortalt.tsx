@@ -5,11 +5,12 @@ import { ParsedRichText } from "../../utils/richTextUtils/parser/parseRichText";
 import { typografiStyle } from "../faktaside/FaktaSideLayout";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { theme } from "../../styles/theme";
 import { BodyLong, Title } from "@navikt/ds-react";
 
 const Style = styled.article`
   max-width: ${contentMaxwidth};
-  padding: 2rem 2rem 1rem;
+  padding: 2rem ${theme.layoutPadding} 1rem;
   background-color: white;
 `;
 

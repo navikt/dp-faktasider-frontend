@@ -5,6 +5,7 @@ import { contentMaxwidth } from "./style";
 import useUniqueId from "../../utils/useUniqueId";
 import { Snarvei } from "../../sanity/groq/forside/forsideQuery";
 import Chevron from "../faktaside/Meny/Chevron";
+import { theme } from "../../styles/theme";
 import { Title } from "@navikt/ds-react";
 
 const Wrapper = styled.div`
@@ -17,7 +18,7 @@ const Wrapper = styled.div`
 const Style = styled.section`
   width: ${contentMaxwidth};
   max-width: 100vw;
-  margin: auto 2rem;
+  margin: auto ${theme.layoutPadding};
 `;
 
 const StyledUndertittel = styled(Title).attrs({ spacing: true, size: "l", level: "2" })`
@@ -43,6 +44,7 @@ const StyledChevron = styled(Chevron).attrs({ retning: "høyre" })`
   transition: 0.3s !important;
   position: relative;
   left: 0;
+  flex-shrink: 0;
 `;
 
 export const LenkeStyle = styled.a.attrs({ className: "navds-link" })`

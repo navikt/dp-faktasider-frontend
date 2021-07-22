@@ -54,7 +54,7 @@ export const theme = {
   focusOnRelativeParent: focusOnRelativeParent,
   borderRadius: borderRadius,
   layoutMargin: "4vmin",
-  layoutPadding: "1.5rem",
+  layoutPadding: "clamp(1rem, 4vw, 2rem)",
   border: {
     banner: `0.3rem solid ${colors.navBlaLighten60}`,
   },
