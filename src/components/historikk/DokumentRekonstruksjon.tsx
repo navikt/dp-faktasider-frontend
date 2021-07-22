@@ -1,14 +1,13 @@
 import H2Section from "../Section/H2Section";
 import BlockContent from "../BlockContent/BlockContent";
 import React from "react";
-import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
 import { typografiStyle } from "../faktaside/FaktaSideLayout";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import parseRichText from "../../utils/richTextUtils/parser/parseRichText";
 import { HistoriskDokument } from "./api/historikkFetcher";
 import styled from "styled-components/macro";
 import useUniqueId from "../../utils/useUniqueId";
-import { Alert } from "@navikt/ds-react";
+import { Alert, BodyShort, Title } from "@navikt/ds-react";
 import { useHistorikkContext } from "./HistorikkContext";
 import withErrorBoundary from "../withErrorBoundary";
 import { Link } from "@navikt/ds-react";
@@ -61,8 +60,10 @@ function getComponent(type?: string) {
 function FaktasideRekonstruksjon(props: HistoriskDokument) {
   return (
     <>
-      <Sidetittel>{props.title}</Sidetittel>
-      <Normaltekst>{props.beskrivelse}</Normaltekst>
+      <Title level="1" size="2xl" spacing>
+        {props.title}
+      </Title>
+      <BodyShort>{props.beskrivelse}</BodyShort>
       {props.kortFortalt && (
         <H2Section title="Kort fortalt" id="kort-fortalt">
           <BlockContent blocks={props.kortFortalt} />

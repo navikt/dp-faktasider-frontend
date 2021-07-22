@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import React, { useRef } from "react";
 import styled from "styled-components/macro";
-import { Normaltekst } from "nav-frontend-typografi";
 import useUniqueId from "../../utils/useUniqueId";
 import { contentMaxwidth } from "./style";
 import Utkast from "../BlockContent/utkast/Utkast";
@@ -10,6 +9,7 @@ import { guid } from "nav-frontend-js-utils";
 import Link from "next/link";
 import { MenuItem, MenylenkeInternParsed } from "../../sanity/groq/menu/parseMenuData";
 import { theme } from "../../styles/theme";
+import { BodyShort } from "@navikt/ds-react";
 
 const StyledUl = styled.ul`
   display: flex;
@@ -33,7 +33,7 @@ const StyledLi = styled.li`
   flex: 15rem 0 0;
 `;
 
-const ForsideLenkeHeader = styled(Normaltekst).attrs({ className: "navds-link" })`
+const ForsideLenkeHeader = styled(BodyShort).attrs({ className: "navds-link" })`
   font-size: 1.2rem !important;
   text-decoration: none !important;
   margin-bottom: 0.75rem !important;

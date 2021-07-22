@@ -4,8 +4,8 @@ import BlockContent from "../BlockContent/BlockContent";
 import { ParsedRichText } from "../../utils/richTextUtils/parser/parseRichText";
 import { typografiStyle } from "../faktaside/FaktaSideLayout";
 import React from "react";
-import { Normaltekst, Undertittel } from "nav-frontend-typografi";
 import { useTranslation } from "react-i18next";
+import { BodyLong, Title } from "@navikt/ds-react";
 
 const Style = styled.article`
   max-width: ${contentMaxwidth};
@@ -26,9 +26,11 @@ function KortFortalt(props: { kortFortalt?: ParsedRichText; beskrivelse?: string
 
   return (
     <Style>
-      <Undertittel>{t("forsideIntroTittel")}</Undertittel>
+      <Title level="2" size="2xl" spacing>
+        {t("forsideIntroTittel")}
+      </Title>
       <Content>
-        <Normaltekst>{props.beskrivelse}</Normaltekst>
+        <BodyLong>{props.beskrivelse}</BodyLong>
         <BlockContent blocks={props.kortFortalt} />
       </Content>
     </Style>

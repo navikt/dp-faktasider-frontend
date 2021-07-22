@@ -1,7 +1,7 @@
+import { Title } from "@navikt/ds-react";
 import * as React from "react";
 import styled, { css } from "styled-components/macro";
 import { theme } from "../../styles/theme";
-import { Innholdstittel } from "nav-frontend-typografi";
 import Section, { CommonSectionProps } from "./CommonSectionMarkup";
 
 type RegionProps = { noBackground?: boolean };
@@ -24,9 +24,9 @@ const StyledArticle = styled.article<RegionProps>`
 
 type TittelProps = { noBackground?: boolean };
 
-const StyledTittel = styled(Innholdstittel).attrs({
-  as: "h2",
-  className: "typo-innholdstittel",
+const StyledTittel = styled(Title).attrs({
+  level: "2",
+  size: "xl",
 })<TittelProps>`
   background-color: ${(props) => (props.noBackground ? theme.colors.bakgrunn : "#fffe")};
   padding: 1rem;

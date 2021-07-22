@@ -1,4 +1,3 @@
-import { Sidetittel } from "nav-frontend-typografi";
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components/macro";
 import { formaterDato } from "../../utils/formaterDato";
@@ -7,6 +6,7 @@ import { HistoriskDokument } from "./api/historikkFetcher";
 import { useHistorikkContext } from "./HistorikkContext";
 import { Revision } from "./api/revisionsFetcher";
 import { colors } from "../../styles/theme";
+import { Title } from "@navikt/ds-react";
 
 const Style = styled.div`
   > * {
@@ -72,7 +72,9 @@ function HistorikkHeader(props: { document?: HistoriskDokument; revisions: Revis
 
   return (
     <Style>
-      <Sidetittel>{context.hjelpeTekster?.title}</Sidetittel>
+      <Title level="1" size="2xl" spacing>
+        {context.hjelpeTekster?.title}
+      </Title>
       <Metadata>
         <DokumentTittelStyle style={{ gridArea: "tittel" }}>{props.title}</DokumentTittelStyle>
         <TypeStyle style={{ gridArea: "type" }}>{props.document?._type}</TypeStyle>

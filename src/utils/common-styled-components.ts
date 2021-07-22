@@ -1,6 +1,5 @@
 import styled from "styled-components/macro";
-import { Element } from "nav-frontend-typografi";
-import { Link } from "@navikt/ds-react";
+import { Link, Title } from "@navikt/ds-react";
 
 export const LenkeKnapp = styled.button.attrs({ className: "navds-link" })`
   border: none;
@@ -43,7 +42,7 @@ export const DecimalListe = styled.ol`
   }
 `;
 
-export const H4 = styled(Element).attrs({ tag: "h4" })`
+export const H4 = styled(Title).attrs({ level: "4", size: "s" })`
   text-align: center;
   margin-bottom: 1rem !important;
 `;

@@ -1,6 +1,4 @@
-import { Button } from "@navikt/ds-react";
-import { Sidetittel } from "nav-frontend-typografi";
-import Undertittel from "nav-frontend-typografi/lib/undertittel";
+import { Button, Title } from "@navikt/ds-react";
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 import Historikk from "../../components/historikk/Historikk";
@@ -54,8 +52,12 @@ function HistorikkTestdata() {
   return (
     <>
       <Style>
-        <Sidetittel>Visualisering av testdata brukt i automatiske tester</Sidetittel>
-        <Undertittel>Velg testdata:</Undertittel>
+        <Title level="1" spacing size="2xl">
+          Visualisering av testdata brukt i automatiske tester
+        </Title>
+        <Title level="2" spacing size="xl">
+          Velg testdata:
+        </Title>
         {testData.map((data) => (
           <StyledKnapp key={data.name} onClick={() => setData(data.data)}>
             {data.name}

@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Alert } from "@navikt/ds-react";
+import { Alert, BodyShort, Detail } from "@navikt/ds-react";
 import { ErrorInfo } from "react";
 import SlideDown from "./SlideDown";
 import styled from "styled-components/macro";
 import { loggError } from "../utils/logging";
-import { Normaltekst, Element } from "nav-frontend-typografi";
 import { isDevelopment, isTest } from "../utils/environment";
 
 interface Props {
@@ -56,10 +55,10 @@ class ErrorBoundary extends React.Component<Props, State> {
       return (
         <div>
           <Alert variant="error">
-            <Normaltekst>Beklager, det skjedde en teknisk feil.</Normaltekst>
-            <Element>
+            <BodyShort>Beklager, det skjedde en teknisk feil.</BodyShort>
+            <Detail>
               Feilen blir automatisk rapportert og vi jobber med å løse den så raskt som mulig. Prøv igjen om litt.
-            </Element>
+            </Detail>
             {isDevelopment() && (stackTrace || errormsg) && (
               <StyledSlideDown title="Info - feilsøking">
                 <StyledPre>{errormsg || ""}</StyledPre>
