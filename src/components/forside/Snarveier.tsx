@@ -5,7 +5,7 @@ import { contentMaxwidth } from "./style";
 import useUniqueId from "../../utils/useUniqueId";
 import { Snarvei } from "../../sanity/groq/forside/forsideQuery";
 import { HoyreChevron } from "nav-frontend-chevron";
-import { Title } from "@navikt/ds-react/esm/typography";
+import { Title } from "@navikt/ds-react";
 
 const Wrapper = styled.div`
   background-color: white;
