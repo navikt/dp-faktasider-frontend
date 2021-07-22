@@ -8,9 +8,9 @@ import Link from "next/link";
 import styled from "styled-components";
 import useBreadcrumbs from "../../components/faktaside/useBreadcrumbs";
 import { domeneTittelQuery } from "../../sanity/groq/commonQuerries";
-import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
 import { loggHistorikk } from "../../utils/logging";
 import useMount from "react-use/lib/useMount";
+import { BodyShort, Title } from "@navikt/ds-react";
 
 interface Props {
   data: HistoriskFaktasideData[];
@@ -54,8 +54,10 @@ export default function HistorikkIndeks(props: Props) {
   return (
     <Style>
       <main>
-        <Sidetittel>Historikk for {props.domeneTittel}</Sidetittel>
-        <Normaltekst>Velg mellom faktasidene og se historiske versjoner:</Normaltekst>
+        <Title level="1" size="2xl">
+          Historikk for {props.domeneTittel}
+        </Title>
+        <BodyShort>Velg mellom faktasidene og se historiske versjoner:</BodyShort>
         <ul>{faktasider}</ul>
       </main>
     </Style>

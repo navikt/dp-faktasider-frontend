@@ -1,14 +1,14 @@
 import * as React from "react";
 import styled from "styled-components/macro";
-import { Systemtittel } from "nav-frontend-typografi";
 import CommonSectionMarkup, { CommonSectionProps } from "./CommonSectionMarkup";
+import { Title } from "@navikt/ds-react";
 
 const StyledSection = styled.section`
   margin: 1.5rem -1rem -1rem;
   padding: 1rem; //gjøres for å gi luft til outline når seksjonen har fokus
 `;
 
-const StyledTittel = styled(Systemtittel).attrs({ as: "h3", className: "typo-systemtittel" })`
+const StyledTittel = styled(Title).attrs({ level: "3", size: "l" })`
   margin-bottom: 1rem;
 `;
 

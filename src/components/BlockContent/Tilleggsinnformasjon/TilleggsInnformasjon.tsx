@@ -5,7 +5,6 @@ import BlockContent from "../BlockContent";
 import { Tillegsinformasjon } from "../../../utils/richTextUtils/richTextTypes";
 import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
 import withErrorBoundary from "../../withErrorBoundary";
-import { Undertekst } from "nav-frontend-typografi";
 import { useTranslation } from "react-i18next";
 import useUniqueId from "../../../utils/useUniqueId";
 import { theme } from "../../../styles/theme";
@@ -17,6 +16,7 @@ import HashLink from "../../HashLink";
 import Anchor from "../../Anchor";
 import { useIsHashInUrl } from "../../../hooks/useIsHashInUrl";
 import { showLinkOnHover } from "../../Section/CommonSectionMarkup";
+import { BodyShort } from "@navikt/ds-react";
 
 interface Props {
   node: Tillegsinformasjon;
@@ -38,10 +38,10 @@ const StyledAside = styled.aside<{ isOpen: boolean }>`
     `}
 `;
 
-const Label = styled(Undertekst)`
+const StyledLabel = styled(BodyShort)`
   opacity: 0.75;
   font-size: 0.7rem !important;
-  margin: 0 !important;
+  margin: 0 0 0.2rem !important;
   text-transform: uppercase;
 `;
 
@@ -102,7 +102,7 @@ function Tilleggsinnformasjon(props: Props) {
           {props.node.title}
           <HashLink id={hashId} />
         </StyledHeading>
-        <Label>{t("tilleggsinformasjon")}</Label>
+        <StyledLabel>{t("tilleggsinformasjon")}</StyledLabel>
       </StyledHeader>
       <VisMerPanel toggle={() => dispatch("toggle")} open={open}>
         <BlockContent blocks={parsedText} />

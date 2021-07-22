@@ -1,11 +1,11 @@
 import { useTranslation } from "react-i18next";
 import React from "react";
 import styled from "styled-components";
-import { Undertittel } from "nav-frontend-typografi";
 import { contentMaxwidth } from "./style";
 import useUniqueId from "../../utils/useUniqueId";
 import { Snarvei } from "../../sanity/groq/forside/forsideQuery";
 import Chevron from "../faktaside/Meny/Chevron";
+import { Title } from "@navikt/ds-react";
 
 const Wrapper = styled.div`
   background-color: white;
@@ -20,7 +20,7 @@ const Style = styled.section`
   margin: auto 2rem;
 `;
 
-const StyledUndertittel = styled(Undertittel)`
+const StyledUndertittel = styled(Title).attrs({ spacing: true, size: "l", level: "2" })`
   margin-bottom: 2rem !important;
 `;
 

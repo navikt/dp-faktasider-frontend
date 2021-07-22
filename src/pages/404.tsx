@@ -1,7 +1,6 @@
 import React from "react";
 import SEO from "../components/SEO";
 import styled from "styled-components/macro";
-import { Normaltekst, Sidetittel, Undertittel } from "nav-frontend-typografi";
 import { useTranslation } from "react-i18next";
 import { useMount } from "react-use";
 import { loggNotFound } from "../utils/logging";
@@ -17,6 +16,7 @@ import { SupportedLanguage } from "../i18n/supportedLanguages";
 import Link from "next/link";
 import { SanityImage } from "../sanity/types";
 import { groq } from "next-sanity";
+import { Title, BodyShort } from "@navikt/ds-react";
 
 const Style = styled.div`
   margin: 2rem 0;
@@ -29,8 +29,10 @@ const Style = styled.div`
   }
 `;
 
-const StyledNormaltekst = styled(Undertittel)`
+const StyledNormaltekst = styled(BodyShort)`
   margin-bottom: 1rem !important;
+  font-size: 1.2rem;
+  font-weight: 600;
 `;
 
 const TilbakeTilForsidelenke = styled.a`
@@ -81,8 +83,10 @@ const NotFoundPage = (props: Props) => {
   return (
     <Style>
       <SEO title={title} description="Fant ikke siden du lette etter" seoImage={props.data.seoImage} path="/404" />
-      <Sidetittel>{t("404")}</Sidetittel>
-      <Normaltekst>{t("404-sub")}</Normaltekst>
+      <Title level="1" size="2xl">
+        {t("404")}
+      </Title>
+      <BodyShort>{t("404-sub")}</BodyShort>
       <Link href={"/"} passHref>
         <TilbakeTilForsidelenke className="lenke">
           {t("404-tilbake-til")} {forsideTittel}

@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components/macro";
-import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
 import { useTranslation } from "react-i18next";
 import { supportedLanguages } from "../../i18n/supportedLanguages";
 import withErrorBoundary from "../../components/withErrorBoundary";
@@ -9,6 +8,7 @@ import { loggIkkeOversatt } from "../../utils/logging";
 import Link from "next/link";
 import { FaktasideProps } from "./Faktaside";
 import SEO from "../SEO";
+import { BodyShort, Title } from "@navikt/ds-react";
 
 const Style = styled.div`
   display: flex;
@@ -22,7 +22,8 @@ const StyledUl = styled.ul`
   list-style: none !important;
 `;
 
-const StyledNormaltekst = styled(Normaltekst)`
+//todo: må gjøre noe slik at ratioene blir større igjen i forhold til designsystemet? tittel er 36px burde være 40px
+const StyledBodyShort = styled(BodyShort)`
   margin: 2rem 0 0 !important;
 `;
 
@@ -58,10 +59,12 @@ function IkkeOversatt(props: FaktasideProps) {
         seoImage={props.rawData.oppsett.seoImage}
         path={`/${props.slug}`}
       />
-      <Innholdstittel>{t("ikkeOversatt")}</Innholdstittel>
+      <Title size="xl" spacing level="1">
+        {t("ikkeOversatt")}
+      </Title>
       {oversettelser.length && (
         <>
-          <StyledNormaltekst>{t("tilgjengeligPåAndreSpråk")}</StyledNormaltekst>
+          <StyledBodyShort>{t("tilgjengeligPåAndreSpråk")}</StyledBodyShort>
           <StyledUl>{oversettelser}</StyledUl>
         </>
       )}

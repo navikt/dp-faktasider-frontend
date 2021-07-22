@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from "styled-components/macro";
-import { Sidetittel } from "nav-frontend-typografi";
 import SistOppdatert from "./SistOppdatert";
 import { useFaktasideContext } from "../FaktaSideContext";
+import { Title } from "@navikt/ds-react";
 
 const Style = styled.div`
   text-align: center;
@@ -10,7 +10,7 @@ const Style = styled.div`
   max-width: 38rem;
 `;
 
-const StyledSidetittel = styled(Sidetittel)`
+const StyledSidetittel = styled(Title).attrs({ level: "1", size: "2xl" })`
   margin-bottom: 0.75rem !important;
 `;
 

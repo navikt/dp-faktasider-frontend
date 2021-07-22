@@ -1,6 +1,6 @@
+import { Title } from "@navikt/ds-react";
 import * as React from "react";
 import styled from "styled-components/macro";
-import { Element } from "nav-frontend-typografi";
 import CommonSectionMarkup, { CommonSectionProps } from "./CommonSectionMarkup";
 
 const StyledSection = styled.section`
@@ -8,7 +8,7 @@ const StyledSection = styled.section`
   padding: 1rem; //gjøres for å gi luft til outline når seksjonen har fokus
 `;
 
-const StyledTittel = styled(Element).attrs({ as: "h4", className: "typo-element" })`
+const StyledTittel = styled(Title).attrs({ level: "4", size: "s" })`
   margin-bottom: 0.7rem;
 `;
 

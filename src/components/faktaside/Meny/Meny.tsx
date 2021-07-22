@@ -4,10 +4,10 @@ import withErrorBoundary from "../../../components/withErrorBoundary";
 import SideListe from "./SideListe";
 import MobilmenyWrapper from "./MobilmenyWrapper";
 import { theme } from "../../../styles/theme";
-import { Systemtittel } from "nav-frontend-typografi";
 import useUniqueId from "../../../utils/useUniqueId";
 import { navFrontend } from "../../../styles/navFrontend";
 import { useFaktasideContext } from "../FaktaSideContext";
+import { Title } from "@navikt/ds-react";
 
 const DesktopNav = styled.nav`
   @media (${theme.media.smallScreen}) {
@@ -30,7 +30,7 @@ const MobileNav = styled.nav`
   }
 `;
 
-const HeaderStyle = styled(Systemtittel)`
+const HeaderStyle = styled(Title).attrs({ level: "2", size: "l" })`
   padding: ${theme.layoutPadding} ${theme.layoutPadding} 0.75rem;
   pointer-events: none;
 

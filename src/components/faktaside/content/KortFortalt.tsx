@@ -9,7 +9,7 @@ import { navFrontend } from "../../../styles/navFrontend";
 import { theme } from "../../../styles/theme";
 import BlockContent from "../../BlockContent/BlockContent";
 import { idFromString } from "../../../utils/idFromString";
-import { Normaltekst } from "nav-frontend-typografi";
+import { BodyShort } from "@navikt/ds-react";
 
 interface Props {
   blocks?: Block[];
@@ -51,7 +51,7 @@ function KortFortalt(props: Props) {
         <KortFortaltIkon />
       </IkonWrapper>
       <H2Section id={idFromString(title)} title={title}>
-        <Normaltekst>{props.beskrivelse}</Normaltekst>
+        <BodyShort>{props.beskrivelse}</BodyShort>
         <BlockContent blocks={props.blocks} />
       </H2Section>
     </Style>

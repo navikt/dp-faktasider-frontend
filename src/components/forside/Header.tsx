@@ -1,10 +1,10 @@
 import * as React from "react";
-import { Sidetittel } from "nav-frontend-typografi";
 import styled, { createGlobalStyle } from "styled-components/macro";
 import { theme } from "../../styles/theme";
 import withErrorBoundary from "../../components/withErrorBoundary";
 import HeaderIkon from "./HeaderIkon";
 import { contentMaxwidth } from "./style";
+import { Title } from "@navikt/ds-react";
 
 interface Props {
   heading: string;
@@ -17,7 +17,7 @@ const Background = styled.div`
   justify-content: center;
 `;
 
-const StyledSidetittel = styled(Sidetittel)`
+const StyledSidetittel = styled(Title).attrs({ level: "1", size: "2xl" })`
   align-self: center;
   padding: 1rem 2rem;
 `;

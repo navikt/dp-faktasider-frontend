@@ -3,7 +3,6 @@ import { useReducer } from "react";
 import { visForTestData } from "../components/BlockContent/VisFor/visFor.testdata";
 import { faktaSideMockQueryData } from "../testUtils/faktaSideMockQueryData";
 import styled from "styled-components/macro";
-import { Sidetittel, Undertittel } from "nav-frontend-typografi";
 import { flattenH2TestData } from "../utils/richTextUtils/parser/flattenH2Versions/flattenH2Versions.testdata";
 import { makeUniqueIdTestData } from "../utils/richTextUtils/parser/makeUniqeGroupIDs/makeUniqeGroupIDs.testdata";
 import { parseDelteTeksterTestData } from "../utils/richTextUtils/parser/parseDelteTekster/parseDelteTekster.testdata";
@@ -19,7 +18,7 @@ import { translated } from "../testUtils/createSanityBlock";
 import { sistOppdatertTestdata } from "../components/faktaside/content/SistOppdatert.testdata";
 import { wordCountTestData } from "../../cypress/testData/wordcount.testdata";
 import { GtilNOKAnnotationTestdata } from "../components/BlockContent/GtilNOKAnnotation/GtilNOKAnnotation.testdata";
-import { Button } from "@navikt/ds-react";
+import { Button, Title } from "@navikt/ds-react";
 
 type FaktasideData = FaktasideQueryData["faktaside"];
 
@@ -38,6 +37,13 @@ const testData: Testdata[] = [
     data: {
       innhold: translated(visForTestData.innhold),
       visIngenValgPasser: true,
+    },
+  },
+  {
+    name: "feilmelding",
+    data: {
+      // @ts-ignore
+      innhold: {},
     },
   },
   {
@@ -152,8 +158,12 @@ function Testdata() {
   return (
     <>
       <Style>
-        <Sidetittel>Visualisering av testdata brukt i automatiske tester</Sidetittel>
-        <Undertittel>Velg testdata:</Undertittel>
+        <Title size="2xl" level="1" spacing>
+          Visualisering av testdata brukt i automatiske tester
+        </Title>
+        <Title size="m" level="2">
+          Velg testdata:
+        </Title>
         {testData.map((data) => (
           <StyledKnapp key={data.name} onClick={() => dispatch({ type: "setData", data: data.data })}>
             {data.name}

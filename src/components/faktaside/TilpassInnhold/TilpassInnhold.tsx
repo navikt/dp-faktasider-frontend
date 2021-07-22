@@ -3,7 +3,6 @@ import { RefObject, useRef } from "react";
 import { useVisForContext } from "../../BlockContent/VisFor/VisForContext";
 import styled from "styled-components/macro";
 import { Checkbox } from "nav-frontend-skjema";
-import { Normaltekst, Systemtittel } from "nav-frontend-typografi";
 import withErrorBoundary from "../../../components/withErrorBoundary";
 import { theme } from "../../../styles/theme";
 import useUniqueId from "../../../utils/useUniqueId";
@@ -12,6 +11,7 @@ import { useFaktasideContext } from "../FaktaSideContext";
 import { useWordCount } from "./useWordCount";
 import { navFrontend } from "../../../styles/navFrontend";
 import InnholdetErTilpasset from "./InnholdetErTilpasset";
+import { BodyShort, Title } from "@navikt/ds-react";
 
 const StyledNav = styled.nav`
   background-color: white;
@@ -33,7 +33,7 @@ const StyledUl = styled.ul`
   }
 `;
 
-const StyledUndertittel = styled(Systemtittel)`
+const StyledUndertittel = styled(Title).attrs({ level: "2", size: "l" })`
   margin-bottom: ${theme.layoutPadding} !important;
 
   &::after {
@@ -69,7 +69,7 @@ function TilpassInnhold(props: Props) {
     <div ref={tilpassInnholdRef}>
       <StyledNav className={props.className} aria-labelledby={titleId}>
         <StyledUndertittel id={titleId}>Tilpass innhold</StyledUndertittel>
-        <Normaltekst>Velg det som passer din situasjon best:</Normaltekst>
+        <BodyShort>Velg det som passer din situasjon best:</BodyShort>
         <StyledUl>
           {tilpassInnholdValg.map((valg) => (
             <li key={valg}>
