@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { contentMaxwidth } from "./style";
 import useUniqueId from "../../utils/useUniqueId";
 import { Snarvei } from "../../sanity/groq/forside/forsideQuery";
-import { HoyreChevron } from "nav-frontend-chevron";
+import Chevron from "../faktaside/Meny/Chevron";
 import { Title } from "@navikt/ds-react";
 
 const Wrapper = styled.div`
@@ -38,7 +38,7 @@ const StyledUl = styled.ul`
   }
 `;
 
-const StyledChevron = styled(HoyreChevron)`
+const StyledChevron = styled(Chevron).attrs({ retning: "høyre" })`
   margin-right: 0.75rem;
   transition: 0.3s !important;
   position: relative;
