@@ -8,7 +8,7 @@ const StyledSection = styled.section`
   padding: 1rem; //gjøres for å gi luft til outline når seksjonen har fokus
 `;
 
-const StyledTittel = styled(Title).attrs({ level: "3", spacing: true, size: "l" })`
+const StyledTittel = styled(Title).attrs({ level: "3", size: "l" })`
   margin-bottom: 1rem;
 `;
 

@@ -33,7 +33,7 @@ const StyledUl = styled.ul`
   }
 `;
 
-const StyledUndertittel = styled(Title).attrs({ level: "2", size: "xl", spacing: true })`
+const StyledUndertittel = styled(Title).attrs({ level: "2", size: "l" })`
   margin-bottom: ${theme.layoutPadding} !important;
 
   &::after {

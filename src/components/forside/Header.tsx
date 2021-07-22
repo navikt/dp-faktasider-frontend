@@ -17,7 +17,7 @@ const Background = styled.div`
   justify-content: center;
 `;
 
-const StyledSidetittel = styled(Title).attrs({ level: "1", size: "2xl", spacing: true })`
+const StyledSidetittel = styled(Title).attrs({ level: "1", size: "2xl" })`
   align-self: center;
   padding: 1rem 2rem;
 `;

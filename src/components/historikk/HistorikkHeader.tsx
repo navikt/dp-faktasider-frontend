@@ -72,7 +72,7 @@ function HistorikkHeader(props: { document?: HistoriskDokument; revisions: Revis
 
   return (
     <Style>
-      <Title level="1" size="2xl" spacing>
+      <Title level="1" size="2xl">
         {context.hjelpeTekster?.title}
       </Title>
       <Metadata>

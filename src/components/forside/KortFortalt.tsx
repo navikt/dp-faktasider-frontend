@@ -26,7 +26,7 @@ function KortFortalt(props: { kortFortalt?: ParsedRichText; beskrivelse?: string
 
   return (
     <Style>
-      <Title level="2" size="2xl" spacing>
+      <Title level="2" size="m">
         {t("forsideIntroTittel")}
       </Title>
       <Content>

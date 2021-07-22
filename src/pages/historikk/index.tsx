@@ -54,7 +54,7 @@ export default function HistorikkIndeks(props: Props) {
   return (
     <Style>
       <main>
-        <Title level="1" size="2xl" spacing>
+        <Title level="1" size="2xl">
           Historikk for {props.domeneTittel}
         </Title>
         <BodyShort>Velg mellom faktasidene og se historiske versjoner:</BodyShort>

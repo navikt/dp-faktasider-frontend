@@ -10,7 +10,7 @@ const Style = styled.div`
   max-width: 38rem;
 `;
 
-const StyledSidetittel = styled(Title).attrs({ level: "1", size: "2xl", spacing: true })`
+const StyledSidetittel = styled(Title).attrs({ level: "1", size: "2xl" })`
   margin-bottom: 0.75rem !important;
 `;
 

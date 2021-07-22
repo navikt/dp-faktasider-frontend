@@ -52,10 +52,10 @@ function HistorikkTestdata() {
   return (
     <>
       <Style>
-        <Title level="1" spacing size="2xl">
+        <Title level="1" size="2xl">
           Visualisering av testdata brukt i automatiske tester
         </Title>
-        <Title level="2" spacing size="xl">
+        <Title level="2" size="xl">
           Velg testdata:
         </Title>
         {testData.map((data) => (

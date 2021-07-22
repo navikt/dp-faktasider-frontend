@@ -60,7 +60,7 @@ function getComponent(type?: string) {
 function FaktasideRekonstruksjon(props: HistoriskDokument) {
   return (
     <>
-      <Title level="1" size="2xl" spacing>
+      <Title level="1" size="2xl">
         {props.title}
       </Title>
       <BodyShort>{props.beskrivelse}</BodyShort>

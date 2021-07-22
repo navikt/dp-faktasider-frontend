@@ -30,7 +30,7 @@ const MobileNav = styled.nav`
   }
 `;
 
-const HeaderStyle = styled(Title).attrs({ level: "1", size: "2xl", spacing: true })`
+const HeaderStyle = styled(Title).attrs({ level: "2", size: "l" })`
   padding: ${theme.layoutPadding} ${theme.layoutPadding} 0.75rem;
   pointer-events: none;
 

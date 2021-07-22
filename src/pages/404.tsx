@@ -29,8 +29,10 @@ const Style = styled.div`
   }
 `;
 
-const StyledNormaltekst = styled(Title).attrs({ spacing: true, size: "l", level: "2" })`
+const StyledNormaltekst = styled(BodyShort)`
   margin-bottom: 1rem !important;
+  font-size: 1.2rem;
+  font-weight: 600;
 `;
 
 const TilbakeTilForsidelenke = styled.a`

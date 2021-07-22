@@ -26,20 +26,15 @@ const Style = styled.article`
     margin-bottom: 0.5rem;
   }
 
-  .alertstripe__tekst {
-    max-width: unset !important;
-  }
-
   max-width: ${contentMaxwidth};
 `;
 
 const Content = styled.div`
-  margin-top: 0.5rem;
   ${typografiStyle};
+`;
 
-  > div *:last-child {
-    margin-bottom: 0;
-  }
+const StyledLabel = styled(Label)`
+  margin-top: 0.25rem;
 `;
 
 function Notifikasjoner(props: Props) {
@@ -52,9 +47,7 @@ function Notifikasjoner(props: Props) {
       <h2 className="sr-only">Notifikasjoner</h2>
       {props.notifikasjoner.map((notifikasjon, i) => (
         <Alert variant="info" key={i}>
-          <Label size="m" spacing>
-            {notifikasjon.title}
-          </Label>
+          <StyledLabel size="m">{notifikasjon.title}</StyledLabel>
           {notifikasjon.innhold && (
             <Content>
               <BlockContent blocks={notifikasjon.innhold} />

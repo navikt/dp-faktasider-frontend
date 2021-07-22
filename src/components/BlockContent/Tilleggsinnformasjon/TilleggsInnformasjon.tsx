@@ -16,7 +16,7 @@ import HashLink from "../../HashLink";
 import Anchor from "../../Anchor";
 import { useIsHashInUrl } from "../../../hooks/useIsHashInUrl";
 import { showLinkOnHover } from "../../Section/CommonSectionMarkup";
-import { Label } from "@navikt/ds-react";
+import { BodyShort } from "@navikt/ds-react";
 
 interface Props {
   node: Tillegsinformasjon;
@@ -38,10 +38,10 @@ const StyledAside = styled.aside<{ isOpen: boolean }>`
     `}
 `;
 
-const StyledLabel = styled(Label).attrs({ size: "m" })`
+const StyledLabel = styled(BodyShort)`
   opacity: 0.75;
   font-size: 0.7rem !important;
-  margin: 0 !important;
+  margin: 0 0 0.2rem !important;
   text-transform: uppercase;
 `;
 
