@@ -6,8 +6,7 @@ import { useGrunnbellop } from "../../../utils/folketrygdensGrunnbeløp";
 import { useDevContext } from "../../DevKnapper/DevContext";
 import styled from "styled-components";
 import { useHistorikkContext } from "../../historikk/HistorikkContext";
-import "nav-frontend-hjelpetekst-style/src/hjelpetekst-style.less";
-import LitenHjelpetekst from "../../historikk/LitenHjelpetekst";
+import Hjelpetekst from "../../historikk/Hjelpetekst";
 import { Link } from "@navikt/ds-react";
 
 interface Props {
@@ -52,15 +51,12 @@ const GtilNOKAnnotation = (props: Props) => {
     return (
       <HistorikkStyle>
         {g} G{" "}
-        <LitenHjelpetekst
-          tittel="Grunnbelløp, hjelp"
-          onClick={() => loggHistorikk("Viser hjelpetekst for grunnbelløp")}
-        >
+        <Hjelpetekst tittel="Grunnbelløp, hjelp" onClick={() => loggHistorikk("Viser hjelpetekst for grunnbelløp")}>
           G-beløpet her var oversatt til kroner.{" "}
           <Link href="https://www.nav.no/no/nav-og-samfunn/kontakt-nav/utbetalinger/grunnbelopet-i-folketrygden">
             Du kan se historisk verdi av g-beløp her.
           </Link>
-        </LitenHjelpetekst>
+        </Hjelpetekst>
       </HistorikkStyle>
     );
   }

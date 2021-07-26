@@ -6,7 +6,7 @@ import { useFaktasideContext } from "../../faktaside/FaktaSideContext";
 import { useHistorikkContext } from "../../historikk/HistorikkContext";
 import styled from "styled-components";
 import { colors } from "../../../styles/theme";
-import LitenHjelpetekst from "../../historikk/LitenHjelpetekst";
+import Hjelpetekst from "../../historikk/Hjelpetekst";
 import { loggHistorikk } from "../../../utils/logging";
 
 interface Props {
@@ -41,9 +41,9 @@ function VisPaaSide(props: Props) {
     return (
       <HistorikkStyle>
         {props.children}{" "}
-        <LitenHjelpetekst tittel="Forklaring" onClick={() => loggHistorikk("Viser hjelpetekst for visPaaSide")}>
+        <Hjelpetekst tittel="Forklaring" onClick={() => loggHistorikk("Viser hjelpetekst for visPaaSide")}>
           Denne teksten ble kun vist på utvalgte sider med id: {props.visPaaSider?.join(", ")}
-        </LitenHjelpetekst>
+        </Hjelpetekst>
       </HistorikkStyle>
     );
   }
