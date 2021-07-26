@@ -28,7 +28,7 @@ const StyledLi = styled.li`
     content: "";
     position: absolute;
     height: calc(100% - ${circleSize});
-    left: calc(${circleSize} / 2.2);
+    left: calc(${circleSize} / 2.3);
     top: ${circleSize};
     border-left: ${borderstyle};
   }

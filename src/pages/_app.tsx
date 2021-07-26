@@ -4,7 +4,7 @@ import { DevContextProvider } from "../components/DevKnapper/DevContext";
 import { i18nextConfig, TranslationsProvider } from "../i18n/i18nextConfig";
 import { AppStyling, GlobalStyling } from "../styles/GlobalStyling";
 import { AppProps } from "next/app";
-import "../styles/index.less";
+import "../styles/reset.css";
 import { useRouter } from "next/router";
 import React from "react";
 import PreviewBanner from "../components/Preview/PreviewBanner";
