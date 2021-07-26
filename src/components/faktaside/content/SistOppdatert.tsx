@@ -32,7 +32,7 @@ function SistOppdatert() {
   return (
     <Style>
       <Link href={`/historikk/${faktaside.id}/${faktaside.publiseringsTidspunkt}`} passHref>
-        <Lenke>{tekst}</Lenke>
+        <Lenke rel="nofollow">{tekst}</Lenke>
       </Link>
     </Style>
   );
