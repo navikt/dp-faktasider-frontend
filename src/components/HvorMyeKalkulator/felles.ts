@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import { Input } from "nav-frontend-skjema";
+import Input from "../Input";
 
 export const KalkulatorStyle = styled.aside`
   margin: 3rem 0;
@@ -40,6 +40,7 @@ export const GrunnlagInput = styled(Input)`
   input {
     width: 5.5rem;
   }
+  align-items: center;
 `;
 
 export function toKR(kr: number) {
