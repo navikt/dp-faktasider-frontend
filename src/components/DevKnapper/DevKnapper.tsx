@@ -4,10 +4,10 @@ import styled, { css } from "styled-components/macro";
 import { isDevelopment } from "../../utils/environment";
 import { useClickAway } from "react-use";
 import { useDevContext } from "./DevContext";
-import { Checkbox } from "nav-frontend-skjema";
 import withErrorBoundary from "../withErrorBoundary";
 import { useQueryParams } from "../../utils/useQueryParams";
 import Link from "next/link";
+import Checkbox from "../Checkbox";
 
 const Style = styled.div<{ isOpen: boolean }>`
   position: fixed;

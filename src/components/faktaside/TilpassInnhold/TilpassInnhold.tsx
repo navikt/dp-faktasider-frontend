@@ -2,7 +2,6 @@ import * as React from "react";
 import { RefObject, useRef } from "react";
 import { useVisForContext } from "../../BlockContent/VisFor/VisForContext";
 import styled from "styled-components/macro";
-import { Checkbox } from "nav-frontend-skjema";
 import withErrorBoundary from "../../../components/withErrorBoundary";
 import { theme } from "../../../styles/theme";
 import useUniqueId from "../../../utils/useUniqueId";
@@ -12,6 +11,7 @@ import { useWordCount } from "./useWordCount";
 import { navFrontend } from "../../../styles/navFrontend";
 import InnholdetErTilpasset from "./InnholdetErTilpasset";
 import { BodyShort, Title } from "@navikt/ds-react";
+import Checkbox from "../../Checkbox";
 
 const StyledNav = styled.nav`
   background-color: white;

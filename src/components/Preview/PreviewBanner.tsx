@@ -1,7 +1,7 @@
-import { Checkbox } from "nav-frontend-skjema";
 import React from "react";
 import styled from "styled-components/macro";
 import { usePreviewContext } from "./previewContext";
+import Checkbox from "../Checkbox";
 
 const Style = styled.div`
   background-color: hsl(0, 100%, 38%, 0.5);
