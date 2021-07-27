@@ -1,6 +1,10 @@
 # Dummyfil for å trigge bygg og deploy av faktasider på nav.no/arbeid/no/
 
-Gjør en liten endring i denne fila og commit til main. Skriv feks noe tekst. Tralala. #detEnkeleErEfteDetEnkleste. Honorable mention til Andre Roaldset 😎
+Gjør en liten endring i denne fila og commit til main. Skriv feks noe tekst.
+
+:scream: greier å kompilere lokalt, men mangler postCSS når det bygges på github?
+
+Tralala. #detEnkeleErEfteDetEnkleste. Honorable mention til Andre Roaldset 😎
 Hei og god morgen :) God kveld og god natt
 
 Det var en gang det var en feil som dfgble rettet fordi et hamster løp i et hjul. Hamsteren ville ta utdanning. Objektet endret seg! Punktene og tallene gikk over hverandre, og sidene hadde ulik informasjon ulike steder. (Vi heier på parantes). Hvertfall når me tek språket på alvor. Formuleringer er viktig, og også sluttføringer.
@@ -21,7 +25,7 @@ Hurra!
 Den som venter på noe godt, venter ikke forgjeves.
 Mer venting ...
 Enda mer venting ...
-Snart juleferie, men først litt julelunsj. Det ble spist snurr til hovedrett og dessert. Alle var gode og mette. 
+Snart juleferie, men først litt julelunsj. Det ble spist snurr til hovedrett og dessert. Alle var gode og mette.
 Nå er det virkelig snart juleferie <3
 Hvis vi bare får de siste endringene ut.
 Hey ho nå er det jul igjen!
@@ -35,16 +39,16 @@ Da er det lunsj!
 sf
 
 Det er vanskelig å finne på ting her. Men ikke så vanskelig. Eller lett.
-Ny leilighet og genser er topp. 
-Auda, dette gikk ikke så bra, vi får bare prøve på nytt enda en gang og se om det går bedre. 
+Ny leilighet og genser er topp.
+Auda, dette gikk ikke så bra, vi får bare prøve på nytt enda en gang og se om det går bedre.
 Hurra, endelig fungerte det, nå gjenstår bare en liten trykkleif. Hei, sveis. Vis for alle. Og husk alle setninger. Og fjern tull, men ikke gull.
 Og så var eksperimentet over. Og sånn går dagene. DAG FOR DAG. Time for time. Dag for dag. uke for uke
 :)
 jhk, dbs, dumdidum, heididei. Desisi. Leisi. Keisi. Deisi. Leisa. Luke, kjl- T. CULtr
-Når vi trudde historia var slutt, kom det uventa hindringar i vegen. Og sånn går no dagane. Vi prøver en gang til, kanskje var det treig cdn som var problemet? Eller noe anna? Eller ikke? 
+Når vi trudde historia var slutt, kom det uventa hindringar i vegen. Og sånn går no dagane. Vi prøver en gang til, kanskje var det treig cdn som var problemet? Eller noe anna? Eller ikke?
 
-Og der nærmer vi oss slutten på dagen. Og så var det morgen igjen. MORNA. Trigg bygg. I dag og i morgen.asf 
-:) Og der forsvant videoen. Og sånn er det. 
+Og der nærmer vi oss slutten på dagen. Og så var det morgen igjen. MORNA. Trigg bygg. I dag og i morgen.asf
+:) Og der forsvant videoen. Og sånn er det.
 
 Mulig at dette er mitt siste bygg? Kanskje fungerer dette? Nå :) og da publiseres det.
 
