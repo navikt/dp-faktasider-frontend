@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, render, within, screen } from "../../../testUtils/customized-testing-library";
+import { fireEvent, render, within, screen } from "../../../testUtils/customized-testing-library.test";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
 import { tillegsinformasjonTestData } from "./TilleggsInnformasjon.testdata";
 

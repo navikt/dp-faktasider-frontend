@@ -1,5 +1,5 @@
 import React from "react";
-import { render, within } from "../../../../testUtils/customized-testing-library";
+import { render, within } from "../../../../testUtils/customized-testing-library.test";
 import BlockContent from "../../../../components/BlockContent/BlockContent";
 import parseRichText from "../parseRichText";
 import { flattenH2TestData } from "./flattenH2Versions.testdata";

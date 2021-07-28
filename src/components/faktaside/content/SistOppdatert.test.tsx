@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "../../../testUtils/customized-testing-library";
+import { render } from "../../../testUtils/customized-testing-library.test";
 import { sistOppdatertTestdata } from "./SistOppdatert.testdata";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
 

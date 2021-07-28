@@ -1,5 +1,5 @@
 import { RenderResult } from "@testing-library/react";
-import { fireEvent, within } from "./customized-testing-library";
+import { fireEvent, within } from "./customized-testing-library.test";
 
 export function toggleFilter(result: RenderResult, checkboxLabel: RegExp) {
   const tilpassInnhold = result.getByLabelText(/Tilpass/);

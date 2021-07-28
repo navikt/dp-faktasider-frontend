@@ -1,5 +1,5 @@
 import React from "react";
-import { render, within } from "../testUtils/customized-testing-library";
+import { render, within } from "../testUtils/customized-testing-library.test";
 import ForsideWrapper from "../pages";
 import { mockMenuData } from "../sanity/groq/menu/mockMenuData";
 import { translated } from "../testUtils/createSanityBlock";

@@ -1,4 +1,4 @@
-import { render, within } from "../../../../testUtils/customized-testing-library";
+import { render, within } from "../../../../testUtils/customized-testing-library.test";
 import parseRichText from "../parseRichText";
 import BlockContent from "../../../../components/BlockContent/BlockContent";
 import React from "react";

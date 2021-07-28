@@ -1,4 +1,4 @@
-import { render, screen, within } from "../../testUtils/customized-testing-library";
+import { render, screen, within } from "../../testUtils/customized-testing-library.test";
 import Historikk from "./Historikk";
 import {
   historikkCustomComponentTestdata,
