@@ -1,7 +1,7 @@
 import React from "react";
 import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
 import BlockContent from "../BlockContent";
-import { render, within } from "../../../testUtils/customized-testing-library.test";
+import { render, within } from "../../../testUtils/customized-testing-library.test.utils";
 import { utkastTestData } from "./Utkast.testdata";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
 

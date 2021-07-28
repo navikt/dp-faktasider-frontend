@@ -1,5 +1,5 @@
 import React from "react";
-import { render, within } from "../testUtils/customized-testing-library.test";
+import { render, within } from "../testUtils/customized-testing-library.test.utils";
 import NotFoundPage from "../pages/404";
 import { mockMenuData } from "../sanity/groq/menu/mockMenuData";
 

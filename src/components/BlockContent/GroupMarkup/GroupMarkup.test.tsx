@@ -1,7 +1,7 @@
 import React from "react";
 import { groupMarkupTestData } from "./GroupMarkup.testdata";
 import BlockContent from "../BlockContent";
-import { render, within } from "../../../testUtils/customized-testing-library.test";
+import { render, within } from "../../../testUtils/customized-testing-library.test.utils";
 import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
 
 describe("group-markup", () => {

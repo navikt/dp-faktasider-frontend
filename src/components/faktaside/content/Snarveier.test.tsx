@@ -1,5 +1,5 @@
 import React from "react";
-import { render, within } from "../../../testUtils/customized-testing-library.test";
+import { render, within } from "../../../testUtils/customized-testing-library.test.utils";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
 import { Snarvei } from "../../../sanity/groq/forside/forsideQuery";
 

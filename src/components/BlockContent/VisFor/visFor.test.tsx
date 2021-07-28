@@ -1,9 +1,9 @@
 import React from "react";
 import BlockContent from "../BlockContent";
-import { render, within } from "../../../testUtils/customized-testing-library.test";
+import { render, within } from "../../../testUtils/customized-testing-library.test.utils";
 import { visForTestData } from "./visFor.testdata";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
-import { toggleFilter } from "../../../testUtils/tilpassInnholdUtils.test";
+import { toggleFilter } from "../../../testUtils/tilpassInnholdUtils.test.utils";
 import { translated } from "../../../testUtils/createSanityBlock";
 import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
 

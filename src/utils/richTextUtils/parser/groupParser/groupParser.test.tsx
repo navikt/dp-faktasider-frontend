@@ -1,5 +1,5 @@
 import React from "react";
-import { render, within } from "../../../../testUtils/customized-testing-library.test";
+import { render, within } from "../../../../testUtils/customized-testing-library.test.utils";
 import BlockContent from "../../../../components/BlockContent/BlockContent";
 import { groupParser } from "./groupParser";
 import { groupParserTestData } from "./groupParser.testdata";

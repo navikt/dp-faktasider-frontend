@@ -1,5 +1,5 @@
 import React from "react";
-import { render, within } from "../../../testUtils/customized-testing-library.test";
+import { render, within } from "../../../testUtils/customized-testing-library.test.utils";
 import BlockContent from "../BlockContent";
 import { tidslinjeTestData } from "./Tidslinje.testdata";
 import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";

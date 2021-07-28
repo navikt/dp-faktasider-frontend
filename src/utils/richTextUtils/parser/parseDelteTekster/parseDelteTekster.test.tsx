@@ -1,6 +1,6 @@
 import React from "react";
 import parseRichText from "../parseRichText";
-import { render, within } from "../../../../testUtils/customized-testing-library.test";
+import { render, within } from "../../../../testUtils/customized-testing-library.test.utils";
 import BlockContent from "../../../../components/BlockContent/BlockContent";
 import { parseDelteTeksterTestData } from "./parseDelteTekster.testdata";
 

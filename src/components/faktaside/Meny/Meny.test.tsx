@@ -1,4 +1,4 @@
-import { render, within } from "../../../testUtils/customized-testing-library.test";
+import { render, within } from "../../../testUtils/customized-testing-library.test.utils";
 import React from "react";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
 import { mockMenuData } from "../../../sanity/groq/menu/mockMenuData";

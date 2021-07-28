@@ -1,4 +1,4 @@
-import { render, screen } from "../../../testUtils/customized-testing-library.test";
+import { render, screen } from "../../../testUtils/customized-testing-library.test.utils";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
 import { GtilNOKAnnotationTestdata } from "./GtilNOKAnnotation.testdata";
 
