@@ -25,6 +25,7 @@ const Styling = createGlobalStyle`
 
   body {
     background-color: ${theme.colors.bakgrunn};
+    font-size: 1rem; // motvikrer ny styling fra designsystemet som gjør designet vår uproporsjonalt
   }
 
   .ReactCollapse--collapse {
