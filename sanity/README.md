@@ -20,7 +20,7 @@ Du må logge deg inn i appen med feks github-bruker, du må få tilgang av en ad
 - `backup` lagrer en backup av proddatasettet lokalt
 - `clearDevelopmentDataset` sletter all data i development-datasettet slik at du har et clean utgangspunkt
 - `copyProdDataToDevelopment` sletter development-datasettet og bytter det ut med en kopi av prod-datasettet
-- `npm run docker` bygger appen i en dockercontainer på samme måte som i pipeline, hoster appen på [localhost:3000/arbeid]().
+- `npm run docker` bygger appen i en dockercontainer på samme måte som i pipeline, hoster appen på [localhost:8000/arbeid/cms]().
 
 ### Deploy av endringer i Sanity Studio
 
@@ -32,7 +32,7 @@ Alt innhold som legges inn i alle dataset i dette sanityprosjektet må regnes so
 
 ## Publisere innhold
 
-> Etter at vi migrerte frontenden til nextjs skal innholdet egentlig bli publisert automatisk etter at du trykker "Publish" i sanity, men pga noen webproxy-greier på nais funker ikke dette pr idag. Men vi er på saken.
+Innhold som blir publisert i Sanity blir automatisk vist på infosidene på nav.no/arbeid etter noen minutter.
 
 ## Kontakt
 

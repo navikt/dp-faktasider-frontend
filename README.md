@@ -11,7 +11,7 @@ npm run dev
 
 ### Optional
 
-Opprett filen `.env.development` i root-folderet med innholdet (Trengs ikke, men lar deg jobbe mot et development-datasett):
+Opprett filen `.env.development` i root-folderet med innholdet:
 
 ```
 # SECRET - DO NOT COMMIT TO GIT
@@ -20,13 +20,15 @@ SANITY_READ_TOKEN="ditt hemmelige token her"
 NEXT_PUBLIC_SANITY_DATASET="development"
 ```
 
+Trengs hvis du vil jobbe mot et development-datasett eller besøke sidene under `/historikk som må gjøre autentiserte kall mot Sanity
+
 #### Live oppdatering
 
 Det funker ca sånn her:
 
 - [Start Sanity Studio opp lokalt](sanity/README.md)
-- Når du har startet opp sanity og åpnet det på localhost blir du bedt om å logge inn i sanity. Det blir da satt en autentiseringscookie på localhost-domenet.
-- Denne cookien funker også fra nextjs-frontenden og sørger automatisk for at du kan lese drafts fra sanity vha nextjs (dette sørger `usePreviewSubscription` for).
+- Når du har startet opp sanity og åpnet det på localhost blir du bedt om å logge inn i sanity. Når du har logget inn blir det satt en autentiseringscookie på localhost-domenet.
+- Nå skal liveoppdateringer funke i nextjs-frontenden på localhost (dette sørger `usePreviewSubscription` for).
 
 ### Scripts
 
