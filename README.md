@@ -32,6 +32,8 @@ NEXT_PUBLIC_SANITY_DATASET="development"
 
 Trengs hvis du vil besøke sidene under `/historikk` som må gjøre autentiserte kall mot Sanity eller jobbe mot et development-datasett.
 
+[Sanity-token kan du lage her](https://www.sanity.io/organizations/ojSsHMQGf/project/rt6o382n/settings#tokens). Du trenger bare et token med `Viewer`-rettighet.
+
 ### Scripts
 
 - `npm run docker` bygger appen i en dockercontainer på samme måte som i pipeline, hoster appen på [localhost:3000/arbeid]().
