@@ -11,7 +11,7 @@ export const faktaSideMockQueryData: FaktasideQueryData = {
     title: translated("Faktasidemock"),
     id: "id",
     slug: "test",
-    beskrivelse: translated("Dette er testdata"),
+    beskrivelse: translated("Dette er testbeskrivelse for søkemotor"),
     visSprakversjon: {
       no: true,
       en: false,
