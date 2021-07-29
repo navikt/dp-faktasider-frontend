@@ -1,5 +1,5 @@
 import VelgSituasjoner from "./VelgSituasjoner";
-import RefArrayAsChecboxesInput from "../../../utils/RefArrayAsChecboxesInput";
+import VelgSituasjonerRef from "./VelgSituasjonerRef";
 
 export default {
   name: "visFor",
@@ -25,7 +25,7 @@ export default {
       name: "visForSituasjoner",
       type: "array",
       of: [{ type: "reference", to: [{ type: "situasjon" }] }],
-      inputComponent: RefArrayAsChecboxesInput,
+      inputComponent: VelgSituasjonerRef,
     },
   ],
 };

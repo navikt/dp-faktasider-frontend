@@ -4,6 +4,7 @@ import { SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
 import { Notifikasjon } from "../../../components/Notifikasjoner";
 import { Snarvei } from "../forside/forsideQuery";
 import { SanityImage } from "../../types";
+import { VisForSituasjon } from "../../../components/BlockContent/VisFor/VisFor";
 
 const innholdFields = `
 [] {
@@ -28,6 +29,7 @@ export const faktasideQuery = groq`{
     folketrygdensGrunnbellop,
     snarveier
   },
+  'situasjonsvalg': *[_type == "situasjon"],
   'notifikasjoner': *[_type == "notifikasjon" && *[_type == "faktaSide" && slug.current == $slug][0]._id in visPaaFaktaSider]
 }`;
 
@@ -52,6 +54,7 @@ export interface FaktasideQueryData {
     folketrygdensGrunnbellop?: number;
     snarveier?: Snarvei[];
   };
+  situasjonsvalg?: { _ref: string; label: Translations<string> };
   notifikasjoner?: Notifikasjon[];
 }
 
@@ -66,5 +69,6 @@ export interface LocalizedFaktasideQueryData {
     title?: string;
     snarveier?: Snarvei[];
   };
+  situasjonsvalg?: VisForSituasjon[];
   notifikasjoner?: Notifikasjon[];
 }

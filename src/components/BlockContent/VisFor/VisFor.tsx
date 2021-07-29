@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { useVisForContext, VisForContextI } from "./VisForContext";
 import VisForDebug from "./VisForDebug";
 import { VisForConfig } from "../../../utils/richTextUtils/richTextTypes";
+import { useFaktasideContext } from "../../faktaside/FaktaSideContext";
 
 interface Props {
   children: ReactNode;
@@ -14,12 +15,29 @@ export function getUniqueStrings(strings?: string[]) {
   return Array.from(new Set(strings));
 }
 
-export function getSituasjonerFromVisForConfig(visForConfig: VisForConfig | undefined): string[] {
-  return getUniqueStrings(visForConfig?.situasjoner);
+export type VisForSituasjon = { _id: string; name: string };
+
+export function getSituasjonerFromVisForConfig(
+  visForConfig: VisForConfig | undefined,
+  konverteringstabell?: VisForSituasjon[]
+): string[] {
+  console.log(konverteringstabell, visForConfig);
+  return [
+    ...getUniqueStrings(visForConfig?.situasjoner),
+    ...getUniqueStrings(
+      visForConfig?.visForSituasjoner
+        ?.map((ref) => ref._ref)
+        .map((id) => konverteringstabell?.find((it) => it._id === id)?.name || "ukjent situasjon")
+    ),
+  ];
 }
 
-export function visBasertPåFiltrering(visForContext: VisForContextI, visForConfig?: VisForConfig) {
-  const relevanteSituasjoner = getSituasjonerFromVisForConfig(visForConfig);
+export function visBasertPåFiltrering(
+  visForContext: VisForContextI,
+  visForConfig?: VisForConfig,
+  konverteringstabell?: VisForSituasjon[]
+) {
+  const relevanteSituasjoner = getSituasjonerFromVisForConfig(visForConfig, konverteringstabell);
   const omvendtFiltrering = !!visForConfig?.skjulFor;
   const valgtFiltrering = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
@@ -44,12 +62,17 @@ export function visBasertPåFiltrering(visForContext: VisForContextI, visForConf
 
 function VisFor(props: Props) {
   const visForContext = useVisForContext();
+  const konverteringstabell = useFaktasideContext().situasjonsvalg;
 
   if (props.visForConfig === undefined) {
     return <>{props.children}</>;
   }
 
-  const { situasjoner, vis, omvendtFiltrering } = visBasertPåFiltrering(visForContext, props.visForConfig);
+  const { situasjoner, vis, omvendtFiltrering } = visBasertPåFiltrering(
+    visForContext,
+    props.visForConfig,
+    konverteringstabell
+  );
 
   if (vis) {
     return (

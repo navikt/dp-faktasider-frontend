@@ -61,6 +61,7 @@ function TilpassInnhold(props: Props) {
   const currentWords = faktasideWordCount.current - tilpassInnholdWordCount.current;
   const totalWords = faktasideWordCount.total - tilpassInnholdWordCount.total;
 
+  console.log(tilpassInnholdValg);
   if (tilpassInnholdValg.length === 0) {
     return null;
   }

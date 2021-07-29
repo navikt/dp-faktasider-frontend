@@ -6,6 +6,7 @@ import { Notifikasjon } from "../../../components/Notifikasjoner";
 import { getPubliseringsTidspunkt } from "../../getPubliseringstidspunkt";
 import { Snarvei } from "../forside/forsideQuery";
 import getAlleTilpassInnholdValg from "../../../components/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
+import { VisForSituasjon } from "../../../components/BlockContent/VisFor/VisFor";
 
 export interface FaktasideParsedData {
   id: string;
@@ -26,6 +27,7 @@ export interface FaktasideParsedData {
   notifikasjoner?: Notifikasjon[];
   snarveier?: Snarvei[];
   rawData: FaktasideQueryData;
+  situasjonsvalg?: VisForSituasjon[];
 }
 
 export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLanguage): FaktasideParsedData {
@@ -36,17 +38,19 @@ export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLang
   const relevanteSnarveier = localizedPage.oppsett.snarveier?.filter((snarvei) =>
     snarvei.visPaaSider?.some((side) => side === data.faktaside.id)
   );
+  const situasjonsvalg = localizedPage.situasjonsvalg;
 
   return {
     ...localizedPage.oppsett,
     ...localizedPage.faktaside,
     innhold: parsedInnhold,
     kortFortalt: parsedKortFortalt,
-    tilpassInnholdValg: getAlleTilpassInnholdValg(parsedInnhold, parsedKortFortalt),
+    tilpassInnholdValg: getAlleTilpassInnholdValg(parsedInnhold, parsedKortFortalt, situasjonsvalg),
     publiseringsTidspunkt,
     notifikasjoner: localizedPage.notifikasjoner,
     rawData: data,
     domainTitle: localizedPage.oppsett.title,
     snarveier: relevanteSnarveier,
+    situasjonsvalg: situasjonsvalg,
   };
 }

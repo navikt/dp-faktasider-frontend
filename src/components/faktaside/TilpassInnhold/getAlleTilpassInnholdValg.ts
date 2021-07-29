@@ -1,6 +1,6 @@
 import getPropertyRecursivlyFromDeepObject from "../../../utils/getPropertyRecursivlyFromDeepObject";
 import { Block, BlockConfigFromParser, MarkDef, SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
-import { getUniqueStrings } from "../../BlockContent/VisFor/VisFor";
+import { getSituasjonerFromVisForConfig, getUniqueStrings, VisForSituasjon } from "../../BlockContent/VisFor/VisFor";
 
 export type TilpassInnholdValg = string[];
 
@@ -10,17 +10,25 @@ function fjernMarkDefsSomIkkeErIBruk(markDefs: MarkDef[], altInnhold: Block[]) {
   return markDefs.filter((markDef) => alleMarks.includes(markDef._key));
 }
 
-function getAlleTilpassInnholdValg(innhold?: Block[], kortFortalt?: SanityBlock[]): TilpassInnholdValg {
+function getAlleTilpassInnholdValg(
+  innhold?: Block[],
+  kortFortalt?: SanityBlock[],
+  konverteringstabell?: VisForSituasjon[]
+): TilpassInnholdValg {
   if (!innhold) return [];
   const altInnhold = [...innhold, ...(kortFortalt || [])];
 
   const alleMarkDefs = getPropertyRecursivlyFromDeepObject<MarkDef>(altInnhold, "markDefs");
   const alleVisForMarkDefs = alleMarkDefs.filter((markDef) => markDef._type === "visForAnnotation");
   const visForMarkDefsSomErIBruk = fjernMarkDefsSomIkkeErIBruk(alleVisForMarkDefs, altInnhold);
-  const situasjonerFraMarkDefs = visForMarkDefsSomErIBruk.flatMap((it) => it.visFor?.situasjoner || []);
+  const situasjonerFraMarkDefs = visForMarkDefsSomErIBruk.flatMap((it) =>
+    getSituasjonerFromVisForConfig(it.visFor, konverteringstabell)
+  );
 
   const alleBlockConfigs = getPropertyRecursivlyFromDeepObject<BlockConfigFromParser>(altInnhold, "blockConfig");
-  const situasjonerFraBlockConfig = alleBlockConfigs.flatMap((it) => it.visFor?.situasjoner || []);
+  const situasjonerFraBlockConfig = alleBlockConfigs.flatMap((it) =>
+    getSituasjonerFromVisForConfig(it.visFor, konverteringstabell)
+  );
 
   return getUniqueStrings([...situasjonerFraMarkDefs, ...situasjonerFraBlockConfig]).sort();
 }
