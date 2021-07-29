@@ -41,7 +41,7 @@ function TestFaktaside(props: Props) {
     lenker: props.partialMeny?.lenker || mockMenuData.lenker,
   };
 
-  return <FaktaSide rawMenuData={menuData} rawFaktasideData={faktasideData} />;
+  return <FaktaSide menuQueryData={menuData} faktasideQueryData={faktasideData} />;
 }
 
 export default TestFaktaside;

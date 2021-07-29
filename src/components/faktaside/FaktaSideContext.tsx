@@ -33,7 +33,7 @@ export const FaktasideProvider = (props: { children: ReactNode; faktasideContext
 
 export function createFaktasideContext(props: FaktasideRawData, locale: SupportedLanguage): FaktasideContext {
   return {
-    ...parseFaktasideData(props.rawFaktasideData, locale),
-    menuData: parseMenuData(props.rawMenuData, locale),
+    ...parseFaktasideData(props.faktasideQueryData, locale),
+    menuData: parseMenuData(props.menuQueryData, locale),
   };
 }

@@ -23,8 +23,8 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 };
 
 export interface FaktasideStaticProps {
-  rawFaktasideData: FaktasideQueryData;
-  rawMenuData: MenuQueryData;
+  faktasideQueryData: FaktasideQueryData;
+  menuQueryData: MenuQueryData;
   slug: string;
 }
 
@@ -36,8 +36,8 @@ export const getStaticProps: GetStaticProps<FaktasideStaticProps> = async (conte
 
   return {
     props: {
-      rawFaktasideData: faktaside,
-      rawMenuData: menuData,
+      faktasideQueryData: faktaside,
+      menuQueryData: menuData,
       slug,
     },
     revalidate: 120,
@@ -45,10 +45,10 @@ export const getStaticProps: GetStaticProps<FaktasideStaticProps> = async (conte
 };
 
 function PreviewWrapper(props: FaktasideStaticProps) {
-  const faktasideData = useSanityPreveiw(props.rawFaktasideData, faktasideQuery, { slug: props.slug });
-  const menuData = useSanityPreveiw(props.rawMenuData, menuQuery);
+  const faktasideData = useSanityPreveiw(props.faktasideQueryData, faktasideQuery, { slug: props.slug });
+  const menuData = useSanityPreveiw(props.menuQueryData, menuQuery);
 
-  return <Faktaside rawFaktasideData={faktasideData} rawMenuData={menuData} />;
+  return <Faktaside faktasideQueryData={faktasideData} menuQueryData={menuData} />;
 }
 
 export default withErrorBoundary(PreviewWrapper, "FaktaSide");
