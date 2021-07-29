@@ -5,10 +5,7 @@ import FaktaSide from "../components/faktaside/Faktaside";
 import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
 import { translated } from "./createSanityBlock";
 import { mockMenuData } from "../sanity/groq/menu/mockMenuData";
-import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
-import { parseFaktasideData } from "../sanity/groq/faktaside/parseFaktasideData";
 import { MenuQueryData } from "../sanity/groq/menu/menuQuery";
-import { useLocale } from "../i18n/useLocale";
 
 type Props = {
   partialFaktaside?: Partial<FaktasideQueryData["faktaside"]>;
@@ -18,12 +15,10 @@ type Props = {
 };
 
 function TestFaktaside(props: Props) {
-  const locale = useLocale();
-
   const faktaSide = { ...faktaSideMockQueryData.faktaside, ...props.partialFaktaside };
   const oppsett = { ...faktaSideMockQueryData.oppsett, ...props.partialOppsett };
 
-  const context: FaktasideQueryData = {
+  const faktasideData: FaktasideQueryData = {
     faktaside: {
       ...faktaSide,
       innhold: props.innhold ? translated(props.innhold) : faktaSide.innhold,
@@ -46,10 +41,7 @@ function TestFaktaside(props: Props) {
     lenker: props.partialMeny?.lenker || mockMenuData.lenker,
   };
 
-  const parsedMenudata = parseMenuData(menuData, locale);
-  const parsedFaktasidedata = parseFaktasideData(context, locale);
-
-  return <FaktaSide menuData={parsedMenudata} {...parsedFaktasidedata} />;
+  return <FaktaSide rawMenuData={menuData} rawFaktasideData={faktasideData} />;
 }
 
 export default TestFaktaside;

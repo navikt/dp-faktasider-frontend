@@ -4,15 +4,10 @@ import Faktaside from "../components/faktaside/Faktaside";
 import { groq } from "next-sanity";
 import { sanityClient } from "../sanity/sanity-config";
 import { faktasideQuery, FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
-import { parseFaktasideData } from "../sanity/groq/faktaside/parseFaktasideData";
-import { useLocale } from "../i18n/useLocale";
 import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
-import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
 import { supportedLanguages } from "../i18n/supportedLanguages";
 import { useSanityPreveiw } from "../sanity/useSanityPreview";
 import React from "react";
-import { Alert } from "@navikt/ds-react";
-import { loggError } from "../utils/logging";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 
@@ -27,13 +22,13 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   };
 };
 
-interface Props {
-  faktasideData: FaktasideQueryData;
-  menuData: MenuQueryData;
+export interface FaktasideStaticProps {
+  rawFaktasideData: FaktasideQueryData;
+  rawMenuData: MenuQueryData;
   slug: string;
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
+export const getStaticProps: GetStaticProps<FaktasideStaticProps> = async (context) => {
   const slug = context.params!.slug as string;
 
   const faktaside: FaktasideQueryData = await sanityClient.fetch(faktasideQuery, { slug });
@@ -47,29 +42,19 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 
   return {
     props: {
-      faktasideData: faktaside,
-      menuData: menuData,
+      rawFaktasideData: faktaside,
+      rawMenuData: menuData,
       slug,
     },
     revalidate: 120,
   };
 };
 
-function PreviewWrapper(props: Props) {
-  const faktasideData = useSanityPreveiw(props.faktasideData, faktasideQuery, { slug: props.slug });
-  const menuData = useSanityPreveiw(props.menuData, menuQuery);
+function PreviewWrapper(props: FaktasideStaticProps) {
+  const faktasideData = useSanityPreveiw(props.rawFaktasideData, faktasideQuery, { slug: props.slug });
+  const menuData = useSanityPreveiw(props.rawMenuData, menuQuery);
 
-  const locale = useLocale();
-
-  if (!faktasideData?.faktaside?.id) {
-    loggError(new Error("Fant ikke faktaside"));
-    return <Alert variant="error">Fant ikke siden du leter etter</Alert>;
-  }
-
-  const parsedFaktasideData = parseFaktasideData(faktasideData, locale);
-  const parsedMenuData = parseMenuData(menuData, locale);
-
-  return <Faktaside {...parsedFaktasideData} menuData={parsedMenuData} />;
+  return <Faktaside rawFaktasideData={faktasideData} rawMenuData={menuData} />;
 }
 
 export default withErrorBoundary(PreviewWrapper, "FaktaSide");
