@@ -34,12 +34,6 @@ export const getStaticProps: GetStaticProps<FaktasideStaticProps> = async (conte
   const faktaside: FaktasideQueryData = await sanityClient.fetch(faktasideQuery, { slug });
   const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
 
-  if (!faktaside?.faktaside?.id) {
-    return {
-      notFound: true,
-    };
-  }
-
   return {
     props: {
       rawFaktasideData: faktaside,
