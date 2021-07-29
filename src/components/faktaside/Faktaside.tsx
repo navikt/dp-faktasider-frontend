@@ -4,7 +4,7 @@ import { useMount } from "react-use";
 import { loggSidevisning } from "../../utils/logging";
 import useLoggUtdatertHashlenke from "./useLoggUtdatertHashlenke";
 import IkkeOversatt from "./IkkeOversatt";
-import { createFaktasideContext, FaktasideProvider } from "./FaktaSideContext";
+import { createFaktasideContext, FaktasideProvider, useFaktasideContext } from "./FaktaSideContext";
 import SEO from "../SEO";
 import FaktaSideLayout from "./FaktaSideLayout";
 import BlockContent from "../BlockContent/BlockContent";
@@ -20,14 +20,11 @@ import { FaktasideStaticProps } from "../../pages/[slug]";
 
 export type FaktasideRawData = Omit<FaktasideStaticProps, "slug">;
 
-function Faktaside(props: FaktasideRawData) {
+function FaktasideContainer(props: FaktasideRawData) {
   const locale = useLocale();
   const faktasideContext = createFaktasideContext(props, locale);
   const erPublisertPåSpråk = faktasideContext.visSprakversjon?.[locale];
   const tittel = faktasideContext.title || "";
-  const beskrivelse = faktasideContext.beskrivelse || "";
-
-  const wordCountRef = useRef<HTMLDivElement>(null);
 
   useBreadcrumbs(faktasideContext.domainTitle, [
     { tittel: faktasideContext.title || "Du er her", path: faktasideContext.slug },
@@ -42,24 +39,37 @@ function Faktaside(props: FaktasideRawData) {
 
   return (
     <FaktasideProvider faktasideContext={faktasideContext}>
-      <SEO
-        title={tittel}
-        description={beskrivelse}
-        seoImage={faktasideContext.rawData.oppsett.seoImage}
-        path={`/${faktasideContext.slug}`}
-      />
-      <FaktaSideLayout>
-        <Header />
-        <Notifikasjoner notifikasjoner={faktasideContext?.notifikasjoner} />
-        <div ref={wordCountRef}>
-          <KortFortalt blocks={faktasideContext.kortFortalt} beskrivelse={beskrivelse} />
-          {wordCountRef && <TilpassInnhold wordCountRef={wordCountRef} />}
-          <BlockContent blocks={faktasideContext.innhold} />
-          <Snarveier snarveier={faktasideContext.snarveier} />
-        </div>
-      </FaktaSideLayout>
+      <Faktaside />
     </FaktasideProvider>
   );
 }
 
-export default Faktaside;
+function Faktaside() {
+  const context = useFaktasideContext();
+  const tittel = context.title || "";
+  const beskrivelse = context.beskrivelse || "";
+  const wordCountRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <>
+      <SEO
+        title={tittel}
+        description={beskrivelse}
+        seoImage={context.rawData.oppsett.seoImage}
+        path={`/${context.slug}`}
+      />
+      <FaktaSideLayout>
+        <Header />
+        <Notifikasjoner notifikasjoner={context?.notifikasjoner} />
+        <div ref={wordCountRef}>
+          <KortFortalt blocks={context.kortFortalt} beskrivelse={beskrivelse} />
+          {wordCountRef && <TilpassInnhold wordCountRef={wordCountRef} />}
+          <BlockContent blocks={context.innhold} />
+          <Snarveier snarveier={context.snarveier} />
+        </div>
+      </FaktaSideLayout>
+    </>
+  );
+}
+
+export default FaktasideContainer;
