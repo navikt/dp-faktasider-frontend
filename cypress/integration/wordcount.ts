@@ -6,12 +6,12 @@ describe("infoside", () => {
 
     cy.findByLabelText(/tilpass/i).within(() => {
       cy.findByText(/permittert/i).click();
-      cy.contains("viser nå 21 av 50 ord");
+      cy.contains("viser nå 18 av 47 ord");
       cy.findByText(/permittert/i).click();
       cy.findByText(/konkurs/i).click();
-      cy.contains("viser nå 13 av 50 ord");
+      cy.contains("viser nå 10 av 47 ord");
       cy.findByText(/ingen valg/i).click();
-      cy.contains("viser nå 27 av 50 ord");
+      cy.contains("viser nå 24 av 47 ord");
     });
   });
 });

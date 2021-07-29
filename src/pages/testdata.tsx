@@ -108,7 +108,12 @@ const testData: Testdata[] = [
   },
   {
     name: "Cypress - word count",
-    data: { innhold: translated(wordCountTestData.innhold), kortFortalt: translated(wordCountTestData.kortFortalt) },
+    data: {
+      innhold: translated(wordCountTestData.innhold),
+      beskrivelse: translated(""),
+      visIngenValgPasser: true,
+      kortFortalt: translated(wordCountTestData.kortFortalt),
+    },
   },
   {
     name: "Cypress - språktest",
