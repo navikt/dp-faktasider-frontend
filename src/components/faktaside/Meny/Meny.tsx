@@ -31,7 +31,7 @@ const MobileNav = styled.nav`
 `;
 
 const HeaderStyle = styled(Title).attrs({ level: "2", size: "l" })`
-  padding: ${theme.layoutPadding} ${theme.layoutPadding} 0.75rem;
+  padding: 1.5rem 1.5rem 0.75rem;
   pointer-events: none;
 
   &::after {

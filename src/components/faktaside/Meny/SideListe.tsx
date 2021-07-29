@@ -20,7 +20,7 @@ const listeElementCommonStyling = css`
   display: flex;
   font-size: 1.1rem;
   font-weight: 600;
-  padding: 0.5rem ${theme.layoutPadding};
+  padding: 0.5rem 1.5rem;
   color: inherit;
   text-decoration: none;
 
