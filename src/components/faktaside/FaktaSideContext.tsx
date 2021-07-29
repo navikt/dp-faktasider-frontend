@@ -16,6 +16,7 @@ const defaultValue: FaktasideContext = {
     },
     oppsett: {},
   },
+  situasjonsvalg: [],
   menuData: [],
 };
 

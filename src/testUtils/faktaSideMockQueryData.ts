@@ -1,5 +1,6 @@
 import { translated } from "./createSanityBlock";
 import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
+import { mockVisForKonverteringstabell } from "../components/BlockContent/VisFor/visFor.testdata";
 
 export const faktaSideMockQueryData: FaktasideQueryData = {
   faktaside: {
@@ -19,5 +20,6 @@ export const faktaSideMockQueryData: FaktasideQueryData = {
     folketrygdensGrunnbellop: 1000,
     title: translated("Domenetittel"),
   },
+  situasjonsvalg: mockVisForKonverteringstabell.map((it) => ({ _id: it._id, name: translated(it.name) })),
   notifikasjoner: [],
 };

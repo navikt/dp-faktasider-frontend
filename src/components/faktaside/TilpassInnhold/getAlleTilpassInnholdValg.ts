@@ -11,9 +11,9 @@ function fjernMarkDefsSomIkkeErIBruk(markDefs: MarkDef[], altInnhold: Block[]) {
 }
 
 function getAlleTilpassInnholdValg(
-  innhold?: Block[],
+  konverteringstabell: VisForSituasjon[],
   kortFortalt?: SanityBlock[],
-  konverteringstabell?: VisForSituasjon[]
+  innhold?: Block[]
 ): TilpassInnholdValg {
   if (!innhold) return [];
   const altInnhold = [...innhold, ...(kortFortalt || [])];
@@ -22,12 +22,12 @@ function getAlleTilpassInnholdValg(
   const alleVisForMarkDefs = alleMarkDefs.filter((markDef) => markDef._type === "visForAnnotation");
   const visForMarkDefsSomErIBruk = fjernMarkDefsSomIkkeErIBruk(alleVisForMarkDefs, altInnhold);
   const situasjonerFraMarkDefs = visForMarkDefsSomErIBruk.flatMap((it) =>
-    getSituasjonerFromVisForConfig(it.visFor, konverteringstabell)
+    getSituasjonerFromVisForConfig(konverteringstabell, it.visFor)
   );
 
   const alleBlockConfigs = getPropertyRecursivlyFromDeepObject<BlockConfigFromParser>(altInnhold, "blockConfig");
   const situasjonerFraBlockConfig = alleBlockConfigs.flatMap((it) =>
-    getSituasjonerFromVisForConfig(it.visFor, konverteringstabell)
+    getSituasjonerFromVisForConfig(konverteringstabell, it.visFor)
   );
 
   return getUniqueStrings([...situasjonerFraMarkDefs, ...situasjonerFraBlockConfig]).sort();

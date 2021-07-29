@@ -84,7 +84,7 @@ function createVisForMark(config: { visPaaSideIder?: string[]; visFor?: string[]
       _key: markKey,
       _type: "visForAnnotation",
       visFor: {
-        situasjoner: config.visFor,
+        visForSituasjoner: config.visFor?.map((id) => ({ _ref: id })),
         skjulFor: config.omvendtFiltrering,
         _type: "visFor",
       },

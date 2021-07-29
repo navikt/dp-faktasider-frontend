@@ -54,7 +54,7 @@ export interface FaktasideQueryData {
     folketrygdensGrunnbellop?: number;
     snarveier?: Snarvei[];
   };
-  situasjonsvalg?: { _ref: string; label: Translations<string> };
+  situasjonsvalg?: { _id: string; name: Translations<string> }[];
   notifikasjoner?: Notifikasjon[];
 }
 

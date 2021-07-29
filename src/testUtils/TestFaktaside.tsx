@@ -19,6 +19,7 @@ function TestFaktaside(props: Props) {
   const oppsett = { ...faktaSideMockQueryData.oppsett, ...props.partialOppsett };
 
   const faktasideData: FaktasideQueryData = {
+    ...faktaSideMockQueryData,
     faktaside: {
       ...faktaSide,
       innhold: props.innhold ? translated(props.innhold) : faktaSide.innhold,

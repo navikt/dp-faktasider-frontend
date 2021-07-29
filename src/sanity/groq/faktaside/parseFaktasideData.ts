@@ -27,7 +27,7 @@ export interface FaktasideParsedData {
   notifikasjoner?: Notifikasjon[];
   snarveier?: Snarvei[];
   rawData: FaktasideQueryData;
-  situasjonsvalg?: VisForSituasjon[];
+  situasjonsvalg: VisForSituasjon[];
 }
 
 export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLanguage): FaktasideParsedData {
@@ -38,14 +38,14 @@ export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLang
   const relevanteSnarveier = localizedPage.oppsett.snarveier?.filter((snarvei) =>
     snarvei.visPaaSider?.some((side) => side === data.faktaside.id)
   );
-  const situasjonsvalg = localizedPage.situasjonsvalg;
+  const situasjonsvalg = localizedPage.situasjonsvalg || [];
 
   return {
     ...localizedPage.oppsett,
     ...localizedPage.faktaside,
     innhold: parsedInnhold,
     kortFortalt: parsedKortFortalt,
-    tilpassInnholdValg: getAlleTilpassInnholdValg(parsedInnhold, parsedKortFortalt, situasjonsvalg),
+    tilpassInnholdValg: getAlleTilpassInnholdValg(situasjonsvalg, parsedKortFortalt, parsedInnhold),
     publiseringsTidspunkt,
     notifikasjoner: localizedPage.notifikasjoner,
     rawData: data,

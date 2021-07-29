@@ -18,10 +18,9 @@ export function getUniqueStrings(strings?: string[]) {
 export type VisForSituasjon = { _id: string; name: string };
 
 export function getSituasjonerFromVisForConfig(
-  visForConfig: VisForConfig | undefined,
-  konverteringstabell?: VisForSituasjon[]
+  konverteringstabell: VisForSituasjon[],
+  visForConfig?: VisForConfig
 ): string[] {
-  console.log(konverteringstabell, visForConfig);
   return [
     ...getUniqueStrings(visForConfig?.situasjoner),
     ...getUniqueStrings(
@@ -33,11 +32,11 @@ export function getSituasjonerFromVisForConfig(
 }
 
 export function visBasertPåFiltrering(
+  konverteringstabell: VisForSituasjon[],
   visForContext: VisForContextI,
-  visForConfig?: VisForConfig,
-  konverteringstabell?: VisForSituasjon[]
+  visForConfig?: VisForConfig
 ) {
-  const relevanteSituasjoner = getSituasjonerFromVisForConfig(visForConfig, konverteringstabell);
+  const relevanteSituasjoner = getSituasjonerFromVisForConfig(konverteringstabell, visForConfig);
   const omvendtFiltrering = !!visForConfig?.skjulFor;
   const valgtFiltrering = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
@@ -69,9 +68,9 @@ function VisFor(props: Props) {
   }
 
   const { situasjoner, vis, omvendtFiltrering } = visBasertPåFiltrering(
+    konverteringstabell,
     visForContext,
-    props.visForConfig,
-    konverteringstabell
+    props.visForConfig
   );
 
   if (vis) {
