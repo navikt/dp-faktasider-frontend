@@ -4,63 +4,72 @@ import { useMount } from "react-use";
 import { loggSidevisning } from "../../utils/logging";
 import useLoggUtdatertHashlenke from "./useLoggUtdatertHashlenke";
 import IkkeOversatt from "./IkkeOversatt";
-import { FaktasideProvider } from "./FaktaSideContext";
+import { createFaktasideContext, FaktasideProvider, useFaktasideContext } from "./FaktaSideContext";
 import SEO from "../SEO";
 import FaktaSideLayout from "./FaktaSideLayout";
 import BlockContent from "../BlockContent/BlockContent";
-import { useRouter } from "next/router";
-import { SupportedLanguage } from "../../i18n/supportedLanguages";
-import Error from "next/error";
 import useBreadcrumbs from "./useBreadcrumbs";
-import { FaktasideParsedData } from "../../sanity/groq/faktaside/parseFaktasideData";
 import Notifikasjoner from "../Notifikasjoner";
 import KortFortalt from "./content/KortFortalt";
 import Snarveier from "./content/Snarveier";
 import Header from "./content/Header";
 import useLanguageSelector from "./useLanguageSelector";
-import { MenuItem } from "../../sanity/groq/menu/parseMenuData";
 import TilpassInnhold from "./TilpassInnhold/TilpassInnhold";
+import { useLocale } from "../../i18n/useLocale";
+import { FaktasideStaticProps } from "../../pages/[slug]";
 
-export interface FaktasideProps extends FaktasideParsedData {
-  menuData: MenuItem[];
-}
+export type FaktasideRawData = Omit<FaktasideStaticProps, "slug">;
 
-function Faktaside(props: FaktasideProps) {
-  const lang = useRouter().locale as SupportedLanguage;
-  const wordCountRef = useRef<HTMLDivElement>(null);
+function FaktasideContainer(props: FaktasideRawData) {
+  const locale = useLocale();
+  const faktasideContext = createFaktasideContext(props, locale);
+  const erPublisertPåSpråk = faktasideContext.visSprakversjon?.[locale];
+  const tittel = faktasideContext.title || "";
 
-  if (!props.id) {
-    return <Error statusCode={404} />;
-  }
-
-  const erPublisert = props.visSprakversjon?.[lang];
-  const tittel = props.title || "";
-  const beskrivelse = props.beskrivelse || "";
-
-  useBreadcrumbs(props.domainTitle, [{ tittel: props.title || "Du er her", path: props.slug }]);
+  useBreadcrumbs(faktasideContext.domainTitle, [
+    { tittel: faktasideContext.title || "Du er her", path: faktasideContext.slug },
+  ]);
   useLanguageSelector();
   useMount(() => loggSidevisning(tittel));
   useLoggUtdatertHashlenke();
 
-  if (!erPublisert) {
-    return <IkkeOversatt {...props} />;
+  if (!erPublisertPåSpråk) {
+    return <IkkeOversatt {...faktasideContext} />;
   }
 
   return (
-    <FaktasideProvider faktasideProps={props}>
-      <SEO title={tittel} description={beskrivelse} seoImage={props.rawData.oppsett.seoImage} path={`/${props.slug}`} />
-      <FaktaSideLayout>
-        <Header />
-        <Notifikasjoner notifikasjoner={props?.notifikasjoner} />
-        <div ref={wordCountRef}>
-          <KortFortalt blocks={props.kortFortalt} beskrivelse={beskrivelse} />
-          {wordCountRef && <TilpassInnhold wordCountRef={wordCountRef} />}
-          <BlockContent blocks={props.innhold} />
-          <Snarveier snarveier={props.snarveier} />
-        </div>
-      </FaktaSideLayout>
+    <FaktasideProvider faktasideContext={faktasideContext}>
+      <Faktaside />
     </FaktasideProvider>
   );
 }
 
-export default Faktaside;
+function Faktaside() {
+  const context = useFaktasideContext();
+  const tittel = context.title || "";
+  const beskrivelse = context.beskrivelse || "";
+  const wordCountRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <>
+      <SEO
+        title={tittel}
+        description={beskrivelse}
+        seoImage={context.rawData.oppsett.seoImage}
+        path={`/${context.slug}`}
+      />
+      <FaktaSideLayout>
+        <Header />
+        <Notifikasjoner notifikasjoner={context?.notifikasjoner} />
+        <div ref={wordCountRef}>
+          <KortFortalt blocks={context.kortFortalt} beskrivelse={beskrivelse} />
+          {wordCountRef && <TilpassInnhold wordCountRef={wordCountRef} />}
+          <BlockContent blocks={context.innhold} />
+          <Snarveier snarveier={context.snarveier} />
+        </div>
+      </FaktaSideLayout>
+    </>
+  );
+}
+
+export default FaktasideContainer;

@@ -6,9 +6,9 @@ import withErrorBoundary from "../../components/withErrorBoundary";
 import { useMount } from "react-use";
 import { loggIkkeOversatt } from "../../utils/logging";
 import Link from "next/link";
-import { FaktasideProps } from "./Faktaside";
 import SEO from "../SEO";
 import { BodyShort, Title } from "@navikt/ds-react";
+import { FaktasideContext } from "./FaktaSideContext";
 
 const Style = styled.div`
   display: flex;
@@ -27,7 +27,7 @@ const StyledBodyShort = styled(BodyShort)`
   margin: 2rem 0 0 !important;
 `;
 
-function IkkeOversatt(props: FaktasideProps) {
+function IkkeOversatt(props: FaktasideContext) {
   const page = props;
   const { t } = useTranslation("global");
   const title = page.title || "";

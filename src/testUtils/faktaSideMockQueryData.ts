@@ -1,23 +1,19 @@
-import { createSanityBlock, translated } from "./createSanityBlock";
+import { translated } from "./createSanityBlock";
 import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
 
 export const faktaSideMockQueryData: FaktasideQueryData = {
   faktaside: {
     _updatedAt: new Date().toISOString(),
-    innhold: translated([
-      createSanityBlock("Dette er en overskrift", { style: "h2" }),
-      createSanityBlock("Dette er litt innhold"),
-    ]),
-    title: translated("Faktasidemock"),
-    id: "id",
+    innhold: translated([]),
+    title: translated("Test-faktaside"),
+    id: "testId",
     slug: "test",
-    beskrivelse: translated("Dette er testdata"),
+    beskrivelse: translated("Testbeskrivelse for søkemotor"),
     visSprakversjon: {
       no: true,
       en: false,
     },
     kortFortalt: translated([]),
-    visIngenValgPasser: true,
   },
   oppsett: {
     folketrygdensGrunnbellop: 1000,

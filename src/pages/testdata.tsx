@@ -19,6 +19,7 @@ import { sistOppdatertTestdata } from "../components/faktaside/content/SistOppda
 import { wordCountTestData } from "../../cypress/testData/wordcount.testdata";
 import { GtilNOKAnnotationTestdata } from "../components/BlockContent/GtilNOKAnnotation/GtilNOKAnnotation.testdata";
 import { Button, Title } from "@navikt/ds-react";
+import { språktestData } from "../testUtils/språk.testdata";
 
 type FaktasideData = FaktasideQueryData["faktaside"];
 
@@ -108,6 +109,10 @@ const testData: Testdata[] = [
   {
     name: "Cypress - word count",
     data: { innhold: translated(wordCountTestData.innhold), kortFortalt: translated(wordCountTestData.kortFortalt) },
+  },
+  {
+    name: "Cypress - språktest",
+    data: { kortFortalt: språktestData, visSprakversjon: { no: true, en: true } },
   },
   {
     name: "GtilNOK",
