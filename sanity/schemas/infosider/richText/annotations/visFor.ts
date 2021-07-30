@@ -14,14 +14,14 @@ export default {
         'Skru på denne for å skjule teksten for valgte situasjoner istedenfor å vise. (Vil fortsatt vises dersom bruker ikke har valgt filtrering eller velger "Ingen valg passer").',
     },
     {
-      title: "Situasjoner",
+      title: "Situasjoner GAMMEL",
       name: "situasjoner",
       type: "array",
       of: [{ type: "string" }],
       inputComponent: VelgSituasjoner,
     },
     {
-      title: "SituasjonerNY",
+      title: "Situasjoner NY",
       name: "visForSituasjoner",
       type: "array",
       of: [{ type: "reference", to: [{ type: "situasjon" }] }],

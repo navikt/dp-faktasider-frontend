@@ -60,7 +60,6 @@ function RefArrayAsChecboxesInput(props: Props) {
   }
 
   const currentValues = props.value || [];
-  console.log(currentValues, props.tilgjengeligeValg);
 
   const handleChange = (id: string) => {
     const newValues: Ref[] = sjekkErValgt(id)
