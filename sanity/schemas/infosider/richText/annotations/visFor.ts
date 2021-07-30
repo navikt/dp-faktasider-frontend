@@ -14,6 +14,7 @@ export default {
         'Skru på denne for å skjule teksten for valgte situasjoner istedenfor å vise. (Vil fortsatt vises dersom bruker ikke har valgt filtrering eller velger "Ingen valg passer").',
     },
     {
+      //todo: slett meg når gamle situasjoner er overflødig
       title: "Situasjoner GAMMEL",
       name: "situasjoner",
       type: "array",

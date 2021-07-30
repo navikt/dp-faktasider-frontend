@@ -11,7 +11,7 @@ const skjulForColor = "#f048";
 
 type VisFor = {
   skjulFor?: boolean;
-  situasjoner?: string[];
+  situasjoner?: string[]; //todo: slett meg når gamle situasjoner er overflødig
   visForSituasjoner?: { _ref: string }[];
 };
 type VisPaa = { _ref: string }[];
@@ -62,6 +62,7 @@ export function InlineVisForPreview(props: Props) {
   const label = visForSituasjonLabel + visPaaSideLabel || "Ingen situasjoner valgt";
   const color = props.visFor?.skjulFor ? skjulForColor : visForColor;
 
+  //todo: slett meg når gamle situasjoner er overflødig
   if (props.visFor.situasjoner?.length) {
     return (
       <InlinePreview label={"Gamle situasjoner! Bytt ut til ny situasjonsvelger"} color="red">
