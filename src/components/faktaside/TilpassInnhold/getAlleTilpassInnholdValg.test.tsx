@@ -2,36 +2,37 @@ import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
 import getAlleTilpassInnholdValg from "./getAlleTilpassInnholdValg";
 import { Block, SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
 import { createSanityBlock } from "../../../testUtils/createSanityBlock";
+import { mockVisForKonverteringstabell } from "../../BlockContent/VisFor/visFor.testdata";
 
 describe("getAlleFiltreringsValgForInnhold", () => {
   test("lager en liste over alle tilgjengelige filtrerinsvalg for innhold", () => {
     const getAlleTilpassInnholdValgTestdata: SanityBlock[] = [
-      createSanityBlock("Skal vises for student", { visFor: ["student"] }),
-      createSanityBlock("Skal også vises for student", { visFor: ["student"] }),
+      createSanityBlock("Skal vises for student", { visFor: ["stud-id"] }),
+      createSanityBlock("Skal også vises for student", { visFor: ["stud-id"] }),
       createSanityBlock("Overskrift", { style: "h2" }),
       createSanityBlock("Jeg har en mark som ikke skal regnes med", { marks: ["randomMark"] }),
-      createSanityBlock("Skal vises for permittert", { visFor: ["permittert"] }),
+      createSanityBlock("Skal vises for permittert", { visFor: ["perm-id"] }),
     ];
 
     const parsedText = parseRichText(getAlleTilpassInnholdValgTestdata);
-    const filtreringsValg = getAlleTilpassInnholdValg(parsedText);
+    const filtreringsValg = getAlleTilpassInnholdValg(mockVisForKonverteringstabell, undefined, parsedText);
 
     expect(filtreringsValg).toHaveLength(2);
-    expect(filtreringsValg).toContain("student");
-    expect(filtreringsValg).toContain("permittert");
+    expect(filtreringsValg).toContain("Student");
+    expect(filtreringsValg).toContain("Permittert");
   });
 
   test("tar med visFor-info på gruppe-config", () => {
     const getAlleTilpassInnholdValgTestdata: SanityBlock[] = [
-      createSanityBlock("Overskrift", { style: "h2", visFor: ["student"] }),
+      createSanityBlock("Overskrift", { style: "h2", visFor: ["stud-id"] }),
       createSanityBlock("Skal vises for permittert"),
     ];
 
     const parsedText = parseRichText(getAlleTilpassInnholdValgTestdata);
-    const filtreringsValg = getAlleTilpassInnholdValg(parsedText);
+    const filtreringsValg = getAlleTilpassInnholdValg(mockVisForKonverteringstabell, undefined, parsedText);
 
     expect(filtreringsValg).toHaveLength(1);
-    expect(filtreringsValg).toContain("student");
+    expect(filtreringsValg).toContain("Student");
   });
 
   test("tar ikke med markDefs som ikke er i bruk", () => {
@@ -52,7 +53,7 @@ describe("getAlleFiltreringsValgForInnhold", () => {
           _type: "visForAnnotation",
           visFor: {
             _type: "visFor",
-            situasjoner: ["Mottar annen støtte fra NAV"],
+            visForSituasjoner: [{ _ref: "stud-id" }],
           },
         },
       ],
@@ -60,7 +61,7 @@ describe("getAlleFiltreringsValgForInnhold", () => {
     };
 
     const parsedText = parseRichText([blockMedUbrukMarkDef]);
-    const filtreringsValg = getAlleTilpassInnholdValg(parsedText);
+    const filtreringsValg = getAlleTilpassInnholdValg(mockVisForKonverteringstabell, undefined, parsedText);
 
     expect(filtreringsValg).toHaveLength(0);
   });

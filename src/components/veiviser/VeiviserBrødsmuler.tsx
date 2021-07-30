@@ -8,6 +8,7 @@ const Style = styled.div`
 `;
 
 const BrødsmuleStyle = styled.button`
+  display: inline-flex;
   background-color: transparent;
   border: none;
   &:not(:last-child) {

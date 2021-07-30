@@ -2,7 +2,8 @@ import { Modify } from "../typeUtils";
 import { Group } from "./parser/groupParser/groupParser";
 
 export type VisForConfig = {
-  situasjoner?: string[];
+  visForSituasjoner?: { _ref: string }[];
+  situasjoner?: string[]; //todo: slett meg når gamle situasjoner er overflødig
   skjulFor?: boolean;
   _type: "visFor";
 };

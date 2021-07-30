@@ -21,6 +21,7 @@ import localize from "../utils/localize";
 import historikkHjelpetekster from "./historikk/historikkHjelpetekster";
 import historikkRichText from "./historikk/historikkRichText";
 import oppsettRichText from "./oppsett/oppsettRichText";
+import situasjon from "./richText/annotations/situasjon";
 
 export const infosideSchemas = [
   richText,
@@ -45,6 +46,7 @@ export const infosideSchemas = [
   historikkHjelpetekster,
   historikkRichText,
   oppsettRichText,
+  situasjon,
   localize("historikkRichText"),
   localize("notifikasjonRichText"),
   localize("kortFortaltRichText"),

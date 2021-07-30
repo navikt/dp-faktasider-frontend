@@ -58,7 +58,7 @@ function MenuItem(props: { item: Group; current: boolean }) {
   };
 
   const vis =
-    visBasertPåFiltrering(visForContext, blockConfig?.visFor).vis &&
+    visBasertPåFiltrering(faktaside.situasjonsvalg, visForContext, blockConfig?.visFor).vis &&
     visBasertPaaVisPaaConfig(faktaside.id, blockConfig?.visPaaSider);
 
   return (

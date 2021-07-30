@@ -84,7 +84,10 @@ function Demoapp(props: Props) {
   const overskriftsValg: VeiviserValg<Group>[] =
     context.side?.innhold
       ?.filter(isGroup)
-      .filter((group: Group) => visBasertPåFiltrering(visForContest, group.blockConfig?.visFor).vis)
+      .filter(
+        (group: Group) =>
+          visBasertPåFiltrering(context.side?.situasjonsvalg || [], visForContest, group.blockConfig?.visFor).vis
+      )
       .filter((group: Group) => visBasertPaaVisPaaConfig(state.context.side?.id || "", group.blockConfig?.visPaaSider))
       .filter((group: Group) => isDevelopment() || !group.blockConfig?.erUtkast)
       .map((group) => ({
