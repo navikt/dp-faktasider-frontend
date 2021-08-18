@@ -21,7 +21,7 @@ type Valg = {
   _id: string;
 };
 
-function getVisForLabel(visFor: VisFor, situasjonstabell: Valg[]): string {
+function getVisForLabel(visFor: VisFor = {}, situasjonstabell: Valg[]): string {
   if (!visFor.visForSituasjoner?.length) {
     return "";
   }
@@ -37,7 +37,7 @@ function getVisForLabel(visFor: VisFor, situasjonstabell: Valg[]): string {
 
 interface Props {
   visPaaSider?: VisPaa;
-  visFor: VisFor;
+  visFor?: VisFor;
   children: ReactNode;
   _type: "visForAnnotation";
 }
@@ -63,7 +63,7 @@ export function InlineVisForPreview(props: Props) {
   const color = props.visFor?.skjulFor ? skjulForColor : visForColor;
 
   //todo: slett meg når gamle situasjoner er overflødig
-  if (props.visFor.situasjoner?.length) {
+  if (props.visFor?.situasjoner?.length) {
     return (
       <InlinePreview label={"Gamle situasjoner! Bytt ut til ny situasjonsvelger"} color="red">
         {props.children}
