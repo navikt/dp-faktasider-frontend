@@ -10,7 +10,7 @@ const FaktasidePreview = (ctx: any) => {
     return <div>Faktasiden må ha en slug (url) før den kan forhåndsvises</div>;
   }
 
-  const path = `/${slug}?preview=true&dataset=${dataset}`;
+  const path = `/${slug}?hemmelig=true&preview=true&dataset=${dataset}`;
 
   return <WebPreviewWrapper path={path} />;
 };
