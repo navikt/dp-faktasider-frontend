@@ -1,5 +1,6 @@
 # Dummyfil for å trigge bygg og deploy av faktasider på nav.no/arbeid/no/
 
+rebuild faktasider
 Gjør en liten endring i denne fila og commit til main. Skriv feks noe tekst.
 
 :scream: greier å kompilere lokalt, men mangler postCSS når det bygges på github?
