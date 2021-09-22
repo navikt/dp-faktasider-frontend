@@ -31,7 +31,7 @@ function VelgDetSomPasserBest<Type>(props: Props<Type>) {
   return (
     <Style>
       {props.valg.map((valg) => (
-        <LinkPanel border={true} href={"#"} onClick={() => props.setValg(valg.object)}>
+        <LinkPanel key={valg.id} border={true} href={"#"} onClick={() => props.setValg(valg.object)}>
           {valg.label}
         </LinkPanel>
       ))}

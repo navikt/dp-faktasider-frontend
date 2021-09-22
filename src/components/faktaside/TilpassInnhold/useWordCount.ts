@@ -10,7 +10,7 @@ export function useWordCount(contentRef: RefObject<HTMLElement>) {
 
   useEffect(() => {
     setTotalWordCount(getWordCount(contentRef));
-  }, [id]);
+  }, [contentRef, id]);
 
   useEffect(() => {
     if (checked.length || ingenPasserMeg) {

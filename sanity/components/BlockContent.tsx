@@ -9,7 +9,13 @@ import TillegsInformasjonPreview from "../schemas/infosider/tillegsinfo/TillegsI
 import { InlineUtkast } from "../schemas/infosider/richText/Utkast";
 import VideoPreview from "../schemas/video/VideoPreview";
 import { InlineVisForPreview } from "../schemas/infosider/richText/VisForPreview";
-import { H2Header, H3Header, H2NoBackround, H2HeaderMMeny, H4Header } from "../schemas/infosider/richText/HeaderPreviews";
+import {
+  H2Header,
+  H3Header,
+  H2NoBackround,
+  H2HeaderMMeny,
+  H4Header,
+} from "../schemas/infosider/richText/HeaderPreviews";
 import TidslinjePreview, { TidslinjePunkt } from "../schemas/infosider/tidslinje/TidslinjePreview";
 import { LenkePreview } from "../schemas/infosider/richText/annotations/link";
 
@@ -53,10 +59,10 @@ const serializers: Serializers = {
     tidslinje: (props) => <TidslinjePreview blocks={props.node.innhold} />,
   },
   marks: {
-    GtilNOK: (props) => <GtilNOKPeview children={props.children} />,
+    GtilNOK: (props) => <GtilNOKPeview> {props.children}</GtilNOKPeview>,
     utkast: InlineUtkast,
-    visForAnnotation: (props) => <InlineVisForPreview {...props.mark} children={props.children} />,
-    link: (props) => <LenkePreview {...props.mark} children={props.children} />,
+    visForAnnotation: (props) => <InlineVisForPreview {...props.mark}>{props.children}</InlineVisForPreview>,
+    link: (props) => <LenkePreview {...props.mark}>{props.children}</LenkePreview>,
   },
 };
 

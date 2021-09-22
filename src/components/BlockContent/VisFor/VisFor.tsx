@@ -1,5 +1,4 @@
-import * as React from "react";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { useVisForContext, VisForContextI } from "./VisForContext";
 import VisForDebug from "./VisForDebug";
 import { VisForConfig } from "../../../utils/richTextUtils/richTextTypes";
@@ -79,8 +78,9 @@ function VisFor(props: Props) {
         situasjoner={situasjoner}
         omvendtFiltrering={omvendtFiltrering}
         as={props.inline ? "span" : undefined}
-        children={props.children}
-      />
+      >
+        {props.children}
+      </VisForDebug>
     );
   }
 
