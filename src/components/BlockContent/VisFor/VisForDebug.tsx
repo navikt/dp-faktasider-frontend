@@ -1,5 +1,4 @@
-import * as React from "react";
-import { ReactNode } from "react";
+import React, { PropsWithChildren } from "react";
 import { useDevContext } from "../../DevKnapper/DevContext";
 import styled from "styled-components/macro";
 
@@ -8,7 +7,6 @@ const color = "#80f8";
 interface Props {
   situasjoner: string[];
   omvendtFiltrering: boolean;
-  children: ReactNode;
   as?: "span";
 }
 
@@ -28,7 +26,7 @@ const Style = styled.div<{ debugInfo: string }>`
   }
 `;
 
-function VisForDebug(props: Props) {
+function VisForDebug(props: PropsWithChildren<Props>) {
   const devContext = useDevContext();
   const debug = devContext.value.highlightFiltrering && props.situasjoner.length;
   const debugInfo = (props.omvendtFiltrering ? "Skjules for " : "Vises for ") + props.situasjoner.join(" & ");

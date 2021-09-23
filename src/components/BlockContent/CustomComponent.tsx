@@ -22,7 +22,7 @@ function CustomComponent(props: Props) {
     case "DagpengeKalkulator - lærling":
       return <DagpengerKalkulatorLRling />;
     default:
-      return <Alert variant="error">Ukjent komponent: "{props.node.komponent}"</Alert>;
+      return <Alert variant="error">Ukjent komponent: `&quot;`{props.node.komponent}`&quot;`</Alert>;
   }
 }
 
