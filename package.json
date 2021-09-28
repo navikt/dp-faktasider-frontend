@@ -69,11 +69,11 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently \"next\" \"cd sanity && sanity start\"",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "cypress:open": "npx cypress open",
+    "cypress:open": "concurrently \"next\" \"npx cypress open\"",
     "cypress:run": "npm run build && concurrently \"npm run start\" \"npx cypress run\"",
     "typeCheck": "tsc",
     "postinstall": "lerna bootstrap",
