@@ -17,6 +17,15 @@ const config = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/student",
+        destination: "/utdanning",
+        permanent: true,
+      },
+    ];
+  },
   i18n: {
     locales: ["no", "en"],
     defaultLocale: "no",
