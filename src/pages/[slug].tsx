@@ -13,12 +13,11 @@ const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   const faktasidePaths = await sanityClient.fetch(pathsQuery);
-  const filtrertePaths = faktasidePaths.filter((value) => value != "student"); //todo slett meg når det ikke lenger lenkes eksternt til /student, gå tilbake til å bruke vanlig faktasidepaths
-  const paths = filtrertePaths.flatMap((slug) => supportedLanguages.map((locale) => ({ params: { slug }, locale })));
+  const paths = faktasidePaths.flatMap((slug) => supportedLanguages.map((locale) => ({ params: { slug }, locale })));
 
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 

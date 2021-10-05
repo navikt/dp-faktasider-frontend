@@ -3,7 +3,6 @@ import { Group } from "./parser/groupParser/groupParser";
 
 export type VisForConfig = {
   visForSituasjoner?: { _ref: string }[];
-  situasjoner?: string[]; //todo: slett meg når gamle situasjoner er overflødig
   skjulFor?: boolean;
   _type: "visFor";
 };
