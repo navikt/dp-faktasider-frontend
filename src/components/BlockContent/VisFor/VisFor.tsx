@@ -21,7 +21,6 @@ export function getSituasjonerFromVisForConfig(
   visForConfig?: VisForConfig
 ): string[] {
   return [
-    ...getUniqueStrings(visForConfig?.situasjoner),
     ...getUniqueStrings(
       visForConfig?.visForSituasjoner
         ?.map((ref) => ref._ref)

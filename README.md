@@ -83,6 +83,7 @@ Nextjs sjekker med jevne mellomrom for nytt innhold fra sanity som automatisk vi
 
 Spørsmål tilknyttet koden kan rettes mot:
 
+- Sindre Sægrov, sindre.segrov@nav.no
 - Knut Magne Riise, knut.magne.riise@nav.no
 - Synneva Aasbrenn, synneva.aasbrenn@nav.no
 
