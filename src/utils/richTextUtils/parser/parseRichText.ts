@@ -4,10 +4,9 @@ import { groupParser } from "./groupParser/groupParser";
 import { makeUniqeHashLinkIDs } from "./makeUniqeGroupIDs/makeUniqeHashLinkIDs";
 import { parseDelteTekster } from "./parseDelteTekster/parseDelteTekster";
 
-export type ParsedRichText = Block[];
 export type RichTextParser = (blocks: Block[]) => Block[];
 
-function parseRichText(blocks?: SanityBlock[]): ParsedRichText {
+function parseRichText(blocks?: SanityBlock[]): Block[] {
   if (!blocks) {
     return [];
   }

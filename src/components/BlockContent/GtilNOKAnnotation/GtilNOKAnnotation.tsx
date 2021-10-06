@@ -1,6 +1,5 @@
-import * as React from "react";
-import { useEffect } from "react";
-import withErrorBoundary from "../../withErrorBoundary";
+import React, { useEffect } from "react";
+import { withErrorBoundary } from "../../withErrorBoundary";
 import { loggError, loggHistorikk } from "../../../utils/logging";
 import { useGrunnbellop } from "../../../utils/folketrygdensGrunnbeløp";
 import { useDevContext } from "../../DevKnapper/DevContext";

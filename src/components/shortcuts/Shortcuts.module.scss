@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: var(--navds-color-white);
+  padding: 3rem 0 4rem;
+
+  section {
+    width: 55rem;
+    max-width: 100vw;
+    margin: auto clamp(1rem, 4vw, 2rem);
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @supports (display: grid) {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+      grid-gap: 1.5rem;
+    }
+
+    li {
+      flex: 15rem 0 0;
+    }
+  }
+
+  a {
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      margin-right: 0.75rem;
+      transition: 0.3s;
+      position: relative;
+      left: 0;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      text-decoration: underline;
+
+      svg {
+        left: 0.5rem;
+      }
+    }
+  }
+}

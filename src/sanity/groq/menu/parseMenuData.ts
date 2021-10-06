@@ -1,13 +1,13 @@
 import { SupportedLanguage, supportedLanguages } from "../../../i18n/supportedLanguages";
 import {
   MenuQueryData,
+  MenylenkeEkstern,
   MenylenkeInternRaw,
   MenyLenkeRaw,
   TranslatedMenuDataSide,
   TranslatedMenuQueryData,
 } from "./menuQuery";
 import localizeSanityContent from "../../../i18n/localizeSanityContent";
-import { MenylenkeEkstern } from "./menuQuery";
 
 export interface MenylenkeInternParsed {
   path: string;

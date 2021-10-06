@@ -1,16 +1,15 @@
-import H2Section from "../Section/H2Section";
-import BlockContent from "../BlockContent/BlockContent";
 import React from "react";
+import H2Section from "../Section/H2Section";
+import { SanityContent } from "../sanity-content/SanityContent";
 import { typografiStyle } from "../faktaside/FaktaSideLayout";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import parseRichText from "../../utils/richTextUtils/parser/parseRichText";
 import { HistoriskDokument } from "./api/historikkFetcher";
 import styled from "styled-components/macro";
 import useUniqueId from "../../utils/useUniqueId";
-import { Alert, BodyShort, Title } from "@navikt/ds-react";
+import { Alert, BodyShort, Link, Title } from "@navikt/ds-react";
 import { useHistorikkContext } from "./HistorikkContext";
-import withErrorBoundary from "../withErrorBoundary";
-import { Link } from "@navikt/ds-react";
+import { withErrorBoundary } from "../withErrorBoundary";
 
 const RekonstruksjonWrapper = styled.article`
   box-shadow: 0 0.2rem 2rem hsl(0deg 0% 70%);
@@ -66,16 +65,16 @@ function FaktasideRekonstruksjon(props: HistoriskDokument) {
       <BodyShort>{props.beskrivelse}</BodyShort>
       {props.kortFortalt && (
         <H2Section title="Kort fortalt" id="kort-fortalt">
-          <BlockContent blocks={props.kortFortalt} />
+          <SanityContent blocks={props.kortFortalt} />
         </H2Section>
       )}
-      <BlockContent blocks={parseHistoriskRichText(props.innhold)} />
+      <SanityContent blocks={parseHistoriskRichText(props.innhold)} />
     </>
   );
 }
 
 function DeltTekstRekonstruksjon(props: HistoriskDokument) {
-  return <BlockContent blocks={parseHistoriskRichText(props.innhold)} />;
+  return <SanityContent blocks={parseHistoriskRichText(props.innhold)} />;
 }
 
 function parseHistoriskRichText(blocks?: SanityBlock[]) {

@@ -1,0 +1,12 @@
+.container {
+  margin-bottom: 4vmin;
+  max-width: var(--content-max-width);
+
+  > *:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.label {
+  margin-top: 0.25rem;
+}

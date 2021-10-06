@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 import { Translations } from "../../../types/translations";
-import { Notifikasjon } from "../../../components/Notifikasjoner";
+import { Notification } from "../../../components/notifications/Notifications";
 import { SanityImage } from "../../types";
 import { SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
 
@@ -16,7 +16,7 @@ export interface ForsideQueryData {
   beskrivelse?: Translations<string>;
   kortFortalt?: Translations<SanityBlock[]>;
   snarveier?: Snarvei[];
-  notifikasjoner?: Translations<Notifikasjon>;
+  notifikasjoner?: Translations<Notification>;
   title?: Translations<string>;
 }
 

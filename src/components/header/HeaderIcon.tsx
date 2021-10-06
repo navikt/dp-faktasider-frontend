@@ -1,8 +1,8 @@
-import * as React from "react";
+import React from "react";
 
-function HeaderIkon(props: React.SVGProps<SVGSVGElement>) {
+export function HeaderIcon() {
   return (
-    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 15 162 95" {...props}>
+    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 15 162 95">
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -71,5 +71,3 @@ function HeaderIkon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
-
-export default HeaderIkon;

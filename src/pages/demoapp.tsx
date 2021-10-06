@@ -1,10 +1,10 @@
-import * as React from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import UnderArbeid from "../components/veiviser/UnderArbeid";
 import VelgDetSomPasserBest, { VeiviserValg } from "../components/veiviser/VelgDetSomPasserBest";
 import { veiviserMachine } from "../components/veiviser/VeiviserStateChart";
 import { useMachine } from "@xstate/react";
-import BlockContent from "../components/BlockContent/BlockContent";
+import { SanityContent } from "../components/sanity-content/SanityContent";
 import { visBasertPåFiltrering } from "../components/BlockContent/VisFor/VisFor";
 import VeiviserBrødsmuler from "../components/veiviser/VeiviserBrødsmuler";
 import { useVisForContext } from "../components/BlockContent/VisFor/VisForContext";
@@ -90,7 +90,7 @@ function Demoapp(props: Props) {
       )
       .filter((group: Group) => visBasertPaaVisPaaConfig(state.context.side?.id || "", group.blockConfig?.visPaaSider))
       .filter((group: Group) => isDevelopment() || !group.blockConfig?.erUtkast)
-      .map((group) => ({
+      .map((group: Group) => ({
         label: group.title,
         id: group.blockConfig?.id || "N/A",
         object: group,
@@ -150,7 +150,7 @@ function Demoapp(props: Props) {
           >
             Forrige
           </Button>
-          <BlockContent blocks={state.context.group ? [state.context.group] : []} />
+          <SanityContent blocks={state.context.group ? [state.context.group] : []} />
           <Button
             onClick={() =>
               send({

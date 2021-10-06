@@ -1,0 +1,14 @@
+.container {
+  position: relative;
+  box-shadow: 0 0 0 0.2rem #ff0a;
+  background-color: #ff02;
+}
+
+.label {
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  opacity: 0.75;
+}

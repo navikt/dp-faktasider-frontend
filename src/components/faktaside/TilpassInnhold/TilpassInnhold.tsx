@@ -1,8 +1,7 @@
-import * as React from "react";
-import { RefObject, useRef } from "react";
+import React, { RefObject, useRef } from "react";
 import { useVisForContext } from "../../BlockContent/VisFor/VisForContext";
 import styled from "styled-components/macro";
-import withErrorBoundary from "../../../components/withErrorBoundary";
+import { withErrorBoundary } from "../../withErrorBoundary";
 import { theme } from "../../../styles/theme";
 import useUniqueId from "../../../utils/useUniqueId";
 import { UnmountClosed } from "react-collapse";

@@ -1,5 +1,5 @@
+import React from "react";
 import { Title } from "@navikt/ds-react";
-import * as React from "react";
 import styled from "styled-components/macro";
 import CommonSectionMarkup, { CommonSectionProps } from "./CommonSectionMarkup";
 

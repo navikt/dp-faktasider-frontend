@@ -1,10 +1,10 @@
-import * as React from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import { theme } from "../../styles/theme";
-import BlockContent from "./BlockContent";
+import { SanityContent } from "../sanity-content/SanityContent";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import parseRichText from "../../utils/richTextUtils/parser/parseRichText";
-import withErrorBoundary from "../withErrorBoundary";
+import { withErrorBoundary } from "../withErrorBoundary";
 
 interface Props {
   node: {
@@ -45,7 +45,7 @@ function FremhevetTekst(props: Props) {
 
   return (
     <Style>
-      <BlockContent blocks={parsedText} />
+      <SanityContent blocks={parsedText} />
     </Style>
   );
 }

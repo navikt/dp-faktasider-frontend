@@ -7,7 +7,7 @@ import { flattenH2TestData } from "../utils/richTextUtils/parser/flattenH2Versio
 import { makeUniqueIdTestData } from "../utils/richTextUtils/parser/makeUniqeGroupIDs/makeUniqeGroupIDs.testdata";
 import { parseDelteTeksterTestData } from "../utils/richTextUtils/parser/parseDelteTekster/parseDelteTekster.testdata";
 import { groupParserTestData } from "../utils/richTextUtils/parser/groupParser/groupParser.testdata";
-import { utkastTestData } from "../components/BlockContent/utkast/Utkast.testdata";
+import { draftTestdata } from "../components/BlockContent/draft/Draft.testdata";
 import TestFaktaside from "../testUtils/TestFaktaside";
 import { visPaaSideTestData } from "../components/BlockContent/VisFor/VisPaaSide.testdata";
 import { tillegsinformasjonTestData } from "../components/BlockContent/Tilleggsinnformasjon/TilleggsInnformasjon.testdata";
@@ -80,7 +80,7 @@ const testData: Testdata[] = [
   {
     name: "utkast",
     data: {
-      innhold: translated(utkastTestData),
+      innhold: translated(draftTestdata),
     },
   },
   {

@@ -1,9 +1,9 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import ErrorBoundary from "./ErrorBoundary";
 
-export default function withErrorBoundary<Props>(Component: React.ComponentType<Props>, boundaryName: string) {
+export function withErrorBoundary<Props>(Component: React.ComponentType<Props>, boundaryName: string) {
   // eslint-disable-next-line react/display-name
-  return (props: Props) => (
+  return (props: PropsWithChildren<Props>) => (
     <ErrorBoundary boundaryName={boundaryName}>
       <Component {...props} />
     </ErrorBoundary>

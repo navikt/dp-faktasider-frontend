@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import SlideDown from "../SlideDown";
 import { useHistorikkContext } from "./HistorikkContext";
-import BlockContent from "../BlockContent/BlockContent";
+import { SanityContent } from "../sanity-content/SanityContent";
 import { loggHistorikk } from "../../utils/logging";
 
 const Header = styled.p`
@@ -24,7 +24,8 @@ const IdStyle = styled.p`
   margin-top: 0 !important;
 `;
 
-export function HistoriskDeltTekst(props) {
+//TODO fix props type. Props type inferred from usage temporarily
+export function HistoriskDeltTekst(props: { node: { deltTekst: { _ref: string } } }) {
   const documentId = props.node.deltTekst._ref;
   const historikkContext = useHistorikkContext();
   const href = `/historikk/${documentId}/${historikkContext.requestTimestamp || ""}`;
@@ -41,7 +42,7 @@ export function HistoriskDeltTekst(props) {
         </Link>
       </p>
       <SlideDown title="Hva er en delt tekst?" onClick={() => loggHistorikk('Åpner "Hva er en delt tekst?"')}>
-        <BlockContent blocks={historikkContext.hjelpeTekster?.deltTekstForklaring} />
+        <SanityContent blocks={historikkContext.hjelpeTekster?.deltTekstForklaring} />
       </SlideDown>
     </StyledAlerstripeInfo>
   );

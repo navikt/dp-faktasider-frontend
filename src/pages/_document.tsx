@@ -2,7 +2,7 @@ import Document, { Head, Html, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 import { NextPageContext } from "next";
 import { RenderPage } from "next/dist/next-server/lib/utils";
-import { Components, Props, fetchDecoratorReact } from "@navikt/nav-dekoratoren-moduler/ssr";
+import { Components, fetchDecoratorReact, Props } from "@navikt/nav-dekoratoren-moduler/ssr";
 import { sanityClient } from "../sanity/sanity-config";
 import { domeneTittelQuery } from "../sanity/groq/commonQuerries";
 

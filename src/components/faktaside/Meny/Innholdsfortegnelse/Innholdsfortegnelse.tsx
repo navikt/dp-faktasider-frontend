@@ -1,15 +1,14 @@
-import * as React from "react";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { pxFromTop } from "../../../../utils/domUtils";
 import styled, { css } from "styled-components/macro";
 import { useInnholdsListe } from "./useInnholdsListe";
 import { LenkeUtenUnderstrek } from "../../../../utils/common-styled-components";
-import withErrorBoundary from "../../../../components/withErrorBoundary";
+import { withErrorBoundary } from "../../../withErrorBoundary";
 import { loggMeny } from "../../../../utils/logging";
 import { useVisForContext } from "../../../BlockContent/VisFor/VisForContext";
 import { UnmountClosed } from "react-collapse";
 import { visBasertPåFiltrering } from "../../../BlockContent/VisFor/VisFor";
-import Utkast from "../../../../components/BlockContent/utkast/Utkast";
+import { Draft } from "../../../BlockContent/draft/Draft";
 import { theme } from "../../../../styles/theme";
 import { visBasertPaaVisPaaConfig } from "../../../BlockContent/VisFor/VisPaaSide";
 import { menuHighlightStyle } from "../SideListe";
@@ -62,7 +61,7 @@ function MenuItem(props: { item: Group; current: boolean }) {
     visBasertPaaVisPaaConfig(faktaside.id, blockConfig?.visPaaSider);
 
   return (
-    <Utkast erUtkast={!!blockConfig?.erUtkast}>
+    <Draft isDraft={!!blockConfig?.erUtkast}>
       <UnmountClosed isOpened={vis}>
         <li key={blockConfig?.id}>
           <StyledLenke erValgt={props.current} href={`#${blockConfig?.id}`} onClick={handleClick}>
@@ -70,7 +69,7 @@ function MenuItem(props: { item: Group; current: boolean }) {
           </StyledLenke>
         </li>
       </UnmountClosed>
-    </Utkast>
+    </Draft>
   );
 }
 
