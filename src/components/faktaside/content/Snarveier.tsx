@@ -1,9 +1,9 @@
-import * as React from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components/macro";
 import { theme } from "../../../styles/theme";
 import H2Section from "../../Section/H2Section";
-import withErrorBoundary from "../../../components/withErrorBoundary";
+import { withErrorBoundary } from "../../withErrorBoundary";
 import { Snarvei } from "../../../sanity/groq/forside/forsideQuery";
 import { idFromString } from "../../../utils/idFromString";
 import { Link } from "@navikt/ds-react";

@@ -1,13 +1,13 @@
 import React from "react";
 import { render, within } from "../../../../testUtils/customized-testing-library.test.utils";
-import BlockContent from "../../../../components/BlockContent/BlockContent";
+import { SanityContent } from "../../../../components/sanity-content/SanityContent";
 import { groupParser } from "./groupParser";
 import { groupParserTestData } from "./groupParser.testdata";
 
 test("groupParser grupperer innhold etter overskrift som forventet", () => {
   const parsedBlocks = groupParser(groupParserTestData);
 
-  const { getByLabelText } = render(<BlockContent blocks={parsedBlocks} />);
+  const { getByLabelText } = render(<SanityContent blocks={parsedBlocks} />);
 
   const bolk1 = getByLabelText("Overskrift 1");
   within(bolk1).getByText("Innhold 1");

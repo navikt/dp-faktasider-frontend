@@ -2,7 +2,7 @@ import { SupportedLanguage } from "../../../i18n/supportedLanguages";
 import localizeSanityContent from "../../../i18n/localizeSanityContent";
 import parseRichText, { ParsedRichText } from "../../../utils/richTextUtils/parser/parseRichText";
 import { FaktasideQueryData, LocalizedFaktasideQueryData } from "./faktasideQuery";
-import { Notifikasjon } from "../../../components/Notifikasjoner";
+import { Notification } from "../../../components/notifications/Notifications";
 import { getPubliseringsTidspunkt } from "../../getPubliseringstidspunkt";
 import { Snarvei } from "../forside/forsideQuery";
 import getAlleTilpassInnholdValg from "../../../components/faktaside/TilpassInnhold/getAlleTilpassInnholdValg";
@@ -24,7 +24,7 @@ export interface FaktasideParsedData {
   visIngenValgPasser?: boolean;
   domainTitle?: string;
   folketrygdensGrunnbellop?: number;
-  notifikasjoner?: Notifikasjon[];
+  notifikasjoner?: Notification[];
   snarveier?: Snarvei[];
   rawData: FaktasideQueryData;
   situasjonsvalg: VisForSituasjon[];

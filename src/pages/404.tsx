@@ -1,5 +1,5 @@
 import React from "react";
-import SEO from "../components/SEO";
+import { Head } from "../components/Head";
 import styled from "styled-components/macro";
 import { useTranslation } from "react-i18next";
 import { useMount } from "react-use";
@@ -16,7 +16,7 @@ import { SupportedLanguage } from "../i18n/supportedLanguages";
 import Link from "next/link";
 import { SanityImage } from "../sanity/types";
 import { groq } from "next-sanity";
-import { Title, BodyShort } from "@navikt/ds-react";
+import { BodyShort, Title } from "@navikt/ds-react";
 
 const Style = styled.div`
   margin: 2rem 0;
@@ -82,7 +82,7 @@ const NotFoundPage = (props: Props) => {
 
   return (
     <Style>
-      <SEO title={title} description="Fant ikke siden du lette etter" seoImage={props.data.seoImage} path="/404" />
+      <Head title={title} description="Fant ikke siden du lette etter" seoImage={props.data.seoImage} path="/404" />
       <Title level="1" size="2xl">
         {t("404")}
       </Title>

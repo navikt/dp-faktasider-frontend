@@ -1,6 +1,6 @@
 import { createSanityBlock } from "../../../testUtils/createSanityBlock";
 
-export const utkastTestData = [
+export const draftTestdata = [
   createSanityBlock("Utkast i bulletpointliste", { listItem: "bullet", marks: ["utkast"] }),
   createSanityBlock("Litt tekst", { listItem: "bullet" }),
   createSanityBlock("Frittstående utkast", { marks: ["utkast"] }),

@@ -14,11 +14,9 @@ interface Props {
   retning: Retning;
 }
 
-const StyledChevron = styled(Next)<Props>`
+export const Chevron = styled(Next)<Props>`
   transform: rotate(${(p) => konverteringsTabell[p.retning]}deg);
   transition: transform 0.3s;
   color: currentColor !important;
   display: block;
 `;
-
-export default StyledChevron;

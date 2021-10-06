@@ -1,5 +1,4 @@
-import * as React from "react";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import styled, { css } from "styled-components/macro";
 import ChevronButton from "../../ChevronButton";
 import { useTranslation } from "react-i18next";

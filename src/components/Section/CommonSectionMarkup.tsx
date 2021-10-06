@@ -1,5 +1,4 @@
-import * as React from "react";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { createGlobalStyle, css, StyledComponent } from "styled-components/macro";
 import Anchor from "../Anchor";
 import HashLink from "../HashLink";

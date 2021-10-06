@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-import BlockContent from "../BlockContent/BlockContent";
+import { SanityContent } from "../sanity-content/SanityContent";
 import { typografiStyle } from "../faktaside/FaktaSideLayout";
 import { useHistorikkContext } from "./HistorikkContext";
 import { getTextFromSanityBlock } from "../../utils/richTextUtils/getTextFromSanityBlock";
@@ -38,7 +38,7 @@ function LangInfo(props: { infoId: string }) {
       }}
     >
       <LangInfoStyle>
-        <BlockContent blocks={textWithoutTitle} />
+        <SanityContent blocks={textWithoutTitle} />
       </LangInfoStyle>
     </Accordion>
   );

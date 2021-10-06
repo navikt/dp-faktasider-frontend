@@ -1,10 +1,9 @@
-import * as React from "react";
-import { useEffect, useReducer, useRef } from "react";
+import React, { useEffect, useReducer, useRef } from "react";
 import styled, { css } from "styled-components/macro";
-import BlockContent from "../BlockContent";
+import { SanityContent } from "../../sanity-content/SanityContent";
 import { Tillegsinformasjon } from "../../../utils/richTextUtils/richTextTypes";
 import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
-import withErrorBoundary from "../../withErrorBoundary";
+import { withErrorBoundary } from "../../withErrorBoundary";
 import { useTranslation } from "react-i18next";
 import useUniqueId from "../../../utils/useUniqueId";
 import { theme } from "../../../styles/theme";
@@ -105,7 +104,7 @@ function Tilleggsinnformasjon(props: Props) {
         <StyledLabel>{t("tilleggsinformasjon")}</StyledLabel>
       </StyledHeader>
       <VisMerPanel toggle={() => dispatch("toggle")} open={open}>
-        <BlockContent blocks={parsedText} />
+        <SanityContent blocks={parsedText} />
       </VisMerPanel>
     </StyledAside>
   );

@@ -1,6 +1,5 @@
-import * as React from "react";
+import React, { ErrorInfo } from "react";
 import { Alert, BodyShort, Detail } from "@navikt/ds-react";
-import { ErrorInfo } from "react";
 import SlideDown from "./SlideDown";
 import styled from "styled-components/macro";
 import { loggError } from "../utils/logging";
@@ -29,16 +28,16 @@ const StyledPre = styled.pre`
 `;
 
 class ErrorBoundary extends React.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error: any) {
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: any, errorInfo: any) {
     if (isTest()) {
       throw error;
     }

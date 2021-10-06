@@ -1,6 +1,6 @@
-const url = "http://localhost:3000/arbeid";
-
 describe("basics funker - ", () => {
+  const url = "http://localhost:3000/arbeid";
+
   it("Sjekker at dekoratør er på plass", () => {
     cy.visit(url);
 

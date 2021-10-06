@@ -1,5 +1,4 @@
-import * as React from "react";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import useVisPaaSideDebug from "./useVisPaaSideDebug";
 import { VisPaaConfig } from "../../../utils/richTextUtils/richTextTypes";
 import { useFaktasideContext } from "../../faktaside/FaktaSideContext";

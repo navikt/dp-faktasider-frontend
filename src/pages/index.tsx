@@ -5,8 +5,8 @@ import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
 import { useLocale } from "../i18n/useLocale";
 import { forsideQuery, ForsideQueryData } from "../sanity/groq/forside/forsideQuery";
 import parseForsideData from "../sanity/groq/forside/parseForsideData";
-import Forside from "../components/forside/Forside";
 import { useSanityPreveiw } from "../sanity/useSanityPreview";
+import { Arbeid } from "../views/arbeid/Arbeid";
 
 interface Props {
   forsideData: ForsideQueryData;
@@ -14,7 +14,7 @@ interface Props {
   preview?: boolean;
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const forsideData: ForsideQueryData = await sanityClient.fetch(forsideQuery);
   const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
   return {
@@ -26,13 +26,13 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   };
 };
 
-export default function ForsideWrapper(props: Props) {
-  const forsideData = useSanityPreveiw(props.forsideData, forsideQuery);
+export default function ArbeidWrapper(props: Props) {
+  const arbeidPageData = useSanityPreveiw(props.forsideData, forsideQuery);
   const menuData = useSanityPreveiw(props.menuData, menuQuery);
 
   const lang = useLocale();
-  const parsedForsideData = parseForsideData(forsideData, lang);
+  const parsedArbeidPageData = parseForsideData(arbeidPageData, lang);
   const parsedMenuData = parseMenuData(menuData, lang);
 
-  return <Forside forsideData={parsedForsideData} menuData={parsedMenuData} />;
+  return <Arbeid pageData={parsedArbeidPageData} menuData={parsedMenuData} />;
 }

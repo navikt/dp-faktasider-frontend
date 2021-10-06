@@ -1,0 +1,23 @@
+.container {
+  max-width: 55rem;
+  padding: 2rem clamp(1rem, 4vw, 2rem) 1rem;
+  background-color: var(--navds-color-white);
+}
+
+.content {
+  max-width: 40rem;
+
+  p {
+    margin: 0.5rem 0 1rem;
+  }
+
+  ul li {
+    margin: 0.2rem 0; // Litt mindre luft mellom bulletpoints på forside for å spare plass så brukerne ser navigasjon til videre sider i første skjermbilde
+  }
+
+  ul {
+    li {
+      margin: 0.2rem 0; // Litt mindre luft mellom bulletpoints på forside for å spare plass så brukerne ser navigasjon til videre sider i første skjermbilde
+    }
+  }
+}

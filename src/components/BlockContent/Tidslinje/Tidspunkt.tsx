@@ -1,9 +1,8 @@
-import * as React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components/macro";
 import { theme } from "../../../styles/theme";
-import BlockContent from "../BlockContent";
+import { SanityContent } from "../../sanity-content/SanityContent";
 import { TidslinjePunkt } from "./parseTidslinjedata";
-import { useRef } from "react";
 import { guid } from "nav-frontend-js-utils";
 
 const circleSize = "1.3rem";
@@ -49,8 +48,8 @@ function Tidspunkt(props: TidslinjePunkt) {
 
   return (
     <StyledLi aria-labelledby={id}>
-      <StyledElement id={id}>{props.tittel && <BlockContent blocks={[props.tittel]} />}</StyledElement>
-      <BlockContent blocks={props.innhold} />
+      <StyledElement id={id}>{props.tittel && <SanityContent blocks={[props.tittel]} />}</StyledElement>
+      <SanityContent blocks={props.innhold} />
     </StyledLi>
   );
 }

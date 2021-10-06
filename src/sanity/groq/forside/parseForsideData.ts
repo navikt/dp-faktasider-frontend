@@ -1,17 +1,18 @@
 import localizeSanityContent from "../../../i18n/localizeSanityContent";
 import { SupportedLanguage } from "../../../i18n/supportedLanguages";
-import { Notifikasjon } from "../../../components/Notifikasjoner";
+import { Notification } from "../../../components/notifications/Notifications";
 import { ForsideQueryData, Snarvei } from "./forsideQuery";
 import { SanityImage } from "../../types";
-import parseRichText, { ParsedRichText } from "../../../utils/richTextUtils/parser/parseRichText";
+import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
+import { Block } from "../../../utils/richTextUtils/richTextTypes";
 
 export interface ForsideParsedData {
   seoImage?: SanityImage;
   title?: string;
   snarveier?: Snarvei[];
-  kortFortalt?: ParsedRichText;
+  kortFortalt?: Block[];
   beskrivelse?: string;
-  notifikasjoner?: Notifikasjon[];
+  notifikasjoner?: Notification[];
 }
 
 function parseForsideData(data: ForsideQueryData, lang: SupportedLanguage): ForsideParsedData {

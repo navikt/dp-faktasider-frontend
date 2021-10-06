@@ -1,13 +1,13 @@
 import React from "react";
 import parseRichText from "../parseRichText";
 import { render, within } from "../../../../testUtils/customized-testing-library.test.utils";
-import BlockContent from "../../../../components/BlockContent/BlockContent";
+import { SanityContent } from "../../../../components/sanity-content/SanityContent";
 import { parseDelteTeksterTestData } from "./parseDelteTekster.testdata";
 
 test("innhold fra delt-tekst blir integrert sømløst i resten av innholdet", () => {
   const parsedBlocks = parseRichText(parseDelteTeksterTestData);
 
-  const result = render(<BlockContent blocks={parsedBlocks} />);
+  const result = render(<SanityContent blocks={parsedBlocks} />);
 
   const overskriftFørDeltTekst = result.getByLabelText("Overskrift utenfor delt tekst");
   within(overskriftFørDeltTekst).getByText("Tekst fra delt tekst men før delt overskrift");

@@ -1,7 +1,7 @@
-import * as React from "react";
+import React from "react";
 import VisFor from "./VisFor";
 import { MarkDef } from "../../../utils/richTextUtils/richTextTypes";
-import withErrorBoundary from "../../withErrorBoundary";
+import { withErrorBoundary } from "../../withErrorBoundary";
 import VisPaaSide from "./VisPaaSide";
 
 interface Props {

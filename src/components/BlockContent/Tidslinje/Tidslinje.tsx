@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { TidslinjeI } from "../../../utils/richTextUtils/richTextTypes";
 import { parseTidslinjedata } from "./parseTidslinjedata";
 import Tidspunkt from "./Tidspunkt";

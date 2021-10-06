@@ -1,6 +1,6 @@
-import * as React from "react";
+import React from "react";
 import styled from "styled-components/macro";
-import withErrorBoundary from "../../../components/withErrorBoundary";
+import { withErrorBoundary } from "../../withErrorBoundary";
 import SideListe from "./SideListe";
 import MobilmenyWrapper from "./MobilmenyWrapper";
 import { theme } from "../../../styles/theme";
