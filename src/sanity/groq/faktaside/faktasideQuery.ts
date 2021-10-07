@@ -33,7 +33,7 @@ export const faktasideQuery = groq`{
   'notifikasjoner': *[_type == "notifikasjon" && *[_type == "faktaSide" && slug.current == $slug][0]._id in visPaaFaktaSider]
 }`;
 
-export interface FaktasideQueryData {
+interface Faktaside {
   faktaside: {
     id: string;
     _updatedAt: string;
@@ -48,6 +48,10 @@ export interface FaktasideQueryData {
     };
     visIngenValgPasser?: boolean;
   };
+}
+
+export interface FaktasideQueryData {
+  faktaside: Faktaside | null;
   oppsett: {
     seoImage?: SanityImage;
     title?: Translations<string>;
