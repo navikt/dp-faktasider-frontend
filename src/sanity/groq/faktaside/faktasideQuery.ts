@@ -33,25 +33,23 @@ export const faktasideQuery = groq`{
   'notifikasjoner': *[_type == "notifikasjon" && *[_type == "faktaSide" && slug.current == $slug][0]._id in visPaaFaktaSider]
 }`;
 
-interface Faktaside {
-  faktaside: {
-    id: string;
-    _updatedAt: string;
-    title?: Translations<string>;
-    beskrivelse?: Translations<string>;
-    innhold?: Translations<SanityBlock[]>;
-    kortFortalt?: Translations<SanityBlock[]>;
-    slug: string;
-    visSprakversjon?: {
-      en?: boolean;
-      no?: boolean;
-    };
-    visIngenValgPasser?: boolean;
+export interface IFaktaside {
+  id: string;
+  _updatedAt: string;
+  title?: Translations<string>;
+  beskrivelse?: Translations<string>;
+  innhold?: Translations<SanityBlock[]>;
+  kortFortalt?: Translations<SanityBlock[]>;
+  slug: string;
+  visSprakversjon?: {
+    en?: boolean;
+    no?: boolean;
   };
+  visIngenValgPasser?: boolean;
 }
 
 export interface FaktasideQueryData {
-  faktaside: Faktaside | null;
+  faktaside: IFaktaside | null;
   oppsett: {
     seoImage?: SanityImage;
     title?: Translations<string>;

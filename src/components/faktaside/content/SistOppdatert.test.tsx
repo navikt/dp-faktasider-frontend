@@ -5,13 +5,13 @@ import TestFaktaside from "../../../testUtils/TestFaktaside";
 
 describe("Sist oppdatert funker finfint med internasjonalisering", () => {
   test("På norsk", () => {
-    const result = render(<TestFaktaside partialFaktaside={sistOppdatertTestdata.faktaside} />);
+    const result = render(<TestFaktaside partialFaktaside={sistOppdatertTestdata.faktaside!!} />);
 
     result.getByText(/10. juli 2020 12:54/);
   });
 
   test("På engelsk", () => {
-    const result = render(<TestFaktaside partialFaktaside={sistOppdatertTestdata.faktaside} />, undefined, "en");
+    const result = render(<TestFaktaside partialFaktaside={sistOppdatertTestdata.faktaside!!} />, undefined, "en");
 
     result.getByText(/July 10th 2020 12:54/);
   });

@@ -36,7 +36,7 @@ export function parseFaktasideData(data: FaktasideQueryData, lang: SupportedLang
   const parsedKortFortalt = parseRichText(localizedPage.faktaside?.kortFortalt);
   const publiseringsTidspunkt = getPubliseringsTidspunkt(localizedPage);
   const relevanteSnarveier = localizedPage.oppsett.snarveier?.filter((snarvei) =>
-    snarvei.visPaaSider?.some((side) => side === data.faktaside.id)
+    snarvei.visPaaSider?.some((side) => side === data.faktaside?.id)
   );
   const situasjonsvalg = localizedPage.situasjonsvalg || [];
 

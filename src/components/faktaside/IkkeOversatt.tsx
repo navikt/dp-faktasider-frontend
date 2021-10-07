@@ -39,7 +39,7 @@ function IkkeOversatt(props: FaktasideContext) {
     if (!publisert) {
       return null;
     }
-    const tittel = page.rawData?.faktaside.title?.[lang];
+    const tittel = page.rawData?.faktaside?.title?.[lang];
     return (
       <li key={page.slug}>
         <Link href={`/${page.slug}`} locale={lang}>

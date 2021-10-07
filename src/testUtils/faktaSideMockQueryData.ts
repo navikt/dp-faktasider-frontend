@@ -4,10 +4,10 @@ import { mockVisForKonverteringstabell } from "../components/BlockContent/VisFor
 
 export const faktaSideMockQueryData: FaktasideQueryData = {
   faktaside: {
+    id: "testId",
     _updatedAt: new Date().toISOString(),
     innhold: translated([]),
     title: translated("Test-faktaside"),
-    id: "testId",
     slug: "test",
     beskrivelse: translated("Testbeskrivelse for søkemotor"),
     visSprakversjon: {

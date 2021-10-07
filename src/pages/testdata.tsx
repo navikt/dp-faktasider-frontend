@@ -154,7 +154,7 @@ function reducer(
   switch (action.type) {
     case "setData":
       return {
-        ...faktaSideMockQueryData.faktaside,
+        ...faktaSideMockQueryData.faktaside!!,
         ...action.data,
       };
     default:
