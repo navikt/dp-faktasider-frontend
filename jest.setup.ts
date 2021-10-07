@@ -5,8 +5,8 @@ import "jest-styled-components";
  * */
 jest.mock("react-collapse", () => {
   return {
-    UnmountClosed: (props) => (props.isOpened ? props.children : null),
-    Collapse: (props) => (props.isOpened ? props.children : null),
+    UnmountClosed: (props: any) => (props.isOpened ? props.children : null),
+    Collapse: (props: any) => (props.isOpened ? props.children : null),
   };
 });
 

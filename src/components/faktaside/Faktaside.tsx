@@ -59,7 +59,7 @@ function Faktaside() {
       />
       <FaktaSideLayout>
         <Header />
-        <Notifications notifications={context?.notifikasjoner} />
+        {!!context.notifikasjoner?.length && <Notifications notifications={context.notifikasjoner} />}
         <div ref={wordCountRef}>
           <KortFortalt blocks={context.kortFortalt} beskrivelse={beskrivelse} />
           {wordCountRef && <TilpassInnhold wordCountRef={wordCountRef} />}

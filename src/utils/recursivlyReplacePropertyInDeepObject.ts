@@ -1,8 +1,7 @@
-export function recursivlyReplacePropertyInDeepObject(
-  obj,
-  propertyToReplace: string,
-  replaceFunction: (current) => any
-) {
+// TODO: Fix typing
+// @ts-ignore
+// prettier-ignore
+export function recursivlyReplacePropertyInDeepObject(obj, propertyToReplace: string, replaceFunction: (current) => any) {
   if (Array.isArray(obj)) {
     return obj.map((v) => recursivlyReplacePropertyInDeepObject(v, propertyToReplace, replaceFunction));
   } else if (obj && typeof obj == "object") {

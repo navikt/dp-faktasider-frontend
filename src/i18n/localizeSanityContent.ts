@@ -3,6 +3,8 @@ import { SupportedLanguage } from "./supportedLanguages";
 export const fallbackLang = ["no", "en"];
 
 // Kopiert fra https://www.sanity.io/docs/localization
+// TODO: Fix typing
+// @ts-ignore
 function localizeSanityContent(value: any, language: SupportedLanguage) {
   const languages = [language, ...fallbackLang];
 
@@ -15,6 +17,8 @@ function localizeSanityContent(value: any, language: SupportedLanguage) {
     }
 
     return Object.keys(value).reduce((result, key) => {
+      // TODO: Fix typing
+      // @ts-ignore
       result[key] = localizeSanityContent(value[key], language);
       return result;
     }, {});

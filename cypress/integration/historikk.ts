@@ -1,6 +1,6 @@
-const url = "http://localhost:3000/arbeid/historikk";
-
 describe("historikk funker - ", () => {
+  const url = "http://localhost:3000/arbeid/historikk";
+
   it("Sjekker at vi greier å besøke oversikten til historikk", () => {
     cy.visit(url);
 

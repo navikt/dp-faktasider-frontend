@@ -1,3 +1,5 @@
+// TODO: Fix typing
+// @ts-ignore
 function getPropertyRecursivlyFromDeepObject<T = any>(value, key: string): Array<T> {
   if (Array.isArray(value)) {
     return value.flatMap((v) => getPropertyRecursivlyFromDeepObject(v, key));
