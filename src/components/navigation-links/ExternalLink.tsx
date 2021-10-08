@@ -8,7 +8,7 @@ interface Props {
 
 export function ExternalLink(props: Props) {
   return (
-    <a href={props.link.url}>
+    <a href={props.link.url} data-test-id={props.link.url}>
       <BodyShort className="navds-link">{props.link.tittel}</BodyShort>
       <p>{props.link.beskrivelse}</p>
     </a>

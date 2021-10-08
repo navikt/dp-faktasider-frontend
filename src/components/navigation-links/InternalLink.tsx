@@ -15,7 +15,7 @@ export function InternalLink(props: Props) {
 
   return (
     <Link href={props.link.path} locale={langAttribute}>
-      <a>
+      <a data-test-id={props.link.path}>
         <BodyShort className="navds-link">{props.link.tittel}</BodyShort>
         {!props.link.tilgjengeligPåValgtSpråk && (
           <Draft>
