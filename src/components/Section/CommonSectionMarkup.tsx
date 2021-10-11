@@ -52,7 +52,7 @@ function CommonSectionMarkup(props: Props) {
   const Header = props.header;
 
   return (
-    <Region data-testid={props.id} aria-labelledby={headerId} style={{ position: "relative" }} {...props.regionProps}>
+    <Region data-test-id={props.id} aria-labelledby={headerId} style={{ position: "relative" }} {...props.regionProps}>
       <HashLinkShowOnHover />
       <Anchor id={props.id} spaceAbove={props.anchorMarginTop} focusOnParent={true} />
       <Header id={headerId} {...props.headerProps} className={sectionHeaderClassName}>

@@ -18,7 +18,7 @@ interface Props {
 }
 
 export function Arbeid(props: Props) {
-  const title = "Arbeid";
+  const title = props.pageData.title || "Arbeid";
   const description = props.pageData.beskrivelse || "";
   useBreadcrumbs(title);
 
