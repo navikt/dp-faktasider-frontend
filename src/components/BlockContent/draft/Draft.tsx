@@ -39,4 +39,4 @@ function DraftComponent(props: PropsWithChildren<Props>) {
   return null;
 }
 
-export const Draft = withErrorBoundary(DraftComponent, "Utkast");
+export const Draft = withErrorBoundary(DraftComponent, "Draft");

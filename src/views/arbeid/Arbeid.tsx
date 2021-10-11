@@ -31,7 +31,7 @@ export function Arbeid(props: Props) {
 
       <main id={"maincontent"} className={styles.content}>
         {!!props.pageData.notifikasjoner?.length && <Notifications notifications={props.pageData.notifikasjoner} />}
-        <KortFortalt kortFortalt={props.pageData.kortFortalt} description={description} />
+        <KortFortalt content={props.pageData.kortFortalt} description={description} />
         <NavigationLinks links={props.menuData} />
         {!!props.pageData.snarveier?.length && <Shortcuts shortcuts={props.pageData.snarveier} />}
       </main>

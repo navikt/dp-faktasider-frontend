@@ -6,7 +6,7 @@ import { Block } from "../../utils/richTextUtils/richTextTypes";
 import styles from "./KortFortalt.module.scss";
 
 interface Props {
-  kortFortalt?: Block[];
+  content?: Block[];
   description?: string;
 }
 
@@ -21,7 +21,7 @@ export function KortFortalt(props: Props) {
 
       <div className={styles.content}>
         {props.description && <BodyLong>{props.description}</BodyLong>}
-        {props.kortFortalt && <SanityContent blocks={props.kortFortalt} />}
+        {props.content && <SanityContent blocks={props.content} />}
       </div>
     </article>
   );

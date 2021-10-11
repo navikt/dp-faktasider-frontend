@@ -33,14 +33,6 @@ export const faktasideQuery = groq`{
   'notifikasjoner': *[_type == "notifikasjon" && *[_type == "faktaSide" && slug.current == $slug][0]._id in visPaaFaktaSider]
 }`;
 
-interface lol {
-  id?: string | undefined;
-  _updatedAt?: string | undefined;
-  title?: Translations<string> | undefined;
-  beskrivelse?: Translations<string> | undefined;
-  visIngenValgPasser?: boolean | undefined;
-}
-
 export interface IFaktaside {
   id: string;
   _updatedAt: string;
