@@ -1,6 +1,6 @@
 import React from "react";
 import { withErrorBoundary } from "./withErrorBoundary";
-import NextHead from "next/head";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { urlFor } from "../sanity/sanity-config";
 import { SanityImage } from "../sanity/types";
@@ -14,13 +14,13 @@ interface Props {
 
 const navUrl = "https://www.nav.no";
 
-export function HeadComponent(props: Props) {
+export function SEOComponent(props: Props) {
   const { basePath } = useRouter();
   const imageUrl = props.seoImage && urlFor(props.seoImage).url();
   const cannonical = `${navUrl}${basePath}${props.path ? props.path : ""}`;
 
   return (
-    <NextHead>
+    <Head>
       <title>{props.title} | www.nav.no</title>
       <link rel="canonical" href={cannonical} />
       <meta name="description" content={props.description} />
@@ -38,8 +38,8 @@ export function HeadComponent(props: Props) {
           <meta property="image" content={imageUrl} />
         </>
       )}
-    </NextHead>
+    </Head>
   );
 }
 
-export const Head = withErrorBoundary(HeadComponent, "Head");
+export const SEO = withErrorBoundary(SEOComponent, "SEO");

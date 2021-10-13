@@ -1,5 +1,5 @@
 import React from "react";
-import { Head } from "../components/Head";
+import { SEO } from "../components/SEO";
 import styled from "styled-components/macro";
 import { useTranslation } from "react-i18next";
 import { useMount } from "react-use";
@@ -82,7 +82,7 @@ const NotFoundPage = (props: Props) => {
 
   return (
     <Style>
-      <Head title={title} description="Fant ikke siden du lette etter" seoImage={props.data.seoImage} path="/404" />
+      <SEO title={title} description="Fant ikke siden du lette etter" seoImage={props.data.seoImage} path="/404" />
       <Title level="1" size="2xl">
         {t("404")}
       </Title>

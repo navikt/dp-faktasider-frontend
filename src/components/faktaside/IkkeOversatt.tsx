@@ -6,7 +6,7 @@ import { withErrorBoundary } from "../withErrorBoundary";
 import { useMount } from "react-use";
 import { loggIkkeOversatt } from "../../utils/logging";
 import Link from "next/link";
-import { Head } from "../Head";
+import { SEO } from "../SEO";
 import { BodyShort, Title } from "@navikt/ds-react";
 import { FaktasideContext } from "./FaktaSideContext";
 
@@ -53,7 +53,7 @@ function IkkeOversatt(props: FaktasideContext) {
 
   return (
     <Style>
-      <Head
+      <SEO
         title={title}
         description={props.beskrivelse || ""}
         seoImage={props.rawData.oppsett.seoImage}

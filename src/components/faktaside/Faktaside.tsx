@@ -4,7 +4,7 @@ import { loggSidevisning } from "../../utils/logging";
 import useLoggUtdatertHashlenke from "./useLoggUtdatertHashlenke";
 import IkkeOversatt from "./IkkeOversatt";
 import { createFaktasideContext, FaktasideProvider, useFaktasideContext } from "./FaktaSideContext";
-import { Head } from "../Head";
+import { SEO } from "../SEO";
 import FaktaSideLayout from "./FaktaSideLayout";
 import { SanityContent } from "../sanity-content/SanityContent";
 import useBreadcrumbs from "./useBreadcrumbs";
@@ -51,7 +51,7 @@ function Faktaside() {
 
   return (
     <>
-      <Head
+      <SEO
         title={tittel}
         description={beskrivelse}
         seoImage={context.rawData.oppsett.seoImage}

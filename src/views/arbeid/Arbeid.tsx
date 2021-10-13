@@ -3,7 +3,7 @@ import { useMount } from "react-use";
 import { loggSidevisning } from "../../utils/logging";
 import useBreadcrumbs from "../../components/faktaside/useBreadcrumbs";
 import { Header } from "../../components/header/Header";
-import { Head } from "../../components/Head";
+import { SEO } from "../../components/SEO";
 import { Notifications } from "../../components/notifications/Notifications";
 import { NavigationLinks } from "../../components/navigation-links/NavigationLinks";
 import { Shortcuts } from "../../components/shortcuts/Shortcuts";
@@ -26,7 +26,7 @@ export function Arbeid(props: Props) {
 
   return (
     <div className={styles.container}>
-      <Head title={title} description={description} seoImage={props.pageData.seoImage} />
+      <SEO title={title} description={description} seoImage={props.pageData.seoImage} />
       <Header title={title} />
 
       <main id={"maincontent"} className={styles.content}>
