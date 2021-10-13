@@ -1,6 +1,6 @@
 import React from "react";
 import { withErrorBoundary } from "../components/withErrorBoundary";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps, Redirect } from "next";
 import Faktaside from "../components/faktaside/Faktaside";
 import { groq } from "next-sanity";
 import { sanityClient } from "../sanity/sanity-config";
@@ -29,15 +29,23 @@ export interface FaktasideStaticProps {
   slug: string;
 }
 
-export const getStaticProps: GetStaticProps<FaktasideStaticProps> = async (context) => {
+export const getStaticProps: GetStaticProps<FaktasideStaticProps | Redirect> = async (context) => {
   const slug = context.params!.slug as string;
-
-  const faktaside: FaktasideQueryData = await sanityClient.fetch(faktasideQuery, { slug });
+  const faktasideData: FaktasideQueryData = await sanityClient.fetch(faktasideQuery, { slug });
   const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
+
+  if (!faktasideData.faktaside) {
+    return {
+      redirect: {
+        destination: "/404",
+        statusCode: 303,
+      },
+    };
+  }
 
   return {
     props: {
-      faktasideQueryData: faktaside,
+      faktasideQueryData: faktasideData,
       menuQueryData: menuData,
       slug,
     },

@@ -49,7 +49,7 @@ export interface IFaktaside {
 }
 
 export interface FaktasideQueryData {
-  faktaside: IFaktaside;
+  faktaside: IFaktaside | null;
   oppsett: {
     seoImage?: SanityImage;
     title?: Translations<string>;

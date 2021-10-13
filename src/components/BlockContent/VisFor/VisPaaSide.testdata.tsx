@@ -1,7 +1,7 @@
 import { createDeltTekstBlock, createSanityBlock, translated } from "../../../testUtils/createSanityBlock";
 import { faktaSideMockQueryData } from "../../../testUtils/faktaSideMockQueryData";
 
-const testId = faktaSideMockQueryData.faktaside.id;
+const testId = faktaSideMockQueryData.faktaside!!.id;
 
 export const innhold = [
   createDeltTekstBlock([
