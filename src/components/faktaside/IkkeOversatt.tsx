@@ -1,12 +1,12 @@
-import * as React from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import { useTranslation } from "react-i18next";
 import { supportedLanguages } from "../../i18n/supportedLanguages";
-import withErrorBoundary from "../../components/withErrorBoundary";
+import { withErrorBoundary } from "../withErrorBoundary";
 import { useMount } from "react-use";
 import { loggIkkeOversatt } from "../../utils/logging";
 import Link from "next/link";
-import SEO from "../SEO";
+import { SEO } from "../SEO";
 import { BodyShort, Title } from "@navikt/ds-react";
 import { FaktasideContext } from "./FaktaSideContext";
 

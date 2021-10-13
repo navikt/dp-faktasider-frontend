@@ -36,7 +36,7 @@ interface Page {
 }
 
 class Sitemap extends React.Component {
-  static getInitialProps = async (ctx) => {
+  static getInitialProps = async (ctx: any) => {
     const pages: Page[] = await sanityClient.fetch(pagesQuery);
 
     const norskeSider = pages.filter((page) => page.visSprakversjon.no);

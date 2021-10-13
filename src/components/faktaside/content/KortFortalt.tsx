@@ -1,13 +1,13 @@
-import * as React from "react";
+import React from "react";
 import { Block } from "../../../utils/richTextUtils/richTextTypes";
 import { useTranslation } from "react-i18next";
 import H2Section from "../../Section/H2Section";
-import withErrorBoundary from "../../../components/withErrorBoundary";
+import { withErrorBoundary } from "../../withErrorBoundary";
 import KortFortaltIkon from "./KortFortaltIkon";
 import styled from "styled-components";
 import { navFrontend } from "../../../styles/navFrontend";
 import { theme } from "../../../styles/theme";
-import BlockContent from "../../BlockContent/BlockContent";
+import { SanityContent } from "../../sanity-content/SanityContent";
 import { idFromString } from "../../../utils/idFromString";
 import { BodyShort } from "@navikt/ds-react";
 
@@ -52,7 +52,7 @@ function KortFortalt(props: Props) {
       </IkonWrapper>
       <H2Section id={idFromString(title)} title={title}>
         <BodyShort>{props.beskrivelse}</BodyShort>
-        <BlockContent blocks={props.blocks} />
+        <SanityContent blocks={props.blocks} />
       </H2Section>
     </Style>
   );

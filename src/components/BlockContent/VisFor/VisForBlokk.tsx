@@ -1,6 +1,6 @@
-import * as React from "react";
+import React from "react";
 import { SanityBlock, VisForConfig } from "../../../utils/richTextUtils/richTextTypes";
-import BlockContent from "../BlockContent";
+import { SanityContent } from "../../sanity-content/SanityContent";
 import VisFor from "./VisFor";
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 
 const VisForBlokk = (props: Props) => (
   <VisFor visForConfig={props.node.visFor}>
-    <BlockContent blocks={props.node.innhold} />
+    <SanityContent blocks={props.node.innhold} />
   </VisFor>
 );
 

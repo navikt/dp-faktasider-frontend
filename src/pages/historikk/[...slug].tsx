@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Revision, revisionsFetcher } from "../../components/historikk/api/revisionsFetcher";
-import withErrorBoundary from "../../components/withErrorBoundary";
+import { withErrorBoundary } from "../../components/withErrorBoundary";
 import { historikkFetcher, HistorikkResponse } from "../../components/historikk/api/historikkFetcher";
 import Historikk from "../../components/historikk/Historikk";
 import { sanityClient } from "../../sanity/sanity-config";

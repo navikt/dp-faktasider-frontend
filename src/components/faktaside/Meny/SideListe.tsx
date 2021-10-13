@@ -1,7 +1,6 @@
-import * as React from "react";
-import { useReducer } from "react";
+import React, { useReducer } from "react";
 import styled, { css } from "styled-components/macro";
-import withErrorBoundary from "../../../components/withErrorBoundary";
+import { withErrorBoundary } from "../../withErrorBoundary";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { loggMeny } from "../../../utils/logging";
 import { UnmountClosed } from "react-collapse";
@@ -10,7 +9,7 @@ import Link from "next/link";
 import Innholdsfortegnelse from "./Innholdsfortegnelse/Innholdsfortegnelse";
 import { MenylenkeEkstern } from "../../../sanity/groq/menu/menuQuery";
 import { MenuItem, MenylenkeInternParsed } from "../../../sanity/groq/menu/parseMenuData";
-import Chevron from "./Chevron";
+import { Chevron } from "./Chevron";
 
 const StyledOl = styled.ol`
   margin-bottom: 8rem;

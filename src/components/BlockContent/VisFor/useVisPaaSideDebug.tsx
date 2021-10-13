@@ -1,5 +1,4 @@
-import * as React from "react";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { useDevContext } from "../../DevKnapper/DevContext";
 import styled from "styled-components/macro";
 

@@ -1,7 +1,6 @@
-import * as React from "react";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import styled, { createGlobalStyle, css } from "styled-components/macro";
-import withErrorBoundary from "../../components/withErrorBoundary";
+import { withErrorBoundary } from "../withErrorBoundary";
 import { theme } from "../../styles/theme";
 import Meny from "./Meny/Meny";
 

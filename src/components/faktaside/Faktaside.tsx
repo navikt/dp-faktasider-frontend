@@ -1,15 +1,14 @@
-import * as React from "react";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { useMount } from "react-use";
 import { loggSidevisning } from "../../utils/logging";
 import useLoggUtdatertHashlenke from "./useLoggUtdatertHashlenke";
 import IkkeOversatt from "./IkkeOversatt";
 import { createFaktasideContext, FaktasideProvider, useFaktasideContext } from "./FaktaSideContext";
-import SEO from "../SEO";
+import { SEO } from "../SEO";
 import FaktaSideLayout from "./FaktaSideLayout";
-import BlockContent from "../BlockContent/BlockContent";
+import { SanityContent } from "../sanity-content/SanityContent";
 import useBreadcrumbs from "./useBreadcrumbs";
-import Notifikasjoner from "../Notifikasjoner";
+import { Notifications } from "../notifications/Notifications";
 import KortFortalt from "./content/KortFortalt";
 import Snarveier from "./content/Snarveier";
 import Header from "./content/Header";
@@ -60,11 +59,11 @@ function Faktaside() {
       />
       <FaktaSideLayout>
         <Header />
-        <Notifikasjoner notifikasjoner={context?.notifikasjoner} />
+        {!!context.notifikasjoner?.length && <Notifications notifications={context.notifikasjoner} />}
         <div ref={wordCountRef}>
           <KortFortalt blocks={context.kortFortalt} beskrivelse={beskrivelse} />
           {wordCountRef && <TilpassInnhold wordCountRef={wordCountRef} />}
-          <BlockContent blocks={context.innhold} />
+          <SanityContent blocks={context.innhold} />
           <Snarveier snarveier={context.snarveier} />
         </div>
       </FaktaSideLayout>

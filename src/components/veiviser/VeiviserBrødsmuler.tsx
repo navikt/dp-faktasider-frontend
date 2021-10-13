@@ -1,7 +1,7 @@
-import * as React from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import { VeiviserContext } from "./VeiviserStateChart";
-import Chevron from "../faktaside/Meny/Chevron";
+import { Chevron } from "../faktaside/Meny/Chevron";
 
 const Style = styled.div`
   margin-left: 5rem;

@@ -1,0 +1,32 @@
+.container {
+  ul,
+  ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    li {
+      margin: 0.7rem 0;
+      padding-left: 0.3rem;
+
+      &:empty {
+        display: none; //Dette gjøres for å hindre bulletpoints uten tekst å dukke opp, da vi skjuler tekst på visse sider (visFor og visPaaSide)
+      }
+    }
+  }
+
+  ul {
+    list-style: disc;
+
+    ul {
+      list-style: circle;
+    }
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  p {
+    margin: 0.5rem 0 1rem;
+  }
+}

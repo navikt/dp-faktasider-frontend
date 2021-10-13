@@ -1,5 +1,5 @@
 import React from "react";
-import BlockContent from "../BlockContent";
+import { SanityContent } from "../../sanity-content/SanityContent";
 import { render, within } from "../../../testUtils/customized-testing-library.test.utils";
 import { visForTestData } from "./visFor.testdata";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
@@ -20,7 +20,7 @@ const {
 
 describe("visFor-logikk", () => {
   test("Hvis ingen filtrering er valgt vises all tekst", () => {
-    const result = render(<BlockContent blocks={parseRichText(innhold)} />);
+    const result = render(<SanityContent blocks={parseRichText(innhold)} />);
 
     result.getByLabelText(bolkStudent);
     result.getByLabelText(bolkPermittert);
@@ -100,7 +100,7 @@ describe("visFor-logikk", () => {
 
 describe("skjulFor-logikk", () => {
   test("Vises dersom ingen filtrering er valgt", () => {
-    const result = render(<BlockContent blocks={parseRichText(innhold)} />);
+    const result = render(<SanityContent blocks={parseRichText(innhold)} />);
 
     result.getByLabelText(bolkSkjulForPermittertOgKonkurs);
   });

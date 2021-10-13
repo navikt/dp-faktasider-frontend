@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
-import React, { useState } from "react";
 import { HistorikkProps } from "../../pages/historikk/[...slug]";
 import useUniqueId from "../../utils/useUniqueId";
 import Head from "next/head";
@@ -15,7 +15,7 @@ import HistoirkkWatermark from "./Watermark";
 import { formaterDato } from "../../utils/formaterDato";
 import { Accordion } from "@navikt/ds-react";
 import LangInfo from "./LangInfo";
-import withErrorBoundary from "../withErrorBoundary";
+import { withErrorBoundary } from "../withErrorBoundary";
 
 const StyledMain = styled.main`
   max-width: 70rem;

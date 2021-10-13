@@ -1,8 +1,8 @@
-import * as React from "react";
+import React from "react";
 import { Alert } from "@navikt/ds-react";
 import DagpengerKalkulator from "../HvorMyeKalkulator/DagpengerKalkulator";
 import DagpengerKalkulatorLRling from "../HvorMyeKalkulator/DagpengerKalkulatorLærling";
-import withErrorBoundary from "../withErrorBoundary";
+import { withErrorBoundary } from "../withErrorBoundary";
 import { useHistorikkContext } from "../historikk/HistorikkContext";
 
 interface Props {

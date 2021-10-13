@@ -1,7 +1,6 @@
-import { setAvailableLanguages, setParams } from "@navikt/nav-dekoratoren-moduler";
+import { onLanguageSelect, setAvailableLanguages, setParams } from "@navikt/nav-dekoratoren-moduler";
 import { useMount } from "react-use";
 import { SupportedLanguage, supportedLanguages } from "../../i18n/supportedLanguages";
-import { onLanguageSelect } from "@navikt/nav-dekoratoren-moduler";
 import { useRouter } from "next/router";
 import { isDevelopment } from "../../utils/environment";
 import { useEffect } from "react";

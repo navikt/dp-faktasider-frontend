@@ -1,5 +1,5 @@
 import React from "react";
-import SEO from "../components/SEO";
+import { SEO } from "../components/SEO";
 import styled from "styled-components/macro";
 import { useTranslation } from "react-i18next";
 import { useMount } from "react-use";
@@ -16,7 +16,7 @@ import { SupportedLanguage } from "../i18n/supportedLanguages";
 import Link from "next/link";
 import { SanityImage } from "../sanity/types";
 import { groq } from "next-sanity";
-import { Title, BodyShort } from "@navikt/ds-react";
+import { BodyShort, Title } from "@navikt/ds-react";
 
 const Style = styled.div`
   margin: 2rem 0;

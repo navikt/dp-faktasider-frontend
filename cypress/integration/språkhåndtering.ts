@@ -1,5 +1,3 @@
-const url = "http://localhost:3000/arbeid";
-
 /* Tekster er oversatt i to forskjellige systemer:
  *
  *  * Mikrotekster på knapper etc er stortsett hardkodet og språkversjonert vha i18next-biblioteket
@@ -9,6 +7,8 @@ const url = "http://localhost:3000/arbeid";
  *
  * */
 describe("Spårkversjonering", () => {
+  const url = "http://localhost:3000/arbeid";
+
   it("funker på norsk", () => {
     cy.visit(`${url}/testdata`);
     cy.findByRole("button", { name: /Cypress - språktest/ }).click();

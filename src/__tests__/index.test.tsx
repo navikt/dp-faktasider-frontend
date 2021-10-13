@@ -1,12 +1,12 @@
 import React from "react";
 import { render, within } from "../testUtils/customized-testing-library.test.utils";
-import ForsideWrapper from "../pages";
+import ArbeidWrapper from "../pages";
 import { mockMenuData } from "../sanity/groq/menu/mockMenuData";
 import { translated } from "../testUtils/createSanityBlock";
 
 test("Index-side inneholder lenker til undersider med beskrivelse", () => {
   const result = render(
-    <ForsideWrapper
+    <ArbeidWrapper
       forsideData={{
         title: translated("Arbeid"),
       }}
@@ -20,7 +20,7 @@ test("Index-side inneholder lenker til undersider med beskrivelse", () => {
   expect(lenker).toHaveLength(mockMenuData.lenker!.length + mockMenuData.sider!.length);
 
   const lenkeData2 = mockMenuData.sider![1];
-  const lenkeNummer2 = result.getByLabelText(lenkeData2.title!.no!) as HTMLLinkElement;
+  const lenkeNummer2 = result.getByTestId(`/${lenkeData2.slug}/`) as HTMLLinkElement;
   expect(lenkeNummer2.href).toContain(lenkeData2.slug);
   within(lenkeNummer2).getByText(lenkeData2.beskrivelse!.no!);
 });

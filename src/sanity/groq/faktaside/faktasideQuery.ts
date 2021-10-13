@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
 import { Translations } from "../../../types/translations";
 import { SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
-import { Notifikasjon } from "../../../components/Notifikasjoner";
+import { Notification } from "../../../components/notifications/Notifications";
 import { Snarvei } from "../forside/forsideQuery";
 import { SanityImage } from "../../types";
 import { VisForSituasjon } from "../../../components/BlockContent/VisFor/VisFor";
@@ -57,7 +57,7 @@ export interface FaktasideQueryData {
     snarveier?: Snarvei[];
   };
   situasjonsvalg?: { _id: string; name: Translations<string> }[];
-  notifikasjoner?: Notifikasjon[];
+  notifikasjoner?: Notification[];
 }
 
 export interface LocalizedFaktasideQueryData {
@@ -72,5 +72,5 @@ export interface LocalizedFaktasideQueryData {
     snarveier?: Snarvei[];
   };
   situasjonsvalg?: VisForSituasjon[];
-  notifikasjoner?: Notifikasjon[];
+  notifikasjoner?: Notification[];
 }

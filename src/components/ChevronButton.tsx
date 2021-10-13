@@ -1,6 +1,6 @@
-import * as React from "react";
+import React from "react";
 import styled from "styled-components/macro";
-import Chevron from "./faktaside/Meny/Chevron";
+import { Chevron } from "./faktaside/Meny/Chevron";
 
 interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   open: boolean;
