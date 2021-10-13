@@ -13,8 +13,10 @@ export function NavigationLinks(props: Props) {
   const { t } = useTranslation("global");
 
   return (
-    <section className={styles.container}>
-      <h2 className={"sr-only"}>{t("forsideInformasjonHeader")}</h2>
+    <section aria-labelledby="forside_informasjon_header" className={styles.container}>
+      <h2 id="forside_informasjon_header" className={"sr-only"}>
+        {t("forsideInformasjonHeader")}
+      </h2>
       <ul>
         {props.links.map((link, index) => (
           <li key={index}>
