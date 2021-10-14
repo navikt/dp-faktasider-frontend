@@ -4,7 +4,7 @@ import { Draft } from "./draft/Draft";
 import allChildrenMarkedWith from "../../utils/richTextUtils/allChildrenMarkedWith";
 
 // https://github.com/sanity-io/block-content-to-react/issues/26
-// @ts-expect-error
+// @ts-ignore
 import SanityBlockContent from "@sanity/block-content-to-react";
 
 interface Props {

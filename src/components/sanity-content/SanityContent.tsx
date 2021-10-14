@@ -16,7 +16,7 @@ import { Block } from "../../utils/richTextUtils/richTextTypes";
 import styles from "./SanityContent.module.scss";
 
 // https://github.com/sanity-io/block-content-to-react/issues/26
-// @ts-expect-error
+// @ts-ignore
 import SanityBlockContent from "@sanity/block-content-to-react";
 
 interface Props {
