@@ -5,15 +5,17 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "sourceMap": true,
+    "noImplicitAny": false, // Temporarily added until we are out of styled-components
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "cypress"]
+  "exclude": ["node_modules", "cypress", "jest.setup.ts"] //må ekskludere jest setup da de pakkene ikke finnes i prod, selv om disse sjekkene kjøres i prod
 }
