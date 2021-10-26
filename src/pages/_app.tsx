@@ -5,7 +5,7 @@ import { i18nextConfig, TranslationsProvider } from "../i18n/i18nextConfig";
 import { AppStyling, GlobalStyling } from "../styles/GlobalStyling";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import PreviewBanner from "../components/Preview/PreviewBanner";
 import { PreviewContextProvider } from "../components/Preview/previewContext";
 import DevKnapper from "../components/DevKnapper/DevKnapper";
@@ -14,7 +14,11 @@ import "../styles/index.scss";
 
 function App({ Component, pageProps }: AppProps) {
   const locale = useRouter().locale;
-  locale && i18nextConfig.changeLanguage(locale);
+  useEffect(() => {
+    return () => {
+      locale && i18nextConfig.changeLanguage(locale);
+    };
+  }, [locale]);
 
   return (
     <ErrorBoundary>
