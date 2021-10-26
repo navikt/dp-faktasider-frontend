@@ -28,7 +28,7 @@ function getComponent(groupType: GroupTypes) {
 }
 
 function GroupMarkup(props: Props) {
-  const { visPaaSider, visFor, id, erUtkast, noBackground, meny } = props.node.blockConfig;
+  const { visPaaSider, visFor, id, erUtkast, nobackground, meny } = props.node.blockConfig;
   const { title, children } = props.node;
   const Section = getComponent(props.node.style);
   const menyGrupper = meny ? children.filter(isGroup) : undefined;
@@ -37,7 +37,7 @@ function GroupMarkup(props: Props) {
     <VisPaaSide visPaaSider={visPaaSider}>
       <Draft isDraft={erUtkast}>
         <VisFor visForConfig={visFor}>
-          <Section title={title} id={id || "N/A"} noBackground={noBackground}>
+          <Section title={title} id={id || "N/A"} nobackground={nobackground}>
             {menyGrupper && <GroupMenu title={title} underGrupper={menyGrupper} />}
             <SanityContent blocks={children} />
           </Section>

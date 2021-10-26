@@ -4,11 +4,11 @@ import styled, { css } from "styled-components/macro";
 import { theme } from "../../styles/theme";
 import Section, { CommonSectionProps } from "./CommonSectionMarkup";
 
-type RegionProps = { noBackground?: boolean };
+type RegionProps = { nobackground?: boolean };
 
 const StyledArticle = styled.article<RegionProps>`
   ${(props) =>
-    !props.noBackground &&
+    !props.nobackground &&
     css`
       background-color: white;
       padding: ${theme.layoutPadding} calc(${theme.layoutPadding} * 1.75);
@@ -22,13 +22,13 @@ const StyledArticle = styled.article<RegionProps>`
   position: relative;
 `;
 
-type TittelProps = { noBackground?: boolean };
+type TittelProps = { nobackground?: boolean };
 
 const StyledTittel = styled(Title).attrs({
   level: "2",
   size: "xl",
 })<TittelProps>`
-  background-color: ${(props) => (props.noBackground ? theme.colors.bakgrunn : "#fffe")};
+  background-color: ${(props) => (props.nobackground ? theme.colors.bakgrunn : "#fffe")};
   padding: 1rem;
   position: sticky !important;
   top: 0;
@@ -39,12 +39,12 @@ const StyledTittel = styled(Title).attrs({
 `;
 
 interface Props extends CommonSectionProps {
-  noBackground?: boolean;
+  nobackground?: boolean;
 }
 
 function H2Section(props: Props) {
-  const headerProps: TittelProps = { noBackground: props.noBackground };
-  const regionProps: RegionProps = { noBackground: props.noBackground };
+  const headerProps: TittelProps = { nobackground: props.nobackground };
+  const regionProps: RegionProps = { nobackground: props.nobackground };
 
   return (
     <Section

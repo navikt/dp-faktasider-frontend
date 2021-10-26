@@ -46,7 +46,7 @@ export type DelttekstReference = {
 
 export type BlockConfigFromParser = {
   meny?: boolean;
-  noBackground?: boolean;
+  nobackground?: boolean;
   visFor?: VisForConfig;
   visPaaSider?: VisPaaConfig;
   erUtkast?: boolean;
