@@ -6,6 +6,7 @@ import TestFaktaside from "../../../testUtils/TestFaktaside";
 import { toggleFilter } from "../../../testUtils/tilpassInnholdUtils.test.utils";
 import { translated } from "../../../testUtils/createSanityBlock";
 import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
+import { TestId } from "../../../utils/test-ids";
 
 const { innhold } = visForTestData;
 const {
@@ -91,7 +92,7 @@ describe("visFor-logikk", () => {
 
   test("viser kun én checkox per situasjon", () => {
     const result = render(<TestFaktaside innhold={innhold} />);
-    const tilpassInnhold = result.getByLabelText(/Tilpass/);
+    const tilpassInnhold = result.getByTestId(TestId.TILPASS_INNHOLD);
     const checkbox = within(tilpassInnhold).getAllByLabelText(/student/i);
 
     expect(checkbox).toHaveLength(1);

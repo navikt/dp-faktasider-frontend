@@ -10,6 +10,7 @@ import { theme } from "../../../styles/theme";
 import { SanityContent } from "../../sanity-content/SanityContent";
 import { idFromString } from "../../../utils/idFromString";
 import { BodyShort } from "@navikt/ds-react";
+import { TestId } from "../../../utils/test-ids";
 
 interface Props {
   blocks?: Block[];
@@ -46,7 +47,7 @@ function KortFortalt(props: Props) {
   const title = t("kortFortalt");
 
   return (
-    <Style>
+    <Style data-test-id={TestId.KORT_FORTALT}>
       <IkonWrapper>
         <KortFortaltIkon />
       </IkonWrapper>

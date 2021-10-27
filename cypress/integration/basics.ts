@@ -1,3 +1,5 @@
+import { TestId } from "../../src/utils/test-ids";
+
 describe("basics funker - ", () => {
   const url = "http://localhost:3000/arbeid";
 
@@ -21,8 +23,8 @@ describe("basics funker - ", () => {
     });
 
     // Skal nå ha navigert til infoside, leter etter noen ting som vi forventer å finne på en infoside
-    cy.findByRole("heading", { name: /kort fortalt/i });
-    cy.findByRole("navigation", { name: /Sideoversikt/i }).within(() => {
+    cy.findByTestId(TestId.KORT_FORTALT);
+    cy.findByTestId(TestId.MOBILE_NAVIGATION).within(() => {
       cy.findByRole("button", { name: /Sideoversikt/i }).click();
       cy.findByRole("list", { name: /Innholdsfortegnelse/i });
       cy.findByRole("link", { name: /kort fortalt/i });

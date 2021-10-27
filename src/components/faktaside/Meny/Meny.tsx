@@ -7,6 +7,7 @@ import { theme } from "../../../styles/theme";
 import { navFrontend } from "../../../styles/navFrontend";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { Title } from "@navikt/ds-react";
+import { TestId } from "../../../utils/test-ids";
 
 const DesktopNav = styled.nav`
   @media (${theme.media.smallScreen}) {
@@ -59,12 +60,12 @@ function Meny(props: Props) {
 
   return (
     <>
-      <DesktopNav className={props.className}>
+      <DesktopNav className={props.className} data-test-id={TestId.DESKTOP_NAVIGATION}>
         <Header title={domainTitle} />
         <SideListe menuData={menuData} />
       </DesktopNav>
 
-      <MobileNav className={props.className}>
+      <MobileNav className={props.className} data-test-id={TestId.MOBILE_NAVIGATION}>
         <MobilmenyWrapper>
           <Header title={domainTitle} />
           <SideListe menuData={menuData} />

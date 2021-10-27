@@ -11,6 +11,7 @@ import { navFrontend } from "../../../styles/navFrontend";
 import InnholdetErTilpasset from "./InnholdetErTilpasset";
 import { BodyShort, Title } from "@navikt/ds-react";
 import Checkbox from "../../Checkbox";
+import { TestId } from "../../../utils/test-ids";
 
 const StyledNav = styled.section`
   background-color: white;
@@ -65,7 +66,7 @@ function TilpassInnhold(props: Props) {
 
   return (
     <div ref={tilpassInnholdRef}>
-      <StyledNav className={props.className}>
+      <StyledNav className={props.className} data-test-id={TestId.TILPASS_INNHOLD}>
         <StyledUndertittel> Tilpass innhold</StyledUndertittel>
         <BodyShort>Velg det som passer din situasjon best:</BodyShort>
         <StyledUl>

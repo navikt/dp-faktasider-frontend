@@ -1,3 +1,4 @@
 {
-  "baseUrl": "http://localhost:3000/arbeid"
+  "baseUrl": "http://localhost:3000/arbeid",
+  "defaultCommandTimeout": 6000
 }
