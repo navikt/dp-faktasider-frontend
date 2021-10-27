@@ -11,6 +11,7 @@ const csp = {
     "script.hotjar.com",
     "*.psplugin.com",
     "*.nav.no",
+    "in2.taskanalytics.com",
   ],
   "style-src": ["'self'", "blob:", "*.nav.no", "appres.nav.no", "'unsafe-inline'", "fonts.googleapis.com"],
   "connect-src": [
@@ -24,6 +25,7 @@ const csp = {
     "api.puzzel.com",
     "nav.boost.ai",
     "rt6o382n.api.sanity.io",
+    "ta-survey-v2.herokuapp.com",
   ],
   "font-src": ["data:", "*.psplugin.com", "*.hotjar.com", "fonts.gstatic.com"],
   "frame-src": ["video.qbrick.com/", "vars.hotjar.com", "player.vimeo.com"],
