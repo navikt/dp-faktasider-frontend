@@ -37,7 +37,7 @@ function GroupMarkup(props: Props) {
     <VisPaaSide visPaaSider={visPaaSider}>
       <Draft isDraft={erUtkast}>
         <VisFor visForConfig={visFor}>
-          <Section title={title} id={id || "N/A"} nobackground={nobackground}>
+          <Section title={title} id={id || "N/A"} {...(nobackground ? nobackground : undefined)}>
             {menyGrupper && <GroupMenu title={title} underGrupper={menyGrupper} />}
             <SanityContent blocks={children} />
           </Section>

@@ -4,7 +4,6 @@ import { withErrorBoundary } from "../../withErrorBoundary";
 import SideListe from "./SideListe";
 import MobilmenyWrapper from "./MobilmenyWrapper";
 import { theme } from "../../../styles/theme";
-import useUniqueId from "../../../utils/useUniqueId";
 import { navFrontend } from "../../../styles/navFrontend";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { Title } from "@navikt/ds-react";
@@ -42,7 +41,7 @@ const HeaderStyle = styled(Title).attrs({ level: "2", size: "l" })`
   }
 `;
 
-function Header(props: { id: string; title?: string }) {
+function Header(props: { id?: string; title?: string }) {
   return (
     <HeaderStyle id={props.id}>
       <span className="sr-only">Sideoversikt</span>
@@ -56,19 +55,18 @@ interface Props {
 }
 
 function Meny(props: Props) {
-  const mobileTitleId = useUniqueId("mobile-menu");
-  const desktopTitleId = useUniqueId("desktop-menu");
   const { menuData, domainTitle } = useFaktasideContext();
 
   return (
     <>
-      <DesktopNav className={props.className} aria-labelledby={desktopTitleId}>
-        <Header title={domainTitle} id={desktopTitleId} />
+      <DesktopNav className={props.className}>
+        <Header title={domainTitle} />
         <SideListe menuData={menuData} />
       </DesktopNav>
-      <MobileNav className={props.className} aria-labelledby={mobileTitleId}>
+
+      <MobileNav className={props.className}>
         <MobilmenyWrapper>
-          <Header title={domainTitle} id={mobileTitleId} />
+          <Header title={domainTitle} />
           <SideListe menuData={menuData} />
         </MobilmenyWrapper>
       </MobileNav>

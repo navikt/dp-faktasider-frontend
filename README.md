@@ -25,14 +25,22 @@ Opprett filen `.env.development` i root-folderet med innholdet:
 
 ```
 # SECRET - DO NOT COMMIT TO GIT
-SANITY_READ_TOKEN="ditt hemmelige token her"
 
+SANITY_READ_TOKEN="ditt hemmelige token her"
 NEXT_PUBLIC_SANITY_DATASET="development"
 ```
 
 Trengs hvis du vil besøke sidene under `/historikk` som må gjøre autentiserte kall mot Sanity eller jobbe mot et development-datasett.
 
 [Sanity-token kan du lage her](https://www.sanity.io/organizations/ojSsHMQGf/project/rt6o382n/settings#tokens). Du trenger bare et token med `Viewer`-rettighet.
+
+Opprett filen `.env.local` for nextjs variabler i root-folderet med innholdet:
+
+```
+DEKORATOR_MILJO="dev"
+```
+
+Denne trengs for å unngå error fra nav-dekoratøren
 
 ### Scripts
 

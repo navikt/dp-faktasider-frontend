@@ -12,7 +12,7 @@ import InnholdetErTilpasset from "./InnholdetErTilpasset";
 import { BodyShort, Title } from "@navikt/ds-react";
 import Checkbox from "../../Checkbox";
 
-const StyledNav = styled.nav`
+const StyledNav = styled.section`
   background-color: white;
   padding: ${theme.layoutPadding} calc(${theme.layoutPadding} * 1.75);
   margin-bottom: ${theme.layoutMargin};
@@ -51,7 +51,6 @@ interface Props {
 function TilpassInnhold(props: Props) {
   const tilpassInnholdRef = useRef<HTMLDivElement>(null);
   const visForContext = useVisForContext();
-  const titleId = useUniqueId("tilpassInnhold");
   const { visIngenValgPasser, tilpassInnholdValg } = useFaktasideContext();
   const valgt = visForContext.value.checked;
   const ingenPasserMeg = visForContext.value.ingenPasserMeg;
@@ -66,8 +65,8 @@ function TilpassInnhold(props: Props) {
 
   return (
     <div ref={tilpassInnholdRef}>
-      <StyledNav className={props.className} aria-labelledby={titleId}>
-        <StyledUndertittel id={titleId}>Tilpass innhold</StyledUndertittel>
+      <StyledNav className={props.className}>
+        <StyledUndertittel> Tilpass innhold</StyledUndertittel>
         <BodyShort>Velg det som passer din situasjon best:</BodyShort>
         <StyledUl>
           {tilpassInnholdValg.map((valg) => (
