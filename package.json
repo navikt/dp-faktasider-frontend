@@ -72,7 +72,6 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
-    "dev:server": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "test": "jest",
