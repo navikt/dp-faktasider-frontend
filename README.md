@@ -34,14 +34,6 @@ Trengs hvis du vil besøke sidene under `/historikk` som må gjøre autentiserte
 
 [Sanity-token kan du lage her](https://www.sanity.io/organizations/ojSsHMQGf/project/rt6o382n/settings#tokens). Du trenger bare et token med `Viewer`-rettighet.
 
-Opprett filen `.env.local` for nextjs variabler i root-folderet med innholdet:
-
-```
-DEKORATOR_MILJO="dev"
-```
-
-Denne trengs for å unngå error fra nav-dekoratøren
-
 ### Scripts
 
 - `npm run docker` bygger appen i en dockercontainer på samme måte som i pipeline, hoster appen på [localhost:3000/arbeid]().
