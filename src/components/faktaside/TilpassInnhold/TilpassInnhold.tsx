@@ -3,7 +3,6 @@ import { useVisForContext } from "../../BlockContent/VisFor/VisForContext";
 import styled from "styled-components/macro";
 import { withErrorBoundary } from "../../withErrorBoundary";
 import { theme } from "../../../styles/theme";
-import useUniqueId from "../../../utils/useUniqueId";
 import { UnmountClosed } from "react-collapse";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { useWordCount } from "./useWordCount";
@@ -13,7 +12,7 @@ import { BodyShort, Title } from "@navikt/ds-react";
 import Checkbox from "../../Checkbox";
 import { TestId } from "../../../utils/test-ids";
 
-const StyledNav = styled.section`
+const StyledNav = styled.nav`
   background-color: white;
   padding: ${theme.layoutPadding} calc(${theme.layoutPadding} * 1.75);
   margin-bottom: ${theme.layoutMargin};
