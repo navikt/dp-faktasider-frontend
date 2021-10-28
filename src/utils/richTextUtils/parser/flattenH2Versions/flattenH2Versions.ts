@@ -13,7 +13,7 @@ export const flattenH2Versions: RichTextParser = (blocks: Block[]) =>
           style: "h2",
           blockConfig: {
             ...currentConfig,
-            noBackground: true,
+            nobackground: true,
           },
         };
       case "h2-m-meny":

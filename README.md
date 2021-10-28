@@ -25,8 +25,8 @@ Opprett filen `.env.development` i root-folderet med innholdet:
 
 ```
 # SECRET - DO NOT COMMIT TO GIT
-SANITY_READ_TOKEN="ditt hemmelige token her"
 
+SANITY_READ_TOKEN="ditt hemmelige token her"
 NEXT_PUBLIC_SANITY_DATASET="development"
 ```
 

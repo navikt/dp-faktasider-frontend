@@ -11,7 +11,7 @@ RUN npm ci
 COPY . /home/node/app
 RUN npm run build
 
-FROM node:14-alpine AS runtime
+FROM node:16-alpine AS runtime
 
 WORKDIR /home/node/app
 

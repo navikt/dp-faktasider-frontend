@@ -4,6 +4,7 @@ import { theme } from "../../../styles/theme";
 import { SanityContent } from "../../sanity-content/SanityContent";
 import { TidslinjePunkt } from "./parseTidslinjedata";
 import { guid } from "nav-frontend-js-utils";
+import useUniqueId from "../../../utils/useUniqueId";
 
 const circleSize = "1.3rem";
 
@@ -44,7 +45,7 @@ const StyledElement = styled.div.attrs({ className: "navds-label" })`
 `;
 
 function Tidspunkt(props: TidslinjePunkt) {
-  const id = useRef(guid()).current;
+  const id = useUniqueId("tidspunkt");
 
   return (
     <StyledLi aria-labelledby={id}>

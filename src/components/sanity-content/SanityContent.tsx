@@ -52,6 +52,7 @@ const serializers: Serializers = {
     utkast: (props: unknown) => <Draft inline={true} {...props} />,
     GtilNOK: GtilNOKAnnotation,
     visForAnnotation: VisForAnnotation,
+    strykes: (props) => <>{props.children}</>,
   },
 };
 

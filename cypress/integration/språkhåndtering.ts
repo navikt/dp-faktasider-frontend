@@ -6,6 +6,8 @@
  *  Vi tester at begge systemene funker og kan styres vha språk i url
  *
  * */
+import { TestId } from "../../src/utils/test-ids";
+
 describe("Spårkversjonering", () => {
   const url = "http://localhost:3000/arbeid";
 
@@ -13,7 +15,7 @@ describe("Spårkversjonering", () => {
     cy.visit(`${url}/testdata`);
     cy.findByRole("button", { name: /Cypress - språktest/ }).click();
 
-    cy.findByLabelText(/Kort fortalt/i).within(() => {
+    cy.findByTestId(TestId.KORT_FORTALT).within(() => {
       // "Kort fortalt" er en mikrotekst som er hardkodet og oversatt ved hjelp av i18next
       cy.findByText(/Norsk innhold/i); // "Norsk innhold" er simulert Sanity-innhold
     });
@@ -23,7 +25,7 @@ describe("Spårkversjonering", () => {
     cy.visit(`${url}/en/testdata`);
     cy.findByRole("button", { name: /Cypress - språktest/ }).click();
 
-    cy.findByLabelText(/Summary/i).within(() => {
+    cy.findByTestId(TestId.KORT_FORTALT).within(() => {
       cy.findByText(/English content/i);
     });
   });

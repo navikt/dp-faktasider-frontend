@@ -1,9 +1,16 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { guid } from "nav-frontend-js-utils";
 import { idFromString } from "./idFromString";
 
 function useUniqueId(label: string) {
-  return useRef(`${idFromString(label)}-${guid().substr(0, 5)}`).current;
+  const [uniqueId, setUniqueId] = useState("");
+  const id = useRef(`${idFromString(label)}-${guid().substr(0, 5)}`).current;
+
+  useEffect(() => {
+    setUniqueId(id);
+  }, []);
+
+  return uniqueId;
 }
 
 export default useUniqueId;
