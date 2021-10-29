@@ -1,5 +1,5 @@
 import React from "react";
-import { Title } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 import styled from "styled-components/macro";
 import CommonSectionMarkup, { CommonSectionProps } from "./CommonSectionMarkup";
 
@@ -8,7 +8,7 @@ const StyledSection = styled.section`
   padding: 1rem; //gjøres for å gi luft til outline når seksjonen har fokus
 `;
 
-const StyledTittel = styled(Title).attrs({ level: "4", size: "s" })`
+const StyledTittel = styled(Heading).attrs({ level: "4", size: "small" })`
   margin-bottom: 0.7rem;
 `;
 

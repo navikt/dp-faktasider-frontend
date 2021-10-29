@@ -6,7 +6,7 @@ import { HistoriskDokument } from "./api/historikkFetcher";
 import { useHistorikkContext } from "./HistorikkContext";
 import { Revision } from "./api/revisionsFetcher";
 import { colors } from "../../styles/theme";
-import { Title } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 
 const Style = styled.div`
   > * {
@@ -72,9 +72,9 @@ function HistorikkHeader(props: { document?: HistoriskDokument; revisions: Revis
 
   return (
     <Style>
-      <Title level="1" size="2xl">
+      <Heading level="1" size="2xlarge">
         {context.hjelpeTekster?.title}
-      </Title>
+      </Heading>
       <Metadata>
         <DokumentTittelStyle style={{ gridArea: "tittel" }}>{props.title}</DokumentTittelStyle>
         <TypeStyle style={{ gridArea: "type" }}>{props.document?._type}</TypeStyle>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Title } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 import styled, { css } from "styled-components/macro";
 import { theme } from "../../styles/theme";
 import Section, { CommonSectionProps } from "./CommonSectionMarkup";
@@ -24,9 +24,9 @@ const StyledArticle = styled.article<RegionProps>`
 
 type TittelProps = { nobackground?: boolean };
 
-const StyledTittel = styled(Title).attrs({
+const StyledTittel = styled(Heading).attrs({
   level: "2",
-  size: "xl",
+  size: "xlarge",
 })<TittelProps>`
   background-color: ${(props) => (props.nobackground ? theme.colors.bakgrunn : "#fffe")};
   padding: 1rem;

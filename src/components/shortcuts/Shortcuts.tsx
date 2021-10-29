@@ -1,5 +1,5 @@
 import React from "react";
-import { Title } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 import { useTranslation } from "react-i18next";
 import { Snarvei } from "../../sanity/groq/forside/forsideQuery";
 import { Chevron } from "../faktaside/Meny/Chevron";
@@ -15,9 +15,9 @@ export function Shortcuts(props: Props) {
   return (
     <div className={styles.container}>
       <section>
-        <Title size={"l"} level={2}>
+        <Heading size={"large"} level={"2"}>
           {t("forsideKomIgangHeader")}
-        </Title>
+        </Heading>
 
         <ul>
           {props.shortcuts.map((shortcut) => (

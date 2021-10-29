@@ -6,6 +6,7 @@ import { Alert, Label } from "@navikt/ds-react";
 import styles from "./Notifications.module.scss";
 
 export interface Notification {
+  _id: string;
   title?: string;
   innhold?: SanityBlock[];
   visPaaForside?: boolean;
@@ -20,10 +21,10 @@ function NotificationsComponent(props: Props) {
   return (
     <article className={styles.container}>
       <h2 className="sr-only">Notifikasjoner</h2>
-      {props.notifications.map((notification, i) => (
-        <Alert variant="info" key={i}>
+      {props.notifications.map((notification) => (
+        <Alert variant="info" key={notification._id} title={"yolo"}>
           {notification.title && (
-            <Label className={styles.label} size="m">
+            <Label className={styles.label} size="medium">
               {notification.title}
             </Label>
           )}

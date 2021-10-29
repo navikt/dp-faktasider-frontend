@@ -8,7 +8,7 @@ import { useFaktasideContext } from "../FaktaSideContext";
 import { useWordCount } from "./useWordCount";
 import { navFrontend } from "../../../styles/navFrontend";
 import InnholdetErTilpasset from "./InnholdetErTilpasset";
-import { BodyShort, Title } from "@navikt/ds-react";
+import { BodyShort, Heading } from "@navikt/ds-react";
 import Checkbox from "../../Checkbox";
 import { TestId } from "../../../utils/test-ids";
 
@@ -32,7 +32,7 @@ const StyledUl = styled.ul`
   }
 `;
 
-const StyledUndertittel = styled(Title).attrs({ level: "2", size: "l" })`
+const StyledUndertittel = styled(Heading).attrs({ level: "2", size: "large" })`
   margin-bottom: ${theme.layoutPadding} !important;
 
   &::after {

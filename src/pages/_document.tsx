@@ -1,7 +1,5 @@
-import Document, { Head, Html, Main, NextScript } from "next/document";
+import Document, { DocumentContext, Head, Html, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import { NextPageContext } from "next";
-import { RenderPage } from "next/dist/next-server/lib/utils";
 import { Components, fetchDecoratorReact, Props } from "@navikt/nav-dekoratoren-moduler/ssr";
 import { sanityClient } from "../sanity/sanity-config";
 import { domeneTittelQuery } from "../sanity/groq/commonQuerries";
@@ -40,7 +38,7 @@ export default class MyDocument extends Document<{ Dekoratøren: Components }> {
 }
 
 // https://github.com/vercel/next.js/blob/master/examples/with-styled-components/pages/_document.js
-async function renderServersideStyledComponentsStylesheet(ctx: NextPageContext & { renderPage: RenderPage }) {
+async function renderServersideStyledComponentsStylesheet(ctx: DocumentContext) {
   const sheet = new ServerStyleSheet();
   const originalRenderPage = ctx.renderPage;
   try {

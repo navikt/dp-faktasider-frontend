@@ -82,18 +82,22 @@ function Historikk(props: HistorikkProps) {
       </Head>
       <StyledMain>
         <HistorikkHeader document={localizedDoc} revisions={props.revisions} title={documentTitle} />
-
         <DokumentRekonstruksjon dokument={localizedDoc} lesMerLenkeId={infoId} />
 
-        <RådataEkspanderbartPanel
-          open={openRådata}
-          heading="Rådata"
-          onClick={() => {
-            !openRådata && loggHistorikk("Åpner rådata", loggingInfo);
-            setOpenRådata(!openRådata);
-          }}
-        >
-          <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
+        <RådataEkspanderbartPanel>
+          <Accordion.Item open={openRådata}>
+            <Accordion.Header
+              onClick={() => {
+                !openRådata && loggHistorikk("Åpner rådata", loggingInfo);
+                setOpenRådata(!openRådata);
+              }}
+            >
+              Rådata
+            </Accordion.Header>
+            <Accordion.Content>
+              <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
+            </Accordion.Content>
+          </Accordion.Item>
         </RådataEkspanderbartPanel>
 
         <LangInfo infoId={infoId} />

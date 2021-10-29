@@ -16,7 +16,7 @@ import { SupportedLanguage } from "../i18n/supportedLanguages";
 import Link from "next/link";
 import { SanityImage } from "../sanity/types";
 import { groq } from "next-sanity";
-import { BodyShort, Title } from "@navikt/ds-react";
+import { BodyShort, Heading } from "@navikt/ds-react";
 
 const Style = styled.div`
   margin: 2rem 0;
@@ -83,9 +83,9 @@ const NotFoundPage = (props: Props) => {
   return (
     <Style>
       <SEO title={title} description="Fant ikke siden du lette etter" seoImage={props.data.seoImage} path="/404" />
-      <Title level="1" size="2xl">
+      <Heading level="1" size="2xlarge">
         {t("404")}
-      </Title>
+      </Heading>
       <BodyShort>{t("404-sub")}</BodyShort>
       <Link href={"/"} passHref>
         <TilbakeTilForsidelenke className="lenke">

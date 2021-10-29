@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
+import { Accordion } from "@navikt/ds-react";
 import { SanityContent } from "../sanity-content/SanityContent";
 import { typografiStyle } from "../faktaside/FaktaSideLayout";
 import { useHistorikkContext } from "./HistorikkContext";
 import { getTextFromSanityBlock } from "../../utils/richTextUtils/getTextFromSanityBlock";
 import { loggHistorikk } from "../../utils/logging";
-import { Accordion } from "@navikt/ds-react";
 
 const LangInfoStyle = styled.div`
   ${typografiStyle};
@@ -21,25 +21,29 @@ const LangInfoStyle = styled.div`
 `;
 
 function LangInfo(props: { infoId: string }) {
+  const [open, setOpen] = useState(false);
   const hjelpeTekster = useHistorikkContext().hjelpeTekster;
   const titleBlock = hjelpeTekster?.langInfo.find((block) => block.style === "h2");
   const title = titleBlock && getTextFromSanityBlock(titleBlock);
   const textWithoutTitle = hjelpeTekster?.langInfo.filter((it) => it !== titleBlock);
-  const [open, setOpen] = useState(false);
 
   return (
-    <Accordion
-      heading={title}
-      open={open}
-      id={props.infoId}
-      onClick={() => {
-        !open && loggHistorikk("Åpner Informasjon om historiske tekster");
-        setOpen(!open);
-      }}
-    >
-      <LangInfoStyle>
-        <SanityContent blocks={textWithoutTitle} />
-      </LangInfoStyle>
+    <Accordion id={props.infoId}>
+      <Accordion.Item open={open}>
+        <Accordion.Header
+          onClick={() => {
+            !open && loggHistorikk("Åpner Informasjon om historiske tekster");
+            setOpen(!open);
+          }}
+        >
+          {title}
+        </Accordion.Header>
+        <Accordion.Content>
+          <LangInfoStyle>
+            <SanityContent blocks={textWithoutTitle} />
+          </LangInfoStyle>
+        </Accordion.Content>
+      </Accordion.Item>
     </Accordion>
   );
 }

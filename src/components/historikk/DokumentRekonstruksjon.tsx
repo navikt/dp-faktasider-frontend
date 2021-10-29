@@ -7,7 +7,7 @@ import parseRichText from "../../utils/richTextUtils/parser/parseRichText";
 import { HistoriskDokument } from "./api/historikkFetcher";
 import styled from "styled-components/macro";
 import useUniqueId from "../../utils/useUniqueId";
-import { Alert, BodyShort, Link, Title } from "@navikt/ds-react";
+import { Alert, BodyShort, Link, Heading } from "@navikt/ds-react";
 import { useHistorikkContext } from "./HistorikkContext";
 import { withErrorBoundary } from "../withErrorBoundary";
 
@@ -59,9 +59,9 @@ function getComponent(type?: string) {
 function FaktasideRekonstruksjon(props: HistoriskDokument) {
   return (
     <>
-      <Title level="1" size="2xl">
+      <Heading level="1" size="2xlarge">
         {props.title}
-      </Title>
+      </Heading>
       <BodyShort>{props.beskrivelse}</BodyShort>
       {props.kortFortalt && (
         <H2Section title="Kort fortalt" id="kort-fortalt">

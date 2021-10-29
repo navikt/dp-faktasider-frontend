@@ -36,5 +36,5 @@ i18n.languages = ["en", "no"];
 export const i18nextConfig = i18n;
 
 export const TranslationsProvider = (props: { children: ReactNode }) => (
-  <I18nextProvider i18n={i18n} children={props.children} />
+  <I18nextProvider i18n={i18n}>{props.children}</I18nextProvider>
 );

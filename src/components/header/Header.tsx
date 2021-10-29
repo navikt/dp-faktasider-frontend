@@ -1,7 +1,7 @@
 import React from "react";
 import { withErrorBoundary } from "../withErrorBoundary";
 import { HeaderIcon } from "./HeaderIcon";
-import { Title } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 import styles from "./Header.module.scss";
 
 interface Props {
@@ -12,9 +12,9 @@ const HeaderComponent = (props: Props) => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <Title className={styles.title} level={1} size={"2xl"}>
+        <Heading className={styles.title} level={"1"} size={"2xlarge"}>
           {props.title}
-        </Title>
+        </Heading>
         <HeaderIcon />
       </div>
     </div>

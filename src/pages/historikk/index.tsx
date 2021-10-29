@@ -10,7 +10,7 @@ import useBreadcrumbs from "../../components/faktaside/useBreadcrumbs";
 import { domeneTittelQuery } from "../../sanity/groq/commonQuerries";
 import { loggHistorikk } from "../../utils/logging";
 import useMount from "react-use/lib/useMount";
-import { BodyShort, Title } from "@navikt/ds-react";
+import { BodyShort, Heading } from "@navikt/ds-react";
 
 interface Props {
   data: HistoriskFaktasideData[];
@@ -54,9 +54,9 @@ export default function HistorikkIndeks(props: Props) {
   return (
     <Style>
       <main>
-        <Title level="1" size="2xl">
+        <Heading level="1" size="2xlarge">
           Historikk for {props.domeneTittel}
-        </Title>
+        </Heading>
         <BodyShort>Velg mellom faktasidene og se historiske versjoner:</BodyShort>
         <ul>{faktasider}</ul>
       </main>

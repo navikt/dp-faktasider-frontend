@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { BodyLong, Title } from "@navikt/ds-react";
+import { BodyLong, Heading } from "@navikt/ds-react";
 import { SanityContent } from "../sanity-content/SanityContent";
 import { Block } from "../../utils/richTextUtils/richTextTypes";
 import styles from "./KortFortalt.module.scss";
@@ -15,9 +15,9 @@ export function KortFortalt(props: Props) {
 
   return (
     <article className={styles.container}>
-      <Title level="2" size="m">
+      <Heading level="2" size="medium">
         {t("forsideIntroTittel")}
-      </Title>
+      </Heading>
 
       <div className={styles.content}>
         {props.description && <BodyLong>{props.description}</BodyLong>}
