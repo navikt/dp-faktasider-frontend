@@ -7,7 +7,7 @@ import { useMount } from "react-use";
 import { loggIkkeOversatt } from "../../utils/logging";
 import Link from "next/link";
 import { SEO } from "../SEO";
-import { BodyShort, Title } from "@navikt/ds-react";
+import { BodyShort, Heading } from "@navikt/ds-react";
 import { FaktasideContext } from "./FaktaSideContext";
 
 const Style = styled.div`
@@ -59,9 +59,9 @@ function IkkeOversatt(props: FaktasideContext) {
         seoImage={props.rawData.oppsett.seoImage}
         path={`/${props.slug}`}
       />
-      <Title size="xl" spacing level="1">
+      <Heading size="xlarge" spacing level="1">
         {t("ikkeOversatt")}
-      </Title>
+      </Heading>
       {oversettelser.length && (
         <>
           <StyledBodyShort>{t("tilgjengeligPåAndreSpråk")}</StyledBodyShort>

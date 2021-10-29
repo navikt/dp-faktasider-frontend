@@ -6,7 +6,7 @@ import MobilmenyWrapper from "./MobilmenyWrapper";
 import { theme } from "../../../styles/theme";
 import { navFrontend } from "../../../styles/navFrontend";
 import { useFaktasideContext } from "../FaktaSideContext";
-import { Title } from "@navikt/ds-react";
+import { Heading } from "@navikt/ds-react";
 import { TestId } from "../../../utils/test-ids";
 
 const DesktopNav = styled.nav`
@@ -30,7 +30,7 @@ const MobileNav = styled.nav`
   }
 `;
 
-const HeaderStyle = styled(Title).attrs({ level: "2", size: "l" })`
+const HeaderStyle = styled(Heading).attrs({ level: "2", size: "large" })`
   padding: 1.5rem 1.5rem 0.75rem;
   pointer-events: none;
 

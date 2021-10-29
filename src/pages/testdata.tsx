@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useReducer } from "react";
+import React, { useReducer } from "react";
 import { visForTestData } from "../components/BlockContent/VisFor/visFor.testdata";
 import { faktaSideMockQueryData } from "../testUtils/faktaSideMockQueryData";
 import styled from "styled-components/macro";
@@ -18,7 +17,7 @@ import { translated } from "../testUtils/createSanityBlock";
 import { sistOppdatertTestdata } from "../components/faktaside/content/SistOppdatert.testdata";
 import { wordCountTestData } from "../../cypress/testData/wordcount.testdata";
 import { GtilNOKAnnotationTestdata } from "../components/BlockContent/GtilNOKAnnotation/GtilNOKAnnotation.testdata";
-import { Button, Title } from "@navikt/ds-react";
+import { Button, Heading } from "@navikt/ds-react";
 import { språktestData } from "../testUtils/språk.testdata";
 
 type FaktasideData = FaktasideQueryData["faktaside"];
@@ -168,12 +167,12 @@ function Testdata() {
   return (
     <>
       <Style>
-        <Title size="2xl" level="1" spacing>
+        <Heading size="2xlarge" level="1" spacing>
           Visualisering av testdata brukt i automatiske tester
-        </Title>
-        <Title size="m" level="2">
+        </Heading>
+        <Heading size="medium" level="2">
           Velg testdata:
-        </Title>
+        </Heading>
         {testData.map((data) => (
           <StyledKnapp key={data.name} onClick={() => dispatch({ type: "setData", data: data.data })}>
             {data.name}
