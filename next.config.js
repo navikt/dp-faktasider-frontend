@@ -1,6 +1,6 @@
 const withTranspileModules = require("next-transpile-modules")(["@navikt/ds-react", "@navikt/ds-icons"]);
-
 const csp = require("./csp");
+const { withSentryConfig } = require("@sentry/nextjs");
 
 const config = {
   basePath: "/arbeid",
@@ -33,4 +33,13 @@ const config = {
   },
 };
 
-module.exports = withTranspileModules(config);
+const moduleExports = withTranspileModules(config);
+
+// For all available options, see:
+// https://github.com/getsentry/sentry-webpack-plugin#options.
+
+const sentryWebpackPluginOptions = {
+  //silent: true, // Suppresses all logs
+};
+
+module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
