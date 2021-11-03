@@ -1,15 +1,14 @@
 import React, { ReactNode } from "react";
-import CustomComponent from "../BlockContent/CustomComponent";
-import LinkMarkup from "../BlockContent/Link";
-import Video from "../BlockContent/VideoMarkup";
-import FremhevetTekst from "../BlockContent/FremhevetTekst";
+import { CustomComponent } from "../BlockContent/CustomComponent";
+import { LinkMarkup } from "../BlockContent/Link";
+import { Video } from "../BlockContent/VideoMarkup";
+import { FremhevetTekst } from "../BlockContent/FremhevetTekst";
 import { Draft } from "../BlockContent/draft/Draft";
-import VisForAnnotation from "../BlockContent/VisFor/VisForAnnotation";
-import GroupMarkup from "../BlockContent/GroupMarkup/GroupMarkup";
-import { withErrorBoundary } from "../withErrorBoundary";
-import Tilleggsinnformasjon from "../BlockContent/Tilleggsinnformasjon/TilleggsInnformasjon";
+import { VisForAnnotation } from "../BlockContent/VisFor/VisForAnnotation";
+import { GroupMarkup } from "../BlockContent/GroupMarkup/GroupMarkup";
+import { Tilleggsinnformasjon } from "../BlockContent/Tilleggsinnformasjon/TilleggsInnformasjon";
 import ListItemRenderer from "../BlockContent/ListItemRenderer";
-import GtilNOKAnnotation from "../BlockContent/GtilNOKAnnotation/GtilNOKAnnotation";
+import { GtilNOKAnnotation } from "../BlockContent/GtilNOKAnnotation/GtilNOKAnnotation";
 import Tidslinje from "../BlockContent/Tidslinje/Tidslinje";
 import { HistoriskDeltTekst } from "../historikk/HistoriskDeltTekst";
 import { Block } from "../../utils/richTextUtils/richTextTypes";
@@ -56,12 +55,10 @@ const serializers: Serializers = {
   },
 };
 
-function SanityContentComponent(props: Props) {
+export function SanityContent(props: Props) {
   return (
     <div className={styles.container}>
       <SanityBlockContent serializers={serializers} blocks={props.blocks || []} />
     </div>
   );
 }
-
-export const SanityContent = withErrorBoundary(SanityContentComponent, "SanityContent");

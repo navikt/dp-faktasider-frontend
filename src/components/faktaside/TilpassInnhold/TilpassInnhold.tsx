@@ -1,13 +1,12 @@
 import React, { RefObject, useRef } from "react";
 import { useVisForContext } from "../../BlockContent/VisFor/VisForContext";
 import styled from "styled-components/macro";
-import { withErrorBoundary } from "../../withErrorBoundary";
 import { theme } from "../../../styles/theme";
 import { UnmountClosed } from "react-collapse";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { useWordCount } from "./useWordCount";
 import { navFrontend } from "../../../styles/navFrontend";
-import InnholdetErTilpasset from "./InnholdetErTilpasset";
+import { InnholdetErTilpasset } from "./InnholdetErTilpasset";
 import { BodyShort, Heading } from "@navikt/ds-react";
 import Checkbox from "../../Checkbox";
 import { TestId } from "../../../utils/test-ids";
@@ -48,7 +47,7 @@ interface Props {
   wordCountRef: RefObject<HTMLElement>;
 }
 
-function TilpassInnhold(props: Props) {
+export function TilpassInnhold(props: Props) {
   const tilpassInnholdRef = useRef<HTMLDivElement>(null);
   const visForContext = useVisForContext();
   const { visIngenValgPasser, tilpassInnholdValg } = useFaktasideContext();
@@ -96,5 +95,3 @@ function TilpassInnhold(props: Props) {
     </div>
   );
 }
-
-export default withErrorBoundary(TilpassInnhold, "TilpassInnhold");

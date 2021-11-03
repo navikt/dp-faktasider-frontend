@@ -5,7 +5,6 @@ import H3Section from "../../Section/H3Section";
 import H4Section from "../../Section/H4Section";
 import VisFor from "../VisFor/VisFor";
 import VisPaaSide from "../VisFor/VisPaaSide";
-import { withErrorBoundary } from "../../withErrorBoundary";
 import { SanityContent } from "../../sanity-content/SanityContent";
 import GroupMenu from "./GroupMenu";
 import { Group, GroupTypes, isGroup } from "../../../utils/richTextUtils/parser/groupParser/groupParser";
@@ -27,7 +26,7 @@ function getComponent(groupType: GroupTypes) {
   }
 }
 
-function GroupMarkup(props: Props) {
+export function GroupMarkup(props: Props) {
   const { visPaaSider, visFor, id, erUtkast, nobackground, meny } = props.node.blockConfig;
   const { title, children } = props.node;
   const Section = getComponent(props.node.style);
@@ -46,5 +45,3 @@ function GroupMarkup(props: Props) {
     </VisPaaSide>
   );
 }
-
-export default withErrorBoundary(GroupMarkup, "GroupMarkup");

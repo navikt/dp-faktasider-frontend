@@ -2,7 +2,6 @@ import React from "react";
 import { Block } from "../../../utils/richTextUtils/richTextTypes";
 import { useTranslation } from "react-i18next";
 import H2Section from "../../Section/H2Section";
-import { withErrorBoundary } from "../../withErrorBoundary";
 import KortFortaltIkon from "./KortFortaltIkon";
 import styled from "styled-components";
 import { navFrontend } from "../../../styles/navFrontend";
@@ -42,7 +41,7 @@ const IkonWrapper = styled.div`
   }
 `;
 
-function KortFortalt(props: Props) {
+export function KortFortalt(props: Props) {
   const { t } = useTranslation("global");
   const title = t("kortFortalt");
 
@@ -58,5 +57,3 @@ function KortFortalt(props: Props) {
     </Style>
   );
 }
-
-export default withErrorBoundary(KortFortalt, "KortFortalt");

@@ -1,8 +1,7 @@
 import React, { ReactNode } from "react";
 import styled, { createGlobalStyle, css } from "styled-components/macro";
-import { withErrorBoundary } from "../withErrorBoundary";
+import { Meny } from "./Meny/Meny";
 import { theme } from "../../styles/theme";
-import Meny from "./Meny/Meny";
 
 interface Props {
   children: ReactNode;
@@ -70,7 +69,7 @@ const ContentStyle = styled.div`
   }
 `;
 
-function FaktaSideLayout(props: Props) {
+export function FaktaSideLayout(props: Props) {
   return (
     <>
       <Brødsmulestyling />
@@ -81,5 +80,3 @@ function FaktaSideLayout(props: Props) {
     </>
   );
 }
-
-export default withErrorBoundary(FaktaSideLayout, "FaktaSideLayout");

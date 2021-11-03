@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { withErrorBoundary } from "../../withErrorBoundary";
-import SideListe from "./SideListe";
+import { SideListe } from "./SideListe";
 import MobilmenyWrapper from "./MobilmenyWrapper";
 import { theme } from "../../../styles/theme";
 import { navFrontend } from "../../../styles/navFrontend";
@@ -55,7 +54,7 @@ interface Props {
   className?: string;
 }
 
-function Meny(props: Props) {
+export function Meny(props: Props) {
   const { menuData, domainTitle } = useFaktasideContext();
 
   return (
@@ -74,5 +73,3 @@ function Meny(props: Props) {
     </>
   );
 }
-
-export default withErrorBoundary(Meny, "Navigasjonsmeny");

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components/macro";
 import { useTranslation } from "react-i18next";
 import { supportedLanguages } from "../../i18n/supportedLanguages";
-import { withErrorBoundary } from "../withErrorBoundary";
 import { useMount } from "react-use";
 import { loggIkkeOversatt } from "../../utils/logging";
 import Link from "next/link";
@@ -27,7 +26,7 @@ const StyledBodyShort = styled(BodyShort)`
   margin: 2rem 0 0 !important;
 `;
 
-function IkkeOversatt(props: FaktasideContext) {
+export function IkkeOversatt(props: FaktasideContext) {
   const page = props;
   const { t } = useTranslation("global");
   const title = page.title || "";
@@ -71,5 +70,3 @@ function IkkeOversatt(props: FaktasideContext) {
     </Style>
   );
 }
-
-export default withErrorBoundary(IkkeOversatt, "IkkeOversatt");

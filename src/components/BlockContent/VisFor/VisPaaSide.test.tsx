@@ -1,7 +1,7 @@
 import React from "react";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
 import { render, within } from "../../../testUtils/customized-testing-library.test.utils";
-import Historikk from "../../historikk/Historikk";
+import { Historikk } from "../../historikk/Historikk";
 import { visPaaSideTestData } from "./VisPaaSide.testdata";
 import { historikkVisPaaTestdata } from "../../historikk/historikk.testdata";
 
