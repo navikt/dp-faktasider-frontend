@@ -9,7 +9,9 @@ ENV TZ Europe/Oslo
 COPY package*.json /home/node/app/
 RUN npm ci
 
-RUN echo "$SENTRY_AUTH_TOKEN" > .sentryclirc
+RUN echo $SENTRY_AUTH_TOKEN > .sentryclirc
+RUN cat .sentryclirc
+
 COPY . /home/node/app
 RUN npm run build
 
