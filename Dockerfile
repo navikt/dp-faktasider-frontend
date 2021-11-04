@@ -9,7 +9,9 @@ COPY package*.json /home/node/app/
 RUN npm ci
 
 COPY . /home/node/app
-RUN npm run build
+RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
+    echo token=$(cat /run/secrets/SENTRY_AUTH_TOKEN) >> .sentryclirc && \
+    npm run build
 
 FROM node:16-alpine AS runtime
 
