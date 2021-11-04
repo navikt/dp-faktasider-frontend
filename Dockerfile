@@ -1,5 +1,6 @@
 FROM node:14 AS builder
 
+ARG SENTRY_AUTH_TOKEN
 WORKDIR /home/node/app
 
 ENV NODE_ENV=production
@@ -8,10 +9,9 @@ ENV TZ Europe/Oslo
 COPY package*.json /home/node/app/
 RUN npm ci
 
+RUN echo "$SENTRY_AUTH_TOKEN" > .sentryclirc
 COPY . /home/node/app
-RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
-    echo token=$(cat /run/secrets/SENTRY_AUTH_TOKEN) >> .sentryclirc && \
-    npm run build
+RUN npm run build
 
 FROM node:16-alpine AS runtime
 
