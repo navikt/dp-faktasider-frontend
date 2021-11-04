@@ -22,7 +22,7 @@ function NotificationsComponent(props: Props) {
     <article className={styles.container}>
       <h2 className="sr-only">Notifikasjoner</h2>
       {props.notifications.map((notification) => (
-        <Alert variant="info" key={notification._id} title={"yolo"}>
+        <Alert variant="info" key={notification._id}>
           {notification.title && (
             <Label className={styles.label} size="medium">
               {notification.title}
