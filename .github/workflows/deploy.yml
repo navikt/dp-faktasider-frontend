@@ -5,9 +5,9 @@ on:
   push:
 
 env:
-  IMAGE: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend:${{ github.sha }}
-  IMAGE_CACHE_RUNTIME: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend-cache-runtime
-  IMAGE_CACHE_BUILDER: docker.pkg.github.com/${{ github.repository }}/dp-faktasider-frontend-cache-builder
+  IMAGE: ghcr.io/${{ github.repository }}/dp-faktasider-frontend:${{ github.sha }}
+  IMAGE_CACHE_RUNTIME: ghcr.io/${{ github.repository }}/dp-faktasider-frontend-cache-runtime
+  IMAGE_CACHE_BUILDER: ghcr.io/${{ github.repository }}/dp-faktasider-frontend-cache-builder
 
 jobs:
   jest-test:
@@ -92,7 +92,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          push: false
           tags: ${{ env.IMAGE }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
