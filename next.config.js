@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const withTranspileModules = require("next-transpile-modules")(["@navikt/ds-react", "@navikt/ds-icons"]);
 
 const csp = require("./csp");
-
 const config = {
   basePath: "/arbeid",
   async headers() {
