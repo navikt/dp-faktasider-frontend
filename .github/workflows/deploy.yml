@@ -92,9 +92,10 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          push: true
-          no-cache: true
+          push: false
           tags: ${{ env.IMAGE }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           secrets: |
             "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}"
 
