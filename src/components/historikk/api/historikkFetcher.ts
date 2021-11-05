@@ -1,6 +1,6 @@
 import { sanityConfig } from "../../../sanity/sanity-config";
 
-export interface HistoriskDokument extends Record<string, any> {
+export interface HistoriskDokument extends Record<string, string> {
   _type: "faktaSide" | "deltTekst";
   _createdAt: string;
   _id: string;

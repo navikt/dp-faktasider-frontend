@@ -1,7 +1,6 @@
-import { MenuQueryData } from "./menuQuery";
 import { translated } from "../../../testUtils/createSanityBlock";
 
-export const mockMenuData: MenuQueryData = {
+export const mockMenuData = {
   lenker: [
     {
       _type: "menylenkeEkstern",

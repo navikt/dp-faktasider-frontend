@@ -39,7 +39,7 @@ interface Props {
 }
 
 function MenyButton(props: React.HTMLAttributes<HTMLButtonElement> & Props) {
-  const { isOpen, label, ...rest } = props;
+  const { isOpen, ...rest } = props;
 
   return (
     <IkonButtonStyle aria-expanded={isOpen} {...rest}>

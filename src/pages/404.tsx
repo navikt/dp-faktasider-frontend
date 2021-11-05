@@ -55,7 +55,7 @@ const query = groq`*[_id == "oppsett"][0]{
   seoImage
 }`;
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
   const data = await sanityClient.fetch(query);
 
