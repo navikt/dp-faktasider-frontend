@@ -14,7 +14,7 @@ function useBreadcrumbs(forsideTittel?: string, sider?: { tittel: string; path: 
 
   sider?.forEach((side) => {
     const sideUrl = `${forsideUrl}${side.path}`;
-    breadcrumbs.push({ title: side.tittel, url: sideUrl!, handleInApp: true });
+    breadcrumbs.push({ title: side.tittel, url: sideUrl, handleInApp: true });
   });
 
   useEffect(() => {

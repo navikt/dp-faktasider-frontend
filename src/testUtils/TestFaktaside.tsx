@@ -5,7 +5,7 @@ import FaktaSide from "../components/faktaside/Faktaside";
 import { FaktasideQueryData, IFaktaside } from "../sanity/groq/faktaside/faktasideQuery";
 import { translated } from "./createSanityBlock";
 import { mockMenuData } from "../sanity/groq/menu/mockMenuData";
-import { MenuQueryData } from "../sanity/groq/menu/menuQuery";
+import { MenuQueryData, MenyLenkeRaw } from "../sanity/groq/menu/menuQuery";
 
 type Props = {
   partialFaktaside?: Partial<IFaktaside>;
@@ -15,7 +15,6 @@ type Props = {
 };
 
 function TestFaktaside(props: Props) {
-  // @ts-ignore -- av en eller annen grunn stoler ikke IDE på at faktasidemockquerydata er komplett
   const faktaSide: IFaktaside = { ...faktaSideMockQueryData.faktaside, ...props.partialFaktaside };
   const oppsett = { ...faktaSideMockQueryData.oppsett, ...props.partialOppsett };
 
@@ -38,9 +37,9 @@ function TestFaktaside(props: Props) {
         nokkelordBeskrivelse: translated("Noen nøkkelord"),
         visSprakversjon: faktaSide.visSprakversjon,
       },
-      ...mockMenuData.sider!,
+      ...mockMenuData.sider,
     ],
-    lenker: props.partialMeny?.lenker || mockMenuData.lenker,
+    lenker: (props.partialMeny?.lenker || mockMenuData.lenker) as MenyLenkeRaw[],
   };
 
   return <FaktaSide menuQueryData={menuData} faktasideQueryData={faktasideData} />;

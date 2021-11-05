@@ -28,7 +28,7 @@ type Serializers = {
   // @ts-ignore
   types: { [key: string]: ({ node: Block }) => ReactNode };
   marks: {
-    [key: string]: any;
+    [key: string]: unknown;
   };
   // TODO fix types for sanity
   // @ts-ignore

@@ -15,7 +15,7 @@ import { menuHighlightStyle } from "../SideListe";
 import { useFaktasideContext } from "../../FaktaSideContext";
 import { Group } from "../../../../utils/richTextUtils/parser/groupParser/groupParser";
 
-const StyledLenke = styled(({ erValgt, ...rest }) => <LenkeUtenUnderstrek {...rest} />)`
+const StyledLenke = styled((props) => <LenkeUtenUnderstrek {...props} />)`
   display: block;
   padding: 0.4rem ${theme.layoutPadding} 0.4rem calc(${theme.layoutPadding} * 1.75);
   ${(props) => props.erValgt && menuHighlightStyle}
