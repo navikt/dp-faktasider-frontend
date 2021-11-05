@@ -58,6 +58,7 @@ jobs:
           start: npm start
         env:
           SANITY_READ_TOKEN: ${{ secrets.CYPRESS_READ_TOKEN_SANITY }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
       - uses: actions/upload-artifact@v1
         if: failure()
