@@ -7,8 +7,8 @@ WORKDIR /home/node/app
 ENV NODE_ENV=production
 ENV TZ Europe/Oslo
 
-RUN echo "$SENTRY_AUTH_TOKEN" > .sentryclirc
-RUN echo "$TEST" > .test
+RUN echo $SENTRY_AUTH_TOKEN > .sentryclirc
+RUN echo $TEST > .test
 
 RUN cat .test
 
