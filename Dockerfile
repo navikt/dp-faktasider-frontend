@@ -8,7 +8,7 @@ ENV TZ Europe/Oslo
 
 
 RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
-    echo "[auth]"\n\
+    echo "[auth]\n"\
     "token=$(cat /run/secrets/SENTRY_AUTH_TOKEN)" >> .sentryclirc
 
 COPY package*.json /home/node/app/
