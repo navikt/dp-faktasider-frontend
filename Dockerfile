@@ -6,6 +6,7 @@ WORKDIR /home/node/app
 ENV NODE_ENV=production
 ENV TZ Europe/Oslo
 
+
 RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
     echo token=$(cat /run/secrets/SENTRY_AUTH_TOKEN) >> .sentryclirc
 
