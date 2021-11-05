@@ -93,9 +93,8 @@ jobs:
         with:
           context: .
           push: true
+          no-cache: true
           tags: ${{ env.IMAGE }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
           secrets: |
             "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}"
 
