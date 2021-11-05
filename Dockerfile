@@ -1,16 +1,13 @@
 FROM node:14 AS builder
 
-ARG SENTRY_AUTH_TOKEN
-ARG TEST
+
 WORKDIR /home/node/app
 
 ENV NODE_ENV=production
 ENV TZ Europe/Oslo
 
-RUN echo $SENTRY_AUTH_TOKEN > .sentryclirc
-RUN echo $TEST > .test
-
-RUN cat .test
+RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
+    echo token=$(cat /run/secrets/SENTRY_AUTH_TOKEN) >> .sentryclirc
 
 COPY package*.json /home/node/app/
 
