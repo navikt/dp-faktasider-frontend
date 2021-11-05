@@ -16,3 +16,6 @@ logs
 
 # Mac files
 .DS_Store
+
+# Sentry
+.sentryclirc
