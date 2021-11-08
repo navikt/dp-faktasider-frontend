@@ -6,7 +6,7 @@ import { useMount } from "react-use";
 import { loggNotFound } from "../utils/logging";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import SideListe from "../components/faktaside/Meny/SideListe";
+import { SideListe } from "../components/faktaside/Meny/SideListe";
 import { sanityClient } from "../sanity/sanity-config";
 import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { parseMenuData } from "../sanity/groq/menu/parseMenuData";

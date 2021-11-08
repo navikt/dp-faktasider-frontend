@@ -1,7 +1,6 @@
 import React from "react";
 import VisFor from "./VisFor";
 import { MarkDef } from "../../../utils/richTextUtils/richTextTypes";
-import { withErrorBoundary } from "../../withErrorBoundary";
 import VisPaaSide from "./VisPaaSide";
 
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
   mark: MarkDef;
 }
 
-const VisForAnnotation = (props: Props) => {
+export function VisForAnnotation(props: Props) {
   const visPaa = props.mark.visPaaSider?.map((side) => side._ref);
   const visForConfig = props.mark.visFor;
 
@@ -20,6 +19,4 @@ const VisForAnnotation = (props: Props) => {
       </VisFor>
     </VisPaaSide>
   );
-};
-
-export default withErrorBoundary(VisForAnnotation, "VisForAnnotation");
+}

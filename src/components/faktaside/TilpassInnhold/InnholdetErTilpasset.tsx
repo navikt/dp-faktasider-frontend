@@ -4,14 +4,13 @@ import { UnmountClosed } from "react-collapse";
 import { Alert } from "@navikt/ds-react";
 import styled from "styled-components";
 import { theme } from "../../../styles/theme";
-import { withErrorBoundary } from "../../withErrorBoundary";
 import { LenkeKnapp } from "../../../utils/common-styled-components";
 
 const StyledAlertStripeInfo = styled(Alert).attrs({ variant: "info" })`
   margin-bottom: ${theme.layoutMargin};
 `;
 
-function InnholdetErTilpasset() {
+export function InnholdetErTilpasset() {
   const { value, dispatch } = useVisForContext();
   const { checked, ingenPasserMeg } = value;
 
@@ -24,5 +23,3 @@ function InnholdetErTilpasset() {
     </UnmountClosed>
   );
 }
-
-export default withErrorBoundary(InnholdetErTilpasset, "InnholdetErTilpasset");

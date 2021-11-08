@@ -1,6 +1,5 @@
 import React, { PropsWithChildren } from "react";
 import { useDevContext } from "../../DevKnapper/DevContext";
-import { withErrorBoundary } from "../../withErrorBoundary";
 import styles from "./Draft.module.scss";
 
 interface Props {
@@ -8,7 +7,7 @@ interface Props {
   isDraft?: boolean;
 }
 
-function DraftComponent(props: PropsWithChildren<Props>) {
+export function Draft(props: PropsWithChildren<Props>) {
   const devContext = useDevContext();
   const show = props.isDraft !== undefined && !props.isDraft;
   const showAsDraft = devContext.value.visUtkast;
@@ -38,5 +37,3 @@ function DraftComponent(props: PropsWithChildren<Props>) {
 
   return null;
 }
-
-export const Draft = withErrorBoundary(DraftComponent, "Draft");

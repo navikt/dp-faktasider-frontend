@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import styled from "styled-components/macro";
 import { useTranslation } from "react-i18next";
-import { withErrorBoundary } from "../../withErrorBoundary";
 import { useFaktasideContext } from "../FaktaSideContext";
 
 const Style = styled.div`
@@ -20,7 +19,7 @@ const Lenke = styled.a`
   }
 `;
 
-function SistOppdatert() {
+export function SistOppdatert() {
   const { t } = useTranslation("global");
   const faktaside = useFaktasideContext();
 
@@ -37,5 +36,3 @@ function SistOppdatert() {
     </Style>
   );
 }
-
-export default withErrorBoundary(SistOppdatert, "SistOppdatert");

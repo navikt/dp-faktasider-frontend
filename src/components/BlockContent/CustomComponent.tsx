@@ -2,7 +2,6 @@ import React from "react";
 import { Alert } from "@navikt/ds-react";
 import DagpengerKalkulator from "../HvorMyeKalkulator/DagpengerKalkulator";
 import DagpengerKalkulatorLRling from "../HvorMyeKalkulator/DagpengerKalkulatorLærling";
-import { withErrorBoundary } from "../withErrorBoundary";
 import { useHistorikkContext } from "../historikk/HistorikkContext";
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
   };
 }
 
-function CustomComponent(props: Props) {
+export function CustomComponent(props: Props) {
   const historikkContext = useHistorikkContext();
 
   if (historikkContext.isHistorikk)
@@ -25,5 +24,3 @@ function CustomComponent(props: Props) {
       return <Alert variant="error">Ukjent komponent: `&quot;`{props.node.komponent}`&quot;`</Alert>;
   }
 }
-
-export default withErrorBoundary(CustomComponent, "CustomComponent");

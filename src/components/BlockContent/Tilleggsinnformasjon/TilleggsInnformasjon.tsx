@@ -3,7 +3,6 @@ import styled, { css } from "styled-components/macro";
 import { SanityContent } from "../../sanity-content/SanityContent";
 import { Tillegsinformasjon } from "../../../utils/richTextUtils/richTextTypes";
 import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
-import { withErrorBoundary } from "../../withErrorBoundary";
 import { useTranslation } from "react-i18next";
 import useUniqueId from "../../../utils/useUniqueId";
 import { theme } from "../../../styles/theme";
@@ -68,7 +67,7 @@ function reducer(state: boolean, action: "setOpen" | "toggle"): boolean {
   }
 }
 
-function Tilleggsinnformasjon(props: Props) {
+export function Tilleggsinnformasjon(props: Props) {
   const parsedText = parseRichText(props.node.innhold);
   const hashId = props.node.blockConfig?.id || "N/A";
   const isInUrl = useIsHashInUrl(hashId);
@@ -109,5 +108,3 @@ function Tilleggsinnformasjon(props: Props) {
     </StyledAside>
   );
 }
-
-export default withErrorBoundary(Tilleggsinnformasjon, "Tilleggsinnformasjon");

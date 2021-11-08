@@ -7,9 +7,8 @@ import parseRichText from "../../utils/richTextUtils/parser/parseRichText";
 import { HistoriskDokument } from "./api/historikkFetcher";
 import styled from "styled-components/macro";
 import useUniqueId from "../../utils/useUniqueId";
-import { Alert, BodyShort, Link, Heading } from "@navikt/ds-react";
+import { Alert, BodyShort, Heading, Link } from "@navikt/ds-react";
 import { useHistorikkContext } from "./HistorikkContext";
-import { withErrorBoundary } from "../withErrorBoundary";
 
 const RekonstruksjonWrapper = styled.article`
   box-shadow: 0 0.2rem 2rem hsl(0deg 0% 70%);
@@ -23,7 +22,7 @@ const StyledAlertstripe = styled(Alert).attrs({ variant: "warning" })`
   margin-bottom: 2rem;
 `;
 
-function DokumentRekonstruksjon(props: { dokument?: HistoriskDokument; lesMerLenkeId: string }) {
+export function DokumentRekonstruksjon(props: { dokument?: HistoriskDokument; lesMerLenkeId: string }) {
   const Component = getComponent(props.dokument?._type);
   const id = useUniqueId("rekonstruksjon");
   const hjelpetekster = useHistorikkContext().hjelpeTekster;
@@ -83,5 +82,3 @@ function parseHistoriskRichText(blocks?: SanityBlock[]) {
   );
   return parseRichText(behandlet);
 }
-
-export default withErrorBoundary(DokumentRekonstruksjon, "DokumentRekonstruksjon");

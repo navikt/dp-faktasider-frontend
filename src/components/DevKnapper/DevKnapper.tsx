@@ -3,7 +3,6 @@ import styled, { css } from "styled-components/macro";
 import { isDevelopment } from "../../utils/environment";
 import { useClickAway } from "react-use";
 import { useDevContext } from "./DevContext";
-import { withErrorBoundary } from "../withErrorBoundary";
 import { useQueryParams } from "../../utils/useQueryParams";
 import Link from "next/link";
 import Checkbox from "../Checkbox";
@@ -63,7 +62,7 @@ function reducer(state: boolean, action: "toggle" | "close") {
   }
 }
 
-function DevKnapper() {
+export function DevKnapper() {
   const [open, dispatch] = useReducer(reducer, false);
   const ref = useRef<HTMLDivElement>(null);
   const context = useDevContext();
@@ -111,5 +110,3 @@ function DevKnapper() {
     </Style>
   );
 }
-
-export default withErrorBoundary(DevKnapper, "DevKnapper");

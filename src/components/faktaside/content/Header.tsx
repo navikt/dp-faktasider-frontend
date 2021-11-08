@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import SistOppdatert from "./SistOppdatert";
+import { SistOppdatert } from "./SistOppdatert";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { Heading } from "@navikt/ds-react";
 

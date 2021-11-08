@@ -3,7 +3,6 @@ import { pxFromTop } from "../../../../utils/domUtils";
 import styled, { css } from "styled-components/macro";
 import { useInnholdsListe } from "./useInnholdsListe";
 import { LenkeUtenUnderstrek } from "../../../../utils/common-styled-components";
-import { withErrorBoundary } from "../../../withErrorBoundary";
 import { loggMeny } from "../../../../utils/logging";
 import { useVisForContext } from "../../../BlockContent/VisFor/VisForContext";
 import { UnmountClosed } from "react-collapse";
@@ -77,7 +76,7 @@ const StyledOl = styled.ol`
   padding: 0.5rem 0 1rem;
 `;
 
-function Innholdsfortegnelse() {
+export function Innholdsfortegnelse() {
   const innholdsListe = useInnholdsListe();
   const faktaside = useFaktasideContext();
 
@@ -103,5 +102,3 @@ export function PureInnholdsfortegnelse(props: Props) {
     </StyledOl>
   );
 }
-
-export default withErrorBoundary(Innholdsfortegnelse, "Innholdsfortegnelse");

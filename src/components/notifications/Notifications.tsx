@@ -1,8 +1,7 @@
 import React from "react";
+import { Alert, Label } from "@navikt/ds-react";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import { SanityContent } from "../sanity-content/SanityContent";
-import { withErrorBoundary } from "../withErrorBoundary";
-import { Alert, Label } from "@navikt/ds-react";
 import styles from "./Notifications.module.scss";
 
 export interface Notification {
@@ -17,7 +16,7 @@ interface Props {
   notifications: Notification[];
 }
 
-function NotificationsComponent(props: Props) {
+export function Notifications(props: Props) {
   return (
     <article className={styles.container}>
       <h2 className="sr-only">Notifikasjoner</h2>
@@ -35,5 +34,3 @@ function NotificationsComponent(props: Props) {
     </article>
   );
 }
-
-export const Notifications = withErrorBoundary(NotificationsComponent, "Notifications");
