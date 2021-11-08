@@ -1,12 +1,16 @@
 **
 
-!*.json
 !src
 !public
 !next*
-!.babelrc
 !jest*
-!triggBygg.md
-!csp.js
 !cypress/testData
+
 !sentry*
+!*.json
+!.babelrc
+!.sentryclirc
+
+!csp.js
+!prepare.js
+!triggBygg.md

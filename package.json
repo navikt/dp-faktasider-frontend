@@ -66,7 +66,6 @@
     "jest": "^27.3.1",
     "jest-styled-components": "^7.0.5",
     "jest-transform-stub": "^2.0.0",
-    "lerna": "^4.0.0",
     "lint-staged": "^11.2.6",
     "prettier": "^2.4.1"
   },
@@ -80,9 +79,8 @@
     "cypress:open": "concurrently \"next\" \"npx cypress open\"",
     "cypress:run": "npm run build && concurrently \"npm run start\" \"npx cypress run\"",
     "typeCheck": "tsc",
-    "postinstall": "lerna bootstrap",
     "docker": "docker build -t dpfakta . && docker run --rm -p 3000:3000 dpfakta",
-    "prepare": "husky install"
+    "prepare": "node ./prepare.js"
   },
   "prettier": {
     "printWidth": 120
