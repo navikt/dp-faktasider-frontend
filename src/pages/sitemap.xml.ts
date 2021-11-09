@@ -1,6 +1,7 @@
 import React from "react";
 import { groq } from "next-sanity";
 import { sanityClient } from "../sanity/sanity-config";
+import { NextPageContext } from "next";
 
 const basePath = "/arbeid";
 
@@ -36,7 +37,7 @@ interface Page {
 }
 
 class Sitemap extends React.Component {
-  static getInitialProps = async (ctx: any) => {
+  static getInitialProps = async (ctx: NextPageContext) => {
     const pages: Page[] = await sanityClient.fetch(pagesQuery);
 
     const norskeSider = pages.filter((page) => page.visSprakversjon.no);
@@ -49,9 +50,11 @@ class Sitemap extends React.Component {
       ...engelskeSider.map((page) => `/en/${page.slug}`),
     ];
 
-    ctx.res.setHeader("Content-Type", "text/xml");
-    ctx.res.write(generateSitemap(paths));
-    ctx.res.end();
+    if (ctx.res) {
+      ctx.res.setHeader("Content-Type", "text/xml");
+      ctx.res.write(generateSitemap(paths));
+      ctx.res.end();
+    }
   };
 }
 

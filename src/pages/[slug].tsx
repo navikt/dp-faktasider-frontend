@@ -11,7 +11,7 @@ import { Error } from "../views/error/Error";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const faktasidePaths = await sanityClient.fetch(pathsQuery);
   const paths = faktasidePaths.flatMap((slug: string) =>
     supportedLanguages.map((locale) => ({ params: { slug }, locale }))
@@ -30,7 +30,7 @@ export interface FaktasideStaticProps {
 }
 
 export const getStaticProps: GetStaticProps<FaktasideStaticProps | Redirect> = async (context) => {
-  const slug = context.params!.slug as string;
+  const slug = context.params?.slug as string;
   const faktasideData: FaktasideQueryData = await sanityClient.fetch(faktasideQuery, { slug });
   const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
 

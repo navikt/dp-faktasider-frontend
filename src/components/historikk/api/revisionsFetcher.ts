@@ -4,7 +4,7 @@ interface RawRevision {
   author: string;
   documentIDs: string[];
   id: string;
-  mutations: any[];
+  mutations: never[];
   timestamp: string;
 }
 

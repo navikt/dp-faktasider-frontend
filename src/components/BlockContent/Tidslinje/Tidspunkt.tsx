@@ -1,9 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import { theme } from "../../../styles/theme";
 import { SanityContent } from "../../sanity-content/SanityContent";
 import { TidslinjePunkt } from "./parseTidslinjedata";
-import { guid } from "nav-frontend-js-utils";
 import useUniqueId from "../../../utils/useUniqueId";
 
 const circleSize = "1.3rem";

@@ -1,8 +1,7 @@
 import { translated } from "./createSanityBlock";
-import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
 import { mockVisForKonverteringstabell } from "../components/BlockContent/VisFor/visFor.testdata";
 
-export const faktaSideMockQueryData: FaktasideQueryData = {
+export const faktaSideMockQueryData = {
   faktaside: {
     id: "testId",
     _updatedAt: new Date().toISOString(),

@@ -1,7 +1,7 @@
 import { Revision } from "./api/revisionsFetcher";
-import { HistoriskDokument } from "./api/historikkFetcher";
+import { HistorikkResponse, HistoriskDokument } from "./api/historikkFetcher";
 import { HistorikkHjelpeTekster, HistorikkProps } from "../../pages/historikk/[...slug]";
-import { Block } from "../../utils/richTextUtils/richTextTypes";
+import { Block, SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import { createSanityBlock } from "../../testUtils/createSanityBlock";
 
 const timestamp = "2020-01-01T12:00:00.000Z";
@@ -13,7 +13,7 @@ const revision: Revision = {
   timestamp: timestamp,
 };
 
-const document: HistoriskDokument = {
+const document = {
   _type: "faktaSide",
   _createdAt: timestamp,
   _id: docId,
@@ -33,7 +33,7 @@ const testHjelpetekster: HistorikkHjelpeTekster = {
 const testProps: HistorikkProps = {
   revisions: [revision],
   response: {
-    documents: [document],
+    documents: [document as HistoriskDokument],
   },
   request: {
     id: docId,
@@ -51,7 +51,9 @@ function getHistorikkTestDataMedInnhold(innhold: Block[], type?: "faktaSide" | "
       documents: [
         {
           ...document,
-          _type: type || document._type,
+          nokkelordBeskrivelse: "testnokkelordbeskrivelse",
+          visIngenValgPasser: false,
+          _type: type || "faktaSide",
           innhold: innhold,
         },
       ],

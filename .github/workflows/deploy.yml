@@ -18,7 +18,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v1
         with:
-          node-version: "14.x"
+          node-version: "16"
 
       - name: Cache node modules
         uses: actions/cache@v2
@@ -48,6 +48,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Set up node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16"
 
       - name: Cypress run
         uses: cypress-io/github-action@v2

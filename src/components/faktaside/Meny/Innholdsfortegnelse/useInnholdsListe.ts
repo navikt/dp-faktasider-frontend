@@ -12,7 +12,7 @@ export function useInnholdsListe(): Group[] {
     return [];
   }
 
-  let h2Groups = innhold.filter((block: Block) => isH2Group(block)) as Group[];
+  const h2Groups = innhold.filter((block: Block) => isH2Group(block)) as Group[];
 
   h2Groups.unshift(createH2Group(t("kortFortalt"), []));
 

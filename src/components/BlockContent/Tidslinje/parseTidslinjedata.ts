@@ -7,7 +7,7 @@ export interface TidslinjePunkt {
 }
 
 export function parseTidslinjedata(tidslinjeData: TidslinjeI): TidslinjePunkt[] {
-  let punkter: TidslinjePunkt[] = [];
+  const punkter: TidslinjePunkt[] = [];
   let currentPunkt: TidslinjePunkt | undefined = undefined;
 
   tidslinjeData.innhold.forEach((block) => {
