@@ -12,7 +12,7 @@ import { visPaaSideTestData } from "../components/BlockContent/VisFor/VisPaaSide
 import { tillegsinformasjonTestData } from "../components/BlockContent/Tilleggsinnformasjon/TilleggsInnformasjon.testdata";
 import { groupMarkupTestData } from "../components/BlockContent/GroupMarkup/GroupMarkup.testdata";
 import { tidslinjeTestData } from "../components/BlockContent/Tidslinje/Tidslinje.testdata";
-import { FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
+import { FaktasideQueryData, IFaktaside } from "../sanity/groq/faktaside/faktasideQuery";
 import { translated } from "../testUtils/createSanityBlock";
 import { sistOppdatertTestdata } from "../components/faktaside/content/SistOppdatert.testdata";
 import { wordCountTestData } from "../../cypress/testData/wordcount.testdata";
@@ -103,7 +103,7 @@ const testData: Testdata[] = [
   },
   {
     name: "sist oppdatert",
-    data: sistOppdatertTestdata.faktaside,
+    data: sistOppdatertTestdata.faktaside as Partial<IFaktaside>,
   },
   {
     name: "Cypress - word count",
@@ -153,7 +153,7 @@ function reducer(
   switch (action.type) {
     case "setData":
       return {
-        ...faktaSideMockQueryData.faktaside!!,
+        ...faktaSideMockQueryData.faktaside,
         ...action.data,
       };
     default:

@@ -5,7 +5,7 @@ import { sanityClient } from "../sanity/sanity-config";
 import { domeneTittelQuery } from "../sanity/groq/commonQuerries";
 
 export default class MyDocument extends Document<{ Dekoratøren: Components }> {
-  static async getInitialProps(ctx: any) {
+  static async getInitialProps(ctx) {
     const styledComponentsStylesheet = await renderServersideStyledComponentsStylesheet(ctx);
     const domeneTittel = await sanityClient.fetch(domeneTittelQuery);
     const dekoratørParams: Props = {

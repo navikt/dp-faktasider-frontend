@@ -10,7 +10,7 @@ import { SupportedLanguage } from "../../i18n/supportedLanguages";
 import { domeneTittelQuery } from "../../sanity/groq/commonQuerries";
 import { historiskGyldigeIdQuery } from "../../sanity/groq/historikk/faktasideQuery";
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
     fallback: "blocking",
@@ -38,7 +38,7 @@ export interface HistorikkProps {
 
 export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) => {
   const gyldigeIder: string[] = await sanityClient.fetch(historiskGyldigeIdQuery);
-  const slugs = context.params!.slug as string[];
+  const slugs = context.params?.slug as string[];
 
   const request = {
     id: encodeURIComponent(slugs[0]),

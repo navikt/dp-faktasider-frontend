@@ -17,7 +17,7 @@ interface Props {
   domeneTittel: string;
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const data = await sanityClient.fetch(historiskFaktasideQuery);
   const domeneTittel = await sanityClient.fetch(domeneTittelQuery);
 

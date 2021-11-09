@@ -1,11 +1,18 @@
 import { sanityConfig } from "../../../sanity/sanity-config";
+import { SanityBlock } from "../../../utils/richTextUtils/richTextTypes";
 
-export interface HistoriskDokument extends Record<string, any> {
+export interface HistoriskDokument {
   _type: "faktaSide" | "deltTekst";
   _createdAt: string;
   _id: string;
   _rev: string;
   _updatedAt: string;
+  beskrivelse: string;
+  nokkelordBeskrivelse: string;
+  kortFortalt?: SanityBlock[];
+  innhold?: SanityBlock[];
+  title: string;
+  visIngenValgPasser: boolean;
 }
 
 export interface HistorikkResponse {
