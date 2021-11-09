@@ -1,7 +1,6 @@
 import styled from "styled-components/macro";
 import compareDesc from "date-fns/compareDesc";
 import { Revision } from "../../historikk/api/revisionsFetcher";
-import Link from "next/link";
 import { formaterDato } from "../../../utils/formaterDato";
 import { css } from "styled-components";
 import React from "react";
@@ -36,16 +35,16 @@ function Revisions(props: Props) {
         const current = props.currentRevision === rev.id;
         const formatertDato = formaterDato(rev.timestamp);
         return (
-          <Link key={rev.id} href={`/historikk/${props.documentId}/${rev.timestamp}`} passHref>
-            <StyledLenke
-              current={current}
-              className="lenke"
-              onClick={() => loggHistorikk("Ny dato valgt", { ...context.loggingInfo, nyDato: formatertDato })}
-            >
-              {formatertDato}
-              {current && " (Vises nå)"}
-            </StyledLenke>
-          </Link>
+          <StyledLenke
+            key={rev.id}
+            current={current}
+            className="lenke"
+            href={`/historikk/${props.documentId}/${rev.timestamp}`}
+            onClick={() => loggHistorikk("Ny dato valgt", { ...context.loggingInfo, nyDato: formatertDato })}
+          >
+            {formatertDato}
+            {current && " (Vises nå)"}
+          </StyledLenke>
         );
       })}
     </StyledNav>
