@@ -1,8 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Revision, revisionsFetcher } from "../../components/historikk/api/revisionsFetcher";
-import { withErrorBoundary } from "../../components/withErrorBoundary";
 import { historikkFetcher, HistorikkResponse } from "../../components/historikk/api/historikkFetcher";
-import Historikk from "../../components/historikk/Historikk";
+import { Historikk } from "../../components/historikk/Historikk";
 import { sanityClient } from "../../sanity/sanity-config";
 import { groq } from "next-sanity";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
@@ -74,4 +73,6 @@ export const getStaticProps: GetStaticProps<HistorikkProps> = async (context) =>
   };
 };
 
-export default withErrorBoundary(Historikk, "Historikk");
+export default function HistorikkPage(props: HistorikkProps) {
+  return <Historikk {...props} />;
+}

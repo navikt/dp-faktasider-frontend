@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { withErrorBoundary } from "../withErrorBoundary";
 
 interface Props {
   node: {
@@ -24,12 +23,10 @@ const VideoContainer = styled.div`
   position: relative;
 `;
 
-function Video(props: Props) {
+export function Video(props: Props) {
   return (
     <VideoContainer>
       <StyledIframe src={props.node.url} allowFullScreen frameBorder="0"></StyledIframe>
     </VideoContainer>
   );
 }
-
-export default withErrorBoundary(Video, "Video");

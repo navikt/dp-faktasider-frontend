@@ -4,7 +4,6 @@ import { theme } from "../../styles/theme";
 import { SanityContent } from "../sanity-content/SanityContent";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import parseRichText from "../../utils/richTextUtils/parser/parseRichText";
-import { withErrorBoundary } from "../withErrorBoundary";
 
 interface Props {
   node: {
@@ -40,7 +39,7 @@ const Style = styled.div`
   }
 `;
 
-function FremhevetTekst(props: Props) {
+export function FremhevetTekst(props: Props) {
   const parsedText = parseRichText(props.node.innhold);
 
   return (
@@ -49,5 +48,3 @@ function FremhevetTekst(props: Props) {
     </Style>
   );
 }
-
-export default withErrorBoundary(FremhevetTekst, "FremhevetTekst");

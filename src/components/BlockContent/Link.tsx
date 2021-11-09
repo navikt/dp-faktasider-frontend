@@ -1,8 +1,7 @@
 import React from "react";
-import { KnappLenke } from "../../utils/common-styled-components";
 import { Link } from "@navikt/ds-react";
 import styled from "styled-components/macro";
-import { withErrorBoundary } from "../withErrorBoundary";
+import { KnappLenke } from "../../utils/common-styled-components";
 
 interface Props {
   children: string[];
@@ -18,7 +17,7 @@ const Center = styled.span`
   display: block;
 `;
 
-function LinkMarkup(props: Props) {
+export function LinkMarkup(props: Props) {
   if (props.mark.knapp) {
     return (
       <Center>
@@ -29,5 +28,3 @@ function LinkMarkup(props: Props) {
 
   return <Link href={props.mark.href}>{props.children}</Link>;
 }
-
-export default withErrorBoundary(LinkMarkup, "LinkMarkup");

@@ -29,20 +29,6 @@ const loggEvent = (event: string, ekstraData?: object) => {
   }
 };
 
-// TODO logge error til noe mer egnet enn amplitude og sette opp automatisk varsling til feks slack
-export const loggError = (error: Error, ekstraData?: object) => {
-  const data = {
-    ...ekstraData,
-    msg: error.message,
-    name: error.name,
-    stack: error.stack,
-  };
-
-  console.error(data);
-
-  return loggEvent("Error", data);
-};
-
 export const loggSidevisning = (side: string) => {
   loggEvent("Side vist", { side });
   setTimeout(() => loggEvent("Ble mer enn 3 sekunder", { side }), 3000);

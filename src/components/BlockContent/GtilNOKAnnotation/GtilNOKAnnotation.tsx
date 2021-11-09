@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { withErrorBoundary } from "../../withErrorBoundary";
-import { loggError, loggHistorikk } from "../../../utils/logging";
+import { Link } from "@navikt/ds-react";
+import * as Sentry from "@sentry/nextjs";
+import styled from "styled-components";
+import { loggHistorikk } from "../../../utils/logging";
 import { useGrunnbellop } from "../../../utils/folketrygdensGrunnbeløp";
 import { useDevContext } from "../../DevKnapper/DevContext";
-import styled from "styled-components";
 import { useHistorikkContext } from "../../historikk/HistorikkContext";
 import Hjelpetekst from "../../historikk/Hjelpetekst";
-import { Link } from "@navikt/ds-react";
 
 interface Props {
   children: string[];
@@ -20,7 +20,7 @@ const HistorikkStyle = styled.abbr`
   border-bottom: 0.2rem limegreen dashed;
 `;
 
-const GtilNOKAnnotation = (props: Props) => {
+export function GtilNOKAnnotation(props: Props) {
   const G = props.children.join("");
   const notNumber = isNaN(Number(G));
   const { GtoNOK } = useGrunnbellop();
@@ -28,9 +28,10 @@ const GtilNOKAnnotation = (props: Props) => {
   const historikkContext = useHistorikkContext();
 
   useEffect(() => {
-    notNumber &&
-      loggError(new Error("Kunne ikke konvertere belløp til NOK"), { grunnbellop: G, children: props.children });
-  }, [notNumber, G, props.children]);
+    if (notNumber) {
+      Sentry.captureException(new Error(`Kunne ikke konvertere "${G}" til NOK`));
+    }
+  }, [notNumber]);
 
   if (notNumber) {
     return <>{G} (G)</>;
@@ -61,6 +62,4 @@ const GtilNOKAnnotation = (props: Props) => {
   }
 
   return <>{GtoNOK(g)}</>;
-};
-
-export default withErrorBoundary(GtilNOKAnnotation, "GtilNOKAnnotation");
+}

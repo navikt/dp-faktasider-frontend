@@ -5,7 +5,7 @@ import { HistorikkProps } from "../../pages/historikk/[...slug]";
 import useUniqueId from "../../utils/useUniqueId";
 import Head from "next/head";
 import HistorikkContextProvider from "./HistorikkContext";
-import DokumentRekonstruksjon from "./DokumentRekonstruksjon";
+import { DokumentRekonstruksjon } from "./DokumentRekonstruksjon";
 import { HistoriskDokument } from "./api/historikkFetcher";
 import { useMount } from "react-use";
 import { loggHistorikk } from "../../utils/logging";
@@ -15,7 +15,6 @@ import HistoirkkWatermark from "./Watermark";
 import { formaterDato } from "../../utils/formaterDato";
 import { Accordion } from "@navikt/ds-react";
 import LangInfo from "./LangInfo";
-import { withErrorBoundary } from "../withErrorBoundary";
 
 const StyledMain = styled.main`
   max-width: 70rem;
@@ -51,7 +50,7 @@ const StyledPre = styled.pre`
   word-break: break-word;
 `;
 
-function Historikk(props: HistorikkProps) {
+export function Historikk(props: HistorikkProps) {
   const localizedDoc: HistoriskDokument | undefined = localizeSanityContent(props.response?.documents[0], "no");
   const infoId = useUniqueId("info");
   const documentTitle = getTitle(localizedDoc);
@@ -116,5 +115,3 @@ function getTitle(dokument?: HistoriskDokument) {
       return "Kunne ikke finne tittel";
   }
 }
-
-export default withErrorBoundary(Historikk, "Historikk");

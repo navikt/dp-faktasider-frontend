@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components/macro";
 import { theme } from "../../../styles/theme";
 import H2Section from "../../Section/H2Section";
-import { withErrorBoundary } from "../../withErrorBoundary";
 import { Snarvei } from "../../../sanity/groq/forside/forsideQuery";
 import { idFromString } from "../../../utils/idFromString";
 import { Link } from "@navikt/ds-react";
@@ -26,7 +25,7 @@ const Style = styled.div`
   }
 `;
 
-function Snarveier(props: Props) {
+export function Snarveier(props: Props) {
   const { t } = useTranslation("global");
 
   const snarveier = props.snarveier || [];
@@ -50,5 +49,3 @@ function Snarveier(props: Props) {
     </Style>
   );
 }
-
-export default withErrorBoundary(Snarveier, "Snarveier");
