@@ -36,7 +36,7 @@ function Revisions(props: Props) {
         const current = props.currentRevision === rev.id;
         const formatertDato = formaterDato(rev.timestamp);
         return (
-          <Link key={rev.id} href={`/historikk/${props.documentId}/${rev.timestamp}`} passHref>
+          <Link prefetch={false} key={rev.id} href={`/historikk/${props.documentId}/${rev.timestamp}`} passHref>
             <StyledLenke
               current={current}
               className="lenke"
