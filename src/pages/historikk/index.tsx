@@ -45,6 +45,12 @@ export default function HistorikkIndeks(props: Props) {
       <Link href={`/historikk/${faktaside._id}/${faktaside._updatedAt}`} passHref>
         <a className="lenke">{faktaside.title}</a>
       </Link>
+      <br />
+      <Link href={`/historikk/${faktaside.slug.current}/${faktaside._id}`} passHref>
+        <a className="lenke">DYNAMISK: {faktaside.title}</a>
+      </Link>
+      <br />
+      <br />
     </li>
   ));
 
