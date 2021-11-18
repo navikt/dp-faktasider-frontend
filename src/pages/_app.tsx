@@ -14,9 +14,7 @@ import "../styles/index.scss";
 export default function App({ Component, pageProps }: AppProps) {
   const locale = useRouter().locale;
   useEffect(() => {
-    return () => {
-      locale && i18nextConfig.changeLanguage(locale);
-    };
+    locale && i18nextConfig.changeLanguage(locale);
   }, [locale]);
 
   return (
