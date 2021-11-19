@@ -8,16 +8,16 @@ ENV CI=true
 COPY package*.json /home/node/app/
 COPY prepare.js /home/node/app/
 
-RUN npm ci
+RUN npm ci --prefer-offline --no-audit --ignore-scripts
 
 RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
     echo "[auth]\n"\
     "token=$(cat /run/secrets/SENTRY_AUTH_TOKEN)" >> .sentryclirc
 
 COPY . /home/node/app
-RUN ls ./src
-RUN ls ./src/pages
-RUN npm run build
+RUN ls -R -l .
+RUN npm run build && \
+    npm prune --production --offline
 
 FROM node:16-alpine AS runtime
 WORKDIR /home/node/app
