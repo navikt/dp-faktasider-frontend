@@ -82,7 +82,7 @@
     "cypress:open": "concurrently \"next\" \"npx cypress open\"",
     "cypress:run": "npm run build && concurrently \"npm run start\" \"npx cypress run\"",
     "typeCheck": "tsc",
-    "docker": "docker build -t dpfakta . && docker run --rm -p 3000:3000 dpfakta",
+    "docker": "docker build -t dpfakta . --progress=plain && docker run --rm -p 3000:3000 dpfakta",
     "prepare": "node ./prepare.js"
   },
   "prettier": {
