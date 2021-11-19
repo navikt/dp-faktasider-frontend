@@ -16,6 +16,8 @@ RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
 
 COPY . /home/node/app
 RUN ls .
+RUN ls ./src
+RUN ls ./src/pages
 RUN npm run build
 
 FROM node:16-alpine AS runtime
