@@ -6,7 +6,7 @@
 !public/**
 !next*
 !jest*
-!cypress/testData
+!cypress/testData/**
 
 !sentry*
 !*.json

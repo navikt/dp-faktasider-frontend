@@ -15,7 +15,8 @@ RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
     "token=$(cat /run/secrets/SENTRY_AUTH_TOKEN)" >> .sentryclirc
 
 COPY . /home/node/app
-RUN ls -R -l .
+RUN ls -R -l ./src
+RUN ls -R -l ./public
 RUN npm run build && \
     npm prune --production --offline
 
