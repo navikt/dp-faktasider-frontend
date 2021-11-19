@@ -15,8 +15,8 @@ RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
     "token=$(cat /run/secrets/SENTRY_AUTH_TOKEN)" >> .sentryclirc
 
 COPY . /home/node/app
-COPY ./src/pages /home/node/app/pages
-RUN ls .
+COPY /src/pages/ /home/node/app/pages
+RUN ls -R .
 RUN npm run build
 
 FROM node:16-alpine AS runtime
