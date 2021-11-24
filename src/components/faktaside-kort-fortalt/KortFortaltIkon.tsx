@@ -1,8 +1,8 @@
 import React from "react";
 
-function KortFortaltIkon(props: React.SVGProps<SVGSVGElement>) {
+export function KortFortaltIcon() {
   return (
-    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 64" {...props}>
+    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 64">
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -54,5 +54,3 @@ function KortFortaltIkon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
-
-export default KortFortaltIkon;

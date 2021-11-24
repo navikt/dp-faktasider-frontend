@@ -1,7 +1,7 @@
 import React from "react";
 import { useMount } from "react-use";
 import { loggSidevisning } from "../../utils/logging";
-import useBreadcrumbs from "../../components/faktaside/useBreadcrumbs";
+import useBreadcrumbs from "../../hooks/useBreadcrumbs";
 import { Header } from "../../components/header/Header";
 import { SEO } from "../../components/SEO";
 import { Notifications } from "../../components/notifications/Notifications";

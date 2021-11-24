@@ -6,7 +6,7 @@ import { HistoriskFaktasideData, historiskFaktasideQuery } from "../../sanity/gr
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import Link from "next/link";
 import styled from "styled-components";
-import useBreadcrumbs from "../../components/faktaside/useBreadcrumbs";
+import useBreadcrumbs from "../../hooks/useBreadcrumbs";
 import { domeneTittelQuery } from "../../sanity/groq/commonQuerries";
 import { loggHistorikk } from "../../utils/logging";
 import useMount from "react-use/lib/useMount";

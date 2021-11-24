@@ -15,6 +15,14 @@
   --navds-font-size-s: 0.7777777777777778rem;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+.sprakvelger__container {
+  display: none;
+}
+
 /* Overrides for breadcrumbs from @navikt */
 .decorator-utils-container {
   background-color: var(--navds-color-white);

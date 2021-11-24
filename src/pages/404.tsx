@@ -6,11 +6,11 @@ import { useMount } from "react-use";
 import { loggNotFound } from "../utils/logging";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
-import { SideListe } from "../components/faktaside/Meny/SideListe";
+import { MenuItems } from "../components/menu/MenuItems";
 import { sanityClient } from "../sanity/sanity-config";
 import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
-import useBreadcrumbs from "../components/faktaside/useBreadcrumbs";
+import useBreadcrumbs from "../hooks/useBreadcrumbs";
 import localizeSanityContent from "../i18n/localizeSanityContent";
 import { SupportedLanguage } from "../i18n/supportedLanguages";
 import Link from "next/link";
@@ -93,7 +93,7 @@ const NotFoundPage = (props: Props) => {
         </TilbakeTilForsidelenke>
       </Link>
       <StyledNormaltekst>{t("404-andre-sider")}</StyledNormaltekst>
-      <SideListe menuData={menuData} />
+      <MenuItems menuItems={menuData} />
     </Style>
   );
 };

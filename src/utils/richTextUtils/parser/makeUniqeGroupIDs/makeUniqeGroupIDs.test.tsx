@@ -3,7 +3,7 @@ import parseRichText from "../parseRichText";
 import { SanityContent } from "../../../../components/sanity-content/SanityContent";
 import React from "react";
 import { makeUniqueIdTestData } from "./makeUniqeGroupIDs.testdata";
-import { PureInnholdsfortegnelse } from "../../../../components/faktaside/Meny/Innholdsfortegnelse/Innholdsfortegnelse";
+import { PureInnholdsfortegnelse } from "../../../../components/table-of-contents/TableOfContents";
 import { Group, isH2Group } from "../groupParser/groupParser";
 
 test("makeUniqueGroupIDs lager unike IDer slik at vi kan lage fungerende hash-lenker i appen", () => {

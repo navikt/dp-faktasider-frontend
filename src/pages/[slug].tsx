@@ -1,13 +1,12 @@
 import React from "react";
 import { GetStaticPaths, GetStaticProps, Redirect } from "next";
-import Faktaside from "../components/faktaside/Faktaside";
+import { FaktasideContainer } from "../views/faktaside/FaktasideContainer";
 import { groq } from "next-sanity";
 import { sanityClient } from "../sanity/sanity-config";
 import { faktasideQuery, FaktasideQueryData } from "../sanity/groq/faktaside/faktasideQuery";
 import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { supportedLanguages } from "../i18n/supportedLanguages";
 import { useSanityPreveiw } from "../sanity/useSanityPreview";
-import { Error } from "../views/error/Error";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
 
@@ -57,5 +56,5 @@ export default function PreviewWrapper(props: FaktasideStaticProps) {
   const faktasideData = useSanityPreveiw(props.faktasideQueryData, faktasideQuery, { slug: props.slug });
   const menuData = useSanityPreveiw(props.menuQueryData, menuQuery);
 
-  return <Faktaside faktasideQueryData={faktasideData} menuQueryData={menuData} />;
+  return <FaktasideContainer faktasideQueryData={faktasideData} menuQueryData={menuData} />;
 }

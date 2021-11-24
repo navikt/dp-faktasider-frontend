@@ -1,4 +1,4 @@
-import { useFaktasideContext } from "../components/faktaside/FaktaSideContext";
+import { useFaktasideContext } from "../views/faktaside/FaktaSideContext";
 
 export function useGrunnbellop() {
   const G = useFaktasideContext().folketrygdensGrunnbellop || NaN;

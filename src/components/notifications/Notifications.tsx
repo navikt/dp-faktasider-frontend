@@ -20,6 +20,7 @@ export function Notifications(props: Props) {
   return (
     <article className={styles.container}>
       <h2 className="sr-only">Notifikasjoner</h2>
+
       {props.notifications.map((notification) => (
         <Alert variant="info" key={notification._id}>
           {notification.title && (
@@ -27,7 +28,6 @@ export function Notifications(props: Props) {
               {notification.title}
             </Label>
           )}
-
           {notification.innhold && <SanityContent blocks={notification.innhold} />}
         </Alert>
       ))}

@@ -2,6 +2,10 @@
   margin-bottom: 4vmin;
   max-width: var(--content-max-width);
 
+  p {
+    margin: 0.5rem 0 1rem;
+  }
+
   > *:not(:last-child) {
     margin-bottom: 0.5rem;
   }

@@ -1,5 +1,5 @@
 import { useLocation, useMount } from "react-use";
-import { loggHashNotFound } from "../../utils/logging";
+import { loggHashNotFound } from "../utils/logging";
 
 function useLoggUtdatertHashlenke() {
   const location = useLocation();

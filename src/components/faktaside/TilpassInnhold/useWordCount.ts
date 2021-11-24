@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useState } from "react";
 import { useVisForContext } from "../../BlockContent/VisFor/VisForContext";
-import { useFaktasideContext } from "../FaktaSideContext";
+import { useFaktasideContext } from "../../../views/faktaside/FaktaSideContext";
 
 export function useWordCount(contentRef: RefObject<HTMLElement>) {
   const { checked, ingenPasserMeg } = useVisForContext().value;

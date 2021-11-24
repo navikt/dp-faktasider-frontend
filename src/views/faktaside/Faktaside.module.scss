@@ -1,0 +1,25 @@
+.container {
+  flex-grow: 1;
+  position: relative;
+  min-height: 30vh;
+  max-width: 67rem;
+  margin: 0 auto;
+
+  @media ('min-width: 1080px') {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.content {
+  flex: 0 1 40rem;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 40rem;
+  padding: 0 1rem;
+
+  @media ("max-width: 1080px") {
+    padding: 0;
+  }
+}

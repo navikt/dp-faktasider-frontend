@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import useVisPaaSideDebug from "./useVisPaaSideDebug";
 import { VisPaaConfig } from "../../../utils/richTextUtils/richTextTypes";
-import { useFaktasideContext } from "../../faktaside/FaktaSideContext";
+import { useFaktasideContext } from "../../../views/faktaside/FaktaSideContext";
 import { useHistorikkContext } from "../../historikk/HistorikkContext";
 import styled from "styled-components";
 import { colors } from "../../../styles/theme";

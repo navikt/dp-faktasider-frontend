@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { useVisForContext, VisForContextI } from "./VisForContext";
 import VisForDebug from "./VisForDebug";
 import { VisForConfig } from "../../../utils/richTextUtils/richTextTypes";
-import { useFaktasideContext } from "../../faktaside/FaktaSideContext";
+import { useFaktasideContext } from "../../../views/faktaside/FaktaSideContext";
 
 interface Props {
   children: ReactNode;

@@ -1,29 +1,17 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { pxFromTop } from "../../../../utils/domUtils";
-import styled, { css } from "styled-components/macro";
-import { useInnholdsListe } from "./useInnholdsListe";
-import { LenkeUtenUnderstrek } from "../../../../utils/common-styled-components";
-import { loggMeny } from "../../../../utils/logging";
-import { useVisForContext } from "../../../BlockContent/VisFor/VisForContext";
+import { pxFromTop } from "../../utils/domUtils";
+import { useInnholdsListe } from "../../hooks/useInnholdsListe";
+import { loggMeny } from "../../utils/logging";
+import { useVisForContext } from "../BlockContent/VisFor/VisForContext";
 import { UnmountClosed } from "react-collapse";
-import { visBasertPåFiltrering } from "../../../BlockContent/VisFor/VisFor";
-import { Draft } from "../../../BlockContent/draft/Draft";
-import { theme } from "../../../../styles/theme";
-import { visBasertPaaVisPaaConfig } from "../../../BlockContent/VisFor/VisPaaSide";
-import { menuHighlightStyle } from "../SideListe";
-import { useFaktasideContext } from "../../FaktaSideContext";
-import { Group } from "../../../../utils/richTextUtils/parser/groupParser/groupParser";
-
-const StyledLenke = styled((props) => <LenkeUtenUnderstrek {...props} />)`
-  display: block;
-  padding: 0.4rem ${theme.layoutPadding} 0.4rem calc(${theme.layoutPadding} * 1.75);
-  ${(props) => props.erValgt && menuHighlightStyle}
-  ${(props) =>
-    props.erValgt &&
-    css`
-      text-decoration: underline !important;
-    `}
-`;
+import { visBasertPåFiltrering } from "../BlockContent/VisFor/VisFor";
+import { Draft } from "../BlockContent/draft/Draft";
+import { visBasertPaaVisPaaConfig } from "../BlockContent/VisFor/VisPaaSide";
+import { useFaktasideContext } from "../../views/faktaside/FaktaSideContext";
+import { Group } from "../../utils/richTextUtils/parser/groupParser/groupParser";
+import styles from "./TableOfContents.module.scss";
+import { Link } from "@navikt/ds-react";
+import cx from "classnames";
 
 const skjermBrøk = 1 / 4; // Brukes for å beregne hvilken gruppe bruker ser på for øyeblikket. Hvis den er 1/4 må en gruppe være over den øverste 1/4 av for å regnes som "currentGroup"
 
@@ -63,20 +51,20 @@ function MenuItem(props: { item: Group; current: boolean }) {
     <Draft isDraft={!!blockConfig?.erUtkast}>
       <UnmountClosed isOpened={vis}>
         <li key={blockConfig?.id}>
-          <StyledLenke erValgt={props.current} href={`#${blockConfig?.id}`} onClick={handleClick}>
+          <Link
+            className={cx(styles["content-item"], { [styles["content-item--selected"]]: props.current })}
+            href={`#${blockConfig?.id}`}
+            onClick={handleClick}
+          >
             {props.item.title}
-          </StyledLenke>
+          </Link>
         </li>
       </UnmountClosed>
     </Draft>
   );
 }
 
-const StyledOl = styled.ol`
-  padding: 0.5rem 0 1rem;
-`;
-
-export function Innholdsfortegnelse() {
+export function TableOfContents() {
   const innholdsListe = useInnholdsListe();
   const faktaside = useFaktasideContext();
 
@@ -95,10 +83,10 @@ interface Props {
 export function PureInnholdsfortegnelse(props: Props) {
   const currentlyViewedGroup = useCurrentlyViewedGroup(props.innholdsListe);
   return (
-    <StyledOl aria-label={`Innholdsfortegnelse ${props.title}`}>
+    <ol className={styles["table-of-contents"]} aria-label={`Innholdsfortegnelse ${props.title}`}>
       {props.innholdsListe.map((item) => (
         <MenuItem key={item.blockConfig?.id} item={item} current={currentlyViewedGroup === item} />
       ))}
-    </StyledOl>
+    </ol>
   );
 }

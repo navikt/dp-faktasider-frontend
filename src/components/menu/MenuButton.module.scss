@@ -1,0 +1,19 @@
+.menu-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  height: 48px;
+  width: 48px;
+
+  margin: 1rem 0;
+  border-radius: 0.5rem 0 0 0.5rem;
+
+  background-color: var(--navds-color-blue-50);
+  color: white;
+  opacity: 0.9;
+
+  svg {
+    width: 100%;
+  }
+}

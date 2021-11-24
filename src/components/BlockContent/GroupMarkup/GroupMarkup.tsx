@@ -8,11 +8,24 @@ import VisPaaSide from "../VisFor/VisPaaSide";
 import { SanityContent } from "../../sanity-content/SanityContent";
 import GroupMenu from "./GroupMenu";
 import { Group, GroupTypes, isGroup } from "../../../utils/richTextUtils/parser/groupParser/groupParser";
+import { ContentSection } from "../../content-section/ContentSection";
 
 interface Props {
   node: Group;
 }
 
+function getHeadingLevel(groupType: GroupTypes) {
+  switch (groupType) {
+    case "h2":
+      return "2";
+    case "h3":
+      return "3";
+    case "h4":
+      return "4";
+    default:
+      throw Error(`Ukjent gruppe: ${groupType}`);
+  }
+}
 function getComponent(groupType: GroupTypes) {
   switch (groupType) {
     case "h2":
@@ -32,14 +45,22 @@ export function GroupMarkup(props: Props) {
   const Section = getComponent(props.node.style);
   const menyGrupper = meny ? children.filter(isGroup) : undefined;
 
+  nobackground && console.log(nobackground);
+  nobackground && console.log(props.node);
+
   return (
     <VisPaaSide visPaaSider={visPaaSider}>
       <Draft isDraft={erUtkast}>
         <VisFor visForConfig={visFor}>
-          <Section title={title} id={id || "N/A"} {...(nobackground ? nobackground : undefined)}>
+          <ContentSection id={id} title={title} headingLevel={getHeadingLevel(props.node.style)}>
             {menyGrupper && <GroupMenu title={title} underGrupper={menyGrupper} />}
             <SanityContent blocks={children} />
-          </Section>
+            {nobackground && <div>*************************</div>}
+          </ContentSection>
+          {/*<Section title={title} id={id || "N/A"} {...(nobackground ? nobackground : undefined)}>*/}
+          {/*  {menyGrupper && <GroupMenu title={title} underGrupper={menyGrupper} />}*/}
+          {/*  <SanityContent blocks={children} />*/}
+          {/*</Section>*/}
         </VisFor>
       </Draft>
     </VisPaaSide>

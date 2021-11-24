@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Block } from "../utils/richTextUtils/richTextTypes";
 import { faktaSideMockQueryData } from "./faktaSideMockQueryData";
-import FaktaSide from "../components/faktaside/Faktaside";
+import FaktaSide from "../views/faktaside/Faktaside";
 import { FaktasideQueryData, IFaktaside } from "../sanity/groq/faktaside/faktasideQuery";
 import { translated } from "./createSanityBlock";
 import { mockMenuData } from "../sanity/groq/menu/mockMenuData";

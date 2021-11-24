@@ -1,9 +1,9 @@
-import { render, within } from "../../../testUtils/customized-testing-library.test.utils";
+import { render, within } from "../../testUtils/customized-testing-library.test.utils";
 import React from "react";
-import TestFaktaside from "../../../testUtils/TestFaktaside";
-import { mockMenuData } from "../../../sanity/groq/menu/mockMenuData";
-import { TestId } from "../../../utils/test-ids";
-import { MenuQueryData } from "../../../sanity/groq/menu/menuQuery";
+import TestFaktaside from "../../testUtils/TestFaktaside";
+import { mockMenuData } from "../../sanity/groq/menu/mockMenuData";
+import { TestId } from "../../utils/test-ids";
+import { MenuQueryData } from "../../sanity/groq/menu/menuQuery";
 
 // 'partialContext={{ id: 'N/A'}}' gjør at det ikke rendres innholdsliste som en del av sidelisten.
 // Innholdslisten inneholder også lenker som gjorde det litt vanskelig å skrive disse testene

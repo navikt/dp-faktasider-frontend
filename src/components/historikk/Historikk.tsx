@@ -9,7 +9,7 @@ import { DokumentRekonstruksjon } from "./DokumentRekonstruksjon";
 import { HistoriskDokument } from "./api/historikkFetcher";
 import { useMount } from "react-use";
 import { loggHistorikk } from "../../utils/logging";
-import useBreadcrumbs from "../faktaside/useBreadcrumbs";
+import useBreadcrumbs from "../../hooks/useBreadcrumbs";
 import HistorikkHeader from "./HistorikkHeader";
 import HistoirkkWatermark from "./Watermark";
 import { formaterDato } from "../../utils/formaterDato";

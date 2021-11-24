@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styled from "styled-components/macro";
 import { useTranslation } from "react-i18next";
-import { useFaktasideContext } from "../FaktaSideContext";
+import { useFaktasideContext } from "../../../views/faktaside/FaktaSideContext";
 
 const Style = styled.div`
   margin-top: 0.5rem;

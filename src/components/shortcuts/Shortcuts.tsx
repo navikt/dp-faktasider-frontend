@@ -2,7 +2,7 @@ import React from "react";
 import { Heading } from "@navikt/ds-react";
 import { useTranslation } from "react-i18next";
 import { Snarvei } from "../../sanity/groq/forside/forsideQuery";
-import { Chevron } from "../faktaside/Meny/Chevron";
+import { Chevron } from "../Chevron";
 import styles from "./Shortcuts.module.scss";
 
 interface Props {

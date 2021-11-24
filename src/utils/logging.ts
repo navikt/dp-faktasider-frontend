@@ -34,8 +34,7 @@ export const loggSidevisning = (side: string) => {
   setTimeout(() => loggEvent("Ble mer enn 3 sekunder", { side }), 3000);
 };
 
-export const loggIkkeOversatt = (side: string) => loggEvent("Ikke oversatt", { side });
-
+export const loggNotTranslated = (side: string) => loggEvent("Ikke oversatt", { side });
 export const loggKalkulatorbruk = (type: string) => loggEvent("Brukt kalkulator", { type });
 
 export const loggMeny = (type: string) => loggEvent("Meny", { type });

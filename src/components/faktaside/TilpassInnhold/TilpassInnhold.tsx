@@ -3,7 +3,7 @@ import { useVisForContext } from "../../BlockContent/VisFor/VisForContext";
 import styled from "styled-components/macro";
 import { theme } from "../../../styles/theme";
 import { UnmountClosed } from "react-collapse";
-import { useFaktasideContext } from "../FaktaSideContext";
+import { useFaktasideContext } from "../../../views/faktaside/FaktaSideContext";
 import { useWordCount } from "./useWordCount";
 import { navFrontend } from "../../../styles/navFrontend";
 import { InnholdetErTilpasset } from "./InnholdetErTilpasset";

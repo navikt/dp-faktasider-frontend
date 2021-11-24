@@ -78,7 +78,6 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "lint": "next lint",
     "cypress:open": "concurrently \"next\" \"npx cypress open\"",
     "cypress:run": "npm run build && concurrently \"npm run start\" \"npx cypress run\"",
     "typeCheck": "tsc",

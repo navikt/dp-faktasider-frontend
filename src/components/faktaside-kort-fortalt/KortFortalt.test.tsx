@@ -1,7 +1,7 @@
 import React from "react";
-import { render, within } from "../../../testUtils/customized-testing-library.test.utils";
-import TestFaktaside from "../../../testUtils/TestFaktaside";
-import { createSanityBlock, translated } from "../../../testUtils/createSanityBlock";
+import { render, within } from "../../testUtils/customized-testing-library.test.utils";
+import TestFaktaside from "../../testUtils/TestFaktaside";
+import { createSanityBlock, translated } from "../../testUtils/createSanityBlock";
 
 describe("kortFortalt", () => {
   test("vises ikke om det ikke finnes innhold i kort fortalt", () => {
