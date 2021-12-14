@@ -52,7 +52,7 @@ function MenuItem(props: { item: Group; current: boolean }) {
   const blockConfig = props.item.blockConfig;
 
   const handleClick = () => {
-    loggMeny("Hopp til overskrift");
+    loggMeny("Hopp til overskrift", { hashtag: blockConfig?.id });
   };
 
   const vis =
