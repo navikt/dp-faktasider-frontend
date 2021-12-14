@@ -15,10 +15,10 @@ function Resultat(props: { grunnlag?: number }) {
     return null;
   }
 
-  if (props.grunnlag < 1.5 * G) {
+  if (props.grunnlag < 0.75 * G) {
     return (
       <>
-        <BodyShort>{t("forLavtGrunnlag", { G: `1.5 G (${GtoNOK(1.5)} kroner)` })} </BodyShort>
+        <BodyShort>{t("forLavtGrunnlag", { G: `0.75 G (${GtoNOK(0.75)} kroner)` })} </BodyShort>
         <Alert variant="info">{t("sendSøknadLikvel")}</Alert>
       </>
     );
