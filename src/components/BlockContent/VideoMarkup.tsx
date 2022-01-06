@@ -26,7 +26,7 @@ const VideoContainer = styled.div`
 export function Video(props: Props) {
   return (
     <VideoContainer>
-      <StyledIframe src={props.node.url} allowFullScreen frameBorder="0"></StyledIframe>
+      <StyledIframe title={props.node.title} src={props.node.url} allowFullScreen frameBorder="0"></StyledIframe>
     </VideoContainer>
   );
 }
