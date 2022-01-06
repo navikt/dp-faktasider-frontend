@@ -23,6 +23,7 @@ export function SEO(props: Props) {
       <title>{props.title} | www.nav.no</title>
       <link rel="canonical" href={cannonical} />
       <meta name="description" content={props.description} />
+      <meta name="robots" content="noodp,noydir" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={props.title} />
       <meta property="og:description" content={props.description} />
