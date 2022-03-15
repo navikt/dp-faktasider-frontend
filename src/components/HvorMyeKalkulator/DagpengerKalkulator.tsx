@@ -24,13 +24,15 @@ function Resultat(props: { grunnlag?: number }) {
     );
   }
 
-  const under3G = Math.min(props.grunnlag, 3 * G);
-  const mellom3og6G = Math.max(0, Math.min(props.grunnlag, 6 * G) - 3 * G);
+  const minimumsinntektIOvergang = props.grunnlag >= 0.75 * G && props.grunnlag < 1.5 * G;
+
+  //const under3G = Math.min(props.grunnlag, 3 * G);
+  const mellom0og6g = Math.max(0, Math.min(props.grunnlag, 6 * G));
   const over6G = Math.max(0, props.grunnlag - 6 * G);
 
-  const resultatUnder3G = under3G * 0.8;
-  const resultatMellom3og6G = mellom3og6G * 0.624;
-  const totalt = resultatUnder3G + resultatMellom3og6G;
+  //const resultatUnder3G = under3G * 0.624;
+  const resultatMellom0og6G = mellom0og6g * 0.624;
+  const totalt = resultatMellom0og6G;
 
   return (
     <>
@@ -38,22 +40,15 @@ function Resultat(props: { grunnlag?: number }) {
         <tbody>
           <tr>
             <td>
-              <i>Under 3 G</i>
+              <i>{t("mellom", { over: 0, under: 6 })}</i>
             </td>
-            <td>{toKR(under3G)} x 80 %</td>
-            <td>{toKR(resultatUnder3G)}</td>
-          </tr>
-          <tr>
-            <td>
-              <i>{t("mellom", { over: 3, under: 6 })}</i>
-            </td>
-            <td>{toKR(mellom3og6G)} x 62.4 %</td>
-            <td> {toKR(resultatMellom3og6G)}</td>
+            <td>{toKR(mellom0og6g)} x 62.4 %</td>
+            <td> {toKR(resultatMellom0og6G)}</td>
           </tr>
           {over6G > 0 && (
             <tr>
               <td>
-                <i>Over 6 G</i>
+                <i>Inntekt over 6 G</i>
               </td>
               <td>{toKR(over6G)} x 0 %</td>
               <td>{toKR(0)}</td>
@@ -69,7 +64,22 @@ function Resultat(props: { grunnlag?: number }) {
           </tr>
         </tbody>
       </ResultatTable>
-      <Alert variant="info">{t("kunveiledende")}</Alert>
+      {minimumsinntektIOvergang && (
+        <Alert variant="info">
+          {t("minimumsinntektKunIOvergang", { G: `1.5 G (${GtoNOK(1.5)} kroner)` })}
+          <br />
+          {t("nyereglerfra")}
+          <br />
+          {t("kunveiledende")}
+        </Alert>
+      )}
+      {!minimumsinntektIOvergang && (
+        <Alert variant="info">
+          {t("nyereglerfra")}
+          <br />
+          {t("kunveiledende")}
+        </Alert>
+      )}
     </>
   );
 }

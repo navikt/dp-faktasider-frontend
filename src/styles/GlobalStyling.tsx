@@ -12,9 +12,9 @@ const Styling = createGlobalStyle`
   }
 
   html {
-    font-size: 112.5% !important;
+    //font-size: 100% !important;
     @media (min-width: 1400px) {
-      font-size: 125% !important;
+      font-size: 112.5% !important;
     }
     font-family: 'Source Sans Pro', sans-serif;
     
@@ -25,7 +25,7 @@ const Styling = createGlobalStyle`
 
   body {
     background-color: ${theme.colors.bakgrunn};
-    font-size: 1rem; // motvikrer ny styling fra designsystemet som gjør designet vår uproporsjonalt
+    //font-size: 1rem; // motvikrer ny styling fra designsystemet som gjør designet vår uproporsjonalt
   }
 
   .ReactCollapse--collapse {
