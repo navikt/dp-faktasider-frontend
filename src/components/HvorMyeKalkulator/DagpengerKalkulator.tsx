@@ -15,16 +15,14 @@ function Resultat(props: { grunnlag?: number }) {
     return null;
   }
 
-  if (props.grunnlag < 0.75 * G) {
+  if (props.grunnlag < 1.5 * G) {
     return (
       <>
-        <BodyShort>{t("forLavtGrunnlag", { G: `0.75 G (${GtoNOK(0.75)} kroner)` })} </BodyShort>
+        <BodyShort>{t("forLavtGrunnlag", { G: `1.5 G (${GtoNOK(1.5)} kroner)` })} </BodyShort>
         <Alert variant="info">{t("sendSøknadLikvel")}</Alert>
       </>
     );
   }
-
-  const minimumsinntektIOvergang = props.grunnlag >= 0.75 * G && props.grunnlag < 1.5 * G;
 
   //const under3G = Math.min(props.grunnlag, 3 * G);
   const mellom0og6g = Math.max(0, Math.min(props.grunnlag, 6 * G));
@@ -64,22 +62,7 @@ function Resultat(props: { grunnlag?: number }) {
           </tr>
         </tbody>
       </ResultatTable>
-      {minimumsinntektIOvergang && (
-        <Alert variant="info">
-          {t("minimumsinntektKunIOvergang", { G: `1.5 G (${GtoNOK(1.5)} kroner)` })}
-          <br />
-          {t("nyereglerfra")}
-          <br />
-          {t("kunveiledende")}
-        </Alert>
-      )}
-      {!minimumsinntektIOvergang && (
-        <Alert variant="info">
-          {t("nyereglerfra")}
-          <br />
-          {t("kunveiledende")}
-        </Alert>
-      )}
+      <Alert variant="info">{t("kunveiledende")}</Alert>
     </>
   );
 }
