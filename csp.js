@@ -22,6 +22,8 @@ const csp = {
     "*.psplugin.com",
     "*.hotjar.com",
     "*.vc.hotjar.com",
+    "*.vc.hotjar.io:*",
+    "*.surveystats.hotjar.io",
     "api.puzzel.com",
     "nav.boost.ai",
     "rt6o382n.api.sanity.io",
