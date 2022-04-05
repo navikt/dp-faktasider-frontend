@@ -8,6 +8,7 @@ import { mediaBreakpoint } from "../styles/theme";
 
 const loggEvent = (event: string, ekstraData?: object) => {
   if (isTest()) {
+    //console.log(event, ekstraData) -- for lokal utvikling
     return;
   }
 
