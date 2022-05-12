@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import styled, { createGlobalStyle, css } from "styled-components/macro";
+import styled, { createGlobalStyle, css } from "styled-components";
 import { Meny } from "./Meny/Meny";
 import { theme } from "../../styles/theme";
 

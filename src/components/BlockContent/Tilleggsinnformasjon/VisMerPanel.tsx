@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import ChevronButton from "../../ChevronButton";
 import { useTranslation } from "react-i18next";
 import { Collapse } from "react-collapse";

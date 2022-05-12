@@ -1,5 +1,5 @@
 import React, { ReactNode, useReducer } from "react";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import { Collapse } from "react-collapse";
 import ChevronButton from "./ChevronButton";
 

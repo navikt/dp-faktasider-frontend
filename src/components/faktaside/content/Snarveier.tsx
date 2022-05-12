@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { theme } from "../../../styles/theme";
 import H2Section from "../../Section/H2Section";
 import { Snarvei } from "../../../sanity/groq/forside/forsideQuery";

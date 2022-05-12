@@ -1,5 +1,5 @@
 import { Next } from "@navikt/ds-icons";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 
 type Retning = "høyre" | "opp" | "ned" | "venstre";
 

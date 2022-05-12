@@ -1,6 +1,6 @@
 import { Button, Heading } from "@navikt/ds-react";
 import React, { useState } from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { Historikk } from "../../components/historikk/Historikk";
 import {
   historikkCustomComponentTestdata,

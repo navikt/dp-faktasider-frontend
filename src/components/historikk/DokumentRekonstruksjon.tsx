@@ -5,7 +5,7 @@ import { typografiStyle } from "../faktaside/FaktaSideLayout";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";
 import parseRichText from "../../utils/richTextUtils/parser/parseRichText";
 import { HistoriskDokument } from "./api/historikkFetcher";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import useUniqueId from "../../utils/useUniqueId";
 import { Alert, BodyShort, Heading, Link } from "@navikt/ds-react";
 import { useHistorikkContext } from "./HistorikkContext";

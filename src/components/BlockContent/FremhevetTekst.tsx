@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { theme } from "../../styles/theme";
 import { SanityContent } from "../sanity-content/SanityContent";
 import { SanityBlock } from "../../utils/richTextUtils/richTextTypes";

@@ -1,4 +1,4 @@
-import { css } from "styled-components/macro";
+import { css } from "styled-components";
 import { pxToRem } from "./utils";
 import { navFrontend } from "./navFrontend";
 

@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const csp = require("./csp");
 const { withSentryConfig } = require("@sentry/nextjs");
-const withTranspileModules = require("next-transpile-modules")(["@navikt/ds-react", "@navikt/ds-icons"]);
 
 const config = {
+  compiler: {
+    // ssr and displayName are configured by default
+    styledComponents: true,
+  },
   basePath: "/arbeid",
   productionBrowserSourceMaps: true,
   i18n: {
@@ -35,8 +38,6 @@ const config = {
   },
 };
 
-const moduleExports = withTranspileModules(config);
-
 // For all available options, see:
 // https://github.com/getsentry/sentry-webpack-plugin#options.
 
@@ -44,4 +45,4 @@ const sentryWebpackPluginOptions = {
   silent: true, // Suppresses all logs
 };
 
-module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
+module.exports = withSentryConfig(config, sentryWebpackPluginOptions);
