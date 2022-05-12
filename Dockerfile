@@ -7,8 +7,7 @@ ENV CI=true
 
 COPY package*.json /home/node/app/
 COPY prepare.js /home/node/app/
-
-COPY package*.json .npmrc /usr/src/app/
+COPY .npmrc /home/node/app/
 
 RUN --mount=type=secret,id=NODE_AUTH_TOKEN \
     echo '//npm.pkg.github.com/:_authToken='$(cat /run/secrets/NODE_AUTH_TOKEN) >> .npmrc
