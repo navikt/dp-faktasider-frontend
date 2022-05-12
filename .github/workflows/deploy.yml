@@ -102,6 +102,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           secrets: |
+            "NODE_AUTH_TOKEN=${{ secrets.READER_TOKEN }}"
             "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}"
 
       - name: Archive NAIS yaml
