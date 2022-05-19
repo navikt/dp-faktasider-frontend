@@ -38,6 +38,7 @@ jobs:
       - name: Test
         env:
           TZ: Europe/Oslo
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
         run: |
           npm install --no-save --no-audit
           npm test
@@ -64,6 +65,7 @@ jobs:
         env:
           SANITY_READ_TOKEN: ${{ secrets.CYPRESS_READ_TOKEN_SANITY }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
 
       - uses: actions/upload-artifact@v1
         if: failure()
