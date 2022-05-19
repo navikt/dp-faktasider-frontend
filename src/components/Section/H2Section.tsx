@@ -1,6 +1,6 @@
 import React from "react";
 import { Heading } from "@navikt/ds-react";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import { theme } from "../../styles/theme";
 import Section, { CommonSectionProps } from "./CommonSectionMarkup";
 

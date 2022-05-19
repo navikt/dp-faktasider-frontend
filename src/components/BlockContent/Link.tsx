@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@navikt/ds-react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { KnappLenke } from "../../utils/common-styled-components";
 
 interface Props {

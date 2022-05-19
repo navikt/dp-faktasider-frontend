@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import { visForTestData } from "../components/BlockContent/VisFor/visFor.testdata";
 import { faktaSideMockQueryData } from "../testUtils/faktaSideMockQueryData";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { flattenH2TestData } from "../utils/richTextUtils/parser/flattenH2Versions/flattenH2Versions.testdata";
 import { makeUniqueIdTestData } from "../utils/richTextUtils/parser/makeUniqeGroupIDs/makeUniqeGroupIDs.testdata";
 import { parseDelteTeksterTestData } from "../utils/richTextUtils/parser/parseDelteTekster/parseDelteTekster.testdata";

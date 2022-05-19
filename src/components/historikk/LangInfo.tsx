@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { Accordion } from "@navikt/ds-react";
 import { SanityContent } from "../sanity-content/SanityContent";
 import { typografiStyle } from "../faktaside/FaktaSideLayout";

@@ -2,7 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-import { createGlobalStyle } from "styled-components/macro";
+import { createGlobalStyle } from "styled-components";
 
 export const ResetCss = createGlobalStyle`
   html,

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import { HistorikkProps } from "../../pages/historikk/[...slug]";
 import useUniqueId from "../../utils/useUniqueId";

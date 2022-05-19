@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { supportedLanguages } from "../../i18n/supportedLanguages";
 import { useMount } from "react-use";

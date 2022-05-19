@@ -8,6 +8,7 @@
 
 !sentry*
 !*.json
+!.npmrc
 !.babelrc
 !.sentryclirc
 

@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import { useDevContext } from "../../DevKnapper/DevContext";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 
 const color = "#80f8";
 

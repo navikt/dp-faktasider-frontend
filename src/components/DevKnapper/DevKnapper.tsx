@@ -1,5 +1,5 @@
 import React, { useReducer, useRef } from "react";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import { isDevelopment } from "../../utils/environment";
 import { useClickAway } from "react-use";
 import { useDevContext } from "./DevContext";

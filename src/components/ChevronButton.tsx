@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { Chevron } from "./faktaside/Meny/Chevron";
 
 interface Props extends React.HTMLAttributes<HTMLButtonElement> {

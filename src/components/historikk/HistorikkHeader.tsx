@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import { formaterDato } from "../../utils/formaterDato";
 import Revisions from "../faktaside/content/Revisions";
 import { HistoriskDokument } from "./api/historikkFetcher";

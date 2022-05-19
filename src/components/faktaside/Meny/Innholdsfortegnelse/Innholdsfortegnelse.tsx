@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { pxFromTop } from "../../../../utils/domUtils";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import { useInnholdsListe } from "./useInnholdsListe";
 import { LenkeUtenUnderstrek } from "../../../../utils/common-styled-components";
 import { loggMeny } from "../../../../utils/logging";

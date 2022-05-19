@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { loggMeny } from "../../../utils/logging";
 import { UnmountClosed } from "react-collapse";

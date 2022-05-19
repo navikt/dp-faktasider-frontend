@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useRef, useState } from "react";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import MenyButton from "./MenyButton";
 import { useClickAway, useLocation } from "react-use";
 import { theme } from "../../../styles/theme";

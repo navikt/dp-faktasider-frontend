@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useRef } from "react";
-import styled, { css } from "styled-components/macro";
+import styled, { css } from "styled-components";
 import { SanityContent } from "../../sanity-content/SanityContent";
 import { Tillegsinformasjon } from "../../../utils/richTextUtils/richTextTypes";
 import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";

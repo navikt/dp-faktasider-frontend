@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { LenkeUtenUnderstrek } from "../../../utils/common-styled-components";
 import { loggH2MenyKlikk } from "../../../utils/logging";
 import useUniqueId from "../../../utils/useUniqueId";

@@ -1,6 +1,6 @@
 import React, { RefObject, useRef } from "react";
 import { useVisForContext } from "../../BlockContent/VisFor/VisForContext";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { theme } from "../../../styles/theme";
 import { UnmountClosed } from "react-collapse";
 import { useFaktasideContext } from "../FaktaSideContext";

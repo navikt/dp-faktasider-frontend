@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { createGlobalStyle, css, StyledComponent } from "styled-components/macro";
+import { createGlobalStyle, css, StyledComponent } from "styled-components";
 import Anchor from "../Anchor";
 import HashLink from "../HashLink";
 import useUniqueId from "../../utils/useUniqueId";
