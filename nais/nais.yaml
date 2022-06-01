@@ -15,7 +15,7 @@ spec:
   prometheus:
     enabled: false
   replicas:
-    min: 1
+    min: 2
     max: 3
   resources:
     limits:
