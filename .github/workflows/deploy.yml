@@ -1,4 +1,4 @@
-name: Test, build and deploy dp-faktasider-frontend
+name: Build and deploy
 
 on:
   workflow_dispatch:
