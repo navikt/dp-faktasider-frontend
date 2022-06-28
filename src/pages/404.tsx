@@ -87,7 +87,7 @@ const NotFoundPage = (props: Props) => {
         {t("404")}
       </Heading>
       <BodyShort>{t("404-sub")}</BodyShort>
-      <Link href={"/"} passHref>
+      <Link href={"/start"} passHref>
         <TilbakeTilForsidelenke className="lenke">
           {t("404-tilbake-til")} {forsideTittel}
         </TilbakeTilForsidelenke>
