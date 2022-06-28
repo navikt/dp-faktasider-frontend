@@ -4,7 +4,7 @@ import { onBreadcrumbClick, setBreadcrumbs } from "@navikt/nav-dekoratoren-modul
 
 function useBreadcrumbs(forsideTittel?: string, sider?: { tittel: string; path: string }[]) {
   const { push: navigate, basePath } = useRouter();
-  const forsideUrl = `${basePath}/`;
+  const forsideUrl = `${basePath}/start`;
 
   onBreadcrumbClick((breadcrumb) => {
     navigate(breadcrumb.url.replace(`${basePath}`, ""));
