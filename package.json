@@ -64,6 +64,7 @@
     "jest-styled-components": "^7.0.5",
     "jest-transform-stub": "^2.0.0",
     "lint-staged": "^11.2.6",
+    "npm-check-updates": "^14.1.1",
     "prettier": "^2.4.1"
   },
   "license": "MIT",
@@ -77,7 +78,8 @@
     "cypress:run": "npm run build && concurrently \"npm run start\" \"npx cypress run\"",
     "typeCheck": "tsc",
     "docker": "docker build -t dpfakta . --progress=plain && docker run --rm -p 3000:3000 dpfakta",
-    "prepare": "node ./prepare.js"
+    "prepare": "node ./prepare.js",
+    "check-updates": "ncu -i --format group"
   },
   "prettier": {
     "printWidth": 120
