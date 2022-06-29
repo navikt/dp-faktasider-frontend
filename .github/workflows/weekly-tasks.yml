@@ -6,7 +6,7 @@
 name: Weekly tasks
 on:
     schedule:
-        - cron: 00 05 * * 1
+        - cron: 00 07 * * 4
 
 jobs:
     create_issue:
