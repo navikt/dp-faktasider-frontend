@@ -1,7 +1,7 @@
 import { TestId } from "../../src/utils/test-ids";
 
 describe("basics funker - ", () => {
-  const url = "http://localhost:3000/arbeid/start";
+  const url = "http://localhost:3000/arbeid/arbeidsledig-eller-permittert";
 
   it("Sjekker at dekoratør er på plass", () => {
     cy.visit(url);

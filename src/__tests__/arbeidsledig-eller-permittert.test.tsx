@@ -1,6 +1,6 @@
 import React from "react";
 import { render, within } from "../testUtils/customized-testing-library.test.utils";
-import ArbeidWrapper from "../pages/start";
+import ArbeidWrapper from "../pages/arbeidsledig-eller-permittert";
 import { mockMenuData } from "../sanity/groq/menu/mockMenuData";
 import { translated } from "../testUtils/createSanityBlock";
 import { MenuQueryData } from "../sanity/groq/menu/menuQuery";
