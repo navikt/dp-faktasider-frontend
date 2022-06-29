@@ -1,5 +1,5 @@
 dekoratorMiljo: prod
 ingresses: |
   ingresses:
-    - https://www.nav.no/arbeid
-    - https://intern.nav.no/arbeid
+    - https://www.nav.no/arbeid/.+
+    - https://intern.nav.no/arbeid/.+
