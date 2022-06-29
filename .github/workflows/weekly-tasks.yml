@@ -27,9 +27,10 @@ jobs:
                   body: |
                       ## Sjekkliste
                       - [ ] Mottatt – jeg fikser i løpet av uka!
-                      - [ ] På rotnivå i prosjektet, kjør `npm-check -u`. Velg alle patch- og minor-versjoner [^1], og se om majors kan oppgraderes uten problemer (f. eks. devDependency som fjerner støtte for gammel Node-versjon).
+                      - [ ] På rotnivå i prosjektet, kjør `npm run check-updates` (Ref: https://www.npmjs.com/package/npm-check-updates). 
+                            Velg alle patch- og minor-versjoner [^1], og se om majors kan oppgraderes uten problemer (f. eks. devDependency som fjerner støtte for gammel Node-versjon).
                       - [ ] Lag issue(s) på Github for å gjøre oppgraderinger av versjoner som krever mer tid
-                      - [ ] Kjør `npm run build` og `npm run test`
+                      - [ ] Kjør `npm run build`, `npm run test` og `npm run cypress:run`
                       - [ ] Lag en pull request som vanlig
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
