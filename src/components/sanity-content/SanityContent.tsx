@@ -48,6 +48,7 @@ const serializers: Serializers = {
   listItem: ListItemRenderer,
   marks: {
     link: LinkMarkup,
+    // @ts-ignore
     utkast: (props: unknown) => <Draft inline={true} {...props} />,
     GtilNOK: GtilNOKAnnotation,
     visForAnnotation: VisForAnnotation,

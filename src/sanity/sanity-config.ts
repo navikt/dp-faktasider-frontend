@@ -1,4 +1,5 @@
-import { createClient, createImageUrlBuilder } from "next-sanity";
+import createImageUrlBuilder from "@sanity/image-url";
+import { createClient } from "next-sanity";
 import { SanityImage } from "./types";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "rt6o382n";
