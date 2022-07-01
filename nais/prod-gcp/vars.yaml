@@ -1,4 +1,5 @@
 dekoratorMiljo: prod
+sanityDataset: production
 ingresses: |
   ingresses:
     - https://www.nav.no/arbeid/.+
