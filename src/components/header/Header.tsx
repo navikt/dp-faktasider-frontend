@@ -11,7 +11,7 @@ export function Header(props: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <Heading className={styles.title} level={"1"} size={"2xlarge"}>
+        <Heading className={styles.title} level={"1"} size={"xlarge"}>
           {props.title}
         </Heading>
         <HeaderIcon />

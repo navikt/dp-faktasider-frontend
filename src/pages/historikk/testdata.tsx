@@ -52,7 +52,7 @@ function HistorikkTestdata() {
   return (
     <>
       <Style>
-        <Heading level="1" size="2xlarge">
+        <Heading level="1" size="xlarge">
           Visualisering av testdata brukt i automatiske tester
         </Heading>
         <Heading level="2" size="xlarge">

@@ -72,7 +72,7 @@ function HistorikkHeader(props: { document?: HistoriskDokument; revisions: Revis
 
   return (
     <Style>
-      <Heading level="1" size="2xlarge">
+      <Heading level="1" size="xlarge">
         {context.hjelpeTekster?.title}
       </Heading>
       <Metadata>

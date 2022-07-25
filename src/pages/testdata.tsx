@@ -167,7 +167,7 @@ function Testdata() {
   return (
     <>
       <Style>
-        <Heading size="2xlarge" level="1" spacing>
+        <Heading size="xlarge" level="1" spacing>
           Visualisering av testdata brukt i automatiske tester
         </Heading>
         <Heading size="medium" level="2">

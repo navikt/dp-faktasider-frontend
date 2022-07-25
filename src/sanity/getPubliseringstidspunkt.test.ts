@@ -17,7 +17,7 @@ const deltTekstReference: DelttekstReference = {
 const testData: FaktasideQueryData = {
   ...faktaSideMockQueryData,
   faktaside: {
-    ...faktaSideMockQueryData.faktaside!!,
+    ...faktaSideMockQueryData.faktaside,
     id: "-8f5fc5e2-5558-5a02-a3ff-4c0108ea8b8c",
     _updatedAt: updatedAtOldest,
     innhold: {

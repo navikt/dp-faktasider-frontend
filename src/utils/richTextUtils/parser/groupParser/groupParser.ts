@@ -10,7 +10,7 @@ const groupByStyles: GroupTypes[] = ["h2", "h3", "h4"].reverse() as GroupTypes[]
 export const groupParser: RichTextParser = (blocks) => {
   return groupByStyles.reduce((prevBlocks, groupDivider) => {
     const higherLevelGroupDividers = groupByStyles.slice(groupByStyles.indexOf(groupDivider) + 1);
-    let parsedBlocks: Block[] = [];
+    const parsedBlocks: Block[] = [];
     let currentGroup: Group | undefined = undefined;
 
     prevBlocks.forEach((block) => {
