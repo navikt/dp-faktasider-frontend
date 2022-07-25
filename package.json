@@ -13,7 +13,6 @@
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/image-url": "^1.0.1",
     "@sentry/nextjs": "^6.13.3",
-    "@xstate/react": "^1.6.1",
     "amplitude-js": "^8.18.5",
     "classnames": "^2.3.1",
     "date-fns": "^2.29.1",
