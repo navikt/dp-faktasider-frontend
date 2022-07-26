@@ -83,10 +83,9 @@ Nextjs sjekker med jevne mellomrom for nytt innhold fra sanity som automatisk vi
 
 Spørsmål tilknyttet koden kan rettes mot:
 
-- Sindre Sægrov, sindre.segrov@nav.no
 - Knut Magne Riise, knut.magne.riise@nav.no
-- Synneva Aasbrenn, synneva.aasbrenn@nav.no
+- Mikail Arslan, mikail.arslan@nav.no
 
 ### Internt
 
-Slack: #område-arbeid-innhold, #område-arbeid, #team-dagpenger, #team-dagpenger-dev
+Slack: #po-arbeid-innhold, #po-arbeid, #team-dagpenger, #team-dagpenger-dev
