@@ -10,15 +10,17 @@ COPY prepare.js /home/node/app/
 COPY .npmrc /home/node/app/
 
 RUN --mount=type=secret,id=NODE_AUTH_TOKEN \
-    echo '//npm.pkg.github.com/:_authToken='$(cat /run/secrets/NODE_AUTH_TOKEN) >> .npmrc
+    NODE_AUTH_TOKEN=$(cat /run/secrets/NODE_AUTH_TOKEN) \
+    npm ci --prefer-offline --no-audit --ignore-scripts
 
-RUN npm ci
+# Kjør prepare uten NODE_AUTH_TOKEN tilgjengelig
+RUN npm rebuild && npm run prepare --if-present
+COPY . /home/node/app
 
 RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
-    echo "[auth]\n"\
-    "token=$(cat /run/secrets/SENTRY_AUTH_TOKEN)" >> .sentryclirc
+    SENTRY_AUTH_TOKEN=$(cat /run/secrets/SENTRY_AUTH_TOKEN) \
+    npm run build
 
-COPY . /home/node/app
 RUN npm run build
 
 FROM node:16-alpine AS runtime
@@ -28,10 +30,13 @@ ENV PORT=3000
 ENV NODE_ENV=production
 ENV TZ Europe/Oslo
 
-EXPOSE 3000
+COPY --from=builder /usr/src/app/next.config.js ./
+COPY --from=builder /usr/src/app/package.json ./
 
-COPY --from=builder /home/node/app/ /home/node/app/
-RUN chown node:node -R .next/
+COPY --from=builder /usr/src/app/.next/standalone ./
+COPY --from=builder /usr/src/app/.next/static ./.next/static
+
+EXPOSE 3000
 USER node
 
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
