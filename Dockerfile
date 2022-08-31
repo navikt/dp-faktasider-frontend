@@ -15,14 +15,14 @@ RUN --mount=type=secret,id=NODE_AUTH_TOKEN \
 
 # Kjør prepare uten NODE_AUTH_TOKEN tilgjengelig
 RUN npm rebuild && npm run prepare --if-present
+
 COPY . /home/node/app
 
 RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
     SENTRY_AUTH_TOKEN=$(cat /run/secrets/SENTRY_AUTH_TOKEN) \
     npm run build
 
-RUN npm run build
-
+# ---- Runner ----
 FROM node:16-alpine AS runtime
 WORKDIR /home/node/app
 
@@ -30,11 +30,11 @@ ENV PORT=3000
 ENV NODE_ENV=production
 ENV TZ Europe/Oslo
 
-COPY --from=builder /usr/src/app/next.config.js ./
-COPY --from=builder /usr/src/app/package.json ./
+COPY --from=builder /home/node/app/next.config.js ./
+COPY --from=builder /home/node/app/package.json ./
 
-COPY --from=builder /usr/src/app/.next/standalone ./
-COPY --from=builder /usr/src/app/.next/static ./.next/static
+COPY --from=builder /home/node/app/.next/standalone ./
+COPY --from=builder /home/node/app/.next/static ./.next/static
 
 EXPOSE 3000
 USER node

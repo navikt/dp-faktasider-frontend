@@ -12,8 +12,8 @@ logs
 # Nextjs
 .next
 
-# dotenv environment variable files
-.env*
+# local env files
+.env*.local
 
 # Mac files
 .DS_Store
