@@ -28,7 +28,6 @@ jobs:
 
       - run: npm rebuild && npm run prepare --if-present
 
-      name: Test
         env:
           TZ: Europe/Oslo
       - run: |
@@ -134,7 +133,6 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-
       - uses: actions/checkout@v3
       - uses: nais/deploy/actions/deploy@v1
         env:
