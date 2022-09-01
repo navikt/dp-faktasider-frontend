@@ -8,7 +8,7 @@ describe("Sist oppdatert funker finfint med internasjonalisering", () => {
   test("På norsk", () => {
     const result = render(<TestFaktaside partialFaktaside={sistOppdatertTestdata.faktaside as Partial<IFaktaside>} />);
 
-    result.getByText(/10. juli 2020 12:54/);
+    result.findByText(/10. juli 2020 12:54/);
   });
 
   test("På engelsk", () => {
@@ -18,6 +18,6 @@ describe("Sist oppdatert funker finfint med internasjonalisering", () => {
       "en"
     );
 
-    result.getByText(/July 10th 2020 12:54/);
+    result.findByText(/July 10th 2020 12:54/);
   });
 });

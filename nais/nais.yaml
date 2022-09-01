@@ -43,6 +43,8 @@ spec:
       value: /tmp
     - name: NEXT_PUBLIC_SANITY_DATASET
       value: {{sanityDataset}}
+    - name: NEXT_PUBLIC_SENTRY_STAGE
+      value: {{sentry_stage}}
   envFrom:
     - secret: dp-faktasider-frontend-sanity-cms-read-token
   {{ingresses}}

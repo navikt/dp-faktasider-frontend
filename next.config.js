@@ -9,6 +9,10 @@ const config = {
   },
   basePath: "/arbeid",
   productionBrowserSourceMaps: true,
+  output: "standalone",
+  publicRuntimeConfig: {
+    NEXT_PUBLIC_SENTRY_STAGE: process.env.NEXT_PUBLIC_SENTRY_STAGE,
+  },
   i18n: {
     locales: ["no", "en"],
     defaultLocale: "no",
