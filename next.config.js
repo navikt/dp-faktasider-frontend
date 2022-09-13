@@ -47,6 +47,9 @@ const config = {
 
 const sentryWebpackPluginOptions = {
   silent: true, // Suppresses all logs
+  errorHandler: (err, invokeErr, compilation) => {
+    compilation.warnings.push("Sentry CLI Plugin: " + err.message);
+  },
 };
 
 module.exports = withSentryConfig(config, sentryWebpackPluginOptions);
