@@ -19,7 +19,7 @@ export const mockMenuData = {
         no: true,
       },
       beskrivelse: translated("Har du blitt permittert?"),
-      id: "-89eddf21-6b78-5f89-8d1f-7f5f8ebfe735",
+      id: "random-id-permittert",
     },
     {
       slug: "arbeidsledig",
