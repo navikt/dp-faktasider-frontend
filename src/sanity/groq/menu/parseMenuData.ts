@@ -34,12 +34,7 @@ export function parseMenuData(data: MenuQueryData, lang: SupportedLanguage): Men
       : lenke
   );
 
-  const pageNotInSortedLinks = (page: TranslatedMenuDataSide) =>
-    !sortedMenuLinks.some((link) => link._type === "menylenkeIntern" && link.pageId === page.id);
-  // Sørger for at alle interne sider havner i menyen selv om de ikke eksplisitt er lagt til i menyen i Sanity. Sørger for at vi ikke har noen "skjulte" sider.
-  const unsortedInternalLinks = sider.filter(pageNotInSortedLinks).map((page) => createInternalLinkData(page, lang));
-
-  return [...sortedMenuLinks, ...unsortedInternalLinks];
+  return [...sortedMenuLinks];
 }
 
 function isInternLenke(lenke: MenyLenkeRaw): lenke is MenylenkeInternRaw {

@@ -1,4 +1,4 @@
-import { createSanityBlock } from "../../../testUtils/createSanityBlock";
+import { createSanityBlock, translated } from "../../../testUtils/createSanityBlock";
 import { VisForSituasjon } from "./VisFor";
 
 const bolkStudent = "Bolk som bare vises for student";
@@ -7,7 +7,7 @@ const bolkForAlle = "Overskrift som vises for alle";
 const innholdStudent = "Innhold som vises for student";
 const innholdPermittert = "Innhold som vises for permittert";
 const innholdForAlle = "Innhold som vises for alle";
-const bolkSkjulForPermittertOgKonkurs = "Bolk som skjules for permittert";
+const bolkSkjulForPermittertOgKonkurs = "Bolk som skjules for permittert og konkurs";
 
 const data = [
   createSanityBlock(bolkForAlle, { style: "h2" }),
@@ -28,6 +28,21 @@ const data = [
   createSanityBlock("Innhold som skjules for permittert"),
 ];
 
+export const visForTestDataMenuQuery = {
+  lenker: [{ _type: "reference", referenceType: "faktaSide", pageId: "testId" }],
+  sider: [
+    {
+      slug: "test",
+      title: translated("Test side"),
+      visSprakversjon: {
+        no: true,
+      },
+      beskrivelse: translated("her tester vi ting"),
+      id: "testId",
+    },
+  ],
+};
+
 export const visForTestData = {
   tekster: {
     innholdPermittert,
@@ -39,6 +54,7 @@ export const visForTestData = {
     bolkSkjulForPermittertOgKonkurs,
   },
   innhold: data,
+  menuData: visForTestDataMenuQuery,
 };
 
 export const mockVisForKonverteringstabell: VisForSituasjon[] = [

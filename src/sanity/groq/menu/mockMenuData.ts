@@ -8,6 +8,8 @@ export const mockMenuData = {
       tittel: "Ekstern lenke",
       beskrivelse: "Lenke til en ekstern side",
     },
+    { _type: "reference", referenceType: "faktaSide", pageId: "random-id-permittert" },
+    { _type: "reference", referenceType: "faktaSide", pageId: "-89eddf21-6b78-5f89-8d1f-7f5f8ebfe735" },
   ],
   sider: [
     {

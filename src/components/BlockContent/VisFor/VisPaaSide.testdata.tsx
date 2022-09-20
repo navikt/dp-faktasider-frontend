@@ -1,5 +1,6 @@
 import { createDeltTekstBlock, createSanityBlock, translated } from "../../../testUtils/createSanityBlock";
 import { faktaSideMockQueryData } from "../../../testUtils/faktaSideMockQueryData";
+import { visForTestDataMenuQuery } from "./visFor.testdata";
 
 const testId = faktaSideMockQueryData.faktaside.id;
 

@@ -8,7 +8,7 @@ import { translated } from "../../../testUtils/createSanityBlock";
 import parseRichText from "../../../utils/richTextUtils/parser/parseRichText";
 import { TestId } from "../../../utils/test-ids";
 
-const { innhold } = visForTestData;
+const { innhold, menuData } = visForTestData;
 const {
   bolkStudent,
   bolkPermittert,
@@ -30,9 +30,13 @@ describe("visFor-logikk", () => {
   });
 
   test("Hvis man filtrer på student vises ikke permittertinnhold", async () => {
-    const result = render(<TestFaktaside innhold={innhold} />);
+    // @ts-ignore, må caste menudata til en partial av menuquerydata elns
+    const result = render(<TestFaktaside innhold={innhold} partialMeny={menuData} />);
 
     toggleFilter(result, /Student/i);
+
+    const meny = result.getAllByLabelText(/innholdsfortegnelse/i)[0];
+    expect(within(meny).queryByText(bolkPermittert)).toBeNull();
 
     const mainContent = result.getByRole("main");
     expect(within(mainContent).queryByText(innholdPermittert)).toBeNull();
@@ -40,9 +44,6 @@ describe("visFor-logikk", () => {
 
     within(mainContent).getByText(innholdStudent);
     within(mainContent).getByLabelText(bolkStudent);
-
-    const meny = result.getAllByLabelText(/innholdsfortegnelse/i)[0];
-    expect(within(meny).queryByText(bolkPermittert)).toBeNull();
 
     within(meny).getByText(bolkStudent);
   });

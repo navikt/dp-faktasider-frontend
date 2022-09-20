@@ -4,6 +4,7 @@ import { render, within } from "../../../testUtils/customized-testing-library.te
 import { Historikk } from "../../historikk/Historikk";
 import { visPaaSideTestData } from "./VisPaaSide.testdata";
 import { historikkVisPaaTestdata } from "../../historikk/historikk.testdata";
+import { visForTestDataMenuQuery } from "./visFor.testdata";
 
 describe("innhold i delt tekst merket med visPaa", () => {
   test("skal vises for alle sider dersom innholdet er merket med et tomt visPaa-array", () => {
@@ -20,7 +21,8 @@ describe("innhold i delt tekst merket med visPaa", () => {
   });
 
   test("skal vises i menyen på sider den er merket for å vises på", () => {
-    const page = render(<TestFaktaside partialFaktaside={visPaaSideTestData} />);
+    // @ts-ignore, må caste menudata til en partial av menuquerydata elns
+    const page = render(<TestFaktaside partialFaktaside={visPaaSideTestData} partialMeny={visForTestDataMenuQuery} />);
 
     const meny = page.getAllByLabelText(/innholdsfortegnelse/i)[0];
     within(meny).getByText("Vis på denne siden");
@@ -33,7 +35,8 @@ describe("innhold i delt tekst merket med visPaa", () => {
   });
 
   test("skal ikke vises i menyen på sider den ikke er merket for å vises på", () => {
-    const page = render(<TestFaktaside partialFaktaside={visPaaSideTestData} />);
+    // @ts-ignore, må caste menudata til en partial av menuquerydata elns
+    const page = render(<TestFaktaside partialFaktaside={visPaaSideTestData} partialMeny={visForTestDataMenuQuery} />);
 
     const meny = page.getAllByLabelText(/innholdsfortegnelse/i)[0];
 

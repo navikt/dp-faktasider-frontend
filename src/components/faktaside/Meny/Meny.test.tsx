@@ -16,7 +16,7 @@ describe("Navigasjonsmeny", () => {
     const sideliste = within(desktopNavigasjonsmeny).getAllByRole("list")[0];
     const lenker = within(sideliste).getAllByRole("listitem");
 
-    expect(lenker).toHaveLength(mockMenuData.sider.length + mockMenuData.lenker.length);
+    expect(lenker).toHaveLength(mockMenuData.lenker.length);
   });
 
   test("lenkene er bygd opp riktig", () => {
