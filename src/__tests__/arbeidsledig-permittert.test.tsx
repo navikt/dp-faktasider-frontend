@@ -18,7 +18,7 @@ test("Index-side inneholder lenker til undersider med beskrivelse", () => {
   const lenkeListe = result.getAllByRole("list")[0];
   const lenker = within(lenkeListe).getAllByRole("link");
 
-  expect(lenker).toHaveLength(mockMenuData.lenker.length + mockMenuData.sider.length);
+  expect(lenker).toHaveLength(mockMenuData.lenker.length); //lenker tas ikke lengre ut fra sider, men brukes for å resolve references
 
   const lenkeData2 = mockMenuData.sider[1];
   const lenkeNummer2 = result.getByTestId(`/${lenkeData2.slug}/`) as HTMLLinkElement;

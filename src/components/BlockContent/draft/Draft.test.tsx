@@ -4,6 +4,7 @@ import { SanityContent } from "../../sanity-content/SanityContent";
 import { render, within } from "../../../testUtils/customized-testing-library.test.utils";
 import { draftTestdata } from "./Draft.testdata";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
+import { visForTestDataMenuQuery } from "../VisFor/visFor.testdata";
 
 describe("utkast", () => {
   const parsedInnhold = parseRichText(draftTestdata);
@@ -31,7 +32,8 @@ describe("utkast", () => {
   });
 
   test("Dersom en hel overskrift er merket med utkast skal ikke bolken vises i meny", () => {
-    const result = render(<TestFaktaside innhold={draftTestdata} />);
+    // @ts-ignore, må caste menudata til en partial av menuquerydata elns
+    const result = render(<TestFaktaside innhold={draftTestdata} partialMeny={visForTestDataMenuQuery} />);
 
     const desktopInnholdsfortegnelse = result.getAllByLabelText(/innholdsfortegnelse/i)[0];
 
