@@ -19,10 +19,10 @@ spec:
     max: 3
   resources:
     limits:
-      cpu: 500m
+      cpu: 1500m
       memory: 512Mi
     requests:
-      cpu: 200m
+      cpu: 1000m
       memory: 256Mi
   accessPolicy:
     outbound:
