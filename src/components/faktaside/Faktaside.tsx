@@ -25,9 +25,9 @@ function FaktasideContainer(props: FaktasideRawData) {
   const erPublisertPåSpråk = faktasideContext.visSprakversjon?.[locale];
   const tittel = faktasideContext.title || "";
 
-  useBreadcrumbs(faktasideContext.domainTitle, [
-    { tittel: faktasideContext.title || "Du er her", path: faktasideContext.slug },
-  ]);
+  // useBreadcrumbs(faktasideContext.domainTitle, [
+  //   { tittel: faktasideContext.title || "Du er her", path: faktasideContext.slug },
+  // ]);
   useLanguageSelector();
   useMount(() => loggSidevisning(tittel));
   useLoggUtdatertHashlenke();

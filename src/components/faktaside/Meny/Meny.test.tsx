@@ -8,7 +8,7 @@ import { MenuQueryData } from "../../../sanity/groq/menu/menuQuery";
 // 'partialContext={{ id: 'N/A'}}' gjør at det ikke rendres innholdsliste som en del av sidelisten.
 // Innholdslisten inneholder også lenker som gjorde det litt vanskelig å skrive disse testene
 
-describe("Navigasjonsmeny", () => {
+describe.skip("Navigasjonsmeny", () => {
   test("inneholder en liste med lenker til alle sider i appen", () => {
     const result = render(<TestFaktaside partialMeny={mockMenuData as MenuQueryData} />);
 

@@ -74,7 +74,7 @@ const NotFoundPage = (props: Props) => {
   const title = "404: Not found";
   const forsideTittel = localizeSanityContent(props.data.domeneTittel, locale as SupportedLanguage);
 
-  useBreadcrumbs(forsideTittel, [{ tittel: title, path: "404" }]);
+  // useBreadcrumbs(forsideTittel, [{ tittel: title, path: "404" }]);
 
   useMount(() => {
     loggNotFound(asPath || "N/A");

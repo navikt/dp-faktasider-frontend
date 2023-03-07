@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import styled, { createGlobalStyle, css } from "styled-components";
-import { Meny } from "./Meny/Meny";
+// import { Meny } from "./Meny/Meny";
 import { theme } from "../../styles/theme";
 
 interface Props {
@@ -74,7 +74,7 @@ export function FaktaSideLayout(props: Props) {
     <>
       <Brødsmulestyling />
       <ContentStyle>
-        <Meny />
+        {/* <Meny /> */}
         <MainContentStyle id={"maincontent"}>{props.children}</MainContentStyle>
       </ContentStyle>
     </>

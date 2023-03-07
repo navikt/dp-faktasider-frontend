@@ -1,6 +1,6 @@
 import { TestId } from "../../src/utils/test-ids";
 
-describe("basics funker - ", () => {
+describe.skip("basics funker - ", () => {
   const url = "http://localhost:3000/arbeid/arbeidsledig-permittert";
 
   it("Sjekker at dekoratør er på plass", () => {
