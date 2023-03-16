@@ -2,6 +2,7 @@ const csp = {
   "default-src": ["'self'", "tjenester.nav.no", "appres.nav.no"],
   "script-src": [
     "'self'",
+    "blob:",
     "'unsafe-inline'",
     "'unsafe-eval'",
     "appres.nav.no",
@@ -11,12 +12,14 @@ const csp = {
     "script.hotjar.com",
     "*.psplugin.com",
     "*.nav.no",
+    "arbeid.ekstern.dev.nav.no",
     "in2.taskanalytics.com",
   ],
   "style-src": [
     "'self'",
     "blob:",
     "*.nav.no",
+    "arbeid.ekstern.dev.nav.no",
     "arbeid.dev.nav.no",
     "appres.nav.no",
     "'unsafe-inline'",
