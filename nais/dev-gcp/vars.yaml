@@ -3,4 +3,4 @@ sanityDataset: development
 sentry_stage: development
 ingresses: |
   ingresses:
-    - https://arbeid.dev.nav.no/arbeid/.+
+    - https://arbeid.ekstern.dev.nav.no/arbeid/.+
