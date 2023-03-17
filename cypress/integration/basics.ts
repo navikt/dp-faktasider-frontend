@@ -11,7 +11,7 @@ describe("basics funker - ", () => {
       cy.findByRole("button", { name: /søk/i });
     });
 
-    cy.findByRole("navigation", { name: /Brødsmulesti/i });
+    cy.findByRole("navigation", { name: /du er her/i });
   });
 
   it('er mulig å navigere fra forside til infosider"', () => {
