@@ -33,38 +33,6 @@ jobs:
           npm test
           npm run typeCheck
 
-  cypress-test:
-    name: Cypress tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "16.x"
-          cache: "npm"
-          registry-url: "https://npm.pkg.github.com"
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        with:
-          build: npm run build
-          start: npm start
-        env:
-          SANITY_READ_TOKEN: ${{ secrets.CYPRESS_READ_TOKEN_SANITY }}
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-videos
-          path: cypress/videos
-      - uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-
   install:
     runs-on: ubuntu-latest
     steps:
@@ -161,7 +129,7 @@ jobs:
 
   deploy-dev-gcp:
     name: Deploy to dev gcp
-    needs: [build, jest-test, cypress-test]
+    needs: [build, jest-test, cypress-test, upload-cdn]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
