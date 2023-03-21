@@ -129,7 +129,7 @@ jobs:
 
   deploy-dev-gcp:
     name: Deploy to dev gcp
-    needs: [build, jest-test, cypress-test, upload-cdn]
+    needs: [build, jest-test, upload-cdn]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
