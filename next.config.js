@@ -32,6 +32,30 @@ const config = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/arbeid/arbeidsledig",
+        destination: "/dagpenger",
+        permanent: true,
+      },
+      {
+        source: "/arbeid/permittert",
+        destination: "/dagpenger",
+        permanent: true,
+      },
+      {
+        source: "/arbeid/dagpenger",
+        destination: "/dagpenger",
+        permanent: true,
+      },
+      {
+        source: "/arbeid/en/dagpenger-og-eos",
+        destination: "/dagpenger",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 // For all available options, see:
