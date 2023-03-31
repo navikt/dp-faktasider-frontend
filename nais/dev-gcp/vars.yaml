@@ -3,6 +3,4 @@ sanityDataset: production
 sentry_stage: development
 ingresses: |
   ingresses:
-    - https://arbeid.ekstern.dev.nav.no/arbeid/arbeidsledig-permittert
-    - https://arbeid.ekstern.dev.nav.no/arbeid/utdanning
-    - https://arbeid.ekstern.dev.nav.no/arbeid/historikk
+    - https://arbeid.ekstern.dev.nav.no/arbeid/.+

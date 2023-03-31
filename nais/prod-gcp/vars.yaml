@@ -3,9 +3,5 @@ sanityDataset: production
 sentry_stage: production
 ingresses: |
   ingresses:
-    - https://www.nav.no/arbeid/arbeidsledig-permittert
-    - https://www.nav.no/arbeid/utdanning
-    - https://www.nav.no/arbeid/historikk
-    - https://intern.nav.no/arbeid/arbeidsledig-permittert
-    - https://intern.nav.no/arbeid/utdanning
-    - https://intern.nav.no/arbeid/historikk
+    - https://www.nav.no/arbeid/.+
+    - https://intern.nav.no/arbeid/.+
