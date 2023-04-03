@@ -33,7 +33,7 @@ spec:
         - host: apicdn.sanity.io
         - host: rt6o382n.apicdn.sanity.io
         - host: cdn.sanity.io
-        - host: dekoratoren.dev.nav.no
+        - host: dekoratoren.ekstern.dev.nav.no
         - host: amplitude.nav.no
         - host: sentry.gc.nav.no
   env:
