@@ -3,7 +3,6 @@ const csp = require("./csp");
 const { withSentryConfig } = require("@sentry/nextjs");
 
 const config = {
-  assetPrefix: process.env.ASSET_PREFIX,
   compiler: {
     // ssr and displayName are configured by default
     styledComponents: true,
