@@ -34,22 +34,22 @@ const config = {
   async redirects() {
     return [
       {
-        source: "/arbeidsledig",
+        source: "/arbeid/arbeidsledig",
         destination: "https://www.nav.no/dagpenger",
         permanent: true,
       },
       {
-        source: "/permittert",
+        source: "/arbeid/permittert",
         destination: "https://www.nav.no/dagpenger",
         permanent: true,
       },
       {
-        source: "/dagpenger",
+        source: "/arbeid/dagpenger",
         destination: "https://www.nav.no/dagpenger",
         permanent: true,
       },
       {
-        source: "/en/dagpenger-og-eos",
+        source: "/arbeid/en/dagpenger-og-eos",
         destination: "https://www.nav.no/dagpenger",
         permanent: true,
       },
