@@ -29,12 +29,23 @@ export interface FaktasideStaticProps {
   slug: string;
 }
 
+const urlsThatShouldBeRedirected = ["arbeidsledig", "permittert", "dagpenger", "dagpenger-og-eos"];
+
 export const getStaticProps: GetStaticProps<FaktasideStaticProps | Redirect> = async (context) => {
   const slug = context.params?.slug as string;
   const faktasideData: FaktasideQueryData = await sanityClient.fetch(faktasideQuery, { slug });
   const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
 
   if (!faktasideData.faktaside) {
+    return {
+      redirect: {
+        destination: "/404",
+        statusCode: 303,
+      },
+    };
+  }
+
+  if (urlsThatShouldBeRedirected.includes(slug)) {
     return {
       redirect: {
         destination: "/404",
