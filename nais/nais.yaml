@@ -34,6 +34,8 @@ spec:
         - host: rt6o382n.apicdn.sanity.io
         - host: cdn.sanity.io
         - host: dekoratoren.dev.nav.no
+        - host: amplitude.nav.no
+        - host: sentry.gc.nav.no
   env:
     - name: NODE_EXTRA_CA_CERTS
       value: "/etc/pki/tls/certs/ca-bundle.crt"
