@@ -7,15 +7,15 @@ import { faktasideQuery, FaktasideQueryData } from "../sanity/groq/faktaside/fak
 import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { supportedLanguages } from "../i18n/supportedLanguages";
 import { useSanityPreveiw } from "../sanity/useSanityPreview";
-import { Error } from "../views/error/Error";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
+const urlsThatShouldBeRedirected = ["arbeidsledig", "permittert", "dagpenger", "dagpenger-og-eos"];
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const faktasidePaths = await sanityClient.fetch(pathsQuery);
-  const paths = faktasidePaths.flatMap((slug: string) =>
-    supportedLanguages.map((locale) => ({ params: { slug }, locale }))
-  );
+  const paths = faktasidePaths
+    .filter((slug: string) => !urlsThatShouldBeRedirected.includes(slug))
+    .flatMap((slug: string) => supportedLanguages.map((locale) => ({ params: { slug }, locale })));
 
   return {
     paths,
@@ -29,23 +29,21 @@ export interface FaktasideStaticProps {
   slug: string;
 }
 
-const urlsThatShouldBeRedirected = ["arbeidsledig", "permittert", "dagpenger", "dagpenger-og-eos"];
-
 export const getStaticProps: GetStaticProps<FaktasideStaticProps | Redirect> = async (context) => {
   const slug = context.params?.slug as string;
   const faktasideData: FaktasideQueryData = await sanityClient.fetch(faktasideQuery, { slug });
   const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
 
-  if (!faktasideData.faktaside) {
+  if (urlsThatShouldBeRedirected.includes(slug)) {
     return {
       redirect: {
-        destination: "/404",
-        statusCode: 303,
+        destination: "https://nav.no/dagpenger",
+        statusCode: 308,
       },
     };
   }
 
-  if (urlsThatShouldBeRedirected.includes(slug)) {
+  if (!faktasideData.faktaside) {
     return {
       redirect: {
         destination: "/404",
