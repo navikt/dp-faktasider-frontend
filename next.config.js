@@ -53,6 +53,11 @@ const config = {
         destination: "https://www.nav.no/dagpenger",
         permanent: true,
       },
+      {
+        source: "/arbeid/laerling",
+        destination: "https://www.nav.no/dagpenger",
+        permanent: true,
+      },
     ];
   },
 };
