@@ -31,35 +31,6 @@ const config = {
       },
     ];
   },
-  async redirects() {
-    return [
-      {
-        source: "/arbeid/arbeidsledig",
-        destination: "https://www.nav.no/dagpenger",
-        permanent: true,
-      },
-      {
-        source: "/arbeid/permittert",
-        destination: "https://www.nav.no/dagpenger",
-        permanent: true,
-      },
-      {
-        source: "/arbeid/dagpenger",
-        destination: "https://www.nav.no/dagpenger",
-        permanent: true,
-      },
-      {
-        source: "/arbeid/en/dagpenger-og-eos",
-        destination: "https://www.nav.no/dagpenger",
-        permanent: true,
-      },
-      {
-        source: "/arbeid/laerling",
-        destination: "https://www.nav.no/dagpenger",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 // For all available options, see:
