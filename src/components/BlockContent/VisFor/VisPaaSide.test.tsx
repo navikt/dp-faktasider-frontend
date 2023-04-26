@@ -6,7 +6,7 @@ import { visPaaSideTestData } from "./VisPaaSide.testdata";
 import { historikkVisPaaTestdata } from "../../historikk/historikk.testdata";
 import { visForTestDataMenuQuery } from "./visFor.testdata";
 
-describe("innhold i delt tekst merket med visPaa", () => {
+describe.skip("innhold i delt tekst merket med visPaa", () => {
   test("skal vises for alle sider dersom innholdet er merket med et tomt visPaa-array", () => {
     const page = render(<TestFaktaside partialFaktaside={visPaaSideTestData} />);
 

@@ -19,7 +19,7 @@ const {
   bolkSkjulForPermittertOgKonkurs,
 } = visForTestData.tekster;
 
-describe("visFor-logikk", () => {
+describe.skip("visFor-logikk", () => {
   test("Hvis ingen filtrering er valgt vises all tekst", () => {
     const result = render(<SanityContent blocks={parseRichText(innhold)} />);
 

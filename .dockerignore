@@ -1,17 +1,8 @@
 **
+#nye ferdige builds for dockerfilen
+!next.config.js
+!package.json
 
-!src/**
-!public/**
-!next*
-!jest*
-!cypress/testData/**
-
-!sentry*
-!*.json
-!.npmrc
-!.babelrc
-!.sentryclirc
-
-!csp.js
-!prepare.js
-!triggBygg.md
+!public/
+!.next/standalone/
+!.next/static/

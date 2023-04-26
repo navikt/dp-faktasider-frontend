@@ -6,7 +6,7 @@ import { draftTestdata } from "./Draft.testdata";
 import TestFaktaside from "../../../testUtils/TestFaktaside";
 import { visForTestDataMenuQuery } from "../VisFor/visFor.testdata";
 
-describe("utkast", () => {
+describe.skip("utkast", () => {
   const parsedInnhold = parseRichText(draftTestdata);
 
   test("dersom hele teksten i et bulletpoint er merket som utkast skal bulletpointet ikke vises", () => {

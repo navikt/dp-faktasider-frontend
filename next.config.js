@@ -31,15 +31,6 @@ const config = {
       },
     ];
   },
-  async redirects() {
-    return [
-      {
-        source: "/student",
-        destination: "/utdanning",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 // For all available options, see:

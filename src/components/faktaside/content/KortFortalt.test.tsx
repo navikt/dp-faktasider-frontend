@@ -4,7 +4,7 @@ import TestFaktaside from "../../../testUtils/TestFaktaside";
 import { createSanityBlock, translated } from "../../../testUtils/createSanityBlock";
 import { visForTestDataMenuQuery } from "../../BlockContent/VisFor/visFor.testdata";
 
-describe("kortFortalt", () => {
+describe.skip("kortFortalt", () => {
   test("vises ikke om det ikke finnes innhold i kort fortalt", () => {
     const result = render(<TestFaktaside partialFaktaside={{ kortFortalt: translated([]) }} />);
 

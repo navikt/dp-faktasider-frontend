@@ -11,7 +11,7 @@ export default class MyDocument extends Document<{ Dekoratøren: Components }> {
     const dekoratørParams: Props = {
       // @ts-ignore
       env: process.env.DEKORATOR_MILJO || "prod",
-      breadcrumbs: [{ title: domeneTittel, url: "https://www.nav.no/arbeid/" }],
+      // breadcrumbs: [{ title: domeneTittel, url: "https://www.nav.no/arbeid/" }],
       context: "privatperson",
     };
     const Dekoratøren = await fetchDecoratorReact(dekoratørParams);

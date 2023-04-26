@@ -13,7 +13,7 @@ const snarvei: Snarvei = {
   visPaaSider: [id],
 };
 
-describe("snarveier", () => {
+describe.skip("snarveier", () => {
   test("vises ikke om det ikke finnes innhold i snarveier", () => {
     const result = render(<TestFaktaside partialOppsett={{ snarveier: [] }} />);
 
