@@ -31,6 +31,15 @@ const config = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/arbeidsledig-permittert",
+        destination: "https://www.nav.no/arbeidsledig-permittert",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 // For all available options, see:

@@ -15,22 +15,15 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  // const forsideData: ForsideQueryData = await sanityClient.fetch(forsideQuery);
-  // const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
-
-  // return {
-  //   props: {
-  //     forsideData,
-  //     menuData,
-  //   },
-  //   revalidate: 120,
-  // };
+  const forsideData: ForsideQueryData = await sanityClient.fetch(forsideQuery);
+  const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
 
   return {
-    redirect: {
-      destination: "https://www.nav.no/arbeidsledig-permittert",
-      statusCode: 308,
+    props: {
+      forsideData,
+      menuData,
     },
+    revalidate: 120,
   };
 };
 
