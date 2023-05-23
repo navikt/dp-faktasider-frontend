@@ -17,6 +17,7 @@ interface Props {
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const forsideData: ForsideQueryData = await sanityClient.fetch(forsideQuery);
   const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
+
   return {
     props: {
       forsideData,
