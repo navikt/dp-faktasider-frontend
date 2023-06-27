@@ -42,9 +42,13 @@ export const getStaticProps: GetStaticProps<FaktasideStaticProps | Redirect> = a
   const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
 
   if (urlsThatShouldBeRedirected.includes(slug)) {
+    const defaultDestination = "https://nav.no/dagpenger";
+    const utdanningDestination = `${defaultDestination}#utdanning`;
+    const destination = slug === "utdanning" ? utdanningDestination : defaultDestination;
+
     return {
       redirect: {
-        destination: "https://nav.no/dagpenger",
+        destination,
         statusCode: 308,
       },
     };
