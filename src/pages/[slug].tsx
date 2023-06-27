@@ -9,7 +9,14 @@ import { supportedLanguages } from "../i18n/supportedLanguages";
 import { useSanityPreveiw } from "../sanity/useSanityPreview";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
-const urlsThatShouldBeRedirected = ["arbeidsledig", "permittert", "dagpenger", "dagpenger-og-eos", "laerling"];
+const urlsThatShouldBeRedirected = [
+  "arbeidsledig",
+  "permittert",
+  "dagpenger",
+  "dagpenger-og-eos",
+  "laerling",
+  "utdanning",
+];
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const faktasidePaths = await sanityClient.fetch(pathsQuery);
