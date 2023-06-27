@@ -9,7 +9,14 @@ import { supportedLanguages } from "../i18n/supportedLanguages";
 import { useSanityPreveiw } from "../sanity/useSanityPreview";
 
 const pathsQuery = groq`*[_type == "faktaSide"][].slug.current`;
-const urlsThatShouldBeRedirected = ["arbeidsledig", "permittert", "dagpenger", "dagpenger-og-eos", "laerling"];
+const urlsThatShouldBeRedirected = [
+  "arbeidsledig",
+  "permittert",
+  "dagpenger",
+  "dagpenger-og-eos",
+  "laerling",
+  "utdanning",
+];
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const faktasidePaths = await sanityClient.fetch(pathsQuery);
@@ -35,9 +42,13 @@ export const getStaticProps: GetStaticProps<FaktasideStaticProps | Redirect> = a
   const menuData: MenuQueryData = await sanityClient.fetch(menuQuery);
 
   if (urlsThatShouldBeRedirected.includes(slug)) {
+    const defaultDestination = "https://nav.no/dagpenger";
+    const utdanningDestination = `${defaultDestination}#utdanning`;
+    const destination = slug === "utdanning" ? utdanningDestination : defaultDestination;
+
     return {
       redirect: {
-        destination: "https://nav.no/dagpenger",
+        destination,
         statusCode: 308,
       },
     };
