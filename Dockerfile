@@ -1,5 +1,5 @@
 # ---- Runner ----
-FROM node:16-alpine AS runtime
+FROM node:lts-bullseye-slim AS runtime
 WORKDIR /home/node/app
 
 ENV PORT=3000
