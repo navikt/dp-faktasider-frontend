@@ -19,7 +19,7 @@
     "identity-obj-proxy": "^3.0.0",
     "keyboardjs": "^2.7.0",
     "nav-frontend-js-utils": "^1.0.20",
-    "next": "^12.2.5",
+    "next": "^13.5.0",
     "next-sanity": "^0.8.2",
     "node-cache": "^5.1.2",
     "prop-types": "^15.8.1",
