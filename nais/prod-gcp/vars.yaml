@@ -5,3 +5,4 @@ ingresses: |
   ingresses:
     - https://www.nav.no/arbeid/.+
     - https://intern.nav.no/arbeid/.+
+    - https://ansatt.nav.no/arbeid/.+
