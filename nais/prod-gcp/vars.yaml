@@ -4,4 +4,4 @@ sentry_stage: production
 ingresses: |
   ingresses:
     - https://www.nav.no/arbeid/.+
-    - https://arbeid.ansatt.nav.no/arbeid/arbeid.+
+    - https://arbeid.ansatt.nav.no/arbeid/.+
