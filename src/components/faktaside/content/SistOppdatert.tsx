@@ -30,7 +30,7 @@ export function SistOppdatert() {
   const tekst = t("sistOppdatert", { publiseringstidspunkt: new Date(faktaside.publiseringsTidspunkt) });
   return (
     <Style>
-      <Link href={`/historikk/${faktaside.id}/${faktaside.publiseringsTidspunkt}`} passHref>
+      <Link href={`/historikk/${faktaside.id}/${faktaside.publiseringsTidspunkt}`} passHref legacyBehavior>
         <Lenke rel="nofollow">{tekst}</Lenke>
       </Link>
     </Style>
