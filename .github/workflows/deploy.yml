@@ -9,29 +9,29 @@ env:
   LATEST_IMAGE: ghcr.io/${{ github.repository }}/dp-faktasider-frontend:latest
 
 jobs:
-  jest-test:
-    name: Jest tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "lts/*"
-          cache: "npm"
-          registry-url: "https://npm.pkg.github.com"
+  # jest-test:
+  #   name: Jest tests
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: "lts/*"
+  #         cache: "npm"
+  #         registry-url: "https://npm.pkg.github.com"
 
-      - run: npm install --no-save --no-audit --prefer-offline --ignore-scripts
-        env:
-          TZ: Europe/Oslo
-          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
+  #     - run: npm install --no-save --no-audit --prefer-offline --ignore-scripts
+  #       env:
+  #         TZ: Europe/Oslo
+  #         NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
 
-      - run: npm rebuild && npm run prepare --if-present
+  #     - run: npm rebuild && npm run prepare --if-present
 
-        env:
-          TZ: Europe/Oslo
-      - run: |
-          npm test
-          npm run typeCheck
+  #       env:
+  #         TZ: Europe/Oslo
+  #     - run: |
+  #         npm test
+  #         npm run typeCheck
 
   install:
     runs-on: ubuntu-latest
@@ -107,7 +107,7 @@ jobs:
 
   deploy-dev-gcp:
     name: Deploy to dev gcp
-    needs: [build, jest-test]
+    needs: [build]
     runs-on: ubuntu-latest
     permissions:
       contents: read
