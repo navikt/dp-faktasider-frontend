@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import compareDesc from "date-fns/compareDesc";
+import { compareDesc } from "date-fns";
 import { Revision } from "../../historikk/api/revisionsFetcher";
 import Link from "next/link";
 import { formaterDato } from "../../../utils/formaterDato";

@@ -12,7 +12,7 @@
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/image-url": "^1.0.2",
     "amplitude-js": "^8.21.9",
-    "date-fns": "^2.30.0",
+    "date-fns": "^4.1.0",
     "i18next": "^21.9.1",
     "identity-obj-proxy": "^3.0.0",
     "keyboardjs": "^2.7.0",
