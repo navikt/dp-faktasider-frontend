@@ -96,13 +96,13 @@ export function DevKnapper() {
             label="Debug grunnbelløp"
             checked={context.value.debugGronnbellop}
           />
-          <Link href="/testdata" passHref legacyBehavior>
+          <Link href="/testdata" passHref>
             <StyledLink>Test-data</StyledLink>
           </Link>
-          <Link href="/historikk/testdata" passHref legacyBehavior>
+          <Link href="/historikk/testdata" passHref>
             <StyledLink>Historikk test-data</StyledLink>
           </Link>
-          <Link href="/demoapp" passHref legacyBehavior>
+          <Link href="/demoapp" passHref>
             <StyledLink>Demoapp</StyledLink>
           </Link>
         </Innhold>
