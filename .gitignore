@@ -18,8 +18,5 @@ logs
 # Mac files
 .DS_Store
 
-# Sentry
-.sentryclirc
-
 #testfile-output being generated
 tsconfig.tsbuildinfo
