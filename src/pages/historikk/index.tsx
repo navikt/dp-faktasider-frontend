@@ -42,7 +42,7 @@ export default function HistorikkIndeks(props: Props) {
   const localizedFaktasider: HistoriskFaktasideData[] = localizeSanityContent(props.data, lang);
   const faktasider = localizedFaktasider.map((faktaside) => (
     <li key={faktaside._id}>
-      <Link href={`/historikk/${faktaside._id}/${faktaside._updatedAt}`} passHref>
+      <Link href={`/historikk/${faktaside._id}/${faktaside._updatedAt}`} passHref legacyBehavior>
         <a className="lenke">{faktaside.title}</a>
       </Link>
     </li>
