@@ -1,6 +1,5 @@
 dekoratorMiljo: prod
 sanityDataset: production
-sentry_stage: production
 ingresses: |
   ingresses:
     - https://arbeid.ansatt.nav.no/arbeid/.+

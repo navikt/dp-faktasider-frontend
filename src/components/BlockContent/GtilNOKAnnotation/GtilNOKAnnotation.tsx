@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Link } from "@navikt/ds-react";
-import * as Sentry from "@sentry/nextjs";
 import styled from "styled-components";
 import { loggHistorikk } from "../../../utils/logging";
 import { useGrunnbellop } from "../../../utils/folketrygdensGrunnbeløp";
@@ -26,12 +25,6 @@ export function GtilNOKAnnotation(props: Props) {
   const { GtoNOK } = useGrunnbellop();
   const devContext = useDevContext();
   const historikkContext = useHistorikkContext();
-
-  useEffect(() => {
-    if (notNumber) {
-      Sentry.captureException(new Error(`Kunne ikke konvertere "${G}" til NOK`));
-    }
-  }, [notNumber]);
 
   if (notNumber) {
     return <>{G} (G)</>;

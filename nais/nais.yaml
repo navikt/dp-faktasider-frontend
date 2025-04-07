@@ -34,7 +34,6 @@ spec:
         - host: cdn.sanity.io
         - host: dekoratoren.ekstern.dev.nav.no
         - host: amplitude.nav.no
-        - host: sentry.gc.nav.no
   env:
     - name: NODE_EXTRA_CA_CERTS
       value: "/etc/pki/tls/certs/ca-bundle.crt"
@@ -44,8 +43,6 @@ spec:
       value: /tmp
     - name: NEXT_PUBLIC_SANITY_DATASET
       value: {{sanityDataset}}
-    - name: NEXT_PUBLIC_SENTRY_STAGE
-      value: {{sentry_stage}}
   envFrom:
     - secret: dp-faktasider-frontend-sanity-cms-read-token
   {{ingresses}}

@@ -1,6 +1,5 @@
 dekoratorMiljo: dev
 sanityDataset: production
-sentry_stage: development
 ingresses: |
   ingresses:
     - https://arbeid.ekstern.dev.nav.no/arbeid/.+

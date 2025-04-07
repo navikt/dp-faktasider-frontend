@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const csp = require("./csp");
-const { withSentryConfig } = require("@sentry/nextjs");
 
 const config = {
   compiler: {
@@ -10,9 +9,7 @@ const config = {
   basePath: "/arbeid",
   productionBrowserSourceMaps: true,
   output: "standalone",
-  publicRuntimeConfig: {
-    NEXT_PUBLIC_SENTRY_STAGE: process.env.NEXT_PUBLIC_SENTRY_STAGE,
-  },
+  publicRuntimeConfig: {},
   i18n: {
     locales: ["no", "en"],
     defaultLocale: "no",
@@ -42,14 +39,4 @@ const config = {
   },
 };
 
-// For all available options, see:
-// https://github.com/getsentry/sentry-webpack-plugin#options.
-
-const sentryWebpackPluginOptions = {
-  silent: true, // Suppresses all logs
-  errorHandler: (err, invokeErr, compilation) => {
-    compilation.warnings.push("Sentry CLI Plugin: " + err.message);
-  },
-};
-
-module.exports = withSentryConfig(config, sentryWebpackPluginOptions);
+exports = config;
