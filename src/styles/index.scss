@@ -4,6 +4,11 @@
   --content-max-width: 55rem;
 }
 
+nav,
+footer {
+  padding: var(--a-spacing-6) !important;
+}
+
 .decorator-wrapper .decorator-utils-content {
   max-width: 67rem;
   margin-bottom: 0.5rem;

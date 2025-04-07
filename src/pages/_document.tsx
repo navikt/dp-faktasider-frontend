@@ -13,7 +13,6 @@ const decoratorProps: DecoratorFetchProps = {
   localUrl: "https://dekoratoren.ekstern.dev.nav.no",
   params: {
     chatbot: false,
-    simple: true,
     context: "privatperson",
     redirectToApp: true,
     level: "Level4",
