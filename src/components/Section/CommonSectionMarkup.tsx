@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { createGlobalStyle, css, StyledComponent } from "styled-components";
+import { createGlobalStyle, css, IStyledComponent } from "styled-components";
 import Anchor from "../Anchor";
 import HashLink from "../HashLink";
 import useUniqueId from "../../utils/useUniqueId";
@@ -33,12 +33,12 @@ export interface CommonSectionProps {
 }
 
 interface Props extends CommonSectionProps {
-  header: StyledComponent<any, any>;
+  header: IStyledComponent<any, any>;
   /**
    * Ekstra props som blir sendt til header (<Header {...headerProps} />)
    */
   headerProps?: object;
-  region: StyledComponent<any, any>;
+  region: IStyledComponent<any, any>;
   /**
    * Ekstra props som blir sendt til region (<Region {...headerProps} />)
    */

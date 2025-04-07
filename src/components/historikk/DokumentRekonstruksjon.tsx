@@ -36,9 +36,9 @@ export function DokumentRekonstruksjon(props: { dokument?: HistoriskDokument; le
       <h1 className="sr-only" id={id}>
         Rekonstruksjon
       </h1>
-      <StyledAlertstripe>
+      <>
         {hjelpetekster?.kortInfo} <Link href={`#${props.lesMerLenkeId}`}>Les mer</Link>
-      </StyledAlertstripe>
+      </>
       <Component {...props.dokument} />
     </RekonstruksjonWrapper>
   );
