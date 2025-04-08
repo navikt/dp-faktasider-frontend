@@ -35,7 +35,7 @@ export function HistoriskDeltTekst(props: { node: { deltTekst: { _ref: string } 
       <Header>Her var det en delt tekst</Header>
       <IdStyle>Id: {documentId}</IdStyle>
       <p>
-        <Link href={href} passHref>
+        <Link href={href} passHref legacyBehavior>
           <a className="lenke" target="_blank">
             Se versjonshistorikk for den delte teksten (åpnes i ny fane)
           </a>

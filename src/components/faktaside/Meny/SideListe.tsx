@@ -90,7 +90,7 @@ function InternLenke(props: { lenke: MenylenkeInternParsed }) {
   }
 
   return (
-    <Link href={props.lenke.path} locale={props.lenke.språk} passHref>
+    <Link href={props.lenke.path} locale={props.lenke.språk} passHref legacyBehavior>
       <StyledLink onClick={() => loggMeny("Gå til ny side")}>
         <Chevron retning="høyre" />
         <span>
