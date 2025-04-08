@@ -29,7 +29,7 @@ const MobileNav = styled.nav`
   }
 `;
 
-const HeaderStyle = styled(Heading).attrs({ level: "2", size: "large" })`
+const HeaderStyle = styled(Heading)`
   padding: 1.5rem 1.5rem 0.75rem;
   pointer-events: none;
 
@@ -43,7 +43,7 @@ const HeaderStyle = styled(Heading).attrs({ level: "2", size: "large" })`
 
 function Header(props: { id?: string; title?: string }) {
   return (
-    <HeaderStyle id={props.id}>
+    <HeaderStyle id={props.id} level="2" size="large">
       <span className="sr-only">Sideoversikt</span>
       {props.title}
     </HeaderStyle>

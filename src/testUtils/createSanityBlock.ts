@@ -5,7 +5,7 @@ import {
   TidslinjeI,
   Tillegsinformasjon,
 } from "../utils/richTextUtils/richTextTypes";
-import { guid } from "nav-frontend-js-utils";
+import { v4 as uuidv4 } from "uuid";
 import { Translations } from "../types/translations";
 
 /*
@@ -113,7 +113,7 @@ function createLinkMark(linkTo?: string) {
 }
 
 function createKey() {
-  return guid().substr(0, 8);
+  return uuidv4().substr(0, 8);
 }
 
 export function createTillegsInformasjon(tittel: string, innhold: SanityBlock[]): Tillegsinformasjon {

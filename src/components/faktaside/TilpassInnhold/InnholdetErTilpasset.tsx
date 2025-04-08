@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { theme } from "../../../styles/theme";
 import { LenkeKnapp } from "../../../utils/common-styled-components";
 
-const StyledAlertStripeInfo = styled(Alert).attrs({ variant: "info" })`
+const StyledAlertStripeInfo = styled(Alert).attrs({})`
   margin-bottom: ${theme.layoutMargin};
 `;
 
@@ -16,7 +16,7 @@ export function InnholdetErTilpasset() {
 
   return (
     <UnmountClosed isOpened={checked.length > 0 || ingenPasserMeg}>
-      <StyledAlertStripeInfo>
+      <StyledAlertStripeInfo variant="info">
         Siden er tilpasset ved å skjule tekst som ikke er relevant for situasjonen din.{" "}
         <LenkeKnapp onClick={() => dispatch({ type: "clear" })}>Vis alle situasjoner</LenkeKnapp>
       </StyledAlertStripeInfo>

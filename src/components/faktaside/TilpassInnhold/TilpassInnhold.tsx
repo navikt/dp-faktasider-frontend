@@ -31,7 +31,7 @@ const StyledUl = styled.ul`
   }
 `;
 
-const StyledUndertittel = styled(Heading).attrs({ level: "2", size: "large" })`
+const StyledUndertittel = styled(Heading).attrs({})`
   margin-bottom: ${theme.layoutPadding} !important;
 
   &::after {
@@ -65,7 +65,9 @@ export function TilpassInnhold(props: Props) {
   return (
     <div ref={tilpassInnholdRef}>
       <StyledNav className={props.className} data-test-id={TestId.TILPASS_INNHOLD}>
-        <StyledUndertittel> Tilpass innhold</StyledUndertittel>
+        <StyledUndertittel level="2" size="large">
+          Tilpass innhold
+        </StyledUndertittel>
         <BodyShort>Velg det som passer din situasjon best:</BodyShort>
         <StyledUl>
           {tilpassInnholdValg.map((valg) => (

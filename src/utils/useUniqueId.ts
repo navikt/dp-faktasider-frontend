@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { guid } from "nav-frontend-js-utils";
 import { idFromString } from "./idFromString";
+import { v4 as uuidv4 } from "uuid";
 
 function useUniqueId(label: string) {
   const [uniqueId, setUniqueId] = useState("");
-  const id = useRef(`${idFromString(label)}-${guid().substr(0, 5)}`).current;
+  const id = useRef(`${idFromString(label)}-${uuidv4().substr(0, 5)}`).current;
 
   useEffect(() => {
     setUniqueId(id);

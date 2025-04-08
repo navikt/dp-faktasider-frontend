@@ -12,7 +12,7 @@ const Header = styled.p`
   margin: 0 !important;
 `;
 
-const StyledAlerstripeInfo = styled(Alert).attrs({ variant: "info" })`
+const StyledAlerstripeInfo = styled(Alert).attrs({})`
   & + & {
     margin-top: 1rem;
   }
@@ -31,11 +31,11 @@ export function HistoriskDeltTekst(props: { node: { deltTekst: { _ref: string } 
   const href = `/historikk/${documentId}/${historikkContext.requestTimestamp || ""}`;
 
   return (
-    <StyledAlerstripeInfo>
+    <StyledAlerstripeInfo variant="info">
       <Header>Her var det en delt tekst</Header>
       <IdStyle>Id: {documentId}</IdStyle>
       <p>
-        <Link href={href} passHref>
+        <Link href={href} passHref legacyBehavior>
           <a className="lenke" target="_blank">
             Se versjonshistorikk for den delte teksten (åpnes i ny fane)
           </a>

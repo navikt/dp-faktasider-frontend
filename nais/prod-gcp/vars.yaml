@@ -1,4 +1,5 @@
-dekoratorMiljo: prod
+dekorator:
+  env: prod
 sanityDataset: production
 ingresses: |
   ingresses:

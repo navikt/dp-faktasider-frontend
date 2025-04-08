@@ -10,7 +10,7 @@ const Style = styled.div`
   max-width: 38rem;
 `;
 
-const StyledSidetittel = styled(Heading).attrs({ level: "1", size: "xlarge" })`
+const StyledSidetittel = styled(Heading).attrs({})`
   margin-bottom: 0.75rem !important;
 `;
 
@@ -18,7 +18,9 @@ function Header() {
   const faktaside = useFaktasideContext();
   return (
     <Style>
-      <StyledSidetittel>{faktaside.title}</StyledSidetittel>
+      <StyledSidetittel level="1" size="xlarge">
+        {faktaside.title}
+      </StyledSidetittel>
       <SistOppdatert />
     </Style>
   );

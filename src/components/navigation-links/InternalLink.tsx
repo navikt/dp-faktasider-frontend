@@ -14,7 +14,7 @@ export function InternalLink(props: Props) {
   const langAttribute = !props.link.tilgjengeligPåValgtSpråk ? props.link.språk : undefined;
 
   return (
-    <Link href={props.link.path} locale={langAttribute}>
+    <Link href={props.link.path} locale={langAttribute} legacyBehavior passHref>
       <a data-test-id={props.link.path}>
         <BodyShort className="navds-link">{props.link.tittel}</BodyShort>
         {!props.link.tilgjengeligPåValgtSpråk && (
