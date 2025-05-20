@@ -94,7 +94,7 @@ jobs:
           tag: ${{ github.sha }}
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
-          salsa: false
+          salsa: true
 
       - name: Cache static files
         uses: actions/cache@v3
