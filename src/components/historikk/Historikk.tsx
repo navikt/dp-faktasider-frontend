@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import { HistorikkProps } from "../../pages/historikk/[...slug]";
@@ -13,8 +13,9 @@ import useBreadcrumbs from "../faktaside/useBreadcrumbs";
 import HistorikkHeader from "./HistorikkHeader";
 import HistoirkkWatermark from "./Watermark";
 import { formaterDato } from "../../utils/formaterDato";
-import { Accordion } from "@navikt/ds-react";
+import { Accordion, Button } from "@navikt/ds-react";
 import LangInfo from "./LangInfo";
+import html2pdf from "html2pdf.js";
 
 const StyledMain = styled.main`
   max-width: 70rem;
@@ -45,7 +46,7 @@ const RådataEkspanderbartPanel = styled(Accordion)`
 `;
 
 const StyledPre = styled.pre`
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   white-space: break-spaces;
   word-break: break-word;
 `;
@@ -54,18 +55,56 @@ export function Historikk(props: HistorikkProps) {
   const localizedDoc: HistoriskDokument | undefined = localizeSanityContent(props.response?.documents[0], "no");
   const infoId = useUniqueId("info");
   const documentTitle = getTitle(localizedDoc);
-  const [openRådata, setOpenRådata] = useState(false);
+  const [openRådata, setOpenRådata] = useState(true);
 
   const loggingInfo = {
     nåværendeTittel: props.nåværendeSidetittel,
     timestamp: formaterDato(localizedDoc?._updatedAt || ""),
   };
 
+  useEffect(() => {
+    const finnesAnchorLink = !!document.querySelector('a[href^="#"]');
+    if (finnesAnchorLink) {
+      // Gjør noe hvis det finnes anchor-link
+      console.log("Anchor link finnes på siden");
+    }
+  }, []);
+
   useMount(() => loggHistorikk("Sidevisning", loggingInfo));
   useBreadcrumbs(props.domeneTittel, [
     { tittel: "Historikk", path: "historikk" },
     { tittel: documentTitle, path: `historikk/${localizedDoc?._id}/${localizedDoc?._updatedAt}` },
   ]);
+
+  // useEffect(() => {
+  //   const anchors = Array.from(document.querySelectorAll('a[href^="#"]'));
+  //   anchors.forEach((a) => {
+  //     const href = a.getAttribute("href") || "";
+  //     const anchorPath = href.startsWith("#") ? href.slice(1) : "";
+  //     if (anchorPath && !a.innerHTML.includes(`#${anchorPath}`)) {
+  //       // Fjern eventuell tidligere nummerering eller hash
+  //       a.textContent = a.textContent?.replace(/\s*\[.*?\]$/, "").replace(/\s*#.*$/, "") || "";
+  //       // Legg til hash-delen i en span
+  //       a.innerHTML = `${a.textContent} <span class="anchor-hash">#${anchorPath}</span>`;
+  //     }
+  //   });
+  // }, []);
+
+  function lagreSomPdf() {
+    if (typeof window !== "undefined") {
+      const element = document.querySelector(".printable");
+      if (element && localizedDoc) {
+        const timeStamp = localizedDoc && formaterDato(localizedDoc?._updatedAt).replace(/:/g, "-");
+        const tittel = localizedDoc.title.replace(/\?/g, "");
+        // Vent litt før PDF-generering
+        setTimeout(() => {
+          import("html2pdf.js").then((html2pdf) => {
+            html2pdf.default().from(element).save(`${tittel} - ${timeStamp}.pdf`);
+          });
+        }, 100); // 100 ms pause
+      }
+    }
+  }
 
   return (
     <HistorikkContextProvider
@@ -77,11 +116,16 @@ export function Historikk(props: HistorikkProps) {
       <HistoirkkWatermark />
       <Head>
         <meta name="robots" content="none" />
-        <title>{props.hjelpeTekster?.title} | www.nav.no</title>
+        <title>{props.hjelpeTekster?.title} | www.nav.no </title>
       </Head>
-      <StyledMain>
+      <Button className="save-as-pdf-button" onClick={() => lagreSomPdf()}>
+        Lagrer som PDF
+      </Button>
+      <StyledMain className="printable">
         <HistorikkHeader document={localizedDoc} revisions={props.revisions} title={documentTitle} />
         <DokumentRekonstruksjon dokument={localizedDoc} lesMerLenkeId={infoId} />
+
+        <LangInfo infoId={infoId} />
 
         <RådataEkspanderbartPanel>
           <Accordion.Item open={openRådata}>
@@ -94,12 +138,10 @@ export function Historikk(props: HistorikkProps) {
               Rådata
             </Accordion.Header>
             <Accordion.Content>
-              <StyledPre>{JSON.stringify(props.response, null, 2)}</StyledPre>
+              <StyledPre>{JSON.stringify(props.response)}</StyledPre>
             </Accordion.Content>
           </Accordion.Item>
         </RådataEkspanderbartPanel>
-
-        <LangInfo infoId={infoId} />
       </StyledMain>
     </HistorikkContextProvider>
   );

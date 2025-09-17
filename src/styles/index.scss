@@ -26,7 +26,44 @@ footer {
   padding: var(--a-spacing-6) !important;
 }
 
+.anchor-hash {
+  font-size: 1rem;
+  background: #ccf1d6;
+  color: #222;
+  border-radius: 0.2rem;
+  padding: 0 0.2rem;
+  font-style: italic;
+  font-weight: normal;
+}
+
 .decorator-wrapper .decorator-utils-content {
   max-width: 67rem;
   margin-bottom: 0.5rem;
+}
+
+// a[href^="#"] {
+//   background-color: yellow;
+// }
+
+.save-as-pdf-button {
+  position: absolute;
+  left: 50%;
+  top: 12rem;
+  transform: translateX(-50%);
+}
+
+.unprintable {
+  display: none;
+}
+
+@media print {
+  header,
+  footer,
+  .unprintable {
+    display: none !important;
+  }
+
+  .printable {
+    display: block !important;
+  }
 }

@@ -25,7 +25,7 @@ interface Props {
 
 // Kan sansynligvis byttes ut med Hjelpetekst fra designsystemet når dette kommer i ds-react
 function Hjelpetekst(props: Props) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const id = useUniqueId("hjelp");
   const ref = useRef<HTMLButtonElement>(null);
 

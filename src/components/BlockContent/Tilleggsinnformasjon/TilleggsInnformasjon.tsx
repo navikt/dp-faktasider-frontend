@@ -71,7 +71,7 @@ export function Tilleggsinnformasjon(props: Props) {
   const parsedText = parseRichText(props.node.innhold);
   const hashId = props.node.blockConfig?.id || "N/A";
   const isInUrl = useIsHashInUrl(hashId);
-  const [open, dispatch] = useReducer(reducer, false);
+  const [open, dispatch] = useReducer(reducer, true);
   const headerId = useUniqueId("tilleggsinfo-" + props.node.title);
   const { t } = useTranslation("global");
   const ref = useRef<HTMLHeadingElement>(null);

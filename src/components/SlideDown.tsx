@@ -1,4 +1,4 @@
-import React, { ReactNode, useReducer } from "react";
+import React, { ReactNode, useReducer, useState } from "react";
 import styled, { css } from "styled-components";
 import { Collapse } from "react-collapse";
 import ChevronButton from "./ChevronButton";
@@ -24,7 +24,7 @@ const Style = styled.div<{ isOpen: boolean }>`
 `;
 
 function SlideDown(props: Props) {
-  const [open, toggle] = useReducer((state) => !state, false);
+  const [open, toggle] = useState(true);
 
   const onClick = () => {
     toggle();

@@ -76,7 +76,7 @@ export function DevKnapper() {
   }
 
   return (
-    <Style isOpen={open} ref={ref}>
+    <Style className="unprintable" isOpen={open} ref={ref}>
       <Button onClick={() => dispatch("toggle")}>dev</Button>
       {open && (
         <Innhold>

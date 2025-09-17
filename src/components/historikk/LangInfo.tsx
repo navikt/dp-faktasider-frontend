@@ -21,7 +21,7 @@ const LangInfoStyle = styled.div`
 `;
 
 function LangInfo(props: { infoId: string }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const hjelpeTekster = useHistorikkContext().hjelpeTekster;
   const titleBlock = hjelpeTekster?.langInfo.find((block) => block.style === "h2");
   const title = titleBlock && getTextFromSanityBlock(titleBlock);

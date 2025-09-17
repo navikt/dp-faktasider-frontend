@@ -5,8 +5,8 @@ type ActionNames = "utkast" | "filtrering" | "delteTekster" | "grunnbellop";
 
 const initial = {
   value: {
-    visUtkast: isDevelopment(),
-    highlightFiltrering: isDevelopment(),
+    visUtkast: false,
+    highlightFiltrering: false,
     debugDelteTekster: false,
     debugGronnbellop: false,
   },
