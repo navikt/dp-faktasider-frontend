@@ -87,7 +87,7 @@ export function TilpassInnhold(props: Props) {
             </li>
           )}
         </StyledUl>
-        <UnmountClosed $isOpened={valgt.length > 0 || ingenPasserMeg}>
+        <UnmountClosed isOpened={valgt.length > 0 || ingenPasserMeg}>
           Vi viser nå {currentWords} av {totalWords} ord på denne siden
         </UnmountClosed>
       </StyledNav>

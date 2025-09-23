@@ -80,7 +80,7 @@ function InternLenke(props: { lenke: MenylenkeInternParsed }) {
           <Chevron retning={open ? "ned" : "høyre"} />
           <span>{props.lenke.tittel}</span>
         </StyledButton>
-        <UnmountClosed $isOpened={open}>
+        <UnmountClosed isOpened={open}>
           <Innholdsfortegnelse />
         </UnmountClosed>
       </>
