@@ -74,7 +74,7 @@ function DagpengerKalkulatorLRling() {
 
   return (
     <KalkulatorStyle>
-      <Collapse isOpened={true}>
+      <Collapse $isOpened={true}>
         <InputWrapper>
           <GrunnlagInput
             label="Skriv inn di årsinntekt:"

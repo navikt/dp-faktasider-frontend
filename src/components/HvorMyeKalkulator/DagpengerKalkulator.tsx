@@ -80,7 +80,7 @@ function DagpengerKalkulator() {
 
   return (
     <KalkulatorStyle>
-      <Collapse isOpened={true}>
+      <Collapse $isOpened={true}>
         <InputWrapper>
           <GrunnlagInput
             label={t("label")}

@@ -56,7 +56,7 @@ function MenuItem(props: { item: Group; current: boolean }) {
 
   return (
     <Draft isDraft={!!blockConfig?.erUtkast}>
-      <UnmountClosed isOpened={vis}>
+      <UnmountClosed $isOpened={vis}>
         <li key={blockConfig?.id}>
           <StyledLenke erValgt={props.current} href={`#${blockConfig?.id}`}>
             {props.item.title}

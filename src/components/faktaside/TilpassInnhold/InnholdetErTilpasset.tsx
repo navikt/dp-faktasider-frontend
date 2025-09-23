@@ -15,7 +15,7 @@ export function InnholdetErTilpasset() {
   const { checked, ingenPasserMeg } = value;
 
   return (
-    <UnmountClosed isOpened={checked.length > 0 || ingenPasserMeg}>
+    <UnmountClosed $isOpened={checked.length > 0 || ingenPasserMeg}>
       <StyledAlertStripeInfo>
         Siden er tilpasset ved å skjule tekst som ikke er relevant for situasjonen din.{" "}
         <LenkeKnapp onClick={() => dispatch({ type: "clear" })}>Vis alle situasjoner</LenkeKnapp>
