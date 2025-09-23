@@ -34,7 +34,7 @@ function SlideDown(props: Props) {
   return (
     <Style isOpen={open} className={props.className}>
       <ChevronButton title={props.title} open={open} onClick={onClick} />
-      <Collapse $isOpened={open}>{props.children}</Collapse>
+      <Collapse isOpened={open}>{props.children}</Collapse>
     </Style>
   );
 }
