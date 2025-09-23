@@ -8,7 +8,6 @@ import Link from "next/link";
 import styled from "styled-components";
 import useBreadcrumbs from "../../components/faktaside/useBreadcrumbs";
 import { domeneTittelQuery } from "../../sanity/groq/commonQuerries";
-import { loggHistorikk } from "../../utils/logging";
 import useMount from "react-use/lib/useMount";
 import { BodyShort, Heading } from "@navikt/ds-react";
 
@@ -48,7 +47,6 @@ export default function HistorikkIndeks(props: Props) {
     </li>
   ));
 
-  useMount(() => loggHistorikk("Forside sidevisning"));
   useBreadcrumbs(props.domeneTittel, [{ tittel: "Historikk", path: "historikk" }]);
 
   return (

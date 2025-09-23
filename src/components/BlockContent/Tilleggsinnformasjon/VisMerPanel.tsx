@@ -42,7 +42,7 @@ function VisMerPanel(props: Props) {
 
   return (
     <>
-      <Collapse isOpened={true}>
+      <Collapse $isOpened={true}>
         <Content isOpen={props.open} aria-hidden={!props.open} id={id}>
           {props.children}
         </Content>

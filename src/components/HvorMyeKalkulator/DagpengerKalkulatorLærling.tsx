@@ -3,7 +3,6 @@ import { Collapse } from "react-collapse";
 import { Alert } from "@navikt/ds-react";
 import { GrunnlagInput, InputWrapper, KalkulatorStyle, ResultatTable, toKR } from "./felles";
 import { useDebouncedValue } from "../../hooks/useDebouncedValue";
-import { loggKalkulatorbruk } from "../../utils/logging";
 import { useGrunnbellop } from "../../utils/folketrygdensGrunnbeløp";
 
 function Resultat(props: { grunnlag?: number }) {
@@ -69,14 +68,13 @@ function DagpengerKalkulatorLRling() {
 
   useEffect(() => {
     if (!harLoggetBruk && grunnlag) {
-      loggKalkulatorbruk("Uinnlogget lærling");
       setHarLoggetBruk(true);
     }
   }, [grunnlag, harLoggetBruk]);
 
   return (
     <KalkulatorStyle>
-      <Collapse isOpened={true}>
+      <Collapse $isOpened={true}>
         <InputWrapper>
           <GrunnlagInput
             label="Skriv inn di årsinntekt:"

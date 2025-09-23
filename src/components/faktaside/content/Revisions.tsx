@@ -5,7 +5,6 @@ import Link from "next/link";
 import { formaterDato } from "../../../utils/formaterDato";
 import { css } from "styled-components";
 import React from "react";
-import { loggHistorikk } from "../../../utils/logging";
 import { useHistorikkContext } from "../../historikk/HistorikkContext";
 
 const StyledNav = styled.nav``;
@@ -37,11 +36,7 @@ function Revisions(props: Props) {
         const formatertDato = formaterDato(rev.timestamp);
         return (
           <Link prefetch={false} key={rev.id} href={`/historikk/${props.documentId}/${rev.timestamp}`} passHref>
-            <StyledLenke
-              current={current}
-              className="lenke"
-              onClick={() => loggHistorikk("Ny dato valgt", { ...context.loggingInfo, nyDato: formatertDato })}
-            >
+            <StyledLenke current={current} className="lenke">
               {formatertDato}
               {current && " (Vises nå)"}
             </StyledLenke>

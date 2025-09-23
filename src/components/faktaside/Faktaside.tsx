@@ -1,13 +1,9 @@
 import React, { useRef } from "react";
-import { useMount } from "react-use";
-import { loggSidevisning } from "../../utils/logging";
-import useLoggUtdatertHashlenke from "./useLoggUtdatertHashlenke";
 import { IkkeOversatt } from "./IkkeOversatt";
 import { createFaktasideContext, FaktasideProvider, useFaktasideContext } from "./FaktaSideContext";
 import { SEO } from "../SEO";
 import { FaktaSideLayout } from "./FaktaSideLayout";
 import { SanityContent } from "../sanity-content/SanityContent";
-import useBreadcrumbs from "./useBreadcrumbs";
 import { Notifications } from "../notifications/Notifications";
 import { KortFortalt } from "./content/KortFortalt";
 import { Snarveier } from "./content/Snarveier";
@@ -23,14 +19,8 @@ function FaktasideContainer(props: FaktasideRawData) {
   const locale = useLocale();
   const faktasideContext = createFaktasideContext(props, locale);
   const erPublisertPåSpråk = faktasideContext.visSprakversjon?.[locale];
-  const tittel = faktasideContext.title || "";
 
-  // useBreadcrumbs(faktasideContext.domainTitle, [
-  //   { tittel: faktasideContext.title || "Du er her", path: faktasideContext.slug },
-  // ]);
   useLanguageSelector();
-  useMount(() => loggSidevisning(tittel));
-  useLoggUtdatertHashlenke();
 
   if (!erPublisertPåSpråk) {
     return <IkkeOversatt {...faktasideContext} />;

@@ -7,8 +7,6 @@ import Head from "next/head";
 import HistorikkContextProvider from "./HistorikkContext";
 import { DokumentRekonstruksjon } from "./DokumentRekonstruksjon";
 import { HistoriskDokument } from "./api/historikkFetcher";
-import { useMount } from "react-use";
-import { loggHistorikk } from "../../utils/logging";
 import useBreadcrumbs from "../faktaside/useBreadcrumbs";
 import HistorikkHeader from "./HistorikkHeader";
 import HistoirkkWatermark from "./Watermark";
@@ -61,7 +59,6 @@ export function Historikk(props: HistorikkProps) {
     timestamp: formaterDato(localizedDoc?._updatedAt || ""),
   };
 
-  useMount(() => loggHistorikk("Sidevisning", loggingInfo));
   useBreadcrumbs(props.domeneTittel, [
     { tittel: "Historikk", path: "historikk" },
     { tittel: documentTitle, path: `historikk/${localizedDoc?._id}/${localizedDoc?._updatedAt}` },
@@ -87,7 +84,6 @@ export function Historikk(props: HistorikkProps) {
           <Accordion.Item open={openRådata}>
             <Accordion.Header
               onClick={() => {
-                !openRådata && loggHistorikk("Åpner rådata", loggingInfo);
                 setOpenRådata(!openRådata);
               }}
             >
