@@ -6,7 +6,7 @@ import { makeUniqueIdTestData } from "./makeUniqeGroupIDs.testdata";
 import { PureInnholdsfortegnelse } from "../../../../components/faktaside/Meny/Innholdsfortegnelse/Innholdsfortegnelse";
 import { Group, isH2Group } from "../groupParser/groupParser";
 
-test.skip("makeUniqueGroupIDs lager unike IDer slik at vi kan lage fungerende hash-lenker i appen", () => {
+test("makeUniqueGroupIDs lager unike IDer slik at vi kan lage fungerende hash-lenker i appen", () => {
   const parsedBlocks = parseRichText(makeUniqueIdTestData);
   const h2Groups: Group[] = parsedBlocks.filter(isH2Group);
 
