@@ -12,7 +12,6 @@
     "@navikt/nav-dekoratoren-moduler": "^1.9.0",
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/image-url": "^1.0.2",
-    "amplitude-js": "^8.21.9",
     "date-fns": "^2.30.0",
     "i18next": "^21.9.1",
     "identity-obj-proxy": "^3.0.0",
@@ -35,7 +34,6 @@
   "devDependencies": {
     "@testing-library/cypress": "^10.0.1",
     "@testing-library/react": "^12.1.2",
-    "@types/amplitude-js": "^8.16.5",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.6",
     "@types/react": "^17.0.33",

@@ -3,7 +3,6 @@ import { pxFromTop } from "../../../../utils/domUtils";
 import styled, { css } from "styled-components";
 import { useInnholdsListe } from "./useInnholdsListe";
 import { LenkeUtenUnderstrek } from "../../../../utils/common-styled-components";
-import { loggMeny } from "../../../../utils/logging";
 import { useVisForContext } from "../../../BlockContent/VisFor/VisForContext";
 import { UnmountClosed } from "react-collapse";
 import { visBasertPåFiltrering } from "../../../BlockContent/VisFor/VisFor";
@@ -51,10 +50,6 @@ function MenuItem(props: { item: Group; current: boolean }) {
   const faktaside = useFaktasideContext();
   const blockConfig = props.item.blockConfig;
 
-  const handleClick = () => {
-    loggMeny("Hopp til overskrift", { hashtag: blockConfig?.id, tittel: faktaside.title || "N/A" });
-  };
-
   const vis =
     visBasertPåFiltrering(faktaside.situasjonsvalg, visForContext, blockConfig?.visFor).vis &&
     visBasertPaaVisPaaConfig(faktaside.id, blockConfig?.visPaaSider);
@@ -63,7 +58,7 @@ function MenuItem(props: { item: Group; current: boolean }) {
     <Draft isDraft={!!blockConfig?.erUtkast}>
       <UnmountClosed isOpened={vis}>
         <li key={blockConfig?.id}>
-          <StyledLenke erValgt={props.current} href={`#${blockConfig?.id}`} onClick={handleClick}>
+          <StyledLenke erValgt={props.current} href={`#${blockConfig?.id}`}>
             {props.item.title}
           </StyledLenke>
         </li>

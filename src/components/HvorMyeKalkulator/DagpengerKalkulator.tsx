@@ -4,7 +4,6 @@ import { Alert, BodyShort } from "@navikt/ds-react";
 import { GrunnlagInput, InputWrapper, KalkulatorStyle, ResultatTable, toKR } from "./felles";
 import { useDebouncedValue } from "../../hooks/useDebouncedValue";
 import { useTranslation } from "react-i18next";
-import { loggKalkulatorbruk } from "../../utils/logging";
 import { useGrunnbellop } from "../../utils/folketrygdensGrunnbeløp";
 
 function Resultat(props: { grunnlag?: number }) {
@@ -75,7 +74,6 @@ function DagpengerKalkulator() {
 
   useEffect(() => {
     if (!harLoggetBruk && grunnlag) {
-      loggKalkulatorbruk("Uinnlogget vanlig");
       setHarLoggetBruk(true);
     }
   }, [grunnlag, harLoggetBruk]);

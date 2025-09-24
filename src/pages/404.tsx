@@ -1,15 +1,12 @@
 import React from "react";
 import { SEO } from "../components/SEO";
 import { useTranslation } from "react-i18next";
-import { useMount } from "react-use";
-import { loggNotFound } from "../utils/logging";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { SideListe } from "../components/faktaside/Meny/SideListe";
 import { sanityClient } from "../sanity/sanity-config";
 import { menuQuery, MenuQueryData } from "../sanity/groq/menu/menuQuery";
 import { parseMenuData } from "../sanity/groq/menu/parseMenuData";
-import useBreadcrumbs from "../components/faktaside/useBreadcrumbs";
 import localizeSanityContent from "../i18n/localizeSanityContent";
 import { SupportedLanguage } from "../i18n/supportedLanguages";
 import Link from "next/link";
@@ -69,16 +66,10 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 const NotFoundPage = (props: Props) => {
   const { t } = useTranslation("global");
-  const { asPath, locale } = useRouter();
+  const { locale } = useRouter();
   const menuData = parseMenuData(props.menuData, locale as SupportedLanguage);
   const title = "404: Not found";
   const forsideTittel = localizeSanityContent(props.data.domeneTittel, locale as SupportedLanguage);
-
-  // useBreadcrumbs(forsideTittel, [{ tittel: title, path: "404" }]);
-
-  useMount(() => {
-    loggNotFound(asPath || "N/A");
-  });
 
   return (
     <Style>
