@@ -5,7 +5,6 @@ import { SanityContent } from "../sanity-content/SanityContent";
 import { typografiStyle } from "../faktaside/FaktaSideLayout";
 import { useHistorikkContext } from "./HistorikkContext";
 import { getTextFromSanityBlock } from "../../utils/richTextUtils/getTextFromSanityBlock";
-import { loggHistorikk } from "../../utils/logging";
 
 const LangInfoStyle = styled.div`
   ${typografiStyle};
@@ -32,7 +31,6 @@ function LangInfo(props: { infoId: string }) {
       <Accordion.Item open={open}>
         <Accordion.Header
           onClick={() => {
-            !open && loggHistorikk("Åpner Informasjon om historiske tekster");
             setOpen(!open);
           }}
         >

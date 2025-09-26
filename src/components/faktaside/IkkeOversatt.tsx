@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { supportedLanguages } from "../../i18n/supportedLanguages";
-import { useMount } from "react-use";
-import { loggIkkeOversatt } from "../../utils/logging";
 import Link from "next/link";
 import { SEO } from "../SEO";
 import { BodyShort, Heading } from "@navikt/ds-react";
@@ -30,8 +28,6 @@ export function IkkeOversatt(props: FaktasideContext) {
   const page = props;
   const { t } = useTranslation("global");
   const title = page.title || "";
-
-  useMount(() => loggIkkeOversatt(title));
 
   const oversettelser = supportedLanguages.map((lang) => {
     const publisert = page.visSprakversjon?.[lang];

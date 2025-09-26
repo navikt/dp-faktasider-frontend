@@ -1,6 +1,4 @@
 import React from "react";
-import { useMount } from "react-use";
-import { loggSidevisning } from "../../utils/logging";
 import useBreadcrumbs from "../../components/faktaside/useBreadcrumbs";
 import { Header } from "../../components/header/Header";
 import { SEO } from "../../components/SEO";
@@ -21,8 +19,6 @@ export function Arbeid(props: Props) {
   const title = props.pageData.title || "Arbeid";
   const description = props.pageData.beskrivelse || "";
   useBreadcrumbs(title);
-
-  useMount(() => loggSidevisning("Forside - nav.no/arbeid"));
 
   return (
     <div className={styles.container}>

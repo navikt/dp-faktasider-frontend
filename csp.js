@@ -29,7 +29,6 @@ const csp = {
     "'self'",
     "*.nav.no",
     "appres.nav.no",
-    "amplitude.nav.no/collect",
     "*.psplugin.com",
     "*.hotjar.com",
     "*.vc.hotjar.com",

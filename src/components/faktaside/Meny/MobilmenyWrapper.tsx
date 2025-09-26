@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 import MenyButton from "./MenyButton";
 import { useClickAway, useLocation } from "react-use";
 import { theme } from "../../../styles/theme";
-import { loggMeny } from "../../../utils/logging";
 import { navFrontend } from "../../../styles/navFrontend";
 
 interface Props {
@@ -79,10 +78,6 @@ function MobilmenyWrapper(props: Props) {
   const [visMeny, setVisMeny] = useState(false);
   const ref = useRef(null);
   useClickAway(ref, () => setVisMeny(false));
-
-  useEffect(() => {
-    visMeny && loggMeny("Åpne mobilmeny");
-  }, [visMeny]);
 
   useEffect(() => {
     setVisMeny(false);

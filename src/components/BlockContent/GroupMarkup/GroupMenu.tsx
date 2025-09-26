@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { LenkeUtenUnderstrek } from "../../../utils/common-styled-components";
-import { loggH2MenyKlikk } from "../../../utils/logging";
 import useUniqueId from "../../../utils/useUniqueId";
 import { Group } from "../../../utils/richTextUtils/parser/groupParser/groupParser";
 
@@ -22,10 +21,6 @@ const StyledUl = styled.ul`
 function GroupMenu(props: Props) {
   const id = useUniqueId("meny-" + props.title);
 
-  const handleOnClick = () => {
-    loggH2MenyKlikk();
-  };
-
   return (
     <nav aria-labelledby={id}>
       <h3 className="sr-only" id={id}>
@@ -34,9 +29,7 @@ function GroupMenu(props: Props) {
       <StyledUl>
         {props.underGrupper.map((underGruppe) => (
           <StyledLi key={underGruppe.blockConfig?.id}>
-            <LenkeUtenUnderstrek onClick={handleOnClick} href={"#" + underGruppe.blockConfig?.id}>
-              {underGruppe.title}
-            </LenkeUtenUnderstrek>
+            <LenkeUtenUnderstrek href={"#" + underGruppe.blockConfig?.id}>{underGruppe.title}</LenkeUtenUnderstrek>
           </StyledLi>
         ))}
       </StyledUl>

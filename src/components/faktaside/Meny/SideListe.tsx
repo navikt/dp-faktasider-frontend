@@ -1,7 +1,6 @@
 import React, { useReducer, useState } from "react";
 import styled, { css } from "styled-components";
 import { useFaktasideContext } from "../FaktaSideContext";
-import { loggMeny } from "../../../utils/logging";
 import { UnmountClosed } from "react-collapse";
 import { theme } from "../../../styles/theme";
 import Link from "next/link";
@@ -75,7 +74,6 @@ function InternLenke(props: { lenke: MenylenkeInternParsed }) {
           isOpen={open}
           onClick={() => {
             toggle();
-            loggMeny("Åpne/lukke innholdsfortegnelse");
           }}
           aria-expanded={open}
         >
@@ -91,7 +89,7 @@ function InternLenke(props: { lenke: MenylenkeInternParsed }) {
 
   return (
     <Link href={props.lenke.path} locale={props.lenke.språk} passHref>
-      <StyledLink onClick={() => loggMeny("Gå til ny side")}>
+      <StyledLink>
         <Chevron retning="høyre" />
         <span>
           {props.lenke.tittel} {!props.lenke.tilgjengeligPåValgtSpråk ? `(${props.lenke.språk})` : ""}
@@ -103,7 +101,7 @@ function InternLenke(props: { lenke: MenylenkeInternParsed }) {
 
 function EksternLenke(props: { lenke: MenylenkeEkstern }) {
   return (
-    <StyledLink href={props.lenke.url} onClick={() => loggMeny("Gå til ekstern side")}>
+    <StyledLink href={props.lenke.url}>
       <Chevron retning="høyre" />
       {props.lenke.tittel}
     </StyledLink>

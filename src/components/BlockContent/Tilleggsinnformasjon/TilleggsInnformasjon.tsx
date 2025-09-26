@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 import useUniqueId from "../../../utils/useUniqueId";
 import { theme } from "../../../styles/theme";
 import VisMerPanel from "./VisMerPanel";
-import { loggVisTilleggsinfo } from "../../../utils/logging";
 import { useMount, usePrevious } from "react-use";
 import useUserIsSearchingText from "../../../hooks/useUserIsSearchingText";
 import HashLink from "../../HashLink";
@@ -84,9 +83,6 @@ export function Tilleggsinnformasjon(props: Props) {
   }, [userIsSearchingText]);
 
   const prevOpen = usePrevious(open);
-  useEffect(() => {
-    !prevOpen && open && loggVisTilleggsinfo(props.node.title);
-  }, [open, prevOpen, props.node.title]);
 
   useEffect(() => {
     !prevOpen && open && ref.current?.focus(); // For accessibility/skjermleser og for at panelet skal åpne seg nedover istedenfor å forsvinne opp og ut av synsfeltet.
