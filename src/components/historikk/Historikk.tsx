@@ -13,13 +13,12 @@ import HistoirkkWatermark from "./Watermark";
 import { formaterDato } from "../../utils/formaterDato";
 import { Accordion, Button } from "@navikt/ds-react";
 import LangInfo from "./LangInfo";
-import html2pdf from "html2pdf.js";
 
 const StyledMain = styled.main`
   max-width: 70rem;
   margin: auto;
   background-color: white;
-  padding: 5rem 0.5rem;
+  padding: 5rem 3rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -81,32 +80,31 @@ export function Historikk(props: HistorikkProps) {
     { tittel: documentTitle, path: `historikk/${localizedDoc?._id}/${localizedDoc?._updatedAt}` },
   ]);
 
-  // useEffect(() => {
-  //   const anchors = Array.from(document.querySelectorAll('a[href^="#"]'));
-  //   anchors.forEach((a) => {
-  //     const href = a.getAttribute("href") || "";
-  //     const anchorPath = href.startsWith("#") ? href.slice(1) : "";
-  //     if (anchorPath && !a.innerHTML.includes(`#${anchorPath}`)) {
-  //       // Fjern eventuell tidligere nummerering eller hash
-  //       a.textContent = a.textContent?.replace(/\s*\[.*?\]$/, "").replace(/\s*#.*$/, "") || "";
-  //       // Legg til hash-delen i en span
-  //       a.innerHTML = `${a.textContent} <span class="anchor-hash">#${anchorPath}</span>`;
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    const anchors = Array.from(document.querySelectorAll('a[href^="#"]'));
+    anchors.forEach((a) => {
+      const href = a.getAttribute("href") || "";
+      const anchorPath = href.startsWith("#") ? href.slice(1) : "";
+      if (anchorPath) {
+        // Lag et nytt <span>-element med ønsket klasse og tekst
+        const span = document.createElement("span");
+        span.className = "anchor-hash";
+        span.textContent = `#${anchorPath} (ankerlenke)`;
+        // Bytt ut <a> med <span> i DOM
+        a.parentNode?.replaceChild(span, a);
+      }
+    });
+  }, []);
 
   function lagreSomPdf() {
     if (typeof window !== "undefined") {
       const element = document.querySelector(".printable");
-      if (element && localizedDoc) {
-        const timeStamp = localizedDoc && formaterDato(localizedDoc?._updatedAt).replace(/:/g, "-");
+      if (element instanceof HTMLElement && localizedDoc) {
+        const timeStamp = formaterDato(localizedDoc._updatedAt).replace(/:/g, "-");
         const tittel = localizedDoc.title.replace(/\?/g, "");
-        // Vent litt før PDF-generering
-        setTimeout(() => {
-          import("html2pdf.js").then((html2pdf) => {
-            html2pdf.default().from(element).save(`${tittel} - ${timeStamp}.pdf`);
-          });
-        }, 100); // 100 ms pause
+        import("html2pdf.js").then((html2pdf) => {
+          html2pdf.default().from(element).save(`${tittel} - ${timeStamp}.pdf`);
+        });
       }
     }
   }
@@ -124,7 +122,7 @@ export function Historikk(props: HistorikkProps) {
         <title>{props.hjelpeTekster?.title} | www.nav.no </title>
       </Head>
       <Button className="save-as-pdf-button" onClick={() => lagreSomPdf()}>
-        Lagrer som PDF
+        Lagrer side som PDF
       </Button>
       <StyledMain className="printable">
         <HistorikkHeader document={localizedDoc} revisions={props.revisions} title={documentTitle} />
