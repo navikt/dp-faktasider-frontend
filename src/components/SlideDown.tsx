@@ -27,7 +27,7 @@ function SlideDown(props: Props) {
   const [open, toggle] = useState(true);
 
   const onClick = () => {
-    toggle();
+    toggle((open) => !open);
     props.onClick?.();
   };
 

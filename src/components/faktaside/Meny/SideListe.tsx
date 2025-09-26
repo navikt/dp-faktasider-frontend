@@ -73,7 +73,7 @@ function InternLenke(props: { lenke: MenylenkeInternParsed }) {
         <StyledButton
           isOpen={open}
           onClick={() => {
-            toggle();
+            toggle((open) => !open);
           }}
           aria-expanded={open}
         >
