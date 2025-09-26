@@ -96,6 +96,37 @@ export function Historikk(props: HistorikkProps) {
     });
   }, []);
 
+  useEffect(() => {
+    const iframes = Array.from(document.querySelectorAll("iframe"));
+    iframes.forEach((iframe) => {
+      iframe.style.display = "none"; // Skjul iframe
+      const src = iframe.getAttribute("src");
+
+      if (src) {
+        // Sjekk om <p> allerede finnes rett etter iframe
+        const next = iframe.nextElementSibling;
+        if (!(next && next.tagName === "P" && next.textContent === "Lenke til video")) {
+          const p = document.createElement("p");
+          p.textContent = "Lenke til video";
+          p.style.display = "inline"; // Gjør inline hvis ønskelig
+          p.style.marginRight = "5px"; // <-- Legg til margin right
+          iframe.parentNode?.insertBefore(p, iframe.nextSibling);
+        }
+
+        // Sjekk om <a> allerede finnes etter <p>
+        const afterP = iframe.nextElementSibling?.nextElementSibling;
+        if (!(afterP && afterP.tagName === "A" && afterP.getAttribute("href") === src)) {
+          const a = document.createElement("a");
+          a.href = src;
+          a.textContent = src;
+          a.target = "_blank";
+          a.style.display = "inline";
+          iframe.parentNode?.insertBefore(a, iframe.nextElementSibling?.nextSibling || null);
+        }
+      }
+    });
+  }, []);
+
   function lagreSomPdf() {
     if (typeof window !== "undefined") {
       const element = document.querySelector(".printable");
