@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { Accordion, Button } from "@navikt/ds-react";
+import Head from "next/head";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import localizeSanityContent from "../../i18n/localizeSanityContent";
 import { HistorikkProps } from "../../pages/historikk/[...slug]";
+import { formaterDato, formaterTilTallDato } from "../../utils/formaterDato";
 import useUniqueId from "../../utils/useUniqueId";
-import Head from "next/head";
-import HistorikkContextProvider from "./HistorikkContext";
-import { DokumentRekonstruksjon } from "./DokumentRekonstruksjon";
-import { HistoriskDokument } from "./api/historikkFetcher";
 import useBreadcrumbs from "../faktaside/useBreadcrumbs";
+import { DokumentRekonstruksjon } from "./DokumentRekonstruksjon";
+import HistorikkContextProvider from "./HistorikkContext";
 import HistorikkHeader from "./HistorikkHeader";
-import HistoirkkWatermark from "./Watermark";
-import { formaterDato } from "../../utils/formaterDato";
-import { Accordion, Button } from "@navikt/ds-react";
 import LangInfo from "./LangInfo";
+import HistoirkkWatermark from "./Watermark";
+import { HistoriskDokument } from "./api/historikkFetcher";
 
 const StyledMain = styled.main`
   max-width: 70rem;
@@ -100,10 +100,10 @@ export function Historikk(props: HistorikkProps) {
     if (typeof window !== "undefined") {
       const element = document.querySelector(".printable");
       if (element instanceof HTMLElement && localizedDoc) {
-        const timeStamp = formaterDato(localizedDoc._updatedAt).replace(/:/g, "-");
+        const timeStamp = formaterTilTallDato(localizedDoc._updatedAt).replace(/:/g, "-");
         const tittel = localizedDoc.title.replace(/\?/g, "");
         import("html2pdf.js").then((html2pdf) => {
-          html2pdf.default().from(element).save(`${tittel} - ${timeStamp}.pdf`);
+          html2pdf.default().from(element).save(`${timeStamp} - ${tittel}.pdf`);
         });
       }
     }
