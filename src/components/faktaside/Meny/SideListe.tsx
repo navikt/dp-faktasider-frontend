@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 import styled, { css } from "styled-components";
 import { useFaktasideContext } from "../FaktaSideContext";
 import { UnmountClosed } from "react-collapse";
@@ -63,7 +63,7 @@ const StyledButton = styled.button.attrs({ className: "navds-link" })<{ isOpen: 
 
 function InternLenke(props: { lenke: MenylenkeInternParsed }) {
   const faktaside = useFaktasideContext();
-  const [open, toggle] = useReducer((state) => !state, true);
+  const [open, toggle] = useState(true);
 
   const currentPage = props.lenke.pageId === faktaside.id;
 
@@ -73,7 +73,7 @@ function InternLenke(props: { lenke: MenylenkeInternParsed }) {
         <StyledButton
           isOpen={open}
           onClick={() => {
-            toggle();
+            toggle((open) => !open);
           }}
           aria-expanded={open}
         >

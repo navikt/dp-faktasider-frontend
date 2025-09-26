@@ -26,7 +26,53 @@ footer {
   padding: var(--a-spacing-6) !important;
 }
 
+// Dett er for å få ankerlenker til å vises riktig i overskrifter
+// Dette er bruk i forbindelse min PFD nedlasting
+
+h2 > span > span.anchor-hash,
+h3 > span > span.anchor-hash,
+h4 > span > span.anchor-hash,
+h5 > span > span.anchor-hash,
+h6 > span > span.anchor-hash {
+  display: block;
+  background-color: transparent;
+}
+
+// Dett er for å få ankerlenker til å vises riktig i overskrifter
+// Dette er bruk i forbindelse min PFD nedlasting
+.anchor-hash {
+  font-size: 1.2rem;
+  color: #222;
+  font-style: italic;
+  font-weight: normal;
+}
+
 .decorator-wrapper .decorator-utils-content {
   max-width: 67rem;
   margin-bottom: 0.5rem;
+}
+
+.save-as-pdf-button {
+  position: absolute;
+  left: 60vh;
+  top: 12rem;
+  transform: translateX(-50%);
+}
+
+.unprintable {
+  display: none;
+}
+
+@media print {
+  header,
+  footer,
+  .unprintable {
+    display: none !important;
+  }
+
+  .printable {
+    display: block !important;
+    max-width: 70rem;
+    margin: auto;
+  }
 }

@@ -17,7 +17,7 @@ const Style = styled.div`
 `;
 
 function HistoirkkWatermark() {
-  return <Style>Historikk</Style>;
+  return <Style className="unprintable">Historikk</Style>;
 }
 
 export default HistoirkkWatermark;

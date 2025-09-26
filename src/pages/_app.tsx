@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <TranslationsProvider>
           <PreviewContextProvider>
             <AppStyling className="app">
-              <DevKnapper />
+              {/* <DevKnapper /> */}
               <PreviewBanner />
               <GlobalStyling />
               <Component {...pageProps} />

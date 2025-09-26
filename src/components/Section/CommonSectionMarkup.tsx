@@ -6,8 +6,12 @@ import useUniqueId from "../../utils/useUniqueId";
 
 export const showLinkOnHover = css`
   a {
-    transition: 0.2s;
-    opacity: 0;
+    font-size: 1rem;
+    background: #ccf1d6;
+    color: #222;
+    border-radius: 0.2rem;
+    font-style: italic;
+    font-weight: normal;
   }
   &:hover,
   &:focus-within,
